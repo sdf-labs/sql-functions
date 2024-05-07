@@ -1,0 +1,6563 @@
+# NOTE: This file was generated from presto.csv, with the following manual modifications:
+#
+# - Ordering: the ordering of overloads is *significant*! Overload resolution
+#   tries candidates in the order they are specified in this file, so more
+#   specific signatures must come before more general ones.
+# - Incorrect signatures: some functions signatures with variadic arguments are
+#   incorrect in presto.csv, and have been corrected here.
+# - Duplicate signatures: some functions signatures appear multiple times in
+#   presto.csv, and have been deduplicated here.
+# - Missing signatures: some functions signatures (e.g. `coalesce`) are
+#   straightup missing from presto.csv, and have been added here.
+
+---
+function:
+  name: abs
+  parameters:
+  - datatype: tinyint
+  optional-parameters: []
+  returns:
+    datatype: tinyint
+  implemented-by: builtin
+---
+function:
+  name: abs
+  parameters:
+  - datatype: smallint
+  optional-parameters: []
+  returns:
+    datatype: smallint
+  implemented-by: builtin
+---
+function:
+  name: abs
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+  implemented-by: builtin
+---
+function:
+  name: abs
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+  implemented-by: builtin
+---
+function:
+  name: abs
+  parameters:
+  - datatype: decimal(p, s)
+  optional-parameters: []
+  returns:
+    datatype: decimal(p, s)
+  implemented-by: builtin
+---
+function:
+  name: abs
+  parameters:
+  - datatype: real
+  optional-parameters: []
+  returns:
+    datatype: real
+  implemented-by: builtin
+---
+function:
+  name: acos
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+  implemented-by: builtin
+---
+function:
+  name: all_match
+  parameters:
+  - datatype: array<$1>
+  - datatype: function($1, boolean)
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: any_match
+  parameters:
+  - datatype: array<$1>
+  - datatype: function($1, boolean)
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: approx_distinct
+  kind: aggregate
+  parameters:
+  - datatype: boolean
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: approx_distinct
+  kind: aggregate
+  parameters:
+  - datatype: boolean
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: approx_distinct
+  kind: aggregate
+  parameters:
+  - datatype: $1
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: approx_distinct
+  kind: aggregate
+  parameters:
+  - datatype: $1
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: approx_distinct
+  kind: aggregate
+  parameters:
+  - datatype: unknown
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: approx_distinct
+  kind: aggregate
+  parameters:
+  - datatype: unknown
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: approx_most_frequent
+  kind: aggregate
+  parameters:
+  - datatype: bigint
+  - datatype: bigint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: map<bigint, bigint>
+---
+function:
+  name: approx_most_frequent
+  kind: aggregate
+  parameters:
+  - datatype: bigint
+  - datatype: varchar
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: map<varchar, bigint>
+---
+function:
+  name: approx_percentile
+  kind: aggregate
+  parameters:
+  - datatype: bigint
+  - datatype: array<double>
+  optional-parameters: []
+  returns:
+    datatype: array<bigint>
+---
+function:
+  name: approx_percentile
+  kind: aggregate
+  parameters:
+  - datatype: bigint
+  - datatype: double
+  - datatype: array<double>
+  optional-parameters: []
+  returns:
+    datatype: array<bigint>
+---
+function:
+  name: approx_percentile
+  kind: aggregate
+  parameters:
+  - datatype: double
+  - datatype: array<double>
+  optional-parameters: []
+  returns:
+    datatype: array<double>
+---
+function:
+  name: approx_percentile
+  kind: aggregate
+  parameters:
+  - datatype: double
+  - datatype: double
+  - datatype: array<double>
+  optional-parameters: []
+  returns:
+    datatype: array<double>
+---
+function:
+  name: approx_percentile
+  kind: aggregate
+  parameters:
+  - datatype: real
+  - datatype: array<double>
+  optional-parameters: []
+  returns:
+    datatype: array<real>
+---
+function:
+  name: approx_percentile
+  kind: aggregate
+  parameters:
+  - datatype: real
+  - datatype: double
+  - datatype: array<double>
+  optional-parameters: []
+  returns:
+    datatype: array<real>
+---
+function:
+  name: approx_percentile
+  kind: aggregate
+  parameters:
+  - datatype: bigint
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: approx_percentile
+  kind: aggregate
+  parameters:
+  - datatype: bigint
+  - datatype: double
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: approx_percentile
+  kind: aggregate
+  parameters:
+  - datatype: bigint
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: approx_percentile
+  kind: aggregate
+  parameters:
+  - datatype: double
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: approx_percentile
+  kind: aggregate
+  parameters:
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: approx_percentile
+  kind: aggregate
+  parameters:
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: approx_percentile
+  kind: aggregate
+  parameters:
+  - datatype: real
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: real
+---
+function:
+  name: approx_percentile
+  kind: aggregate
+  parameters:
+  - datatype: real
+  - datatype: double
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: real
+---
+function:
+  name: approx_percentile
+  kind: aggregate
+  parameters:
+  - datatype: real
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: real
+---
+function:
+  name: approx_set
+  kind: aggregate
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: hyperloglog
+---
+function:
+  name: approx_set
+  kind: aggregate
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: hyperloglog
+---
+function:
+  name: approx_set
+  kind: aggregate
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: hyperloglog
+---
+function:
+  name: arbitrary
+  kind: aggregate
+  parameters:
+  - datatype: $1
+  optional-parameters: []
+  returns:
+    datatype: $1
+---
+function:
+  name: array_agg
+  kind: aggregate
+  parameters:
+  - datatype: $1
+  optional-parameters: []
+  returns:
+    datatype: array<$1>
+  implemented-by: builtin
+---
+function:
+  name: array_distinct
+  parameters:
+  - datatype: array<$3>
+  optional-parameters: []
+  returns:
+    datatype: array<$3>
+---
+function:
+  name: array_except
+  parameters:
+  - datatype: array<$3>
+  - datatype: array<$3>
+  optional-parameters: []
+  returns:
+    datatype: array<$3>
+---
+function:
+  name: array_intersect
+  parameters:
+  - datatype: array<$3>
+  - datatype: array<$3>
+  optional-parameters: []
+  returns:
+    datatype: array<$3>
+---
+function:
+  name: array_join
+  parameters:
+  - datatype: array<$1>
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: array_join
+  parameters:
+  - datatype: array<$1>
+  - datatype: varchar
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: array_max
+  parameters:
+  - datatype: array<$1>
+  optional-parameters: []
+  returns:
+    datatype: $1
+---
+function:
+  name: array_min
+  parameters:
+  - datatype: array<$1>
+  optional-parameters: []
+  returns:
+    datatype: $1
+---
+function:
+  name: array_position
+  parameters:
+  - datatype: array<$1>
+  - datatype: $1
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: array_remove
+  parameters:
+  - datatype: array<$3>
+  - datatype: $3
+  optional-parameters: []
+  returns:
+    datatype: array<$3>
+---
+function:
+  name: array_sort
+  parameters:
+  - datatype: array<$3>
+  optional-parameters: []
+  returns:
+    datatype: array<$3>
+---
+function:
+  name: array_sort
+  parameters:
+  - datatype: array<$1>
+  - datatype: function($1, $1, bigint)
+  optional-parameters: []
+  returns:
+    datatype: array<$1>
+---
+function:
+  name: array_union
+  parameters:
+  - datatype: array<$3>
+  - datatype: array<$3>
+  optional-parameters: []
+  returns:
+    datatype: array<$3>
+---
+function:
+  name: arrays_overlap
+  parameters:
+  - datatype: array<$3>
+  - datatype: array<$3>
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: asin
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: at_timezone
+  parameters:
+  - datatype: timestamp(p)
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: timestamp(p)
+---
+function:
+  name: atan
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: atan2
+  parameters:
+  - datatype: double
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: avg
+  kind: aggregate
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+  implemented-by: builtin
+---
+function:
+  name: avg
+  kind: aggregate
+  parameters:
+  - datatype: decimal(p, s)
+  optional-parameters: []
+  returns:
+    datatype: decimal(p, s)
+  implemented-by: builtin
+---
+function:
+  name: avg
+  kind: aggregate
+  parameters:
+  - datatype: interval day to second
+  optional-parameters: []
+  returns:
+    datatype: interval day to second
+---
+function:
+  name: avg
+  kind: aggregate
+  parameters:
+  - datatype: interval year to month
+  optional-parameters: []
+  returns:
+    datatype: interval year to month
+---
+function:
+  name: avg
+  kind: aggregate
+  parameters:
+  - datatype: real
+  optional-parameters: []
+  returns:
+    datatype: real
+  implemented-by: builtin
+---
+function:
+  name: bar
+  parameters:
+  - datatype: double
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: bar
+  parameters:
+  - datatype: double
+  - datatype: bigint
+  - datatype: color
+  - datatype: color
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: beta_cdf
+  parameters:
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: bing_tile
+  parameters:
+  - datatype: bigint
+  - datatype: bigint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bingtile
+---
+function:
+  name: bing_tile
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: bingtile
+---
+function:
+  name: bing_tile_at
+  parameters:
+  - datatype: double
+  - datatype: double
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bingtile
+---
+function:
+  name: bing_tile_coordinates
+  parameters:
+  - datatype: bingtile
+  optional-parameters: []
+  returns:
+    datatype: row(x bigint, y bigint)
+---
+function:
+  name: bing_tile_polygon
+  parameters:
+  - datatype: bingtile
+  optional-parameters: []
+  returns:
+    datatype: geometry
+---
+function:
+  name: bing_tile_quadkey
+  parameters:
+  - datatype: bingtile
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: bing_tile_zoom_level
+  parameters:
+  - datatype: bingtile
+  optional-parameters: []
+  returns:
+    datatype: tinyint
+---
+function:
+  name: bing_tiles_around
+  parameters:
+  - datatype: double
+  - datatype: double
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: array<bingtile>
+---
+function:
+  name: bing_tiles_around
+  parameters:
+  - datatype: double
+  - datatype: double
+  - datatype: bigint
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: array<bingtile>
+---
+function:
+  name: bit_count
+  parameters:
+  - datatype: bigint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: bitwise_and
+  parameters:
+  - datatype: bigint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: bitwise_and_agg
+  kind: aggregate
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: bitwise_left_shift
+  parameters:
+  - datatype: bigint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: bitwise_left_shift
+  parameters:
+  - datatype: bigint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: bitwise_left_shift
+  parameters:
+  - datatype: smallint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: smallint
+---
+function:
+  name: bitwise_left_shift
+  parameters:
+  - datatype: tinyint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: tinyint
+---
+function:
+  name: bitwise_not
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: bitwise_or
+  parameters:
+  - datatype: bigint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: bitwise_or_agg
+  kind: aggregate
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: bitwise_right_shift
+  parameters:
+  - datatype: bigint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: bitwise_right_shift
+  parameters:
+  - datatype: bigint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: bitwise_right_shift
+  parameters:
+  - datatype: smallint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: smallint
+---
+function:
+  name: bitwise_right_shift
+  parameters:
+  - datatype: tinyint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: tinyint
+---
+function:
+  name: bitwise_right_shift_arithmetic
+  parameters:
+  - datatype: bigint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: bitwise_right_shift_arithmetic
+  parameters:
+  - datatype: bigint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: bitwise_right_shift_arithmetic
+  parameters:
+  - datatype: smallint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: smallint
+---
+function:
+  name: bitwise_right_shift_arithmetic
+  parameters:
+  - datatype: tinyint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: tinyint
+---
+function:
+  name: bitwise_xor
+  parameters:
+  - datatype: bigint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: bool_and
+  kind: aggregate
+  parameters:
+  - datatype: boolean
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: bool_or
+  kind: aggregate
+  parameters:
+  - datatype: boolean
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: cardinality
+  parameters:
+  - datatype: array<$3>
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: cardinality
+  parameters:
+  - datatype: hyperloglog
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: cardinality
+  parameters:
+  - datatype: map<$4, $5>
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: cardinality
+  parameters:
+  - datatype: setdigest
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: cbrt
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: ceil
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: ceil
+  parameters:
+  - datatype: decimal(p, s)
+  optional-parameters: []
+  returns:
+    datatype: decimal(rp, 0)
+---
+function:
+  name: ceil
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: ceil
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: ceil
+  parameters:
+  - datatype: real
+  optional-parameters: []
+  returns:
+    datatype: real
+---
+function:
+  name: ceil
+  parameters:
+  - datatype: smallint
+  optional-parameters: []
+  returns:
+    datatype: smallint
+---
+function:
+  name: ceil
+  parameters:
+  - datatype: tinyint
+  optional-parameters: []
+  returns:
+    datatype: tinyint
+---
+function:
+  name: ceiling
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: ceiling
+  parameters:
+  - datatype: decimal(p, s)
+  optional-parameters: []
+  returns:
+    datatype: decimal(rp, 0)
+---
+function:
+  name: ceiling
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: ceiling
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: ceiling
+  parameters:
+  - datatype: real
+  optional-parameters: []
+  returns:
+    datatype: real
+---
+function:
+  name: ceiling
+  parameters:
+  - datatype: smallint
+  optional-parameters: []
+  returns:
+    datatype: smallint
+---
+function:
+  name: ceiling
+  parameters:
+  - datatype: tinyint
+  optional-parameters: []
+  returns:
+    datatype: tinyint
+---
+function:
+  name: char2hexint
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: checksum
+  kind: aggregate
+  parameters:
+  - datatype: $1
+  optional-parameters: []
+  returns:
+    datatype: varbinary
+---
+function:
+  name: chr
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: classify
+  parameters:
+  - datatype: map<bigint, double>
+  - datatype: classifier
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: classify
+  parameters:
+  - datatype: map<bigint, double>
+  - datatype: classifier
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: coalesce
+  variadic: uniform
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: $1
+  implemented-by: builtin
+---
+function:
+  name: codepoint
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: color
+  parameters:
+  - datatype: double
+  - datatype: color
+  - datatype: color
+  optional-parameters: []
+  returns:
+    datatype: color
+---
+function:
+  name: color
+  parameters:
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: color
+  - datatype: color
+  optional-parameters: []
+  returns:
+    datatype: color
+---
+function:
+  name: color
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: color
+---
+function:
+  name: combinations
+  parameters:
+  - datatype: array<$1>
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: array<array<$1>>
+---
+function:
+  name: concat
+  parameters:
+  - datatype: $3
+  - datatype: array<$3>
+  optional-parameters: []
+  returns:
+    datatype: array<$3>
+---
+function:
+  name: concat
+  variadic: uniform
+  parameters:
+  - datatype: array<$3>
+  optional-parameters: []
+  returns:
+    datatype: array<$3>
+---
+function:
+  name: concat
+  parameters:
+  - datatype: array<$3>
+  - datatype: $3
+  optional-parameters: []
+  returns:
+    datatype: array<$3>
+---
+function:
+  name: concat
+  parameters:
+  - datatype: varchar
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: concat
+  variadic: uniform
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+  implemented-by: builtin
+---
+function:
+  name: concat
+  variadic: uniform
+  parameters:
+  - datatype: varbinary
+  optional-parameters: []
+  returns:
+    datatype: varbinary
+  implemented-by: builtin
+---
+function:
+  name: concat_ws
+  parameters:
+  - datatype: varchar
+  - datatype: array<varchar>
+  optional-parameters: []
+  returns:
+    datatype: varchar
+  implemented-by: builtin
+---
+function:
+  name: concat_ws
+  variadic: uniform
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+  implemented-by: builtin
+---
+function:
+  name: contains
+  parameters:
+  - datatype: array<$1>
+  - datatype: $1
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: contains
+  parameters:
+  - datatype: varchar
+  - datatype: ipaddress
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: contains_sequence
+  parameters:
+  - datatype: array<$1>
+  - datatype: array<$1>
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: convex_hull_agg
+  kind: aggregate
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: geometry
+---
+function:
+  name: corr
+  kind: aggregate
+  parameters:
+  - datatype: double
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: corr
+  kind: aggregate
+  parameters:
+  - datatype: real
+  - datatype: real
+  optional-parameters: []
+  returns:
+    datatype: real
+---
+function:
+  name: cos
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: cosh
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: cosine_similarity
+  parameters:
+  - datatype: map<varchar, double>
+  - datatype: map<varchar, double>
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: count
+  kind: aggregate
+  parameters: []
+  optional-parameters: []
+  returns:
+    datatype: bigint
+  implemented-by: builtin
+---
+function:
+  name: count
+  kind: aggregate
+  parameters:
+  - datatype: $1
+  optional-parameters: []
+  returns:
+    datatype: bigint
+  implemented-by: builtin
+---
+function:
+  name: count_if
+  kind: aggregate
+  parameters:
+  - datatype: boolean
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: covar_pop
+  kind: aggregate
+  parameters:
+  - datatype: double
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: covar_pop
+  kind: aggregate
+  parameters:
+  - datatype: real
+  - datatype: real
+  optional-parameters: []
+  returns:
+    datatype: real
+---
+function:
+  name: covar_samp
+  kind: aggregate
+  parameters:
+  - datatype: double
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: covar_samp
+  kind: aggregate
+  parameters:
+  - datatype: real
+  - datatype: real
+  optional-parameters: []
+  returns:
+    datatype: real
+---
+function:
+  name: crc32
+  parameters:
+  - datatype: varbinary
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: cume_dist
+  kind: window
+  parameters: []
+  optional-parameters: []
+  returns:
+    datatype: double
+  implemented-by: builtin
+---
+function:
+  name: current_date
+  parameters: []
+  optional-parameters: []
+  returns:
+    datatype: date
+  special: true
+---
+function:
+  name: current_groups
+  parameters: []
+  optional-parameters: []
+  returns:
+    datatype: array<varchar>
+---
+function:
+  name: current_timezone
+  parameters: []
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: date
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: date
+---
+function:
+  name: date
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: date
+---
+function:
+  name: date
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: date
+---
+function:
+  name: date_add
+  parameters:
+  - datatype: varchar
+  - datatype: bigint
+  - datatype: date
+  optional-parameters: []
+  returns:
+    datatype: date
+---
+function:
+  name: date_add
+  parameters:
+  - datatype: varchar
+  - datatype: bigint
+  - datatype: time(p)
+  optional-parameters: []
+  returns:
+    datatype: time(p)
+---
+function:
+  name: date_add
+  parameters:
+  - datatype: varchar
+  - datatype: bigint
+  - datatype: time(p)
+  optional-parameters: []
+  returns:
+    datatype: time(p)
+---
+function:
+  name: date_add
+  parameters:
+  - datatype: varchar
+  - datatype: bigint
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: timestamp(p)
+---
+function:
+  name: date_add
+  parameters:
+  - datatype: varchar
+  - datatype: bigint
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: timestamp(p)
+---
+function:
+  name: date_diff
+  parameters:
+  - datatype: varchar
+  - datatype: date
+  - datatype: date
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: date_diff
+  parameters:
+  - datatype: varchar
+  - datatype: time(p)
+  - datatype: time(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: date_diff
+  parameters:
+  - datatype: varchar
+  - datatype: time(p)
+  - datatype: time(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: date_diff
+  parameters:
+  - datatype: varchar
+  - datatype: timestamp(p)
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: date_diff
+  parameters:
+  - datatype: varchar
+  - datatype: timestamp(p)
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: date_format
+  parameters:
+  - datatype: timestamp(p)
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: date_format
+  parameters:
+  - datatype: timestamp(p)
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: date_parse
+  parameters:
+  - datatype: varchar
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: timestamp
+---
+function:
+  name: date_part
+  parameters:
+  - datatype: varchar
+  - datatype: time(p)
+  optional-parameters: []
+  returns:
+    datatype: double
+  implemented-by: builtin
+---
+function:
+  name: date_part
+  parameters:
+  - datatype: varchar
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: double
+  implemented-by: builtin
+---
+function:
+  name: date_part
+  parameters:
+  - datatype: varchar
+  - datatype: date
+  optional-parameters: []
+  returns:
+    datatype: double
+  implemented-by: builtin
+---
+function:
+  name: date_trunc
+  parameters:
+  - datatype: varchar
+  - datatype: time(p)
+  optional-parameters: []
+  returns:
+    datatype: time(p)
+  implemented-by: builtin
+---
+function:
+  name: date_trunc
+  parameters:
+  - datatype: varchar
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: timestamp(p)
+  implemented-by: builtin
+---
+function:
+  name: date_trunc
+  parameters:
+  - datatype: varchar
+  - datatype: date
+  optional-parameters: []
+  returns:
+    datatype: date
+---
+function:
+  name: day
+  parameters:
+  - datatype: date
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: day
+  parameters:
+  - datatype: interval day to second
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: day
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: day
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: day_of_month
+  parameters:
+  - datatype: date
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: day_of_month
+  parameters:
+  - datatype: interval day to second
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: day_of_month
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: day_of_month
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: day_of_week
+  parameters:
+  - datatype: date
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: day_of_week
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: day_of_week
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: day_of_year
+  parameters:
+  - datatype: date
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: day_of_year
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: day_of_year
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: degrees
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: dense_rank
+  kind: window
+  parameters: []
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: dow
+  parameters:
+  - datatype: date
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: dow
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: dow
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: doy
+  parameters:
+  - datatype: date
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: doy
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: doy
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: e
+  parameters: []
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: element_at
+  parameters:
+  - datatype: map<$4, $5>
+  - datatype: $4
+  optional-parameters: []
+  returns:
+    datatype: $5
+---
+function:
+  name: element_at
+  parameters:
+  - datatype: array<$3>
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: $3
+---
+function:
+  name: empty_approx_set
+  parameters: []
+  optional-parameters: []
+  returns:
+    datatype: hyperloglog
+---
+function:
+  name: evaluate_classifier_predictions
+  kind: aggregate
+  parameters:
+  - datatype: bigint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: evaluate_classifier_predictions
+  kind: aggregate
+  parameters:
+  - datatype: varchar
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: every
+  kind: aggregate
+  parameters:
+  - datatype: boolean
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: exp
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: features
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: map<bigint, double>
+---
+function:
+  name: features
+  parameters:
+  - datatype: double
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: map<bigint, double>
+---
+function:
+  name: features
+  parameters:
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: map<bigint, double>
+---
+function:
+  name: features
+  parameters:
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: map<bigint, double>
+---
+function:
+  name: features
+  parameters:
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: map<bigint, double>
+---
+function:
+  name: features
+  parameters:
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: map<bigint, double>
+---
+function:
+  name: features
+  parameters:
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: map<bigint, double>
+---
+function:
+  name: features
+  parameters:
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: map<bigint, double>
+---
+function:
+  name: features
+  parameters:
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: map<bigint, double>
+---
+function:
+  name: features
+  parameters:
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: map<bigint, double>
+---
+function:
+  name: filter
+  parameters:
+  - datatype: array<$1>
+  - datatype: function($1, boolean)
+  optional-parameters: []
+  returns:
+    datatype: array<$1>
+---
+function:
+  name: first_value
+  kind: window
+  parameters:
+  - datatype: $1
+  optional-parameters: []
+  returns:
+    datatype: $1
+  implemented-by: builtin
+---
+function:
+  name: flatten
+  parameters:
+  - datatype: array<array<$3>>
+  optional-parameters: []
+  returns:
+    datatype: array<$3>
+---
+function:
+  name: floor
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: floor
+  parameters:
+  - datatype: decimal(p, s)
+  optional-parameters: []
+  returns:
+    datatype: decimal(rp, 0)
+---
+function:
+  name: floor
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: floor
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: floor
+  parameters:
+  - datatype: real
+  optional-parameters: []
+  returns:
+    datatype: real
+---
+function:
+  name: floor
+  parameters:
+  - datatype: smallint
+  optional-parameters: []
+  returns:
+    datatype: smallint
+---
+function:
+  name: floor
+  parameters:
+  - datatype: tinyint
+  optional-parameters: []
+  returns:
+    datatype: tinyint
+---
+function:
+  name: format_datetime
+  parameters:
+  - datatype: timestamp(p)
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: format_datetime
+  parameters:
+  - datatype: timestamp(p)
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: format_number
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: format_number
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: from_base
+  parameters:
+  - datatype: varchar
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: from_base32
+  parameters:
+  - datatype: varbinary
+  optional-parameters: []
+  returns:
+    datatype: varbinary
+---
+function:
+  name: from_base32
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varbinary
+---
+function:
+  name: from_base64
+  parameters:
+  - datatype: varbinary
+  optional-parameters: []
+  returns:
+    datatype: varbinary
+---
+function:
+  name: from_base64
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varbinary
+---
+function:
+  name: from_base64url
+  parameters:
+  - datatype: varbinary
+  optional-parameters: []
+  returns:
+    datatype: varbinary
+---
+function:
+  name: from_base64url
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varbinary
+---
+function:
+  name: from_big_endian_32
+  parameters:
+  - datatype: varbinary
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: from_big_endian_64
+  parameters:
+  - datatype: varbinary
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: from_encoded_polyline
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: geometry
+---
+function:
+  name: from_geojson_geometry
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: sphericalgeography
+---
+function:
+  name: from_hex
+  parameters:
+  - datatype: varbinary
+  optional-parameters: []
+  returns:
+    datatype: varbinary
+---
+function:
+  name: from_hex
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varbinary
+---
+function:
+  name: from_ieee754_32
+  parameters:
+  - datatype: varbinary
+  optional-parameters: []
+  returns:
+    datatype: real
+---
+function:
+  name: from_ieee754_64
+  parameters:
+  - datatype: varbinary
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: from_iso8601_date
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: date
+---
+function:
+  name: from_iso8601_timestamp
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: timestamp
+---
+function:
+  name: from_iso8601_timestamp_nanos
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: timestamp(9)
+---
+function:
+  name: from_unixtime
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: timestamp
+---
+function:
+  name: from_unixtime
+  parameters:
+  - datatype: double
+  - datatype: bigint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: timestamp
+---
+function:
+  name: from_unixtime
+  parameters:
+  - datatype: double
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: timestamp
+---
+function:
+  name: from_unixtime_nanos
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: timestamp(9)
+---
+function:
+  name: from_unixtime_nanos
+  parameters:
+  - datatype: decimal(p, s)
+  optional-parameters: []
+  returns:
+    datatype: timestamp(9)
+---
+function:
+  name: from_utf8
+  parameters:
+  - datatype: varbinary
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: from_utf8
+  parameters:
+  - datatype: varbinary
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: from_utf8
+  parameters:
+  - datatype: varbinary
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: geometric_mean
+  kind: aggregate
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: geometric_mean
+  kind: aggregate
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: geometric_mean
+  kind: aggregate
+  parameters:
+  - datatype: real
+  optional-parameters: []
+  returns:
+    datatype: real
+---
+function:
+  name: geometry_from_hadoop_shape
+  parameters:
+  - datatype: varbinary
+  optional-parameters: []
+  returns:
+    datatype: geometry
+---
+function:
+  name: geometry_invalid_reason
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: geometry_nearest_points
+  parameters:
+  - datatype: geometry
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: row(c0 geometry, c1 geometry)
+---
+function:
+  name: geometry_to_bing_tiles
+  parameters:
+  - datatype: geometry
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: array<bingtile>
+---
+function:
+  name: geometry_union
+  parameters:
+  - datatype: array<geometry>
+  optional-parameters: []
+  returns:
+    datatype: geometry
+---
+function:
+  name: geometry_union_agg
+  kind: aggregate
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: geometry
+---
+function:
+  name: great_circle_distance
+  parameters:
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: greatest
+  variadic: uniform
+  parameters:
+  - datatype: $3
+  optional-parameters: []
+  returns:
+    datatype: $3
+---
+function:
+  name: grouping
+  kind: aggregate
+  variadic: any
+  parameters: []
+  returns: 
+    datatype: int
+  implemented-by: builtin
+---
+function:
+  name: hamming_distance
+  parameters:
+  - datatype: varchar
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: hash_counts
+  parameters:
+  - datatype: setdigest
+  optional-parameters: []
+  returns:
+    datatype: map<bigint, smallint>
+---
+function:
+  name: histogram
+  kind: aggregate
+  parameters:
+  - datatype: $1
+  optional-parameters: []
+  returns:
+    datatype: map<$1, bigint>
+---
+function:
+  name: hmac_md5
+  parameters:
+  - datatype: varbinary
+  - datatype: varbinary
+  optional-parameters: []
+  returns:
+    datatype: varbinary
+---
+function:
+  name: hmac_sha1
+  parameters:
+  - datatype: varbinary
+  - datatype: varbinary
+  optional-parameters: []
+  returns:
+    datatype: varbinary
+---
+function:
+  name: hmac_sha256
+  parameters:
+  - datatype: varbinary
+  - datatype: varbinary
+  optional-parameters: []
+  returns:
+    datatype: varbinary
+---
+function:
+  name: hmac_sha512
+  parameters:
+  - datatype: varbinary
+  - datatype: varbinary
+  optional-parameters: []
+  returns:
+    datatype: varbinary
+---
+function:
+  name: hour
+  parameters:
+  - datatype: interval day to second
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: hour
+  parameters:
+  - datatype: time(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: hour
+  parameters:
+  - datatype: time(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: hour
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: hour
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: human_readable_seconds
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: index
+  parameters:
+  - datatype: varchar
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: infinity
+  parameters: []
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: intersection_cardinality
+  parameters:
+  - datatype: setdigest
+  - datatype: setdigest
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: inverse_beta_cdf
+  parameters:
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: inverse_normal_cdf
+  parameters:
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: is_finite
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: is_infinite
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: is_json_scalar
+  parameters:
+  - datatype: json
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: is_json_scalar
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: is_nan
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: is_nan
+  parameters:
+  - datatype: real
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: jaccard_index
+  parameters:
+  - datatype: setdigest
+  - datatype: setdigest
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: json_array_contains
+  parameters:
+  - datatype: json
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: json_array_contains
+  parameters:
+  - datatype: json
+  - datatype: boolean
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: json_array_contains
+  parameters:
+  - datatype: json
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: json_array_contains
+  parameters:
+  - datatype: json
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: json_array_contains
+  parameters:
+  - datatype: varchar
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: json_array_contains
+  parameters:
+  - datatype: varchar
+  - datatype: boolean
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: json_array_contains
+  parameters:
+  - datatype: varchar
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: json_array_contains
+  parameters:
+  - datatype: varchar
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: json_array_get
+  parameters:
+  - datatype: json
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: json
+---
+function:
+  name: json_array_get
+  parameters:
+  - datatype: varchar
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: json
+---
+function:
+  name: json_array_length
+  parameters:
+  - datatype: json
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: json_array_length
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: json_extract
+  parameters:
+  - datatype: json
+  - datatype: jsonpath
+  optional-parameters: []
+  returns:
+    datatype: json
+---
+function:
+  name: json_extract
+  parameters:
+  - datatype: varchar
+  - datatype: jsonpath
+  optional-parameters: []
+  returns:
+    datatype: json
+---
+function:
+  name: json_extract_scalar
+  parameters:
+  - datatype: json
+  - datatype: jsonpath
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: json_extract_scalar
+  parameters:
+  - datatype: varchar
+  - datatype: jsonpath
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: json_format
+  parameters:
+  - datatype: json
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: json_parse
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: json
+---
+function:
+  name: json_size
+  parameters:
+  - datatype: json
+  - datatype: jsonpath
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: json_size
+  parameters:
+  - datatype: varchar
+  - datatype: jsonpath
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: kurtosis
+  kind: aggregate
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: kurtosis
+  kind: aggregate
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: lag
+  kind: window
+  parameters:
+  - datatype: $1
+  optional-parameters: []
+  returns:
+    datatype: $1
+  implemented-by: builtin
+---
+function:
+  name: lag
+  kind: window
+  parameters:
+  - datatype: $1
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: $1
+---
+function:
+  name: lag
+  kind: window
+  parameters:
+  - datatype: $1
+  - datatype: bigint
+  - datatype: $1
+  optional-parameters: []
+  returns:
+    datatype: $1
+---
+function:
+  name: last_day_of_month
+  parameters:
+  - datatype: date
+  optional-parameters: []
+  returns:
+    datatype: date
+---
+function:
+  name: last_day_of_month
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: date
+---
+function:
+  name: last_day_of_month
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: date
+---
+function:
+  name: last_value
+  kind: window
+  parameters:
+  - datatype: $1
+  optional-parameters: []
+  returns:
+    datatype: $1
+  implemented-by: builtin
+---
+function:
+  name: lead
+  kind: window
+  parameters:
+  - datatype: $1
+  optional-parameters: []
+  returns:
+    datatype: $1
+  implemented-by: builtin
+---
+function:
+  name: lead
+  kind: window
+  parameters:
+  - datatype: $1
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: $1
+---
+function:
+  name: lead
+  kind: window
+  parameters:
+  - datatype: $1
+  - datatype: bigint
+  - datatype: $1
+  optional-parameters: []
+  returns:
+    datatype: $1
+---
+function:
+  name: learn_classifier
+  kind: aggregate
+  parameters:
+  - datatype: bigint
+  - datatype: map<bigint, double>
+  optional-parameters: []
+  returns:
+    datatype: classifier
+---
+function:
+  name: learn_classifier
+  kind: aggregate
+  parameters:
+  - datatype: double
+  - datatype: map<bigint, double>
+  optional-parameters: []
+  returns:
+    datatype: classifier
+---
+function:
+  name: learn_classifier
+  kind: aggregate
+  parameters:
+  - datatype: varchar
+  - datatype: map<bigint, double>
+  optional-parameters: []
+  returns:
+    datatype: classifier
+---
+function:
+  name: learn_libsvm_classifier
+  kind: aggregate
+  parameters:
+  - datatype: bigint
+  - datatype: map<bigint, double>
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: classifier
+---
+function:
+  name: learn_libsvm_classifier
+  kind: aggregate
+  parameters:
+  - datatype: double
+  - datatype: map<bigint, double>
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: classifier
+---
+function:
+  name: learn_libsvm_classifier
+  kind: aggregate
+  parameters:
+  - datatype: varchar
+  - datatype: map<bigint, double>
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: classifier
+---
+function:
+  name: learn_libsvm_regressor
+  kind: aggregate
+  parameters:
+  - datatype: bigint
+  - datatype: map<bigint, double>
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: regressor
+---
+function:
+  name: learn_libsvm_regressor
+  kind: aggregate
+  parameters:
+  - datatype: double
+  - datatype: map<bigint, double>
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: regressor
+---
+function:
+  name: learn_regressor
+  kind: aggregate
+  parameters:
+  - datatype: bigint
+  - datatype: map<bigint, double>
+  optional-parameters: []
+  returns:
+    datatype: regressor
+---
+function:
+  name: learn_regressor
+  kind: aggregate
+  parameters:
+  - datatype: double
+  - datatype: map<bigint, double>
+  optional-parameters: []
+  returns:
+    datatype: regressor
+---
+function:
+  name: least
+  variadic: uniform
+  parameters:
+  - datatype: $3
+  optional-parameters: []
+  returns:
+    datatype: $3
+---
+function:
+  name: length
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: bigint
+  implemented-by: builtin
+---
+function:
+  name: length
+  parameters:
+  - datatype: varbinary
+  optional-parameters: []
+  returns:
+    datatype: bigint
+  implemented-by: builtin
+---
+function:
+  name: levenshtein_distance
+  parameters:
+  - datatype: varchar
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: line_interpolate_point
+  parameters:
+  - datatype: geometry
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: geometry
+---
+function:
+  name: line_interpolate_points
+  parameters:
+  - datatype: geometry
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: array<geometry>
+---
+function:
+  name: line_locate_point
+  parameters:
+  - datatype: geometry
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: listagg
+  kind: aggregate
+  parameters:
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: boolean
+  - datatype: varchar
+  - datatype: boolean
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: ln
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: log
+  parameters:
+  - datatype: double
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: log10
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: log2
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: lower
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: lower
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: lpad
+  parameters:
+  - datatype: varbinary
+  - datatype: bigint
+  - datatype: varbinary
+  optional-parameters: []
+  returns:
+    datatype: varbinary
+---
+function:
+  name: lpad
+  parameters:
+  - datatype: varchar
+  - datatype: bigint
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: ltrim
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: ltrim
+  parameters:
+  - datatype: varchar
+  - datatype: codepoints
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: ltrim
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: ltrim
+  parameters:
+  - datatype: varchar
+  - datatype: codepoints
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: luhn_check
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: make_set_digest
+  kind: aggregate
+  parameters:
+  - datatype: $1
+  optional-parameters: []
+  returns:
+    datatype: setdigest
+---
+function:
+  name: map
+  parameters:
+  - datatype: array<$4>
+  - datatype: array<$5>
+  optional-parameters: []
+  returns:
+    datatype: map<$4, $5>
+---
+function:
+  name: map
+  parameters: []
+  optional-parameters: []
+  returns:
+    datatype: map<unknown, unknown>
+---
+function:
+  name: map_agg
+  kind: aggregate
+  parameters:
+  - datatype: $4
+  - datatype: $5
+  optional-parameters: []
+  returns:
+    datatype: map<$4, $5>
+---
+function:
+  name: map_concat
+  variadic: uniform
+  parameters:
+  - datatype: map<$4, $5>
+  optional-parameters: []
+  returns:
+    datatype: map<$4, $5>
+---
+function:
+  name: map_entries
+  parameters:
+  - datatype: map<$4, $5>
+  optional-parameters: []
+  returns:
+    datatype: array<row(c0 $4, c1 $5)>
+---
+function:
+  name: map_filter
+  parameters:
+  - datatype: map<$4, $5>
+  - datatype: function($4, $5, boolean)
+  optional-parameters: []
+  returns:
+    datatype: map<$4, $5>
+---
+function:
+  name: map_from_entries
+  parameters:
+  - datatype: array<row(c0 $4, c1 $5)>
+  optional-parameters: []
+  returns:
+    datatype: map<$4, $5>
+---
+function:
+  name: map_keys
+  parameters:
+  - datatype: map<$4, $5>
+  optional-parameters: []
+  returns:
+    datatype: array<$4>
+---
+function:
+  name: map_union
+  kind: aggregate
+  parameters:
+  - datatype: map<$4, $5>
+  optional-parameters: []
+  returns:
+    datatype: map<$4, $5>
+---
+function:
+  name: map_values
+  parameters:
+  - datatype: map<$4, $5>
+  optional-parameters: []
+  returns:
+    datatype: array<$5>
+---
+function:
+  name: map_zip_with
+  parameters:
+  - datatype: map<$4, $8>
+  - datatype: map<$4, $7>
+  - datatype: function($4, $8, $7, $6)
+  optional-parameters: []
+  returns:
+    datatype: map<$4, $6>
+---
+function:
+  name: max
+  kind: aggregate
+  parameters:
+  - datatype: $3
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: array<$3>
+---
+function:
+  name: max
+  kind: aggregate
+  variadic: uniform
+  parameters:
+  - datatype: $1
+  optional-parameters: []
+  returns:
+    datatype: $1
+  implemented-by: builtin
+---
+function:
+  name: max_by
+  kind: aggregate
+  parameters:
+  - datatype: $5
+  - datatype: $4
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: array<$5>
+---
+function:
+  name: max_by
+  kind: aggregate
+  parameters:
+  - datatype: $5
+  - datatype: $4
+  optional-parameters: []
+  returns:
+    datatype: $5
+---
+function:
+  name: md5
+  parameters:
+  - datatype: varbinary
+  optional-parameters: []
+  returns:
+    datatype: varbinary
+---
+function:
+  name: merge
+  kind: aggregate
+  parameters:
+  - datatype: hyperloglog
+  optional-parameters: []
+  returns:
+    datatype: hyperloglog
+---
+function:
+  name: merge
+  kind: aggregate
+  parameters:
+  - datatype: qdigest
+  optional-parameters: []
+  returns:
+    datatype: qdigest
+---
+function:
+  name: merge
+  kind: aggregate
+  parameters:
+  - datatype: tdigest
+  optional-parameters: []
+  returns:
+    datatype: tdigest
+---
+function:
+  name: merge_set_digest
+  kind: aggregate
+  parameters:
+  - datatype: setdigest
+  optional-parameters: []
+  returns:
+    datatype: setdigest
+---
+function:
+  name: millisecond
+  parameters:
+  - datatype: interval day to second
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: millisecond
+  parameters:
+  - datatype: time(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: millisecond
+  parameters:
+  - datatype: time(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: millisecond
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: millisecond
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: min
+  kind: aggregate
+  parameters:
+  - datatype: $3
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: array<$3>
+---
+function:
+  name: min
+  kind: aggregate
+  variadic: uniform
+  parameters:
+  - datatype: $1
+  optional-parameters: []
+  returns:
+    datatype: $1
+  implemented-by: builtin
+---
+function:
+  name: min_by
+  kind: aggregate
+  parameters:
+  - datatype: $5
+  - datatype: $4
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: array<$5>
+---
+function:
+  name: min_by
+  kind: aggregate
+  parameters:
+  - datatype: $5
+  - datatype: $4
+  optional-parameters: []
+  returns:
+    datatype: $5
+---
+function:
+  name: minute
+  parameters:
+  - datatype: interval day to second
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: minute
+  parameters:
+  - datatype: time(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: minute
+  parameters:
+  - datatype: time(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: minute
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: minute
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: mod
+  parameters:
+  - datatype: bigint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: mod
+  parameters:
+  - datatype: decimal(a_precision, a_scale)
+  - datatype: decimal(b_precision, b_scale)
+  optional-parameters: []
+  returns:
+    datatype: decimal(r_precision, r_scale)
+---
+function:
+  name: mod
+  parameters:
+  - datatype: double
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: mod
+  parameters:
+  - datatype: bigint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: mod
+  parameters:
+  - datatype: real
+  - datatype: real
+  optional-parameters: []
+  returns:
+    datatype: real
+---
+function:
+  name: mod
+  parameters:
+  - datatype: smallint
+  - datatype: smallint
+  optional-parameters: []
+  returns:
+    datatype: smallint
+---
+function:
+  name: mod
+  parameters:
+  - datatype: tinyint
+  - datatype: tinyint
+  optional-parameters: []
+  returns:
+    datatype: tinyint
+---
+function:
+  name: month
+  parameters:
+  - datatype: date
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: month
+  parameters:
+  - datatype: interval year to month
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: month
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: month
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: multimap_agg
+  kind: aggregate
+  parameters:
+  - datatype: $4
+  - datatype: $5
+  optional-parameters: []
+  returns:
+    datatype: map<$4, array<$5>>
+---
+function:
+  name: multimap_from_entries
+  parameters:
+  - datatype: array<row(c0 $4, c1 $5)>
+  optional-parameters: []
+  returns:
+    datatype: map<$4, array<$5>>
+---
+function:
+  name: murmur3
+  parameters:
+  - datatype: varbinary
+  optional-parameters: []
+  returns:
+    datatype: varbinary
+---
+function:
+  name: nan
+  parameters: []
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: ngrams
+  parameters:
+  - datatype: array<$1>
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: array<array<$1>>
+---
+function:
+  name: none_match
+  parameters:
+  - datatype: array<$1>
+  - datatype: function($1, boolean)
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: normal_cdf
+  parameters:
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: normalize
+  parameters:
+  - datatype: varchar
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: now
+  parameters: []
+  optional-parameters: []
+  returns:
+    datatype: timestamp
+---
+function:
+  name: nth_value
+  kind: window
+  parameters:
+  - datatype: $1
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: $1
+  implemented-by: builtin
+---
+function:
+  name: ntile
+  kind: window
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+  implemented-by: builtin
+---
+function:
+  name: nullif
+  kind: scalar
+  parameters:
+  - datatype: $1
+  - datatype: $1
+  optional-parameters: []
+  returns:
+    datatype: $1
+  implemented-by: native
+---
+function:
+  name: numeric_histogram
+  kind: aggregate
+  parameters:
+  - datatype: bigint
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: map<double, double>
+---
+function:
+  name: numeric_histogram
+  kind: aggregate
+  parameters:
+  - datatype: bigint
+  - datatype: double
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: map<double, double>
+---
+function:
+  name: numeric_histogram
+  kind: aggregate
+  parameters:
+  - datatype: bigint
+  - datatype: real
+  optional-parameters: []
+  returns:
+    datatype: map<real, real>
+---
+function:
+  name: numeric_histogram
+  kind: aggregate
+  parameters:
+  - datatype: bigint
+  - datatype: real
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: map<real, real>
+---
+function:
+  name: objectid
+  parameters: []
+  optional-parameters: []
+  returns:
+    datatype: objectid
+---
+function:
+  name: objectid
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: objectid
+---
+function:
+  name: objectid_timestamp
+  parameters:
+  - datatype: objectid
+  optional-parameters: []
+  returns:
+    datatype: timestamp
+---
+function:
+  name: parse_data_size
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: decimal(38, 0)
+---
+function:
+  name: parse_datetime
+  parameters:
+  - datatype: varchar
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: timestamp
+---
+function:
+  name: parse_duration
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: interval day to second
+---
+function:
+  name: parse_presto_data_size
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: decimal(38, 0)
+---
+function:
+  name: percent_rank
+  kind: window
+  parameters: []
+  optional-parameters: []
+  returns:
+    datatype: double
+  implemented-by: builtin
+---
+function:
+  name: pi
+  parameters: []
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: pow
+  parameters:
+  - datatype: double
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: power
+  parameters:
+  - datatype: double
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: qdigest_agg
+  kind: aggregate
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: qdigest
+---
+function:
+  name: qdigest_agg
+  kind: aggregate
+  parameters:
+  - datatype: bigint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: qdigest
+---
+function:
+  name: qdigest_agg
+  kind: aggregate
+  parameters:
+  - datatype: bigint
+  - datatype: bigint
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: qdigest
+---
+function:
+  name: qdigest_agg
+  kind: aggregate
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: qdigest
+---
+function:
+  name: qdigest_agg
+  kind: aggregate
+  parameters:
+  - datatype: double
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: qdigest
+---
+function:
+  name: qdigest_agg
+  kind: aggregate
+  parameters:
+  - datatype: double
+  - datatype: bigint
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: qdigest
+---
+function:
+  name: qdigest_agg
+  kind: aggregate
+  parameters:
+  - datatype: real
+  optional-parameters: []
+  returns:
+    datatype: qdigest
+---
+function:
+  name: qdigest_agg
+  kind: aggregate
+  parameters:
+  - datatype: real
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: qdigest
+---
+function:
+  name: qdigest_agg
+  kind: aggregate
+  parameters:
+  - datatype: real
+  - datatype: bigint
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: qdigest
+---
+function:
+  name: quantile_at_value
+  parameters:
+  - datatype: qdigest
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: quantile_at_value
+  parameters:
+  - datatype: qdigest
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: quantile_at_value
+  parameters:
+  - datatype: qdigest
+  - datatype: real
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: quarter
+  parameters:
+  - datatype: date
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: quarter
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: quarter
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: radians
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: rand
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: rand
+  parameters:
+  - datatype: bigint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: rand
+  parameters: []
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: rand
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: rand
+  parameters:
+  - datatype: bigint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: rand
+  parameters:
+  - datatype: smallint
+  optional-parameters: []
+  returns:
+    datatype: smallint
+---
+function:
+  name: rand
+  parameters:
+  - datatype: smallint
+  - datatype: smallint
+  optional-parameters: []
+  returns:
+    datatype: smallint
+---
+function:
+  name: rand
+  parameters:
+  - datatype: tinyint
+  optional-parameters: []
+  returns:
+    datatype: tinyint
+---
+function:
+  name: rand
+  parameters:
+  - datatype: tinyint
+  - datatype: tinyint
+  optional-parameters: []
+  returns:
+    datatype: tinyint
+---
+function:
+  name: random
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: random
+  parameters:
+  - datatype: bigint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: random
+  parameters: []
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: random
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: random
+  parameters:
+  - datatype: bigint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: random
+  parameters:
+  - datatype: smallint
+  optional-parameters: []
+  returns:
+    datatype: smallint
+---
+function:
+  name: random
+  parameters:
+  - datatype: smallint
+  - datatype: smallint
+  optional-parameters: []
+  returns:
+    datatype: smallint
+---
+function:
+  name: random
+  parameters:
+  - datatype: tinyint
+  optional-parameters: []
+  returns:
+    datatype: tinyint
+---
+function:
+  name: random
+  parameters:
+  - datatype: tinyint
+  - datatype: tinyint
+  optional-parameters: []
+  returns:
+    datatype: tinyint
+---
+function:
+  name: rank
+  kind: window
+  parameters: []
+  optional-parameters: []
+  returns:
+    datatype: bigint
+  implemented-by: builtin
+---
+function:
+  name: reduce
+  parameters:
+  - datatype: array<$1>
+  - datatype: $10
+  - datatype: function($10, $1, $10)
+  - datatype: function($10, $9)
+  optional-parameters: []
+  returns:
+    datatype: $9
+---
+function:
+  name: reduce_agg
+  kind: aggregate
+  parameters:
+  - datatype: $1
+  - datatype: $10
+  - datatype: function($10, $1, $10)
+  - datatype: function($10, $10, $10)
+  optional-parameters: []
+  returns:
+    datatype: $10
+---
+function:
+  name: regexp_count
+  parameters:
+  - datatype: varchar
+  - datatype: joniregexp
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: regexp_extract
+  parameters:
+  - datatype: varchar
+  - datatype: joniregexp
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: regexp_extract
+  parameters:
+  - datatype: varchar
+  - datatype: joniregexp
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: regexp_extract_all
+  parameters:
+  - datatype: varchar
+  - datatype: joniregexp
+  optional-parameters: []
+  returns:
+    datatype: array<varchar>
+---
+function:
+  name: regexp_extract_all
+  parameters:
+  - datatype: varchar
+  - datatype: joniregexp
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: array<varchar>
+---
+function:
+  name: regexp_like
+  parameters:
+  - datatype: varchar
+  - datatype: joniregexp
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: regexp_position
+  parameters:
+  - datatype: varchar
+  - datatype: joniregexp
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: regexp_position
+  parameters:
+  - datatype: varchar
+  - datatype: joniregexp
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: regexp_position
+  parameters:
+  - datatype: varchar
+  - datatype: joniregexp
+  - datatype: bigint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: regexp_replace
+  parameters:
+  - datatype: varchar
+  - datatype: joniregexp
+  - datatype: function(array<varchar>, varchar)
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: regexp_replace
+  parameters:
+  - datatype: varchar
+  - datatype: joniregexp
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: regexp_replace
+  parameters:
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+  implemented-by: builtin
+---
+function:
+  name: regexp_split
+  parameters:
+  - datatype: varchar
+  - datatype: joniregexp
+  optional-parameters: []
+  returns:
+    datatype: array<varchar>
+---
+function:
+  name: regr_intercept
+  kind: aggregate
+  parameters:
+  - datatype: double
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: regr_intercept
+  kind: aggregate
+  parameters:
+  - datatype: real
+  - datatype: real
+  optional-parameters: []
+  returns:
+    datatype: real
+---
+function:
+  name: regr_slope
+  kind: aggregate
+  parameters:
+  - datatype: double
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: regr_slope
+  kind: aggregate
+  parameters:
+  - datatype: real
+  - datatype: real
+  optional-parameters: []
+  returns:
+    datatype: real
+---
+function:
+  name: regress
+  parameters:
+  - datatype: map<bigint, double>
+  - datatype: regressor
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: render
+  parameters:
+  - datatype: boolean
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: render
+  parameters:
+  - datatype: bigint
+  - datatype: color
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: render
+  parameters:
+  - datatype: double
+  - datatype: color
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: render
+  parameters:
+  - datatype: varchar
+  - datatype: color
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: repeat
+  parameters:
+  - datatype: $1
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: array<$1>
+---
+function:
+  name: replace
+  parameters:
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: replace
+  parameters:
+  - datatype: varchar
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: reverse
+  parameters:
+  - datatype: array<$3>
+  optional-parameters: []
+  returns:
+    datatype: array<$3>
+---
+function:
+  name: reverse
+  parameters:
+  - datatype: varbinary
+  optional-parameters: []
+  returns:
+    datatype: varbinary
+---
+function:
+  name: reverse
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: rgb
+  parameters:
+  - datatype: bigint
+  - datatype: bigint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: color
+---
+function:
+  name: round
+  parameters:
+  - datatype: double
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: double
+  implemented-by: builtin
+---
+function:
+  name: round
+  parameters:
+  - datatype: real
+  optional-parameters: []
+  returns:
+    datatype: real
+  implemented-by: builtin
+---
+function:
+  name: round
+  parameters:
+  - datatype: real
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: real
+  implemented-by: builtin
+---
+function:
+  name: round
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: round
+  parameters:
+  - datatype: bigint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: round
+  parameters:
+  - datatype: decimal(p, s)
+  optional-parameters: []
+  returns:
+    datatype: decimal(rp, rs)
+---
+function:
+  name: round
+  parameters:
+  - datatype: decimal(p, s)
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: decimal(rp, s)
+---
+function:
+  name: round
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+  implemented-by: builtin
+---
+function:
+  name: round
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: round
+  parameters:
+  - datatype: bigint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: round
+  parameters:
+  - datatype: smallint
+  optional-parameters: []
+  returns:
+    datatype: smallint
+---
+function:
+  name: round
+  parameters:
+  - datatype: smallint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: smallint
+---
+function:
+  name: round
+  parameters:
+  - datatype: tinyint
+  optional-parameters: []
+  returns:
+    datatype: tinyint
+---
+function:
+  name: round
+  parameters:
+  - datatype: tinyint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: tinyint
+---
+function:
+  name: row_number
+  kind: window
+  parameters: []
+  optional-parameters: []
+  returns:
+    datatype: bigint
+  implemented-by: builtin
+---
+function:
+  name: rpad
+  parameters:
+  - datatype: varbinary
+  - datatype: bigint
+  - datatype: varbinary
+  optional-parameters: []
+  returns:
+    datatype: varbinary
+---
+function:
+  name: rpad
+  parameters:
+  - datatype: varchar
+  - datatype: bigint
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: rtrim
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: rtrim
+  parameters:
+  - datatype: varchar
+  - datatype: codepoints
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: rtrim
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: rtrim
+  parameters:
+  - datatype: varchar
+  - datatype: codepoints
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: second
+  parameters:
+  - datatype: interval day to second
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: second
+  parameters:
+  - datatype: time(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: second
+  parameters:
+  - datatype: time(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: second
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: second
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: sequence
+  parameters:
+  - datatype: bigint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: array<bigint>
+---
+function:
+  name: sequence
+  parameters:
+  - datatype: bigint
+  - datatype: bigint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: array<bigint>
+---
+function:
+  name: sequence
+  parameters:
+  - datatype: date
+  - datatype: date
+  optional-parameters: []
+  returns:
+    datatype: array<date>
+---
+function:
+  name: sequence
+  parameters:
+  - datatype: date
+  - datatype: date
+  - datatype: interval day to second
+  optional-parameters: []
+  returns:
+    datatype: array<date>
+---
+function:
+  name: sequence
+  parameters:
+  - datatype: date
+  - datatype: date
+  - datatype: interval year to month
+  optional-parameters: []
+  returns:
+    datatype: array<date>
+---
+function:
+  name: sequence
+  parameters:
+  - datatype: timestamp(p)
+  - datatype: timestamp(p)
+  - datatype: interval day to second
+  optional-parameters: []
+  returns:
+    datatype: array<timestamp(p)>
+---
+function:
+  name: sequence
+  parameters:
+  - datatype: timestamp(p)
+  - datatype: timestamp(p)
+  - datatype: interval year to month
+  optional-parameters: []
+  returns:
+    datatype: array<timestamp(p)>
+---
+function:
+  name: sha1
+  parameters:
+  - datatype: varbinary
+  optional-parameters: []
+  returns:
+    datatype: varbinary
+---
+function:
+  name: sha256
+  parameters:
+  - datatype: varbinary
+  optional-parameters: []
+  returns:
+    datatype: varbinary
+---
+function:
+  name: sha512
+  parameters:
+  - datatype: varbinary
+  optional-parameters: []
+  returns:
+    datatype: varbinary
+---
+function:
+  name: shuffle
+  parameters:
+  - datatype: array<$3>
+  optional-parameters: []
+  returns:
+    datatype: array<$3>
+---
+function:
+  name: sign
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: sign
+  parameters:
+  - datatype: decimal(p, s)
+  optional-parameters: []
+  returns:
+    datatype: decimal(1, 0)
+---
+function:
+  name: sign
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: sign
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: sign
+  parameters:
+  - datatype: real
+  optional-parameters: []
+  returns:
+    datatype: real
+---
+function:
+  name: sign
+  parameters:
+  - datatype: smallint
+  optional-parameters: []
+  returns:
+    datatype: smallint
+---
+function:
+  name: sign
+  parameters:
+  - datatype: tinyint
+  optional-parameters: []
+  returns:
+    datatype: tinyint
+---
+function:
+  name: simplify_geometry
+  parameters:
+  - datatype: geometry
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: geometry
+---
+function:
+  name: sin
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: sinh
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: skewness
+  kind: aggregate
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: skewness
+  kind: aggregate
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: slice
+  parameters:
+  - datatype: array<$3>
+  - datatype: bigint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: array<$3>
+---
+function:
+  name: soundex
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: spatial_partitioning
+  kind: aggregate
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: spatial_partitions
+  parameters:
+  - datatype: kdbtree
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: array<bigint>
+---
+function:
+  name: spatial_partitions
+  parameters:
+  - datatype: kdbtree
+  - datatype: geometry
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: array<bigint>
+---
+function:
+  name: split
+  parameters:
+  - datatype: varchar
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: array<varchar>
+  implemented-by: native
+---
+function:
+  name: split
+  parameters:
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: array<varchar>
+  implemented-by: native
+---
+function:
+  name: split_part
+  parameters:
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: varchar
+  implemented-by: native
+---
+function:
+  name: split_to_map
+  parameters:
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: map<varchar, varchar>
+---
+function:
+  name: split_to_multimap
+  parameters:
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: map<varchar, array<varchar>>
+---
+function:
+  name: spooky_hash_v2_32
+  parameters:
+  - datatype: varbinary
+  optional-parameters: []
+  returns:
+    datatype: varbinary
+---
+function:
+  name: spooky_hash_v2_64
+  parameters:
+  - datatype: varbinary
+  optional-parameters: []
+  returns:
+    datatype: varbinary
+---
+function:
+  name: sqrt
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: ST_Area
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: ST_Area
+  parameters:
+  - datatype: sphericalgeography
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: ST_AsBinary
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: varbinary
+---
+function:
+  name: ST_AsText
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: ST_Boundary
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: geometry
+---
+function:
+  name: ST_Buffer
+  parameters:
+  - datatype: geometry
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: geometry
+---
+function:
+  name: ST_Centroid
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: geometry
+---
+function:
+  name: ST_Contains
+  parameters:
+  - datatype: geometry
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: ST_ConvexHull
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: geometry
+---
+function:
+  name: ST_CoordDim
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: tinyint
+---
+function:
+  name: ST_Crosses
+  parameters:
+  - datatype: geometry
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: ST_Difference
+  parameters:
+  - datatype: geometry
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: geometry
+---
+function:
+  name: ST_Dimension
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: tinyint
+---
+function:
+  name: ST_Disjoint
+  parameters:
+  - datatype: geometry
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: ST_Distance
+  parameters:
+  - datatype: geometry
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: ST_Distance
+  parameters:
+  - datatype: sphericalgeography
+  - datatype: sphericalgeography
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: ST_EndPoint
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: geometry
+---
+function:
+  name: ST_Envelope
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: geometry
+---
+function:
+  name: ST_EnvelopeAsPts
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: array<geometry>
+---
+function:
+  name: ST_Equals
+  parameters:
+  - datatype: geometry
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: ST_ExteriorRing
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: geometry
+---
+function:
+  name: ST_Geometries
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: array<geometry>
+---
+function:
+  name: ST_GeometryFromText
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: geometry
+---
+function:
+  name: ST_GeometryN
+  parameters:
+  - datatype: geometry
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: geometry
+---
+function:
+  name: ST_GeometryType
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: ST_GeomFromBinary
+  parameters:
+  - datatype: varbinary
+  optional-parameters: []
+  returns:
+    datatype: geometry
+---
+function:
+  name: ST_InteriorRingN
+  parameters:
+  - datatype: geometry
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: geometry
+---
+function:
+  name: ST_InteriorRings
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: array<geometry>
+---
+function:
+  name: ST_Intersection
+  parameters:
+  - datatype: geometry
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: geometry
+---
+function:
+  name: ST_Intersects
+  parameters:
+  - datatype: geometry
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: ST_IsClosed
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: ST_IsEmpty
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: ST_IsRing
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: ST_IsSimple
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: ST_IsValid
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: ST_Length
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: ST_Length
+  parameters:
+  - datatype: sphericalgeography
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: ST_LineFromText
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: geometry
+---
+function:
+  name: ST_LineString
+  parameters:
+  - datatype: array<geometry>
+  optional-parameters: []
+  returns:
+    datatype: geometry
+---
+function:
+  name: ST_MultiPoint
+  parameters:
+  - datatype: array<geometry>
+  optional-parameters: []
+  returns:
+    datatype: geometry
+---
+function:
+  name: ST_NumGeometries
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: ST_NumInteriorRing
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: ST_NumPoints
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: ST_Overlaps
+  parameters:
+  - datatype: geometry
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: ST_Point
+  parameters:
+  - datatype: double
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: geometry
+---
+function:
+  name: ST_PointN
+  parameters:
+  - datatype: geometry
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: geometry
+---
+function:
+  name: ST_Points
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: array<geometry>
+---
+function:
+  name: ST_Polygon
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: geometry
+---
+function:
+  name: ST_Relate
+  parameters:
+  - datatype: geometry
+  - datatype: geometry
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: ST_StartPoint
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: geometry
+---
+function:
+  name: ST_SymDifference
+  parameters:
+  - datatype: geometry
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: geometry
+---
+function:
+  name: ST_Touches
+  parameters:
+  - datatype: geometry
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: ST_Union
+  parameters:
+  - datatype: geometry
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: geometry
+---
+function:
+  name: ST_Within
+  parameters:
+  - datatype: geometry
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: ST_X
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: ST_XMax
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: ST_XMin
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: ST_Y
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: ST_YMax
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: ST_YMin
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: starts_with
+  parameters:
+  - datatype: varchar
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: boolean
+---
+function:
+  name: stddev
+  kind: aggregate
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: stddev
+  kind: aggregate
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+  implemented-by: builtin
+---
+function:
+  name: stddev_pop
+  kind: aggregate
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: double
+  implemented-by: builtin
+---
+function:
+  name: stddev_pop
+  kind: aggregate
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+  implemented-by: builtin
+---
+function:
+  name: stddev_samp
+  kind: aggregate
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: double
+  implemented-by: builtin
+---
+function:
+  name: stddev_samp
+  kind: aggregate
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+  implemented-by: builtin
+---
+function:
+  name: strpos
+  parameters:
+  - datatype: varchar
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: strpos
+  parameters:
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: substr
+  parameters:
+  - datatype: varchar
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: varchar
+  implemented-by: builtin
+---
+function:
+  name: substr
+  parameters:
+  - datatype: varchar
+  - datatype: bigint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: varchar
+  implemented-by: builtin
+---
+function:
+  name: substr
+  parameters:
+  - datatype: varbinary
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: varbinary
+  implemented-by: builtin
+---
+function:
+  name: substr
+  parameters:
+  - datatype: varbinary
+  - datatype: bigint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: varbinary
+  implemented-by: builtin
+---
+function:
+  name: substring
+  parameters:
+  - datatype: varchar
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: substring
+  parameters:
+  - datatype: varchar
+  - datatype: bigint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: substring
+  parameters:
+  - datatype: varchar
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: substring
+  parameters:
+  - datatype: varchar
+  - datatype: bigint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: sum
+  kind: aggregate
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+  implemented-by: builtin
+---
+function:
+  name: sum
+  kind: aggregate
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+  implemented-by: builtin
+---
+function:
+  name: sum
+  kind: aggregate
+  parameters:
+  - datatype: decimal(p, s)
+  optional-parameters: []
+  returns:
+    datatype: decimal(38, s)
+  implemented-by: builtin
+---
+function:
+  name: sum
+  kind: aggregate
+  parameters:
+  - datatype: real
+  optional-parameters: []
+  returns:
+    datatype: real
+  implemented-by: builtin
+---
+function:
+  name: sum
+  kind: aggregate
+  parameters:
+  - datatype: interval day to second
+  optional-parameters: []
+  returns:
+    datatype: interval day to second
+  implemented-by: builtin
+---
+function:
+  name: sum
+  kind: aggregate
+  parameters:
+  - datatype: interval year to month
+  optional-parameters: []
+  returns:
+    datatype: interval year to month
+  implemented-by: builtin
+---
+function:
+  name: tan
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: tanh
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: tdigest_agg
+  kind: aggregate
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: tdigest
+---
+function:
+  name: tdigest_agg
+  kind: aggregate
+  parameters:
+  - datatype: double
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: tdigest
+---
+function:
+  name: timestamp_objectid
+  parameters:
+  - datatype: timestamp(0)
+  optional-parameters: []
+  returns:
+    datatype: objectid
+---
+function:
+  name: timezone_hour
+  parameters:
+  - datatype: time(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: timezone_hour
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: timezone_minute
+  parameters:
+  - datatype: time(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: timezone_minute
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: to_base
+  parameters:
+  - datatype: bigint
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: to_base32
+  parameters:
+  - datatype: varbinary
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: to_base64
+  parameters:
+  - datatype: varbinary
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: to_base64url
+  parameters:
+  - datatype: varbinary
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: to_big_endian_32
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: varbinary
+---
+function:
+  name: to_big_endian_64
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: varbinary
+---
+function:
+  name: to_char
+  parameters:
+  - datatype: timestamp(p)
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: to_date
+  parameters:
+  - datatype: varchar
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: date
+---
+function:
+  name: to_encoded_polyline
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: to_geojson_geometry
+  parameters:
+  - datatype: sphericalgeography
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: to_geometry
+  parameters:
+  - datatype: sphericalgeography
+  optional-parameters: []
+  returns:
+    datatype: geometry
+---
+function:
+  name: to_hex
+  parameters:
+  - datatype: varbinary
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: to_ieee754_32
+  parameters:
+  - datatype: real
+  optional-parameters: []
+  returns:
+    datatype: varbinary
+---
+function:
+  name: to_ieee754_64
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: varbinary
+---
+function:
+  name: to_iso8601
+  parameters:
+  - datatype: date
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: to_iso8601
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: to_iso8601
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: to_milliseconds
+  parameters:
+  - datatype: interval day to second
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: to_spherical_geography
+  parameters:
+  - datatype: geometry
+  optional-parameters: []
+  returns:
+    datatype: sphericalgeography
+---
+function:
+  name: to_timestamp
+  parameters:
+  - datatype: varchar
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: timestamp
+---
+function:
+  name: to_unixtime
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: to_utf8
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varbinary
+---
+function:
+  name: transform
+  parameters:
+  - datatype: array<$1>
+  - datatype: function($1, $11)
+  optional-parameters: []
+  returns:
+    datatype: array<$11>
+---
+function:
+  name: transform_keys
+  parameters:
+  - datatype: map<$13, $5>
+  - datatype: function($13, $5, $12)
+  optional-parameters: []
+  returns:
+    datatype: map<$12, $5>
+---
+function:
+  name: transform_values
+  parameters:
+  - datatype: map<$4, $8>
+  - datatype: function($4, $8, $7)
+  optional-parameters: []
+  returns:
+    datatype: map<$4, $7>
+---
+function:
+  name: translate
+  parameters:
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: trim
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+  implemented-by: builtin
+---
+function:
+  name: trim
+  parameters:
+  - datatype: varchar
+  - datatype: codepoints
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: trim_array
+  parameters:
+  - datatype: array<$3>
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: array<$3>
+---
+function:
+  name: truncate
+  parameters:
+  - datatype: decimal(p, s)
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: decimal(p, s)
+---
+function:
+  name: truncate
+  parameters:
+  - datatype: decimal(p, s)
+  optional-parameters: []
+  returns:
+    datatype: decimal(rp, 0)
+---
+function:
+  name: truncate
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: truncate
+  parameters:
+  - datatype: real
+  optional-parameters: []
+  returns:
+    datatype: real
+---
+function:
+  name: typeof
+  parameters:
+  - datatype: $1
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: upper
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: upper
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: url_decode
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: url_encode
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: url_extract_fragment
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: url_extract_host
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: url_extract_parameter
+  parameters:
+  - datatype: varchar
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: url_extract_path
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: url_extract_port
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: url_extract_protocol
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: url_extract_query
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: uuid
+  parameters: []
+  optional-parameters: []
+  returns:
+    datatype: uuid
+---
+function:
+  name: value_at_quantile
+  parameters:
+  - datatype: qdigest
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: value_at_quantile
+  parameters:
+  - datatype: qdigest
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: value_at_quantile
+  parameters:
+  - datatype: tdigest
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: value_at_quantile
+  parameters:
+  - datatype: qdigest
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: real
+---
+function:
+  name: values_at_quantiles
+  parameters:
+  - datatype: qdigest
+  - datatype: array<double>
+  optional-parameters: []
+  returns:
+    datatype: array<bigint>
+---
+function:
+  name: values_at_quantiles
+  parameters:
+  - datatype: qdigest
+  - datatype: array<double>
+  optional-parameters: []
+  returns:
+    datatype: array<double>
+---
+function:
+  name: values_at_quantiles
+  parameters:
+  - datatype: tdigest
+  - datatype: array<double>
+  optional-parameters: []
+  returns:
+    datatype: array<double>
+---
+function:
+  name: values_at_quantiles
+  parameters:
+  - datatype: qdigest
+  - datatype: array<double>
+  optional-parameters: []
+  returns:
+    datatype: array<real>
+---
+function:
+  name: var_pop
+  kind: aggregate
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: var_pop
+  kind: aggregate
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: var_samp
+  kind: aggregate
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: var_samp
+  kind: aggregate
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: variance
+  kind: aggregate
+  parameters:
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: variance
+  kind: aggregate
+  parameters:
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: week
+  parameters:
+  - datatype: date
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: week
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: week
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: week_of_year
+  parameters:
+  - datatype: date
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: week_of_year
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: week_of_year
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: width_bucket
+  parameters:
+  - datatype: double
+  - datatype: array<double>
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: width_bucket
+  parameters:
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: wilson_interval_lower
+  parameters:
+  - datatype: bigint
+  - datatype: bigint
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: wilson_interval_upper
+  parameters:
+  - datatype: bigint
+  - datatype: bigint
+  - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+---
+function:
+  name: with_timezone
+  parameters:
+  - datatype: timestamp(p)
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: timestamp(p)
+---
+function:
+  name: word_stem
+  parameters:
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: word_stem
+  parameters:
+  - datatype: varchar
+  - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: varchar
+---
+function:
+  name: xxhash64
+  parameters:
+  - datatype: varbinary
+  optional-parameters: []
+  returns:
+    datatype: varbinary
+---
+function:
+  name: year
+  parameters:
+  - datatype: date
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: year
+  parameters:
+  - datatype: interval year to month
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: year
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: year
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: year_of_week
+  parameters:
+  - datatype: date
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: year_of_week
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: year_of_week
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: yow
+  parameters:
+  - datatype: date
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: yow
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: yow
+  parameters:
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: zip
+  parameters:
+  - datatype: array<$14>
+  - datatype: array<$15>
+  optional-parameters: []
+  returns:
+    datatype: array<row(c0 $14, c1 $15)>
+---
+function:
+  name: zip
+  parameters:
+  - datatype: array<$14>
+  - datatype: array<$15>
+  - datatype: array<$16>
+  optional-parameters: []
+  returns:
+    datatype: array<row(c0 $14, c1 $15, c2 $16)>
+---
+function:
+  name: zip
+  parameters:
+  - datatype: array<$14>
+  - datatype: array<$15>
+  - datatype: array<$16>
+  - datatype: array<$17>
+  optional-parameters: []
+  returns:
+    datatype: array<row(c0 $14, c1 $15, c2 $16, c3 $17)>
+---
+function:
+  name: zip
+  parameters:
+  - datatype: array<$14>
+  - datatype: array<$15>
+  - datatype: array<$16>
+  - datatype: array<$17>
+  - datatype: array<$18>
+  optional-parameters: []
+  returns:
+    datatype: array<row(c0 $14, c1 $15, c2 $16, c3 $17, c4 $18)>
+---
+function:
+  name: zip_with
+  parameters:
+  - datatype: array<$1>
+  - datatype: array<$11>
+  - datatype: function($1, $11, $9)
+  optional-parameters: []
+  returns:
+    datatype: array<$9>
