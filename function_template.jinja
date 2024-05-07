@@ -1,0 +1,50 @@
+use arrow::datatypes::DataType;
+use datafusion::common::{internal_err, Result, DataFusionError};
+use datafusion::logical_expr::ColumnarValue;
+
+use datafusion::logical_expr::TypeSignature::*;
+use datafusion::logical_expr::{ScalarUDFImpl, Signature, Volatility};
+use std::any::Any;
+use std::sync::Arc;
+use arrow::array::{ArrayRef, BooleanArray, Float32Array, Float64Array};
+
+#[derive(Debug)]
+pub(super) struct Func {
+    signature: Signature,
+}
+
+impl Func {
+    pub fn new() -> Self {
+        use DataType::*;
+        Self {
+            signature:
+            Signature::one_of(
+                vec![Exact(vec![Float32]), Exact(vec![Float64])],
+                Volatility::Immutable,
+            )
+        }
+    }
+}
+
+impl ScalarUDFImpl for Func {
+    fn as_any(&self) -> &dyn Any {
+        self
+    }
+    fn name(&self) -> &str {
+        "{{ name }}"
+    }
+
+    fn signature(&self) -> &Signature {
+        &self.signature
+    }
+
+    fn return_type(&self, _arg_types: &[DataType]) -> Result<DataType> {
+        Ok(DataType::Boolean)
+    }
+
+    fn invoke(&self, args: &[ColumnarValue]) -> Result<ColumnarValue> {
+        // start function impl
+        todo!()
+        // end function impl
+    }
+}
