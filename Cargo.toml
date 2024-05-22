@@ -33,8 +33,8 @@ default = ["presto_expressions"]
 presto_expressions = []
 
 [dependencies]
-datafusion = { git = "https://github.com/sdf-labs/arrow-datafusion", branch = "bo/v36" }
-arrow = { version = "50.0.0", features = ["prettyprint"] }
+datafusion = { git = "https://github.com/sdf-labs/arrow-datafusion", branch = "zhong/v37" }
+arrow = { version = "51.0.0", features = ["prettyprint"] }
 #arrow-flight = { workspace = true }
 #arrow-schema = { workspace = true }
 tokio = "1.33.0"
