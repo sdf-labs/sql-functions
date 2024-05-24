@@ -650,8 +650,8 @@ dependencies = [
 
 [[package]]
 name = "datafusion"
-version = "37.1.0"
-source = "git+https://github.com/sdf-labs/arrow-datafusion?branch=zhong/v37#e97786ad3533416e528013ac14ed47529995297d"
+version = "38.0.0"
+source = "git+https://github.com/sdf-labs/arrow-datafusion?branch=zhong/v38#6d9434602044f74511d6454e61f7a4926ce4553f"
 dependencies = [
  "ahash",
  "arrow",
@@ -669,6 +669,7 @@ dependencies = [
  "datafusion-execution",
  "datafusion-expr",
  "datafusion-functions",
+ "datafusion-functions-aggregate",
  "datafusion-functions-array",
  "datafusion-optimizer",
  "datafusion-physical-expr",
@@ -700,8 +701,8 @@ dependencies = [
 
 [[package]]
 name = "datafusion-common"
-version = "37.1.0"
-source = "git+https://github.com/sdf-labs/arrow-datafusion?branch=zhong/v37#e97786ad3533416e528013ac14ed47529995297d"
+version = "38.0.0"
+source = "git+https://github.com/sdf-labs/arrow-datafusion?branch=zhong/v38#6d9434602044f74511d6454e61f7a4926ce4553f"
 dependencies = [
  "ahash",
  "arrow",
@@ -720,16 +721,16 @@ dependencies = [
 
 [[package]]
 name = "datafusion-common-runtime"
-version = "37.1.0"
-source = "git+https://github.com/sdf-labs/arrow-datafusion?branch=zhong/v37#e97786ad3533416e528013ac14ed47529995297d"
+version = "38.0.0"
+source = "git+https://github.com/sdf-labs/arrow-datafusion?branch=zhong/v38#6d9434602044f74511d6454e61f7a4926ce4553f"
 dependencies = [
  "tokio",
 ]
 
 [[package]]
 name = "datafusion-execution"
-version = "37.1.0"
-source = "git+https://github.com/sdf-labs/arrow-datafusion?branch=zhong/v37#e97786ad3533416e528013ac14ed47529995297d"
+version = "38.0.0"
+source = "git+https://github.com/sdf-labs/arrow-datafusion?branch=zhong/v38#6d9434602044f74511d6454e61f7a4926ce4553f"
 dependencies = [
  "arrow",
  "chrono",
@@ -748,8 +749,8 @@ dependencies = [
 
 [[package]]
 name = "datafusion-expr"
-version = "37.1.0"
-source = "git+https://github.com/sdf-labs/arrow-datafusion?branch=zhong/v37#e97786ad3533416e528013ac14ed47529995297d"
+version = "38.0.0"
+source = "git+https://github.com/sdf-labs/arrow-datafusion?branch=zhong/v38#6d9434602044f74511d6454e61f7a4926ce4553f"
 dependencies = [
  "ahash",
  "arrow",
@@ -757,6 +758,7 @@ dependencies = [
  "chrono",
  "datafusion-common",
  "paste",
+ "serde_json",
  "sqlparser",
  "strum",
  "strum_macros",
@@ -764,8 +766,8 @@ dependencies = [
 
 [[package]]
 name = "datafusion-functions"
-version = "37.1.0"
-source = "git+https://github.com/sdf-labs/arrow-datafusion?branch=zhong/v37#e97786ad3533416e528013ac14ed47529995297d"
+version = "38.0.0"
+source = "git+https://github.com/sdf-labs/arrow-datafusion?branch=zhong/v38#6d9434602044f74511d6454e61f7a4926ce4553f"
 dependencies = [
  "arrow",
  "base64",
@@ -776,10 +778,12 @@ dependencies = [
  "datafusion-execution",
  "datafusion-expr",
  "datafusion-physical-expr",
+ "hashbrown",
  "hex",
  "itertools",
  "log",
  "md-5",
+ "rand",
  "regex",
  "sha2",
  "unicode-segmentation",
@@ -787,9 +791,24 @@ dependencies = [
 ]
 
 [[package]]
+name = "datafusion-functions-aggregate"
+version = "38.0.0"
+source = "git+https://github.com/sdf-labs/arrow-datafusion?branch=zhong/v38#6d9434602044f74511d6454e61f7a4926ce4553f"
+dependencies = [
+ "arrow",
+ "datafusion-common",
+ "datafusion-execution",
+ "datafusion-expr",
+ "datafusion-physical-expr-common",
+ "log",
+ "paste",
+ "sqlparser",
+]
+
+[[package]]
 name = "datafusion-functions-array"
-version = "37.1.0"
-source = "git+https://github.com/sdf-labs/arrow-datafusion?branch=zhong/v37#e97786ad3533416e528013ac14ed47529995297d"
+version = "38.0.0"
+source = "git+https://github.com/sdf-labs/arrow-datafusion?branch=zhong/v38#6d9434602044f74511d6454e61f7a4926ce4553f"
 dependencies = [
  "arrow",
  "arrow-array",
@@ -807,8 +826,8 @@ dependencies = [
 
 [[package]]
 name = "datafusion-optimizer"
-version = "37.1.0"
-source = "git+https://github.com/sdf-labs/arrow-datafusion?branch=zhong/v37#e97786ad3533416e528013ac14ed47529995297d"
+version = "38.0.0"
+source = "git+https://github.com/sdf-labs/arrow-datafusion?branch=zhong/v38#6d9434602044f74511d6454e61f7a4926ce4553f"
 dependencies = [
  "arrow",
  "async-trait",
@@ -817,6 +836,7 @@ dependencies = [
  "datafusion-expr",
  "datafusion-physical-expr",
  "hashbrown",
+ "indexmap",
  "itertools",
  "log",
  "regex-syntax",
@@ -824,8 +844,8 @@ dependencies = [
 
 [[package]]
 name = "datafusion-physical-expr"
-version = "37.1.0"
-source = "git+https://github.com/sdf-labs/arrow-datafusion?branch=zhong/v37#e97786ad3533416e528013ac14ed47529995297d"
+version = "38.0.0"
+source = "git+https://github.com/sdf-labs/arrow-datafusion?branch=zhong/v38#6d9434602044f74511d6454e61f7a4926ce4553f"
 dependencies = [
  "ahash",
  "arrow",
@@ -835,36 +855,43 @@ dependencies = [
  "arrow-schema",
  "arrow-string",
  "base64",
- "blake2",
- "blake3",
  "chrono",
  "datafusion-common",
  "datafusion-execution",
  "datafusion-expr",
+ "datafusion-functions-aggregate",
+ "datafusion-physical-expr-common",
  "half",
  "hashbrown",
  "hex",
  "indexmap",
  "itertools",
  "log",
- "md-5",
  "paste",
  "petgraph",
- "rand",
  "regex",
- "sha2",
- "unicode-segmentation",
+]
+
+[[package]]
+name = "datafusion-physical-expr-common"
+version = "38.0.0"
+source = "git+https://github.com/sdf-labs/arrow-datafusion?branch=zhong/v38#6d9434602044f74511d6454e61f7a4926ce4553f"
+dependencies = [
+ "arrow",
+ "datafusion-common",
+ "datafusion-expr",
 ]
 
 [[package]]
 name = "datafusion-physical-plan"
-version = "37.1.0"
-source = "git+https://github.com/sdf-labs/arrow-datafusion?branch=zhong/v37#e97786ad3533416e528013ac14ed47529995297d"
+version = "38.0.0"
+source = "git+https://github.com/sdf-labs/arrow-datafusion?branch=zhong/v38#6d9434602044f74511d6454e61f7a4926ce4553f"
 dependencies = [
  "ahash",
  "arrow",
  "arrow-array",
  "arrow-buffer",
+ "arrow-ord",
  "arrow-schema",
  "async-trait",
  "chrono",
@@ -872,7 +899,9 @@ dependencies = [
  "datafusion-common-runtime",
  "datafusion-execution",
  "datafusion-expr",
+ "datafusion-functions-aggregate",
  "datafusion-physical-expr",
+ "datafusion-physical-expr-common",
  "futures",
  "half",
  "hashbrown",
@@ -888,8 +917,8 @@ dependencies = [
 
 [[package]]
 name = "datafusion-sql"
-version = "37.1.0"
-source = "git+https://github.com/sdf-labs/arrow-datafusion?branch=zhong/v37#e97786ad3533416e528013ac14ed47529995297d"
+version = "38.0.0"
+source = "git+https://github.com/sdf-labs/arrow-datafusion?branch=zhong/v38#6d9434602044f74511d6454e61f7a4926ce4553f"
 dependencies = [
  "arrow",
  "arrow-array",
@@ -1932,9 +1961,9 @@ checksum = "1b6b67fb9a61334225b5b790716f609cd58395f895b3fe8b328786812a40bc3b"
 
 [[package]]
 name = "sqlparser"
-version = "0.44.0"
+version = "0.45.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "aaf9c7ff146298ffda83a200f8d5084f08dcee1edfc135fcc1d646a45d50ffd6"
+checksum = "f7bbffee862a796d67959a89859d6b1046bb5016d63e23835ad0da182777bbe0"
 dependencies = [
  "log",
  "sqlparser_derive",
