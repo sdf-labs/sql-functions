@@ -1,0 +1,4703 @@
+---
+function:
+  name: add_months
+  parameters:
+    - datatype: string
+    - datatype: bigint
+  returns:
+    datatype: timestamp
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: all_user_names
+  parameters: []
+  returns:
+    datatype: array
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_array
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: array
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_variant
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: variant
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_object
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: object
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_binary
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: binary
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_binary
+  parameters:
+    - datatype: $1
+    - datatype: string
+  returns:
+    datatype: binary
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_date
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: datetime
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_date
+  parameters:
+    - datatype: $1
+    - datatype: string
+  returns:
+    datatype: datetime
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: try_to_date
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: datetime
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: try_to_date
+  parameters:
+    - datatype: $1
+    - datatype: string
+  returns:
+    datatype: datetime
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_decimal
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_decimal
+  parameters:
+    - datatype: $1
+    - datatype: bigint
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_decimal
+  parameters:
+    - datatype: $1
+    - datatype: bigint
+    - datatype: bigint
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_decimal
+  parameters:
+    - datatype: $1
+    - datatype: string
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_decimal
+  parameters:
+    - datatype: $1
+    - datatype: string
+    - datatype: bigint
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_decimal
+  parameters:
+    - datatype: $1
+    - datatype: string
+    - datatype: bigint
+    - datatype: bigint
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: try_to_decimal
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: try_to_decimal
+  parameters:
+    - datatype: $1
+    - datatype: bigint
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: try_to_decimal
+  parameters:
+    - datatype: $1
+    - datatype: bigint
+    - datatype: bigint
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: try_to_decimal
+  parameters:
+    - datatype: $1
+    - datatype: string
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: try_to_decimal
+  parameters:
+    - datatype: $1
+    - datatype: string
+    - datatype: bigint
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: try_to_decimal
+  parameters:
+    - datatype: $1
+    - datatype: string
+    - datatype: bigint
+    - datatype: bigint
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_time
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: time
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_time
+  parameters:
+    - datatype: $1
+    - datatype: string
+  returns:
+    datatype: time
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: try_to_time
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: time
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: try_to_time
+  parameters:
+    - datatype: $1
+    - datatype: string
+  returns:
+    datatype: time
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_timestamp_tz
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: timestamp
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_timestamp_tz
+  parameters:
+    - datatype: $1
+    - datatype: string
+  returns:
+    datatype: timestamp
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_timestamp_ntz
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: timestamp
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_timestamp_ntz
+  parameters:
+    - datatype: $1
+    - datatype: string
+  returns:
+    datatype: timestamp
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_timestamp
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: timestamp
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_timestamp
+  parameters:
+    - datatype: $1
+    - datatype: string
+  returns:
+    datatype: timestamp
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: try_to_timestamp_tz
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: timestamp
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: try_to_timestamp_tz
+  parameters:
+    - datatype: $1
+    - datatype: string
+  returns:
+    datatype: timestamp
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: try_to_timestamp_ntz
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: timestamp
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: try_to_timestamp_ntz
+  parameters:
+    - datatype: $1
+    - datatype: string
+  returns:
+    datatype: timestamp
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: try_to_timestamp
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: timestamp
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: try_to_timestamp
+  parameters:
+    - datatype: $1
+    - datatype: string
+  returns:
+    datatype: timestamp
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: avg
+  parameters:
+    - datatype: string
+  returns:
+    datatype: string
+  kind: aggregate
+  volatility: pure
+  section: other
+---
+function:
+  name: to_varchar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: string
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_varchar
+  parameters:
+    - datatype: $1
+    - datatype: string
+  returns:
+    datatype: string
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: collate
+  parameters:
+    - datatype: $1
+    - datatype: string
+  returns:
+    datatype: $1
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: bitand_agg
+  parameters:
+    - datatype: string
+  returns:
+    datatype: string
+  kind: aggregate
+  volatility: pure
+  section: other
+---
+function:
+  name: bitor_agg
+  parameters:
+    - datatype: string
+  returns:
+    datatype: string
+  kind: aggregate
+  volatility: pure
+  section: other
+---
+function:
+  name: bitxor_agg
+  parameters:
+    - datatype: string
+  returns:
+    datatype: string
+  kind: aggregate
+  volatility: pure
+  section: other
+---
+function:
+  name: booland_agg
+  parameters:
+    - datatype: boolean
+  returns:
+    datatype: boolean
+  kind: aggregate
+  volatility: pure
+  section: other
+---
+function:
+  name: boolor_agg
+  parameters:
+    - datatype: boolean
+  returns:
+    datatype: boolean
+  kind: aggregate
+  volatility: pure
+  section: other
+---
+function:
+  name: boolxor_agg
+  parameters:
+    - datatype: boolean
+  returns:
+    datatype: boolean
+  kind: aggregate
+  volatility: pure
+  section: other
+---
+function:
+  name: cleanup_database_role_grants
+  parameters:
+    - datatype: string
+    - datatype: string
+  returns:
+    datatype: string
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: collation
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: string
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: conditional_true_event
+  parameters:
+    - datatype: decimal(38, 0)
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: current_account
+  parameters: []
+  returns:
+    datatype: string
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: current_account_name
+  parameters: []
+  returns:
+    datatype: string
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: current_available_roles
+  parameters: []
+  returns:
+    datatype: string
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: current_client
+  parameters: []
+  returns:
+    datatype: string
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: date_part
+  parameters:
+    - datatype: string
+      identifiers:
+        - year
+        - y
+        - yy
+        - yyy
+        - yyyy
+        - yr
+        - years
+        - yrs
+        - month
+        - mm
+        - mon
+        - mons
+        - months
+        - day
+        - d
+        - dd
+        - days
+        - dayofmonth
+        - dayofweek
+        - weekday
+        - dow
+        - dw
+        - dayofweekiso
+        - weekday_iso
+        - dow_iso
+        - dw_iso
+        - dayofyear
+        - yearday
+        - doy
+        - dy
+        - week
+        - w
+        - wk
+        - weekofyear
+        - woy
+        - wy
+        - weekiso
+        - week_iso
+        - weekofyeariso
+        - weekofyear_iso
+        - quarter
+        - q
+        - qtr
+        - qtrs
+        - quarters
+        - yearofweek
+        - yearofweekiso
+        - hour
+        - h
+        - hh
+        - hr
+        - hours
+        - hrs
+        - minute
+        - m
+        - mi
+        - min
+        - minutes
+        - mins
+        - second
+        - s
+        - sec
+        - seconds
+        - secs
+        - nanosecond
+        - ns
+        - nsec
+        - nanosec
+        - nsecond
+        - nanoseconds
+        - nanosecs
+        - nseconds
+        - epoch_second
+        - epoch
+        - epoch_seconds
+        - epoch_millisecond
+        - epoch_milliseconds
+        - epoch_microsecond
+        - epoch_microseconds
+        - epoch_nanosecond
+        - epoch_nanoseconds
+        - timezone_hour
+        - tzh
+        - timezone_minute
+        - tzm
+    - datatype: $1
+  returns:
+    datatype: double
+  kind: scalar
+  volatility: pure
+  binds:
+    - type-variable: $1
+      datatypes:
+        - date
+        - time
+        - timestamp
+        - varchar
+  section: temporal
+---
+function:
+  name: extract
+  parameters:
+    - datatype: string
+      identifiers:
+        - year
+        - y
+        - yy
+        - yyy
+        - yyyy
+        - yr
+        - years
+        - yrs
+        - month
+        - mm
+        - mon
+        - mons
+        - months
+        - day
+        - d
+        - dd
+        - days
+        - dayofmonth
+        - dayofweek
+        - weekday
+        - dow
+        - dw
+        - dayofweekiso
+        - dayofweek_iso
+        - weekday_iso
+        - dow_iso
+        - dw_iso
+        - dayofyear
+        - yearday
+        - doy
+        - dy
+        - week
+        - w
+        - wk
+        - weekofyear
+        - woy
+        - wy
+        - weekiso
+        - week_iso
+        - weekofyeariso
+        - weekofyear_iso
+        - quarter
+        - q
+        - qtr
+        - qtrs
+        - quarters
+        - yearofweek
+        - yearofweekiso
+        - hour
+        - h
+        - hh
+        - hr
+        - hours
+        - hrs
+        - minute
+        - m
+        - mi
+        - min
+        - minutes
+        - mins
+        - second
+        - s
+        - sec
+        - seconds
+        - secs
+        - nanosecond
+        - ns
+        - nsec
+        - nanosec
+        - nsecond
+        - nanoseconds
+        - nanosecs
+        - nseconds
+        - epoch_second
+        - epoch
+        - epoch_seconds
+        - epoch_millisecond
+        - epoch_milliseconds
+        - epoch_microsecond
+        - epoch_microseconds
+        - epoch_nanosecond
+        - epoch_nanoseconds
+        - timezone_hour
+        - tzh
+        - timezone_minute
+        - tzm
+    - datatype: $1
+  returns:
+    datatype: double
+  kind: scalar
+  volatility: pure
+  binds:
+    - type-variable: $1
+      datatypes:
+        - date
+        - time
+        - timestamp
+        - varchar
+  section: temporal
+---
+function:
+  name: date_trunc
+  parameters:
+    - datatype: string
+      identifiers:
+        - year
+        - y
+        - yy
+        - yyy
+        - yyyy
+        - yr
+        - years
+        - yrs
+        - month
+        - mm
+        - mon
+        - mons
+        - months
+        - day
+        - d
+        - dd
+        - days
+        - dayofmonth
+        - week
+        - w
+        - wk
+        - weekofyear
+        - woy
+        - wy
+        - quarter
+        - q
+        - qtr
+        - qtrs
+        - quarters
+        - hour
+        - h
+        - hh
+        - hr
+        - hours
+        - hrs
+        - minute
+        - m
+        - mi
+        - min
+        - minutes
+        - mins
+        - second
+        - s
+        - sec
+        - seconds
+        - secs
+        - millisecond
+        - ms
+        - mesc
+        - milliseconds
+        - microsecond
+        - us,
+        - usec,
+        - microseconds
+        - nanosecond
+        - ns
+        - nsec
+        - nanosec
+        - nsecond
+        - nanoseconds
+        - nanosecs
+        - nseconds
+    - datatype: $1
+  returns:
+    datatype: $1
+  kind: scalar
+  volatility: pure
+  binds:
+    - type-variable: $1
+      datatypes:
+        - date
+        - time
+        - timestamp
+        - varchar
+  section: temporal
+---
+function:
+  name: to_timestamp_ltz
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: timestamp
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_timestamp_ltz
+  parameters:
+    - datatype: $1
+    - datatype: string
+  returns:
+    datatype: timestamp
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: dateadd
+  parameters:
+    - datatype: string
+      identifiers:
+        - year
+        - y
+        - yy
+        - yyy
+        - yyyy
+        - yr
+        - years
+        - yrs
+        - month
+        - mm
+        - mon
+        - mons
+        - months
+        - day
+        - d
+        - dd
+        - day
+        - days
+        - dayofmonth
+        - week
+        - w
+        - wk
+        - weekofyear
+        - woy
+        - wy
+        - quarter
+        - q
+        - qtr
+        - qtrs
+        - quarters
+        - hour
+        - h
+        - hh
+        - hr
+        - hours
+        - hrs
+        - minute
+        - m
+        - mi
+        - min
+        - minutes
+        - mins
+        - second
+        - s
+        - sec
+        - seconds
+        - secs
+        - millisecond
+        - ms
+        - mesc
+        - milliseconds
+        - microsecond
+        - us,
+        - usec,
+        - microseconds
+        - nanosecond
+        - ns
+        - nsec
+        - nanosec
+        - nsecond
+        - nanoseconds
+        - nanosecs
+        - nseconds
+    - datatype: double
+    - datatype: $1
+  returns:
+    datatype: $1
+  kind: scalar
+  volatility: pure
+  binds:
+    - type-variable: $1
+      datatypes:
+        - date
+        - time
+        - timestamp
+        - varchar
+  section: temporal
+---
+function:
+  name: timestampadd
+  parameters:
+    - datatype: string
+      identifiers:
+        - year
+        - y
+        - yy
+        - yyy
+        - yyyy
+        - yr
+        - years
+        - yrs
+        - month
+        - mm
+        - mon
+        - mons
+        - months
+        - day
+        - d
+        - dd
+        - day
+        - days
+        - dayofmonth
+        - week
+        - w
+        - wk
+        - weekofyear
+        - woy
+        - wy
+        - quarter
+        - q
+        - qtr
+        - qtrs
+        - quarters
+        - hour
+        - h
+        - hh
+        - hr
+        - hours
+        - hrs
+        - minute
+        - m
+        - mi
+        - min
+        - minutes
+        - mins
+        - second
+        - s
+        - sec
+        - seconds
+        - secs
+        - millisecond
+        - ms
+        - mesc
+        - milliseconds
+        - microsecond
+        - us,
+        - usec,
+        - microseconds
+        - nanosecond
+        - ns
+        - nsec
+        - nanosec
+        - nsecond
+        - nanoseconds
+        - nanosecs
+        - nseconds
+    - datatype: double
+    - datatype: $1
+  returns:
+    datatype: $1
+  kind: scalar
+  volatility: pure
+  binds:
+    - type-variable: $1
+      datatypes:
+        - date
+        - time
+        - timestamp
+        - varchar
+  section: temporal
+---
+function:
+  name: timeadd
+  parameters:
+    - datatype: string
+      identifiers:
+        - year
+        - y
+        - yy
+        - yyy
+        - yyyy
+        - yr
+        - years
+        - yrs
+        - month
+        - mm
+        - mon
+        - mons
+        - months
+        - day
+        - d
+        - dd
+        - days
+        - dayofmonth
+        - week
+        - w
+        - wk
+        - weekofyear
+        - woy
+        - wy
+        - quarter
+        - q
+        - qtr
+        - qtrs
+        - quarters
+        - hour
+        - h
+        - hh
+        - hr
+        - hours
+        - hrs
+        - minute
+        - m
+        - mi
+        - min
+        - minutes
+        - mins
+        - second
+        - s
+        - sec
+        - seconds
+        - secs
+        - millisecond
+        - ms
+        - mesc
+        - milliseconds
+        - microsecond
+        - us,
+        - usec,
+        - microseconds
+        - nanosecond
+        - ns
+        - nsec
+        - nanosec
+        - nsecond
+        - nanoseconds
+        - nanosecs
+        - nseconds
+    - datatype: double
+    - datatype: $1
+  returns:
+    datatype: $1
+  kind: scalar
+  volatility: pure
+  binds:
+    - type-variable: $1
+      datatypes:
+        - date
+        - time
+        - timestamp
+        - varchar
+  section: temporal
+---
+function:
+  name: datediff
+  parameters:
+    - datatype: string
+      identifiers:
+        - year
+        - y
+        - yy
+        - yyy
+        - yyyy
+        - yr
+        - years
+        - yrs
+        - month
+        - mm
+        - mon
+        - mons
+        - months
+        - day
+        - d
+        - dd
+        - days
+        - dayofmonth
+        - week
+        - w
+        - wk
+        - weekofyear
+        - woy
+        - wy
+        - quarter
+        - q
+        - qtr
+        - qtrs
+        - quarters
+        - hour
+        - h
+        - hh
+        - hr
+        - hours
+        - hrs
+        - minute
+        - m
+        - mi
+        - min
+        - minutes
+        - mins
+        - second
+        - s
+        - sec
+        - seconds
+        - secs
+        - millisecond
+        - ms
+        - mesc
+        - milliseconds
+        - microsecond
+        - us,
+        - usec,
+        - microseconds
+        - nanosecond
+        - ns
+        - nsec
+        - nanosec
+        - nsecond
+        - nanoseconds
+        - nanosecs
+        - nseconds
+    - datatype: $1
+    - datatype: $2
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  binds:
+    - type-variable: $1
+      datatypes:
+        - date
+        - time
+        - timestamp
+        - varchar
+    - type-variable: $2
+      datatypes:
+        - date
+        - time
+        - timestamp
+        - varchar
+  section: temporal
+---
+function:
+  name: getvariable
+  parameters:
+    - datatype: string
+  returns:
+    datatype: string
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_geggraphy
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: geography
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: year
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: hour
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: minute
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: second
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: hash_agg
+  description: aggregate hash value
+  kind: aggregate
+  parameters:
+    - datatype: $1
+  optional-parameters: []
+  returns:
+    datatype: decimal(38, 0)
+---
+function:
+  name: hash_agg
+  description: aggregate hash value
+  kind: aggregate
+  parameters:
+    - datatype: $1
+    - datatype: $2
+  optional-parameters: []
+  returns:
+    datatype: decimal(38, 0)
+---
+function:
+  name: hash_agg
+  description: aggregate hash value
+  kind: aggregate
+  parameters:
+    - datatype: $1
+    - datatype: $2
+    - datatype: $3
+  optional-parameters: []
+  returns:
+    datatype: decimal(38, 0)
+---
+function:
+  name: hash_agg
+  description: aggregate hash value
+  kind: aggregate
+  parameters:
+    - datatype: $1
+    - datatype: $2
+    - datatype: $3
+    - datatype: $4
+  optional-parameters: []
+  returns:
+    datatype: decimal(38, 0)
+---
+function:
+  name: hash_agg
+  description: aggregate hash value
+  kind: aggregate
+  parameters:
+    - datatype: $1
+    - datatype: $2
+    - datatype: $3
+    - datatype: $4
+    - datatype: $5
+  optional-parameters: []
+  returns:
+    datatype: decimal(38, 0)
+---
+function:
+  name: last_day
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: date
+  kind: scalar
+  volatility: pure
+  section: temporal
+  binds:
+    - type-variable: $1
+      datatypes:
+        - date
+        - time
+        - timestamp
+        - varchar
+---
+function:
+  name: last_day
+  parameters:
+    - datatype: $1
+    - datatype: string
+      identifiers:
+        - year
+        - y
+        - yy
+        - yyy
+        - yyyy
+        - yr
+        - years
+        - yrs
+        - month
+        - mm
+        - mon
+        - mons
+        - months
+        - week
+        - w
+        - wk
+        - weekofyear
+        - woy
+        - wy
+        - quarter
+        - q
+        - qtr
+        - qtrs
+        - quarters
+        - hour
+        - h
+        - hh
+        - hr
+        - hours
+        - hrs
+        - minute
+        - m
+        - mi
+        - min
+        - minutes
+        - mins
+        - second
+        - s
+        - sec
+        - seconds
+        - secs
+        - millisecond
+        - ms
+        - mesc
+        - milliseconds
+        - microsecond
+        - us,
+        - usec,
+        - microseconds
+        - nanosecond
+        - ns
+        - nsec
+        - nanosec
+        - nsecond
+        - nanoseconds
+        - nanosecs
+        - nseconds
+  returns:
+    datatype: date
+  kind: scalar
+  volatility: pure
+  section: temporal
+  binds:
+    - type-variable: $1
+      datatypes:
+        - date
+        - time
+        - timestamp
+        - varchar
+---
+function:
+  name: md5_number_upper64
+  parameters:
+    - datatype: string
+  returns:
+    datatype: binary
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: md5_number_lower64
+  parameters:
+    - datatype: string
+  returns:
+    datatype: binary
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: months_between
+  parameters:
+    - datatype: $1
+    - datatype: $1
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: temporal
+  binds:
+    - type-variable: $1
+      datatypes:
+        - date
+        - time
+        - timestamp
+        - varchar
+---
+function:
+  name: round
+  parameters: []
+  optional-parameters:
+    - datatype: double
+      name: expr
+    - datatype: bigint
+      name: scale
+    - datatype: string
+      name: rounding_mode
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: time_slice
+  parameters:
+    - datatype: $1
+    - datatype: bigint
+    - datatype: string
+  returns:
+    datatype: $1
+  kind: scalar
+  volatility: pure
+  section: temporal
+  binds:
+    - type-variable: $1
+      datatypes:
+        - date
+        - time
+        - timestamp
+        - varchar
+---
+function:
+  name: time_slice
+  parameters:
+    - datatype: $1
+    - datatype: bigint
+    - datatype: string
+    - datatype: string
+  returns:
+    datatype: $1
+  kind: scalar
+  volatility: pure
+  section: temporal
+  binds:
+    - type-variable: $1
+      datatypes:
+        - date
+        - time
+        - timestamp
+        - varchar
+---
+function:
+  name: timediff
+  parameters:
+    - datatype: string
+      identifiers:
+        - year
+        - y
+        - yy
+        - yyy
+        - yyyy
+        - yr
+        - years
+        - yrs
+        - month
+        - mm
+        - mon
+        - mons
+        - months
+        - day
+        - d
+        - dd
+        - days
+        - dayofmonth
+        - dayofweek
+        - dayofyear
+        - yearday
+        - doy
+        - dy
+        - week
+        - w
+        - wk
+        - weekofyear
+        - woy
+        - wy
+        - weekofyeariso
+        - weekofyear_iso
+        - quarter
+        - q
+        - qtr
+        - qtrs
+        - quarters
+        - hour
+        - h
+        - hh
+        - hr
+        - hours
+        - hrs
+        - minute
+        - m
+        - mi
+        - min
+        - minutes
+        - mins
+        - second
+        - s
+        - sec
+        - seconds
+        - secs
+        - nanosecond
+        - ns
+        - nsec
+        - nanosec
+        - nsecond
+        - nanoseconds
+        - nanosecs
+        - nseconds
+    - datatype: $1
+    - datatype: $1
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  binds:
+    - type-variable: $1
+      datatypes:
+        - date
+        - time
+        - timestamp
+        - varchar
+  section: temporal
+---
+function:
+  name: to_char
+  parameters:
+    - datatype: $1
+    - datatype: string
+  returns:
+    datatype: string
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_char
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: string
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_boolean
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: boolean
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: try_to_boolean
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: boolean
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_number
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_number
+  parameters:
+    - datatype: $1
+    - datatype: bigint
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_number
+  parameters:
+    - datatype: $1
+    - datatype: bigint
+    - datatype: bigint
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_number
+  parameters:
+    - datatype: $1
+    - datatype: string
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_number
+  parameters:
+    - datatype: $1
+    - datatype: string
+    - datatype: bigint
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_number
+  parameters:
+    - datatype: $1
+    - datatype: string
+    - datatype: bigint
+    - datatype: bigint
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: try_to_number
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: try_to_number
+  parameters:
+    - datatype: $1
+    - datatype: bigint
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: try_to_number
+  parameters:
+    - datatype: $1
+    - datatype: bigint
+    - datatype: bigint
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: try_to_number
+  parameters:
+    - datatype: $1
+    - datatype: string
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: try_to_number
+  parameters:
+    - datatype: $1
+    - datatype: string
+    - datatype: bigint
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: try_to_number
+  parameters:
+    - datatype: $1
+    - datatype: string
+    - datatype: bigint
+    - datatype: bigint
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_numeric
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_numeric
+  parameters:
+    - datatype: $1
+    - datatype: bigint
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_numeric
+  parameters:
+    - datatype: $1
+    - datatype: bigint
+    - datatype: bigint
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_numeric
+  parameters:
+    - datatype: $1
+    - datatype: string
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_numeric
+  parameters:
+    - datatype: $1
+    - datatype: string
+    - datatype: bigint
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_numeric
+  parameters:
+    - datatype: $1
+    - datatype: string
+    - datatype: bigint
+    - datatype: bigint
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: try_to_numeric
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: try_to_numeric
+  parameters:
+    - datatype: $1
+    - datatype: bigint
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: try_to_numeric
+  parameters:
+    - datatype: $1
+    - datatype: bigint
+    - datatype: bigint
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: try_to_numeric
+  parameters:
+    - datatype: $1
+    - datatype: string
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: try_to_numeric
+  parameters:
+    - datatype: $1
+    - datatype: string
+    - datatype: bigint
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: try_to_numeric
+  parameters:
+    - datatype: $1
+    - datatype: string
+    - datatype: bigint
+    - datatype: bigint
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_double
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: double
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: try_to_double
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: double
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: week
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: dayofweek
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: quarter
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: dayofweekiso
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: weekiso
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: month
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: day
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: weekofyear
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: yearofweek
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: dayofmonth
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: yearofweekiso
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: dayofyear
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: yearofweekiso
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: parse_xml
+  parameters: []
+  optional-parameters:
+    - datatype: string
+      name: str
+    - datatype: boolean
+      name: disable_auto_convert
+  returns:
+    datatype: variant
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: flatten
+  parameters:
+    - datatype: $1
+      name: input
+  optional-parameters:
+    - datatype: string
+      name: path
+    - datatype: boolean
+      name: outer
+    - datatype: boolean
+      name: recursive
+    - datatype: string
+      name: mode
+  returns:
+    datatype: struct<seq bigint, key string, path string, index bigint, value variant, this $1>
+  kind: table
+  volatility: pure
+  binds:
+    - type-variable: $1
+      datatypes:
+        - variant
+        - object
+        - array
+---
+function:
+  name: split_to_table
+  parameters:
+    - datatype: string
+    - datatype: string
+  returns:
+    datatype: struct<seq int, index int, value string>
+  kind: table
+  volatility: pure
+---
+function:
+  name: strtok_split_to_table
+  parameters:
+    - datatype: string
+  returns:
+    datatype: struct<seq int, index int, value string>
+  kind: table
+  volatility: pure
+  variadic: uniform
+---
+function:
+  name: get_object_references
+  parameters: []
+  optional-parameters:
+    - datatype: string
+      name: database_name
+    - datatype: string
+      name: schema_name
+    - datatype: string
+      name: object_name
+  returns:
+    datatype: struct<database_name string, schema_name string, object_name string, referenced_database_name string, referenced_schema_name string, referenced_object_name string, referenced_object_type string>
+  kind: table
+  volatility: pure
+---
+function:
+  name: get_query_operator_stats
+  parameters:
+    - datatype: string
+  returns:
+    datatype: >
+      struct<query_id string, step_id bigint, operator_id bigint, parent_operators array, operator_type string, operator_statistics variant, execution_time_breakdown variant, operator_attributes variant>
+  kind: table
+  volatility: pure
+---
+function:
+  name: login_history_by_user
+  parameters: []
+  optional-parameters:
+    - datatype: $1
+      name: time_range_start
+    - datatype: $2
+      name: time_range_end
+    - datatype: string
+      name: user_name
+    - datatype: bigint
+      name: result_limit
+  returns:
+    datatype: struct<event_timestamp timestamp, event_id bigint, event_type string, user_name string, client_ip string, reported_client_type string, reported_client_version string, first_authentication_factor string, second_authentication_factor string, is_success string, error_code bigint, error_message string, related_event_id bigint, "connection" string>
+  kind: table
+  volatility: pure
+  binds:
+    - type-variable: $1
+      datatypes:
+        - timestamp
+        - string
+    - type-variable: $2
+      datatypes:
+        - timestamp
+        - string
+---
+function:
+  name: login_history
+  parameters: []
+  optional-parameters:
+    - datatype: $1
+      name: time_range_start
+    - datatype: $2
+      name: time_range_end
+    - datatype: bigint
+      name: result_limit
+  returns:
+    datatype: struct<event_timestamp timestamp, event_id bigint, event_type string, user_name string, client_ip string, reported_client_type string, reported_client_version string, first_authentication_factor string, second_authentication_factor string, is_success string, error_code bigint, error_message string, related_event_id bigint, "connection" string>
+  kind: table
+  volatility: pure
+  binds:
+    - type-variable: $1
+      datatypes:
+        - timestamp
+        - string
+    - type-variable: $2
+      datatypes:
+        - timestamp
+        - string
+---
+function:
+  name: query_history
+  parameters: []
+  optional-parameters:
+    - datatype: $1
+      name: end_time_range_start
+    - datatype: $2
+      name: end_time_range_end
+    - datatype: bigint
+      name: result_limit
+  binds:
+    - type-variable: $1
+      datatypes:
+        - timestamp
+        - string
+    - type-variable: $2
+      datatypes:
+        - timestamp
+        - string
+  returns:
+    datatype: >
+      struct<query_id string,
+        query_text string,
+        database_name string,
+        schema_name string,
+        query_type string,
+        session_id bigint,
+        user_name string,
+        role_name string,
+        warehouse_name string,
+        warehouse_size string,
+        warehouse_type string,
+        cluster_number bigint,
+        query_tag string,
+        execution_status string,
+        error_code bigint,
+        error_message string,
+        start_time timestamp,
+        end_time timestamp,
+        total_elapsed_time bigint,
+        bytes_scanned bigint,
+        rows_produced bigint,
+        compilation_time bigint,
+        execution_time bigint,
+        queued_provisioning_time bigint,
+        queued_repair_time bigint,
+        queued_overload_time bigint,
+        transaction_blocked_time bigint,
+        outbound_data_transfer_cloud string,
+        outbound_data_transfer_region string,
+        outbound_data_transfer_bytes bigint,
+        inbound_data_transfer_cloud string,
+        inbound_data_transfer_region string,
+        inbound_data_transfer_bytes bigint,
+        list_external_file_time bigint,
+        credits_used_cloud_services bigint,
+        release_version string,
+        external_function_total_invocations bigint,
+        external_function_total_sent_rows bigint,
+        external_function_total_received_rows bigint,
+        external_function_total_sent_bytes bigint,
+        external_function_total_received_bytes bigint,
+        is_client_generated_statement	boolean,
+        query_hash string,
+        query_hash_version bigint,
+        query_parameterized_hash string,
+        query_parameterized_hash_version bigint>
+  kind: table
+  volatility: pure
+---
+function:
+  name: query_history_by_session
+  parameters: []
+  optional-parameters:
+    - datatype: bigint
+      name: session_id
+    - datatype: $1
+      name: end_time_range_start
+    - datatype: $2
+      name: end_time_range_end
+    - datatype: bigint
+      name: result_limit
+  binds:
+    - type-variable: $1
+      datatypes:
+        - timestamp
+        - string
+    - type-variable: $2
+      datatypes:
+        - timestamp
+        - string
+  returns:
+    datatype: >
+      struct<query_id string,
+        query_text string,
+        database_name string,
+        schema_name string,
+        query_type string,
+        session_id bigint,
+        user_name string,
+        role_name string,
+        warehouse_name string,
+        warehouse_size string,
+        warehouse_type string,
+        cluster_number bigint,
+        query_tag string,
+        execution_status string,
+        error_code bigint,
+        error_message string,
+        start_time timestamp,
+        end_time timestamp,
+        total_elapsed_time bigint,
+        bytes_scanned bigint,
+        rows_produced bigint,
+        compilation_time bigint,
+        execution_time bigint,
+        queued_provisioning_time bigint,
+        queued_repair_time bigint,
+        queued_overload_time bigint,
+        transaction_blocked_time bigint,
+        outbound_data_transfer_cloud string,
+        outbound_data_transfer_region string,
+        outbound_data_transfer_bytes bigint,
+        inbound_data_transfer_cloud string,
+        inbound_data_transfer_region string,
+        inbound_data_transfer_bytes bigint,
+        list_external_file_time bigint,
+        credits_used_cloud_services bigint,
+        release_version string,
+        external_function_total_invocations bigint,
+        external_function_total_sent_rows bigint,
+        external_function_total_received_rows bigint,
+        external_function_total_sent_bytes bigint,
+        external_function_total_received_bytes bigint,
+        is_client_generated_statement	boolean,
+        query_hash string,
+        query_hash_version bigint,
+        query_parameterized_hash string,
+        query_parameterized_hash_version bigint>
+  kind: table
+  volatility: pure
+---
+function:
+  name: query_history_by_user
+  parameters: []
+  optional-parameters:
+    - datatype: bigint
+      name: user_name
+    - datatype: $1
+      name: end_time_range_start
+    - datatype: $2
+      name: end_time_range_end
+    - datatype: bigint
+      name: result_limit
+  binds:
+    - type-variable: $1
+      datatypes:
+        - timestamp
+        - string
+    - type-variable: $2
+      datatypes:
+        - timestamp
+        - string
+  returns:
+    datatype: >
+      struct<query_id string,
+        query_text string,
+        database_name string,
+        schema_name string,
+        query_type string,
+        session_id bigint,
+        user_name string,
+        role_name string,
+        warehouse_name string,
+        warehouse_size string,
+        warehouse_type string,
+        cluster_number bigint,
+        query_tag string,
+        execution_status string,
+        error_code bigint,
+        error_message string,
+        start_time timestamp,
+        end_time timestamp,
+        total_elapsed_time bigint,
+        bytes_scanned bigint,
+        rows_produced bigint,
+        compilation_time bigint,
+        execution_time bigint,
+        queued_provisioning_time bigint,
+        queued_repair_time bigint,
+        queued_overload_time bigint,
+        transaction_blocked_time bigint,
+        outbound_data_transfer_cloud string,
+        outbound_data_transfer_region string,
+        outbound_data_transfer_bytes bigint,
+        inbound_data_transfer_cloud string,
+        inbound_data_transfer_region string,
+        inbound_data_transfer_bytes bigint,
+        list_external_file_time bigint,
+        credits_used_cloud_services bigint,
+        release_version string,
+        external_function_total_invocations bigint,
+        external_function_total_sent_rows bigint,
+        external_function_total_received_rows bigint,
+        external_function_total_sent_bytes bigint,
+        external_function_total_received_bytes bigint,
+        is_client_generated_statement	boolean,
+        query_hash string,
+        query_hash_version bigint,
+        query_parameterized_hash string,
+        query_parameterized_hash_version bigint>
+  kind: table
+  volatility: pure
+---
+function:
+  name: query_history_by_warehouse
+  parameters: []
+  optional-parameters:
+    - datatype: string
+      name: warehouse_name
+    - datatype: $1
+      name: end_time_range_start
+    - datatype: $2
+      name: end_time_range_end
+    - datatype: bigint
+      name: result_limit
+  binds:
+    - type-variable: $1
+      datatypes:
+        - timestamp
+        - string
+    - type-variable: $2
+      datatypes:
+        - timestamp
+        - string
+  returns:
+    datatype: >
+      struct<query_id string,
+        query_text string,
+        database_name string,
+        schema_name string,
+        query_type string,
+        session_id bigint,
+        user_name string,
+        role_name string,
+        warehouse_name string,
+        warehouse_size string,
+        warehouse_type string,
+        cluster_number bigint,
+        query_tag string,
+        execution_status string,
+        error_code bigint,
+        error_message string,
+        start_time timestamp,
+        end_time timestamp,
+        total_elapsed_time bigint,
+        bytes_scanned bigint,
+        rows_produced bigint,
+        compilation_time bigint,
+        execution_time bigint,
+        queued_provisioning_time bigint,
+        queued_repair_time bigint,
+        queued_overload_time bigint,
+        transaction_blocked_time bigint,
+        outbound_data_transfer_cloud string,
+        outbound_data_transfer_region string,
+        outbound_data_transfer_bytes bigint,
+        inbound_data_transfer_cloud string,
+        inbound_data_transfer_region string,
+        inbound_data_transfer_bytes bigint,
+        list_external_file_time bigint,
+        credits_used_cloud_services bigint,
+        release_version string,
+        external_function_total_invocations bigint,
+        external_function_total_sent_rows bigint,
+        external_function_total_received_rows bigint,
+        external_function_total_sent_bytes bigint,
+        external_function_total_received_bytes bigint,
+        is_client_generated_statement	boolean,
+        query_hash string,
+        query_hash_version bigint,
+        query_parameterized_hash string,
+        query_parameterized_hash_version bigint>
+  kind: table
+  volatility: pure
+---
+function:
+  name: query_acceleration_history
+  parameters: []
+  optional-parameters:
+    - datatype: $1
+      name: date_range_start
+    - datatype: $2
+      name: date_range_end
+    - datatype: string
+      name: warehouse_name
+  binds:
+    - type-variable: $1
+      datatypes:
+        - date
+        - string
+    - type-variable: $2
+      datatypes:
+        - date
+        - string
+  returns:
+    datatype: >
+      struct<start_time timestamp,
+        end_time timestamp,
+        credits_used bigint,
+        warehouse_name string,
+        num_files_scanned bigint,
+        num_bytes_scanned bigint
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: database_storage_usage_history
+  parameters: []
+  optional-parameters:
+    - datatype: $1
+      name: date_range_start
+    - datatype: $2
+      name: date_range_end
+    - datatype: string
+      name: database_name
+  binds:
+    - type-variable: $1
+      datatypes:
+        - date
+        - string
+    - type-variable: $2
+      datatypes:
+        - date
+        - string
+  returns:
+    datatype: >
+      struct<usage_date date,
+        database_name string,
+        average_database_bytes bigint,
+        average_fail_safe_bytes bigint
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: warehouse_load_history
+  parameters: []
+  optional-parameters:
+    - datatype: $1
+      name: date_range_start
+    - datatype: $2
+      name: date_range_end
+    - datatype: string
+      name: warehouse_name
+  binds:
+    - type-variable: $1
+      datatypes:
+        - date
+        - string
+    - type-variable: $2
+      datatypes:
+        - date
+        - string
+  returns:
+    datatype: >
+      struct<start_time timestamp,
+        end_time timestamp,
+        warehouse_name string,
+        avg_running decimal(38,2),
+        avg_queued_load decimal(38,2),
+        avg_queued_provisioning decimal(38,2),
+        avg_blocked decimal(38,2)
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: warehouse_metering_history
+  parameters: []
+  optional-parameters:
+    - datatype: $1
+      name: date_range_start
+    - datatype: $2
+      name: date_range_end
+    - datatype: string
+      name: warehouse_name
+  returns:
+    datatype: >
+      struct<start_time timestamp,
+        end_time timestamp,
+        warehouse_name string,
+        credits_used bigint,
+        credits_used_compute bigint,
+        credits_used_cloud_services bigint
+      >
+  kind: table
+  volatility: pure
+  binds:
+    - type-variable: $1
+      datatypes:
+        - date
+        - string
+    - type-variable: $2
+      datatypes:
+        - date
+        - string
+---
+function:
+  name: stage_storage_usage_history
+  parameters: []
+  optional-parameters:
+    - datatype: $1
+      name: date_range_start
+    - datatype: $2
+      name: date_range_end
+  binds:
+    - type-variable: $1
+      datatypes:
+        - date
+        - string
+    - type-variable: $2
+      datatypes:
+        - date
+        - string
+  returns:
+    datatype: >
+      struct<usage_date date, average_stage_bytes bigint>
+  kind: table
+  volatility: pure
+---
+function:
+  name: stage_directory_file_registration_history
+  parameters:
+    - datatype: string
+      name: stage_name
+  optional-parameters:
+    - datatype: $1
+      name: start_time
+  binds:
+    - type-variable: $1
+      datatypes:
+        - timestamp
+        - string
+  returns:
+    datatype: >
+      struct<
+        job_created_time timestamp,
+        file_name string,
+        operation_status string,
+        message string,
+        file_size bigint,
+        last_modified timestamp
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: policy_references
+  parameters: []
+  optional-parameters:
+    - datatype: string
+      name: policy_name
+    - datatype: string
+      name: ref_entity_name
+    - datatype: string
+      name: ref_entity_domain
+  returns:
+    datatype: >
+      struct<
+        policy_db string,
+        policy_schema string,
+        policy_name string,
+        policy_kind string,
+        ref_database_name string,
+        ref_schema_name string,
+        ref_entity_name string,
+        ref_entity_domain string,
+        ref_column_name string,
+        ref_arg_column_names array,
+        tag_database string,
+        tag_schema string,
+        tag_name string,
+        policy_status string
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: tag_references
+  parameters:
+    - datatype: string
+    - datatype: string
+  returns:
+    datatype: >
+      struct<
+        tag_database string,
+        tag_schema string,
+        tag_name string,
+        tag_value string,
+        level string,
+        object_database string,
+        object_schema string,
+        object_name string,
+        domain string,
+        column_name string
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: tag_references_all_columns
+  parameters:
+    - datatype: string
+    - datatype: string
+  returns:
+    datatype: >
+      struct<
+        tag_database string,
+        tag_schema string,
+        tag_name string,
+        tag_value string,
+        level string,
+        object_database string,
+        object_schema string,
+        object_name string,
+        domain string,
+        column_name string
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: tag_references_with_lineage
+  parameters:
+    - datatype: string
+  returns:
+    datatype: >
+      struct<
+        tag_database string,
+        tag_schema string,
+        tag_id bigint,
+        tag_name string,
+        tag_value string,
+        level string,
+        object_database string,
+        object_schema string,
+        object_id bigint,
+        object_name string,
+        object_deleted timestamp,
+        domain string,
+        column_id bigint,
+        column_name string
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: replication_group_refresh_history
+  parameters:
+    - datatype: string
+  returns:
+    datatype: >
+      struct<
+        phase_name string,
+        start_time timestamp,
+        end_time timestamp,
+        job_uuid string,
+        total_bytes variant,
+        object_count variant,
+        primary_snapshot_timestamp timestamp,
+        error variant
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: replication_group_refresh_progress
+  parameters:
+    - datatype: string
+  returns:
+    datatype: >
+      struct<
+        phase_name string,
+        start_time timestamp,
+        end_time timestamp,
+        progress string,
+        details variant
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: replication_group_refresh_progress_by_job
+  parameters:
+    - datatype: string
+  returns:
+    datatype: >
+      struct<
+        phase_name string,
+        start_time timestamp,
+        end_time timestamp,
+        progress string,
+        details variant
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: replication_group_usage_history
+  parameters: []
+  optional-parameters:
+    - datatype: date
+      name: date_range_start
+    - datatype: date
+      name: date_range_end
+    - datatype: string
+      name: replication_group_name
+  returns:
+    datatype: >
+      struct<
+        start_time timestamp,
+        end_time timestamp,
+        replication_group_name string,
+        credits_used string,
+        bytes_transferred bigint
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: replication_usage_history
+  parameters: []
+  optional-parameters:
+    - datatype: $1
+      name: date_range_start
+    - datatype: $2
+      name: date_range_end
+    - datatype: string
+      name: database_name
+  returns:
+    datatype: >
+      struct<
+        start_time timestamp,
+        end_time timestamp,
+        database_name string,
+        credits_used string,
+        bytes_transferred bigint
+      >
+  kind: table
+  volatility: pure
+  binds:
+    - type-variable: $1
+      datatypes:
+        - date
+        - string
+    - type-variable: $2
+      datatypes:
+        - date
+        - string
+---
+function:
+  name: database_refresh_history
+  parameters:
+    - datatype: string
+  returns:
+    datatype: >
+      struct<
+        current_phase string,
+        start_time timestamp,
+        end_time timestamp,
+        job_uuid string,
+        copy_bytes bigint,
+        object_count bigint
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: database_refresh_history
+  parameters: []
+  returns:
+    datatype: >
+      struct<
+        current_phase string,
+        start_time timestamp,
+        end_time timestamp,
+        job_uuid string,
+        copy_bytes bigint,
+        object_count bigint
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: database_refresh_progress
+  parameters:
+    - datatype: string
+  returns:
+    datatype: >
+      struct<
+        phase_name string,
+        result string,
+        start_time timestamp,
+        end_time timestamp,
+        details variant
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: database_refresh_progress
+  parameters: []
+  returns:
+    datatype: >
+      struct<
+        phase_name string,
+        result string,
+        start_time timestamp,
+        end_time timestamp,
+        details variant
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: database_refresh_progress_by_job
+  parameters:
+    - datatype: string
+  returns:
+    datatype: >
+      struct<
+        phase_name string,
+        result string,
+        start_time timestamp,
+        end_time timestamp,
+        details variant
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: database_replication_usage_history
+  parameters: []
+  optional-parameters:
+    - datatype: $1
+      name: date_range_start
+    - datatype: $2
+      name: date_range_end
+    - datatype: string
+      name: database_name
+  returns:
+    datatype: >
+      struct<
+        start_time timestamp,
+        end_time timestamp,
+        database_name string,
+        credits_used string,
+        bytes_transferred bigint
+      >
+  kind: table
+  volatility: pure
+  binds:
+    - type-variable: $1
+      datatypes:
+        - date
+        - string
+    - type-variable: $2
+      datatypes:
+        - date
+        - string
+---
+function:
+  name: copy_history
+  parameters:
+    - datatype: string
+      name: table_name
+    - datatype: timestamp
+      name: start_time
+  optional-parameters:
+    - datatype: timestamp
+      name: end_time
+  returns:
+    datatype: >
+      struct<
+        file_name string,
+        stage_location string,
+        last_load_time timestamp,
+        row_count bigint,
+        row_parsed bigint,
+        file_size bigint,
+        first_error_message string,
+        first_error_line_number bigint,
+        first_error_character_pos bigint,
+        first_error_column_name string,
+        error_count bigint,
+        error_limit bigint,
+        status string,
+        table_catalog_name string,
+        table_schema_name string,
+        table_name string,
+        pipe_catalog_name string,
+        pipe_schema_name string,
+        pipe_name string,
+        pipe_received_time timestamp
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: data_transfer_history
+  parameters: []
+  optional-parameters:
+    - datatype: date
+      name: date_range_start
+    - datatype: date
+      name: date_range_end
+  returns:
+    datatype: >
+      struct<
+        start_time timestamp,
+        end_time timestamp,
+        source_cloud string,
+        source_region string,
+        destination_cloud string,
+        destination_region string,
+        bytes_transferred bigint,
+        transfer_type string
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: pipe_usage_history
+  parameters: []
+  optional-parameters:
+    - datatype: date
+      name: date_range_start
+    - datatype: date
+      name: date_range_end
+    - datatype: string
+      name: pipe_name
+  returns:
+    datatype: >
+      struct<
+        start_time timestamp,
+        end_time timestamp,
+        pipe_name string,
+        credits_used string,
+        bytes_inserted bigint,
+        files_inserted bigint
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: validate_pipe_load
+  parameters:
+    - datatype: string
+      name: pipe_name
+    - datatype: timestamp
+      name: start_time
+  optional-parameters:
+    - datatype: timestamp
+      name: end_time
+  returns:
+    datatype: >
+      struct<
+        error string,
+        file string,
+        line bigint,
+        character bigint,
+        byte_offset bigint,
+        category string,
+        code bigint,
+        sql_state bigint,
+        column_name string,
+        row_number bigint,
+        row_start_line bigint,
+        rejected_record string
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: validate
+  parameters:
+    - datatype: string
+    - datatype: string
+      name: job_id
+  returns:
+    datatype: >
+      struct<
+        error string,
+        file string,
+        line bigint,
+        character bigint,
+        byte_offset bigint,
+        category string,
+        code bigint,
+        sql_state bigint,
+        column_name string,
+        row_number bigint,
+        row_start_line bigint,
+        rejected_record string
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: validate
+  parameters:
+    - datatype: string
+      name: job_id
+  returns:
+    datatype: >
+      struct<
+        error string,
+        file string,
+        line bigint,
+        character bigint,
+        byte_offset bigint,
+        category string,
+        code bigint,
+        sql_state bigint,
+        column_name string,
+        row_number bigint,
+        row_start_line bigint,
+        rejected_record string
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: automatic_clustering_history
+  parameters: []
+  optional-parameters:
+    - datatype: $1
+      name: date_range_start
+    - datatype: $2
+      name: date_range_end
+    - datatype: string
+      name: table_name
+  returns:
+    datatype: >
+      struct<
+        start_time timestamp,
+        end_time timestamp,
+        table_name string,
+        credits_used bigint,
+        num_bytes_reclustered bigint,
+        num_rows_reclustered bigint
+      >
+  kind: table
+  volatility: pure
+  binds:
+    - type-variable: $1
+      datatypes:
+        - date
+        - string
+    - type-variable: $2
+      datatypes:
+        - date
+        - string
+---
+function:
+  name: dynamic_table_graph_history
+  parameters: []
+  optional-parameters:
+    - datatype: timestamp
+      name: as_of
+    - datatype: timestamp
+      name: history_start
+    - datatype: timestamp
+      name: history_end
+  returns:
+    datatype: >
+      struct<
+        name string,
+        schema_name string,
+        database_name string,
+        qualified_name string,
+        inputs array,
+        target_lag_type string,
+        target_lag_sec bigint,
+        query_text string,
+        valid_from timestamp,
+        valid_to timestamp,
+        scheduling_state object
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: dynamic_table_refresh_history
+  parameters: []
+  optional-parameters:
+    - datatype: timestamp
+      name: data_timestamp_start
+    - datatype: timestamp
+      name: data_timestamp_end
+    - datatype: bigint
+      name: result_limit
+    - datatype: string
+      name: name
+    - datatype: string
+      name: name_prefix
+    - datatype: boolean
+      name: error_only
+  returns:
+    datatype: >
+      struct<
+        name string,
+        schema_name string,
+        database_name string,
+        state string,
+        state_code string,
+        state_message string,
+        query_id string,
+        data_timestamp timestamp,
+        refresh_start_time timestamp,
+        refresh_end_time timestamp,
+        completion_target timestamp,
+        qualified_name string,
+        last_completed_dependency object,
+        statistics object,
+        refresh_action string,
+        refresh_trigger string
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: external_functions_history
+  parameters: []
+  optional-parameters:
+    - datatype: timestamp
+      name: date_range_start
+    - datatype: timestamp
+      name: date_range_end
+    - datatype: string
+      name: function_signature
+  returns:
+    datatype: >
+      struct<
+        start_time timestamp,
+        end_time timestamp,
+        name string,
+        arguments string,
+        function_endpoint_url string,
+        source_cloud string,
+        source_region string,
+        target_cloud string,
+        target_region string,
+        invocations bigint,
+        sent_rows bigint,
+        received_rows bigint,
+        sent_bytes bigint,
+        received_bytes bigint
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: auto_refresh_registration_history
+  parameters: []
+  optional-parameters:
+    - datatype: date
+      name: date_range_start
+    - datatype: date
+      name: date_range_end
+    - datatype: string
+      name: object_type
+    - datatype: string
+      name: object_name
+  returns:
+    datatype: >
+      struct<
+        start_time timestamp,
+        end_time timestamp,
+        object_name string,
+        object_type string,
+        credits_used bigint,
+        files_registered bigint
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: external_table_files
+  parameters:
+    - datatype: string
+      name: table_name
+  returns:
+    datatype: >
+      struct<
+        file_name string,
+        registered_on timestamp,
+        file_size bigint,
+        last_modified timestamp,
+        etag string,
+        md5 string
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: external_table_file_registration_history
+  parameters:
+    - datatype: string
+      name: table_name
+  optional-parameters:
+    - datatype: timestamp
+      name: start_time
+  returns:
+    datatype: >
+      struct<
+        job_created_time timestamp,
+        file_name string,
+        operation_status string,
+        message string,
+        file_size bigint,
+        last_modified timestamp
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: materialized_view_refresh_history
+  parameters: []
+  optional-parameters:
+    - datatype: $1
+      name: date_range_start
+    - datatype: $2
+      name: date_range_end
+    - datatype: string
+      name: materialized_view_name
+  returns:
+    datatype: struct<
+      start_time timestamp,
+      end_time timestamp,
+      credits_used string,
+      materialized_view_name string
+      >
+  kind: table
+  volatility: pure
+  binds:
+    - type-variable: $1
+      datatypes:
+        - date
+        - string
+    - type-variable: $2
+      datatypes:
+        - date
+        - string
+---
+function:
+  name: notification_history
+  parameters: []
+  optional-parameters:
+    - datatype: timestamp
+      name: start_time
+    - datatype: timestamp
+      name: end_time
+    - datatype: string
+      name: integration_name
+    - datatype: bigint
+      name: result_limit
+  returns:
+    datatype: >
+      struct<
+        created timestamp,
+        processed timestamp,
+        message_source string,
+        integration_name string,
+        status string,
+        message string
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: rest_event_history
+  parameters:
+    - datatype: string
+      name: rest_service_type
+  optional-parameters:
+    - datatype: timestamp
+      name: time_range_start
+    - datatype: timestamp
+      name: time_range_end
+    - datatype: bigint
+      name: result_limit
+  returns:
+    datatype: >
+      struct<
+        event_timestamp timestamp,
+        event_id bigint,
+        event_type string,
+        endpoint string,
+        method string,
+        status string,
+        error_code bigint,
+        details string,
+        client_ip string,
+        actor_name string,
+        actor_domain string,
+        resource_name string,
+        resource_domain string
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: search_optimization_history
+  parameters: []
+  optional-parameters:
+    - datatype: $1
+      name: date_range_start
+    - datatype: $2
+      name: date_range_end
+    - datatype: string
+      name: table_name
+  returns:
+    datatype: >
+      struct<
+        start_time timestamp,
+        end_time timestamp,
+        credits_used string,
+        table_name string
+      >
+  kind: table
+  volatility: pure
+  binds:
+    - type-variable: $1
+      datatypes:
+        - timestamp
+        - string
+    - type-variable: $2
+      datatypes:
+        - timestamp
+        - string
+---
+function:
+  name: generator
+  parameters: []
+  optional-parameters:
+    - datatype: bigint
+      name: rowcount
+    - datatype: bigint
+      name: timelimit
+  returns:
+    datatype: struct<dummy bigint>
+  kind: table
+  volatility: pure
+---
+function:
+  name: complete_task_graphs
+  parameters: []
+  optional-parameters:
+    - datatype: bigint
+      name: result_limit
+    - datatype: string
+      name: root_task_name
+    - datatype: boolean
+      name: error_only
+  returns:
+    datatype: >
+      struct<
+        root_task_name string,
+        database_name string,
+        schema_name string,
+        state string,
+        scheduled_from string,
+        first_error_task_name string,
+        first_error_code bigint,
+        first_error_message string,
+        scheduled_time timestamp,
+        query_start_time timestamp,
+        next_scheduled_time timestamp,
+        completed_time timestamp,
+        root_task_id string,
+        graph_version bigint,
+        run_id bigint,
+        attempt_number bigint,
+        config string,
+        graph_run_group_id bigint
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: current_task_graphs
+  parameters: []
+  optional-parameters:
+    - datatype: bigint
+      name: result_limit
+    - datatype: string
+      name: root_task_name
+  returns:
+    datatype: >
+      struct<
+        root_task_name string,
+        database_name string,
+        schema_name string,
+        state string,
+        scheduled_from string,
+        first_error_task_name string,
+        first_error_code bigint,
+        first_error_message string,
+        scheduled_time timestamp,
+        query_start_time timestamp,
+        next_scheduled_time timestamp,
+        completed_time timestamp,
+        root_task_id string,
+        graph_version bigint,
+        run_id bigint,
+        attempt_number bigint,
+        config string,
+        graph_run_group_id bigint
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: serverless_task_history
+  parameters: []
+  optional-parameters:
+    - datatype: $1
+      name: date_range_start
+    - datatype: $2
+      name: date_range_end
+    - datatype: string
+      name: task_name
+  returns:
+    datatype: >
+      struct<
+        start_time timestamp,
+        end_time timestamp,
+        task_name string,
+        credits_used string
+      >
+  kind: table
+  volatility: pure
+  binds:
+    - type-variable: $1
+      datatypes:
+        - timestamp
+        - string
+    - type-variable: $2
+      datatypes:
+        - timestamp
+        - string
+---
+function:
+  name: task_dependents
+  parameters:
+    - datatype: string
+      name: task_name
+  optional-parameters:
+    - datatype: boolean
+      name: recursive
+  returns:
+    datatype: >
+      struct<
+        created_on timestamp,
+        name string,
+        database_name string,
+        schema_name string,
+        owner string,
+        comment string,
+        warehouse string,
+        schedule string,
+        predecessors array,
+        state string,
+        definition string,
+        condition string
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: task_history
+  parameters: []
+  optional-parameters:
+    - datatype: timestamp
+      name: scheduled_time_range_start
+    - datatype: timestamp
+      name: scheduled_time_range_end
+    - datatype: bigint
+      name: result_limit
+    - datatype: string
+      name: task_name
+    - datatype: boolean
+      name: error_only
+  returns:
+    datatype: >
+      struct<
+        query_id string,
+        name string,
+        database_name string,
+        schema_name string,
+        query_text string,
+        condition_text string,
+        state string,
+        error_code bigint,
+        error_message string,
+        scheduled_time timestamp,
+        query_start_time timestamp,
+        next_scheduled_time timestamp,
+        completed_time timestamp,
+        root_task_id string,
+        graph_version bigint,
+        run_id bigint,
+        attempt_number bigint,
+        config string,
+        query_hash string,
+        query_hash_version bigint,
+        query_parameterized_hash string,
+        query_parameterized_hash_version bigint,
+        graph_run_group_id bigint
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: alert_history
+  parameters: []
+  optional-parameters:
+    - datatype: timestamp
+      name: scheduled_time_range_start
+    - datatype: timestamp
+      name: scheduled_time_range_end
+    - datatype: bigint
+      name: result_limit
+    - datatype: string
+      name: alert_name
+  returns:
+    datatype: >
+      struct<
+        name string,
+        database_name string,
+        schema_name string,
+        condition string,
+        condition_query_id string,
+        action string,
+        action_query_id string,
+        state string,
+        sql_error_code bigint,
+        sql_error_message string,
+        scheduled_time timestamp,
+        completed_time timestamp
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: infer_schema
+  parameters: []
+  optional-parameters:
+    - datatype: string
+      name: location
+    - datatype: string
+      name: file_format
+    - datatype: string
+      name: files
+    - datatype: boolean
+      name: ignore_case
+    - datatype: bigint
+      name: max_file_count
+    - datatype: bigint
+      name: max_records_per_file
+  returns:
+    datatype: >
+      struct<
+        column_name string,
+        type string,
+        nullable boolean,
+        expression string,
+        filenames string,
+        order_id bigint
+      >
+  kind: table
+  volatility: pure
+---
+function:
+  name: array_construct
+  description: the resulting array
+  parameters:
+    - datatype: $1
+    - datatype: $2
+  optional-parameters: []
+  returns:
+    datatype: array
+---
+function:
+  name: array_construct
+  description: the resulting array
+  parameters:
+    - datatype: $1
+    - datatype: $2
+    - datatype: $3
+  optional-parameters: []
+  returns:
+    datatype: array
+---
+function:
+  name: array_construct
+  description: the resulting array
+  parameters:
+    - datatype: $1
+    - datatype: $2
+    - datatype: $3
+    - datatype: $4
+  optional-parameters: []
+  returns:
+    datatype: array
+---
+function:
+  name: array_construct
+  description: the resulting array
+  parameters:
+    - datatype: $1
+    - datatype: $2
+    - datatype: $3
+    - datatype: $4
+    - datatype: $5
+  optional-parameters: []
+  returns:
+    datatype: array
+---
+function:
+  name: get
+  description: Get VARIANT element value from an array or object
+  parameters:
+    - datatype: variant
+    - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: variant
+---
+function:
+  name: get
+  description: Get VARIANT element value from an array or object
+  parameters:
+    - datatype: variant
+    - datatype: decimal(38, 0)
+  optional-parameters: []
+  returns:
+    datatype: variant
+---
+function:
+  name: get
+  description: Get VARIANT element value from an array or object
+  parameters:
+    - datatype: object
+    - datatype: varchar
+  optional-parameters: []
+  returns:
+    datatype: variant
+---
+function:
+  name: get
+  description: Get VARIANT element value from an array or object
+  parameters:
+    - datatype: array
+    - datatype: decimal(38, 0)
+  optional-parameters: []
+  returns:
+    datatype: variant
+---
+function:
+  name: get
+  description: Get VARIANT element value from an array or object
+  parameters:
+    - datatype: object
+    - datatype: $1
+  optional-parameters: []
+  returns:
+    datatype: variant
+---
+function:
+  name: "+"
+  description: Add two numbers
+  parameters:
+    - datatype: date
+    - datatype: bigint
+  returns:
+    datatype: date
+---
+function:
+  name: "+"
+  description: Add two numbers
+  parameters:
+    - datatype: $1
+    - datatype: $1
+  returns:
+    datatype: $1
+---
+function:
+  name: "-"
+  description: Subtract two numbers
+  parameters:
+    - datatype: date
+    - datatype: bigint
+  returns:
+    datatype: date
+---
+function:
+  name: "-"
+  description: Subtract two numbers
+  parameters:
+    - datatype: date
+    - datatype: date
+  returns:
+    datatype: bigint
+---
+function:
+  name: "-"
+  parameters:
+    - datatype: $1
+    - datatype: $2
+  returns:
+    datatype: $1
+  binds:
+    - type-variable: $1
+      datatypes:
+        - date
+        - time
+        - timestamp
+        - varchar
+    - type-variable: $2
+      datatypes:
+        - interval
+---
+function:
+  name: "-"
+  description: Subtract two numbers
+  parameters:
+    - datatype: $1
+    - datatype: $1
+  returns:
+    datatype: $1
+---
+function:
+  name: "*"
+  description: Multiply two numbers
+  parameters:
+    - datatype: $1
+    - datatype: $1
+  returns:
+    datatype: $1
+---
+function:
+  name: "/"
+  description: Divide two numbers
+  parameters:
+    - datatype: $1
+    - datatype: $1
+  returns:
+    datatype: $1
+---
+function:
+  name: timestampdiff
+  parameters:
+    - datatype: string
+      identifiers:
+        - year
+        - y
+        - yy
+        - yyy
+        - yyyy
+        - yr
+        - years
+        - yrs
+        - month
+        - mm
+        - mon
+        - mons
+        - months
+        - day
+        - d
+        - dd
+        - days
+        - dayofmonth
+        - dayofweek
+        - dayofyear
+        - yearday
+        - doy
+        - dy
+        - week
+        - w
+        - wk
+        - weekofyear
+        - woy
+        - wy
+        - weekofyeariso
+        - weekofyear_iso
+        - quarter
+        - q
+        - qtr
+        - qtrs
+        - quarters
+        - hour
+        - h
+        - hh
+        - hr
+        - hours
+        - hrs
+        - minute
+        - m
+        - mi
+        - min
+        - minutes
+        - mins
+        - second
+        - s
+        - sec
+        - seconds
+        - secs
+        - nanosecond
+        - ns
+        - nsec
+        - nanosec
+        - nsecond
+        - nanoseconds
+        - nanosecs
+        - nseconds
+    - datatype: $1
+    - datatype: $1
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  binds:
+    - type-variable: $1
+      datatypes:
+        - date
+        - time
+        - timestamp
+        - varchar
+  section: temporal
+---
+function:
+  name: max_by
+  description: Returns value of first column with maximum second column val
+  kind: aggregate
+  parameters:
+    - datatype: $1
+    - datatype: $2
+  optional-parameters: []
+  returns:
+    datatype: $1
+---
+function:
+  name: max_by
+  description: Returns value of first column with maximum second column val
+  kind: aggregate
+  parameters:
+    - datatype: $1
+    - datatype: $2
+    - datatype: decimal(38, 0)
+  optional-parameters: []
+  returns:
+    datatype: array
+---
+function:
+  name: min_by
+  description: Returns value of first column with minimum second column val
+  kind: aggregate
+  parameters:
+    - datatype: $1
+    - datatype: $2
+  optional-parameters: []
+  returns:
+    datatype: $1
+---
+function:
+  name: min_by
+  description: Returns value of first column with minimum second column val
+  kind: aggregate
+  parameters:
+    - datatype: $1
+    - datatype: $2
+    - datatype: decimal(38, 0)
+  optional-parameters: []
+  returns:
+    datatype: array
+---
+function:
+  name: "+"
+  parameters:
+    - datatype: $1
+    - datatype: $2
+  returns:
+    datatype: $1
+  binds:
+    - type-variable: $1
+      datatypes:
+        - date
+        - time
+        - timestamp
+        - varchar
+    - type-variable: $2
+      datatypes:
+        - interval
+---
+function:
+  name: "+"
+  parameters:
+    - datatype: $2
+    - datatype: $1
+  returns:
+    datatype: $2
+  binds:
+    - type-variable: $1
+      datatypes:
+        - date
+        - time
+        - timestamp
+        - varchar
+    - type-variable: $2
+      datatypes:
+        - interval
+---
+function:
+  name: map_cat
+  parameters:
+    - datatype: object
+    - datatype: object
+  returns:
+    datatype: object
+---
+function:
+  name: map_contains_key
+  parameters:
+    - datatype: varchar
+    - datatype: object
+  returns:
+    datatype: boolean
+---
+function:
+  name: map_delete
+  parameters:
+    - datatype: object
+    - datatype: varchar
+  returns:
+    datatype: object
+---
+function:
+  name: map_delete
+  parameters:
+    - datatype: object
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: object
+---
+function:
+  name: map_delete
+  parameters:
+    - datatype: object
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: object
+---
+function:
+  name: map_delete
+  parameters:
+    - datatype: object
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: object
+---
+function:
+  name: map_delete
+  parameters:
+    - datatype: object
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: object
+---
+function:
+  name: map_insert
+  parameters:
+    - datatype: object
+    - datatype: $1
+    - datatype: $2
+  returns:
+    datatype: object
+---
+function:
+  name: map_insert
+  parameters:
+    - datatype: object
+    - datatype: $1
+    - datatype: $2
+    - datatype: boolean
+  returns:
+    datatype: object
+---
+function:
+  name: map_keys
+  parameters:
+    - datatype: object
+  returns:
+    datatype: array
+---
+function:
+  name: map_pick
+  parameters:
+    - datatype: object
+    - datatype: string
+  returns:
+    datatype: object
+---
+function:
+  name: map_pick
+  parameters:
+    - datatype: object
+    - datatype: string
+    - datatype: string
+  returns:
+    datatype: object
+---
+function:
+  name: map_pick
+  parameters:
+    - datatype: object
+    - datatype: string
+    - datatype: string
+    - datatype: string
+  returns:
+    datatype: object
+---
+function:
+  name: map_pick
+  parameters:
+    - datatype: object
+    - datatype: string
+    - datatype: string
+    - datatype: string
+    - datatype: string
+  returns:
+    datatype: object
+---
+function:
+  name: map_pick
+  parameters:
+    - datatype: object
+    - datatype: string
+    - datatype: string
+    - datatype: string
+    - datatype: string
+    - datatype: string
+  returns:
+    datatype: object
+---
+function:
+  name: map_pick
+  parameters:
+    - datatype: object
+    - datatype: array
+  returns:
+    datatype: object
+---
+function:
+  name: map_size
+  parameters:
+    - datatype: object
+  returns:
+    datatype: bigint
+---
+function:
+  name: try_to_binary
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: binary
+---
+function:
+  name: try_to_binary
+  parameters:
+    - datatype: string
+    - datatype: string
+  returns:
+    datatype: binary
+---
+function:
+  name: object_construct
+  variadic: any
+  parameters: []
+  returns: 
+    datatype: object
+---
+function:
+  name: system$typeof
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: varchar
+---
+function:
+  name: nullif
+  parameters:
+    - datatype: $1
+    - datatype: $1
+  returns:
+    datatype: $1
+---
+function:
+  name: ifnull
+  description: Returns second expression if the first expression is NULL, the first expression otherwise.
+  parameters:
+  - datatype: $1
+  - datatype: $1
+  optional-parameters: []
+  returns:
+    datatype: $1
+---
+function:
+  name: iff
+  description: Returns arg2 if arg1 is true, arg3 otherwise.
+  parameters:
+  - datatype: boolean
+  - datatype: $1
+  - datatype: $1
+  optional-parameters: []
+  returns:
+    datatype: $1
+---
+function:
+  name: dayname
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: varchar
+  binds:
+    - type-variable: $1
+      datatypes:
+        - date
+        - string
+---
+function:
+  name: monthname
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: varchar
+  binds:
+    - type-variable: $1
+      datatypes:
+        - date
+        - string
+---
+function:
+  name: next_day
+  parameters:
+    - datatype: $1
+    - datatype: varchar
+  returns:
+    datatype: date
+  binds:
+    - type-variable: $1
+      datatypes:
+        - date
+        - string
+---
+function:
+  name: previous_day
+  parameters:
+    - datatype: $1
+    - datatype: varchar
+  returns:
+    datatype: date
+  binds:
+    - type-variable: $1
+      datatypes:
+        - date
+        - string
+---
+function:
+  name: convert_timezone
+  description: Returns the input timestamp converted from source timezone to a destination timezone
+  parameters:
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: $1
+  optional-parameters: []
+  returns:
+    datatype: timestamp
+  binds:
+    - type-variable: $1
+      datatypes:
+        - timestamp
+        - string
+---
+function:
+  name: convert_timezone
+  description: Returns the input timestamp converted from source timezone to a destination timezone
+  parameters:
+  - datatype: varchar
+  - datatype: $1
+  optional-parameters: []
+  returns:
+    datatype: timestamp
+  binds:
+    - type-variable: $1
+      datatypes:
+        - timestamp
+        - string
+---
+function:
+  name: grouping
+  kind: aggregate
+  variadic: any
+  parameters: []
+  returns: 
+    datatype: int
+---
+function:
+  name: metadata$filename
+  kind: scalar
+  parameters: []
+  returns: 
+    datatype: varchar
+  special: true
+---
+function:
+  name: metadata$file_row_number
+  kind: scalar
+  parameters: []
+  returns: 
+    datatype: int
+  special: true
+---
+function:
+  name: metadata$file_content_key
+  kind: scalar
+  parameters: []
+  returns: 
+    datatype: varchar
+  special: true
+---
+function: 
+  name: metadata$file_last_modified
+  kind: scalar
+  parameters: []
+  returns: 
+    datatype: timestamp
+  special: true
+---
+function:
+  name: metadata$start_scan_time
+  kind: scalar
+  parameters: []
+  returns: 
+    datatype: timestamp
+  special: true
+---
+function:
+  name: "="
+  parameters:
+    - datatype: $1
+    - datatype: boolean
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - bigint
+        - int
+        - smallint
+        - tinyint
+        - varchar
+---
+function:
+  name: "="
+  parameters:
+    - datatype: boolean
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - bigint
+        - int
+        - smallint
+        - tinyint
+        - varchar
+---
+function:
+  name: "!="
+  parameters:
+    - datatype: $1
+    - datatype: boolean
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - bigint
+        - int
+        - smallint
+        - tinyint
+        - varchar
+---
+function:
+  name: "!="
+  parameters:
+    - datatype: boolean
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - bigint
+        - int
+        - smallint
+        - tinyint
+        - varchar
+---
+function:
+  name: "<>"
+  parameters:
+    - datatype: $1
+    - datatype: boolean
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - bigint
+        - int
+        - smallint
+        - tinyint
+        - varchar
+---
+function:
+  name: "<>"
+  parameters:
+    - datatype: boolean
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - bigint
+        - int
+        - smallint
+        - tinyint
+        - varchar
+---
+function:
+  name: "<"
+  parameters:
+    - datatype: $1
+    - datatype: boolean
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - bigint
+        - int
+        - smallint
+        - tinyint
+        - varchar
+---
+function:
+  name: "<"
+  parameters:
+    - datatype: boolean
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - bigint
+        - int
+        - smallint
+        - tinyint
+        - varchar
+---
+function:
+  name: ">"
+  parameters:
+    - datatype: $1
+    - datatype: boolean
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - bigint
+        - int
+        - smallint
+        - tinyint
+        - varchar
+---
+function:
+  name: ">"
+  parameters:
+    - datatype: boolean
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - bigint
+        - int
+        - smallint
+        - tinyint
+        - varchar
+---
+function:
+  name: "<="
+  parameters:
+    - datatype: $1
+    - datatype: boolean
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - bigint
+        - int
+        - smallint
+        - tinyint
+        - varchar
+---
+function:
+  name: "<="
+  parameters:
+    - datatype: boolean
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - bigint
+        - int
+        - smallint
+        - tinyint
+        - varchar
+---
+function:
+  name: ">="
+  parameters:
+    - datatype: $1
+    - datatype: boolean
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - bigint
+        - int
+        - smallint
+        - tinyint
+        - varchar
+---
+function:
+  name: ">="
+  parameters:
+    - datatype: boolean
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - bigint
+        - int
+        - smallint
+        - tinyint
+        - varchar
+---
+function:
+  name: "="
+  parameters:
+    - datatype: $1
+    - datatype: $2
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - varchar
+        - object
+    - type-variable: $2
+      datatypes:
+        - varchar
+        - object
+---
+function:
+  name: "!="
+  parameters:
+    - datatype: $1
+    - datatype: $2
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - varchar
+        - object
+    - type-variable: $2
+      datatypes:
+        - varchar
+        - object
+---
+function:
+  name: "sdf::and"
+  parameters:
+    - datatype: $1
+    - datatype: boolean
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - int
+        - double
+---
+function:
+  name: "sdf::and"
+  parameters:
+    - datatype: boolean
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - int
+        - double
+---
+function:
+  name: "sdf::or"
+  parameters:
+    - datatype: $1
+    - datatype: boolean
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - int
+        - double
+---
+function:
+  name: "sdf::or"
+  parameters:
+    - datatype: boolean
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - int
+        - double

@@ -18,7 +18,7 @@ function:
   optional-parameters: []
   returns:
     datatype: tinyint
-  implemented-by: builtin
+  implemented-by: native
 ---
 function:
   name: abs
@@ -27,7 +27,7 @@ function:
   optional-parameters: []
   returns:
     datatype: smallint
-  implemented-by: builtin
+  implemented-by: native
 ---
 function:
   name: abs
@@ -36,7 +36,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  implemented-by: builtin
+  implemented-by: native
 ---
 function:
   name: abs
@@ -45,7 +45,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
-  implemented-by: builtin
+  implemented-by: native
 ---
 function:
   name: abs
@@ -54,7 +54,7 @@ function:
   optional-parameters: []
   returns:
     datatype: decimal(p, s)
-  implemented-by: builtin
+  implemented-by: native
 ---
 function:
   name: abs
@@ -63,7 +63,7 @@ function:
   optional-parameters: []
   returns:
     datatype: real
-  implemented-by: builtin
+  implemented-by: native
 ---
 function:
   name: acos
@@ -72,7 +72,6 @@ function:
   optional-parameters: []
   returns:
     datatype: double
-  implemented-by: builtin
 ---
 function:
   name: all_match
@@ -1076,7 +1075,7 @@ function:
     - datatype: $1
   returns:
     datatype: $1
-  implemented-by: builtin
+  implemented-by: native
 ---
 function:
   name: codepoint
@@ -1169,7 +1168,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  implemented-by: builtin
+  implemented-by: native
 ---
 function:
   name: concat
@@ -1179,7 +1178,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varbinary
-  implemented-by: builtin
+  implemented-by: native
 ---
 function:
   name: concat_ws
@@ -1189,7 +1188,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  implemented-by: builtin
+  implemented-by: native
 ---
 function:
   name: concat_ws
@@ -1199,7 +1198,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  implemented-by: builtin
+  implemented-by: native
 ---
 function:
   name: contains
@@ -1548,7 +1547,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
-  implemented-by: builtin
+  implemented-by: native
 ---
 function:
   name: date_part
@@ -1558,7 +1557,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
-  implemented-by: builtin
+  implemented-by: native
 ---
 function:
   name: date_part
@@ -1568,7 +1567,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
-  implemented-by: builtin
+  implemented-by: native
 ---
 function:
   name: date_trunc
@@ -1578,7 +1577,7 @@ function:
   optional-parameters: []
   returns:
     datatype: time(p)
-  implemented-by: builtin
+  implemented-by: native
 ---
 function:
   name: date_trunc
@@ -1588,7 +1587,7 @@ function:
   optional-parameters: []
   returns:
     datatype: timestamp(p)
-  implemented-by: builtin
+  implemented-by: native
 ---
 function:
   name: date_trunc
@@ -2234,7 +2233,18 @@ function:
 function:
   name: from_unixtime
   parameters:
-  - datatype: double
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: timestamp
+  implemented-by: native
+---
+function:
+  name: from_unixtime
+  parameters:
+  - datatype: bigint
+  - datatype: bigint
+  - datatype: bigint
   optional-parameters: []
   returns:
     datatype: timestamp
@@ -2242,17 +2252,7 @@ function:
 function:
   name: from_unixtime
   parameters:
-  - datatype: double
   - datatype: bigint
-  - datatype: bigint
-  optional-parameters: []
-  returns:
-    datatype: timestamp
----
-function:
-  name: from_unixtime
-  parameters:
-  - datatype: double
   - datatype: varchar
   optional-parameters: []
   returns:
@@ -3030,7 +3030,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  implemented-by: builtin
+  implemented-by: native
 ---
 function:
   name: length
@@ -3039,7 +3039,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  implemented-by: builtin
+  implemented-by: native
 ---
 function:
   name: levenshtein_distance
@@ -4275,6 +4275,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: native
 ---
 function:
   name: regexp_replace
@@ -4284,6 +4285,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: native
 ---
 function:
   name: regexp_replace
@@ -4294,7 +4296,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  implemented-by: builtin
+  implemented-by: native
 ---
 function:
   name: regexp_split
@@ -4459,7 +4461,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
-  implemented-by: builtin
+  implemented-by: native
 ---
 function:
   name: round
@@ -4468,7 +4470,7 @@ function:
   optional-parameters: []
   returns:
     datatype: real
-  implemented-by: builtin
+  implemented-by: native
 ---
 function:
   name: round
@@ -4478,7 +4480,7 @@ function:
   optional-parameters: []
   returns:
     datatype: real
-  implemented-by: builtin
+  implemented-by: native
 ---
 function:
   name: round
@@ -4521,7 +4523,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
-  implemented-by: builtin
+  implemented-by: native
 ---
 function:
   name: round
@@ -5594,7 +5596,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  implemented-by: builtin
+  implemented-by: native
 ---
 function:
   name: substr
@@ -5605,7 +5607,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  implemented-by: builtin
+  implemented-by: native
 ---
 function:
   name: substr
@@ -5615,7 +5617,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varbinary
-  implemented-by: builtin
+  implemented-by: native
 ---
 function:
   name: substr
@@ -5626,7 +5628,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varbinary
-  implemented-by: builtin
+  implemented-by: native
 ---
 function:
   name: substring
@@ -6025,7 +6027,6 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  implemented-by: builtin
 ---
 function:
   name: trim
