@@ -30,5 +30,6 @@ The functions in this crate are *monomorphic* by default. This means that each f
 This is in contrast to polymorphic functions, which can operate on multiple types through mechanisms such as generics or type parameters. Monomorphic functions are typically simpler in terms of type checking and type inference, as there are no generic type parameters to resolve.
 
 ## Contributing
+Contributions are more than welcome! Both to the list of reports, or documentation. Please carefully read [CONTRIBUTING.md](CONTRIBUTING.md)
 
-## 
+## Using SQL Functions Crate

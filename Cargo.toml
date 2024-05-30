@@ -16,14 +16,14 @@
 # under the License.
 
 [package]
-name = "sdf-functions"
+name = "sql-functions"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [lib]
-name = "sdf_functions"
+name = "sql_functions"
 path = "src/lib.rs"
 
 [features]
@@ -33,7 +33,7 @@ default = ["presto_expressions"]
 presto_expressions = []
 
 [dependencies]
-datafusion = { git = "https://github.com/sdf-labs/arrow-datafusion", branch = "zhong/v38" }
+datafusion = { version = "38"}
 arrow = { version = "51.0.0", features = ["prettyprint"] }
 #arrow-flight = { workspace = true }
 #arrow-schema = { workspace = true }
