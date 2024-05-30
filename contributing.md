@@ -27,6 +27,13 @@ function:
   variadic: [any, uniform, non-uniform, even-odd]
 ```
 
-
 ## Contributing a function Implementation
-*todo*
+To contribute a function implementation, fill in the `todo!()` block of a given function.
+
+``` rust
+fn invoke(&self, args: &[ColumnarValue]) -> Result<ColumnarValue> {
+        // start function impl
+        todo!()
+        // end function impl
+    }
+```
