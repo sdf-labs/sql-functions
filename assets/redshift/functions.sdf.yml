@@ -1,0 +1,4969 @@
+function:
+  name: any_value
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: $1
+  kind: aggregate
+  volatility: pure
+  section: other
+---
+function:
+  name: array
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: super
+  kind: scalar
+  volatility: pure
+  variadic: uniform
+  section: other
+---
+function:
+  name: array_concat
+  parameters:
+    - datatype: super
+  returns:
+    datatype: super
+  kind: scalar
+  volatility: pure
+  variadic: uniform
+  section: string
+---
+function:
+  name: array_flatten
+  parameters:
+    - datatype: super
+  returns:
+    datatype: super
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: get_array_length
+  parameters:
+    - datatype: super
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: string
+---
+function:
+  name: split_to_array
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: super
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: subarray
+  parameters:
+    - datatype: super
+    - datatype: bigint
+    - datatype: bigint
+  returns:
+    datatype: super
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: from_hex
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: varbyte
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: from_varbyte
+  parameters:
+    - datatype: varbyte
+    - datatype: varchar
+  returns:
+    datatype: varbyte
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: getbit
+  parameters:
+    - datatype: varbyte
+    - datatype: bigint
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_hex
+  parameters:
+    - datatype: varbyte
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_hex
+  parameters:
+    - datatype: bigint
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_varbyte
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: varbyte
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: greatest
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: $1
+  kind: scalar
+  volatility: pure
+  variadic: uniform
+  section: other
+---
+function:
+  name: least
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: $1
+  kind: scalar
+  volatility: pure
+  variadic: uniform
+  section: other
+---
+function:
+  name: nvl
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: $1
+  kind: scalar
+  volatility: pure
+  variadic: uniform
+  section: other
+---
+function:
+  name: nvl2
+  parameters:
+    - datatype: $1
+    - datatype: $2
+    - datatype: $2
+  returns:
+    datatype: $2
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: getdate
+  parameters: []
+  returns:
+    datatype: timestamp
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: to_char
+  parameters:
+    - datatype: $1
+    - datatype: varchar
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: to_date
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: date
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: to_date
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: boolean
+  returns:
+    datatype: date
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: to_number
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: float
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: text_to_int_alt
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: text_to_int_alt
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: text_to_numeric_alt
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: float
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: text_to_numeric_alt
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: float
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: text_to_numeric_alt
+  parameters:
+    - datatype: varchar
+    - datatype: bigint
+    - datatype: bigint
+  returns:
+    datatype: float
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: text_to_numeric_alt
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: bigint
+    - datatype: bigint
+  returns:
+    datatype: float
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: add_months
+  parameters:
+    - datatype: date
+    - datatype: bigint
+  returns:
+    datatype: timestamp
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: add_months
+  parameters:
+    - datatype: varchar
+    - datatype: bigint
+  returns:
+    datatype: timestamp
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: add_months
+  parameters:
+    - datatype: timestamp
+    - datatype: bigint
+  returns:
+    datatype: timestamp
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: convert_timezone
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: timestamp
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: convert_timezone
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: timestamp
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: date_cmp
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: date_cmp_timestamp
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: date_cmp_timestampz
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: date_part_year
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: interval_cmp
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: last_day
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: date
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: months_between
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: float
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: next_day
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: date
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: timeofday
+  parameters: []
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: timestamp_cmp
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: timestamp_cmp_date
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: timestamp_cmp_timestampz
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: timestampz_cmp
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: timestampz_cmp_date
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: timestampz_cmp_timestamp
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: timezone
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: timestamp
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: to_timestamp
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: timestamp
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: to_timestamp
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: boolean
+  returns:
+    datatype: timestamp
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: trunc
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: date
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: checksum
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: math
+---
+function:
+  name: farmfingerprint64
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: sha1
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: func_sha1
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: sha
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: fnv_hash
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: md5
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: sha2
+  parameters:
+    - datatype: varchar
+    - datatype: bigint
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: murmur3_32_hash
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: murmur3_32_hash
+  parameters:
+    - datatype: varchar
+    - datatype: bigint
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: is_valid_json
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: boolean
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: is_valid_json_array
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: boolean
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: json_array_length
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: string
+---
+function:
+  name: json_array_length
+  parameters:
+    - datatype: varchar
+    - datatype: boolean
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: string
+---
+function:
+  name: json_extract_array_element_text
+  parameters:
+    - datatype: varchar
+    - datatype: bigint
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: json_extract_array_element_text
+  parameters:
+    - datatype: varchar
+    - datatype: bigint
+    - datatype: boolean
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: json_extract_path_text
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: json_extract_path_text
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: json_extract_path_text
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: json_extract_path_text
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: json_extract_path_text
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: json_extract_path_text
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: boolean
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: json_extract_path_text
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: boolean
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: json_extract_path_text
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: boolean
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: json_extract_path_text
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: boolean
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: json_extract_path_text
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: boolean
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: can_json_parse
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: boolean
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: json_serialize
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: json_serialize_to_varbyte
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: varbyte
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: cbrt
+  parameters:
+    - datatype: float
+  returns:
+    datatype: float
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: ceiling
+  parameters:
+    - datatype: float
+  returns:
+    datatype: float
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: cot
+  parameters:
+    - datatype: float
+  returns:
+    datatype: float
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: degrees
+  parameters:
+    - datatype: float
+  returns:
+    datatype: float
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: dexp
+  parameters:
+    - datatype: float
+  returns:
+    datatype: float
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: dlog1
+  parameters:
+    - datatype: float
+  returns:
+    datatype: float
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: dlog10
+  parameters:
+    - datatype: float
+  returns:
+    datatype: float
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: mod
+  parameters:
+    - datatype: bigint
+    - datatype: bigint
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: pi
+  parameters: []
+  returns:
+    datatype: float
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: radians
+  parameters:
+    - datatype: float
+  returns:
+    datatype: float
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: sign
+  parameters:
+    - datatype: float
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: bpcharcmp
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: bttext_pattern_cmp
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: len
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: textlen
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: charindex
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: collate
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: crc32
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: difference
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: octetindex
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: quote_ident
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: quote_literal
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: regexp_count
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: aggregate
+---
+function:
+  name: regexp_count
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: bigint
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: aggregate
+---
+function:
+  name: regexp_count
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: bigint
+    - datatype: varchar
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: aggregate
+---
+function:
+  name: regexp_instr
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: regexp_instr
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: bigint
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: regexp_instr
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: bigint
+    - datatype: bigint
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: regexp_instr
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: bigint
+    - datatype: bigint
+    - datatype: bigint
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: regexp_instr
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: bigint
+    - datatype: bigint
+    - datatype: bigint
+    - datatype: varchar
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: regexp_replace
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: string
+---
+function:
+  name: regexp_replace
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: string
+---
+function:
+  name: regexp_replace
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: bigint
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: string
+---
+function:
+  name: regexp_replace
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: bigint
+    - datatype: varchar
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: string
+---
+function:
+  name: regexp_substr
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: regexp_substr
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: regexp_substr
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: bigint
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: regexp_substr
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: bigint
+    - datatype: varchar
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: replicate
+  parameters:
+    - datatype: varchar
+    - datatype: bigint
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: soundex
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: strtol
+  parameters:
+    - datatype: varchar
+    - datatype: bigint
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: substring
+  parameters:
+    - datatype: varchar
+    - datatype: bigint
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: string
+---
+function:
+  name: substring
+  parameters:
+    - datatype: varchar
+    - datatype: bigint
+    - datatype: bigint
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: string
+---
+function:
+  name: decimal_precision
+  parameters:
+    - datatype: super
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: decimal_scale
+  parameters:
+    - datatype: super
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: is_array
+  parameters:
+    - datatype: super
+  returns:
+    datatype: boolean
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: is_bigint
+  parameters:
+    - datatype: super
+  returns:
+    datatype: boolean
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: is_boolean
+  parameters:
+    - datatype: super
+  returns:
+    datatype: boolean
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: is_char
+  parameters:
+    - datatype: super
+  returns:
+    datatype: boolean
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: is_decimal
+  parameters:
+    - datatype: super
+  returns:
+    datatype: boolean
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: is_float
+  parameters:
+    - datatype: super
+  returns:
+    datatype: boolean
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: is_integer
+  parameters:
+    - datatype: super
+  returns:
+    datatype: boolean
+  kind: scalar
+  volatility: pure
+  section: math
+---
+function:
+  name: is_object
+  parameters:
+    - datatype: super
+  returns:
+    datatype: boolean
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: is_scalar
+  parameters:
+    - datatype: super
+  returns:
+    datatype: boolean
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: is_smallint
+  parameters:
+    - datatype: super
+  returns:
+    datatype: boolean
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: is_varchar
+  parameters:
+    - datatype: super
+  returns:
+    datatype: boolean
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: json_size
+  parameters:
+    - datatype: super
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: json_typeof
+  parameters:
+    - datatype: super
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: size
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: dateadd
+  parameters:
+    - datatype: varchar
+      identifiers:
+        - millennium
+        - millennia
+        - mil
+        - mils
+        - century
+        - centuries
+        - c
+        - cent
+        - cents
+        - decade
+        - decades
+        - dec
+        - decs
+        - year
+        - years
+        - y
+        - yr
+        - yrs
+        - quarter
+        - quarters
+        - qtr
+        - qtrs
+        - month
+        - months
+        - mon
+        - mons
+        - week
+        - weeks
+        - w
+        - day
+        - days
+        - d
+        - hour
+        - hours
+        - h
+        - hr
+        - hrs
+        - minute
+        - minutes
+        - m
+        - min
+        - mins
+        - second
+        - seconds
+        - s
+        - sec
+        - secs
+        - millisecond
+        - milliseconds
+        - ms
+        - msec
+        - msecs
+        - msecond
+        - mseconds
+        - millisec
+        - millisecs
+        - millisecon
+        - microsecond
+        - microseconds
+        - microsec
+        - microsecs
+        - microsecond
+        - usecond
+        - useconds
+        - us
+        - usec
+        - usecs
+    - datatype: bigint
+    - datatype: $1
+  returns:
+    datatype: date
+  kind: scalar
+  volatility: pure
+  binds:
+    - type-variable: $1
+      datatypes:
+        - date
+        - timestamp
+        - time
+        - varchar
+  section: temporal
+---
+function:
+  name: date_add
+  parameters:
+    - datatype: varchar
+      identifiers:
+        - millennium
+        - millennia
+        - mil
+        - mils
+        - century
+        - centuries
+        - c
+        - cent
+        - cents
+        - decade
+        - decades
+        - dec
+        - decs
+        - year
+        - years
+        - y
+        - yr
+        - yrs
+        - quarter
+        - quarters
+        - qtr
+        - qtrs
+        - month
+        - months
+        - mon
+        - mons
+        - week
+        - weeks
+        - w
+        - day
+        - days
+        - d
+        - hour
+        - hours
+        - h
+        - hr
+        - hrs
+        - minute
+        - minutes
+        - m
+        - min
+        - mins
+        - second
+        - seconds
+        - s
+        - sec
+        - secs
+        - millisecond
+        - milliseconds
+        - ms
+        - msec
+        - msecs
+        - msecond
+        - mseconds
+        - millisec
+        - millisecs
+        - millisecon
+        - microsecond
+        - microseconds
+        - microsec
+        - microsecs
+        - microsecond
+        - usecond
+        - useconds
+        - us
+        - usec
+        - usecs
+    - datatype: bigint
+    - datatype: $1
+  returns:
+    datatype: date
+  kind: scalar
+  volatility: pure
+  binds:
+    - type-variable: $1
+      datatypes:
+        - date
+        - timestamp
+        - time
+        - varchar
+  section: temporal
+---
+function:
+  name: date_part
+  parameters:
+    - datatype: varchar
+      identifiers:
+        - millennium
+        - millennia
+        - mil
+        - mils
+        - century
+        - centuries
+        - c
+        - cent
+        - cents
+        - decade
+        - decades
+        - dec
+        - decs
+        - year
+        - years
+        - y
+        - yr
+        - yrs
+        - quarter
+        - quarters
+        - qtr
+        - qtrs
+        - month
+        - months
+        - mon
+        - mons
+        - week
+        - weeks
+        - w
+        - dayofweek
+        - dow
+        - dw
+        - weekday
+        - dayofyear
+        - doy
+        - dy
+        - yearday
+        - days
+        - days
+        - d
+        - hour
+        - hours
+        - h
+        - hr
+        - hrs
+        - minute
+        - minutes
+        - m
+        - min
+        - mins
+        - second
+        - seconds
+        - s
+        - sec
+        - secs
+        - millisecond
+        - milliseconds
+        - ms
+        - msec
+        - msecs
+        - msecond
+        - mseconds
+        - millisec
+        - millisecs
+        - millisecon
+        - microsecond
+        - microseconds
+        - microsec
+        - microsecs
+        - microsecond
+        - usecond
+        - useconds
+        - us
+        - usec
+        - usecs
+    - datatype: varchar
+  returns:
+    datatype: float
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: json_parse
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: super
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: approx_count_distinct
+  parameters:
+    - datatype: bigint
+  returns:
+    datatype: bigint
+  kind: aggregate
+  volatility: pure
+  section: aggregate
+---
+function:
+  name: sysdate
+  parameters: []
+  returns:
+    datatype: date
+  kind: scalar
+  volatility: pure
+  section: temporal
+  special: true
+---
+function:
+  name: current_date
+  parameters: []
+  returns:
+    datatype: date
+  kind: scalar
+  volatility: pure
+  section: temporal
+  special: true
+---
+function:
+  name: current_time
+  parameters: []
+  returns:
+    datatype: time
+  kind: scalar
+  volatility: pure
+  section: temporal
+  special: true
+---
+function:
+  name: current_datetime
+  parameters: []
+  returns:
+    datatype: timestamp
+  kind: scalar
+  volatility: pure
+  section: temporal
+  special: true
+---
+function:
+  name: date
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: date
+  kind: scalar
+  volatility: pure
+  section: temporal
+---
+function:
+  name: datediff
+  parameters:
+    - datatype: varchar
+      identifiers:
+        - millennium
+        - millennia
+        - mil
+        - mils
+        - century
+        - centuries
+        - c
+        - cent
+        - cents
+        - decade
+        - decades
+        - dec
+        - decs
+        - year
+        - years
+        - y
+        - yr
+        - yrs
+        - quarter
+        - quarters
+        - qtr
+        - qtrs
+        - month
+        - months
+        - mon
+        - mons
+        - week
+        - weeks
+        - w
+        - day
+        - days
+        - d
+        - hour
+        - hours
+        - h
+        - hr
+        - hrs
+        - minute
+        - minutes
+        - m
+        - min
+        - mins
+        - second
+        - seconds
+        - s
+        - sec
+        - secs
+        - millisecond
+        - milliseconds
+        - ms
+        - msec
+        - msecs
+        - msecond
+        - mseconds
+        - millisec
+        - millisecs
+        - millisecon
+        - microsecond
+        - microseconds
+        - microsec
+        - microsecs
+        - microsecond
+        - usecond
+        - useconds
+        - us
+        - usec
+        - usecs
+    - datatype: $1
+    - datatype: $2
+  returns:
+    datatype: bigint
+  kind: scalar
+  volatility: pure
+  binds:
+    - type-variable: $1
+      datatypes:
+        - date
+        - timestamp
+        - time with time zone
+        - time
+        - varchar
+    - type-variable: $2
+      datatypes:
+        - date
+        - timestamp
+        - time with time zone
+        - time
+        - varchar
+  section: temporal
+---
+function:
+  name: reclassify
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: $1
+  description:
+    "Changes the classification label of the first argument from the expected
+    classifier specified by the second argument to the desired classifier
+    specified by the third. The expected and desired classifiers
+    must belong to the same classifier group. No other classifiers attached to
+    the first argument are impacted. The function will emit a warning if the
+    the first argument does not have the expected classifier"
+  examples:
+    - input: select reclassify(12345, 'pii.clear_text', 'pii.masked') as value;
+      output: "12345"
+  section: other
+# ---
+# function:
+#   name: reclassify
+#   kind: scalar
+#   parameters:
+#     - datatype: T
+#     - datatype: varchar
+#   returns:
+#     datatype: T
+#   description: "Changes the classification label of the first argument
+#     to the desired classifier specified by the second argument. The first
+#     argument is expected to have one or more classifiers from the same
+#     classifier group as the desired classifier. All of these classifiers
+#     will be removed and replaced by the desired classifier. No other classifiers
+#     attached to the first argument will be impacted. The function will emit a warning
+#     if the first argument does not have a classifier from the expected classifier group"
+#   examples:
+#     - input: select reclassify(12345, 'pii.masked') as value;
+#       output: "12345"
+#   section: other
+---
+function:
+  name: max
+  kind: aggregate
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: $1
+---
+function:
+  name: sum
+  kind: aggregate
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: $1
+---
+function:
+  name: "-"
+  parameters:
+    - datatype: date
+    - datatype: date
+  returns:
+    datatype: duration(0)
+---
+function:
+  name: "-"
+  parameters:
+    - datatype: date
+    - datatype: int
+  returns:
+    datatype: date
+---
+function:
+  name: "+"
+  parameters:
+    - datatype: date
+    - datatype: int
+  returns:
+    datatype: date
+---
+function:
+  name: "*"
+  parameters:
+    - datatype: $1
+    - datatype: $2
+  returns:
+    datatype: $1
+  binds:
+    - type-variable: $1
+      datatypes:
+        - interval year to month
+        - interval day to second
+        - duration(0)
+        - duration(3)
+        - duration(6)
+        - duration(9)
+    - type-variable: $2
+      datatypes:
+        - bigint
+        - double
+        - float
+        - int
+        - smallint
+---
+function:
+  name: "*"
+  parameters:
+    - datatype: $2
+    - datatype: $1
+  returns:
+    datatype: $1
+  binds:
+    - type-variable: $1
+      datatypes:
+        - interval year to month
+        - interval day to second
+        - duration(0)
+        - duration(3)
+        - duration(6)
+        - duration(9)
+    - type-variable: $2
+      datatypes:
+        - bigint
+        - double
+        - float
+        - int
+        - smallint
+---
+function:
+  name: "*"
+  parameters:
+    - datatype: float
+    - datatype: float
+  returns:
+    datatype: double
+---
+function:
+  name: "/"
+  parameters:
+    - datatype: $1
+    - datatype: $2
+  returns:
+    datatype: $1
+  binds:
+    - type-variable: $1
+      datatypes:
+        - interval year to month
+        - interval day to second
+        - duration(0)
+        - duration(3)
+        - duration(6)
+        - duration(9)
+    - type-variable: $2
+      datatypes:
+        - bigint
+        - double
+        - float
+        - int
+        - smallint
+---
+function:
+  name: "date_diff"
+  parameters:
+    - datatype: varchar
+    - datatype: $1
+    - datatype: $2
+  returns:
+    datatype: bigint
+  binds:
+    - type-variable: $1
+      datatypes:
+        - date
+        - timestamp
+        - time
+    - type-variable: $2
+      datatypes:
+        - date
+        - timestamp
+        - time
+---
+function:
+  name: date_trunc
+  parameters:
+    - datatype: varchar
+    - datatype: timestamp
+  returns:
+    datatype: timestamp
+---
+function:
+  name: abs
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: $1
+  binds:
+    - type-variable: $1
+      datatypes:
+        - bigint
+        - double
+---
+function:
+  name: tan
+  parameters:
+    - datatype: float
+  returns:
+    datatype: float
+---
+function:
+  name: ltrim
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: varchar
+---
+function:
+  name: ltrim
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: varchar
+---
+function:
+  name: trim
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: varchar
+---
+function:
+  name: trim
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: varchar
+---
+function:
+  name: avg
+  kind: aggregate
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: $1
+---
+function:
+  name: exp
+  parameters:
+    - datatype: float
+  returns:
+    datatype: float
+---
+function:
+  name: var_samp
+  kind: aggregate
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: $1
+---
+function:
+  name: var_pop
+  kind: aggregate
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: $1
+---
+function:
+  name: pow
+  parameters:
+    - datatype: float
+    - datatype: float
+  returns:
+    datatype: float
+---
+function:
+  name: min
+  kind: aggregate
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: $1
+---
+function:
+  name: max
+  kind: aggregate
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: $1
+---
+function:
+  name: nullif
+  parameters:
+    - datatype: $1
+    - datatype: $1
+  returns:
+    datatype: $1
+---
+function:
+  name: concat
+  parameters:
+    - datatype: $1
+    - datatype: $1
+  returns:
+    datatype: $1
+  binds:
+    - type-variable: $1
+      datatypes:
+        - varchar
+        - varbyte
+---
+function:
+  name: split_part
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: bigint
+  returns:
+    datatype: varchar
+---
+function:
+  name: median
+  kind: aggregate
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: $1
+---
+function:
+  name: btrim
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: varchar
+---
+function:
+  name: btrim
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: varchar
+---
+function:
+  name: character_length
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: bigint
+---
+function:
+  name: chr
+  parameters:
+    - datatype: bigint
+  returns:
+    datatype: varchar
+---
+function:
+  name: lpad
+  parameters:
+    - datatype: varchar
+    - datatype: bigint
+  returns:
+    datatype: varchar
+---
+function:
+  name: lpad
+  parameters:
+    - datatype: varchar
+    - datatype: bigint
+    - datatype: varchar
+  returns:
+    datatype: varchar
+---
+function:
+  name: rpad
+  parameters:
+    - datatype: varchar
+    - datatype: bigint
+  returns:
+    datatype: varchar
+---
+function:
+  name: rpad
+  parameters:
+    - datatype: varchar
+    - datatype: bigint
+    - datatype: varchar
+  returns:
+    datatype: varchar
+---
+function:
+  name: atan2
+  parameters:
+    - datatype: float
+    - datatype: float
+  returns:
+    datatype: float
+---
+function:
+  name: ln
+  parameters:
+    - datatype: float
+  returns:
+    datatype: float
+---
+function:
+  name: lower
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: varchar
+---
+function:
+  name: replace
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: varchar
+---
+function:
+  name: left
+  parameters:
+    - datatype: varchar
+    - datatype: bigint
+  returns:
+    datatype: varchar
+---
+function:
+  name: sqrt
+  parameters:
+    - datatype: float
+  returns:
+    datatype: float
+---
+function:
+  name: stddev_samp
+  kind: aggregate
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: $1
+---
+function:
+  name: stddev
+  kind: aggregate
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: $1
+---
+function:
+  name: right
+  parameters:
+    - datatype: varchar
+    - datatype: bigint
+  returns:
+    datatype: varchar
+---
+function:
+  name: repeat
+  parameters:
+    - datatype: varchar
+    - datatype: bigint
+  returns:
+    datatype: varchar
+---
+function:
+  name: initcap
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: varchar
+---
+function:
+  name: random
+  parameters: []
+  returns:
+    datatype: float
+---
+function:
+  name: atan
+  parameters:
+    - datatype: float
+  returns:
+    datatype: float
+---
+function:
+  name: count
+  kind: aggregate
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: bigint
+---
+function:
+  name: count
+  kind: aggregate
+  parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: coalesce
+  description: returns the first non-null expression among its arguments
+  variadic: uniform
+  parameters:
+    - datatype: $1
+    - datatype: $1
+  optional-parameters: []
+  returns:
+    datatype: $1
+---
+function:
+  name: reverse
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: varchar
+---
+function:
+  name: floor
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: $1
+---
+function:
+  name: length
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: bigint
+---
+function:
+  name: strpos
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: bigint
+---
+function:
+  name: rtrim
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: varchar
+---
+function:
+  name: rtrim
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: varchar
+---
+function:
+  name: stddev_pop
+  kind: aggregate
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: $1
+---
+function:
+  name: acos
+  parameters:
+    - datatype: float
+  returns:
+    datatype: float
+---
+function:
+  name: upper
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: varchar
+---
+function:
+  name: octet_length
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: bigint
+---
+function:
+  name: cos
+  parameters:
+    - datatype: float
+  returns:
+    datatype: float
+---
+function:
+  name: round
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: $1
+---
+function:
+  name: round
+  parameters:
+    - datatype: $1
+    - datatype: bigint
+  returns:
+    datatype: $1
+---
+function:
+  name: translate
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: varchar
+---
+function:
+  name: log
+  parameters:
+    - datatype: float
+  returns:
+    datatype: float
+---
+function:
+  name: substr
+  parameters:
+    - datatype: varchar
+    - datatype: bigint
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: string
+---
+function:
+  name: substr
+  parameters:
+    - datatype: varchar
+    - datatype: bigint
+    - datatype: bigint
+  returns:
+    datatype: varchar
+  kind: scalar
+  volatility: pure
+  section: string
+---
+function:
+  name: asin
+  parameters:
+    - datatype: float
+  returns:
+    datatype: float
+---
+function:
+  name: char_length
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: bigint
+---
+function:
+  name: ascii
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: bigint
+---
+function:
+  name: sin
+  parameters:
+    - datatype: float
+  returns:
+    datatype: float
+---
+function:
+  name: bit_and
+  kind: aggregate
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: $1
+  binds:
+    - type-variable: $1
+      datatypes:
+        - bigint
+---
+function:
+  name: bit_or
+  kind: aggregate
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: $1
+  binds:
+    - type-variable: $1
+      datatypes:
+        - bigint
+---
+function:
+  name: power
+  parameters:
+    - datatype: float
+    - datatype: float
+  returns:
+    datatype: float
+---
+function:
+  name: ceil
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: $1
+  binds:
+    - type-variable: $1
+      datatypes:
+        - float
+---
+function:
+  name: bool_or
+  kind: aggregate
+  parameters:
+    - datatype: boolean
+  returns:
+    datatype: boolean
+---
+function:
+  name: bool_and
+  kind: aggregate
+  parameters:
+    - datatype: boolean
+  returns:
+    datatype: boolean
+---
+function:
+  name: dense_rank
+  kind: window
+  parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: rank
+  kind: window
+  parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: ntile
+  kind: window
+  parameters:
+    - datatype: bigint
+  returns:
+    datatype: bigint
+---
+function:
+  name: percent_rank
+  kind: window
+  parameters: []
+  returns:
+    datatype: float
+---
+function:
+  name: row_number
+  kind: window
+  parameters: []
+  returns:
+    datatype: bigint
+---
+function:
+  name: cume_dist
+  kind: window
+  parameters: []
+  returns:
+    datatype: float
+---
+function:
+  name: first_value
+  kind: window
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: $1
+---
+function:
+  name: lag
+  kind: window
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: $1
+---
+function:
+  name: lag
+  kind: window
+  parameters:
+    - datatype: $1
+    - datatype: bigint
+  returns:
+    datatype: $1
+---
+function:
+  name: last_value
+  kind: window
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: $1
+---
+function:
+  name: lead
+  kind: window
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: $1
+---
+function:
+  name: lead
+  kind: window
+  parameters:
+    - datatype: $1
+    - datatype: bigint
+  returns:
+    datatype: $1
+---
+function:
+  name: nth_value
+  kind: window
+  parameters:
+    - datatype: $1
+    - datatype: bigint
+  returns:
+    datatype: $1
+---
+function:
+  name: ratio_to_report
+  kind: window
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: float
+---
+function:
+  name: variance
+  kind: window
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: $1
+---
+function:
+  name: grouping
+  kind: aggregate
+  variadic: any
+  parameters: []
+  returns:
+    datatype: int
+---
+function:
+  name: "~"
+  kind: scalar
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: int
+---
+function:
+  name: "~~"
+  kind: scalar
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: boolean
+---
+function:
+  name: "~~*"
+  kind: scalar
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: boolean
+---
+function:
+  name: "!~~"
+  kind: scalar
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: boolean
+---
+function:
+  name: "!~~*"
+  kind: scalar
+  parameters:
+    - datatype: varchar
+    - datatype: varchar
+  returns:
+    datatype: boolean
+---
+function:
+  name: "="
+  parameters:
+    - datatype: $1
+    - datatype: boolean
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - bigint
+        - int
+        - smallint
+        - varchar
+---
+function:
+  name: "="
+  parameters:
+    - datatype: boolean
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - bigint
+        - int
+        - smallint
+        - varchar
+---
+function:
+  name: "!="
+  parameters:
+    - datatype: $1
+    - datatype: boolean
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - bigint
+        - int
+        - smallint
+        - varchar
+---
+function:
+  name: "!="
+  parameters:
+    - datatype: boolean
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - bigint
+        - int
+        - smallint
+        - varchar
+---
+function:
+  name: "<>"
+  parameters:
+    - datatype: $1
+    - datatype: boolean
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - bigint
+        - int
+        - smallint
+        - varchar
+---
+function:
+  name: "<>"
+  parameters:
+    - datatype: boolean
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - bigint
+        - int
+        - smallint
+        - varchar
+---
+function:
+  name: "="
+  parameters:
+    - datatype: $1
+    - datatype: $2
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - timestamp
+        - date
+        - time
+    - type-variable: $2
+      datatypes:
+        - varchar
+        - int
+---
+function:
+  name: "="
+  parameters:
+    - datatype: $2
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - timestamp
+        - date
+        - time
+    - type-variable: $2
+      datatypes:
+        - varchar
+        - int
+---
+function:
+  name: "!="
+  parameters:
+    - datatype: $1
+    - datatype: $2
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - timestamp
+        - date
+        - time
+    - type-variable: $2
+      datatypes:
+        - varchar
+        - int
+---
+function:
+  name: "!="
+  parameters:
+    - datatype: $2
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - timestamp
+        - date
+        - time
+    - type-variable: $2
+      datatypes:
+        - varchar
+        - int
+---
+function:
+  name: "<>"
+  parameters:
+    - datatype: $1
+    - datatype: $2
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - timestamp
+        - date
+        - time
+    - type-variable: $2
+      datatypes:
+        - varchar
+        - int
+---
+function:
+  name: "<>"
+  parameters:
+    - datatype: $2
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - timestamp
+        - date
+        - time
+    - type-variable: $2
+      datatypes:
+        - varchar
+        - int
+---
+function:
+  name: "<"
+  parameters:
+    - datatype: $1
+    - datatype: $2
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - timestamp
+        - date
+        - time
+    - type-variable: $2
+      datatypes:
+        - varchar
+        - int
+---
+function:
+  name: "<"
+  parameters:
+    - datatype: $2
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - timestamp
+        - date
+        - time
+    - type-variable: $2
+      datatypes:
+        - varchar
+        - int
+---
+function:
+  name: "<="
+  parameters:
+    - datatype: $1
+    - datatype: $2
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - timestamp
+        - date
+        - time
+    - type-variable: $2
+      datatypes:
+        - varchar
+        - int
+---
+function:
+  name: "<="
+  parameters:
+    - datatype: $2
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - timestamp
+        - date
+        - time
+    - type-variable: $2
+      datatypes:
+        - varchar
+        - int
+---
+function:
+  name: ">"
+  parameters:
+    - datatype: $1
+    - datatype: $2
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - timestamp
+        - date
+        - time
+    - type-variable: $2
+      datatypes:
+        - varchar
+        - int
+---
+function:
+  name: ">"
+  parameters:
+    - datatype: $2
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - timestamp
+        - date
+        - time
+    - type-variable: $2
+      datatypes:
+        - varchar
+        - int
+---
+function:
+  name: ">="
+  parameters:
+    - datatype: $1
+    - datatype: $2
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - timestamp
+        - date
+        - time
+    - type-variable: $2
+      datatypes:
+        - varchar
+        - int
+---
+function:
+  name: ">="
+  parameters:
+    - datatype: $2
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - timestamp
+        - date
+        - time
+    - type-variable: $2
+      datatypes:
+        - varchar
+        - int
+---
+function:
+  name: decode
+  description: compare an expression to search values and returns the matching one
+  variadic: uniform
+  parameters:
+    - datatype: $1
+    - datatype: $1
+    - datatype: $1
+  optional-parameters: []
+  returns:
+    datatype: $1
+---
+function:
+  name: hll
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: int
+---
+function:
+  name: hll_create_sketch
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: hllsketch
+---
+function:
+  name: hll_cardinality
+  parameters:
+    - datatype: hllsketch
+  returns:
+    datatype: bigint
+---
+function:
+  name: hll_combine
+  kind: aggregate
+  parameters:
+    - datatype: hllsketch
+  returns:
+    datatype: hllsketch
+---
+function:
+  name: hll_combine_sketches
+  parameters:
+    - datatype: hllsketch
+    - datatype: hllsketch
+  returns:
+    datatype: hllsketch
+
+---
+function:
+  name: st_area
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: float8
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+
+---
+function:
+  name: st_asewkt
+  kind: scalar
+  parameters:
+    - datatype: geometry
+  returns:
+    datatype: varchar
+
+---
+function:
+  name: st_asewkt
+  kind: scalar
+  parameters:
+    - datatype: geometry
+    - datatype: integer
+  returns:
+    datatype: varchar
+
+---
+function:
+  name: st_asgeojson
+  kind: scalar
+  parameters:
+    - datatype: geometry
+  returns:
+    datatype: super
+
+---
+function:
+  name: st_asgeojson
+  kind: scalar
+  parameters:
+    - datatype: geometry
+    - datatype: integer
+  returns:
+    datatype: super
+
+---
+function:
+  name: st_ashexewkb
+  kind: scalar
+  parameters:
+    - datatype: geometry
+  returns:
+    datatype: varchar
+
+---
+function:
+  name: st_ashexwkb
+  kind: scalar
+  parameters:
+    - datatype: geometry
+  returns:
+    datatype: varchar
+
+---
+function:
+  name: st_astext
+  kind: scalar
+  parameters:
+    - datatype: geometry
+  returns:
+    datatype: varchar
+---
+function:
+  name: st_astext
+  kind: scalar
+  parameters:
+    - datatype: geometry
+    - datatype: integer
+  returns:
+    datatype: varchar
+
+---
+function:
+  name: st_distance
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: $1
+  returns:
+    datatype: float8
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+
+---
+function:
+  name: st_geogfromtext
+  kind: scalar
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: geography
+
+---
+function:
+  name: st_geogfromwkb
+  kind: scalar
+  parameters:
+    - datatype: varbyte
+  returns:
+    datatype: geography
+
+---
+function:
+  name: st_length
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: float8
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+
+---
+function:
+  name: st_npoints
+  kind: scalar
+  parameters:
+    - datatype: geometry
+  returns:
+    datatype: integer
+
+---
+function:
+  name: st_perimeter
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: float8
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: addbbox
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: dropbbox
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: geometrytype
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: varchar
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: h3_fromlonglat
+  kind: scalar
+  parameters:
+    - datatype: float8
+    - datatype: float8
+    - datatype: integer
+  returns:
+    datatype: bigint
+---
+function:
+  name: h3_frompoint
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: integer
+  returns:
+    datatype: bigint
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geography
+        - geometry
+---
+function:
+  name: h3_polyfill
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: integer
+  returns:
+    datatype: super
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geography
+        - geometry
+---
+function:
+  name: st_addpoint
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: $1
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_addpoint
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: $1
+    - datatype: integer
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_angle
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: $1
+    - datatype: $1
+  returns:
+    datatype: float8
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_angle
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: $1
+    - datatype: $1
+    - datatype: $1
+  returns:
+    datatype: float8
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_asbinary
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: varbyte
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_asewkb
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: varbyte
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_azimuth
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: $1
+  returns:
+    datatype: float8
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_boundary
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_buffer
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: float8
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_buffer
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: float8
+    - datatype: integer
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_centroid
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_collect
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: $1
+  returns:
+    datatype: geometry
+---
+function:
+  name: st_collect
+  kind: aggregate
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: geometry
+---
+function:
+  name: st_contains
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_containsproperly
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_convexhull
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_coveredby
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_covers
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_crosses
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_dimension
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: integer
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_disjoint
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_distancesphere
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: $1
+  returns:
+    datatype: float8
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_distancesphere
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: $1
+    - datatype: float8
+  returns:
+    datatype: float8
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography        
+---
+function:
+  name: st_dwithin
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: $1
+    - datatype: float8
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_endpoint
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_envelope
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_equals
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_exteriorring
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_force2d
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_force3d
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_force3dm
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_force3dz
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_force4d
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_geohash
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_geohash
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: integer
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_geogfromtext
+  kind: scalar
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: geography
+---
+function:
+  name: st_geogfromwkb
+  kind: scalar
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: geography
+---
+function:
+  name: st_geometryn
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: integer
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_geometrytype
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: varchar
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_geomfromewkb
+  kind: scalar
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: geometry
+---
+function:
+  name: st_geomfromewkt
+  kind: scalar
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: geometry
+---
+function:
+  name: st_geomfromgeohash
+  kind: scalar
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: geometry
+---
+function:
+  name: st_geomfromgeohash
+  kind: scalar
+  parameters:
+    - datatype: varchar
+    - datatype: integer
+  returns:
+    datatype: geometry
+---
+function:
+  name: st_geomfromgeojson
+  kind: scalar
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: geometry
+---
+function:
+  name: st_geomfromgeosquare
+  kind: scalar
+  parameters:
+    - datatype: bigint
+  returns:
+    datatype: geometry
+---
+function:
+  name: st_geomfromgeosquare
+  kind: scalar
+  parameters:
+    - datatype: bigint
+    - datatype: integer
+  returns:
+    datatype: geometry
+---
+function:
+  name: st_geomfromtext
+  kind: scalar
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: geometry
+---
+function:
+  name: st_geomfromtext
+  kind: scalar
+  parameters:
+    - datatype: varchar
+    - datatype: integer
+  returns:
+    datatype: geometry
+---
+function:
+  name: st_geomfromwkb
+  kind: scalar
+  parameters:
+    - datatype: varchar
+  returns:
+    datatype: geometry
+---
+function:
+  name: st_geomfromwkb
+  kind: scalar
+  parameters:
+    - datatype: varchar
+    - datatype: integer
+  returns:
+    datatype: geometry
+---
+function:
+  name: st_geosquare
+  kind: scalar
+  parameters:
+    - datatype: geometry
+  returns:
+    datatype: bigint
+---
+function:
+  name: st_geosquare
+  kind: scalar
+  parameters:
+    - datatype: geometry
+    - datatype: integer
+  returns:
+    datatype: bigint
+---
+function:
+  name: st_interiorringn
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: integer
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_intersects
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: $2
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+    - type-variable: $2
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_intersection
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: $2
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+    - type-variable: $2
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_ispolygonccw
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_ispolygoncw
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_isclosed
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_iscollection
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_isempty
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_isring
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_issimple
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_isvalid
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_lengthsphere
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: float8
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_length2d
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: float8
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_linefrommultipoint
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_lineinterpolatepoint
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: float8
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_m
+  kind: scalar
+  parameters:
+    - datatype: geometry
+  returns:
+    datatype: float8
+---
+function:
+  name: st_makeenvelope
+  kind: scalar
+  parameters:
+    - datatype: float8
+    - datatype: float8
+    - datatype: float8
+    - datatype: float8
+  returns:
+    datatype: geometry
+---
+function:
+  name: st_makeenvelope
+  kind: scalar
+  parameters:
+    - datatype: float8
+    - datatype: float8
+    - datatype: float8
+    - datatype: float8
+    - datatype: integer
+  returns:
+    datatype: geometry
+---
+function:
+  name: st_makeline
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: $2
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+    - type-variable: $2
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_makepoint
+  kind: scalar
+  parameters:
+    - datatype: float8
+    - datatype: float8
+  returns:
+    datatype: geometry
+---
+function:
+  name: st_makepoint
+  kind: scalar
+  parameters:
+    - datatype: float8
+    - datatype: float8
+    - datatype: float8
+  returns:
+    datatype: geometry
+---
+function:
+  name: st_makepoint
+  kind: scalar
+  parameters:
+    - datatype: float8
+    - datatype: float8
+    - datatype: float8
+    - datatype: float8
+  returns:
+    datatype: geometry
+---
+function:
+  name: st_makepolygon
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_makepolygon
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: $2
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+    - type-variable: $2
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_memsize
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: integer
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_mmax
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: float8
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_mmin
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: float8
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_multi
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_ndims
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: integer
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_nrings
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: integer
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_numgeometries
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: integer
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_numinteriorrings
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: integer
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_numpoints
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: integer
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_perimeter2d
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: float8
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_point
+  kind: scalar
+  parameters:
+    - datatype: float8
+    - datatype: float8
+  returns:
+    datatype: geometry
+---
+function:
+  name: st_pointn
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: integer
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_points
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_polygon
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: integer
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_removepoint
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: integer
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_reverse
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_setpoint
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: integer
+    - datatype: $2
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+    - type-variable: $2
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_setsrid
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: integer
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_simplify
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: float8
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_srid
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: integer
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_startpoint
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_touches
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: $2
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+    - type-variable: $2
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_transform
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: integer
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_union
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: $2
+  returns:
+    datatype: geometry
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+    - type-variable: $2
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_within
+  kind: scalar
+  parameters:
+    - datatype: $1
+    - datatype: $2
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+    - type-variable: $2
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_x
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: float8
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_xmax
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: float8
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_xmin
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: float8
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_y
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: float8
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_ymax
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: float8
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_ymin
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: float8
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_z
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: float8
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_zmax
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: float8
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: st_zmin
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: float8
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: supportsbbox
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - geometry
+        - geography
+---
+function:
+  name: "sdf::and"
+  parameters:
+    - datatype: $1
+    - datatype: boolean
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - int
+        - double
+---
+function:
+  name: "sdf::and"
+  parameters:
+    - datatype: boolean
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - int
+        - double
+---
+function:
+  name: "sdf::or"
+  parameters:
+    - datatype: $1
+    - datatype: boolean
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - int
+        - double
+---
+function:
+  name: "sdf::or"
+  parameters:
+    - datatype: boolean
+    - datatype: $1
+  returns:
+    datatype: boolean
+  binds:
+    - type-variable: $1
+      datatypes:
+        - int
+        - double
