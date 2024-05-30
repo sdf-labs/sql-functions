@@ -1,0 +1,12 @@
+#![allow(non_snake_case)]
+{% for function_info in function_infos %}mod {{function_info.name}};
+{% endfor %}
+
+// create  UDFs
+{% for function_info in function_infos %}make_udf_function!({{function_info.name}}::Func, {{function_info.gname}}, {{function_info.name}});
+{% endfor %}
+
+// Export the functions out of this package, both as expr_fn as well as a list of functions
+export_functions!(
+{% for function_info in function_infos %}    (presto, {{function_info.name}}, {{function_info.arg_names}}, "function doc"),
+{% endfor %});
