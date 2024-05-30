@@ -1,7 +1,7 @@
-use std::{collections::HashMap, sync::Arc};
+use std::sync::Arc;
 
 use datafusion::logical_expr::ScalarUDF;
-use rust_embed::RustEmbed;
+use rust_embed::{EmbeddedFile, RustEmbed};
 
 #[macro_use]
 pub mod macros;
@@ -18,21 +18,12 @@ pub fn get_all_functions() -> Vec<(String, Arc<ScalarUDF>)> {
     presto::functions()
 }
 
-
 #[derive(RustEmbed)]
 #[folder = "assets/"]
 pub struct Asset;
 
 impl Asset {
-    pub fn load_file(filename: &str) -> Option<String> {
-        let asset = Self::get(filename.as_ref());
-        if let Some(asset) = asset {
-            let input = std::str::from_utf8(&asset.data)
-                .unwrap_or_else(|_| panic!("{}:: corrupted asset: non UTF-8", filename));
-
-            Some(input.to_string())
-        } else {
-            None
-        }
+    pub fn load_file(filename: &str) -> Option<EmbeddedFile> {
+        Self::get(filename.as_ref())
     }
 }
