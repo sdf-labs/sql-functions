@@ -1,8 +1,12 @@
 // start implementing uses
+use arrow::array::ArrayRef;
+use arrow::compute::{cast, date_part, DatePart};
 use arrow::datatypes::DataType;
 use datafusion::common::Result;
-use datafusion::logical_expr::{ColumnarValue, ScalarUDFImpl, Signature};
+use datafusion::logical_expr::{ColumnarValue, ScalarUDFImpl, Signature, Volatility};
 use std::any::Any;
+
+use crate::utils::make_scalar_function;
 // end implementing uses
 
 #[derive(Debug)]
@@ -13,16 +17,9 @@ pub(super) struct Func {
 impl Func {
     pub fn new() -> Self {        
         // start implementing constructor
-        // Example
-        // use DataType::*;
-        // Self {
-        //     signature:
-        //     Signature::one_of(
-        //         vec![Exact(vec![Float32]), Exact(vec![Float64])],
-        //         Volatility::Immutable,
-        //     )
-        // }
-        todo!()
+        Self {
+            signature: Signature::exact(vec![DataType::Date32], Volatility::Immutable),
+        }
         // end implementing constructor
     }
 }
@@ -32,7 +29,7 @@ impl ScalarUDFImpl for Func {
         self
     }
     fn name(&self) -> &str {
-        "{{ name }}"
+        "month"
     }
 
     fn signature(&self) -> &Signature {
@@ -41,16 +38,20 @@ impl ScalarUDFImpl for Func {
 
     // start implementing return_type
     fn return_type(&self, _arg_types: &[DataType]) -> Result<DataType> {
-        todo!()
+        Ok(DataType::Int64)
     }
     // end implementing return_type
 
     // start implementing invoke
-    fn invoke(&self, _args: &[ColumnarValue]) -> Result<ColumnarValue> {
-        todo!()
+    fn invoke(&self, args: &[ColumnarValue]) -> Result<ColumnarValue> {
+        make_scalar_function(month, vec![])(args)
     }
     // end implementing invoke
 }
 
 // start implementing footer
+fn month(args: &[ArrayRef]) -> Result<ArrayRef> {
+    let array = &args[0];
+    Ok(cast(date_part(array, DatePart::Month)?.as_ref(), &DataType::Int64)?)
+}
 // end implementing footer

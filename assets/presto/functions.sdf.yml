@@ -18,7 +18,7 @@ function:
   optional-parameters: []
   returns:
     datatype: tinyint
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: abs
@@ -27,7 +27,7 @@ function:
   optional-parameters: []
   returns:
     datatype: smallint
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: abs
@@ -36,7 +36,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: abs
@@ -45,7 +45,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: abs
@@ -54,7 +54,7 @@ function:
   optional-parameters: []
   returns:
     datatype: decimal(p, s)
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: abs
@@ -63,7 +63,7 @@ function:
   optional-parameters: []
   returns:
     datatype: real
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: acos
@@ -412,6 +412,8 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: !datafusion
+    udf: array_to_string
 ---
 function:
   name: array_join
@@ -422,6 +424,8 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: !datafusion
+    udf: array_to_string
 ---
 function:
   name: array_max
@@ -1049,6 +1053,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: !datafusion
 ---
 function:
   name: classify
@@ -1075,7 +1080,7 @@ function:
     - datatype: $1
   returns:
     datatype: $1
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: codepoint
@@ -1159,6 +1164,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: !datafusion
 ---
 function:
   name: concat
@@ -1168,7 +1174,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: concat
@@ -1178,7 +1184,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varbinary
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: concat_ws
@@ -1188,7 +1194,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: concat_ws
@@ -1198,7 +1204,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: contains
@@ -1373,6 +1379,7 @@ function:
   returns:
     datatype: date
   special: true
+  implemented-by: !datafusion  
 ---
 function:
   name: current_groups
@@ -1520,6 +1527,8 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: !datafusion
+    udf: to_char
 ---
 function:
   name: date_format
@@ -1529,6 +1538,8 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: !datafusion
+    udf: to_char
 ---
 function:
   name: date_parse
@@ -1547,7 +1558,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: date_part
@@ -1557,7 +1568,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: date_part
@@ -1567,7 +1578,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: date_trunc
@@ -1577,7 +1588,7 @@ function:
   optional-parameters: []
   returns:
     datatype: time(p)
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: date_trunc
@@ -1587,7 +1598,7 @@ function:
   optional-parameters: []
   returns:
     datatype: timestamp(p)
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: date_trunc
@@ -1597,6 +1608,7 @@ function:
   optional-parameters: []
   returns:
     datatype: date
+  implemented-by: !datafusion
 ---
 function:
   name: day
@@ -1605,6 +1617,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: native
 ---
 function:
   name: day
@@ -2237,7 +2250,7 @@ function:
   optional-parameters: []
   returns:
     datatype: timestamp
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: from_unixtime
@@ -2248,6 +2261,7 @@ function:
   optional-parameters: []
   returns:
     datatype: timestamp
+  implemented-by: !datafusion
 ---
 function:
   name: from_unixtime
@@ -2257,6 +2271,7 @@ function:
   optional-parameters: []
   returns:
     datatype: timestamp
+  implemented-by: !datafusion
 ---
 function:
   name: from_unixtime_nanos
@@ -3030,7 +3045,8 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  implemented-by: native
+  implemented-by: !datafusion
+    udf: character_length
 ---
 function:
   name: length
@@ -3039,7 +3055,18 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  implemented-by: native
+  implemented-by: !datafusion
+    udf: character_length
+---
+function:
+  name: length
+  parameters:
+  - datatype: array<$1>
+  optional-parameters: []
+  returns:
+    datatype: bigint
+  implemented-by: !datafusion
+    udf: array_length
 ---
 function:
   name: levenshtein_distance
@@ -3130,6 +3157,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: !datafusion
 ---
 function:
   name: lower
@@ -3138,6 +3166,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: !datafusion
 ---
 function:
   name: lpad
@@ -3166,6 +3195,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: !datafusion
 ---
 function:
   name: ltrim
@@ -3175,6 +3205,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: !datafusion
 ---
 function:
   name: ltrim
@@ -3183,6 +3214,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: !datafusion
 ---
 function:
   name: ltrim
@@ -3192,6 +3224,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: !datafusion
 ---
 function:
   name: luhn_check
@@ -3583,6 +3616,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: native
 ---
 function:
   name: month
@@ -3684,6 +3718,7 @@ function:
   optional-parameters: []
   returns:
     datatype: timestamp
+  implemented-by: !datafusion
 ---
 function:
   name: nth_value
@@ -3715,7 +3750,7 @@ function:
   optional-parameters: []
   returns:
     datatype: $1
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: numeric_histogram
@@ -4275,7 +4310,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: regexp_replace
@@ -4285,7 +4320,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: regexp_replace
@@ -4296,7 +4331,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: regexp_split
@@ -4409,6 +4444,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: !datafusion
 ---
 function:
   name: replace
@@ -4418,6 +4454,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: !datafusion
 ---
 function:
   name: reverse
@@ -4461,7 +4498,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: round
@@ -4470,7 +4507,7 @@ function:
   optional-parameters: []
   returns:
     datatype: real
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: round
@@ -4480,7 +4517,7 @@ function:
   optional-parameters: []
   returns:
     datatype: real
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: round
@@ -4489,6 +4526,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !datafusion
 ---
 function:
   name: round
@@ -4498,6 +4536,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !datafusion
 ---
 function:
   name: round
@@ -4506,6 +4545,7 @@ function:
   optional-parameters: []
   returns:
     datatype: decimal(rp, rs)
+  implemented-by: !datafusion
 ---
 function:
   name: round
@@ -4515,6 +4555,7 @@ function:
   optional-parameters: []
   returns:
     datatype: decimal(rp, s)
+  implemented-by: !datafusion
 ---
 function:
   name: round
@@ -4523,7 +4564,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: round
@@ -4532,6 +4573,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !datafusion
 ---
 function:
   name: round
@@ -4541,6 +4583,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !datafusion
 ---
 function:
   name: round
@@ -4549,6 +4592,7 @@ function:
   optional-parameters: []
   returns:
     datatype: smallint
+  implemented-by: !datafusion
 ---
 function:
   name: round
@@ -4558,6 +4602,7 @@ function:
   optional-parameters: []
   returns:
     datatype: smallint
+  implemented-by: !datafusion
 ---
 function:
   name: round
@@ -4566,6 +4611,7 @@ function:
   optional-parameters: []
   returns:
     datatype: tinyint
+  implemented-by: !datafusion
 ---
 function:
   name: round
@@ -4575,6 +4621,7 @@ function:
   optional-parameters: []
   returns:
     datatype: tinyint
+  implemented-by: !datafusion
 ---
 function:
   name: row_number
@@ -4612,6 +4659,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: !datafusion
 ---
 function:
   name: rtrim
@@ -4621,6 +4669,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: !datafusion
 ---
 function:
   name: rtrim
@@ -4629,6 +4678,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: !datafusion
 ---
 function:
   name: rtrim
@@ -4638,6 +4688,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: !datafusion
 ---
 function:
   name: second
@@ -4932,7 +4983,8 @@ function:
   optional-parameters: []
   returns:
     datatype: array<varchar>
-  implemented-by: native
+  implemented-by: !datafusion
+    udf: string_to_array
 ---
 function:
   name: split
@@ -4943,7 +4995,8 @@ function:
   optional-parameters: []
   returns:
     datatype: array<varchar>
-  implemented-by: native
+  implemented-by: !datafusion
+    udf: split_part
 ---
 function:
   name: split_part
@@ -4954,7 +5007,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: split_to_map
@@ -5596,7 +5649,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: substr
@@ -5607,7 +5660,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: substr
@@ -5617,7 +5670,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varbinary
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: substr
@@ -5628,7 +5681,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varbinary
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: substring
@@ -5901,6 +5954,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: native
 ---
 function:
   name: to_ieee754_32
@@ -5974,6 +6028,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
 function:
   name: to_utf8
@@ -6027,6 +6082,8 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: !datafusion
+    udf: btrim
 ---
 function:
   name: trim
@@ -6036,6 +6093,8 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: !datafusion
+    udf: btrim
 ---
 function:
   name: trim_array
@@ -6094,6 +6153,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: !datafusion
 ---
 function:
   name: upper
@@ -6102,6 +6162,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: !datafusion
 ---
 function:
   name: url_decode
@@ -6438,6 +6499,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: native
 ---
 function:
   name: year
