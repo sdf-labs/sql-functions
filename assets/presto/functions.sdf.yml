@@ -18,7 +18,7 @@ function:
   optional-parameters: []
   returns:
     datatype: tinyint
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: abs
@@ -27,7 +27,7 @@ function:
   optional-parameters: []
   returns:
     datatype: smallint
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: abs
@@ -36,7 +36,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: abs
@@ -45,7 +45,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: abs
@@ -54,7 +54,7 @@ function:
   optional-parameters: []
   returns:
     datatype: decimal(p, s)
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: abs
@@ -63,7 +63,7 @@ function:
   optional-parameters: []
   returns:
     datatype: real
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: acos
@@ -72,6 +72,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
 function:
   name: all_match
@@ -385,6 +386,7 @@ function:
   optional-parameters: []
   returns:
     datatype: array<$3>
+  implemented-by: !datafusion
 ---
 function:
   name: array_except
@@ -394,6 +396,7 @@ function:
   optional-parameters: []
   returns:
     datatype: array<$3>
+  implemented-by: !datafusion
 ---
 function:
   name: array_intersect
@@ -403,6 +406,7 @@ function:
   optional-parameters: []
   returns:
     datatype: array<$3>
+  implemented-by: !datafusion
 ---
 function:
   name: array_join
@@ -447,6 +451,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !datafusion
 ---
 function:
   name: array_remove
@@ -456,6 +461,7 @@ function:
   optional-parameters: []
   returns:
     datatype: array<$3>
+  implemented-by: !datafusion
 ---
 function:
   name: array_sort
@@ -464,6 +470,7 @@ function:
   optional-parameters: []
   returns:
     datatype: array<$3>
+  implemented-by: !datafusion
 ---
 function:
   name: array_sort
@@ -482,6 +489,7 @@ function:
   optional-parameters: []
   returns:
     datatype: array<$3>
+  implemented-by: !datafusion
 ---
 function:
   name: arrays_overlap
@@ -499,6 +507,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
 function:
   name: at_timezone
@@ -516,6 +525,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
 function:
   name: atan2
@@ -525,6 +535,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
 function:
   name: avg
@@ -880,6 +891,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !datafusion
 ---
 function:
   name: cardinality
@@ -912,6 +924,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
 function:
   name: ceil
@@ -936,6 +949,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
 function:
   name: ceil
@@ -952,6 +966,7 @@ function:
   optional-parameters: []
   returns:
     datatype: real
+  implemented-by: !datafusion
 ---
 function:
   name: ceil
@@ -992,6 +1007,8 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
+    udf: ceil
 ---
 function:
   name: ceiling
@@ -1008,6 +1025,8 @@ function:
   optional-parameters: []
   returns:
     datatype: real
+  implemented-by: !datafusion
+    udf: ceil
 ---
 function:
   name: ceiling
@@ -1049,6 +1068,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: !datafusion
 ---
 function:
   name: classify
@@ -1075,7 +1095,7 @@ function:
     - datatype: $1
   returns:
     datatype: $1
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: codepoint
@@ -1084,6 +1104,8 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !datafusion
+    udf: ascii
 ---
 function:
   name: color
