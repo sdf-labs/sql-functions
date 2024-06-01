@@ -1638,7 +1638,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  implemented-by: native
+  implemented-by: rust
 ---
 function:
   name: day
@@ -3637,7 +3637,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  implemented-by: native
+  implemented-by: rust
 ---
 function:
   name: month
@@ -5975,7 +5975,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  implemented-by: native
+  implemented-by: rust
 ---
 function:
   name: to_ieee754_32
@@ -6520,7 +6520,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  implemented-by: native
+  implemented-by: rust
 ---
 function:
   name: year
