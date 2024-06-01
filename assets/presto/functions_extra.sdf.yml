@@ -301,7 +301,7 @@ function:
   optional-parameters: []
   returns:
     datatype: timestamp
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: make_array
@@ -310,7 +310,7 @@ function:
     - datatype: $1
   returns:
     datatype: array<$1>
-  implemented-by: native
+  implemented-by: !datafusion
 ---
 function:
   name: length_array
@@ -319,4 +319,6 @@ function:
     - datatype: array<$1>
   returns:
     datatype: bigint
-  implemented-by: native
+  implemented-by: !datafusion
+    udf: array_length
+
