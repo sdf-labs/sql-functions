@@ -63,7 +63,6 @@ jobs:
           BRANCH_NAME=release_${{ needs.create_git_release.outputs.releaseVersionNumber }}
           git checkout -b github/$BRANCH_NAME
           git add Cargo.toml
-          git add Cargo.lock
           git commit -m "Bump version to ${{ needs.create_git_release.outputs.releaseVersionNumber }}"
           git push --set-upstream origin github/$BRANCH_NAME
           gh pr create --base main  --head github/$BRANCH_NAME --title "Updating Version" --body "Updating version to ${{ needs.create_git_release.outputs.releaseVersionNumber }} due to release."
