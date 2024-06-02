@@ -53,12 +53,6 @@ jobs:
           export VERSION_NUMBER=$(echo ${{ needs.create_git_release.outputs.releaseVersionNumber }} | sed 's/^v//')
           cargo install cargo-edit
           cargo set-version --package sql-functions $VERSION_NUMBER
-      ## RELEASE 
-      - name: Publish Crate
-        shell: bash
-        run: |
-          cargo publish --token ${{ secrets.CRATES_IO_API_KEY }}
-
       ## POST RELEASE CONFIGURATION
       - name: Commit and push
         env:
@@ -69,8 +63,11 @@ jobs:
           BRANCH_NAME=release_${{ needs.create_git_release.outputs.releaseVersionNumber }}
           git checkout -b github/$BRANCH_NAME
           git add Cargo.toml
-          git add Cargo.lock
           git commit -m "Bump version to ${{ needs.create_git_release.outputs.releaseVersionNumber }}"
           git push --set-upstream origin github/$BRANCH_NAME
           gh pr create --base main  --head github/$BRANCH_NAME --title "Updating Version" --body "Updating version to ${{ needs.create_git_release.outputs.releaseVersionNumber }} due to release."
-      
+      ## RELEASE 
+      - name: Publish Crate
+        shell: bash
+        run: |
+          cargo publish --token ${{ secrets.CRATES_IO_API_KEY }}
