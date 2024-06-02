@@ -1,0 +1,54 @@
+name: Publish Crate
+
+on:
+  workflow_dispatch:
+
+jobs:
+  publish-crate:
+    name: "Checkout, Create Release Branch, Bump Version, PR to Main ↑"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Token from Github CICD Application
+        id: cicd-app
+        uses: getsentry/action-github-app-token@v3
+        with:
+          app_id: ${{ secrets.CICD_APP_ID }}
+          private_key: ${{ secrets.CICD_APP_PRIVATE_KEY }}
+      ## SETUP
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Get Cargo ToolChain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          profile: minimal
+          override: true
+      ## RELEASE CONFIGURATION
+      - name: Bump release version
+        run: |
+          export VERSION_NUMBER=$(echo ${{ inputs.versionNumber }} | sed 's/^v//')
+          cargo install cargo-edit
+          cargo set-version --package sql-functions $VERSION_NUMBER
+      ## RELEASE 
+      - name: Publish Crate
+        shell: bash
+        run: |
+          cargo publish --token ${{ secrets.CRATES_IO_API_KEY }}
+
+      ## POST RELEASE CONFIGURATION
+      - name: Commit and push
+        env:
+          GH_TOKEN: ${{ steps.cicd-app.outputs.token }}
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          BRANCH_NAME=release_${{ inputs.versionNumber }}
+          git checkout -b github/$BRANCH_NAME
+          git add Cargo.toml
+          git add Cargo.lock
+          git commit -m "Bump version to ${{ inputs.versionNumber }}"
+          git push --set-upstream origin github/$BRANCH_NAME
+          gh pr create --base main  --head github/$BRANCH_NAME --title "Updating Version" --body "Updating version to ${{ inputs.versionNumber }} due to release."
