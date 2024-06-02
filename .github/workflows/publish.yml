@@ -1,12 +1,33 @@
 name: Publish Crate
-
 on:
   workflow_dispatch:
+    inputs:
+      versionNumber:
+        description: "Version Number (ie 5.5.0)"
+        default: "last"
+        required: true
+      dryRun:
+        description: "Dry Run"
+        type: boolean
+        default: false
+        required: false
 
 jobs:
+  create_git_release:
+    name: "Create Git Release 🕊️"
+    uses: ./.github/workflows/step.create_git_release.yml
+    secrets:
+      CICD_APP_ID: ${{ secrets.CICD_APP_ID }}
+      CICD_APP_PRIVATE_KEY: ${{ secrets.CICD_APP_PRIVATE_KEY }}
+    with:
+      versionNumber: ${{ github.event.inputs.versionNumber }}
+      dryRun: ${{ github.event.inputs.dryRun == 'true' }}
+
   publish-crate:
     name: "Checkout, Create Release Branch, Bump Version, PR to Main ↑"
     runs-on: ubuntu-latest
+    needs:
+      - create_git_release
     steps:
       - name: Get Token from Github CICD Application
         id: cicd-app
@@ -29,7 +50,7 @@ jobs:
       ## RELEASE CONFIGURATION
       - name: Bump release version
         run: |
-          export VERSION_NUMBER=$(echo ${{ inputs.versionNumber }} | sed 's/^v//')
+          export VERSION_NUMBER=$(echo ${{ needs.create_git_release.outputs.releaseVersionNumber }} | sed 's/^v//')
           cargo install cargo-edit
           cargo set-version --package sql-functions $VERSION_NUMBER
       ## RELEASE 
@@ -45,10 +66,11 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          BRANCH_NAME=release_${{ inputs.versionNumber }}
+          BRANCH_NAME=release_${{ needs.create_git_release.outputs.releaseVersionNumber }}
           git checkout -b github/$BRANCH_NAME
           git add Cargo.toml
           git add Cargo.lock
-          git commit -m "Bump version to ${{ inputs.versionNumber }}"
+          git commit -m "Bump version to ${{ needs.create_git_release.outputs.releaseVersionNumber }}"
           git push --set-upstream origin github/$BRANCH_NAME
-          gh pr create --base main  --head github/$BRANCH_NAME --title "Updating Version" --body "Updating version to ${{ inputs.versionNumber }} due to release."
+          gh pr create --base main  --head github/$BRANCH_NAME --title "Updating Version" --body "Updating version to ${{ needs.create_git_release.outputs.releaseVersionNumber }} due to release."
+      
