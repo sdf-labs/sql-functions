@@ -3,10 +3,10 @@ function:
   name: abs
   description: returns absolute value of x
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: abs
@@ -54,7 +54,7 @@ function:
   - datatype: $1
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: approximate_jaccard_index
@@ -85,7 +85,7 @@ function:
   - datatype: $1
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: approx_percentile
@@ -144,7 +144,7 @@ function:
   kind: aggregate
   parameters:
   - datatype: $1
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: array
@@ -155,8 +155,8 @@ function:
   kind: aggregate
   parameters:
   - datatype: $1
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: array
@@ -167,7 +167,7 @@ function:
   kind: aggregate
   parameters:
   - datatype: $1
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: object
@@ -188,7 +188,7 @@ function:
   kind: aggregate
   parameters:
   - datatype: object
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: object
@@ -207,7 +207,7 @@ function:
   description: Array containing most common k items and their frequencies
   parameters:
   - datatype: object
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: array
@@ -450,8 +450,8 @@ function:
   name: array_generate_range
   description: the resulting array
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: array
@@ -460,9 +460,9 @@ function:
   name: array_generate_range
   description: the resulting array
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: array
@@ -472,7 +472,7 @@ function:
   description: the resulting array
   parameters:
   - datatype: array
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: $1
   optional-parameters: []
   returns:
@@ -483,7 +483,7 @@ function:
   description: the resulting array
   parameters:
   - datatype: array
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: $1
   optional-parameters: []
   returns:
@@ -553,7 +553,7 @@ function:
   - datatype: array
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: array_position
@@ -563,7 +563,7 @@ function:
   - datatype: array
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: array_prepend
@@ -610,7 +610,7 @@ function:
   description: the resulting array
   parameters:
   - datatype: array
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: array
@@ -620,7 +620,7 @@ function:
   description: the resulting array
   parameters:
   - datatype: array
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: array
@@ -632,7 +632,7 @@ function:
   - datatype: array
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: array_size
@@ -641,7 +641,7 @@ function:
   - datatype: array
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: array_size
@@ -650,15 +650,15 @@ function:
   - datatype: variant
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: array_slice
   description: the resulting array
   parameters:
   - datatype: array
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: array
@@ -668,8 +668,8 @@ function:
   description: the resulting array
   parameters:
   - datatype: array
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: array
@@ -761,7 +761,7 @@ function:
   - datatype: varchar
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: asin
@@ -833,28 +833,28 @@ function:
   - datatype: variant
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: as_decimal
   description: Use VARIANT value as decimal fixed-point
   parameters:
   - datatype: variant
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: as_decimal
   description: Use VARIANT value as decimal fixed-point
   parameters:
   - datatype: variant
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: as_double
@@ -872,17 +872,17 @@ function:
   - datatype: variant
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: as_integer
   description: Use VARIANT value as integer
   parameters:
   - datatype: variant
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: as_number
@@ -891,28 +891,28 @@ function:
   - datatype: variant
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: as_number
   description: Use VARIANT value as as decimal fixed-point
   parameters:
   - datatype: variant
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: as_number
   description: Use VARIANT value as as decimal fixed-point
   parameters:
   - datatype: variant
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: as_object
@@ -955,7 +955,7 @@ function:
   description: Use VARIANT value as TIMESTAMP_LTZ
   parameters:
   - datatype: variant
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: timestamp
@@ -974,7 +974,7 @@ function:
   description: Use VARIANT value as TIMESTAMP_NTZ
   parameters:
   - datatype: variant
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: timestamp
@@ -993,7 +993,7 @@ function:
   description: Use VARIANT value as TIMESTAMP_TZ
   parameters:
   - datatype: variant
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: timestamp
@@ -1040,10 +1040,10 @@ function:
   description: Returns the average of the values in a group. Null values are ignored.
   kind: aggregate
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: avg
@@ -1107,7 +1107,7 @@ function:
   description: return encoded string
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -1117,7 +1117,7 @@ function:
   description: return encoded string
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: varchar
   optional-parameters: []
   returns:
@@ -1137,7 +1137,7 @@ function:
   description: return encoded string
   parameters:
   - datatype: binary
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -1147,7 +1147,7 @@ function:
   description: return encoded string
   parameters:
   - datatype: binary
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: varchar
   optional-parameters: []
   returns:
@@ -1166,65 +1166,65 @@ function:
   name: bitand
   description: returns result of bitwise AND of integers x and y
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: bitandagg
   description: Returns the bitwise AND of a column. Null values are ignored.
   kind: aggregate
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: bitand_agg
   description: Returns the bitwise AND of a column. Null values are ignored.
   kind: aggregate
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: bitcount
   description: returns the number of bits set in integer x
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: bitmap_bit_position
   description: relative position in bitmap
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: bitmap_bucket_number
   description: bucket index of the destination bitmap
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: bitmap_construct_agg
   description: bitmap
   kind: aggregate
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: binary
@@ -1236,7 +1236,7 @@ function:
   - datatype: binary
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: bitmap_or_agg
@@ -1252,120 +1252,120 @@ function:
   name: bitnot
   description: returns result of bitwise negation of integer x
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: bitor
   description: returns result of bitwise OR of integers x and y
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: bitoragg
   description: Returns the bitwise OR of a column. Null values are ignored.
   kind: aggregate
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: bitor_agg
   description: Returns the bitwise OR of a column. Null values are ignored.
   kind: aggregate
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: bitshiftleft
   description: returns result of arg1 bit-shifted left by arg2 bits
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: bitshiftright
   description: returns result of arg1 bit-shifted right by arg2 bits
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: bitxor
   description: returns result of bitwise XOR of integers x and y
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: bitxoragg
   description: Returns the bitwise XOR of a column. Null values are ignored.
   kind: aggregate
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: bitxor_agg
   description: Returns the bitwise XOR of a column. Null values are ignored.
   kind: aggregate
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: bit_and
   description: returns result of bitwise AND of integers x and y
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: bit_andagg
   description: Returns the bitwise AND of a column. Null values are ignored.
   kind: aggregate
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: bit_and_agg
   description: Returns the bitwise AND of a column. Null values are ignored.
   kind: aggregate
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: bit_length
@@ -1374,7 +1374,7 @@ function:
   - datatype: varchar
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: bit_length
@@ -1383,103 +1383,103 @@ function:
   - datatype: binary
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: bit_not
   description: returns result of bitwise negation of integer x
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: bit_or
   description: returns result of bitwise OR of integers x and y
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: bit_oragg
   description: Returns the bitwise OR of a column. Null values are ignored.
   kind: aggregate
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: bit_or_agg
   description: Returns the bitwise OR of a column. Null values are ignored.
   kind: aggregate
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: bit_shiftleft
   description: returns result of arg1 bit-shifted left by arg2 bits
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: bit_shiftright
   description: returns result of arg1 bit-shifted right by arg2 bits
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: bit_xor
   description: returns result of bitwise XOR of integers x and y
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: bit_xoragg
   description: Returns the bitwise XOR of a column. Null values are ignored.
   kind: aggregate
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: bit_xor_agg
   description: Returns the bitwise XOR of a column. Null values are ignored.
   kind: aggregate
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: booland
   description: returns result of logical (Boolean) AND of x and y
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: boolean
@@ -1489,7 +1489,7 @@ function:
   description: Returns the logical (boolean) AND of a column. Null values are ignored.
   kind: aggregate
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: boolean
@@ -1498,7 +1498,7 @@ function:
   name: boolnot
   description: returns result of logical (Boolean) NOT of x
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: boolean
@@ -1507,8 +1507,8 @@ function:
   name: boolor
   description: returns result of logical (Boolean) OR of x and y
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: boolean
@@ -1518,7 +1518,7 @@ function:
   description: Returns the logical (boolean) OR of a column. Null values are ignored.
   kind: aggregate
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: boolean
@@ -1527,8 +1527,8 @@ function:
   name: boolxor
   description: returns result of logical (Boolean) XOR of x and y
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: boolean
@@ -1538,7 +1538,7 @@ function:
   description: Returns the logical (boolean) XOR of a column. Null values are ignored.
   kind: aggregate
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: boolean
@@ -1556,20 +1556,20 @@ function:
   name: ceil
   description: round to the nearest integer not smaller than input
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: ceil
   description: round to the nearest integer not smaller than input
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: ceil
@@ -1594,7 +1594,7 @@ function:
   name: char
   description: Convert an ASCII or Unicode code into a single character
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -1607,7 +1607,7 @@ function:
   - datatype: varchar
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: charindex
@@ -1615,10 +1615,10 @@ function:
   parameters:
   - datatype: varchar
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: charindex
@@ -1628,7 +1628,7 @@ function:
   - datatype: binary
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: charindex
@@ -1636,10 +1636,10 @@ function:
   parameters:
   - datatype: binary
   - datatype: binary
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: check_json
@@ -1673,7 +1673,7 @@ function:
   name: chr
   description: Convert an ASCII or Unicode code into a single character
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -1757,7 +1757,7 @@ function:
   - datatype: $1
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: conditional_true_event
@@ -1766,7 +1766,7 @@ function:
   - datatype: boolean
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: contains
@@ -1835,7 +1835,7 @@ function:
   - datatype: $1
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: count_if
@@ -1845,7 +1845,7 @@ function:
   - datatype: boolean
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: count_if
@@ -1866,7 +1866,7 @@ function:
   - datatype: $1
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: covar_pop
@@ -2016,7 +2016,7 @@ function:
   name: current_time
   description: Returns the current time.
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: time
@@ -2035,7 +2035,7 @@ function:
   name: current_timestamp
   description: Returns the current timestamp.
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: timestamp
@@ -2047,7 +2047,7 @@ function:
   parameters: []
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: current_user
@@ -2124,9 +2124,9 @@ function:
   name: datefromparts
   description: Construct a date from individual components
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: date
@@ -2135,9 +2135,9 @@ function:
   name: date_from_parts
   description: Construct a date from individual components
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: date
@@ -2315,18 +2315,18 @@ function:
   parameters: []
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: div
   description: Divides two numbers
   variadic: uniform
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: div
@@ -2344,11 +2344,11 @@ function:
   description: Divides two numbers; returns 0 if divisor is 0
   variadic: uniform
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: div0
@@ -2365,11 +2365,11 @@ function:
   name: div0null
   description: Divides two numbers; returns 0 if divisor is 0 or null
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: div0null
@@ -2389,7 +2389,7 @@ function:
   - datatype: varchar
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: editdistance
@@ -2397,10 +2397,10 @@ function:
   parameters:
   - datatype: varchar
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: encrypt
@@ -2633,10 +2633,10 @@ function:
   name: factorial
   description: Factorial of f
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: first_value
@@ -2652,20 +2652,20 @@ function:
   name: floor
   description: round to the nearest integer not greater than input
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: floor
   description: round to the nearest integer not greater than input
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: floor
@@ -2700,11 +2700,11 @@ function:
   name: getbit
   description: returns result of the bit of base in specific bit index
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: getdate
@@ -2740,7 +2740,7 @@ function:
   description: DDL used to create the object
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -2750,7 +2750,7 @@ function:
   description: DDL used to create the object
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: boolean
   optional-parameters: []
   returns:
@@ -2870,7 +2870,7 @@ function:
   description: Returns query stats
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: variant
@@ -2903,13 +2903,13 @@ function:
   - datatype: $1
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: h3_cell_to_boundary
   description: Returns a polygon containing the h3 integer cell boundaries
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: geography
@@ -2927,8 +2927,8 @@ function:
   name: h3_cell_to_children
   description: Returns the H3 children cells as integers for a given H3 index
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: array
@@ -2938,7 +2938,7 @@ function:
   description: Returns the H3 children cells as strings for a given H3 index
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: array
@@ -2947,18 +2947,18 @@ function:
   name: h3_cell_to_parent
   description: Returns the H3 parent cell as an integer for a given H3 index
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: h3_cell_to_parent
   description: Returns the H3 parent cell as a string for a given H3 index
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -2967,7 +2967,7 @@ function:
   name: h3_cell_to_point
   description: Returns a point (geography) corresponding to the center of the h3 integer cell passed
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: geography
@@ -2986,7 +2986,7 @@ function:
   description: Returns the full spherical based covering of H3 cells as integers for any geography type
   parameters:
   - datatype: geography
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: array
@@ -2996,7 +2996,7 @@ function:
   description: Returns the full spherical based covering of H3 cells as strings for any geography type
   parameters:
   - datatype: geography
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: array
@@ -3005,10 +3005,10 @@ function:
   name: h3_get_resolution
   description: Returns the cell resolution for a given H3 integer cell
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: h3_get_resolution
@@ -3017,14 +3017,14 @@ function:
   - datatype: varchar
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: h3_grid_disk
   description: Returns all H3 cells that are at most k steps away from the input cell
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: array
@@ -3034,7 +3034,7 @@ function:
   description: Returns all H3 cells that are at most k steps away from the input cell
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: array
@@ -3043,11 +3043,11 @@ function:
   name: h3_grid_distance
   description: Returns the number of H3 cells that are betweem two input cells
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: h3_grid_distance
@@ -3057,14 +3057,14 @@ function:
   - datatype: varchar
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: h3_grid_path
   description: Returns all H3 cells that are along the straight line connecting both cells
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: array
@@ -3083,7 +3083,7 @@ function:
   name: h3_int_to_string
   description: Returns the H3 cell formatted as a string given its integer representation
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -3094,10 +3094,10 @@ function:
   parameters:
   - datatype: double
   - datatype: double
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: h3_latlng_to_cell_string
@@ -3105,7 +3105,7 @@ function:
   parameters:
   - datatype: double
   - datatype: double
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -3115,17 +3115,17 @@ function:
   description: Returns an H3 integer cell that corresponds to a given point (geography) and resolution
   parameters:
   - datatype: geography
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: h3_point_to_cell_string
   description: Returns an H3 string cell that corresponds to a given point (geography) and resolution
   parameters:
   - datatype: geography
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -3135,7 +3135,7 @@ function:
   description: Returns the planar centroid based covering of H3 cells as integers for a polygon/multipolygon
   parameters:
   - datatype: geography
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: array
@@ -3145,7 +3145,7 @@ function:
   description: Returns the planar centroid based covering of H3 cells as strings for a polygon/multipolygon
   parameters:
   - datatype: geography
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: array
@@ -3157,7 +3157,7 @@ function:
   - datatype: varchar
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: hash
@@ -3167,7 +3167,7 @@ function:
   - datatype: $1
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: hash_agg
@@ -3178,7 +3178,7 @@ function:
   - datatype: $1
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: haversine
@@ -3224,7 +3224,7 @@ function:
   description: return encoded string
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -3243,7 +3243,7 @@ function:
   description: return encoded string
   parameters:
   - datatype: binary
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -3257,7 +3257,7 @@ function:
   - datatype: $1
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: hll_accumulate
@@ -3287,7 +3287,7 @@ function:
   - datatype: binary
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: hll_export
@@ -3364,8 +3364,8 @@ function:
   description: Returns the first string with a substring at the given position and length replaced with the second string
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   - datatype: varchar
   optional-parameters: []
   returns:
@@ -3584,7 +3584,7 @@ function:
   - datatype: varchar
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: json_extract_path_text
@@ -3601,7 +3601,7 @@ function:
   description: Returns the sample kurtosis of the values in a group. Null values are ignored.
   kind: aggregate
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: double
@@ -3630,7 +3630,7 @@ function:
   description: Returns the value of an expression at the specified offset row
   parameters:
   - datatype: $1
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: $1
@@ -3640,7 +3640,7 @@ function:
   description: Returns the value of an expression at the specified offset row
   parameters:
   - datatype: $1
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: $1
   optional-parameters: []
   returns:
@@ -3658,7 +3658,7 @@ function:
   name: last_query_id
   description: Returns the id of the last executed statement in the current session.
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -3669,7 +3669,7 @@ function:
   parameters: []
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: last_value
@@ -3695,7 +3695,7 @@ function:
   description: Returns the value of an expression at the specified offset row
   parameters:
   - datatype: $1
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: $1
@@ -3705,7 +3705,7 @@ function:
   description: Returns the value of an expression at the specified offset row
   parameters:
   - datatype: $1
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: $1
   optional-parameters: []
   returns:
@@ -3736,7 +3736,7 @@ function:
   description: Returns leftmost N characters of the input string
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -3748,7 +3748,7 @@ function:
   - datatype: varchar
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: len
@@ -3757,7 +3757,7 @@ function:
   - datatype: binary
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: length
@@ -3766,7 +3766,7 @@ function:
   - datatype: varchar
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: length
@@ -3775,7 +3775,7 @@ function:
   - datatype: binary
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: like
@@ -3886,7 +3886,7 @@ function:
   name: localtime
   description: Returns the current time.
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: time
@@ -3905,7 +3905,7 @@ function:
   name: localtimestamp
   description: Returns the current timestamp.
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: timestamp
@@ -3935,7 +3935,7 @@ function:
   description: padded result string
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -3945,7 +3945,7 @@ function:
   description: padded result string
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: varchar
   optional-parameters: []
   returns:
@@ -3956,7 +3956,7 @@ function:
   description: padded result string
   parameters:
   - datatype: binary
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: binary
   optional-parameters: []
   returns:
@@ -4052,7 +4052,7 @@ function:
   - datatype: varchar
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: md5_number
@@ -4061,7 +4061,7 @@ function:
   - datatype: binary
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: median
@@ -4070,17 +4070,17 @@ function:
   parameters: []
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: median
   description: value of sort key at specified percentile
   kind: aggregate
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: min
@@ -4098,7 +4098,7 @@ function:
   variadic: uniform
   kind: aggregate
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: $1
   optional-parameters: []
   returns:
@@ -4118,11 +4118,11 @@ function:
   name: mod
   description: Computes modulo of two numbers
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: mod
@@ -4148,10 +4148,10 @@ function:
   name: negate
   description: returns the negative value of its input argument.
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: negate
@@ -4168,7 +4168,7 @@ function:
   parameters:
   - datatype: double
   - datatype: double
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: double
@@ -4177,9 +4177,9 @@ function:
   name: normalize
   description: normalized value
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: double
@@ -4200,8 +4200,8 @@ function:
   description: normalized value
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: double
@@ -4253,7 +4253,7 @@ function:
   description: Returns the first value of a column
   parameters:
   - datatype: $1
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: $1
@@ -4262,19 +4262,19 @@ function:
   name: ntile
   description: Number of groups (ntiles) per window
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: nullifzero
   description: Returns the 1st input, with values equal to 0 replaced with NULL
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: nullifzero
@@ -4464,7 +4464,7 @@ function:
   - datatype: varchar
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: octet_length
@@ -4473,7 +4473,7 @@ function:
   - datatype: binary
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: parse_ip
@@ -4491,7 +4491,7 @@ function:
   parameters:
   - datatype: varchar
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: object
@@ -4519,7 +4519,7 @@ function:
   description: Returns an object with all the components of the URL
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: object
@@ -4557,7 +4557,7 @@ function:
   description: value of sort key at specified percentile
   kind: aggregate
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: double
@@ -4569,17 +4569,17 @@ function:
   parameters: []
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: percentile_disc
   description: value of sort key at specified percentile
   kind: aggregate
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: percent_rank
@@ -4605,7 +4605,7 @@ function:
   - datatype: varchar
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: position
@@ -4613,10 +4613,10 @@ function:
   parameters:
   - datatype: varchar
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: position
@@ -4626,7 +4626,7 @@ function:
   - datatype: binary
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: position
@@ -4634,10 +4634,10 @@ function:
   parameters:
   - datatype: binary
   - datatype: binary
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: pow
@@ -4683,23 +4683,23 @@ function:
   parameters: []
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: random
   description: returns a random number sequence
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: randstr
   description: Returns a random string of alphanumeric characters
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -4710,26 +4710,26 @@ function:
   parameters: []
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: ratio_to_report
   description: Returns a cumulative ratio_to_report of a column
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: ratio_to_report
   description: Returns a cumulative ratio_to_report of a column
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: ratio_to_report
@@ -4745,7 +4745,7 @@ function:
   description: Returns a cumulative ratio_to_report of a column
   parameters:
   - datatype: double
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: double
@@ -4779,7 +4779,7 @@ function:
   - datatype: varchar
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: regexp_count
@@ -4787,10 +4787,10 @@ function:
   parameters:
   - datatype: varchar
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: regexp_count
@@ -4798,11 +4798,11 @@ function:
   parameters:
   - datatype: varchar
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: varchar
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: regexp_extract_all
@@ -4820,7 +4820,7 @@ function:
   parameters:
   - datatype: varchar
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: array
@@ -4831,8 +4831,8 @@ function:
   parameters:
   - datatype: varchar
   - datatype: varchar
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: array
@@ -4843,8 +4843,8 @@ function:
   parameters:
   - datatype: varchar
   - datatype: varchar
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   - datatype: varchar
   optional-parameters: []
   returns:
@@ -4856,10 +4856,10 @@ function:
   parameters:
   - datatype: varchar
   - datatype: varchar
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: array
@@ -4872,7 +4872,7 @@ function:
   - datatype: varchar
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: regexp_instr
@@ -4880,10 +4880,10 @@ function:
   parameters:
   - datatype: varchar
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: regexp_instr
@@ -4891,11 +4891,11 @@ function:
   parameters:
   - datatype: varchar
   - datatype: varchar
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: regexp_instr
@@ -4903,12 +4903,12 @@ function:
   parameters:
   - datatype: varchar
   - datatype: varchar
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: regexp_instr
@@ -4916,13 +4916,13 @@ function:
   parameters:
   - datatype: varchar
   - datatype: varchar
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   - datatype: varchar
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: regexp_instr
@@ -4930,14 +4930,14 @@ function:
   parameters:
   - datatype: varchar
   - datatype: varchar
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: regexp_like
@@ -4988,7 +4988,7 @@ function:
   - datatype: varchar
   - datatype: varchar
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -5000,8 +5000,8 @@ function:
   - datatype: varchar
   - datatype: varchar
   - datatype: varchar
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -5013,8 +5013,8 @@ function:
   - datatype: varchar
   - datatype: varchar
   - datatype: varchar
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   - datatype: varchar
   optional-parameters: []
   returns:
@@ -5036,7 +5036,7 @@ function:
   parameters:
   - datatype: varchar
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -5047,8 +5047,8 @@ function:
   parameters:
   - datatype: varchar
   - datatype: varchar
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -5059,8 +5059,8 @@ function:
   parameters:
   - datatype: varchar
   - datatype: varchar
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   - datatype: varchar
   optional-parameters: []
   returns:
@@ -5072,10 +5072,10 @@ function:
   parameters:
   - datatype: varchar
   - datatype: varchar
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -5096,7 +5096,7 @@ function:
   parameters:
   - datatype: varchar
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: array
@@ -5107,8 +5107,8 @@ function:
   parameters:
   - datatype: varchar
   - datatype: varchar
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: array
@@ -5119,8 +5119,8 @@ function:
   parameters:
   - datatype: varchar
   - datatype: varchar
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   - datatype: varchar
   optional-parameters: []
   returns:
@@ -5132,10 +5132,10 @@ function:
   parameters:
   - datatype: varchar
   - datatype: varchar
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: array
@@ -5264,7 +5264,7 @@ function:
   description: Returns the input string repeated N times
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -5313,7 +5313,7 @@ function:
   description: Returns rightmost N characters of the input string
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -5373,50 +5373,50 @@ function:
   name: round
   description: round to the nearest integer, with .5 rounded away from 0
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: round
   description: round to the nearest integer, with .5 rounded away from 0
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: round
   description: round to the nearest integer, with .5 rounded away from 0
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: round
   description: round to the nearest integer, with .5 rounded away from 0
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: round
   description: round to the nearest integer, with .5 rounded away from 0
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   - datatype: varchar
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: row_number
@@ -5424,14 +5424,14 @@ function:
   parameters: []
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: rpad
   description: padded result string
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -5441,7 +5441,7 @@ function:
   description: padded result string
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: varchar
   optional-parameters: []
   returns:
@@ -5452,7 +5452,7 @@ function:
   description: padded result string
   parameters:
   - datatype: binary
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: binary
   optional-parameters: []
   returns:
@@ -5492,16 +5492,16 @@ function:
   parameters: []
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: seq1
   description: returns a sequence of 1-byte integers
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: seq2
@@ -5509,16 +5509,16 @@ function:
   parameters: []
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: seq2
   description: returns a sequence of 2-byte integers
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: seq4
@@ -5526,16 +5526,16 @@ function:
   parameters: []
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: seq4
   description: returns a sequence of 4-byte integers
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: seq8
@@ -5543,16 +5543,16 @@ function:
   parameters: []
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: seq8
   description: returns a sequence of 8-byte integers
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: sha1
@@ -5622,7 +5622,7 @@ function:
   description: Hex-encoded SHA2 digest
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -5641,7 +5641,7 @@ function:
   description: Hex-encoded SHA2 digest
   parameters:
   - datatype: binary
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -5660,7 +5660,7 @@ function:
   description: Binary SHA2 digest
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: binary
@@ -5679,7 +5679,7 @@ function:
   description: Binary SHA2 digest
   parameters:
   - datatype: binary
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: binary
@@ -5698,7 +5698,7 @@ function:
   description: Hex-encoded SHA2 digest
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -5717,7 +5717,7 @@ function:
   description: Hex-encoded SHA2 digest
   parameters:
   - datatype: binary
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -5744,10 +5744,10 @@ function:
   name: sign
   description: returns sign of x
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: sign
@@ -5781,7 +5781,7 @@ function:
   description: Returns the sample skew of the values in a group. Null values are ignored.
   kind: aggregate
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: double
@@ -5818,7 +5818,7 @@ function:
   name: space
   description: N spaces
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -5839,7 +5839,7 @@ function:
   parameters:
   - datatype: varchar
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -5887,7 +5887,7 @@ function:
   description: Returns the sample standard deviation of the values in a group. Null values are ignored.
   kind: aggregate
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: double
@@ -5907,7 +5907,7 @@ function:
   description: Returns the population standard deviation of the values in a group. Null values are ignored.
   kind: aggregate
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: double
@@ -5927,7 +5927,7 @@ function:
   description: Returns the sample standard deviation of the values in a group. Null values are ignored.
   kind: aggregate
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: double
@@ -5985,7 +5985,7 @@ function:
   parameters:
   - datatype: varchar
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -6298,7 +6298,7 @@ function:
   - datatype: geography
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: st_dimension
@@ -6307,7 +6307,7 @@ function:
   - datatype: geometry
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: st_disjoint
@@ -6458,7 +6458,7 @@ function:
   description: The geography represented by the geohash
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: geography
@@ -6695,7 +6695,7 @@ function:
   description: The geohash of a geography
   parameters:
   - datatype: geography
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -6723,7 +6723,7 @@ function:
   description: Parse EWKB
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: geometry
@@ -6742,7 +6742,7 @@ function:
   description: Parse EWKB from binary
   parameters:
   - datatype: binary
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: geometry
@@ -6752,7 +6752,7 @@ function:
   description: Parse EWKB
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: boolean
   optional-parameters: []
   returns:
@@ -6773,7 +6773,7 @@ function:
   description: Parse EWKB from binary
   parameters:
   - datatype: binary
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: boolean
   optional-parameters: []
   returns:
@@ -6803,7 +6803,7 @@ function:
   description: Parse EWKT
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: geometry
@@ -6813,7 +6813,7 @@ function:
   description: Parse EWKT
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: boolean
   optional-parameters: []
   returns:
@@ -6834,7 +6834,7 @@ function:
   description: Parse WKT or EWKT
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: geometry
@@ -6853,7 +6853,7 @@ function:
   description: Parse WKT or EWKT
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: boolean
   - datatype: boolean
   optional-parameters: []
@@ -6876,7 +6876,7 @@ function:
   description: Alias of ST_GEOMETRYFROMTEXT
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: boolean
   optional-parameters: []
   returns:
@@ -6897,7 +6897,7 @@ function:
   description: Parse WKB or EWKB from binary
   parameters:
   - datatype: binary
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: geometry
@@ -6916,7 +6916,7 @@ function:
   description: Parse WKB or EWKB
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: geometry
@@ -6935,7 +6935,7 @@ function:
   description: Parse WKB or EWKB from binary
   parameters:
   - datatype: binary
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: boolean
   - datatype: boolean
   optional-parameters: []
@@ -6958,7 +6958,7 @@ function:
   description: Parse WKB or EWKB
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: boolean
   - datatype: boolean
   optional-parameters: []
@@ -6981,7 +6981,7 @@ function:
   description: Alias of ST_GEOMETRYFROMWKB
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: boolean
   optional-parameters: []
   returns:
@@ -7002,7 +7002,7 @@ function:
   description: Alias of ST_GEOMETRYFROMTEXT
   parameters:
   - datatype: binary
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: boolean
   optional-parameters: []
   returns:
@@ -7032,7 +7032,7 @@ function:
   description: Alias of ST_GEOMETRYFROMTEXT
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: geometry
@@ -7042,7 +7042,7 @@ function:
   description: Alias of ST_GEOMETRYFROMTEXT
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: boolean
   optional-parameters: []
   returns:
@@ -7072,7 +7072,7 @@ function:
   description: Alias of ST_GEOMETRYFROMEWKB
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: geometry
@@ -7091,7 +7091,7 @@ function:
   description: Alias of ST_GEOMETRYFROMEWKB
   parameters:
   - datatype: binary
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: geometry
@@ -7101,7 +7101,7 @@ function:
   description: Alias of ST_GEOMETRYFROMEWKB
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: boolean
   optional-parameters: []
   returns:
@@ -7122,7 +7122,7 @@ function:
   description: Alias of ST_GEOMETRYFROMEWKB
   parameters:
   - datatype: binary
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: boolean
   optional-parameters: []
   returns:
@@ -7152,7 +7152,7 @@ function:
   description: Alias of ST_GEOMETRYFROMEWKT
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: geometry
@@ -7162,7 +7162,7 @@ function:
   description: Alias of ST_GEOMETRYFROMEWKT
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: boolean
   optional-parameters: []
   returns:
@@ -7192,7 +7192,7 @@ function:
   description: Alias of ST_GEOMETRYFROMTEXT
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: geometry
@@ -7202,7 +7202,7 @@ function:
   description: Alias of ST_GEOMETRYFROMTEXT
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: boolean
   optional-parameters: []
   returns:
@@ -7232,7 +7232,7 @@ function:
   description: Alias of ST_GEOMETRYFROMWKB
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: geometry
@@ -7251,7 +7251,7 @@ function:
   description: Alias of ST_GEOMETRYFROMWKB
   parameters:
   - datatype: binary
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: geometry
@@ -7261,7 +7261,7 @@ function:
   description: Alias of ST_GEOMETRYFROMWKB
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: boolean
   optional-parameters: []
   returns:
@@ -7282,7 +7282,7 @@ function:
   description: Alias of ST_GEOMETRYFROMWKB
   parameters:
   - datatype: binary
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: boolean
   optional-parameters: []
   returns:
@@ -7312,7 +7312,7 @@ function:
   description: Alias of ST_GEOMETRYFROMTEXT
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: geometry
@@ -7322,7 +7322,7 @@ function:
   description: Alias of ST_GEOMETRYFROMTEXT
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: boolean
   optional-parameters: []
   returns:
@@ -7517,7 +7517,7 @@ function:
   - datatype: geography
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: st_npoints
@@ -7526,7 +7526,7 @@ function:
   - datatype: geometry
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: st_numpoints
@@ -7535,7 +7535,7 @@ function:
   - datatype: geography
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: st_numpoints
@@ -7544,7 +7544,7 @@ function:
   - datatype: geometry
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: st_perimeter
@@ -7579,7 +7579,7 @@ function:
   description: The nth point in the geography, only supports LineStrings
   parameters:
   - datatype: geography
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: geography
@@ -7589,7 +7589,7 @@ function:
   description: The nth point in the geometry, only supports LineStrings
   parameters:
   - datatype: geometry
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: geometry
@@ -7617,7 +7617,7 @@ function:
   description: Returns a geometry same as input geometry but with SRID set to the given value
   parameters:
   - datatype: geometry
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: geometry
@@ -7660,7 +7660,7 @@ function:
   - datatype: geography
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: st_srid
@@ -7669,7 +7669,7 @@ function:
   - datatype: geometry
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: st_startpoint
@@ -7704,8 +7704,8 @@ function:
   description: Returns the geometry transformed from one SRID to another SRID.
   parameters:
   - datatype: geometry
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: geometry
@@ -7715,7 +7715,7 @@ function:
   description: Returns the geometry transformed to another SRID.
   parameters:
   - datatype: geometry
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: geometry
@@ -7873,7 +7873,7 @@ function:
   description: Returns string fragment of the input string
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -7883,8 +7883,8 @@ function:
   description: Returns string fragment of the input string
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -7894,7 +7894,7 @@ function:
   description: Returns string fragment of the input string
   parameters:
   - datatype: binary
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: binary
@@ -7904,8 +7904,8 @@ function:
   description: Returns string fragment of the input string
   parameters:
   - datatype: binary
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: binary
@@ -7915,7 +7915,7 @@ function:
   description: Returns string fragment of the input string
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -7925,8 +7925,8 @@ function:
   description: Returns string fragment of the input string
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -7936,7 +7936,7 @@ function:
   description: Returns string fragment of the input string
   parameters:
   - datatype: binary
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: binary
@@ -7946,8 +7946,8 @@ function:
   description: Returns string fragment of the input string
   parameters:
   - datatype: binary
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: binary
@@ -7957,10 +7957,10 @@ function:
   description: Returns a sum of a column
   kind: aggregate
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: sum
@@ -7977,11 +7977,11 @@ function:
   description: Returns a sum of a column
   kind: aggregate
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: sum_internal
@@ -7989,7 +7989,7 @@ function:
   kind: aggregate
   parameters:
   - datatype: double
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: double
@@ -8007,7 +8007,7 @@ function:
   name: system$abort_session
   description: Abort the specified open session
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -8016,7 +8016,7 @@ function:
   name: system$abort_transaction
   description: Abort the specified transaction if it is running. If the transaction is already is committed/rolled back then the state of the transaction is not altered.
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -8061,7 +8061,7 @@ function:
   name: system$cancel_all_queries
   description: cancel all the queries running in the specified session
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -8166,7 +8166,7 @@ function:
   variadic: uniform
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -8399,7 +8399,7 @@ function:
   description: returns the latest Iceberg metadata information
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -8408,7 +8408,7 @@ function:
   name: system$get_iceberg_table_information
   description: returns the latest Iceberg metadata information
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -8417,8 +8417,8 @@ function:
   name: system$get_iceberg_table_information
   description: returns the latest Iceberg metadata information
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -8439,7 +8439,7 @@ function:
   parameters:
   - datatype: varchar
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -8468,7 +8468,7 @@ function:
   description: return service resource set status
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -8514,7 +8514,7 @@ function:
   description: return status of operation
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: varchar
   optional-parameters: []
   returns:
@@ -8525,9 +8525,9 @@ function:
   description: return status of operation
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -8557,7 +8557,7 @@ function:
   description: return service resource set status
   parameters:
   - datatype: $1
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -8656,7 +8656,7 @@ function:
   - datatype: varchar
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: system$md5_number
@@ -8665,7 +8665,7 @@ function:
   - datatype: varchar
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: system$md5_number
@@ -8674,7 +8674,7 @@ function:
   - datatype: binary
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: system$migrate_saml_idp_registration
@@ -8993,7 +8993,7 @@ function:
   name: system$wait
   description: Wait for a finite amount of time
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -9002,7 +9002,7 @@ function:
   name: system$wait
   description: Wait for a finite amount of time
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: varchar
   optional-parameters: []
   returns:
@@ -9093,9 +9093,9 @@ function:
   name: timefromparts
   description: Construct a time from individual components
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: time
@@ -9104,10 +9104,10 @@ function:
   name: timefromparts
   description: Construct a time from individual components
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: time
@@ -9116,12 +9116,12 @@ function:
   name: timestampfromparts
   description: Construct a timestamp from individual components
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: timestamp
@@ -9130,13 +9130,13 @@ function:
   name: timestampfromparts
   description: Construct a timestamp from individual components
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: timestamp
@@ -9145,13 +9145,13 @@ function:
   name: timestampfromparts
   description: Construct a timestamp from individual components
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   - datatype: varchar
   optional-parameters: []
   returns:
@@ -9171,12 +9171,12 @@ function:
   name: timestampltzfromparts
   description: Construct a timestamp from individual components
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: timestamp
@@ -9185,13 +9185,13 @@ function:
   name: timestampltzfromparts
   description: Construct a timestamp from individual components
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: timestamp
@@ -9200,12 +9200,12 @@ function:
   name: timestampntzfromparts
   description: Construct a timestamp from individual components
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: timestamp
@@ -9214,13 +9214,13 @@ function:
   name: timestampntzfromparts
   description: Construct a timestamp from individual components
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: timestamp
@@ -9239,12 +9239,12 @@ function:
   name: timestamptzfromparts
   description: Construct a timestamp from individual components
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: timestamp
@@ -9253,13 +9253,13 @@ function:
   name: timestamptzfromparts
   description: Construct a timestamp from individual components
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: timestamp
@@ -9268,13 +9268,13 @@ function:
   name: timestamptzfromparts
   description: Construct a timestamp from individual components
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   - datatype: varchar
   optional-parameters: []
   returns:
@@ -9284,12 +9284,12 @@ function:
   name: timestamp_from_parts
   description: Construct a timestamp from individual components
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: timestamp
@@ -9298,13 +9298,13 @@ function:
   name: timestamp_from_parts
   description: Construct a timestamp from individual components
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: timestamp
@@ -9313,13 +9313,13 @@ function:
   name: timestamp_from_parts
   description: Construct a timestamp from individual components
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   - datatype: varchar
   optional-parameters: []
   returns:
@@ -9339,12 +9339,12 @@ function:
   name: timestamp_ltz_from_parts
   description: Construct a timestamp from individual components
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: timestamp
@@ -9353,13 +9353,13 @@ function:
   name: timestamp_ltz_from_parts
   description: Construct a timestamp from individual components
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: timestamp
@@ -9368,12 +9368,12 @@ function:
   name: timestamp_ntz_from_parts
   description: Construct a timestamp from individual components
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: timestamp
@@ -9382,13 +9382,13 @@ function:
   name: timestamp_ntz_from_parts
   description: Construct a timestamp from individual components
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: timestamp
@@ -9407,12 +9407,12 @@ function:
   name: timestamp_tz_from_parts
   description: Construct a timestamp from individual components
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: timestamp
@@ -9421,13 +9421,13 @@ function:
   name: timestamp_tz_from_parts
   description: Construct a timestamp from individual components
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: timestamp
@@ -9436,13 +9436,13 @@ function:
   name: timestamp_tz_from_parts
   description: Construct a timestamp from individual components
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   - datatype: varchar
   optional-parameters: []
   returns:
@@ -9452,9 +9452,9 @@ function:
   name: time_from_parts
   description: Construct a time from individual components
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: time
@@ -9463,10 +9463,10 @@ function:
   name: time_from_parts
   description: Construct a time from individual components
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: time
@@ -9582,7 +9582,7 @@ function:
   description: Parses a variant as a GEOMETRY object; supported format is GeoJSON
   parameters:
   - datatype: variant
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: geometry
@@ -9601,7 +9601,7 @@ function:
   description: Parses a string as a GEOMETRY object; supported formats are GeoJSON, WKT, and WKB
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: geometry
@@ -9620,7 +9620,7 @@ function:
   description: Parses binary input in WKB format into a GEOMETRY object
   parameters:
   - datatype: binary
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: geometry
@@ -9639,7 +9639,7 @@ function:
   description: Parses a variant as a GEOMETRY object; supported format is GeoJSON
   parameters:
   - datatype: variant
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: boolean
   - datatype: boolean
   optional-parameters: []
@@ -9661,7 +9661,7 @@ function:
   name: to_geometry
   parameters:
   - datatype: variant
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: boolean
   optional-parameters: []
   returns:
@@ -9681,7 +9681,7 @@ function:
   description: Parses a string as a GEOMETRY object; supported formats are GeoJSON, WKT, and WKB
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: boolean
   - datatype: boolean
   optional-parameters: []
@@ -9704,7 +9704,7 @@ function:
   description: Parses a string as a GEOMETRY object; supported formats are GeoJSON, WKT, and WKB
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: boolean
   optional-parameters: []
   returns:
@@ -9725,7 +9725,7 @@ function:
   description: Parses binary input in WKB format into a GEOMETRY object
   parameters:
   - datatype: binary
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: boolean
   - datatype: boolean
   optional-parameters: []
@@ -9748,7 +9748,7 @@ function:
   description: Parses binary input in WKB format into a GEOMETRY object
   parameters:
   - datatype: binary
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: boolean
   optional-parameters: []
   returns:
@@ -9816,20 +9816,20 @@ function:
   name: trunc
   description: truncate the fractional or date part
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: trunc
   description: truncate the fractional or date part
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: trunc
@@ -9884,20 +9884,20 @@ function:
   name: truncate
   description: truncate the fractional or date part
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: truncate
   description: truncate the fractional or date part
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: truncate
@@ -10239,7 +10239,7 @@ function:
   description: Tries to parse a variant as a GEOMETRY object; supported format is GeoJSON
   parameters:
   - datatype: variant
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: geometry
@@ -10258,7 +10258,7 @@ function:
   description: Tries to parse a string as a GEOMETRY object; supported formats are GeoJSON, WKT, and WKB
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: geometry
@@ -10277,7 +10277,7 @@ function:
   description: Tries to parse binary input in WKB format into a GEOMETRY object
   parameters:
   - datatype: binary
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: geometry
@@ -10296,7 +10296,7 @@ function:
   description: Tries to parse a variant as a GEOMETRY object; supported format is GeoJSON
   parameters:
   - datatype: variant
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: boolean
   - datatype: boolean
   optional-parameters: []
@@ -10319,7 +10319,7 @@ function:
   description: Tries to parse a variant as a GEOMETRY object; supported format is GeoJSON
   parameters:
   - datatype: variant
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: boolean
   optional-parameters: []
   returns:
@@ -10340,7 +10340,7 @@ function:
   description: Tries to parse a string as a GEOMETRY object; supported formats are GeoJSON, WKT, and WKB
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: boolean
   - datatype: boolean
   optional-parameters: []
@@ -10363,7 +10363,7 @@ function:
   description: Tries to parse a string as a GEOMETRY object; supported formats are GeoJSON, WKT, and WKB
   parameters:
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: boolean
   optional-parameters: []
   returns:
@@ -10384,7 +10384,7 @@ function:
   description: Tries to parse binary input in WKB format into a GEOMETRY object
   parameters:
   - datatype: binary
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: boolean
   - datatype: boolean
   optional-parameters: []
@@ -10407,7 +10407,7 @@ function:
   description: Tries to parse binary input in WKB format into a GEOMETRY object
   parameters:
   - datatype: binary
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   - datatype: boolean
   optional-parameters: []
   returns:
@@ -10448,18 +10448,18 @@ function:
   - datatype: varchar
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: uniform
   description: Returns a uniform random distribution
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: uniform
@@ -10467,7 +10467,7 @@ function:
   parameters:
   - datatype: double
   - datatype: double
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: double
@@ -10525,7 +10525,7 @@ function:
   description: Returns the sample variance of the values in a group. Null values are ignored.
   kind: aggregate
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: double
@@ -10545,7 +10545,7 @@ function:
   description: Returns the population variance of the values in a group. Null values are ignored.
   kind: aggregate
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: double
@@ -10565,7 +10565,7 @@ function:
   description: Returns the sample variance of the values in a group. Null values are ignored.
   kind: aggregate
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: double
@@ -10585,7 +10585,7 @@ function:
   description: Returns the population variance of the values in a group. Null values are ignored.
   kind: aggregate
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: double
@@ -10605,7 +10605,7 @@ function:
   description: Returns the sample variance of the values in a group. Null values are ignored.
   kind: aggregate
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: double
@@ -10654,13 +10654,13 @@ function:
   name: width_bucket
   description: returns the bucket a value falls into in an equiwidth histogram
   parameters:
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: width_bucket
@@ -10669,10 +10669,10 @@ function:
   - datatype: double
   - datatype: double
   - datatype: double
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: xmlget
@@ -10680,7 +10680,7 @@ function:
   parameters:
   - datatype: variant
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: object
@@ -10691,7 +10691,7 @@ function:
   parameters:
   - datatype: object
   - datatype: varchar
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: object
@@ -10720,10 +10720,10 @@ function:
   name: zeroifnull
   description: Converts to zero if the input is NULL
   parameters:
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: zeroifnull
@@ -10739,8 +10739,8 @@ function:
   description: Returns a Zipf distribution
   parameters:
   - datatype: double
-  - datatype: decimal(38, 0)
-  - datatype: decimal(38, 0)
+  - datatype: decimal(p, s)
+  - datatype: decimal(p, s)
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
