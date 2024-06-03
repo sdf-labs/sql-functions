@@ -37,3 +37,5 @@ fn invoke(&self, args: &[ColumnarValue]) -> Result<ColumnarValue> {
         // end function impl
     }
 ```
+
+Note: The `// start function impl` comments are used to let the generator know that this function has been implemented. They 

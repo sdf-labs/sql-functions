@@ -1,0 +1,21 @@
+name: Sync main to sdf-release
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync-branches:
+    runs-on: ubuntu-latest
+    name: Syncing main to sdf-release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Opening pull request
+        id: pull
+        uses: tretuna/sync-branches@1.4.0
+        with:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          FROM_BRANCH: "main"
+          TO_BRANCH: "sdf-release"
+          PULL_REQUEST_AUTO_MERGE_METHOD: merge
