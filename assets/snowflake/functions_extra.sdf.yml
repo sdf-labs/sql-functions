@@ -117,7 +117,7 @@ function:
   parameters:
     - datatype: $1
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
   kind: scalar
   volatility: pure
   section: other
@@ -128,7 +128,7 @@ function:
     - datatype: $1
     - datatype: bigint
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
   kind: scalar
   volatility: pure
   section: other
@@ -140,7 +140,7 @@ function:
     - datatype: bigint
     - datatype: bigint
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
   kind: scalar
   volatility: pure
   section: other
@@ -151,7 +151,7 @@ function:
     - datatype: $1
     - datatype: string
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
   kind: scalar
   volatility: pure
   section: other
@@ -163,7 +163,7 @@ function:
     - datatype: string
     - datatype: bigint
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
   kind: scalar
   volatility: pure
   section: other
@@ -176,7 +176,7 @@ function:
     - datatype: bigint
     - datatype: bigint
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
   kind: scalar
   volatility: pure
   section: other
@@ -186,7 +186,7 @@ function:
   parameters:
     - datatype: $1
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
   kind: scalar
   volatility: pure
   section: other
@@ -197,7 +197,7 @@ function:
     - datatype: $1
     - datatype: bigint
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
   kind: scalar
   volatility: pure
   section: other
@@ -209,7 +209,7 @@ function:
     - datatype: bigint
     - datatype: bigint
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
   kind: scalar
   volatility: pure
   section: other
@@ -220,19 +220,7 @@ function:
     - datatype: $1
     - datatype: string
   returns:
-    datatype: decimal(38, 0)
-  kind: scalar
-  volatility: pure
-  section: other
----
-function:
-  name: try_to_decimal
-  parameters:
-    - datatype: $1
-    - datatype: string
-    - datatype: bigint
-  returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
   kind: scalar
   volatility: pure
   section: other
@@ -243,9 +231,21 @@ function:
     - datatype: $1
     - datatype: string
     - datatype: bigint
+  returns:
+    datatype: decimal(p, s)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: try_to_decimal
+  parameters:
+    - datatype: $1
+    - datatype: string
+    - datatype: bigint
     - datatype: bigint
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
   kind: scalar
   volatility: pure
   section: other
@@ -544,9 +544,9 @@ function:
 function:
   name: conditional_true_event
   parameters:
-    - datatype: decimal(38, 0)
+    - datatype: decimal(p, s)
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
   kind: scalar
   volatility: pure
   section: other
@@ -1302,7 +1302,7 @@ function:
     - datatype: $1
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: hash_agg
@@ -1313,7 +1313,7 @@ function:
     - datatype: $2
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: hash_agg
@@ -1325,7 +1325,7 @@ function:
     - datatype: $3
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: hash_agg
@@ -1338,7 +1338,7 @@ function:
     - datatype: $4
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: hash_agg
@@ -1352,7 +1352,7 @@ function:
     - datatype: $5
   optional-parameters: []
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
 ---
 function:
   name: last_day
@@ -1667,7 +1667,7 @@ function:
   parameters:
     - datatype: $1
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
   kind: scalar
   volatility: pure
   section: other
@@ -1678,7 +1678,7 @@ function:
     - datatype: $1
     - datatype: bigint
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
   kind: scalar
   volatility: pure
   section: other
@@ -1690,7 +1690,7 @@ function:
     - datatype: bigint
     - datatype: bigint
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
   kind: scalar
   volatility: pure
   section: other
@@ -1701,7 +1701,7 @@ function:
     - datatype: $1
     - datatype: string
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
   kind: scalar
   volatility: pure
   section: other
@@ -1713,7 +1713,7 @@ function:
     - datatype: string
     - datatype: bigint
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
   kind: scalar
   volatility: pure
   section: other
@@ -1726,7 +1726,7 @@ function:
     - datatype: bigint
     - datatype: bigint
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
   kind: scalar
   volatility: pure
   section: other
@@ -1736,7 +1736,7 @@ function:
   parameters:
     - datatype: $1
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
   kind: scalar
   volatility: pure
   section: other
@@ -1747,7 +1747,7 @@ function:
     - datatype: $1
     - datatype: bigint
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
   kind: scalar
   volatility: pure
   section: other
@@ -1759,7 +1759,7 @@ function:
     - datatype: bigint
     - datatype: bigint
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
   kind: scalar
   volatility: pure
   section: other
@@ -1770,19 +1770,7 @@ function:
     - datatype: $1
     - datatype: string
   returns:
-    datatype: decimal(38, 0)
-  kind: scalar
-  volatility: pure
-  section: other
----
-function:
-  name: try_to_number
-  parameters:
-    - datatype: $1
-    - datatype: string
-    - datatype: bigint
-  returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
   kind: scalar
   volatility: pure
   section: other
@@ -1793,9 +1781,21 @@ function:
     - datatype: $1
     - datatype: string
     - datatype: bigint
+  returns:
+    datatype: decimal(p, s)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: try_to_number
+  parameters:
+    - datatype: $1
+    - datatype: string
+    - datatype: bigint
     - datatype: bigint
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
   kind: scalar
   volatility: pure
   section: other
@@ -1805,7 +1805,7 @@ function:
   parameters:
     - datatype: $1
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
   kind: scalar
   volatility: pure
   section: other
@@ -1816,7 +1816,7 @@ function:
     - datatype: $1
     - datatype: bigint
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
   kind: scalar
   volatility: pure
   section: other
@@ -1828,7 +1828,7 @@ function:
     - datatype: bigint
     - datatype: bigint
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
   kind: scalar
   volatility: pure
   section: other
@@ -1839,7 +1839,7 @@ function:
     - datatype: $1
     - datatype: string
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
   kind: scalar
   volatility: pure
   section: other
@@ -1851,7 +1851,7 @@ function:
     - datatype: string
     - datatype: bigint
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
   kind: scalar
   volatility: pure
   section: other
@@ -1864,7 +1864,7 @@ function:
     - datatype: bigint
     - datatype: bigint
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
   kind: scalar
   volatility: pure
   section: other
@@ -1874,7 +1874,7 @@ function:
   parameters:
     - datatype: $1
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
   kind: scalar
   volatility: pure
   section: other
@@ -1885,7 +1885,7 @@ function:
     - datatype: $1
     - datatype: bigint
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
   kind: scalar
   volatility: pure
   section: other
@@ -1897,7 +1897,7 @@ function:
     - datatype: bigint
     - datatype: bigint
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
   kind: scalar
   volatility: pure
   section: other
@@ -1908,19 +1908,7 @@ function:
     - datatype: $1
     - datatype: string
   returns:
-    datatype: decimal(38, 0)
-  kind: scalar
-  volatility: pure
-  section: other
----
-function:
-  name: try_to_numeric
-  parameters:
-    - datatype: $1
-    - datatype: string
-    - datatype: bigint
-  returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
   kind: scalar
   volatility: pure
   section: other
@@ -1931,9 +1919,21 @@ function:
     - datatype: $1
     - datatype: string
     - datatype: bigint
+  returns:
+    datatype: decimal(p, s)
+  kind: scalar
+  volatility: pure
+  section: other
+---
+function:
+  name: try_to_numeric
+  parameters:
+    - datatype: $1
+    - datatype: string
+    - datatype: bigint
     - datatype: bigint
   returns:
-    datatype: decimal(38, 0)
+    datatype: decimal(p, s)
   kind: scalar
   volatility: pure
   section: other
@@ -3769,7 +3769,7 @@ function:
   description: Get VARIANT element value from an array or object
   parameters:
     - datatype: variant
-    - datatype: decimal(38, 0)
+    - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: variant
@@ -3789,7 +3789,7 @@ function:
   description: Get VARIANT element value from an array or object
   parameters:
     - datatype: array
-    - datatype: decimal(38, 0)
+    - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: variant
@@ -3984,7 +3984,7 @@ function:
   parameters:
     - datatype: $1
     - datatype: $2
-    - datatype: decimal(38, 0)
+    - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: array
@@ -4007,7 +4007,7 @@ function:
   parameters:
     - datatype: $1
     - datatype: $2
-    - datatype: decimal(38, 0)
+    - datatype: decimal(p, s)
   optional-parameters: []
   returns:
     datatype: array
