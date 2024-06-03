@@ -1,8 +1,10 @@
 name: Sync main to sdf-release
-on:
-  push:
-    branches:
-      - main
+# on:
+#   push:
+#     branches:
+#       - main
+on: 
+   pull_request:
 
 permissions: 
   contents: write
