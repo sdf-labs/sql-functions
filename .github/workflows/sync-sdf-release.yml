@@ -29,8 +29,11 @@ jobs:
           git fetch origin
           git checkout sdf-release
           DATAFUSION_DEP=$(grep '^datafusion = .*' Cargo.toml | head -1)
+          echo "Datafusion dependency: $DATAFUSION_DEP"
           git merge --no-ff --no-commit origin/main
           sed -i "s#^datafusion = .*#${DATAFUSION_DEP}#g" Cargo.toml
+          git status
+          cat Cargo.toml
           git add -f Cargo.toml
           git commit -m "[Bot] Sync main to sdf-release"
           git push -f origin sdf-release:staging/sdf-release
