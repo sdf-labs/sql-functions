@@ -36,7 +36,7 @@ jobs:
           cat Cargo.toml
           git add -f Cargo.toml
           git commit -m "[Bot] Sync main to sdf-release"
-          git push -f origin sdf-release:staging/sdf-release
+          git push -f origin HEAD:staging/sdf-release
 
           git checkout main
           DATAFUSION_DEP=$(grep '^datafusion = .*' Cargo.toml | head -1)
@@ -47,7 +47,7 @@ jobs:
           cat Cargo.toml
           git add -f Cargo.toml
           git commit -m "[Bot] Sync sdf-release to main"
-          git push -f origin sdf-release:staging/main
+          git push -f origin HEAD:staging/main
 
       - name: Open pull request for sdf-release
         run: |
