@@ -4,18 +4,43 @@ on:
     branches:
       - main
 
+permissions: 
+  contents: write
+
 jobs:
   sync-branches:
     runs-on: ubuntu-latest
     name: Syncing main to sdf-release
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-      - name: Opening pull request
-        id: pull
-        uses: tretuna/sync-branches@1.4.0
+        uses: actions/checkout@v3
         with:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          FROM_BRANCH: "main"
-          TO_BRANCH: "sdf-release"
-          PULL_REQUEST_AUTO_MERGE_METHOD: merge
+          fetch-depth: 0
+
+      - name: Setup Git User for Github Actions bot
+        run: |
+          git config user.name "GitHub Action"
+          git config user.email "action@github.com"
+
+      - name: Perform sync
+        run: |
+          git fetch origin
+          git checkout sdf-release
+          DATAFUSION_DEP=$(grep '^datafusion = .*' Cargo.toml | head -1)
+          git merge --no-ff --no-commit main
+          sed -i "s#^datafusion = .*#${DATAFUSION_DEP}#g" Cargo.toml
+          git add -f Cargo.toml
+          git commit -m "[Bot] Sync main to sdf-release"
+          git push -f origin sdf-release:staging/sdf-release
+
+      - name: Open pull request
+        run: |
+            gh pr create \
+            --base sdf-release \
+            --head staging/sdf-release \
+            --title "[Bot] Sync main to sdf-release" \
+            --body "Syncing main to sdf-release"
+            --label "bot"
+            --label "repo"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
