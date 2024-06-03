@@ -6,8 +6,7 @@ name: Sync main to sdf-release
 on: 
    pull_request:
 
-permissions: 
-  contents: write
+permissions: write-all
 
 jobs:
   sync-branches:
