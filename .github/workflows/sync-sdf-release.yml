@@ -43,8 +43,8 @@ jobs:
             --base sdf-release \
             --head staging/sdf-release \
             --title "[Bot] Sync main to sdf-release" \
-            --body "Syncing main to sdf-release"
-            --label "bot"
+            --body "Syncing main to sdf-release" \
+            --label "bot" \
             --label "repo"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
