@@ -3285,7 +3285,8 @@ function:
   implemented-by: !datafusion
 ---
 # DF provides a 2-arg ltrim, but the 2nd arg there is a Utf8 (treated as a set of code points), 
-# rather than codepoints, which is an array of integers. 
+# rather than Trino codepoints, which seems to be an array of integers. 
+# VG Also, ltrim(varchar, codepoints) is not in Trino 449 docs.
 function:
   name: ltrim
   parameters:
@@ -4364,14 +4365,16 @@ function:
   returns:
     datatype: array<varchar>
 ---
+# VG: Replaced pattern type joniregexp~~>varchar to make it execute
 function:
   name: regexp_like
   parameters:
   - datatype: varchar
-  - datatype: joniregexp
+  - datatype: varchar
   optional-parameters: []
   returns:
     datatype: boolean
+  implemented-by: !datafusion
 ---
 function:
   name: regexp_position
@@ -4412,7 +4415,6 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  implemented-by: !datafusion
 ---
 function:
   name: regexp_replace
@@ -4422,7 +4424,6 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  implemented-by: !datafusion
 ---
 function:
   name: regexp_replace
@@ -4536,6 +4537,8 @@ function:
   optional-parameters: []
   returns:
     datatype: array<$1>
+  implemented-by: !datafusion
+    udf: array_repeat
 ---
 function:
   name: replace
@@ -4556,7 +4559,6 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  implemented-by: !datafusion
 ---
 function:
   name: reverse
@@ -4565,6 +4567,8 @@ function:
   optional-parameters: []
   returns:
     datatype: array<$3>
+  implemented-by: !datafusion
+    udf: array_reverse
 ---
 function:
   name: reverse
@@ -4581,6 +4585,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: !datafusion
 ---
 function:
   name: rgb
@@ -4596,6 +4601,15 @@ function:
   name: round
   parameters:
   - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+  implemented-by: !datafusion
+---
+function:
+  name: round
+  parameters:
+  - datatype: double
   - datatype: bigint
   optional-parameters: []
   returns:
@@ -4628,7 +4642,6 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  implemented-by: !datafusion
 ---
 function:
   name: round
@@ -4638,7 +4651,6 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  implemented-by: !datafusion
 ---
 function:
   name: round
@@ -4647,7 +4659,6 @@ function:
   optional-parameters: []
   returns:
     datatype: decimal(rp, rs)
-  implemented-by: !datafusion
 ---
 function:
   name: round
@@ -4657,16 +4668,6 @@ function:
   optional-parameters: []
   returns:
     datatype: decimal(rp, s)
-  implemented-by: !datafusion
----
-function:
-  name: round
-  parameters:
-  - datatype: double
-  optional-parameters: []
-  returns:
-    datatype: double
-  implemented-by: !datafusion
 ---
 function:
   name: round
@@ -4675,7 +4676,6 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  implemented-by: !datafusion
 ---
 function:
   name: round
@@ -4685,7 +4685,6 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  implemented-by: !datafusion
 ---
 function:
   name: round
@@ -4694,7 +4693,6 @@ function:
   optional-parameters: []
   returns:
     datatype: smallint
-  implemented-by: !datafusion
 ---
 function:
   name: round
@@ -4704,7 +4702,6 @@ function:
   optional-parameters: []
   returns:
     datatype: smallint
-  implemented-by: !datafusion
 ---
 function:
   name: round
@@ -4713,7 +4710,6 @@ function:
   optional-parameters: []
   returns:
     datatype: tinyint
-  implemented-by: !datafusion
 ---
 function:
   name: round
@@ -4723,7 +4719,6 @@ function:
   optional-parameters: []
   returns:
     datatype: tinyint
-  implemented-by: !datafusion
 ---
 function:
   name: row_number
@@ -4753,24 +4748,6 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
----
-function:
-  name: rtrim
-  parameters:
-  - datatype: varchar
-  optional-parameters: []
-  returns:
-    datatype: varchar
-  implemented-by: !datafusion
----
-function:
-  name: rtrim
-  parameters:
-  - datatype: varchar
-  - datatype: codepoints
-  optional-parameters: []
-  returns:
-    datatype: varchar
   implemented-by: !datafusion
 ---
 function:
@@ -4782,6 +4759,7 @@ function:
     datatype: varchar
   implemented-by: !datafusion
 ---
+# VG rtrim(varchar, codepoints) is not in Trino 449 docs.
 function:
   name: rtrim
   parameters:
@@ -4790,7 +4768,6 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  implemented-by: !datafusion
 ---
 function:
   name: second
@@ -4915,6 +4892,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varbinary
+  implemented-by: !datafusion
 ---
 function:
   name: sha512
@@ -4923,6 +4901,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varbinary
+  implemented-by: !datafusion
 ---
 function:
   name: shuffle
@@ -4931,6 +4910,7 @@ function:
   optional-parameters: []
   returns:
     datatype: array<$3>
+  volatility: volatile
 ---
 function:
   name: sign
@@ -4955,6 +4935,8 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
+    udf: signum
 ---
 function:
   name: sign
@@ -5004,6 +4986,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
 function:
   name: sinh
@@ -5012,6 +4995,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
 function:
   name: skewness
@@ -5031,6 +5015,7 @@ function:
   returns:
     datatype: double
 ---
+# DF offers array_slice, but it is array_slice(array, from, to), while Trino has  slice(array, from, length).
 function:
   name: slice
   parameters:
@@ -5097,8 +5082,6 @@ function:
   optional-parameters: []
   returns:
     datatype: array<varchar>
-  implemented-by: !datafusion
-    udf: split_part
 ---
 function:
   name: split_part
@@ -5154,6 +5137,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
 function:
   name: ST_Area
@@ -5664,6 +5648,7 @@ function:
   optional-parameters: []
   returns:
     datatype: boolean
+  implemented-by: !datafusion
 ---
 function:
   name: stddev
@@ -5773,7 +5758,6 @@ function:
   optional-parameters: []
   returns:
     datatype: varbinary
-  implemented-by: !datafusion
 ---
 function:
   name: substr
@@ -5784,16 +5768,17 @@ function:
   optional-parameters: []
   returns:
     datatype: varbinary
+---
+function:
+  name: substring
+  parameters:
+  - datatype: varchar
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: varchar
   implemented-by: !datafusion
----
-function:
-  name: substring
-  parameters:
-  - datatype: varchar
-  - datatype: bigint
-  optional-parameters: []
-  returns:
-    datatype: varchar
+    udf: substr
 ---
 function:
   name: substring
@@ -5804,25 +5789,8 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
----
-function:
-  name: substring
-  parameters:
-  - datatype: varchar
-  - datatype: bigint
-  optional-parameters: []
-  returns:
-    datatype: varchar
----
-function:
-  name: substring
-  parameters:
-  - datatype: varchar
-  - datatype: bigint
-  - datatype: bigint
-  optional-parameters: []
-  returns:
-    datatype: varchar
+  implemented-by: !datafusion
+    udf: substr
 ---
 function:
   name: sum
@@ -5891,6 +5859,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
 function:
   name: tanh
@@ -5899,6 +5868,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
 function:
   name: tdigest_agg
@@ -5978,7 +5948,6 @@ function:
 ---
 # NB: DF provides `encode`, which probably uses the same algorithm, but the signature is different, 
 #     it takes "'base64' or 'hex' as the second argument. 
-
 function:
   name: to_base64
   parameters:
@@ -6011,6 +5980,7 @@ function:
   returns:
     datatype: varbinary
 ---
+# DF to_char uses formats with %Y, %m specifiers, while Trino uses 'YYYY', 'MM' etc.
 function:
   name: to_char
   parameters:
@@ -6020,6 +5990,7 @@ function:
   returns:
     datatype: varchar
 ---
+# DF to_date uses formats with %Y, %m specifiers, while Trino uses 'YYYY', 'MM' etc.
 function:
   name: to_date
   parameters:
@@ -6120,6 +6091,7 @@ function:
   returns:
     datatype: sphericalgeography
 ---
+# DF to_timestamp uses formats with %Y, %m specifiers, while Trino uses 'YYYY', 'MM' etc.
 function:
   name: to_timestamp
   parameters:
@@ -6182,6 +6154,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: !datafusion
 ---
 function:
   name: trim
@@ -6193,6 +6166,7 @@ function:
   implemented-by: !datafusion
     udf: btrim
 ---
+# VG trim(varchar, codepoints) is not in Trino 449 docs.
 function:
   name: trim
   parameters:
@@ -6201,8 +6175,6 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  implemented-by: !datafusion
-    udf: btrim
 ---
 function:
   name: trim_array
@@ -6237,6 +6209,8 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
+    udf: trunc
 ---
 function:
   name: truncate
@@ -6245,6 +6219,8 @@ function:
   optional-parameters: []
   returns:
     datatype: real
+  implemented-by: !datafusion
+    udf: trunc
 ---
 function:
   name: typeof
@@ -6253,15 +6229,6 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
----
-function:
-  name: upper
-  parameters:
-  - datatype: varchar
-  optional-parameters: []
-  returns:
-    datatype: varchar
-  implemented-by: !datafusion
 ---
 function:
   name: upper
@@ -6351,6 +6318,8 @@ function:
   optional-parameters: []
   returns:
     datatype: uuid
+  volatility: volatile
+  implemented-by: !datafusion
 ---
 function:
   name: value_at_quantile
