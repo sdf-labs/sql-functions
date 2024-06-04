@@ -1186,7 +1186,7 @@ function:
     udf: array_append
 ---
 # VG Isn't this concat(str1, str2) subsumed by the variadic version?
-# Presto 0.287 doc, at least, does not metion this one.
+# Trino 449 doc, at least, does not list this one.
 function:
   name: concat
   parameters:
@@ -1216,7 +1216,6 @@ function:
   returns:
     datatype: varbinary
 ---
-# VG concat_ws is not in Presto 0.287 docs
 function:
   name: concat_ws
   parameters:
@@ -1257,8 +1256,7 @@ function:
   returns:
     datatype: boolean
 ---
-# Presto 0.287 docs does not mention contains_sequence, but DF offers array_has_all and array_has_any,
-# one of which could be suitable, depending on the intended contains_sequence semantics.
+# NB: DF's array_has_all is similar, but does not require elts of the 2nd arg to occur in order
 function:
   name: contains_sequence
   parameters:
@@ -1425,8 +1423,8 @@ function:
   returns:
     datatype: array<varchar>
 ---
-# VG Adding entries for current_time, current_timestamp, which appear in Presto 0.287 docs.
-#    DF has current_time, but it differs from both (by not carrying a timespamp).
+# VG Adding entries for current_time, current_timestamp, which appear in Trino 449 docs.
+#    DF has current_time, but it differs from both (by not carrying a time zone).
 function:
   name: current_time
   parameters: []
@@ -1578,8 +1576,6 @@ function:
     datatype: bigint
 ---
 # VG The two date_format(timestamp, varchar) entries are duplicates?
-# Removing implemented-by: !datafusion / udf: to_char, since its formatting strings are different from Presto's: 
-# To get 2024::06::02, it is '%Y::%m::%d' in DF, but '%Y::%m::%d' in Presto. 
 function:
   name: date_format
   parameters:
@@ -1588,6 +1584,8 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: !datafusion
+    udf: to_char    
 ---
 function:
   name: date_format
@@ -1597,7 +1595,11 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: !datafusion
+    udf: to_char    
 ---
+# NB: Unlike Trino date_parse, DF to_timestamp appears to insist 
+#     on the input and the format string to have info up to a second.
 function:
   name: date_parse
   parameters:
@@ -1606,8 +1608,10 @@ function:
   optional-parameters: []
   returns:
     datatype: timestamp
+  implemented-by: !datafusion
+    udf: to_timestamp
 ---
-# VG date_part is not in Presto 0.287 docs
+# VG date_part is not in Presto 0.287 nor in Trino 449 docs
 function:
   name: date_part
   parameters:
@@ -2126,8 +2130,7 @@ function:
   returns:
     datatype: tinyint
 ---
-### VG: The two format_datetime(timestamp, varchar) entries are duplicates?
-### VG: DF provides to_char(timestamp, varchar), but the formatting specs are different from Presto's.
+# VG: The two format_datetime(timestamp, varchar) entries are duplicates?
 function:
   name: format_datetime
   parameters:
