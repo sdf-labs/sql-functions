@@ -1161,8 +1161,6 @@ function:
   implemented-by: !datafusion
     udf: array_prepend
 ---
-# VG Is this the correct signature? Shouldn't it be array<array<$3>> --> array<$3> ?
-#    The latter is what DF's array_concat does.
 function:
   name: concat
   variadic: uniform
@@ -1414,6 +1412,7 @@ function:
   returns:
     datatype: date
   special: true
+  volatility: stable
   implemented-by: !datafusion  
 ---
 function:
@@ -1422,9 +1421,10 @@ function:
   optional-parameters: []
   returns:
     datatype: array<varchar>
+  volatility: stable
 ---
 # VG Adding entries for current_time, current_timestamp, which appear in Trino 449 docs.
-#    DF current_time(), does not carry a time zone, while Trino current_time() does.
+# DF current_time(), does not carry a time zone, while Trino current_time() does.
 function:
   name: current_time
   parameters: []
@@ -1432,6 +1432,7 @@ function:
   returns:
     datatype: time(p)
   special: true
+  volatility: stable
   implemented-by: !datafusion
 ---
 # DF now() carries a time zone, but it is hard-wired as UTC currently
@@ -1442,6 +1443,7 @@ function:
   returns:
     datatype: timestamp(p)
   special: true
+  volatility: stable
   implemented-by: !datafusion
     udf: now
 ---
@@ -1451,15 +1453,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
----
-# VG The two date(timestamp) entries are duplicates?
-function:
-  name: date
-  parameters:
-  - datatype: timestamp(p)
-  optional-parameters: []
-  returns:
-    datatype: date
+  volatility: stable
 ---
 function:
   name: date
@@ -1578,18 +1572,6 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
----
-# VG The two date_format(timestamp, varchar) entries are duplicates?
-function:
-  name: date_format
-  parameters:
-  - datatype: timestamp(p)
-  - datatype: varchar
-  optional-parameters: []
-  returns:
-    datatype: varchar
-  implemented-by: !datafusion
-    udf: to_char    
 ---
 function:
   name: date_format
@@ -2133,16 +2115,6 @@ function:
   optional-parameters: []
   returns:
     datatype: tinyint
----
-# VG: The two format_datetime(timestamp, varchar) entries are duplicates?
-function:
-  name: format_datetime
-  parameters:
-  - datatype: timestamp(p)
-  - datatype: varchar
-  optional-parameters: []
-  returns:
-    datatype: varchar
 ---
 function:
   name: format_datetime
@@ -3233,16 +3205,6 @@ function:
     datatype: double
   implemented-by: !datafusion
 ---
-#VG The next two 'lower' functions are duplicates
-function:
-  name: lower
-  parameters:
-  - datatype: varchar
-  optional-parameters: []
-  returns:
-    datatype: varchar
-  implemented-by: !datafusion
----
 function:
   name: lower
   parameters:
@@ -3273,8 +3235,6 @@ function:
     datatype: varchar
   implemented-by: !datafusion
 ---
-# VG: Of the next 4 'ltrim' functions, the 2nd pair are duplicates
-#     ltrim(varchar, codepoints) is not in Trino 449. 
 function:
   name: ltrim
   parameters:
@@ -3295,25 +3255,6 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
----
-function:
-  name: ltrim
-  parameters:
-  - datatype: varchar
-  optional-parameters: []
-  returns:
-    datatype: varchar
-  implemented-by: !datafusion
----
-function:
-  name: ltrim
-  parameters:
-  - datatype: varchar
-  - datatype: codepoints
-  optional-parameters: []
-  returns:
-    datatype: varchar
-  implemented-by: !datafusion
 ---
 function:
   name: luhn_check
@@ -3809,6 +3750,7 @@ function:
   optional-parameters: []
   returns:
     datatype: timestamp
+  volatility: stable
   implemented-by: !datafusion
 ---
 function:
@@ -4130,8 +4072,6 @@ function:
     datatype: double
   implemented-by: !datafusion
 ---
-# VG: No functions in this file are maked with volatility: . Should they be?
-#     Some date functions are only stable, and rand()/random() are volatile.
 function:
   name: rand
   parameters:
@@ -4139,6 +4079,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  volatility: volatile
 ---
 function:
   name: rand
@@ -4148,6 +4089,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  volatility: volatile
 ---
 function:
   name: rand
@@ -4157,6 +4099,7 @@ function:
     datatype: double
   implemented-by: !datafusion
     udf: random
+  volatility: volatile
 ---
 function:
   name: rand
@@ -4165,6 +4108,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  volatility: volatile
 ---
 function:
   name: rand
@@ -4174,6 +4118,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  volatility: volatile
 ---
 function:
   name: rand
@@ -4182,6 +4127,7 @@ function:
   optional-parameters: []
   returns:
     datatype: smallint
+  volatility: volatile
 ---
 function:
   name: rand
@@ -4191,6 +4137,7 @@ function:
   optional-parameters: []
   returns:
     datatype: smallint
+  volatility: volatile
 ---
 function:
   name: rand
@@ -4199,6 +4146,7 @@ function:
   optional-parameters: []
   returns:
     datatype: tinyint
+  volatility: volatile
 ---
 function:
   name: rand
@@ -4208,6 +4156,7 @@ function:
   optional-parameters: []
   returns:
     datatype: tinyint
+  volatility: volatile
 ---
 function:
   name: random
@@ -4216,6 +4165,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  volatility: volatile
 ---
 function:
   name: random
@@ -4225,6 +4175,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  volatility: volatile
 ---
 function:
   name: random
@@ -4234,6 +4185,7 @@ function:
     datatype: double
   implemented-by: !datafusion
     udf: random
+  volatility: volatile
 ---
 function:
   name: random
@@ -4242,6 +4194,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  volatility: volatile
 ---
 function:
   name: random
@@ -4251,6 +4204,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  volatility: volatile
 ---
 function:
   name: random
@@ -4259,6 +4213,7 @@ function:
   optional-parameters: []
   returns:
     datatype: smallint
+  volatility: volatile
 ---
 function:
   name: random
@@ -4268,6 +4223,7 @@ function:
   optional-parameters: []
   returns:
     datatype: smallint
+  volatility: volatile
 ---
 function:
   name: random
@@ -4276,6 +4232,7 @@ function:
   optional-parameters: []
   returns:
     datatype: tinyint
+  volatility: volatile
 ---
 function:
   name: random
@@ -4285,6 +4242,7 @@ function:
   optional-parameters: []
   returns:
     datatype: tinyint
+  volatility: volatile
 ---
 function:
   name: rank
