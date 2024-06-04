@@ -1424,7 +1424,7 @@ function:
     datatype: array<varchar>
 ---
 # VG Adding entries for current_time, current_timestamp, which appear in Trino 449 docs.
-#    DF has current_time, but it differs from both (by not carrying a time zone).
+#    DF current_time(), does not carry a time zone, while Trino current_time() does.
 function:
   name: current_time
   parameters: []
@@ -1432,7 +1432,9 @@ function:
   returns:
     datatype: time(p)
   special: true
+  implemented-by: !datafusion
 ---
+# DF now() carries a time zone, but it is hard-wired as UTC currently
 function:
   name: current_timestamp
   parameters: []
@@ -1440,6 +1442,8 @@ function:
   returns:
     datatype: timestamp(p)
   special: true
+  implemented-by: !datafusion
+    udf: now
 ---
 function:
   name: current_timezone
@@ -2609,6 +2613,8 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !datafusion
+    udf: strpos
 ---
 function:
   name: infinity
@@ -2685,6 +2691,8 @@ function:
   optional-parameters: []
   returns:
     datatype: boolean
+  implemented-by: !datafusion
+    udf: isnan
 ---
 function:
   name: is_nan
@@ -2693,6 +2701,8 @@ function:
   optional-parameters: []
   returns:
     datatype: boolean
+  implemented-by: !datafusion
+    udf: isnan
 ---
 function:
   name: jaccard_index
@@ -3124,8 +3134,6 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  implemented-by: !datafusion
-    udf: character_length
 ---
 function:
   name: length
@@ -3145,6 +3153,8 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !datafusion
+    udf: levenshtein
 ---
 function:
   name: line_interpolate_point
@@ -3193,6 +3203,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
 function:
   name: log
@@ -3202,6 +3213,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
 function:
   name: log10
@@ -3210,6 +3222,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
 function:
   name: log2
@@ -3218,7 +3231,9 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
+#VG The next two 'lower' functions are duplicates
 function:
   name: lower
   parameters:
@@ -3256,7 +3271,10 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: !datafusion
 ---
+# VG: Of the next 4 'ltrim' functions, the 2nd pair are duplicates
+#     ltrim(varchar, codepoints) is not in Trino 449. 
 function:
   name: ltrim
   parameters:
@@ -3266,6 +3284,8 @@ function:
     datatype: varchar
   implemented-by: !datafusion
 ---
+# DF provides a 2-arg ltrim, but the 2nd arg there is a Utf8 (treated as a set of code points), 
+# rather than codepoints, which is an array of integers. 
 function:
   name: ltrim
   parameters:
@@ -3274,7 +3294,6 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  implemented-by: !datafusion
 ---
 function:
   name: ltrim
@@ -3456,6 +3475,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varbinary
+  implemented-by: !datafusion
 ---
 function:
   name: merge
@@ -3781,6 +3801,7 @@ function:
   returns:
     datatype: varchar
 ---
+# DF now() carries a time zone, but it is hard-wired as UTC currently
 function:
   name: now
   parameters: []
@@ -3944,6 +3965,8 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
+    udf: power
 ---
 function:
   name: power
@@ -3953,6 +3976,8 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
+    udf: power
 ---
 function:
   name: qdigest_agg
@@ -4102,7 +4127,10 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
+# VG: No functions in this file are maked with volatility: . Should they be?
+#     Some date functions are only stable, and rand()/random() are volatile.
 function:
   name: rand
   parameters:
@@ -4126,6 +4154,8 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
+    udf: random
 ---
 function:
   name: rand
@@ -4201,6 +4231,8 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
+    udf: random
 ---
 function:
   name: random
@@ -5700,6 +5732,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !datafusion
 ---
 function:
   name: strpos
