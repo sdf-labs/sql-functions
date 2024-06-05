@@ -1,13 +1,13 @@
 // start implementing uses
-use arrow::array::ArrayRef;
-use arrow::compute::{cast, date_part, DatePart};
+use arrow::array::{as_fixed_size_list_array, StringArray};
 use arrow::datatypes::DataType;
+use datafusion::common::cast::as_string_array;
 use datafusion::common::Result;
+use datafusion::functions::regex::regexplike::regexp_like;
 use datafusion::logical_expr::simplify::{ExprSimplifyResult, SimplifyInfo};
 use datafusion::logical_expr::{ColumnarValue, Expr, ScalarUDFImpl, Signature, Volatility};
 use std::any::Any;
-
-use crate::utils::make_scalar_function;
+use std::sync::Arc;
 // end implementing uses
 
 #[derive(Debug)]
@@ -19,7 +19,7 @@ impl Func {
     pub fn new() -> Self {        
         // start implementing constructor
         Self {
-            signature: Signature::exact(vec![DataType::Date32], Volatility::Immutable),
+            signature: Signature::any(2, Volatility::Immutable),
         }
         // end implementing constructor
     }
@@ -30,7 +30,7 @@ impl ScalarUDFImpl for Func {
         self
     }
     fn name(&self) -> &str {
-        "year"
+        "regexp_like"
     }
 
     fn signature(&self) -> &Signature {
@@ -39,30 +39,40 @@ impl ScalarUDFImpl for Func {
 
     // start implementing return_type
     fn return_type(&self, _arg_types: &[DataType]) -> Result<DataType> {
-        Ok(DataType::Int64)
+        Ok(DataType::Boolean)
     }
     // end implementing return_type
 
     // start implementing invoke
     fn invoke(&self, args: &[ColumnarValue]) -> Result<ColumnarValue> {
-        make_scalar_function(year, vec![])(args)
+        let args = ColumnarValue::values_to_arrays(args)?;
+        let value = args[0].to_owned();
+        let pattern = args[1].to_owned();
+        // let pattern = cast(&pattern, &DataType::Utf8)?;
+        let pattern = as_fixed_size_list_array(&pattern);
+        let pattern = pattern
+            .iter()
+            .map(|x| {
+                x.map(|x| {
+                    let inner = as_string_array(&x)?;
+                    Ok(inner.value(0).to_owned())
+                })
+                .transpose()
+            })
+            .collect::<Result<StringArray>>()?;
+
+        let args = vec![value, Arc::new(pattern)];
+        let array = regexp_like::<i32>(&args)?;
+        Ok(ColumnarValue::Array(array))
     }
     // end implementing invoke
 
     // start implementing simplify
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        _info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         Ok(ExprSimplifyResult::Original(args))
     }
     // end implementing simplify
 }
 
 // start implementing footer
-fn year(args: &[ArrayRef]) -> Result<ArrayRef> {
-    let array = &args[0];
-    Ok(cast(date_part(array, DatePart::Year)?.as_ref(), &DataType::Int64)?)
-}
 // end implementing footer

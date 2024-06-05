@@ -8,6 +8,7 @@ function:
     - datatype: $1
   returns: 
     datatype: $1
+  implemented-by: rust
 ---
 function:
   name: try

@@ -1,13 +1,11 @@
 // start implementing uses
-use arrow::array::ArrayRef;
-use arrow::compute::{cast, date_part, DatePart};
+use arrow::compute::kernels::cmp::lt;
+use arrow::compute::kernels::zip::zip;
 use arrow::datatypes::DataType;
-use datafusion::common::Result;
+use datafusion::common::{exec_err, Result};
 use datafusion::logical_expr::simplify::{ExprSimplifyResult, SimplifyInfo};
 use datafusion::logical_expr::{ColumnarValue, Expr, ScalarUDFImpl, Signature, Volatility};
 use std::any::Any;
-
-use crate::utils::make_scalar_function;
 // end implementing uses
 
 #[derive(Debug)]
@@ -19,7 +17,7 @@ impl Func {
     pub fn new() -> Self {        
         // start implementing constructor
         Self {
-            signature: Signature::exact(vec![DataType::Date32], Volatility::Immutable),
+            signature: Signature::variadic_equal(Volatility::Immutable),
         }
         // end implementing constructor
     }
@@ -30,7 +28,7 @@ impl ScalarUDFImpl for Func {
         self
     }
     fn name(&self) -> &str {
-        "year"
+        "least"
     }
 
     fn signature(&self) -> &Signature {
@@ -38,31 +36,37 @@ impl ScalarUDFImpl for Func {
     }
 
     // start implementing return_type
-    fn return_type(&self, _arg_types: &[DataType]) -> Result<DataType> {
-        Ok(DataType::Int64)
+    fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
+        Ok(arg_types[0].clone())
     }
     // end implementing return_type
 
     // start implementing invoke
     fn invoke(&self, args: &[ColumnarValue]) -> Result<ColumnarValue> {
-        make_scalar_function(year, vec![])(args)
+        let args = ColumnarValue::values_to_arrays(args)?;
+        let result = args.into_iter().fold(Ok(None), |acc, cur| {
+            let acc = acc?;
+            if let Some(acc) = acc {
+                let comparison = lt(&acc, &cur)?;
+                zip(&comparison, &acc, &cur).map(Some)
+            } else {
+                Ok(Some(cur))
+            }
+        })?;
+        if let Some(result) = result {
+            Ok(ColumnarValue::Array(result))
+        } else {
+            exec_err!("least expects at least one argument")
+        }
     }
     // end implementing invoke
 
     // start implementing simplify
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        _info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         Ok(ExprSimplifyResult::Original(args))
     }
     // end implementing simplify
 }
 
 // start implementing footer
-fn year(args: &[ArrayRef]) -> Result<ArrayRef> {
-    let array = &args[0];
-    Ok(cast(date_part(array, DatePart::Year)?.as_ref(), &DataType::Int64)?)
-}
 // end implementing footer

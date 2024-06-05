@@ -1,13 +1,10 @@
 // start implementing uses
-use arrow::array::ArrayRef;
-use arrow::compute::{cast, date_part, DatePart};
-use arrow::datatypes::DataType;
+use arrow::datatypes::{DataType, TimeUnit};
 use datafusion::common::Result;
 use datafusion::logical_expr::simplify::{ExprSimplifyResult, SimplifyInfo};
 use datafusion::logical_expr::{ColumnarValue, Expr, ScalarUDFImpl, Signature, Volatility};
+use datafusion::scalar::ScalarValue;
 use std::any::Any;
-
-use crate::utils::make_scalar_function;
 // end implementing uses
 
 #[derive(Debug)]
@@ -19,7 +16,8 @@ impl Func {
     pub fn new() -> Self {        
         // start implementing constructor
         Self {
-            signature: Signature::exact(vec![DataType::Date32], Volatility::Immutable),
+            signature:
+            Signature::exact(vec![], Volatility::Immutable)
         }
         // end implementing constructor
     }
@@ -30,7 +28,7 @@ impl ScalarUDFImpl for Func {
         self
     }
     fn name(&self) -> &str {
-        "year"
+        "current_timestamp"
     }
 
     fn signature(&self) -> &Signature {
@@ -39,30 +37,31 @@ impl ScalarUDFImpl for Func {
 
     // start implementing return_type
     fn return_type(&self, _arg_types: &[DataType]) -> Result<DataType> {
-        Ok(DataType::Int64)
+        Ok(DataType::Timestamp(TimeUnit::Millisecond, None))
     }
     // end implementing return_type
 
     // start implementing invoke
-    fn invoke(&self, args: &[ColumnarValue]) -> Result<ColumnarValue> {
-        make_scalar_function(year, vec![])(args)
+    fn invoke(&self, _args: &[ColumnarValue]) -> Result<ColumnarValue> {
+        todo!()
     }
     // end implementing invoke
 
     // start implementing simplify
     fn simplify(
         &self,
-        args: Vec<Expr>,
-        _info: &dyn SimplifyInfo,
+        _args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
     ) -> Result<ExprSimplifyResult> {
-        Ok(ExprSimplifyResult::Original(args))
+        let now_ts = info.execution_props().query_execution_start_time;
+        let millis = now_ts.timestamp_millis();
+        dbg!(millis);
+        Ok(ExprSimplifyResult::Simplified(Expr::Literal(
+            ScalarValue::TimestampMillisecond(Some(millis), None)
+        )))
     }
     // end implementing simplify
 }
 
 // start implementing footer
-fn year(args: &[ArrayRef]) -> Result<ArrayRef> {
-    let array = &args[0];
-    Ok(cast(date_part(array, DatePart::Year)?.as_ref(), &DataType::Int64)?)
-}
 // end implementing footer

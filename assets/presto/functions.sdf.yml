@@ -1507,6 +1507,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: rust
 ---
 function:
   name: date_diff
@@ -1517,16 +1518,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
----
-function:
-  name: date_diff
-  parameters:
-  - datatype: varchar
-  - datatype: time(p)
-  - datatype: time(p)
-  optional-parameters: []
-  returns:
-    datatype: bigint
+  implemented-by: rust
 ---
 function:
   name: date_diff
@@ -1537,16 +1529,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
----
-function:
-  name: date_diff
-  parameters:
-  - datatype: varchar
-  - datatype: timestamp(p)
-  - datatype: timestamp(p)
-  optional-parameters: []
-  returns:
-    datatype: bigint
+  implemented-by: rust
 ---
 function:
   name: date_format
@@ -1729,6 +1712,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: builtin
 ---
 function:
   name: dow
@@ -2401,6 +2385,7 @@ function:
   optional-parameters: []
   returns:
     datatype: $3
+  implemented-by: rust
 ---
 function:
   name: grouping
@@ -3032,6 +3017,7 @@ function:
   optional-parameters: []
   returns:
     datatype: $3
+  implemented-by: rust
 ---
 function:
   name: length
@@ -4236,6 +4222,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: rust
 ---
 function:
   name: regexp_extract
@@ -4274,7 +4261,7 @@ function:
   optional-parameters: []
   returns:
     datatype: boolean
-  implemented-by: !datafusion
+  implemented-by: rust
 ---
 function:
   name: regexp_position
@@ -4324,17 +4311,18 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: rust
 ---
 function:
   name: regexp_replace
   parameters:
   - datatype: varchar
-  - datatype: varchar
+  - datatype: joniregexp
   - datatype: varchar
   optional-parameters: []
   returns:
     datatype: varchar
-  implemented-by: !datafusion
+  implemented-by: rust
 ---
 function:
   name: regexp_split
