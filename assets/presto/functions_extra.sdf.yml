@@ -8,6 +8,7 @@ function:
     - datatype: $1
   returns: 
     datatype: $1
+  implemented-by: rust
 ---
 function:
   name: try
@@ -32,6 +33,7 @@ function:
   returns:
     datatype: timestamp
   special: true
+  implemented-by: rust
 ---
 function:
   name: current_timestamp

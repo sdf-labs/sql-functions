@@ -1,15 +1,12 @@
 // start implementing uses
-use arrow::array::{ArrayRef, GenericStringArray};
+use arrow::compute::kernels::zip::zip;
 use arrow::datatypes::DataType;
-use datafusion::common::cast::as_binary_array;
+use datafusion::common::cast::as_boolean_array;
 use datafusion::common::Result;
 use datafusion::logical_expr::simplify::{ExprSimplifyResult, SimplifyInfo};
 use datafusion::logical_expr::{ColumnarValue, Expr, ScalarUDFImpl, Signature, Volatility};
 use std::any::Any;
 use std::sync::Arc;
-
-use crate::utils::make_scalar_function;
-
 // end implementing uses
 
 #[derive(Debug)]
@@ -21,7 +18,7 @@ impl Func {
     pub fn new() -> Self {        
         // start implementing constructor
         Self {
-            signature: Signature::exact(vec![DataType::Binary], Volatility::Immutable),
+            signature: Signature::any(3, Volatility::Immutable),
         }
         // end implementing constructor
     }
@@ -32,7 +29,7 @@ impl ScalarUDFImpl for Func {
         self
     }
     fn name(&self) -> &str {
-        "to_hex"
+        "if"
     }
 
     fn signature(&self) -> &Signature {
@@ -40,45 +37,38 @@ impl ScalarUDFImpl for Func {
     }
 
     // start implementing return_type
-    fn return_type(&self, _arg_types: &[DataType]) -> Result<DataType> {
-        Ok(DataType::Utf8)
+    fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
+        if arg_types.len() != 3 {
+            return Err(datafusion::error::DataFusionError::Internal(
+                "if expects 3 arguments".to_string(),
+            ));
+        }
+        if arg_types[0] != DataType::Boolean {
+            return Err(datafusion::error::DataFusionError::Internal(
+                "if expects the first argument to be a boolean".to_string(),
+            ));
+        }
+        Ok(arg_types[1].clone())
     }
     // end implementing return_type
 
     // start implementing invoke
     fn invoke(&self, args: &[ColumnarValue]) -> Result<ColumnarValue> {
-        make_scalar_function(to_hex, vec![])(args)
+        let args = ColumnarValue::values_to_arrays(args)?;
+        let conditions = as_boolean_array(&args[0])?;
+        let left = args[1].to_owned();
+        let right = args[2].to_owned();
+        let result = zip(&conditions, &left, &right)?;
+        Ok(ColumnarValue::Array(Arc::new(result)))
     }
     // end implementing invoke
 
     // start implementing simplify
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        _info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         Ok(ExprSimplifyResult::Original(args))
     }
     // end implementing simplify
 }
 
 // start implementing footer
-fn to_hex(args: &[ArrayRef]) -> Result<ArrayRef> {
-    let binary_array = as_binary_array(&args[0])?;
-    let result = binary_array
-        .iter()
-        .map(|binary| {
-            let hex = binary.map(|binary| {
-                let hex = binary
-                    .iter()
-                    .map(|byte| format!("{:02x}", byte))
-                    .collect::<String>();
-                hex
-            });
-            Ok(hex)
-        })
-        .collect::<Result<GenericStringArray<i32>>>()?;
-    Ok(Arc::new(result) as ArrayRef)
-}
- 
 // end implementing footer
