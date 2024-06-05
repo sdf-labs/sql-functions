@@ -466,6 +466,7 @@ function:
   returns:
     datatype: array<$3>
   implemented-by: !datafusion
+    udf: array_remove_all
 ---
 function:
   name: array_sort
