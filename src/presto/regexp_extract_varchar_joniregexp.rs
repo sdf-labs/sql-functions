@@ -16,7 +16,7 @@ pub(super) struct Func {
 }
 
 impl Func {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         // start implementing constructor
         Self {
             signature: Signature::any(2, Volatility::Immutable),
