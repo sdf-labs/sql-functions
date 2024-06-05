@@ -1424,30 +1424,6 @@ function:
     datatype: array<varchar>
   volatility: stable
 ---
-# VG Adding entries for current_time, current_timestamp, which appear in Trino 449 docs.
-# DF current_time(), does not carry a time zone, while Trino current_time() does.
-function:
-  name: current_time
-  parameters: []
-  optional-parameters: []
-  returns:
-    datatype: time(p)
-  special: true
-  volatility: stable
-  implemented-by: !datafusion
----
-# DF now() carries a time zone, but it is hard-wired as UTC currently
-function:
-  name: current_timestamp
-  parameters: []
-  optional-parameters: []
-  returns:
-    datatype: timestamp(p)
-  special: true
-  volatility: stable
-  implemented-by: !datafusion
-    udf: now
----
 function:
   name: current_timezone
   parameters: []
