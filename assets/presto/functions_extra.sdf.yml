@@ -80,6 +80,36 @@ function:
   volatility: stable
 ---
 function:
+  name: date_part
+  parameters:
+  - datatype: varchar
+  - datatype: time(p)
+  optional-parameters: []
+  returns:
+    datatype: double
+  implemented-by: !datafusion
+---
+function:
+  name: date_part
+  parameters:
+  - datatype: varchar
+  - datatype: timestamp(p)
+  optional-parameters: []
+  returns:
+    datatype: double
+  implemented-by: !datafusion
+---
+function:
+  name: date_part
+  parameters:
+  - datatype: varchar
+  - datatype: date
+  optional-parameters: []
+  returns:
+    datatype: double
+  implemented-by: !datafusion
+---
+function:
   name: localtime
   kind: scalar
   parameters: []
