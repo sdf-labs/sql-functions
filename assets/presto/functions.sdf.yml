@@ -386,6 +386,7 @@ function:
   optional-parameters: []
   returns:
     datatype: array<$3>
+  implemented-by: !datafusion
 ---
 function:
   name: array_except
@@ -395,6 +396,7 @@ function:
   optional-parameters: []
   returns:
     datatype: array<$3>
+  implemented-by: !datafusion
 ---
 function:
   name: array_intersect
@@ -404,6 +406,7 @@ function:
   optional-parameters: []
   returns:
     datatype: array<$3>
+  implemented-by: !datafusion
 ---
 function:
   name: array_join
@@ -452,6 +455,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !datafusion
 ---
 function:
   name: array_remove
@@ -461,6 +465,8 @@ function:
   optional-parameters: []
   returns:
     datatype: array<$3>
+  implemented-by: !datafusion
+    udf: array_remove_all
 ---
 function:
   name: array_sort
@@ -469,6 +475,7 @@ function:
   optional-parameters: []
   returns:
     datatype: array<$3>
+  implemented-by: !datafusion
 ---
 function:
   name: array_sort
@@ -487,6 +494,7 @@ function:
   optional-parameters: []
   returns:
     datatype: array<$3>
+  implemented-by: !datafusion
 ---
 function:
   name: arrays_overlap
@@ -504,6 +512,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
 function:
   name: at_timezone
@@ -521,6 +530,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
 function:
   name: atan2
@@ -530,6 +540,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
 function:
   name: avg
@@ -885,6 +896,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !datafusion
 ---
 function:
   name: cardinality
@@ -917,6 +929,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
 function:
   name: ceil
@@ -941,6 +954,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
 function:
   name: ceil
@@ -957,6 +971,7 @@ function:
   optional-parameters: []
   returns:
     datatype: real
+  implemented-by: !datafusion
 ---
 function:
   name: ceil
@@ -997,6 +1012,8 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
+    udf: ceil
 ---
 function:
   name: ceiling
@@ -1013,6 +1030,8 @@ function:
   optional-parameters: []
   returns:
     datatype: real
+  implemented-by: !datafusion
+    udf: ceil
 ---
 function:
   name: ceiling
@@ -1090,6 +1109,8 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !datafusion
+    udf: ascii
 ---
 function:
   name: color
@@ -1138,6 +1159,8 @@ function:
   optional-parameters: []
   returns:
     datatype: array<$3>
+  implemented-by: !datafusion
+    udf: array_prepend
 ---
 function:
   name: concat
@@ -1147,6 +1170,8 @@ function:
   optional-parameters: []
   returns:
     datatype: array<$3>
+  implemented-by: !datafusion
+    udf: array_concat
 ---
 function:
   name: concat
@@ -1156,6 +1181,8 @@ function:
   optional-parameters: []
   returns:
     datatype: array<$3>
+  implemented-by: !datafusion
+    udf: array_append
 ---
 function:
   name: concat
@@ -1185,7 +1212,6 @@ function:
   optional-parameters: []
   returns:
     datatype: varbinary
-  implemented-by: !datafusion
 ---
 function:
   name: concat_ws
@@ -1215,6 +1241,8 @@ function:
   optional-parameters: []
   returns:
     datatype: boolean
+  implemented-by: !datafusion
+    udf: array_has
 ---
 function:
   name: contains
@@ -1225,6 +1253,7 @@ function:
   returns:
     datatype: boolean
 ---
+# NB: DF's array_has_all is similar, but does not require elts of the 2nd arg to occur in order
 function:
   name: contains_sequence
   parameters:
@@ -1270,6 +1299,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
 function:
   name: cosh
@@ -1278,6 +1308,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
 function:
   name: cosine_similarity
@@ -1380,6 +1411,7 @@ function:
   returns:
     datatype: date
   special: true
+  volatility: stable
   implemented-by: !datafusion  
 ---
 function:
@@ -1388,6 +1420,7 @@ function:
   optional-parameters: []
   returns:
     datatype: array<varchar>
+  volatility: stable
 ---
 function:
   name: current_timezone
@@ -1395,14 +1428,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
----
-function:
-  name: date
-  parameters:
-  - datatype: timestamp(p)
-  optional-parameters: []
-  returns:
-    datatype: date
+  volatility: stable
 ---
 function:
   name: date
@@ -1419,6 +1445,8 @@ function:
   optional-parameters: []
   returns:
     datatype: date
+  implemented-by: !datafusion
+    udf: to_date
 ---
 function:
   name: date_add
@@ -1529,19 +1557,10 @@ function:
   returns:
     datatype: varchar
   implemented-by: !datafusion
-    udf: to_char
+    udf: to_char    
 ---
-function:
-  name: date_format
-  parameters:
-  - datatype: timestamp(p)
-  - datatype: varchar
-  optional-parameters: []
-  returns:
-    datatype: varchar
-  implemented-by: !datafusion
-    udf: to_char
----
+# NB: Unlike Trino date_parse, DF to_timestamp appears to insist 
+#     on the input and the format string to have info up to a second.
 function:
   name: date_parse
   parameters:
@@ -1550,36 +1569,8 @@ function:
   optional-parameters: []
   returns:
     datatype: timestamp
----
-function:
-  name: date_part
-  parameters:
-  - datatype: varchar
-  - datatype: time(p)
-  optional-parameters: []
-  returns:
-    datatype: double
   implemented-by: !datafusion
----
-function:
-  name: date_part
-  parameters:
-  - datatype: varchar
-  - datatype: timestamp(p)
-  optional-parameters: []
-  returns:
-    datatype: double
-  implemented-by: !datafusion
----
-function:
-  name: date_part
-  parameters:
-  - datatype: varchar
-  - datatype: date
-  optional-parameters: []
-  returns:
-    datatype: double
-  implemented-by: !datafusion
+    udf: to_timestamp
 ---
 function:
   name: date_trunc
@@ -1589,7 +1580,6 @@ function:
   optional-parameters: []
   returns:
     datatype: time(p)
-  implemented-by: !datafusion
 ---
 function:
   name: date_trunc
@@ -1609,7 +1599,6 @@ function:
   optional-parameters: []
   returns:
     datatype: date
-  implemented-by: !datafusion
 ---
 function:
   name: day
@@ -1731,6 +1720,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
 function:
   name: dense_rank
@@ -1812,6 +1802,8 @@ function:
   optional-parameters: []
   returns:
     datatype: $3
+  implemented-by: !datafusion
+    udf: array_element
 ---
 function:
   name: empty_approx_set
@@ -1856,6 +1848,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
 function:
   name: features
@@ -2008,6 +2001,7 @@ function:
   optional-parameters: []
   returns:
     datatype: array<$3>
+  implemented-by: !datafusion
 ---
 function:
   name: floor
@@ -2032,6 +2026,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
 function:
   name: floor
@@ -2064,15 +2059,6 @@ function:
   optional-parameters: []
   returns:
     datatype: tinyint
----
-function:
-  name: format_datetime
-  parameters:
-  - datatype: timestamp(p)
-  - datatype: varchar
-  optional-parameters: []
-  returns:
-    datatype: varchar
 ---
 function:
   name: format_datetime
@@ -2124,6 +2110,8 @@ function:
   returns:
     datatype: varbinary
 ---
+# NB: DF provides `decode`, which probably uses the same algorithm, but the signature is different, 
+#     it takes "'base64' or 'hex' as the second argument. 
 function:
   name: from_base64
   parameters:
@@ -2188,6 +2176,8 @@ function:
   returns:
     datatype: sphericalgeography
 ---
+# NB: DF provides `decode`, which probably uses the same algorithm, but the signature is different, 
+#     it takes "'base64' or 'hex' as the second argument. 
 function:
   name: from_hex
   parameters:
@@ -2262,7 +2252,6 @@ function:
   optional-parameters: []
   returns:
     datatype: timestamp
-  implemented-by: !datafusion
 ---
 function:
   name: from_unixtime
@@ -2272,7 +2261,6 @@ function:
   optional-parameters: []
   returns:
     datatype: timestamp
-  implemented-by: !datafusion
 ---
 function:
   name: from_unixtime_nanos
@@ -2541,6 +2529,8 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !datafusion
+    udf: strpos
 ---
 function:
   name: infinity
@@ -2617,6 +2607,8 @@ function:
   optional-parameters: []
   returns:
     datatype: boolean
+  implemented-by: !datafusion
+    udf: isnan
 ---
 function:
   name: is_nan
@@ -2625,6 +2617,8 @@ function:
   optional-parameters: []
   returns:
     datatype: boolean
+  implemented-by: !datafusion
+    udf: isnan
 ---
 function:
   name: jaccard_index
@@ -3056,8 +3050,6 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  implemented-by: !datafusion
-    udf: character_length
 ---
 function:
   name: length
@@ -3077,6 +3069,8 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !datafusion
+    udf: levenshtein
 ---
 function:
   name: line_interpolate_point
@@ -3125,6 +3119,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
 function:
   name: log
@@ -3134,6 +3129,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
 function:
   name: log10
@@ -3142,6 +3138,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
 function:
   name: log2
@@ -3150,14 +3147,6 @@ function:
   optional-parameters: []
   returns:
     datatype: double
----
-function:
-  name: lower
-  parameters:
-  - datatype: varchar
-  optional-parameters: []
-  returns:
-    datatype: varchar
   implemented-by: !datafusion
 ---
 function:
@@ -3188,24 +3177,6 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
----
-function:
-  name: ltrim
-  parameters:
-  - datatype: varchar
-  optional-parameters: []
-  returns:
-    datatype: varchar
-  implemented-by: !datafusion
----
-function:
-  name: ltrim
-  parameters:
-  - datatype: varchar
-  - datatype: codepoints
-  optional-parameters: []
-  returns:
-    datatype: varchar
   implemented-by: !datafusion
 ---
 function:
@@ -3217,6 +3188,8 @@ function:
     datatype: varchar
   implemented-by: !datafusion
 ---
+# DF provides a 2-arg ltrim, but the 2nd arg there is a Utf8 (treated as a set of code points), 
+# rather than Trino codepoints, which seems to be an array of integers. 
 function:
   name: ltrim
   parameters:
@@ -3225,7 +3198,6 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  implemented-by: !datafusion
 ---
 function:
   name: luhn_check
@@ -3388,6 +3360,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varbinary
+  implemented-by: !datafusion
 ---
 function:
   name: merge
@@ -3713,12 +3686,14 @@ function:
   returns:
     datatype: varchar
 ---
+# DF now() carries a time zone, but it is hard-wired as UTC currently
 function:
   name: now
   parameters: []
   optional-parameters: []
   returns:
     datatype: timestamp
+  volatility: stable
   implemented-by: !datafusion
 ---
 function:
@@ -3866,6 +3841,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
 function:
   name: pow
@@ -3875,6 +3851,8 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
+    udf: power
 ---
 function:
   name: power
@@ -3884,6 +3862,8 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
+    udf: power
 ---
 function:
   name: qdigest_agg
@@ -4033,6 +4013,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
 function:
   name: rand
@@ -4041,6 +4022,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  volatility: volatile
 ---
 function:
   name: rand
@@ -4050,6 +4032,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  volatility: volatile
 ---
 function:
   name: rand
@@ -4057,6 +4040,9 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
+    udf: random
+  volatility: volatile
 ---
 function:
   name: rand
@@ -4065,6 +4051,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  volatility: volatile
 ---
 function:
   name: rand
@@ -4074,6 +4061,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  volatility: volatile
 ---
 function:
   name: rand
@@ -4082,6 +4070,7 @@ function:
   optional-parameters: []
   returns:
     datatype: smallint
+  volatility: volatile
 ---
 function:
   name: rand
@@ -4091,6 +4080,7 @@ function:
   optional-parameters: []
   returns:
     datatype: smallint
+  volatility: volatile
 ---
 function:
   name: rand
@@ -4099,6 +4089,7 @@ function:
   optional-parameters: []
   returns:
     datatype: tinyint
+  volatility: volatile
 ---
 function:
   name: rand
@@ -4108,6 +4099,7 @@ function:
   optional-parameters: []
   returns:
     datatype: tinyint
+  volatility: volatile
 ---
 function:
   name: random
@@ -4116,6 +4108,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  volatility: volatile
 ---
 function:
   name: random
@@ -4125,6 +4118,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  volatility: volatile
 ---
 function:
   name: random
@@ -4132,6 +4126,9 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
+    udf: random
+  volatility: volatile
 ---
 function:
   name: random
@@ -4140,6 +4137,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  volatility: volatile
 ---
 function:
   name: random
@@ -4149,6 +4147,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  volatility: volatile
 ---
 function:
   name: random
@@ -4157,6 +4156,7 @@ function:
   optional-parameters: []
   returns:
     datatype: smallint
+  volatility: volatile
 ---
 function:
   name: random
@@ -4166,6 +4166,7 @@ function:
   optional-parameters: []
   returns:
     datatype: smallint
+  volatility: volatile
 ---
 function:
   name: random
@@ -4174,6 +4175,7 @@ function:
   optional-parameters: []
   returns:
     datatype: tinyint
+  volatility: volatile
 ---
 function:
   name: random
@@ -4183,6 +4185,7 @@ function:
   optional-parameters: []
   returns:
     datatype: tinyint
+  volatility: volatile
 ---
 function:
   name: rank
@@ -4267,10 +4270,11 @@ function:
   name: regexp_like
   parameters:
   - datatype: varchar
-  - datatype: joniregexp
+  - datatype: varchar
   optional-parameters: []
   returns:
     datatype: boolean
+  implemented-by: !datafusion
 ---
 function:
   name: regexp_position
@@ -4311,7 +4315,6 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  implemented-by: !datafusion
 ---
 function:
   name: regexp_replace
@@ -4321,7 +4324,6 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  implemented-by: !datafusion
 ---
 function:
   name: regexp_replace
@@ -4435,6 +4437,8 @@ function:
   optional-parameters: []
   returns:
     datatype: array<$1>
+  implemented-by: !datafusion
+    udf: array_repeat
 ---
 function:
   name: replace
@@ -4455,7 +4459,6 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  implemented-by: !datafusion
 ---
 function:
   name: reverse
@@ -4464,6 +4467,8 @@ function:
   optional-parameters: []
   returns:
     datatype: array<$3>
+  implemented-by: !datafusion
+    udf: array_reverse
 ---
 function:
   name: reverse
@@ -4480,6 +4485,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: !datafusion
 ---
 function:
   name: rgb
@@ -4495,6 +4501,15 @@ function:
   name: round
   parameters:
   - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: double
+  implemented-by: !datafusion
+---
+function:
+  name: round
+  parameters:
+  - datatype: double
   - datatype: bigint
   optional-parameters: []
   returns:
@@ -4527,7 +4542,6 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  implemented-by: !datafusion
 ---
 function:
   name: round
@@ -4537,7 +4551,6 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  implemented-by: !datafusion
 ---
 function:
   name: round
@@ -4546,7 +4559,6 @@ function:
   optional-parameters: []
   returns:
     datatype: decimal(rp, rs)
-  implemented-by: !datafusion
 ---
 function:
   name: round
@@ -4556,16 +4568,6 @@ function:
   optional-parameters: []
   returns:
     datatype: decimal(rp, s)
-  implemented-by: !datafusion
----
-function:
-  name: round
-  parameters:
-  - datatype: double
-  optional-parameters: []
-  returns:
-    datatype: double
-  implemented-by: !datafusion
 ---
 function:
   name: round
@@ -4574,7 +4576,6 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  implemented-by: !datafusion
 ---
 function:
   name: round
@@ -4584,7 +4585,6 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  implemented-by: !datafusion
 ---
 function:
   name: round
@@ -4593,7 +4593,6 @@ function:
   optional-parameters: []
   returns:
     datatype: smallint
-  implemented-by: !datafusion
 ---
 function:
   name: round
@@ -4603,7 +4602,6 @@ function:
   optional-parameters: []
   returns:
     datatype: smallint
-  implemented-by: !datafusion
 ---
 function:
   name: round
@@ -4612,7 +4610,6 @@ function:
   optional-parameters: []
   returns:
     datatype: tinyint
-  implemented-by: !datafusion
 ---
 function:
   name: round
@@ -4622,7 +4619,6 @@ function:
   optional-parameters: []
   returns:
     datatype: tinyint
-  implemented-by: !datafusion
 ---
 function:
   name: row_number
@@ -4652,24 +4648,6 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
----
-function:
-  name: rtrim
-  parameters:
-  - datatype: varchar
-  optional-parameters: []
-  returns:
-    datatype: varchar
-  implemented-by: !datafusion
----
-function:
-  name: rtrim
-  parameters:
-  - datatype: varchar
-  - datatype: codepoints
-  optional-parameters: []
-  returns:
-    datatype: varchar
   implemented-by: !datafusion
 ---
 function:
@@ -4689,7 +4667,6 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  implemented-by: !datafusion
 ---
 function:
   name: second
@@ -4814,6 +4791,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varbinary
+  implemented-by: !datafusion
 ---
 function:
   name: sha512
@@ -4822,6 +4800,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varbinary
+  implemented-by: !datafusion
 ---
 function:
   name: shuffle
@@ -4830,6 +4809,7 @@ function:
   optional-parameters: []
   returns:
     datatype: array<$3>
+  volatility: volatile
 ---
 function:
   name: sign
@@ -4854,6 +4834,8 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
+    udf: signum
 ---
 function:
   name: sign
@@ -4903,6 +4885,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
 function:
   name: sinh
@@ -4911,6 +4894,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
 function:
   name: skewness
@@ -4930,6 +4914,7 @@ function:
   returns:
     datatype: double
 ---
+# DF offers array_slice, but it is array_slice(array, from, to), while Trino has  slice(array, from, length).
 function:
   name: slice
   parameters:
@@ -4996,8 +4981,6 @@ function:
   optional-parameters: []
   returns:
     datatype: array<varchar>
-  implemented-by: !datafusion
-    udf: split_part
 ---
 function:
   name: split_part
@@ -5053,6 +5036,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
 function:
   name: ST_Area
@@ -5563,6 +5547,7 @@ function:
   optional-parameters: []
   returns:
     datatype: boolean
+  implemented-by: !datafusion
 ---
 function:
   name: stddev
@@ -5631,6 +5616,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !datafusion
 ---
 function:
   name: strpos
@@ -5671,7 +5657,6 @@ function:
   optional-parameters: []
   returns:
     datatype: varbinary
-  implemented-by: !datafusion
 ---
 function:
   name: substr
@@ -5682,16 +5667,17 @@ function:
   optional-parameters: []
   returns:
     datatype: varbinary
+---
+function:
+  name: substring
+  parameters:
+  - datatype: varchar
+  - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: varchar
   implemented-by: !datafusion
----
-function:
-  name: substring
-  parameters:
-  - datatype: varchar
-  - datatype: bigint
-  optional-parameters: []
-  returns:
-    datatype: varchar
+    udf: substr
 ---
 function:
   name: substring
@@ -5702,25 +5688,8 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
----
-function:
-  name: substring
-  parameters:
-  - datatype: varchar
-  - datatype: bigint
-  optional-parameters: []
-  returns:
-    datatype: varchar
----
-function:
-  name: substring
-  parameters:
-  - datatype: varchar
-  - datatype: bigint
-  - datatype: bigint
-  optional-parameters: []
-  returns:
-    datatype: varchar
+  implemented-by: !datafusion
+    udf: substr
 ---
 function:
   name: sum
@@ -5789,6 +5758,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
 function:
   name: tanh
@@ -5797,6 +5767,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
 ---
 function:
   name: tdigest_agg
@@ -5874,6 +5845,8 @@ function:
   returns:
     datatype: varchar
 ---
+# NB: DF provides `encode`, which probably uses the same algorithm, but the signature is different, 
+#     it takes "'base64' or 'hex' as the second argument. 
 function:
   name: to_base64
   parameters:
@@ -5906,6 +5879,7 @@ function:
   returns:
     datatype: varbinary
 ---
+# DF to_char uses formats with %Y, %m specifiers, while Trino uses 'YYYY', 'MM' etc.
 function:
   name: to_char
   parameters:
@@ -5915,6 +5889,7 @@ function:
   returns:
     datatype: varchar
 ---
+# DF to_date uses formats with %Y, %m specifiers, while Trino uses 'YYYY', 'MM' etc.
 function:
   name: to_date
   parameters:
@@ -5948,6 +5923,8 @@ function:
   returns:
     datatype: geometry
 ---
+# NB: DF provides `encode`, which probably uses the same algorithm, but the signature is different, 
+#     it takes "'base64' or 'hex' as the second argument. 
 function:
   name: to_hex
   parameters:
@@ -6013,6 +5990,7 @@ function:
   returns:
     datatype: sphericalgeography
 ---
+# DF to_timestamp uses formats with %Y, %m specifiers, while Trino uses 'YYYY', 'MM' etc.
 function:
   name: to_timestamp
   parameters:
@@ -6075,6 +6053,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: !datafusion
 ---
 function:
   name: trim
@@ -6094,8 +6073,6 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  implemented-by: !datafusion
-    udf: btrim
 ---
 function:
   name: trim_array
@@ -6130,6 +6107,8 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
+    udf: trunc
 ---
 function:
   name: truncate
@@ -6138,6 +6117,8 @@ function:
   optional-parameters: []
   returns:
     datatype: real
+  implemented-by: !datafusion
+    udf: trunc
 ---
 function:
   name: typeof
@@ -6146,15 +6127,6 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
----
-function:
-  name: upper
-  parameters:
-  - datatype: varchar
-  optional-parameters: []
-  returns:
-    datatype: varchar
-  implemented-by: !datafusion
 ---
 function:
   name: upper
@@ -6244,6 +6216,8 @@ function:
   optional-parameters: []
   returns:
     datatype: uuid
+  volatility: volatile
+  implemented-by: !datafusion
 ---
 function:
   name: value_at_quantile

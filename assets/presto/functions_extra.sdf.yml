@@ -24,6 +24,8 @@ function:
   returns:
     datatype: time
   special: true
+  volatility: stable
+  implemented-by: !datafusion
 ---
 function:
   name: current_timestamp
@@ -32,6 +34,10 @@ function:
   returns:
     datatype: timestamp
   special: true
+  volatility: stable
+  implemented-by: !datafusion
+    udf: now
+# DF now() carries a time zone (as current_timestamp does in Trino), but it is hard-wired as UTC currently
 ---
 function:
   name: current_timestamp
@@ -41,6 +47,7 @@ function:
       constant: "0"
   returns:
     datatype: timestamp(0)
+  volatility: stable
 ---
 function:
   name: current_timestamp
@@ -50,6 +57,7 @@ function:
       constant: "3"
   returns:
     datatype: timestamp(3)
+  volatility: stable
 ---
 function:
   name: current_timestamp
@@ -59,6 +67,7 @@ function:
       constant: "6"
   returns:
     datatype: timestamp(6)
+  volatility: stable
 ---
 function:
   name: current_timestamp
@@ -68,6 +77,7 @@ function:
       constant: "9"
   returns:
     datatype: timestamp(9)
+  volatility: stable
 ---
 function:
   name: localtime
@@ -76,6 +86,7 @@ function:
   returns:
     datatype: time
   special: true
+  volatility: stable
 ---
 function:
   name: localtimestamp
@@ -84,6 +95,7 @@ function:
   returns:
     datatype: timestamp
   special: true
+  volatility: stable
 ---
 function:
   name: localtimestamp
@@ -93,6 +105,7 @@ function:
       constant: "0"
   returns:
     datatype: timestamp(0)
+  volatility: stable
 ---
 function:
   name: localtimestamp
@@ -102,6 +115,7 @@ function:
       constant: "3"
   returns:
     datatype: timestamp(3)
+  volatility: stable
 ---
 function:
   name: localtimestamp
@@ -111,6 +125,7 @@ function:
       constant: "6"
   returns:
     datatype: timestamp(6)
+  volatility: stable
 ---
 function:
   name: localtimestamp
@@ -120,6 +135,7 @@ function:
       constant: "9"
   returns:
     datatype: timestamp(9)
+  volatility: stable
 ---
 function:
   name: current_user
