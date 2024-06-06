@@ -1184,8 +1184,6 @@ function:
   implemented-by: !datafusion
     udf: array_append
 ---
-# VG Isn't this concat(str1, str2) subsumed by the variadic version?
-# Trino 449 doc, at least, does not list this one.
 function:
   name: concat
   parameters:
@@ -1573,37 +1571,6 @@ function:
     datatype: timestamp
   implemented-by: !datafusion
     udf: to_timestamp
----
-# VG date_part is not in Presto 0.287 nor in Trino 449 docs
-function:
-  name: date_part
-  parameters:
-  - datatype: varchar
-  - datatype: time(p)
-  optional-parameters: []
-  returns:
-    datatype: double
-  implemented-by: !datafusion
----
-function:
-  name: date_part
-  parameters:
-  - datatype: varchar
-  - datatype: timestamp(p)
-  optional-parameters: []
-  returns:
-    datatype: double
-  implemented-by: !datafusion
----
-function:
-  name: date_part
-  parameters:
-  - datatype: varchar
-  - datatype: date
-  optional-parameters: []
-  returns:
-    datatype: double
-  implemented-by: !datafusion
 ---
 function:
   name: date_trunc
@@ -3223,7 +3190,6 @@ function:
 ---
 # DF provides a 2-arg ltrim, but the 2nd arg there is a Utf8 (treated as a set of code points), 
 # rather than Trino codepoints, which seems to be an array of integers. 
-# VG Also, ltrim(varchar, codepoints) is not in Trino 449 docs.
 function:
   name: ltrim
   parameters:
@@ -4300,7 +4266,6 @@ function:
   returns:
     datatype: array<varchar>
 ---
-# VG: Replaced pattern type joniregexp~~>varchar to make it execute
 function:
   name: regexp_like
   parameters:
@@ -4694,7 +4659,6 @@ function:
     datatype: varchar
   implemented-by: !datafusion
 ---
-# VG rtrim(varchar, codepoints) is not in Trino 449 docs.
 function:
   name: rtrim
   parameters:
@@ -6101,7 +6065,6 @@ function:
   implemented-by: !datafusion
     udf: btrim
 ---
-# VG trim(varchar, codepoints) is not in Trino 449 docs.
 function:
   name: trim
   parameters:
