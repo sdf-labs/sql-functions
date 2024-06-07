@@ -8,6 +8,7 @@ function:
     - datatype: $1
   returns: 
     datatype: $1
+  implemented-by: !rust
 ---
 function:
   name: try
@@ -48,6 +49,8 @@ function:
   returns:
     datatype: timestamp(0)
   volatility: stable
+  implemented-by: !rust
+    name: current_timestamp_bigint_0
 ---
 function:
   name: current_timestamp
@@ -58,6 +61,8 @@ function:
   returns:
     datatype: timestamp(3)
   volatility: stable
+  implemented-by: !rust
+    name: current_timestamp_bigint_3
 ---
 function:
   name: current_timestamp
@@ -68,6 +73,8 @@ function:
   returns:
     datatype: timestamp(6)
   volatility: stable
+  implemented-by: !rust
+    name: current_timestamp_bigint_6
 ---
 function:
   name: current_timestamp
@@ -78,6 +85,8 @@ function:
   returns:
     datatype: timestamp(9)
   volatility: stable
+  implemented-by: !rust
+    name: current_timestamp_bigint_9
 ---
 function:
   name: date_part
@@ -136,6 +145,8 @@ function:
   returns:
     datatype: timestamp(0)
   volatility: stable
+  implemented-by: !rust
+    name: localtimestamp_bigint_0
 ---
 function:
   name: localtimestamp
@@ -146,6 +157,8 @@ function:
   returns:
     datatype: timestamp(3)
   volatility: stable
+  implemented-by: !rust
+    name: localtimestamp_bigint_3
 ---
 function:
   name: localtimestamp
@@ -156,6 +169,8 @@ function:
   returns:
     datatype: timestamp(6)
   volatility: stable
+  implemented-by: !rust
+    name: localtimestamp_bigint_6
 ---
 function:
   name: localtimestamp
@@ -166,6 +181,8 @@ function:
   returns:
     datatype: timestamp(9)
   volatility: stable
+  implemented-by: !rust
+    name: localtimestamp_bigint_9
 ---
 function:
   name: current_user

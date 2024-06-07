@@ -740,11 +740,11 @@ function:
 function:
   name: bitwise_left_shift
   parameters:
-  - datatype: bigint
+  - datatype: integer
   - datatype: bigint
   optional-parameters: []
   returns:
-    datatype: bigint
+    datatype: integer
 ---
 function:
   name: bitwise_left_shift
@@ -802,11 +802,11 @@ function:
 function:
   name: bitwise_right_shift
   parameters:
-  - datatype: bigint
+  - datatype: integer
   - datatype: bigint
   optional-parameters: []
   returns:
-    datatype: bigint
+    datatype: integer
 ---
 function:
   name: bitwise_right_shift
@@ -838,11 +838,11 @@ function:
 function:
   name: bitwise_right_shift_arithmetic
   parameters:
-  - datatype: bigint
+  - datatype: integer
   - datatype: bigint
   optional-parameters: []
   returns:
-    datatype: bigint
+    datatype: integer
 ---
 function:
   name: bitwise_right_shift_arithmetic
@@ -959,10 +959,10 @@ function:
 function:
   name: ceil
   parameters:
-  - datatype: bigint
+  - datatype: integer
   optional-parameters: []
   returns:
-    datatype: bigint
+    datatype: integer
 ---
 function:
   name: ceil
@@ -1018,10 +1018,10 @@ function:
 function:
   name: ceiling
   parameters:
-  - datatype: bigint
+  - datatype: integer
   optional-parameters: []
   returns:
-    datatype: bigint
+    datatype: integer
 ---
 function:
   name: ceiling
@@ -1074,6 +1074,7 @@ function:
   returns:
     datatype: varchar
   implemented-by: !datafusion
+# classifier has two variants: one for varchar and one for bigint
 ---
 function:
   name: classify
@@ -1083,15 +1084,15 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
----
-function:
-  name: classify
-  parameters:
-  - datatype: map<bigint, double>
-  - datatype: classifier
-  optional-parameters: []
-  returns:
-    datatype: varchar
+# ---
+# function:
+#   name: classify
+#   parameters:
+#   - datatype: map<bigint, double>
+#   - datatype: classifier
+#   optional-parameters: []
+#   returns:
+#     datatype: varchar
 ---
 function:
   name: coalesce
@@ -1473,26 +1474,6 @@ function:
   parameters:
   - datatype: varchar
   - datatype: bigint
-  - datatype: time(p)
-  optional-parameters: []
-  returns:
-    datatype: time(p)
----
-function:
-  name: date_add
-  parameters:
-  - datatype: varchar
-  - datatype: bigint
-  - datatype: timestamp(p)
-  optional-parameters: []
-  returns:
-    datatype: timestamp(p)
----
-function:
-  name: date_add
-  parameters:
-  - datatype: varchar
-  - datatype: bigint
   - datatype: timestamp(p)
   optional-parameters: []
   returns:
@@ -1507,6 +1488,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !rust
 ---
 function:
   name: date_diff
@@ -1517,16 +1499,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
----
-function:
-  name: date_diff
-  parameters:
-  - datatype: varchar
-  - datatype: time(p)
-  - datatype: time(p)
-  optional-parameters: []
-  returns:
-    datatype: bigint
+  implemented-by: !rust
 ---
 function:
   name: date_diff
@@ -1537,16 +1510,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
----
-function:
-  name: date_diff
-  parameters:
-  - datatype: varchar
-  - datatype: timestamp(p)
-  - datatype: timestamp(p)
-  optional-parameters: []
-  returns:
-    datatype: bigint
+  implemented-by: !rust
 ---
 function:
   name: date_format
@@ -1607,20 +1571,12 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  implemented-by: rust
+  implemented-by: !rust
 ---
 function:
   name: day
   parameters:
   - datatype: interval day to second
-  optional-parameters: []
-  returns:
-    datatype: bigint
----
-function:
-  name: day
-  parameters:
-  - datatype: timestamp(p)
   optional-parameters: []
   returns:
     datatype: bigint
@@ -1658,14 +1614,6 @@ function:
     datatype: bigint
 ---
 function:
-  name: day_of_month
-  parameters:
-  - datatype: timestamp(p)
-  optional-parameters: []
-  returns:
-    datatype: bigint
----
-function:
   name: day_of_week
   parameters:
   - datatype: date
@@ -1682,25 +1630,9 @@ function:
     datatype: bigint
 ---
 function:
-  name: day_of_week
-  parameters:
-  - datatype: timestamp(p)
-  optional-parameters: []
-  returns:
-    datatype: bigint
----
-function:
   name: day_of_year
   parameters:
   - datatype: date
-  optional-parameters: []
-  returns:
-    datatype: bigint
----
-function:
-  name: day_of_year
-  parameters:
-  - datatype: timestamp(p)
   optional-parameters: []
   returns:
     datatype: bigint
@@ -1729,6 +1661,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: builtin
 ---
 function:
   name: dow
@@ -1747,25 +1680,9 @@ function:
     datatype: bigint
 ---
 function:
-  name: dow
-  parameters:
-  - datatype: timestamp(p)
-  optional-parameters: []
-  returns:
-    datatype: bigint
----
-function:
   name: doy
   parameters:
   - datatype: date
-  optional-parameters: []
-  returns:
-    datatype: bigint
----
-function:
-  name: doy
-  parameters:
-  - datatype: timestamp(p)
   optional-parameters: []
   returns:
     datatype: bigint
@@ -2031,10 +1948,10 @@ function:
 function:
   name: floor
   parameters:
-  - datatype: bigint
+  - datatype: integer
   optional-parameters: []
   returns:
-    datatype: bigint
+    datatype: integer
 ---
 function:
   name: floor
@@ -2401,6 +2318,7 @@ function:
   optional-parameters: []
   returns:
     datatype: $3
+  implemented-by: !rust
 ---
 function:
   name: grouping
@@ -2485,22 +2403,6 @@ function:
   name: hour
   parameters:
   - datatype: time(p)
-  optional-parameters: []
-  returns:
-    datatype: bigint
----
-function:
-  name: hour
-  parameters:
-  - datatype: time(p)
-  optional-parameters: []
-  returns:
-    datatype: bigint
----
-function:
-  name: hour
-  parameters:
-  - datatype: timestamp(p)
   optional-parameters: []
   returns:
     datatype: bigint
@@ -2871,14 +2773,6 @@ function:
     datatype: date
 ---
 function:
-  name: last_day_of_month
-  parameters:
-  - datatype: timestamp(p)
-  optional-parameters: []
-  returns:
-    datatype: date
----
-function:
   name: last_value
   kind: window
   parameters:
@@ -3032,6 +2926,7 @@ function:
   optional-parameters: []
   returns:
     datatype: $3
+  implemented-by: !rust
 ---
 function:
   name: length
@@ -3417,22 +3312,6 @@ function:
 function:
   name: millisecond
   parameters:
-  - datatype: time(p)
-  optional-parameters: []
-  returns:
-    datatype: bigint
----
-function:
-  name: millisecond
-  parameters:
-  - datatype: timestamp(p)
-  optional-parameters: []
-  returns:
-    datatype: bigint
----
-function:
-  name: millisecond
-  parameters:
   - datatype: timestamp(p)
   optional-parameters: []
   returns:
@@ -3499,22 +3378,6 @@ function:
 function:
   name: minute
   parameters:
-  - datatype: time(p)
-  optional-parameters: []
-  returns:
-    datatype: bigint
----
-function:
-  name: minute
-  parameters:
-  - datatype: timestamp(p)
-  optional-parameters: []
-  returns:
-    datatype: bigint
----
-function:
-  name: minute
-  parameters:
   - datatype: timestamp(p)
   optional-parameters: []
   returns:
@@ -3550,11 +3413,11 @@ function:
 function:
   name: mod
   parameters:
-  - datatype: bigint
-  - datatype: bigint
+  - datatype: integer
+  - datatype: integer
   optional-parameters: []
   returns:
-    datatype: bigint
+    datatype: integer
 ---
 function:
   name: mod
@@ -3590,20 +3453,12 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  implemented-by: rust
+  implemented-by: !rust
 ---
 function:
   name: month
   parameters:
   - datatype: interval year to month
-  optional-parameters: []
-  returns:
-    datatype: bigint
----
-function:
-  name: month
-  parameters:
-  - datatype: timestamp(p)
   optional-parameters: []
   returns:
     datatype: bigint
@@ -3999,14 +3854,6 @@ function:
     datatype: bigint
 ---
 function:
-  name: quarter
-  parameters:
-  - datatype: timestamp(p)
-  optional-parameters: []
-  returns:
-    datatype: bigint
----
-function:
   name: radians
   parameters:
   - datatype: double
@@ -4047,20 +3894,20 @@ function:
 function:
   name: rand
   parameters:
-  - datatype: bigint
+  - datatype: integer
   optional-parameters: []
   returns:
-    datatype: bigint
+    datatype: integer
   volatility: volatile
 ---
 function:
   name: rand
   parameters:
-  - datatype: bigint
-  - datatype: bigint
+  - datatype: integer
+  - datatype: integer
   optional-parameters: []
   returns:
-    datatype: bigint
+    datatype: integer
   volatility: volatile
 ---
 function:
@@ -4133,20 +3980,20 @@ function:
 function:
   name: random
   parameters:
-  - datatype: bigint
+  - datatype: integer
   optional-parameters: []
   returns:
-    datatype: bigint
+    datatype: integer
   volatility: volatile
 ---
 function:
   name: random
   parameters:
-  - datatype: bigint
-  - datatype: bigint
+  - datatype: integer
+  - datatype: integer
   optional-parameters: []
   returns:
-    datatype: bigint
+    datatype: integer
   volatility: volatile
 ---
 function:
@@ -4236,6 +4083,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: !rust
 ---
 function:
   name: regexp_extract
@@ -4270,11 +4118,11 @@ function:
   name: regexp_like
   parameters:
   - datatype: varchar
-  - datatype: varchar
+  - datatype: joniregexp
   optional-parameters: []
   returns:
     datatype: boolean
-  implemented-by: !datafusion
+  implemented-by: !rust
 ---
 function:
   name: regexp_position
@@ -4324,17 +4172,18 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: !rust
 ---
 function:
   name: regexp_replace
   parameters:
   - datatype: varchar
-  - datatype: varchar
+  - datatype: joniregexp
   - datatype: varchar
   optional-parameters: []
   returns:
     datatype: varchar
-  implemented-by: !datafusion
+  implemented-by: !rust
 ---
 function:
   name: regexp_split
@@ -4538,19 +4387,19 @@ function:
 function:
   name: round
   parameters:
-  - datatype: bigint
+  - datatype: integer
   optional-parameters: []
   returns:
-    datatype: bigint
+    datatype: integer
 ---
 function:
   name: round
   parameters:
-  - datatype: bigint
-  - datatype: bigint
+  - datatype: integer
+  - datatype: integer
   optional-parameters: []
   returns:
-    datatype: bigint
+    datatype: integer
 ---
 function:
   name: round
@@ -4687,22 +4536,6 @@ function:
 function:
   name: second
   parameters:
-  - datatype: time(p)
-  optional-parameters: []
-  returns:
-    datatype: bigint
----
-function:
-  name: second
-  parameters:
-  - datatype: timestamp(p)
-  optional-parameters: []
-  returns:
-    datatype: bigint
----
-function:
-  name: second
-  parameters:
   - datatype: timestamp(p)
   optional-parameters: []
   returns:
@@ -4762,16 +4595,6 @@ function:
   - datatype: timestamp(p)
   - datatype: timestamp(p)
   - datatype: interval day to second
-  optional-parameters: []
-  returns:
-    datatype: array<timestamp(p)>
----
-function:
-  name: sequence
-  parameters:
-  - datatype: timestamp(p)
-  - datatype: timestamp(p)
-  - datatype: interval year to month
   optional-parameters: []
   returns:
     datatype: array<timestamp(p)>
@@ -4840,10 +4663,10 @@ function:
 function:
   name: sign
   parameters:
-  - datatype: bigint
+  - datatype: integer
   optional-parameters: []
   returns:
-    datatype: bigint
+    datatype: integer
 ---
 function:
   name: sign
@@ -4981,6 +4804,7 @@ function:
   optional-parameters: []
   returns:
     datatype: array<varchar>
+  implemented-by: !rust
 ---
 function:
   name: split_part
@@ -5932,7 +5756,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  implemented-by: rust
+  implemented-by: !rust
 ---
 function:
   name: to_ieee754_32
@@ -5954,14 +5778,6 @@ function:
   name: to_iso8601
   parameters:
   - datatype: date
-  optional-parameters: []
-  returns:
-    datatype: varchar
----
-function:
-  name: to_iso8601
-  parameters:
-  - datatype: timestamp(p)
   optional-parameters: []
   returns:
     datatype: varchar
@@ -6227,15 +6043,16 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
----
-function:
-  name: value_at_quantile
-  parameters:
-  - datatype: qdigest
-  - datatype: double
-  optional-parameters: []
-  returns:
-    datatype: double
+# qdigest has three variants, one for double and one for bigint, one for real.
+# ---
+# function:
+#   name: value_at_quantile
+#   parameters:
+#   - datatype: qdigest
+#   - datatype: double
+#   optional-parameters: []
+#   returns:
+#     datatype: double
 ---
 function:
   name: value_at_quantile
@@ -6245,15 +6062,15 @@ function:
   optional-parameters: []
   returns:
     datatype: double
----
-function:
-  name: value_at_quantile
-  parameters:
-  - datatype: qdigest
-  - datatype: double
-  optional-parameters: []
-  returns:
-    datatype: real
+# ---
+# function:
+#   name: value_at_quantile
+#   parameters:
+#   - datatype: qdigest
+#   - datatype: double
+#   optional-parameters: []
+#   returns:
+#     datatype: real
 ---
 function:
   name: values_at_quantiles
@@ -6263,15 +6080,16 @@ function:
   optional-parameters: []
   returns:
     datatype: array<bigint>
----
-function:
-  name: values_at_quantiles
-  parameters:
-  - datatype: qdigest
-  - datatype: array<double>
-  optional-parameters: []
-  returns:
-    datatype: array<double>
+# qdigest has two variants, one for double and one for bigint.
+# ---
+# function:
+#   name: values_at_quantiles
+#   parameters:
+#   - datatype: qdigest
+#   - datatype: array<double>
+#   optional-parameters: []
+#   returns:
+#     datatype: array<double>
 ---
 function:
   name: values_at_quantiles
@@ -6281,15 +6099,15 @@ function:
   optional-parameters: []
   returns:
     datatype: array<double>
----
-function:
-  name: values_at_quantiles
-  parameters:
-  - datatype: qdigest
-  - datatype: array<double>
-  optional-parameters: []
-  returns:
-    datatype: array<real>
+# ---
+# function:
+#   name: values_at_quantiles
+#   parameters:
+#   - datatype: qdigest
+#   - datatype: array<double>
+#   optional-parameters: []
+#   returns:
+#     datatype: array<real>
 ---
 function:
   name: var_pop
@@ -6362,25 +6180,9 @@ function:
     datatype: bigint
 ---
 function:
-  name: week
-  parameters:
-  - datatype: timestamp(p)
-  optional-parameters: []
-  returns:
-    datatype: bigint
----
-function:
   name: week_of_year
   parameters:
   - datatype: date
-  optional-parameters: []
-  returns:
-    datatype: bigint
----
-function:
-  name: week_of_year
-  parameters:
-  - datatype: timestamp(p)
   optional-parameters: []
   returns:
     datatype: bigint
@@ -6474,7 +6276,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  implemented-by: rust
+  implemented-by: !rust
 ---
 function:
   name: year
@@ -6493,14 +6295,6 @@ function:
     datatype: bigint
 ---
 function:
-  name: year
-  parameters:
-  - datatype: timestamp(p)
-  optional-parameters: []
-  returns:
-    datatype: bigint
----
-function:
   name: year_of_week
   parameters:
   - datatype: date
@@ -6517,25 +6311,9 @@ function:
     datatype: bigint
 ---
 function:
-  name: year_of_week
-  parameters:
-  - datatype: timestamp(p)
-  optional-parameters: []
-  returns:
-    datatype: bigint
----
-function:
   name: yow
   parameters:
   - datatype: date
-  optional-parameters: []
-  returns:
-    datatype: bigint
----
-function:
-  name: yow
-  parameters:
-  - datatype: timestamp(p)
   optional-parameters: []
   returns:
     datatype: bigint

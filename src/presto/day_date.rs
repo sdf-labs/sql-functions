@@ -3,7 +3,8 @@ use arrow::array::ArrayRef;
 use arrow::compute::{cast, date_part, DatePart};
 use arrow::datatypes::DataType;
 use datafusion::common::Result;
-use datafusion::logical_expr::{ColumnarValue, ScalarUDFImpl, Signature, Volatility};
+use datafusion::logical_expr::simplify::{ExprSimplifyResult, SimplifyInfo};
+use datafusion::logical_expr::{ColumnarValue, Expr, ScalarUDFImpl, Signature, Volatility};
 use std::any::Any;
 
 use crate::utils::make_scalar_function;
@@ -47,6 +48,16 @@ impl ScalarUDFImpl for Func {
         make_scalar_function(day, vec![])(args)
     }
     // end implementing invoke
+
+    // start implementing simplify
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        _info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
+        Ok(ExprSimplifyResult::Original(args))
+    }
+    // end implementing simplify
 }
 
 // start implementing footer
