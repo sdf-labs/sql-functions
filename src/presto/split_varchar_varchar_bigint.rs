@@ -1,6 +1,6 @@
+// start implementing uses
 use arrow::array::{ArrayRef, ListArray, StringArray};
 use arrow::buffer::{NullBuffer, OffsetBuffer};
-// start implementing uses
 use arrow::datatypes::{DataType, Field};
 use datafusion::common::cast::{as_int64_array, as_string_array};
 use datafusion::common::Result;

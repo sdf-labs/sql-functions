@@ -578,6 +578,7 @@ mod btrim_varchar_varchar;
 mod to_timestamp_seconds_1;
 mod make_array_1;
 mod length_array_array_1;
+mod contains_array_varchar_array_varchar_varchar;
 
 
 // create  UDFs
@@ -1160,6 +1161,7 @@ make_udf_function!(btrim_varchar_varchar::Func, BTRIM_VARCHAR_VARCHAR, btrim_var
 make_udf_function!(to_timestamp_seconds_1::Func, TO_TIMESTAMP_SECONDS_1, to_timestamp_seconds_1);
 make_udf_function!(make_array_1::Func, MAKE_ARRAY_1, make_array_1);
 make_udf_function!(length_array_array_1::Func, LENGTH_ARRAY_ARRAY_1, length_array_array_1);
+make_udf_function!(contains_array_varchar_array_varchar_varchar::Func, CONTAINS_ARRAY_VARCHAR_ARRAY_VARCHAR_VARCHAR, contains_array_varchar_array_varchar_varchar);
 
 
 // Export the functions out of this package, both as expr_fn as well as a list of functions
@@ -1743,4 +1745,5 @@ export_functions!(
     (presto, to_timestamp_seconds_1, arg1, "function doc"),
     (presto, make_array_1, arg1, "function doc"),
     (presto, length_array_array_1, arg1, "function doc"),
+    (presto, contains_array_varchar_array_varchar_varchar, arg1 arg2, "function doc"),
 );
