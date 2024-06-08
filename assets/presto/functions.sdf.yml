@@ -377,7 +377,7 @@ function:
   optional-parameters: []
   returns:
     datatype: array<$1>
-  implemented-by: builtin
+  implemented-by: !datafusion
 ---
 function:
   name: array_distinct
@@ -550,7 +550,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
-  implemented-by: builtin
+  implemented-by: !datafusion
 ---
 function:
   name: avg
@@ -560,7 +560,7 @@ function:
   optional-parameters: []
   returns:
     datatype: decimal(p, s)
-  implemented-by: builtin
+  implemented-by: !datafusion
 ---
 function:
   name: avg
@@ -588,7 +588,7 @@ function:
   optional-parameters: []
   returns:
     datatype: real
-  implemented-by: builtin
+  implemented-by: !datafusion
 ---
 function:
   name: bar
@@ -1327,7 +1327,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  implemented-by: builtin
+  implemented-by: !datafusion
 ---
 function:
   name: count
@@ -1337,7 +1337,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  implemented-by: builtin
+  implemented-by: !datafusion
 ---
 function:
   name: count_if
@@ -1403,7 +1403,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
-  implemented-by: builtin
+  implemented-by: !datafusion
 ---
 function:
   name: current_date
@@ -1661,7 +1661,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  implemented-by: builtin
+  implemented-by: !datafusion
 ---
 function:
   name: dow
@@ -1909,7 +1909,7 @@ function:
   optional-parameters: []
   returns:
     datatype: $1
-  implemented-by: builtin
+  implemented-by: !datafusion
 ---
 function:
   name: flatten
@@ -2327,7 +2327,7 @@ function:
   parameters: []
   returns: 
     datatype: int
-  implemented-by: builtin
+  implemented-by: !datafusion
 ---
 function:
   name: hamming_distance
@@ -2733,7 +2733,7 @@ function:
   optional-parameters: []
   returns:
     datatype: $1
-  implemented-by: builtin
+  implemented-by: !datafusion
 ---
 function:
   name: lag
@@ -2780,7 +2780,7 @@ function:
   optional-parameters: []
   returns:
     datatype: $1
-  implemented-by: builtin
+  implemented-by: !datafusion
 ---
 function:
   name: lead
@@ -2790,7 +2790,7 @@ function:
   optional-parameters: []
   returns:
     datatype: $1
-  implemented-by: builtin
+  implemented-by: !datafusion
 ---
 function:
   name: lead
@@ -3225,7 +3225,7 @@ function:
   optional-parameters: []
   returns:
     datatype: $1
-  implemented-by: builtin
+  implemented-by: !datafusion
 ---
 function:
   name: max_by
@@ -3336,7 +3336,7 @@ function:
   optional-parameters: []
   returns:
     datatype: $1
-  implemented-by: builtin
+  implemented-by: !datafusion
 ---
 function:
   name: min_by
@@ -3560,7 +3560,7 @@ function:
   optional-parameters: []
   returns:
     datatype: $1
-  implemented-by: builtin
+  implemented-by: !datafusion
 ---
 function:
   name: ntile
@@ -3570,7 +3570,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  implemented-by: builtin
+  implemented-by: !datafusion
 ---
 function:
   name: nullif
@@ -3688,7 +3688,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
-  implemented-by: builtin
+  implemented-by: !datafusion
 ---
 function:
   name: pi
@@ -4041,7 +4041,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  implemented-by: builtin
+  implemented-by: !datafusion
 ---
 function:
   name: reduce
@@ -4476,7 +4476,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  implemented-by: builtin
+  implemented-by: !datafusion
 ---
 function:
   name: rpad
@@ -5390,7 +5390,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
-  implemented-by: builtin
+  implemented-by: !datafusion
 ---
 function:
   name: stddev_pop
@@ -5400,7 +5400,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
-  implemented-by: builtin
+  implemented-by: !datafusion
 ---
 function:
   name: stddev_pop
@@ -5410,7 +5410,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
-  implemented-by: builtin
+  implemented-by: !datafusion
 ---
 function:
   name: stddev_samp
@@ -5420,7 +5420,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
-  implemented-by: builtin
+  implemented-by: !datafusion
 ---
 function:
   name: stddev_samp
@@ -5430,7 +5430,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
-  implemented-by: builtin
+  implemented-by: !datafusion
 ---
 function:
   name: strpos
@@ -5523,7 +5523,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  implemented-by: builtin
+  implemented-by: !datafusion
 ---
 function:
   name: sum
@@ -5533,7 +5533,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
-  implemented-by: builtin
+  implemented-by: !datafusion
 ---
 function:
   name: sum
@@ -5543,7 +5543,7 @@ function:
   optional-parameters: []
   returns:
     datatype: decimal(38, s)
-  implemented-by: builtin
+  implemented-by: !datafusion
 ---
 function:
   name: sum
@@ -5553,7 +5553,7 @@ function:
   optional-parameters: []
   returns:
     datatype: real
-  implemented-by: builtin
+  implemented-by: !datafusion
 ---
 function:
   name: sum
@@ -5563,7 +5563,7 @@ function:
   optional-parameters: []
   returns:
     datatype: interval day to second
-  implemented-by: builtin
+  implemented-by: !datafusion
 ---
 function:
   name: sum
@@ -5573,7 +5573,7 @@ function:
   optional-parameters: []
   returns:
     datatype: interval year to month
-  implemented-by: builtin
+  implemented-by: !datafusion
 ---
 function:
   name: tan
