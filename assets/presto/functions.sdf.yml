@@ -1661,7 +1661,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  implemented-by: builtin
+  implemented-by: !datafusion
 ---
 function:
   name: dow
