@@ -8,11 +8,11 @@ use std::any::Any;
 
 
 fn reverse_array_3_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented("todo".to_string()))
+    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
 }
 
 fn reverse_array_3_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented("todo".to_string()))
+    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
 }
 
 fn reverse_array_3_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
@@ -20,11 +20,11 @@ fn reverse_array_3_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result
 }
 
 fn reverse_varbinary_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented("todo".to_string()))
+    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
 }
 
 fn reverse_varbinary_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented("todo".to_string()))
+    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
 }
 
 fn reverse_varbinary_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
@@ -32,11 +32,11 @@ fn reverse_varbinary_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Resu
 }
 
 fn reverse_varchar_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented("todo".to_string()))
+    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
 }
 
 fn reverse_varchar_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented("todo".to_string()))
+    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
 }
 
 fn reverse_varchar_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {

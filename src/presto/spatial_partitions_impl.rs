@@ -8,11 +8,11 @@ use std::any::Any;
 
 
 fn spatial_partitions_kdbtree_geometry_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented("todo".to_string()))
+    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
 }
 
 fn spatial_partitions_kdbtree_geometry_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented("todo".to_string()))
+    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
 }
 
 fn spatial_partitions_kdbtree_geometry_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
@@ -20,11 +20,11 @@ fn spatial_partitions_kdbtree_geometry_simplify(args: Vec<Expr>, _info: &dyn Sim
 }
 
 fn spatial_partitions_kdbtree_geometry_double_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented("todo".to_string()))
+    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
 }
 
 fn spatial_partitions_kdbtree_geometry_double_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented("todo".to_string()))
+    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
 }
 
 fn spatial_partitions_kdbtree_geometry_double_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {

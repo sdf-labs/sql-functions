@@ -8,11 +8,11 @@ use std::any::Any;
 
 
 fn bitwise_right_shift_bigint_bigint_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented("todo".to_string()))
+    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
 }
 
 fn bitwise_right_shift_bigint_bigint_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented("todo".to_string()))
+    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
 }
 
 fn bitwise_right_shift_bigint_bigint_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
@@ -20,11 +20,11 @@ fn bitwise_right_shift_bigint_bigint_simplify(args: Vec<Expr>, _info: &dyn Simpl
 }
 
 fn bitwise_right_shift_integer_bigint_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented("todo".to_string()))
+    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
 }
 
 fn bitwise_right_shift_integer_bigint_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented("todo".to_string()))
+    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
 }
 
 fn bitwise_right_shift_integer_bigint_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
@@ -32,11 +32,11 @@ fn bitwise_right_shift_integer_bigint_simplify(args: Vec<Expr>, _info: &dyn Simp
 }
 
 fn bitwise_right_shift_smallint_bigint_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented("todo".to_string()))
+    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
 }
 
 fn bitwise_right_shift_smallint_bigint_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented("todo".to_string()))
+    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
 }
 
 fn bitwise_right_shift_smallint_bigint_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
@@ -44,11 +44,11 @@ fn bitwise_right_shift_smallint_bigint_simplify(args: Vec<Expr>, _info: &dyn Sim
 }
 
 fn bitwise_right_shift_tinyint_bigint_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented("todo".to_string()))
+    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
 }
 
 fn bitwise_right_shift_tinyint_bigint_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented("todo".to_string()))
+    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
 }
 
 fn bitwise_right_shift_tinyint_bigint_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {

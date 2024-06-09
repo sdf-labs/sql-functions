@@ -2321,6 +2321,15 @@ function:
   implemented-by: !rust
 ---
 function:
+  name: grouping
+  kind: aggregate
+  variadic: any
+  parameters: []
+  returns: 
+    datatype: int
+  implemented-by: !datafusion
+---
+function:
   name: hamming_distance
   parameters:
   - datatype: varchar
