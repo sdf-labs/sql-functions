@@ -358,7 +358,6 @@ function:
 # version:
 function:
   name: to_timestamp_seconds
-  variadic: any
   parameters:
     - datatype: $1
   optional-parameters: []

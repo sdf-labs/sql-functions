@@ -1,0 +1,68 @@
+#![allow(non_camel_case_types)]
+use arrow::datatypes::DataType;
+use datafusion::common::Result;
+use datafusion::error::DataFusionError;
+use datafusion::logical_expr::simplify::{ExprSimplifyResult, SimplifyInfo};
+use datafusion::logical_expr::{ColumnarValue, Expr, ScalarUDFImpl, Signature, Volatility};
+use std::any::Any;
+
+
+fn none_match_array_1_function_1_boolean_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
+    Err(DataFusionError::NotImplemented("todo".to_string()))
+}
+
+fn none_match_array_1_function_1_boolean_return_type(_arg_types: &[DataType]) -> Result<DataType> {
+    Err(DataFusionError::NotImplemented("todo".to_string()))
+}
+
+fn none_match_array_1_function_1_boolean_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    Ok(ExprSimplifyResult::Original(args))
+}
+
+
+/// ========== Above are user code/Below are generated code ==========
+
+
+#[derive(Debug)]
+pub(super) struct none_match_array_1_function_1_booleanFunc {
+    signature: Signature,
+}
+
+impl none_match_array_1_function_1_booleanFunc {
+    pub fn new() -> Self {        
+        Self {
+            signature: Signature::any(2, Volatility::Immutable),
+        }
+    }
+}
+
+impl ScalarUDFImpl for none_match_array_1_function_1_booleanFunc {
+    fn as_any(&self) -> &dyn Any {
+        self
+    }
+    fn name(&self) -> &str {
+        "none_match"
+    }
+
+    fn signature(&self) -> &Signature {
+        &self.signature
+    }
+
+
+    fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
+        none_match_array_1_function_1_boolean_return_type(arg_types)
+    }
+
+    fn invoke(&self, args: &[ColumnarValue]) -> Result<ColumnarValue> {
+        none_match_array_1_function_1_boolean_invoke(args)
+    }
+
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
+        none_match_array_1_function_1_boolean_simplify(args, info)
+    }
+
+}
