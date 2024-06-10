@@ -1,3 +1,4 @@
+---
 function:
   name: add_months
   parameters:
@@ -8,6 +9,7 @@ function:
   kind: scalar
   volatility: pure
   section: date_and_time_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/add_months
 ---
 function:
   name: all_user_names
@@ -17,6 +19,7 @@ function:
   kind: scalar
   volatility: pure
   section: context_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/all_user_names
 ---
 function:
   name: to_array
@@ -27,6 +30,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_array
 ---
 function:
   name: to_variant
@@ -37,6 +41,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_variant
 ---
 function:
   name: to_object
@@ -47,6 +52,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_object
 ---
 function:
   name: to_binary
@@ -57,6 +63,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_binary
 ---
 function:
   name: to_binary
@@ -68,6 +75,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_binary
 ---
 function:
   name: to_date
@@ -78,6 +86,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_date
 ---
 function:
   name: to_date
@@ -89,6 +98,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_date
 ---
 function:
   name: try_to_date
@@ -99,6 +109,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/try_to_date
 ---
 function:
   name: try_to_date
@@ -110,6 +121,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/try_to_date
 ---
 function:
   name: to_decimal
@@ -120,6 +132,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_decimal
 ---
 function:
   name: to_decimal
@@ -131,6 +144,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_decimal
 ---
 function:
   name: to_decimal
@@ -143,6 +157,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_decimal
 ---
 function:
   name: to_decimal
@@ -154,6 +169,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_decimal
 ---
 function:
   name: to_decimal
@@ -166,6 +182,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_decimal
 ---
 function:
   name: to_decimal
@@ -179,6 +196,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_decimal
 ---
 function:
   name: try_to_decimal
@@ -189,6 +207,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/try_to_decimal
 ---
 function:
   name: try_to_decimal
@@ -200,6 +219,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/try_to_decimal
 ---
 function:
   name: try_to_decimal
@@ -212,6 +232,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/try_to_decimal
 ---
 function:
   name: try_to_decimal
@@ -223,18 +244,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
----
-function:
-  name: try_to_decimal
-  parameters:
-  - datatype: $1
-  - datatype: string
-  - datatype: bigint
-  returns:
-    datatype: decimal(38, 0)
-  kind: scalar
-  volatility: pure
-  section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/try_to_decimal
 ---
 function:
   name: try_to_decimal
@@ -242,12 +252,26 @@ function:
   - datatype: $1
   - datatype: string
   - datatype: bigint
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/try_to_decimal
+---
+function:
+  name: try_to_decimal
+  parameters:
+  - datatype: $1
+  - datatype: string
+  - datatype: bigint
   - datatype: bigint
   returns:
     datatype: decimal(38, 0)
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/try_to_decimal
 ---
 function:
   name: to_time
@@ -258,6 +282,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_time
 ---
 function:
   name: to_time
@@ -269,6 +294,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_time
 ---
 function:
   name: try_to_time
@@ -279,6 +305,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/try_to_time
 ---
 function:
   name: try_to_time
@@ -290,6 +317,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/try_to_time
 ---
 function:
   name: to_timestamp_tz
@@ -300,6 +328,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_timestamp_tz
 ---
 function:
   name: to_timestamp_tz
@@ -311,6 +340,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_timestamp_tz
 ---
 function:
   name: to_timestamp_ntz
@@ -321,6 +351,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_timestamp_ntz
 ---
 function:
   name: to_timestamp_ntz
@@ -332,6 +363,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_timestamp_ntz
 ---
 function:
   name: to_timestamp
@@ -342,6 +374,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_timestamp
 ---
 function:
   name: to_timestamp
@@ -353,6 +386,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_timestamp
 ---
 function:
   name: try_to_timestamp_tz
@@ -363,6 +397,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/try_to_timestamp_tz
 ---
 function:
   name: try_to_timestamp_tz
@@ -374,6 +409,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/try_to_timestamp_tz
 ---
 function:
   name: try_to_timestamp_ntz
@@ -384,6 +420,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/try_to_timestamp_ntz
 ---
 function:
   name: try_to_timestamp_ntz
@@ -395,6 +432,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/try_to_timestamp_ntz
 ---
 function:
   name: try_to_timestamp
@@ -405,6 +443,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/try_to_timestamp
 ---
 function:
   name: try_to_timestamp
@@ -416,6 +455,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/try_to_timestamp
 ---
 function:
   name: avg
@@ -426,6 +466,7 @@ function:
   kind: aggregate
   volatility: pure
   section: aggregate_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/avg
 ---
 function:
   name: to_varchar
@@ -436,6 +477,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_varchar
 ---
 function:
   name: to_varchar
@@ -447,6 +489,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_varchar
 ---
 function:
   name: collate
@@ -458,6 +501,7 @@ function:
   kind: scalar
   volatility: pure
   section: string_and_binary_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/collate
 ---
 function:
   name: bitand_agg
@@ -468,6 +512,7 @@ function:
   kind: aggregate
   volatility: pure
   section: aggregate_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/bitand_agg
 ---
 function:
   name: bitor_agg
@@ -478,6 +523,7 @@ function:
   kind: aggregate
   volatility: pure
   section: aggregate_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/bitor_agg
 ---
 function:
   name: bitxor_agg
@@ -488,6 +534,7 @@ function:
   kind: aggregate
   volatility: pure
   section: aggregate_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/bitxor_agg
 ---
 function:
   name: booland_agg
@@ -498,6 +545,7 @@ function:
   kind: aggregate
   volatility: pure
   section: aggregate_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/booland_agg
 ---
 function:
   name: boolor_agg
@@ -508,6 +556,7 @@ function:
   kind: aggregate
   volatility: pure
   section: aggregate_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/boolor_agg
 ---
 function:
   name: boolxor_agg
@@ -518,6 +567,7 @@ function:
   kind: aggregate
   volatility: pure
   section: aggregate_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/boolxor_agg
 ---
 function:
   name: cleanup_database_role_grants
@@ -529,6 +579,7 @@ function:
   kind: scalar
   volatility: pure
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/cleanup_database_role_grants
 ---
 function:
   name: collation
@@ -539,6 +590,7 @@ function:
   kind: scalar
   volatility: pure
   section: string_and_binary_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/collation
 ---
 function:
   name: conditional_true_event
@@ -549,6 +601,7 @@ function:
   kind: scalar
   volatility: pure
   section: window_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/conditional_true_event
 ---
 function:
   name: current_account
@@ -558,6 +611,7 @@ function:
   kind: scalar
   volatility: pure
   section: context_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/current_account
 ---
 function:
   name: current_account_name
@@ -567,6 +621,7 @@ function:
   kind: scalar
   volatility: pure
   section: context_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/current_account_name
 ---
 function:
   name: current_available_roles
@@ -576,6 +631,7 @@ function:
   kind: scalar
   volatility: pure
   section: context_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/current_available_roles
 ---
 function:
   name: current_client
@@ -585,6 +641,7 @@ function:
   kind: scalar
   volatility: pure
   section: context_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/current_client
 ---
 function:
   name: date_part
@@ -689,6 +746,7 @@ function:
     - timestamp
     - varchar
   section: date_and_time_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/date_part
 ---
 function:
   name: extract
@@ -794,6 +852,7 @@ function:
     - timestamp
     - varchar
   section: date_and_time_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/extract
 ---
 function:
   name: date_trunc
@@ -875,6 +934,7 @@ function:
     - timestamp
     - varchar
   section: date_and_time_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/date_trunc
 ---
 function:
   name: to_timestamp_ltz
@@ -885,6 +945,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_timestamp_ltz
 ---
 function:
   name: to_timestamp_ltz
@@ -896,6 +957,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_timestamp_ltz
 ---
 function:
   name: dateadd
@@ -979,6 +1041,7 @@ function:
     - timestamp
     - varchar
   section: date_and_time_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/dateadd
 ---
 function:
   name: timestampadd
@@ -1062,6 +1125,7 @@ function:
     - timestamp
     - varchar
   section: date_and_time_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/timestampadd
 ---
 function:
   name: timeadd
@@ -1144,6 +1208,7 @@ function:
     - timestamp
     - varchar
   section: date_and_time_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/timeadd
 ---
 function:
   name: datediff
@@ -1232,6 +1297,7 @@ function:
     - timestamp
     - varchar
   section: date_and_time_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/datediff
 ---
 function:
   name: getvariable
@@ -1242,6 +1308,7 @@ function:
   kind: scalar
   volatility: pure
   section: context_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/getvariable
 ---
 function:
   name: to_geography
@@ -1252,6 +1319,7 @@ function:
   kind: scalar
   volatility: pure
   section: geospatial_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_geography
 ---
 function:
   name: year
@@ -1262,6 +1330,7 @@ function:
   kind: scalar
   volatility: pure
   section: date_and_time_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/year
 ---
 function:
   name: hour
@@ -1272,6 +1341,7 @@ function:
   kind: scalar
   volatility: pure
   section: date_and_time_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/hour
 ---
 function:
   name: minute
@@ -1282,6 +1352,7 @@ function:
   kind: scalar
   volatility: pure
   section: date_and_time_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/minute
 ---
 function:
   name: second
@@ -1292,6 +1363,7 @@ function:
   kind: scalar
   volatility: pure
   section: date_and_time_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/second
 ---
 function:
   name: hash_agg
@@ -1303,6 +1375,7 @@ function:
   returns:
     datatype: decimal(38, 0)
   section: aggregate_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/hash_agg
 ---
 function:
   name: hash_agg
@@ -1315,6 +1388,7 @@ function:
   returns:
     datatype: decimal(38, 0)
   section: aggregate_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/hash_agg
 ---
 function:
   name: hash_agg
@@ -1328,6 +1402,7 @@ function:
   returns:
     datatype: decimal(38, 0)
   section: aggregate_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/hash_agg
 ---
 function:
   name: hash_agg
@@ -1342,6 +1417,7 @@ function:
   returns:
     datatype: decimal(38, 0)
   section: aggregate_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/hash_agg
 ---
 function:
   name: hash_agg
@@ -1357,6 +1433,7 @@ function:
   returns:
     datatype: decimal(38, 0)
   section: aggregate_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/hash_agg
 ---
 function:
   name: last_day
@@ -1374,6 +1451,7 @@ function:
     - time
     - timestamp
     - varchar
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/last_day
 ---
 function:
   name: last_day
@@ -1450,6 +1528,7 @@ function:
     - time
     - timestamp
     - varchar
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/last_day
 ---
 function:
   name: md5_number_upper64
@@ -1460,6 +1539,7 @@ function:
   kind: scalar
   volatility: pure
   section: string_and_binary_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/md5_number_upper64
 ---
 function:
   name: md5_number_lower64
@@ -1470,6 +1550,7 @@ function:
   kind: scalar
   volatility: pure
   section: string_and_binary_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/md5_number_lower64
 ---
 function:
   name: months_between
@@ -1488,6 +1569,7 @@ function:
     - time
     - timestamp
     - varchar
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/months_between
 ---
 function:
   name: round
@@ -1504,6 +1586,7 @@ function:
   kind: scalar
   volatility: pure
   section: numeric_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/round
 ---
 function:
   name: time_slice
@@ -1523,6 +1606,7 @@ function:
     - time
     - timestamp
     - varchar
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/time_slice
 ---
 function:
   name: time_slice
@@ -1543,6 +1627,7 @@ function:
     - time
     - timestamp
     - varchar
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/time_slice
 ---
 function:
   name: timediff
@@ -1624,6 +1709,7 @@ function:
     - timestamp
     - varchar
   section: date_and_time_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/timediff
 ---
 function:
   name: to_char
@@ -1635,6 +1721,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_char
 ---
 function:
   name: to_char
@@ -1645,6 +1732,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_char
 ---
 function:
   name: to_boolean
@@ -1655,6 +1743,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_boolean
 ---
 function:
   name: try_to_boolean
@@ -1665,6 +1754,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/try_to_boolean
 ---
 function:
   name: to_number
@@ -1675,6 +1765,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_number
 ---
 function:
   name: to_number
@@ -1686,6 +1777,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_number
 ---
 function:
   name: to_number
@@ -1698,6 +1790,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_number
 ---
 function:
   name: to_number
@@ -1709,6 +1802,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_number
 ---
 function:
   name: to_number
@@ -1721,6 +1815,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_number
 ---
 function:
   name: to_number
@@ -1734,6 +1829,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_number
 ---
 function:
   name: try_to_number
@@ -1744,6 +1840,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/try_to_number
 ---
 function:
   name: try_to_number
@@ -1755,6 +1852,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/try_to_number
 ---
 function:
   name: try_to_number
@@ -1767,6 +1865,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/try_to_number
 ---
 function:
   name: try_to_number
@@ -1778,6 +1877,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/try_to_number
 ---
 function:
   name: try_to_number
@@ -1790,6 +1890,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/try_to_number
 ---
 function:
   name: try_to_number
@@ -1803,6 +1904,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/try_to_number
 ---
 function:
   name: to_numeric
@@ -1813,6 +1915,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_numeric
 ---
 function:
   name: to_numeric
@@ -1824,6 +1927,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_numeric
 ---
 function:
   name: to_numeric
@@ -1836,6 +1940,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_numeric
 ---
 function:
   name: to_numeric
@@ -1847,6 +1952,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_numeric
 ---
 function:
   name: to_numeric
@@ -1859,6 +1965,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_numeric
 ---
 function:
   name: to_numeric
@@ -1872,6 +1979,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_numeric
 ---
 function:
   name: try_to_numeric
@@ -1882,6 +1990,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/try_to_numeric
 ---
 function:
   name: try_to_numeric
@@ -1893,6 +2002,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/try_to_numeric
 ---
 function:
   name: try_to_numeric
@@ -1905,6 +2015,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/try_to_numeric
 ---
 function:
   name: try_to_numeric
@@ -1916,18 +2027,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
----
-function:
-  name: try_to_numeric
-  parameters:
-  - datatype: $1
-  - datatype: string
-  - datatype: bigint
-  returns:
-    datatype: decimal(38, 0)
-  kind: scalar
-  volatility: pure
-  section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/try_to_numeric
 ---
 function:
   name: try_to_numeric
@@ -1935,12 +2035,26 @@ function:
   - datatype: $1
   - datatype: string
   - datatype: bigint
+  returns:
+    datatype: decimal(38, 0)
+  kind: scalar
+  volatility: pure
+  section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/try_to_numeric
+---
+function:
+  name: try_to_numeric
+  parameters:
+  - datatype: $1
+  - datatype: string
+  - datatype: bigint
   - datatype: bigint
   returns:
     datatype: decimal(38, 0)
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/try_to_numeric
 ---
 function:
   name: to_double
@@ -1951,6 +2065,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/to_double
 ---
 function:
   name: try_to_double
@@ -1961,6 +2076,7 @@ function:
   kind: scalar
   volatility: pure
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/try_to_double
 ---
 function:
   name: week
@@ -1971,6 +2087,7 @@ function:
   kind: scalar
   volatility: pure
   section: date_and_time_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/week
 ---
 function:
   name: dayofweek
@@ -1981,6 +2098,7 @@ function:
   kind: scalar
   volatility: pure
   section: date_and_time_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/dayofweek
 ---
 function:
   name: quarter
@@ -1991,6 +2109,7 @@ function:
   kind: scalar
   volatility: pure
   section: date_and_time_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/quarter
 ---
 function:
   name: dayofweekiso
@@ -2001,6 +2120,7 @@ function:
   kind: scalar
   volatility: pure
   section: date_and_time_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/dayofweekiso
 ---
 function:
   name: weekiso
@@ -2011,6 +2131,7 @@ function:
   kind: scalar
   volatility: pure
   section: date_and_time_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/weekiso
 ---
 function:
   name: month
@@ -2021,6 +2142,7 @@ function:
   kind: scalar
   volatility: pure
   section: date_and_time_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/month
 ---
 function:
   name: day
@@ -2031,6 +2153,7 @@ function:
   kind: scalar
   volatility: pure
   section: date_and_time_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/day
 ---
 function:
   name: weekofyear
@@ -2041,6 +2164,7 @@ function:
   kind: scalar
   volatility: pure
   section: date_and_time_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/weekofyear
 ---
 function:
   name: yearofweek
@@ -2051,6 +2175,7 @@ function:
   kind: scalar
   volatility: pure
   section: date_and_time_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/yearofweek
 ---
 function:
   name: dayofmonth
@@ -2061,6 +2186,7 @@ function:
   kind: scalar
   volatility: pure
   section: date_and_time_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/dayofmonth
 ---
 function:
   name: yearofweekiso
@@ -2071,6 +2197,7 @@ function:
   kind: scalar
   volatility: pure
   section: date_and_time_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/yearofweekiso
 ---
 function:
   name: dayofyear
@@ -2081,6 +2208,7 @@ function:
   kind: scalar
   volatility: pure
   section: date_and_time_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/dayofyear
 ---
 function:
   name: yearofweekiso
@@ -2091,6 +2219,7 @@ function:
   kind: scalar
   volatility: pure
   section: date_and_time_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/yearofweekiso
 ---
 function:
   name: parse_xml
@@ -2105,6 +2234,7 @@ function:
   kind: scalar
   volatility: pure
   section: semi-structured_and_structured_data_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/parse_xml
 ---
 function:
   name: flatten
@@ -2132,6 +2262,7 @@ function:
     - object
     - array
   section: table_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/flatten
 ---
 function:
   name: split_to_table
@@ -2143,6 +2274,7 @@ function:
   kind: table
   volatility: pure
   section: string_and_binary_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/split_to_table
 ---
 function:
   name: strtok_split_to_table
@@ -2154,6 +2286,7 @@ function:
   volatility: pure
   variadic: uniform
   section: string_and_binary_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/strtok_split_to_table
 ---
 function:
   name: get_object_references
@@ -2172,6 +2305,7 @@ function:
   kind: table
   volatility: pure
   section: table_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/get_object_references
 ---
 function:
   name: get_query_operator_stats
@@ -2186,6 +2320,7 @@ function:
   kind: table
   volatility: pure
   section: system_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/get_query_operator_stats
 ---
 function:
   name: login_history_by_user
@@ -2217,6 +2352,7 @@ function:
     - timestamp
     - string
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/login_history_by_user
 ---
 function:
   name: login_history
@@ -2246,6 +2382,7 @@ function:
     - timestamp
     - string
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/login_history
 ---
 function:
   name: query_history
@@ -2289,6 +2426,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/query_history
 ---
 function:
   name: query_history_by_session
@@ -2334,6 +2472,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/query_history_by_session
 ---
 function:
   name: query_history_by_user
@@ -2379,6 +2518,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/query_history_by_user
 ---
 function:
   name: query_history_by_warehouse
@@ -2424,6 +2564,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/query_history_by_warehouse
 ---
 function:
   name: query_acceleration_history
@@ -2451,6 +2592,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/query_acceleration_history
 ---
 function:
   name: database_storage_usage_history
@@ -2477,6 +2619,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/database_storage_usage_history
 ---
 function:
   name: warehouse_load_history
@@ -2504,6 +2647,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/warehouse_load_history
 ---
 function:
   name: warehouse_metering_history
@@ -2531,6 +2675,7 @@ function:
     - date
     - string
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/warehouse_metering_history
 ---
 function:
   name: stage_storage_usage_history
@@ -2556,6 +2701,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/stage_storage_usage_history
 ---
 function:
   name: stage_directory_file_registration_history
@@ -2577,6 +2723,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/stage_directory_file_registration_history
 ---
 function:
   name: policy_references
@@ -2597,6 +2744,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/policy_references
 ---
 function:
   name: tag_references
@@ -2610,6 +2758,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/tag_references
 ---
 function:
   name: tag_references_all_columns
@@ -2623,6 +2772,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/tag_references_all_columns
 ---
 function:
   name: tag_references_with_lineage
@@ -2637,6 +2787,7 @@ function:
   kind: table
   volatility: pure
   section: account_usage_table_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/tag_references_with_lineage
 ---
 function:
   name: replication_group_refresh_history
@@ -2649,6 +2800,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/replication_group_refresh_history
 ---
 function:
   name: replication_group_refresh_progress
@@ -2660,6 +2812,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/replication_group_refresh_progress
 ---
 function:
   name: replication_group_refresh_progress_by_job
@@ -2671,6 +2824,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/replication_group_refresh_progress_by_job
 ---
 function:
   name: replication_group_usage_history
@@ -2688,6 +2842,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/replication_group_usage_history
 ---
 function:
   name: replication_usage_history
@@ -2714,6 +2869,7 @@ function:
     - date
     - string
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/replication_usage_history
 ---
 function:
   name: database_refresh_history
@@ -2726,6 +2882,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/database_refresh_history
 ---
 function:
   name: database_refresh_history
@@ -2737,6 +2894,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/database_refresh_history
 ---
 function:
   name: database_refresh_progress
@@ -2748,6 +2906,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/database_refresh_progress
 ---
 function:
   name: database_refresh_progress
@@ -2758,6 +2917,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/database_refresh_progress
 ---
 function:
   name: database_refresh_progress_by_job
@@ -2769,6 +2929,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/database_refresh_progress_by_job
 ---
 function:
   name: database_replication_usage_history
@@ -2795,6 +2956,7 @@ function:
     - date
     - string
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/database_replication_usage_history
 ---
 function:
   name: copy_history
@@ -2817,6 +2979,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/copy_history
 ---
 function:
   name: data_transfer_history
@@ -2833,6 +2996,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/data_transfer_history
 ---
 function:
   name: pipe_usage_history
@@ -2851,6 +3015,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/pipe_usage_history
 ---
 function:
   name: validate_pipe_load
@@ -2870,6 +3035,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/validate_pipe_load
 ---
 function:
   name: validate
@@ -2885,6 +3051,7 @@ function:
   kind: table
   volatility: pure
   section: table_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/validate
 ---
 function:
   name: validate
@@ -2899,6 +3066,7 @@ function:
   kind: table
   volatility: pure
   section: table_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/validate
 ---
 function:
   name: automatic_clustering_history
@@ -2926,6 +3094,7 @@ function:
     - date
     - string
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/automatic_clustering_history
 ---
 function:
   name: dynamic_table_graph_history
@@ -2945,6 +3114,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/dynamic_table_graph_history
 ---
 function:
   name: dynamic_table_refresh_history
@@ -2972,6 +3142,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/dynamic_table_refresh_history
 ---
 function:
   name: external_functions_history
@@ -2992,6 +3163,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/external_functions_history
 ---
 function:
   name: auto_refresh_registration_history
@@ -3012,6 +3184,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/auto_refresh_registration_history
 ---
 function:
   name: external_table_files
@@ -3024,6 +3197,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/external_table_files
 ---
 function:
   name: external_table_file_registration_history
@@ -3040,6 +3214,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/external_table_file_registration_history
 ---
 function:
   name: materialized_view_refresh_history
@@ -3066,6 +3241,7 @@ function:
     - date
     - string
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/materialized_view_refresh_history
 ---
 function:
   name: notification_history
@@ -3086,6 +3262,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/notification_history
 ---
 function:
   name: rest_event_history
@@ -3107,6 +3284,7 @@ function:
   kind: table
   volatility: pure
   section: table_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/rest_event_history
 ---
 function:
   name: search_optimization_history
@@ -3133,6 +3311,7 @@ function:
     - timestamp
     - string
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/search_optimization_history
 ---
 function:
   name: generator
@@ -3147,6 +3326,7 @@ function:
   kind: table
   volatility: pure
   section: table_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/generator
 ---
 function:
   name: complete_task_graphs
@@ -3169,6 +3349,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/complete_task_graphs
 ---
 function:
   name: current_task_graphs
@@ -3189,6 +3370,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/current_task_graphs
 ---
 function:
   name: serverless_task_history
@@ -3215,6 +3397,7 @@ function:
     - timestamp
     - string
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/serverless_task_history
 ---
 function:
   name: task_dependents
@@ -3232,6 +3415,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/task_dependents
 ---
 function:
   name: task_history
@@ -3259,6 +3443,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/task_history
 ---
 function:
   name: alert_history
@@ -3280,6 +3465,7 @@ function:
   kind: table
   volatility: pure
   section: information_schema
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/alert_history
 ---
 function:
   name: infer_schema
@@ -3303,6 +3489,7 @@ function:
   kind: table
   volatility: pure
   section: table_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/infer_schema
 ---
 function:
   name: array_construct
@@ -3314,6 +3501,7 @@ function:
   returns:
     datatype: array
   section: semi-structured_and_structured_data_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/array_construct
 ---
 function:
   name: array_construct
@@ -3326,6 +3514,7 @@ function:
   returns:
     datatype: array
   section: semi-structured_and_structured_data_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/array_construct
 ---
 function:
   name: array_construct
@@ -3339,6 +3528,7 @@ function:
   returns:
     datatype: array
   section: semi-structured_and_structured_data_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/array_construct
 ---
 function:
   name: array_construct
@@ -3353,6 +3543,7 @@ function:
   returns:
     datatype: array
   section: semi-structured_and_structured_data_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/array_construct
 ---
 function:
   name: get
@@ -3364,6 +3555,7 @@ function:
   returns:
     datatype: variant
   section: semi-structured_and_structured_data_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/get
 ---
 function:
   name: get
@@ -3375,6 +3567,7 @@ function:
   returns:
     datatype: variant
   section: semi-structured_and_structured_data_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/get
 ---
 function:
   name: get
@@ -3386,6 +3579,7 @@ function:
   returns:
     datatype: variant
   section: semi-structured_and_structured_data_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/get
 ---
 function:
   name: get
@@ -3397,6 +3591,7 @@ function:
   returns:
     datatype: variant
   section: semi-structured_and_structured_data_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/get
 ---
 function:
   name: get
@@ -3408,6 +3603,7 @@ function:
   returns:
     datatype: variant
   section: semi-structured_and_structured_data_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/get
 ---
 function:
   name: +
@@ -3418,6 +3614,7 @@ function:
   returns:
     datatype: date
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/+
 ---
 function:
   name: +
@@ -3428,6 +3625,7 @@ function:
   returns:
     datatype: $1
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/+
 ---
 function:
   name: '-'
@@ -3438,6 +3636,7 @@ function:
   returns:
     datatype: date
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/-
 ---
 function:
   name: '-'
@@ -3448,6 +3647,7 @@ function:
   returns:
     datatype: bigint
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/-
 ---
 function:
   name: '-'
@@ -3467,6 +3667,7 @@ function:
     datatypes:
     - interval
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/-
 ---
 function:
   name: '-'
@@ -3477,6 +3678,7 @@ function:
   returns:
     datatype: $1
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/-
 ---
 function:
   name: '*'
@@ -3487,6 +3689,7 @@ function:
   returns:
     datatype: $1
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/*
 ---
 function:
   name: /
@@ -3497,6 +3700,7 @@ function:
   returns:
     datatype: $1
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions//
 ---
 function:
   name: timestampdiff
@@ -3578,6 +3782,7 @@ function:
     - timestamp
     - varchar
   section: date_and_time_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/timestampdiff
 ---
 function:
   name: max_by
@@ -3590,6 +3795,7 @@ function:
   returns:
     datatype: $1
   section: aggregate_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/max_by
 ---
 function:
   name: max_by
@@ -3603,6 +3809,7 @@ function:
   returns:
     datatype: array
   section: aggregate_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/max_by
 ---
 function:
   name: min_by
@@ -3615,6 +3822,7 @@ function:
   returns:
     datatype: $1
   section: aggregate_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/min_by
 ---
 function:
   name: min_by
@@ -3628,6 +3836,7 @@ function:
   returns:
     datatype: array
   section: aggregate_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/min_by
 ---
 function:
   name: +
@@ -3647,6 +3856,7 @@ function:
     datatypes:
     - interval
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/+
 ---
 function:
   name: +
@@ -3666,6 +3876,7 @@ function:
     datatypes:
     - interval
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/+
 ---
 function:
   name: map_cat
@@ -3675,6 +3886,7 @@ function:
   returns:
     datatype: object
   section: semi-structured_and_structured_data_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/map_cat
 ---
 function:
   name: map_contains_key
@@ -3684,6 +3896,7 @@ function:
   returns:
     datatype: boolean
   section: semi-structured_and_structured_data_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/map_contains_key
 ---
 function:
   name: map_delete
@@ -3693,6 +3906,7 @@ function:
   returns:
     datatype: object
   section: semi-structured_and_structured_data_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/map_delete
 ---
 function:
   name: map_delete
@@ -3703,6 +3917,7 @@ function:
   returns:
     datatype: object
   section: semi-structured_and_structured_data_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/map_delete
 ---
 function:
   name: map_delete
@@ -3714,6 +3929,7 @@ function:
   returns:
     datatype: object
   section: semi-structured_and_structured_data_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/map_delete
 ---
 function:
   name: map_delete
@@ -3726,6 +3942,7 @@ function:
   returns:
     datatype: object
   section: semi-structured_and_structured_data_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/map_delete
 ---
 function:
   name: map_delete
@@ -3739,6 +3956,7 @@ function:
   returns:
     datatype: object
   section: semi-structured_and_structured_data_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/map_delete
 ---
 function:
   name: map_insert
@@ -3749,6 +3967,7 @@ function:
   returns:
     datatype: object
   section: semi-structured_and_structured_data_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/map_insert
 ---
 function:
   name: map_insert
@@ -3760,6 +3979,7 @@ function:
   returns:
     datatype: object
   section: semi-structured_and_structured_data_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/map_insert
 ---
 function:
   name: map_keys
@@ -3768,6 +3988,7 @@ function:
   returns:
     datatype: array
   section: semi-structured_and_structured_data_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/map_keys
 ---
 function:
   name: map_pick
@@ -3777,6 +3998,7 @@ function:
   returns:
     datatype: object
   section: semi-structured_and_structured_data_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/map_pick
 ---
 function:
   name: map_pick
@@ -3787,6 +4009,7 @@ function:
   returns:
     datatype: object
   section: semi-structured_and_structured_data_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/map_pick
 ---
 function:
   name: map_pick
@@ -3798,6 +4021,7 @@ function:
   returns:
     datatype: object
   section: semi-structured_and_structured_data_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/map_pick
 ---
 function:
   name: map_pick
@@ -3810,6 +4034,7 @@ function:
   returns:
     datatype: object
   section: semi-structured_and_structured_data_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/map_pick
 ---
 function:
   name: map_pick
@@ -3823,6 +4048,7 @@ function:
   returns:
     datatype: object
   section: semi-structured_and_structured_data_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/map_pick
 ---
 function:
   name: map_pick
@@ -3832,6 +4058,7 @@ function:
   returns:
     datatype: object
   section: semi-structured_and_structured_data_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/map_pick
 ---
 function:
   name: map_size
@@ -3840,6 +4067,7 @@ function:
   returns:
     datatype: bigint
   section: semi-structured_and_structured_data_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/map_size
 ---
 function:
   name: try_to_binary
@@ -3848,6 +4076,7 @@ function:
   returns:
     datatype: binary
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/try_to_binary
 ---
 function:
   name: try_to_binary
@@ -3857,6 +4086,7 @@ function:
   returns:
     datatype: binary
   section: conversion_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/try_to_binary
 ---
 function:
   name: object_construct
@@ -3865,6 +4095,7 @@ function:
   returns:
     datatype: object
   section: semi-structured_and_structured_data_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/object_construct
 ---
 function:
   name: system$typeof
@@ -3873,6 +4104,7 @@ function:
   returns:
     datatype: varchar
   section: system_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/system$typeof
 ---
 function:
   name: nullif
@@ -3882,6 +4114,7 @@ function:
   returns:
     datatype: $1
   section: conditional_expression_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/nullif
 ---
 function:
   name: ifnull
@@ -3894,6 +4127,7 @@ function:
   returns:
     datatype: $1
   section: conditional_expression_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/ifnull
 ---
 function:
   name: iff
@@ -3906,6 +4140,7 @@ function:
   returns:
     datatype: $1
   section: conditional_expression_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/iff
 ---
 function:
   name: dayname
@@ -3919,6 +4154,7 @@ function:
     - date
     - string
   section: date_and_time_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/dayname
 ---
 function:
   name: monthname
@@ -3932,6 +4168,7 @@ function:
     - date
     - string
   section: date_and_time_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/monthname
 ---
 function:
   name: next_day
@@ -3946,6 +4183,7 @@ function:
     - date
     - string
   section: date_and_time_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/next_day
 ---
 function:
   name: previous_day
@@ -3960,6 +4198,7 @@ function:
     - date
     - string
   section: date_and_time_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/previous_day
 ---
 function:
   name: convert_timezone
@@ -3978,6 +4217,7 @@ function:
     - timestamp
     - string
   section: date_and_time_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/convert_timezone
 ---
 function:
   name: convert_timezone
@@ -3995,6 +4235,7 @@ function:
     - timestamp
     - string
   section: date_and_time_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/convert_timezone
 ---
 function:
   name: grouping
@@ -4004,6 +4245,7 @@ function:
   returns:
     datatype: int
   section: aggregate_functions
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/grouping
 ---
 function:
   name: metadata$filename
@@ -4013,6 +4255,7 @@ function:
     datatype: varchar
   special: true
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/metadata$filename
 ---
 function:
   name: metadata$file_row_number
@@ -4022,6 +4265,7 @@ function:
     datatype: int
   special: true
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/metadata$file_row_number
 ---
 function:
   name: metadata$file_content_key
@@ -4031,6 +4275,7 @@ function:
     datatype: varchar
   special: true
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/metadata$file_content_key
 ---
 function:
   name: metadata$file_last_modified
@@ -4040,6 +4285,7 @@ function:
     datatype: timestamp
   special: true
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/metadata$file_last_modified
 ---
 function:
   name: metadata$start_scan_time
@@ -4049,6 +4295,7 @@ function:
     datatype: timestamp
   special: true
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/metadata$start_scan_time
 ---
 function:
   name: '='
@@ -4066,6 +4313,7 @@ function:
     - tinyint
     - varchar
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/=
 ---
 function:
   name: '='
@@ -4083,6 +4331,7 @@ function:
     - tinyint
     - varchar
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/=
 ---
 function:
   name: '!='
@@ -4100,6 +4349,7 @@ function:
     - tinyint
     - varchar
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/!=
 ---
 function:
   name: '!='
@@ -4117,6 +4367,7 @@ function:
     - tinyint
     - varchar
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/!=
 ---
 function:
   name: <>
@@ -4134,6 +4385,7 @@ function:
     - tinyint
     - varchar
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/<>
 ---
 function:
   name: <>
@@ -4151,6 +4403,7 @@ function:
     - tinyint
     - varchar
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/<>
 ---
 function:
   name: <
@@ -4168,6 +4421,7 @@ function:
     - tinyint
     - varchar
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/<
 ---
 function:
   name: <
@@ -4185,6 +4439,7 @@ function:
     - tinyint
     - varchar
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/<
 ---
 function:
   name: '>'
@@ -4202,6 +4457,7 @@ function:
     - tinyint
     - varchar
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/>
 ---
 function:
   name: '>'
@@ -4219,6 +4475,7 @@ function:
     - tinyint
     - varchar
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/>
 ---
 function:
   name: <=
@@ -4236,6 +4493,7 @@ function:
     - tinyint
     - varchar
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/<=
 ---
 function:
   name: <=
@@ -4253,6 +4511,7 @@ function:
     - tinyint
     - varchar
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/<=
 ---
 function:
   name: '>='
@@ -4270,6 +4529,7 @@ function:
     - tinyint
     - varchar
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/>=
 ---
 function:
   name: '>='
@@ -4287,6 +4547,7 @@ function:
     - tinyint
     - varchar
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/>=
 ---
 function:
   name: '='
@@ -4305,6 +4566,7 @@ function:
     - varchar
     - object
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/=
 ---
 function:
   name: '!='
@@ -4323,6 +4585,7 @@ function:
     - varchar
     - object
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/!=
 ---
 function:
   name: sdf::and
@@ -4337,6 +4600,7 @@ function:
     - int
     - double
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/sdf::and
 ---
 function:
   name: sdf::and
@@ -4351,6 +4615,7 @@ function:
     - int
     - double
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/sdf::and
 ---
 function:
   name: sdf::or
@@ -4365,6 +4630,7 @@ function:
     - int
     - double
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/sdf::or
 ---
 function:
   name: sdf::or
@@ -4379,3 +4645,4 @@ function:
     - int
     - double
   section: internal
+  cross-link: https://docs.snowflake.com/en/sql-reference/functions/sdf::or
