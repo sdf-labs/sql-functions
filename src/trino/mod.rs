@@ -1316,940 +1316,940 @@ make_udf_function!(zip_with_impl::zip_with_array_1_array_11_function_1_11_9Func,
 
 // Export the functions out of this package, both as expr_fn as well as a list of functions
 export_functions!(
-    (presto, abs_tinyint, arg1, "function doc"),
-    (presto, abs_smallint, arg1, "function doc"),
-    (presto, abs_bigint, arg1, "function doc"),
-    (presto, abs_double, arg1, "function doc"),
-    (presto, abs_decimal_p_s, arg1, "function doc"),
-    (presto, abs_real, arg1, "function doc"),
+    (trino, abs_tinyint, arg1, "function doc"),
+    (trino, abs_smallint, arg1, "function doc"),
+    (trino, abs_bigint, arg1, "function doc"),
+    (trino, abs_double, arg1, "function doc"),
+    (trino, abs_decimal_p_s, arg1, "function doc"),
+    (trino, abs_real, arg1, "function doc"),
 
-    (presto, acos_double, arg1, "function doc"),
+    (trino, acos_double, arg1, "function doc"),
 
-    (presto, all_match_array_1_function_1_boolean, arg1 arg2, "function doc"),
+    (trino, all_match_array_1_function_1_boolean, arg1 arg2, "function doc"),
 
-    (presto, any_match_array_1_function_1_boolean, arg1 arg2, "function doc"),
+    (trino, any_match_array_1_function_1_boolean, arg1 arg2, "function doc"),
 
-    (presto, array_distinct_array_3, arg1, "function doc"),
+    (trino, array_distinct_array_3, arg1, "function doc"),
 
-    (presto, array_except_array_3_array_3, arg1 arg2, "function doc"),
+    (trino, array_except_array_3_array_3, arg1 arg2, "function doc"),
 
-    (presto, array_intersect_array_3_array_3, arg1 arg2, "function doc"),
+    (trino, array_intersect_array_3_array_3, arg1 arg2, "function doc"),
 
-    (presto, array_join_array_1_varchar, arg1 arg2, "function doc"),
-    (presto, array_join_array_1_varchar_varchar, arg1 arg2 arg3, "function doc"),
+    (trino, array_join_array_1_varchar, arg1 arg2, "function doc"),
+    (trino, array_join_array_1_varchar_varchar, arg1 arg2 arg3, "function doc"),
 
-    (presto, array_max_array_1, arg1, "function doc"),
+    (trino, array_max_array_1, arg1, "function doc"),
 
-    (presto, array_min_array_1, arg1, "function doc"),
+    (trino, array_min_array_1, arg1, "function doc"),
 
-    (presto, array_position_array_1_1, arg1 arg2, "function doc"),
+    (trino, array_position_array_1_1, arg1 arg2, "function doc"),
 
-    (presto, array_remove_array_3_3, arg1 arg2, "function doc"),
+    (trino, array_remove_array_3_3, arg1 arg2, "function doc"),
 
-    (presto, array_sort_array_3, arg1, "function doc"),
-    (presto, array_sort_array_1_function_1_1_bigint, arg1 arg2, "function doc"),
+    (trino, array_sort_array_3, arg1, "function doc"),
+    (trino, array_sort_array_1_function_1_1_bigint, arg1 arg2, "function doc"),
 
-    (presto, array_union_array_3_array_3, arg1 arg2, "function doc"),
+    (trino, array_union_array_3_array_3, arg1 arg2, "function doc"),
 
-    (presto, arrays_overlap_array_3_array_3, arg1 arg2, "function doc"),
+    (trino, arrays_overlap_array_3_array_3, arg1 arg2, "function doc"),
 
-    (presto, asin_double, arg1, "function doc"),
+    (trino, asin_double, arg1, "function doc"),
 
-    (presto, at_timezone_timestamp_p_varchar, arg1 arg2, "function doc"),
+    (trino, at_timezone_timestamp_p_varchar, arg1 arg2, "function doc"),
 
-    (presto, atan_double, arg1, "function doc"),
+    (trino, atan_double, arg1, "function doc"),
 
-    (presto, atan2_double_double, arg1 arg2, "function doc"),
+    (trino, atan2_double_double, arg1 arg2, "function doc"),
 
-    (presto, bar_double_bigint, arg1 arg2, "function doc"),
-    (presto, bar_double_bigint_color_color, arg1 arg2 arg3 arg4, "function doc"),
+    (trino, bar_double_bigint, arg1 arg2, "function doc"),
+    (trino, bar_double_bigint_color_color, arg1 arg2 arg3 arg4, "function doc"),
 
-    (presto, beta_cdf_double_double_double, arg1 arg2 arg3, "function doc"),
+    (trino, beta_cdf_double_double_double, arg1 arg2 arg3, "function doc"),
 
-    (presto, bing_tile_bigint_bigint_bigint, arg1 arg2 arg3, "function doc"),
-    (presto, bing_tile_varchar, arg1, "function doc"),
+    (trino, bing_tile_bigint_bigint_bigint, arg1 arg2 arg3, "function doc"),
+    (trino, bing_tile_varchar, arg1, "function doc"),
 
-    (presto, bing_tile_at_double_double_bigint, arg1 arg2 arg3, "function doc"),
+    (trino, bing_tile_at_double_double_bigint, arg1 arg2 arg3, "function doc"),
 
-    (presto, bing_tile_coordinates_bingtile, arg1, "function doc"),
+    (trino, bing_tile_coordinates_bingtile, arg1, "function doc"),
 
-    (presto, bing_tile_polygon_bingtile, arg1, "function doc"),
+    (trino, bing_tile_polygon_bingtile, arg1, "function doc"),
 
-    (presto, bing_tile_quadkey_bingtile, arg1, "function doc"),
+    (trino, bing_tile_quadkey_bingtile, arg1, "function doc"),
 
-    (presto, bing_tile_zoom_level_bingtile, arg1, "function doc"),
+    (trino, bing_tile_zoom_level_bingtile, arg1, "function doc"),
 
-    (presto, bing_tiles_around_double_double_bigint, arg1 arg2 arg3, "function doc"),
-    (presto, bing_tiles_around_double_double_bigint_double, arg1 arg2 arg3 arg4, "function doc"),
+    (trino, bing_tiles_around_double_double_bigint, arg1 arg2 arg3, "function doc"),
+    (trino, bing_tiles_around_double_double_bigint_double, arg1 arg2 arg3 arg4, "function doc"),
 
-    (presto, bit_count_bigint_bigint, arg1 arg2, "function doc"),
+    (trino, bit_count_bigint_bigint, arg1 arg2, "function doc"),
 
-    (presto, bitwise_and_bigint_bigint, arg1 arg2, "function doc"),
+    (trino, bitwise_and_bigint_bigint, arg1 arg2, "function doc"),
 
-    (presto, bitwise_left_shift_bigint_bigint, arg1 arg2, "function doc"),
-    (presto, bitwise_left_shift_integer_bigint, arg1 arg2, "function doc"),
-    (presto, bitwise_left_shift_smallint_bigint, arg1 arg2, "function doc"),
-    (presto, bitwise_left_shift_tinyint_bigint, arg1 arg2, "function doc"),
+    (trino, bitwise_left_shift_bigint_bigint, arg1 arg2, "function doc"),
+    (trino, bitwise_left_shift_integer_bigint, arg1 arg2, "function doc"),
+    (trino, bitwise_left_shift_smallint_bigint, arg1 arg2, "function doc"),
+    (trino, bitwise_left_shift_tinyint_bigint, arg1 arg2, "function doc"),
 
-    (presto, bitwise_not_bigint, arg1, "function doc"),
+    (trino, bitwise_not_bigint, arg1, "function doc"),
 
-    (presto, bitwise_or_bigint_bigint, arg1 arg2, "function doc"),
+    (trino, bitwise_or_bigint_bigint, arg1 arg2, "function doc"),
 
-    (presto, bitwise_right_shift_bigint_bigint, arg1 arg2, "function doc"),
-    (presto, bitwise_right_shift_integer_bigint, arg1 arg2, "function doc"),
-    (presto, bitwise_right_shift_smallint_bigint, arg1 arg2, "function doc"),
-    (presto, bitwise_right_shift_tinyint_bigint, arg1 arg2, "function doc"),
+    (trino, bitwise_right_shift_bigint_bigint, arg1 arg2, "function doc"),
+    (trino, bitwise_right_shift_integer_bigint, arg1 arg2, "function doc"),
+    (trino, bitwise_right_shift_smallint_bigint, arg1 arg2, "function doc"),
+    (trino, bitwise_right_shift_tinyint_bigint, arg1 arg2, "function doc"),
 
-    (presto, bitwise_right_shift_arithmetic_bigint_bigint, arg1 arg2, "function doc"),
-    (presto, bitwise_right_shift_arithmetic_integer_bigint, arg1 arg2, "function doc"),
-    (presto, bitwise_right_shift_arithmetic_smallint_bigint, arg1 arg2, "function doc"),
-    (presto, bitwise_right_shift_arithmetic_tinyint_bigint, arg1 arg2, "function doc"),
+    (trino, bitwise_right_shift_arithmetic_bigint_bigint, arg1 arg2, "function doc"),
+    (trino, bitwise_right_shift_arithmetic_integer_bigint, arg1 arg2, "function doc"),
+    (trino, bitwise_right_shift_arithmetic_smallint_bigint, arg1 arg2, "function doc"),
+    (trino, bitwise_right_shift_arithmetic_tinyint_bigint, arg1 arg2, "function doc"),
 
-    (presto, bitwise_xor_bigint_bigint, arg1 arg2, "function doc"),
+    (trino, bitwise_xor_bigint_bigint, arg1 arg2, "function doc"),
 
-    (presto, btrim_varchar, arg1, "function doc"),
-    (presto, btrim_varchar_varchar, arg1 arg2, "function doc"),
+    (trino, btrim_varchar, arg1, "function doc"),
+    (trino, btrim_varchar_varchar, arg1 arg2, "function doc"),
 
-    (presto, cardinality_array_3, arg1, "function doc"),
-    (presto, cardinality_hyperloglog, arg1, "function doc"),
-    (presto, cardinality_map_4_5, arg1, "function doc"),
-    (presto, cardinality_setdigest, arg1, "function doc"),
+    (trino, cardinality_array_3, arg1, "function doc"),
+    (trino, cardinality_hyperloglog, arg1, "function doc"),
+    (trino, cardinality_map_4_5, arg1, "function doc"),
+    (trino, cardinality_setdigest, arg1, "function doc"),
 
-    (presto, cbrt_double, arg1, "function doc"),
+    (trino, cbrt_double, arg1, "function doc"),
 
-    (presto, ceil_bigint, arg1, "function doc"),
-    (presto, ceil_decimal_p_s, arg1, "function doc"),
-    (presto, ceil_double, arg1, "function doc"),
-    (presto, ceil_integer, arg1, "function doc"),
-    (presto, ceil_real, arg1, "function doc"),
-    (presto, ceil_smallint, arg1, "function doc"),
-    (presto, ceil_tinyint, arg1, "function doc"),
+    (trino, ceil_bigint, arg1, "function doc"),
+    (trino, ceil_decimal_p_s, arg1, "function doc"),
+    (trino, ceil_double, arg1, "function doc"),
+    (trino, ceil_integer, arg1, "function doc"),
+    (trino, ceil_real, arg1, "function doc"),
+    (trino, ceil_smallint, arg1, "function doc"),
+    (trino, ceil_tinyint, arg1, "function doc"),
 
-    (presto, ceiling_bigint, arg1, "function doc"),
-    (presto, ceiling_decimal_p_s, arg1, "function doc"),
-    (presto, ceiling_double, arg1, "function doc"),
-    (presto, ceiling_integer, arg1, "function doc"),
-    (presto, ceiling_real, arg1, "function doc"),
-    (presto, ceiling_smallint, arg1, "function doc"),
-    (presto, ceiling_tinyint, arg1, "function doc"),
+    (trino, ceiling_bigint, arg1, "function doc"),
+    (trino, ceiling_decimal_p_s, arg1, "function doc"),
+    (trino, ceiling_double, arg1, "function doc"),
+    (trino, ceiling_integer, arg1, "function doc"),
+    (trino, ceiling_real, arg1, "function doc"),
+    (trino, ceiling_smallint, arg1, "function doc"),
+    (trino, ceiling_tinyint, arg1, "function doc"),
 
-    (presto, char2hexint_varchar, arg1, "function doc"),
+    (trino, char2hexint_varchar, arg1, "function doc"),
 
-    (presto, chr_bigint, arg1, "function doc"),
+    (trino, chr_bigint, arg1, "function doc"),
 
-    (presto, classify_map_bigint_double_classifier, arg1 arg2, "function doc"),
+    (trino, classify_map_bigint_double_classifier, arg1 arg2, "function doc"),
 
-    (presto, coalesce_1, arg1, "function doc"),
+    (trino, coalesce_1, arg1, "function doc"),
 
-    (presto, codepoint_varchar, arg1, "function doc"),
+    (trino, codepoint_varchar, arg1, "function doc"),
 
-    (presto, color_double_color_color, arg1 arg2 arg3, "function doc"),
-    (presto, color_double_double_double_color_color, arg1 arg2 arg3 arg4 arg5, "function doc"),
-    (presto, color_varchar, arg1, "function doc"),
+    (trino, color_double_color_color, arg1 arg2 arg3, "function doc"),
+    (trino, color_double_double_double_color_color, arg1 arg2 arg3 arg4 arg5, "function doc"),
+    (trino, color_varchar, arg1, "function doc"),
 
-    (presto, combinations_array_1_bigint, arg1 arg2, "function doc"),
+    (trino, combinations_array_1_bigint, arg1 arg2, "function doc"),
 
-    (presto, concat_3_array_3, arg1 arg2, "function doc"),
-    (presto, concat_array_3, arg1, "function doc"),
-    (presto, concat_array_3_3, arg1 arg2, "function doc"),
-    (presto, concat_varchar_varchar, arg1 arg2, "function doc"),
-    (presto, concat_varchar, arg1, "function doc"),
-    (presto, concat_varbinary, arg1, "function doc"),
+    (trino, concat_3_array_3, arg1 arg2, "function doc"),
+    (trino, concat_array_3, arg1, "function doc"),
+    (trino, concat_array_3_3, arg1 arg2, "function doc"),
+    (trino, concat_varchar_varchar, arg1 arg2, "function doc"),
+    (trino, concat_varchar, arg1, "function doc"),
+    (trino, concat_varbinary, arg1, "function doc"),
 
-    (presto, concat_ws_varchar_array_varchar, arg1 arg2, "function doc"),
-    (presto, concat_ws_varchar, arg1, "function doc"),
+    (trino, concat_ws_varchar_array_varchar, arg1 arg2, "function doc"),
+    (trino, concat_ws_varchar, arg1, "function doc"),
 
-    (presto, contains_array_1_1, arg1 arg2, "function doc"),
-    (presto, contains_varchar_ipaddress, arg1 arg2, "function doc"),
+    (trino, contains_array_1_1, arg1 arg2, "function doc"),
+    (trino, contains_varchar_ipaddress, arg1 arg2, "function doc"),
 
-    (presto, contains_array_varchar_array_varchar_varchar, arg1 arg2, "function doc"),
+    (trino, contains_array_varchar_array_varchar_varchar, arg1 arg2, "function doc"),
 
-    (presto, contains_sequence_array_1_array_1, arg1 arg2, "function doc"),
+    (trino, contains_sequence_array_1_array_1, arg1 arg2, "function doc"),
 
-    (presto, cos_double, arg1, "function doc"),
+    (trino, cos_double, arg1, "function doc"),
 
-    (presto, cosh_double, arg1, "function doc"),
+    (trino, cosh_double, arg1, "function doc"),
 
-    (presto, cosine_similarity_map_varchar_double_map_varchar_double, arg1 arg2, "function doc"),
+    (trino, cosine_similarity_map_varchar_double_map_varchar_double, arg1 arg2, "function doc"),
 
-    (presto, crc32_varbinary, arg1, "function doc"),
+    (trino, crc32_varbinary, arg1, "function doc"),
 
-    (presto, current_catalog, , "function doc"),
+    (trino, current_catalog, , "function doc"),
 
-    (presto, current_date, , "function doc"),
+    (trino, current_date, , "function doc"),
 
-    (presto, current_groups, , "function doc"),
+    (trino, current_groups, , "function doc"),
 
-    (presto, current_schema, , "function doc"),
+    (trino, current_schema, , "function doc"),
 
-    (presto, current_time, , "function doc"),
+    (trino, current_time, , "function doc"),
 
-    (presto, current_timestamp, , "function doc"),
-    (presto, current_timestamp_bigint_0, arg1, "function doc"),
-    (presto, current_timestamp_bigint_3, arg1, "function doc"),
-    (presto, current_timestamp_bigint_6, arg1, "function doc"),
-    (presto, current_timestamp_bigint_9, arg1, "function doc"),
+    (trino, current_timestamp, , "function doc"),
+    (trino, current_timestamp_bigint_0, arg1, "function doc"),
+    (trino, current_timestamp_bigint_3, arg1, "function doc"),
+    (trino, current_timestamp_bigint_6, arg1, "function doc"),
+    (trino, current_timestamp_bigint_9, arg1, "function doc"),
 
-    (presto, current_timezone, , "function doc"),
+    (trino, current_timezone, , "function doc"),
 
-    (presto, current_user, , "function doc"),
+    (trino, current_user, , "function doc"),
 
-    (presto, date_timestamp_p, arg1, "function doc"),
-    (presto, date_varchar, arg1, "function doc"),
+    (trino, date_timestamp_p, arg1, "function doc"),
+    (trino, date_varchar, arg1, "function doc"),
 
-    (presto, date_add_varchar_bigint_date, arg1 arg2 arg3, "function doc"),
-    (presto, date_add_varchar_bigint_time_p, arg1 arg2 arg3, "function doc"),
-    (presto, date_add_varchar_bigint_timestamp_p, arg1 arg2 arg3, "function doc"),
+    (trino, date_add_varchar_bigint_date, arg1 arg2 arg3, "function doc"),
+    (trino, date_add_varchar_bigint_time_p, arg1 arg2 arg3, "function doc"),
+    (trino, date_add_varchar_bigint_timestamp_p, arg1 arg2 arg3, "function doc"),
 
-    (presto, date_diff_varchar_date_date, arg1 arg2 arg3, "function doc"),
-    (presto, date_diff_varchar_time_p_time_p, arg1 arg2 arg3, "function doc"),
-    (presto, date_diff_varchar_timestamp_p_timestamp_p, arg1 arg2 arg3, "function doc"),
+    (trino, date_diff_varchar_date_date, arg1 arg2 arg3, "function doc"),
+    (trino, date_diff_varchar_time_p_time_p, arg1 arg2 arg3, "function doc"),
+    (trino, date_diff_varchar_timestamp_p_timestamp_p, arg1 arg2 arg3, "function doc"),
 
-    (presto, date_format_timestamp_p_varchar, arg1 arg2, "function doc"),
+    (trino, date_format_timestamp_p_varchar, arg1 arg2, "function doc"),
 
-    (presto, date_parse_varchar_varchar, arg1 arg2, "function doc"),
+    (trino, date_parse_varchar_varchar, arg1 arg2, "function doc"),
 
-    (presto, date_part_varchar_time_p, arg1 arg2, "function doc"),
-    (presto, date_part_varchar_timestamp_p, arg1 arg2, "function doc"),
-    (presto, date_part_varchar_date, arg1 arg2, "function doc"),
+    (trino, date_part_varchar_time_p, arg1 arg2, "function doc"),
+    (trino, date_part_varchar_timestamp_p, arg1 arg2, "function doc"),
+    (trino, date_part_varchar_date, arg1 arg2, "function doc"),
 
-    (presto, date_trunc_varchar_time_p, arg1 arg2, "function doc"),
-    (presto, date_trunc_varchar_timestamp_p, arg1 arg2, "function doc"),
-    (presto, date_trunc_varchar_date, arg1 arg2, "function doc"),
+    (trino, date_trunc_varchar_time_p, arg1 arg2, "function doc"),
+    (trino, date_trunc_varchar_timestamp_p, arg1 arg2, "function doc"),
+    (trino, date_trunc_varchar_date, arg1 arg2, "function doc"),
 
-    (presto, day_date, arg1, "function doc"),
-    (presto, day_intervaldaytosecond, arg1, "function doc"),
-    (presto, day_timestamp_p, arg1, "function doc"),
+    (trino, day_date, arg1, "function doc"),
+    (trino, day_intervaldaytosecond, arg1, "function doc"),
+    (trino, day_timestamp_p, arg1, "function doc"),
 
-    (presto, day_of_month_date, arg1, "function doc"),
-    (presto, day_of_month_intervaldaytosecond, arg1, "function doc"),
-    (presto, day_of_month_timestamp_p, arg1, "function doc"),
+    (trino, day_of_month_date, arg1, "function doc"),
+    (trino, day_of_month_intervaldaytosecond, arg1, "function doc"),
+    (trino, day_of_month_timestamp_p, arg1, "function doc"),
 
-    (presto, day_of_week_date, arg1, "function doc"),
-    (presto, day_of_week_timestamp_p, arg1, "function doc"),
+    (trino, day_of_week_date, arg1, "function doc"),
+    (trino, day_of_week_timestamp_p, arg1, "function doc"),
 
-    (presto, day_of_year_date, arg1, "function doc"),
-    (presto, day_of_year_timestamp_p, arg1, "function doc"),
+    (trino, day_of_year_date, arg1, "function doc"),
+    (trino, day_of_year_timestamp_p, arg1, "function doc"),
 
-    (presto, degrees_double, arg1, "function doc"),
+    (trino, degrees_double, arg1, "function doc"),
 
-    (presto, dow_date, arg1, "function doc"),
-    (presto, dow_timestamp_p, arg1, "function doc"),
+    (trino, dow_date, arg1, "function doc"),
+    (trino, dow_timestamp_p, arg1, "function doc"),
 
-    (presto, doy_date, arg1, "function doc"),
-    (presto, doy_timestamp_p, arg1, "function doc"),
+    (trino, doy_date, arg1, "function doc"),
+    (trino, doy_timestamp_p, arg1, "function doc"),
 
-    (presto, e, , "function doc"),
+    (trino, e, , "function doc"),
 
-    (presto, element_at_map_4_5_4, arg1 arg2, "function doc"),
-    (presto, element_at_array_3_bigint, arg1 arg2, "function doc"),
+    (trino, element_at_map_4_5_4, arg1 arg2, "function doc"),
+    (trino, element_at_array_3_bigint, arg1 arg2, "function doc"),
 
-    (presto, empty_approx_set, , "function doc"),
+    (trino, empty_approx_set, , "function doc"),
 
-    (presto, exp_double, arg1, "function doc"),
+    (trino, exp_double, arg1, "function doc"),
 
-    (presto, features_double, arg1, "function doc"),
-    (presto, features_double_double, arg1 arg2, "function doc"),
-    (presto, features_double_double_double, arg1 arg2 arg3, "function doc"),
-    (presto, features_double_double_double_double, arg1 arg2 arg3 arg4, "function doc"),
-    (presto, features_double_double_double_double_double, arg1 arg2 arg3 arg4 arg5, "function doc"),
-    (presto, features_double_double_double_double_double_double, arg1 arg2 arg3 arg4 arg5 arg6, "function doc"),
-    (presto, features_double_double_double_double_double_double_double, arg1 arg2 arg3 arg4 arg5 arg6 arg7, "function doc"),
-    (presto, features_double_double_double_double_double_double_double_double, arg1 arg2 arg3 arg4 arg5 arg6 arg7 arg8, "function doc"),
-    (presto, features_double_double_double_double_double_double_double_double_double, arg1 arg2 arg3 arg4 arg5 arg6 arg7 arg8 arg9, "function doc"),
-    (presto, features_double_double_double_double_double_double_double_double_double_double, arg1 arg2 arg3 arg4 arg5 arg6 arg7 arg8 arg9 arg10, "function doc"),
+    (trino, features_double, arg1, "function doc"),
+    (trino, features_double_double, arg1 arg2, "function doc"),
+    (trino, features_double_double_double, arg1 arg2 arg3, "function doc"),
+    (trino, features_double_double_double_double, arg1 arg2 arg3 arg4, "function doc"),
+    (trino, features_double_double_double_double_double, arg1 arg2 arg3 arg4 arg5, "function doc"),
+    (trino, features_double_double_double_double_double_double, arg1 arg2 arg3 arg4 arg5 arg6, "function doc"),
+    (trino, features_double_double_double_double_double_double_double, arg1 arg2 arg3 arg4 arg5 arg6 arg7, "function doc"),
+    (trino, features_double_double_double_double_double_double_double_double, arg1 arg2 arg3 arg4 arg5 arg6 arg7 arg8, "function doc"),
+    (trino, features_double_double_double_double_double_double_double_double_double, arg1 arg2 arg3 arg4 arg5 arg6 arg7 arg8 arg9, "function doc"),
+    (trino, features_double_double_double_double_double_double_double_double_double_double, arg1 arg2 arg3 arg4 arg5 arg6 arg7 arg8 arg9 arg10, "function doc"),
 
-    (presto, filter_array_1_function_1_boolean, arg1 arg2, "function doc"),
+    (trino, filter_array_1_function_1_boolean, arg1 arg2, "function doc"),
 
-    (presto, flatten_array_array_3, arg1, "function doc"),
+    (trino, flatten_array_array_3, arg1, "function doc"),
 
-    (presto, floor_bigint, arg1, "function doc"),
-    (presto, floor_decimal_p_s, arg1, "function doc"),
-    (presto, floor_double, arg1, "function doc"),
-    (presto, floor_integer, arg1, "function doc"),
-    (presto, floor_real, arg1, "function doc"),
-    (presto, floor_smallint, arg1, "function doc"),
-    (presto, floor_tinyint, arg1, "function doc"),
+    (trino, floor_bigint, arg1, "function doc"),
+    (trino, floor_decimal_p_s, arg1, "function doc"),
+    (trino, floor_double, arg1, "function doc"),
+    (trino, floor_integer, arg1, "function doc"),
+    (trino, floor_real, arg1, "function doc"),
+    (trino, floor_smallint, arg1, "function doc"),
+    (trino, floor_tinyint, arg1, "function doc"),
 
-    (presto, format_varchar_1, arg1 arg2, "function doc"),
-    (presto, format_varchar_1_2, arg1 arg2 arg3, "function doc"),
-    (presto, format_varchar_1_2_3, arg1 arg2 arg3 arg4, "function doc"),
-    (presto, format_varchar_1_2_3_4, arg1 arg2 arg3 arg4 arg5, "function doc"),
-    (presto, format_varchar_1_2_3_4_5, arg1 arg2 arg3 arg4 arg5 arg6, "function doc"),
+    (trino, format_varchar_1, arg1 arg2, "function doc"),
+    (trino, format_varchar_1_2, arg1 arg2 arg3, "function doc"),
+    (trino, format_varchar_1_2_3, arg1 arg2 arg3 arg4, "function doc"),
+    (trino, format_varchar_1_2_3_4, arg1 arg2 arg3 arg4 arg5, "function doc"),
+    (trino, format_varchar_1_2_3_4_5, arg1 arg2 arg3 arg4 arg5 arg6, "function doc"),
 
-    (presto, format_datetime_timestamp_p_varchar, arg1 arg2, "function doc"),
+    (trino, format_datetime_timestamp_p_varchar, arg1 arg2, "function doc"),
 
-    (presto, format_number_bigint, arg1, "function doc"),
-    (presto, format_number_double, arg1, "function doc"),
+    (trino, format_number_bigint, arg1, "function doc"),
+    (trino, format_number_double, arg1, "function doc"),
 
-    (presto, from_base_varchar_bigint, arg1 arg2, "function doc"),
+    (trino, from_base_varchar_bigint, arg1 arg2, "function doc"),
 
-    (presto, from_base32_varbinary, arg1, "function doc"),
-    (presto, from_base32_varchar, arg1, "function doc"),
+    (trino, from_base32_varbinary, arg1, "function doc"),
+    (trino, from_base32_varchar, arg1, "function doc"),
 
-    (presto, from_base64_varbinary, arg1, "function doc"),
-    (presto, from_base64_varchar, arg1, "function doc"),
+    (trino, from_base64_varbinary, arg1, "function doc"),
+    (trino, from_base64_varchar, arg1, "function doc"),
 
-    (presto, from_base64url_varbinary, arg1, "function doc"),
-    (presto, from_base64url_varchar, arg1, "function doc"),
+    (trino, from_base64url_varbinary, arg1, "function doc"),
+    (trino, from_base64url_varchar, arg1, "function doc"),
 
-    (presto, from_big_endian_32_varbinary, arg1, "function doc"),
+    (trino, from_big_endian_32_varbinary, arg1, "function doc"),
 
-    (presto, from_big_endian_64_varbinary, arg1, "function doc"),
+    (trino, from_big_endian_64_varbinary, arg1, "function doc"),
 
-    (presto, from_encoded_polyline_varchar, arg1, "function doc"),
+    (trino, from_encoded_polyline_varchar, arg1, "function doc"),
 
-    (presto, from_geojson_geometry_varchar, arg1, "function doc"),
+    (trino, from_geojson_geometry_varchar, arg1, "function doc"),
 
-    (presto, from_hex_varbinary, arg1, "function doc"),
-    (presto, from_hex_varchar, arg1, "function doc"),
+    (trino, from_hex_varbinary, arg1, "function doc"),
+    (trino, from_hex_varchar, arg1, "function doc"),
 
-    (presto, from_ieee754_32_varbinary, arg1, "function doc"),
+    (trino, from_ieee754_32_varbinary, arg1, "function doc"),
 
-    (presto, from_ieee754_64_varbinary, arg1, "function doc"),
+    (trino, from_ieee754_64_varbinary, arg1, "function doc"),
 
-    (presto, from_iso8601_date_varchar, arg1, "function doc"),
+    (trino, from_iso8601_date_varchar, arg1, "function doc"),
 
-    (presto, from_iso8601_timestamp_varchar, arg1, "function doc"),
+    (trino, from_iso8601_timestamp_varchar, arg1, "function doc"),
 
-    (presto, from_iso8601_timestamp_nanos_varchar, arg1, "function doc"),
+    (trino, from_iso8601_timestamp_nanos_varchar, arg1, "function doc"),
 
-    (presto, from_unixtime_bigint, arg1, "function doc"),
-    (presto, from_unixtime_bigint_bigint_bigint, arg1 arg2 arg3, "function doc"),
-    (presto, from_unixtime_bigint_varchar, arg1 arg2, "function doc"),
+    (trino, from_unixtime_bigint, arg1, "function doc"),
+    (trino, from_unixtime_bigint_bigint_bigint, arg1 arg2 arg3, "function doc"),
+    (trino, from_unixtime_bigint_varchar, arg1 arg2, "function doc"),
 
-    (presto, from_unixtime_nanos_bigint, arg1, "function doc"),
-    (presto, from_unixtime_nanos_decimal_p_s, arg1, "function doc"),
+    (trino, from_unixtime_nanos_bigint, arg1, "function doc"),
+    (trino, from_unixtime_nanos_decimal_p_s, arg1, "function doc"),
 
-    (presto, from_utf8_varbinary, arg1, "function doc"),
-    (presto, from_utf8_varbinary_bigint, arg1 arg2, "function doc"),
-    (presto, from_utf8_varbinary_varchar, arg1 arg2, "function doc"),
+    (trino, from_utf8_varbinary, arg1, "function doc"),
+    (trino, from_utf8_varbinary_bigint, arg1 arg2, "function doc"),
+    (trino, from_utf8_varbinary_varchar, arg1 arg2, "function doc"),
 
-    (presto, geometry_from_hadoop_shape_varbinary, arg1, "function doc"),
+    (trino, geometry_from_hadoop_shape_varbinary, arg1, "function doc"),
 
-    (presto, geometry_invalid_reason_geometry, arg1, "function doc"),
+    (trino, geometry_invalid_reason_geometry, arg1, "function doc"),
 
-    (presto, geometry_nearest_points_geometry_geometry, arg1 arg2, "function doc"),
+    (trino, geometry_nearest_points_geometry_geometry, arg1 arg2, "function doc"),
 
-    (presto, geometry_to_bing_tiles_geometry_bigint, arg1 arg2, "function doc"),
+    (trino, geometry_to_bing_tiles_geometry_bigint, arg1 arg2, "function doc"),
 
-    (presto, geometry_union_array_geometry, arg1, "function doc"),
+    (trino, geometry_union_array_geometry, arg1, "function doc"),
 
-    (presto, great_circle_distance_double_double_double_double, arg1 arg2 arg3 arg4, "function doc"),
+    (trino, great_circle_distance_double_double_double_double, arg1 arg2 arg3 arg4, "function doc"),
 
-    (presto, greatest_3, arg1, "function doc"),
+    (trino, greatest_3, arg1, "function doc"),
 
-    (presto, hamming_distance_varchar_varchar, arg1 arg2, "function doc"),
+    (trino, hamming_distance_varchar_varchar, arg1 arg2, "function doc"),
 
-    (presto, hash_counts_setdigest, arg1, "function doc"),
+    (trino, hash_counts_setdigest, arg1, "function doc"),
 
-    (presto, hmac_md5_varbinary_varbinary, arg1 arg2, "function doc"),
+    (trino, hmac_md5_varbinary_varbinary, arg1 arg2, "function doc"),
 
-    (presto, hmac_sha1_varbinary_varbinary, arg1 arg2, "function doc"),
+    (trino, hmac_sha1_varbinary_varbinary, arg1 arg2, "function doc"),
 
-    (presto, hmac_sha256_varbinary_varbinary, arg1 arg2, "function doc"),
+    (trino, hmac_sha256_varbinary_varbinary, arg1 arg2, "function doc"),
 
-    (presto, hmac_sha512_varbinary_varbinary, arg1 arg2, "function doc"),
+    (trino, hmac_sha512_varbinary_varbinary, arg1 arg2, "function doc"),
 
-    (presto, hour_intervaldaytosecond, arg1, "function doc"),
-    (presto, hour_time_p, arg1, "function doc"),
-    (presto, hour_timestamp_p, arg1, "function doc"),
+    (trino, hour_intervaldaytosecond, arg1, "function doc"),
+    (trino, hour_time_p, arg1, "function doc"),
+    (trino, hour_timestamp_p, arg1, "function doc"),
 
-    (presto, human_readable_seconds_double, arg1, "function doc"),
+    (trino, human_readable_seconds_double, arg1, "function doc"),
 
-    (presto, if_boolean_1_1, arg1 arg2 arg3, "function doc"),
+    (trino, if_boolean_1_1, arg1 arg2 arg3, "function doc"),
 
-    (presto, index_varchar_varchar, arg1 arg2, "function doc"),
+    (trino, index_varchar_varchar, arg1 arg2, "function doc"),
 
-    (presto, infinity, , "function doc"),
+    (trino, infinity, , "function doc"),
 
-    (presto, intersection_cardinality_setdigest_setdigest, arg1 arg2, "function doc"),
+    (trino, intersection_cardinality_setdigest_setdigest, arg1 arg2, "function doc"),
 
-    (presto, inverse_beta_cdf_double_double_double, arg1 arg2 arg3, "function doc"),
+    (trino, inverse_beta_cdf_double_double_double, arg1 arg2 arg3, "function doc"),
 
-    (presto, inverse_normal_cdf_double_double_double, arg1 arg2 arg3, "function doc"),
+    (trino, inverse_normal_cdf_double_double_double, arg1 arg2 arg3, "function doc"),
 
-    (presto, is_finite_double, arg1, "function doc"),
+    (trino, is_finite_double, arg1, "function doc"),
 
-    (presto, is_infinite_double, arg1, "function doc"),
+    (trino, is_infinite_double, arg1, "function doc"),
 
-    (presto, is_json_scalar_json, arg1, "function doc"),
-    (presto, is_json_scalar_varchar, arg1, "function doc"),
+    (trino, is_json_scalar_json, arg1, "function doc"),
+    (trino, is_json_scalar_varchar, arg1, "function doc"),
 
-    (presto, is_nan_double, arg1, "function doc"),
-    (presto, is_nan_real, arg1, "function doc"),
+    (trino, is_nan_double, arg1, "function doc"),
+    (trino, is_nan_real, arg1, "function doc"),
 
-    (presto, jaccard_index_setdigest_setdigest, arg1 arg2, "function doc"),
+    (trino, jaccard_index_setdigest_setdigest, arg1 arg2, "function doc"),
 
-    (presto, json_array_contains_json_bigint, arg1 arg2, "function doc"),
-    (presto, json_array_contains_json_boolean, arg1 arg2, "function doc"),
-    (presto, json_array_contains_json_double, arg1 arg2, "function doc"),
-    (presto, json_array_contains_json_varchar, arg1 arg2, "function doc"),
-    (presto, json_array_contains_varchar_bigint, arg1 arg2, "function doc"),
-    (presto, json_array_contains_varchar_boolean, arg1 arg2, "function doc"),
-    (presto, json_array_contains_varchar_double, arg1 arg2, "function doc"),
-    (presto, json_array_contains_varchar_varchar, arg1 arg2, "function doc"),
+    (trino, json_array_contains_json_bigint, arg1 arg2, "function doc"),
+    (trino, json_array_contains_json_boolean, arg1 arg2, "function doc"),
+    (trino, json_array_contains_json_double, arg1 arg2, "function doc"),
+    (trino, json_array_contains_json_varchar, arg1 arg2, "function doc"),
+    (trino, json_array_contains_varchar_bigint, arg1 arg2, "function doc"),
+    (trino, json_array_contains_varchar_boolean, arg1 arg2, "function doc"),
+    (trino, json_array_contains_varchar_double, arg1 arg2, "function doc"),
+    (trino, json_array_contains_varchar_varchar, arg1 arg2, "function doc"),
 
-    (presto, json_array_get_json_bigint, arg1 arg2, "function doc"),
-    (presto, json_array_get_varchar_bigint, arg1 arg2, "function doc"),
+    (trino, json_array_get_json_bigint, arg1 arg2, "function doc"),
+    (trino, json_array_get_varchar_bigint, arg1 arg2, "function doc"),
 
-    (presto, json_array_length_json, arg1, "function doc"),
-    (presto, json_array_length_varchar, arg1, "function doc"),
+    (trino, json_array_length_json, arg1, "function doc"),
+    (trino, json_array_length_varchar, arg1, "function doc"),
 
-    (presto, json_extract_json_jsonpath, arg1 arg2, "function doc"),
-    (presto, json_extract_varchar_jsonpath, arg1 arg2, "function doc"),
+    (trino, json_extract_json_jsonpath, arg1 arg2, "function doc"),
+    (trino, json_extract_varchar_jsonpath, arg1 arg2, "function doc"),
 
-    (presto, json_extract_scalar_json_jsonpath, arg1 arg2, "function doc"),
-    (presto, json_extract_scalar_varchar_jsonpath, arg1 arg2, "function doc"),
+    (trino, json_extract_scalar_json_jsonpath, arg1 arg2, "function doc"),
+    (trino, json_extract_scalar_varchar_jsonpath, arg1 arg2, "function doc"),
 
-    (presto, json_format_json, arg1, "function doc"),
+    (trino, json_format_json, arg1, "function doc"),
 
-    (presto, json_parse_varchar, arg1, "function doc"),
+    (trino, json_parse_varchar, arg1, "function doc"),
 
-    (presto, json_size_json_jsonpath, arg1 arg2, "function doc"),
-    (presto, json_size_varchar_jsonpath, arg1 arg2, "function doc"),
+    (trino, json_size_json_jsonpath, arg1 arg2, "function doc"),
+    (trino, json_size_varchar_jsonpath, arg1 arg2, "function doc"),
 
-    (presto, last_day_of_month_date, arg1, "function doc"),
-    (presto, last_day_of_month_timestamp_p, arg1, "function doc"),
+    (trino, last_day_of_month_date, arg1, "function doc"),
+    (trino, last_day_of_month_timestamp_p, arg1, "function doc"),
 
-    (presto, least_3, arg1, "function doc"),
+    (trino, least_3, arg1, "function doc"),
 
-    (presto, length_varchar, arg1, "function doc"),
-    (presto, length_varbinary, arg1, "function doc"),
-    (presto, length_array_1, arg1, "function doc"),
+    (trino, length_varchar, arg1, "function doc"),
+    (trino, length_varbinary, arg1, "function doc"),
+    (trino, length_array_1, arg1, "function doc"),
 
-    (presto, length_array_array_1, arg1, "function doc"),
+    (trino, length_array_array_1, arg1, "function doc"),
 
-    (presto, levenshtein_distance_varchar_varchar, arg1 arg2, "function doc"),
+    (trino, levenshtein_distance_varchar_varchar, arg1 arg2, "function doc"),
 
-    (presto, line_interpolate_point_geometry_double, arg1 arg2, "function doc"),
+    (trino, line_interpolate_point_geometry_double, arg1 arg2, "function doc"),
 
-    (presto, line_interpolate_points_geometry_double, arg1 arg2, "function doc"),
+    (trino, line_interpolate_points_geometry_double, arg1 arg2, "function doc"),
 
-    (presto, line_locate_point_geometry_geometry, arg1 arg2, "function doc"),
+    (trino, line_locate_point_geometry_geometry, arg1 arg2, "function doc"),
 
-    (presto, ln_double, arg1, "function doc"),
+    (trino, ln_double, arg1, "function doc"),
 
-    (presto, localtime, , "function doc"),
+    (trino, localtime, , "function doc"),
 
-    (presto, localtimestamp, , "function doc"),
-    (presto, localtimestamp_bigint_0, arg1, "function doc"),
-    (presto, localtimestamp_bigint_3, arg1, "function doc"),
-    (presto, localtimestamp_bigint_6, arg1, "function doc"),
-    (presto, localtimestamp_bigint_9, arg1, "function doc"),
+    (trino, localtimestamp, , "function doc"),
+    (trino, localtimestamp_bigint_0, arg1, "function doc"),
+    (trino, localtimestamp_bigint_3, arg1, "function doc"),
+    (trino, localtimestamp_bigint_6, arg1, "function doc"),
+    (trino, localtimestamp_bigint_9, arg1, "function doc"),
 
-    (presto, log_double_double, arg1 arg2, "function doc"),
+    (trino, log_double_double, arg1 arg2, "function doc"),
 
-    (presto, log10_double, arg1, "function doc"),
+    (trino, log10_double, arg1, "function doc"),
 
-    (presto, log2_double, arg1, "function doc"),
+    (trino, log2_double, arg1, "function doc"),
 
-    (presto, lower_varchar, arg1, "function doc"),
+    (trino, lower_varchar, arg1, "function doc"),
 
-    (presto, lpad_varbinary_bigint_varbinary, arg1 arg2 arg3, "function doc"),
-    (presto, lpad_varchar_bigint_varchar, arg1 arg2 arg3, "function doc"),
+    (trino, lpad_varbinary_bigint_varbinary, arg1 arg2 arg3, "function doc"),
+    (trino, lpad_varchar_bigint_varchar, arg1 arg2 arg3, "function doc"),
 
-    (presto, ltrim_varchar, arg1, "function doc"),
-    (presto, ltrim_varchar_codepoints, arg1 arg2, "function doc"),
+    (trino, ltrim_varchar, arg1, "function doc"),
+    (trino, ltrim_varchar_codepoints, arg1 arg2, "function doc"),
 
-    (presto, luhn_check_varchar, arg1, "function doc"),
+    (trino, luhn_check_varchar, arg1, "function doc"),
 
-    (presto, make_array_1, arg1, "function doc"),
+    (trino, make_array_1, arg1, "function doc"),
 
-    (presto, map_array_4_array_5, arg1 arg2, "function doc"),
-    (presto, map, , "function doc"),
+    (trino, map_array_4_array_5, arg1 arg2, "function doc"),
+    (trino, map, , "function doc"),
 
-    (presto, map_concat_map_4_5, arg1, "function doc"),
+    (trino, map_concat_map_4_5, arg1, "function doc"),
 
-    (presto, map_entries_map_4_5, arg1, "function doc"),
+    (trino, map_entries_map_4_5, arg1, "function doc"),
 
-    (presto, map_filter_map_4_5_function_4_5_boolean, arg1 arg2, "function doc"),
+    (trino, map_filter_map_4_5_function_4_5_boolean, arg1 arg2, "function doc"),
 
-    (presto, map_from_entries_array_row_c04_c15, arg1, "function doc"),
+    (trino, map_from_entries_array_row_c04_c15, arg1, "function doc"),
 
-    (presto, map_keys_map_4_5, arg1, "function doc"),
+    (trino, map_keys_map_4_5, arg1, "function doc"),
 
-    (presto, map_values_map_4_5, arg1, "function doc"),
+    (trino, map_values_map_4_5, arg1, "function doc"),
 
-    (presto, map_zip_with_map_4_8_map_4_7_function_4_8_7_6, arg1 arg2 arg3, "function doc"),
+    (trino, map_zip_with_map_4_8_map_4_7_function_4_8_7_6, arg1 arg2 arg3, "function doc"),
 
-    (presto, md5_varbinary, arg1, "function doc"),
+    (trino, md5_varbinary, arg1, "function doc"),
 
-    (presto, millisecond_intervaldaytosecond, arg1, "function doc"),
-    (presto, millisecond_time_p, arg1, "function doc"),
-    (presto, millisecond_timestamp_p, arg1, "function doc"),
+    (trino, millisecond_intervaldaytosecond, arg1, "function doc"),
+    (trino, millisecond_time_p, arg1, "function doc"),
+    (trino, millisecond_timestamp_p, arg1, "function doc"),
 
-    (presto, minute_intervaldaytosecond, arg1, "function doc"),
-    (presto, minute_time_p, arg1, "function doc"),
-    (presto, minute_timestamp_p, arg1, "function doc"),
+    (trino, minute_intervaldaytosecond, arg1, "function doc"),
+    (trino, minute_time_p, arg1, "function doc"),
+    (trino, minute_timestamp_p, arg1, "function doc"),
 
-    (presto, mod_bigint_bigint, arg1 arg2, "function doc"),
-    (presto, mod_decimal_a_precision_a_scale_decimal_b_precision_b_scale, arg1 arg2, "function doc"),
-    (presto, mod_double_double, arg1 arg2, "function doc"),
-    (presto, mod_integer_integer, arg1 arg2, "function doc"),
-    (presto, mod_real_real, arg1 arg2, "function doc"),
-    (presto, mod_smallint_smallint, arg1 arg2, "function doc"),
-    (presto, mod_tinyint_tinyint, arg1 arg2, "function doc"),
+    (trino, mod_bigint_bigint, arg1 arg2, "function doc"),
+    (trino, mod_decimal_a_precision_a_scale_decimal_b_precision_b_scale, arg1 arg2, "function doc"),
+    (trino, mod_double_double, arg1 arg2, "function doc"),
+    (trino, mod_integer_integer, arg1 arg2, "function doc"),
+    (trino, mod_real_real, arg1 arg2, "function doc"),
+    (trino, mod_smallint_smallint, arg1 arg2, "function doc"),
+    (trino, mod_tinyint_tinyint, arg1 arg2, "function doc"),
 
-    (presto, month_date, arg1, "function doc"),
-    (presto, month_intervalyeartomonth, arg1, "function doc"),
-    (presto, month_timestamp_p, arg1, "function doc"),
+    (trino, month_date, arg1, "function doc"),
+    (trino, month_intervalyeartomonth, arg1, "function doc"),
+    (trino, month_timestamp_p, arg1, "function doc"),
 
-    (presto, multimap_from_entries_array_row_c04_c15, arg1, "function doc"),
+    (trino, multimap_from_entries_array_row_c04_c15, arg1, "function doc"),
 
-    (presto, murmur3_varbinary, arg1, "function doc"),
+    (trino, murmur3_varbinary, arg1, "function doc"),
 
-    (presto, nan, , "function doc"),
+    (trino, nan, , "function doc"),
 
-    (presto, ngrams_array_1_bigint, arg1 arg2, "function doc"),
+    (trino, ngrams_array_1_bigint, arg1 arg2, "function doc"),
 
-    (presto, none_match_array_1_function_1_boolean, arg1 arg2, "function doc"),
+    (trino, none_match_array_1_function_1_boolean, arg1 arg2, "function doc"),
 
-    (presto, normal_cdf_double_double_double, arg1 arg2 arg3, "function doc"),
+    (trino, normal_cdf_double_double_double, arg1 arg2 arg3, "function doc"),
 
-    (presto, normalize_varchar_varchar, arg1 arg2, "function doc"),
+    (trino, normalize_varchar_varchar, arg1 arg2, "function doc"),
 
-    (presto, now, , "function doc"),
+    (trino, now, , "function doc"),
 
-    (presto, nullif_1_1, arg1 arg2, "function doc"),
+    (trino, nullif_1_1, arg1 arg2, "function doc"),
 
-    (presto, objectid, , "function doc"),
-    (presto, objectid_varchar, arg1, "function doc"),
+    (trino, objectid, , "function doc"),
+    (trino, objectid_varchar, arg1, "function doc"),
 
-    (presto, objectid_timestamp_objectid, arg1, "function doc"),
+    (trino, objectid_timestamp_objectid, arg1, "function doc"),
 
-    (presto, parse_data_size_varchar, arg1, "function doc"),
+    (trino, parse_data_size_varchar, arg1, "function doc"),
 
-    (presto, parse_datetime_varchar_varchar, arg1 arg2, "function doc"),
+    (trino, parse_datetime_varchar_varchar, arg1 arg2, "function doc"),
 
-    (presto, parse_duration_varchar, arg1, "function doc"),
+    (trino, parse_duration_varchar, arg1, "function doc"),
 
-    (presto, parse_presto_data_size_varchar, arg1, "function doc"),
+    (trino, parse_presto_data_size_varchar, arg1, "function doc"),
 
-    (presto, pi, , "function doc"),
+    (trino, pi, , "function doc"),
 
-    (presto, pow_double_double, arg1 arg2, "function doc"),
+    (trino, pow_double_double, arg1 arg2, "function doc"),
 
-    (presto, power_double_double, arg1 arg2, "function doc"),
+    (trino, power_double_double, arg1 arg2, "function doc"),
 
-    (presto, quantile_at_value_qdigest_bigint, arg1 arg2, "function doc"),
-    (presto, quantile_at_value_qdigest_double, arg1 arg2, "function doc"),
-    (presto, quantile_at_value_qdigest_real, arg1 arg2, "function doc"),
+    (trino, quantile_at_value_qdigest_bigint, arg1 arg2, "function doc"),
+    (trino, quantile_at_value_qdigest_double, arg1 arg2, "function doc"),
+    (trino, quantile_at_value_qdigest_real, arg1 arg2, "function doc"),
 
-    (presto, quarter_date, arg1, "function doc"),
-    (presto, quarter_timestamp_p, arg1, "function doc"),
+    (trino, quarter_date, arg1, "function doc"),
+    (trino, quarter_timestamp_p, arg1, "function doc"),
 
-    (presto, radians_double, arg1, "function doc"),
+    (trino, radians_double, arg1, "function doc"),
 
-    (presto, rand_bigint, arg1, "function doc"),
-    (presto, rand_bigint_bigint, arg1 arg2, "function doc"),
-    (presto, rand, , "function doc"),
-    (presto, rand_integer, arg1, "function doc"),
-    (presto, rand_integer_integer, arg1 arg2, "function doc"),
-    (presto, rand_smallint, arg1, "function doc"),
-    (presto, rand_smallint_smallint, arg1 arg2, "function doc"),
-    (presto, rand_tinyint, arg1, "function doc"),
-    (presto, rand_tinyint_tinyint, arg1 arg2, "function doc"),
+    (trino, rand_bigint, arg1, "function doc"),
+    (trino, rand_bigint_bigint, arg1 arg2, "function doc"),
+    (trino, rand, , "function doc"),
+    (trino, rand_integer, arg1, "function doc"),
+    (trino, rand_integer_integer, arg1 arg2, "function doc"),
+    (trino, rand_smallint, arg1, "function doc"),
+    (trino, rand_smallint_smallint, arg1 arg2, "function doc"),
+    (trino, rand_tinyint, arg1, "function doc"),
+    (trino, rand_tinyint_tinyint, arg1 arg2, "function doc"),
 
-    (presto, random_bigint, arg1, "function doc"),
-    (presto, random_bigint_bigint, arg1 arg2, "function doc"),
-    (presto, random, , "function doc"),
-    (presto, random_integer, arg1, "function doc"),
-    (presto, random_integer_integer, arg1 arg2, "function doc"),
-    (presto, random_smallint, arg1, "function doc"),
-    (presto, random_smallint_smallint, arg1 arg2, "function doc"),
-    (presto, random_tinyint, arg1, "function doc"),
-    (presto, random_tinyint_tinyint, arg1 arg2, "function doc"),
+    (trino, random_bigint, arg1, "function doc"),
+    (trino, random_bigint_bigint, arg1 arg2, "function doc"),
+    (trino, random, , "function doc"),
+    (trino, random_integer, arg1, "function doc"),
+    (trino, random_integer_integer, arg1 arg2, "function doc"),
+    (trino, random_smallint, arg1, "function doc"),
+    (trino, random_smallint_smallint, arg1 arg2, "function doc"),
+    (trino, random_tinyint, arg1, "function doc"),
+    (trino, random_tinyint_tinyint, arg1 arg2, "function doc"),
 
-    (presto, reclassify_T_varchar_varchar, arg1 arg2 arg3, "function doc"),
-    (presto, reclassify_T_varchar, arg1 arg2, "function doc"),
+    (trino, reclassify_T_varchar_varchar, arg1 arg2 arg3, "function doc"),
+    (trino, reclassify_T_varchar, arg1 arg2, "function doc"),
 
-    (presto, reduce_array_1_10_function_10_1_10_function_10_9, arg1 arg2 arg3 arg4, "function doc"),
+    (trino, reduce_array_1_10_function_10_1_10_function_10_9, arg1 arg2 arg3 arg4, "function doc"),
 
-    (presto, regexp_count_varchar_joniregexp, arg1 arg2, "function doc"),
+    (trino, regexp_count_varchar_joniregexp, arg1 arg2, "function doc"),
 
-    (presto, regexp_extract_varchar_joniregexp, arg1 arg2, "function doc"),
-    (presto, regexp_extract_varchar_joniregexp_bigint, arg1 arg2 arg3, "function doc"),
+    (trino, regexp_extract_varchar_joniregexp, arg1 arg2, "function doc"),
+    (trino, regexp_extract_varchar_joniregexp_bigint, arg1 arg2 arg3, "function doc"),
 
-    (presto, regexp_extract_all_varchar_joniregexp, arg1 arg2, "function doc"),
-    (presto, regexp_extract_all_varchar_joniregexp_bigint, arg1 arg2 arg3, "function doc"),
+    (trino, regexp_extract_all_varchar_joniregexp, arg1 arg2, "function doc"),
+    (trino, regexp_extract_all_varchar_joniregexp_bigint, arg1 arg2 arg3, "function doc"),
 
-    (presto, regexp_like_varchar_joniregexp, arg1 arg2, "function doc"),
+    (trino, regexp_like_varchar_joniregexp, arg1 arg2, "function doc"),
 
-    (presto, regexp_position_varchar_joniregexp, arg1 arg2, "function doc"),
-    (presto, regexp_position_varchar_joniregexp_bigint, arg1 arg2 arg3, "function doc"),
-    (presto, regexp_position_varchar_joniregexp_bigint_bigint, arg1 arg2 arg3 arg4, "function doc"),
+    (trino, regexp_position_varchar_joniregexp, arg1 arg2, "function doc"),
+    (trino, regexp_position_varchar_joniregexp_bigint, arg1 arg2 arg3, "function doc"),
+    (trino, regexp_position_varchar_joniregexp_bigint_bigint, arg1 arg2 arg3 arg4, "function doc"),
 
-    (presto, regexp_replace_varchar_joniregexp_function_array_varchar_varchar, arg1 arg2 arg3, "function doc"),
-    (presto, regexp_replace_varchar_joniregexp, arg1 arg2, "function doc"),
-    (presto, regexp_replace_varchar_joniregexp_varchar, arg1 arg2 arg3, "function doc"),
+    (trino, regexp_replace_varchar_joniregexp_function_array_varchar_varchar, arg1 arg2 arg3, "function doc"),
+    (trino, regexp_replace_varchar_joniregexp, arg1 arg2, "function doc"),
+    (trino, regexp_replace_varchar_joniregexp_varchar, arg1 arg2 arg3, "function doc"),
 
-    (presto, regexp_split_varchar_joniregexp, arg1 arg2, "function doc"),
+    (trino, regexp_split_varchar_joniregexp, arg1 arg2, "function doc"),
 
-    (presto, regress_map_bigint_double_regressor, arg1 arg2, "function doc"),
+    (trino, regress_map_bigint_double_regressor, arg1 arg2, "function doc"),
 
-    (presto, render_boolean, arg1, "function doc"),
-    (presto, render_bigint_color, arg1 arg2, "function doc"),
-    (presto, render_double_color, arg1 arg2, "function doc"),
-    (presto, render_varchar_color, arg1 arg2, "function doc"),
+    (trino, render_boolean, arg1, "function doc"),
+    (trino, render_bigint_color, arg1 arg2, "function doc"),
+    (trino, render_double_color, arg1 arg2, "function doc"),
+    (trino, render_varchar_color, arg1 arg2, "function doc"),
 
-    (presto, repeat_1_bigint, arg1 arg2, "function doc"),
+    (trino, repeat_1_bigint, arg1 arg2, "function doc"),
 
-    (presto, replace_varchar_varchar_varchar, arg1 arg2 arg3, "function doc"),
-    (presto, replace_varchar_varchar, arg1 arg2, "function doc"),
+    (trino, replace_varchar_varchar_varchar, arg1 arg2 arg3, "function doc"),
+    (trino, replace_varchar_varchar, arg1 arg2, "function doc"),
 
-    (presto, reverse_array_3, arg1, "function doc"),
-    (presto, reverse_varbinary, arg1, "function doc"),
-    (presto, reverse_varchar, arg1, "function doc"),
+    (trino, reverse_array_3, arg1, "function doc"),
+    (trino, reverse_varbinary, arg1, "function doc"),
+    (trino, reverse_varchar, arg1, "function doc"),
 
-    (presto, rgb_bigint_bigint_bigint, arg1 arg2 arg3, "function doc"),
+    (trino, rgb_bigint_bigint_bigint, arg1 arg2 arg3, "function doc"),
 
-    (presto, round_double, arg1, "function doc"),
-    (presto, round_double_bigint, arg1 arg2, "function doc"),
-    (presto, round_real, arg1, "function doc"),
-    (presto, round_real_bigint, arg1 arg2, "function doc"),
-    (presto, round_integer, arg1, "function doc"),
-    (presto, round_integer_integer, arg1 arg2, "function doc"),
-    (presto, round_decimal_p_s, arg1, "function doc"),
-    (presto, round_decimal_p_s_bigint, arg1 arg2, "function doc"),
-    (presto, round_bigint, arg1, "function doc"),
-    (presto, round_bigint_bigint, arg1 arg2, "function doc"),
-    (presto, round_smallint, arg1, "function doc"),
-    (presto, round_smallint_bigint, arg1 arg2, "function doc"),
-    (presto, round_tinyint, arg1, "function doc"),
-    (presto, round_tinyint_bigint, arg1 arg2, "function doc"),
+    (trino, round_double, arg1, "function doc"),
+    (trino, round_double_bigint, arg1 arg2, "function doc"),
+    (trino, round_real, arg1, "function doc"),
+    (trino, round_real_bigint, arg1 arg2, "function doc"),
+    (trino, round_integer, arg1, "function doc"),
+    (trino, round_integer_integer, arg1 arg2, "function doc"),
+    (trino, round_decimal_p_s, arg1, "function doc"),
+    (trino, round_decimal_p_s_bigint, arg1 arg2, "function doc"),
+    (trino, round_bigint, arg1, "function doc"),
+    (trino, round_bigint_bigint, arg1 arg2, "function doc"),
+    (trino, round_smallint, arg1, "function doc"),
+    (trino, round_smallint_bigint, arg1 arg2, "function doc"),
+    (trino, round_tinyint, arg1, "function doc"),
+    (trino, round_tinyint_bigint, arg1 arg2, "function doc"),
 
-    (presto, rpad_varbinary_bigint_varbinary, arg1 arg2 arg3, "function doc"),
-    (presto, rpad_varchar_bigint_varchar, arg1 arg2 arg3, "function doc"),
+    (trino, rpad_varbinary_bigint_varbinary, arg1 arg2 arg3, "function doc"),
+    (trino, rpad_varchar_bigint_varchar, arg1 arg2 arg3, "function doc"),
 
-    (presto, rtrim_varchar, arg1, "function doc"),
-    (presto, rtrim_varchar_codepoints, arg1 arg2, "function doc"),
+    (trino, rtrim_varchar, arg1, "function doc"),
+    (trino, rtrim_varchar_codepoints, arg1 arg2, "function doc"),
 
-    (presto, second_intervaldaytosecond, arg1, "function doc"),
-    (presto, second_time_p, arg1, "function doc"),
-    (presto, second_timestamp_p, arg1, "function doc"),
+    (trino, second_intervaldaytosecond, arg1, "function doc"),
+    (trino, second_time_p, arg1, "function doc"),
+    (trino, second_timestamp_p, arg1, "function doc"),
 
-    (presto, sequence_bigint_bigint, arg1 arg2, "function doc"),
-    (presto, sequence_bigint_bigint_bigint, arg1 arg2 arg3, "function doc"),
-    (presto, sequence_date_date, arg1 arg2, "function doc"),
-    (presto, sequence_date_date_intervaldaytosecond, arg1 arg2 arg3, "function doc"),
-    (presto, sequence_date_date_intervalyeartomonth, arg1 arg2 arg3, "function doc"),
-    (presto, sequence_timestamp_p_timestamp_p_intervaldaytosecond, arg1 arg2 arg3, "function doc"),
+    (trino, sequence_bigint_bigint, arg1 arg2, "function doc"),
+    (trino, sequence_bigint_bigint_bigint, arg1 arg2 arg3, "function doc"),
+    (trino, sequence_date_date, arg1 arg2, "function doc"),
+    (trino, sequence_date_date_intervaldaytosecond, arg1 arg2 arg3, "function doc"),
+    (trino, sequence_date_date_intervalyeartomonth, arg1 arg2 arg3, "function doc"),
+    (trino, sequence_timestamp_p_timestamp_p_intervaldaytosecond, arg1 arg2 arg3, "function doc"),
 
-    (presto, sha1_varbinary, arg1, "function doc"),
+    (trino, sha1_varbinary, arg1, "function doc"),
 
-    (presto, sha256_varbinary, arg1, "function doc"),
+    (trino, sha256_varbinary, arg1, "function doc"),
 
-    (presto, sha512_varbinary, arg1, "function doc"),
+    (trino, sha512_varbinary, arg1, "function doc"),
 
-    (presto, shuffle_array_3, arg1, "function doc"),
+    (trino, shuffle_array_3, arg1, "function doc"),
 
-    (presto, sign_bigint, arg1, "function doc"),
-    (presto, sign_decimal_p_s, arg1, "function doc"),
-    (presto, sign_double, arg1, "function doc"),
-    (presto, sign_integer, arg1, "function doc"),
-    (presto, sign_real, arg1, "function doc"),
-    (presto, sign_smallint, arg1, "function doc"),
-    (presto, sign_tinyint, arg1, "function doc"),
+    (trino, sign_bigint, arg1, "function doc"),
+    (trino, sign_decimal_p_s, arg1, "function doc"),
+    (trino, sign_double, arg1, "function doc"),
+    (trino, sign_integer, arg1, "function doc"),
+    (trino, sign_real, arg1, "function doc"),
+    (trino, sign_smallint, arg1, "function doc"),
+    (trino, sign_tinyint, arg1, "function doc"),
 
-    (presto, simplify_geometry_geometry_double, arg1 arg2, "function doc"),
+    (trino, simplify_geometry_geometry_double, arg1 arg2, "function doc"),
 
-    (presto, sin_double, arg1, "function doc"),
+    (trino, sin_double, arg1, "function doc"),
 
-    (presto, sinh_double, arg1, "function doc"),
+    (trino, sinh_double, arg1, "function doc"),
 
-    (presto, slice_array_3_bigint_bigint, arg1 arg2 arg3, "function doc"),
+    (trino, slice_array_3_bigint_bigint, arg1 arg2 arg3, "function doc"),
 
-    (presto, soundex_varchar, arg1, "function doc"),
+    (trino, soundex_varchar, arg1, "function doc"),
 
-    (presto, spatial_partitions_kdbtree_geometry, arg1 arg2, "function doc"),
-    (presto, spatial_partitions_kdbtree_geometry_double, arg1 arg2 arg3, "function doc"),
+    (trino, spatial_partitions_kdbtree_geometry, arg1 arg2, "function doc"),
+    (trino, spatial_partitions_kdbtree_geometry_double, arg1 arg2 arg3, "function doc"),
 
-    (presto, split_varchar_varchar, arg1 arg2, "function doc"),
-    (presto, split_varchar_varchar_bigint, arg1 arg2 arg3, "function doc"),
+    (trino, split_varchar_varchar, arg1 arg2, "function doc"),
+    (trino, split_varchar_varchar_bigint, arg1 arg2 arg3, "function doc"),
 
-    (presto, split_part_varchar_varchar_bigint, arg1 arg2 arg3, "function doc"),
+    (trino, split_part_varchar_varchar_bigint, arg1 arg2 arg3, "function doc"),
 
-    (presto, split_to_map_varchar_varchar_varchar, arg1 arg2 arg3, "function doc"),
+    (trino, split_to_map_varchar_varchar_varchar, arg1 arg2 arg3, "function doc"),
 
-    (presto, split_to_multimap_varchar_varchar_varchar, arg1 arg2 arg3, "function doc"),
+    (trino, split_to_multimap_varchar_varchar_varchar, arg1 arg2 arg3, "function doc"),
 
-    (presto, spooky_hash_v2_32_varbinary, arg1, "function doc"),
+    (trino, spooky_hash_v2_32_varbinary, arg1, "function doc"),
 
-    (presto, spooky_hash_v2_64_varbinary, arg1, "function doc"),
+    (trino, spooky_hash_v2_64_varbinary, arg1, "function doc"),
 
-    (presto, sqrt_double, arg1, "function doc"),
+    (trino, sqrt_double, arg1, "function doc"),
 
-    (presto, st_area_geometry, arg1, "function doc"),
-    (presto, st_area_sphericalgeography, arg1, "function doc"),
+    (trino, st_area_geometry, arg1, "function doc"),
+    (trino, st_area_sphericalgeography, arg1, "function doc"),
 
-    (presto, st_asbinary_geometry, arg1, "function doc"),
+    (trino, st_asbinary_geometry, arg1, "function doc"),
 
-    (presto, st_astext_geometry, arg1, "function doc"),
+    (trino, st_astext_geometry, arg1, "function doc"),
 
-    (presto, st_boundary_geometry, arg1, "function doc"),
+    (trino, st_boundary_geometry, arg1, "function doc"),
 
-    (presto, st_buffer_geometry_double, arg1 arg2, "function doc"),
+    (trino, st_buffer_geometry_double, arg1 arg2, "function doc"),
 
-    (presto, st_centroid_geometry, arg1, "function doc"),
+    (trino, st_centroid_geometry, arg1, "function doc"),
 
-    (presto, st_contains_geometry_geometry, arg1 arg2, "function doc"),
+    (trino, st_contains_geometry_geometry, arg1 arg2, "function doc"),
 
-    (presto, st_convexhull_geometry, arg1, "function doc"),
+    (trino, st_convexhull_geometry, arg1, "function doc"),
 
-    (presto, st_coorddim_geometry, arg1, "function doc"),
+    (trino, st_coorddim_geometry, arg1, "function doc"),
 
-    (presto, st_crosses_geometry_geometry, arg1 arg2, "function doc"),
+    (trino, st_crosses_geometry_geometry, arg1 arg2, "function doc"),
 
-    (presto, st_difference_geometry_geometry, arg1 arg2, "function doc"),
+    (trino, st_difference_geometry_geometry, arg1 arg2, "function doc"),
 
-    (presto, st_dimension_geometry, arg1, "function doc"),
+    (trino, st_dimension_geometry, arg1, "function doc"),
 
-    (presto, st_disjoint_geometry_geometry, arg1 arg2, "function doc"),
+    (trino, st_disjoint_geometry_geometry, arg1 arg2, "function doc"),
 
-    (presto, st_distance_geometry_geometry, arg1 arg2, "function doc"),
-    (presto, st_distance_sphericalgeography_sphericalgeography, arg1 arg2, "function doc"),
+    (trino, st_distance_geometry_geometry, arg1 arg2, "function doc"),
+    (trino, st_distance_sphericalgeography_sphericalgeography, arg1 arg2, "function doc"),
 
-    (presto, st_endpoint_geometry, arg1, "function doc"),
+    (trino, st_endpoint_geometry, arg1, "function doc"),
 
-    (presto, st_envelope_geometry, arg1, "function doc"),
+    (trino, st_envelope_geometry, arg1, "function doc"),
 
-    (presto, st_envelopeaspts_geometry, arg1, "function doc"),
+    (trino, st_envelopeaspts_geometry, arg1, "function doc"),
 
-    (presto, st_equals_geometry_geometry, arg1 arg2, "function doc"),
+    (trino, st_equals_geometry_geometry, arg1 arg2, "function doc"),
 
-    (presto, st_exteriorring_geometry, arg1, "function doc"),
+    (trino, st_exteriorring_geometry, arg1, "function doc"),
 
-    (presto, st_geometries_geometry, arg1, "function doc"),
+    (trino, st_geometries_geometry, arg1, "function doc"),
 
-    (presto, st_geometryfromtext_varchar, arg1, "function doc"),
+    (trino, st_geometryfromtext_varchar, arg1, "function doc"),
 
-    (presto, st_geometryn_geometry_bigint, arg1 arg2, "function doc"),
+    (trino, st_geometryn_geometry_bigint, arg1 arg2, "function doc"),
 
-    (presto, st_geometrytype_geometry, arg1, "function doc"),
+    (trino, st_geometrytype_geometry, arg1, "function doc"),
 
-    (presto, st_geomfrombinary_varbinary, arg1, "function doc"),
+    (trino, st_geomfrombinary_varbinary, arg1, "function doc"),
 
-    (presto, st_interiorringn_geometry_bigint, arg1 arg2, "function doc"),
+    (trino, st_interiorringn_geometry_bigint, arg1 arg2, "function doc"),
 
-    (presto, st_interiorrings_geometry, arg1, "function doc"),
+    (trino, st_interiorrings_geometry, arg1, "function doc"),
 
-    (presto, st_intersection_geometry_geometry, arg1 arg2, "function doc"),
+    (trino, st_intersection_geometry_geometry, arg1 arg2, "function doc"),
 
-    (presto, st_intersects_geometry_geometry, arg1 arg2, "function doc"),
+    (trino, st_intersects_geometry_geometry, arg1 arg2, "function doc"),
 
-    (presto, st_isclosed_geometry, arg1, "function doc"),
+    (trino, st_isclosed_geometry, arg1, "function doc"),
 
-    (presto, st_isempty_geometry, arg1, "function doc"),
+    (trino, st_isempty_geometry, arg1, "function doc"),
 
-    (presto, st_isring_geometry, arg1, "function doc"),
+    (trino, st_isring_geometry, arg1, "function doc"),
 
-    (presto, st_issimple_geometry, arg1, "function doc"),
+    (trino, st_issimple_geometry, arg1, "function doc"),
 
-    (presto, st_isvalid_geometry, arg1, "function doc"),
+    (trino, st_isvalid_geometry, arg1, "function doc"),
 
-    (presto, st_length_geometry, arg1, "function doc"),
-    (presto, st_length_sphericalgeography, arg1, "function doc"),
+    (trino, st_length_geometry, arg1, "function doc"),
+    (trino, st_length_sphericalgeography, arg1, "function doc"),
 
-    (presto, st_linefromtext_varchar, arg1, "function doc"),
+    (trino, st_linefromtext_varchar, arg1, "function doc"),
 
-    (presto, st_linestring_array_geometry, arg1, "function doc"),
+    (trino, st_linestring_array_geometry, arg1, "function doc"),
 
-    (presto, st_multipoint_array_geometry, arg1, "function doc"),
+    (trino, st_multipoint_array_geometry, arg1, "function doc"),
 
-    (presto, st_numgeometries_geometry, arg1, "function doc"),
+    (trino, st_numgeometries_geometry, arg1, "function doc"),
 
-    (presto, st_numinteriorring_geometry, arg1, "function doc"),
+    (trino, st_numinteriorring_geometry, arg1, "function doc"),
 
-    (presto, st_numpoints_geometry, arg1, "function doc"),
+    (trino, st_numpoints_geometry, arg1, "function doc"),
 
-    (presto, st_overlaps_geometry_geometry, arg1 arg2, "function doc"),
+    (trino, st_overlaps_geometry_geometry, arg1 arg2, "function doc"),
 
-    (presto, st_point_double_double, arg1 arg2, "function doc"),
+    (trino, st_point_double_double, arg1 arg2, "function doc"),
 
-    (presto, st_pointn_geometry_bigint, arg1 arg2, "function doc"),
+    (trino, st_pointn_geometry_bigint, arg1 arg2, "function doc"),
 
-    (presto, st_points_geometry, arg1, "function doc"),
+    (trino, st_points_geometry, arg1, "function doc"),
 
-    (presto, st_polygon_varchar, arg1, "function doc"),
+    (trino, st_polygon_varchar, arg1, "function doc"),
 
-    (presto, st_relate_geometry_geometry_varchar, arg1 arg2 arg3, "function doc"),
+    (trino, st_relate_geometry_geometry_varchar, arg1 arg2 arg3, "function doc"),
 
-    (presto, st_startpoint_geometry, arg1, "function doc"),
+    (trino, st_startpoint_geometry, arg1, "function doc"),
 
-    (presto, st_symdifference_geometry_geometry, arg1 arg2, "function doc"),
+    (trino, st_symdifference_geometry_geometry, arg1 arg2, "function doc"),
 
-    (presto, st_touches_geometry_geometry, arg1 arg2, "function doc"),
+    (trino, st_touches_geometry_geometry, arg1 arg2, "function doc"),
 
-    (presto, st_union_geometry_geometry, arg1 arg2, "function doc"),
+    (trino, st_union_geometry_geometry, arg1 arg2, "function doc"),
 
-    (presto, st_within_geometry_geometry, arg1 arg2, "function doc"),
+    (trino, st_within_geometry_geometry, arg1 arg2, "function doc"),
 
-    (presto, st_x_geometry, arg1, "function doc"),
+    (trino, st_x_geometry, arg1, "function doc"),
 
-    (presto, st_xmax_geometry, arg1, "function doc"),
+    (trino, st_xmax_geometry, arg1, "function doc"),
 
-    (presto, st_xmin_geometry, arg1, "function doc"),
+    (trino, st_xmin_geometry, arg1, "function doc"),
 
-    (presto, st_y_geometry, arg1, "function doc"),
+    (trino, st_y_geometry, arg1, "function doc"),
 
-    (presto, st_ymax_geometry, arg1, "function doc"),
+    (trino, st_ymax_geometry, arg1, "function doc"),
 
-    (presto, st_ymin_geometry, arg1, "function doc"),
+    (trino, st_ymin_geometry, arg1, "function doc"),
 
-    (presto, starts_with_varchar_varchar, arg1 arg2, "function doc"),
+    (trino, starts_with_varchar_varchar, arg1 arg2, "function doc"),
 
-    (presto, strpos_varchar_varchar, arg1 arg2, "function doc"),
-    (presto, strpos_varchar_varchar_bigint, arg1 arg2 arg3, "function doc"),
+    (trino, strpos_varchar_varchar, arg1 arg2, "function doc"),
+    (trino, strpos_varchar_varchar_bigint, arg1 arg2 arg3, "function doc"),
 
-    (presto, substr_varchar_bigint, arg1 arg2, "function doc"),
-    (presto, substr_varchar_bigint_bigint, arg1 arg2 arg3, "function doc"),
-    (presto, substr_varbinary_bigint, arg1 arg2, "function doc"),
-    (presto, substr_varbinary_bigint_bigint, arg1 arg2 arg3, "function doc"),
+    (trino, substr_varchar_bigint, arg1 arg2, "function doc"),
+    (trino, substr_varchar_bigint_bigint, arg1 arg2 arg3, "function doc"),
+    (trino, substr_varbinary_bigint, arg1 arg2, "function doc"),
+    (trino, substr_varbinary_bigint_bigint, arg1 arg2 arg3, "function doc"),
 
-    (presto, substring_varchar_bigint, arg1 arg2, "function doc"),
-    (presto, substring_varchar_bigint_bigint, arg1 arg2 arg3, "function doc"),
+    (trino, substring_varchar_bigint, arg1 arg2, "function doc"),
+    (trino, substring_varchar_bigint_bigint, arg1 arg2 arg3, "function doc"),
 
-    (presto, tan_double, arg1, "function doc"),
+    (trino, tan_double, arg1, "function doc"),
 
-    (presto, tanh_double, arg1, "function doc"),
+    (trino, tanh_double, arg1, "function doc"),
 
-    (presto, timestamp_objectid_timestamp_0, arg1, "function doc"),
+    (trino, timestamp_objectid_timestamp_0, arg1, "function doc"),
 
-    (presto, timezone_hour_time_p, arg1, "function doc"),
-    (presto, timezone_hour_timestamp_p, arg1, "function doc"),
+    (trino, timezone_hour_time_p, arg1, "function doc"),
+    (trino, timezone_hour_timestamp_p, arg1, "function doc"),
 
-    (presto, timezone_minute_time_p, arg1, "function doc"),
-    (presto, timezone_minute_timestamp_p, arg1, "function doc"),
+    (trino, timezone_minute_time_p, arg1, "function doc"),
+    (trino, timezone_minute_timestamp_p, arg1, "function doc"),
 
-    (presto, to_base_bigint_bigint, arg1 arg2, "function doc"),
+    (trino, to_base_bigint_bigint, arg1 arg2, "function doc"),
 
-    (presto, to_base32_varbinary, arg1, "function doc"),
+    (trino, to_base32_varbinary, arg1, "function doc"),
 
-    (presto, to_base64_varbinary, arg1, "function doc"),
+    (trino, to_base64_varbinary, arg1, "function doc"),
 
-    (presto, to_base64url_varbinary, arg1, "function doc"),
+    (trino, to_base64url_varbinary, arg1, "function doc"),
 
-    (presto, to_big_endian_32_bigint, arg1, "function doc"),
+    (trino, to_big_endian_32_bigint, arg1, "function doc"),
 
-    (presto, to_big_endian_64_bigint, arg1, "function doc"),
+    (trino, to_big_endian_64_bigint, arg1, "function doc"),
 
-    (presto, to_char_timestamp_p_varchar, arg1 arg2, "function doc"),
+    (trino, to_char_timestamp_p_varchar, arg1 arg2, "function doc"),
 
-    (presto, to_date_varchar_varchar, arg1 arg2, "function doc"),
+    (trino, to_date_varchar_varchar, arg1 arg2, "function doc"),
 
-    (presto, to_encoded_polyline_geometry, arg1, "function doc"),
+    (trino, to_encoded_polyline_geometry, arg1, "function doc"),
 
-    (presto, to_geojson_geometry_sphericalgeography, arg1, "function doc"),
+    (trino, to_geojson_geometry_sphericalgeography, arg1, "function doc"),
 
-    (presto, to_geometry_sphericalgeography, arg1, "function doc"),
+    (trino, to_geometry_sphericalgeography, arg1, "function doc"),
 
-    (presto, to_hex_varbinary, arg1, "function doc"),
+    (trino, to_hex_varbinary, arg1, "function doc"),
 
-    (presto, to_ieee754_32_real, arg1, "function doc"),
+    (trino, to_ieee754_32_real, arg1, "function doc"),
 
-    (presto, to_ieee754_64_double, arg1, "function doc"),
+    (trino, to_ieee754_64_double, arg1, "function doc"),
 
-    (presto, to_iso8601_date, arg1, "function doc"),
-    (presto, to_iso8601_timestamp_p, arg1, "function doc"),
+    (trino, to_iso8601_date, arg1, "function doc"),
+    (trino, to_iso8601_timestamp_p, arg1, "function doc"),
 
-    (presto, to_milliseconds_intervaldaytosecond, arg1, "function doc"),
+    (trino, to_milliseconds_intervaldaytosecond, arg1, "function doc"),
 
-    (presto, to_spherical_geography_geometry, arg1, "function doc"),
+    (trino, to_spherical_geography_geometry, arg1, "function doc"),
 
-    (presto, to_timestamp_varchar_varchar, arg1 arg2, "function doc"),
+    (trino, to_timestamp_varchar_varchar, arg1 arg2, "function doc"),
 
-    (presto, to_timestamp_seconds_1, arg1, "function doc"),
+    (trino, to_timestamp_seconds_1, arg1, "function doc"),
 
-    (presto, to_unixtime_timestamp_p, arg1, "function doc"),
+    (trino, to_unixtime_timestamp_p, arg1, "function doc"),
 
-    (presto, to_utf8_varchar, arg1, "function doc"),
+    (trino, to_utf8_varchar, arg1, "function doc"),
 
-    (presto, transform_array_1_function_1_11, arg1 arg2, "function doc"),
+    (trino, transform_array_1_function_1_11, arg1 arg2, "function doc"),
 
-    (presto, transform_keys_map_13_5_function_13_5_12, arg1 arg2, "function doc"),
+    (trino, transform_keys_map_13_5_function_13_5_12, arg1 arg2, "function doc"),
 
-    (presto, transform_values_map_4_8_function_4_8_7, arg1 arg2, "function doc"),
+    (trino, transform_values_map_4_8_function_4_8_7, arg1 arg2, "function doc"),
 
-    (presto, translate_varchar_varchar_varchar, arg1 arg2 arg3, "function doc"),
+    (trino, translate_varchar_varchar_varchar, arg1 arg2 arg3, "function doc"),
 
-    (presto, trim_varchar, arg1, "function doc"),
-    (presto, trim_varchar_codepoints, arg1 arg2, "function doc"),
+    (trino, trim_varchar, arg1, "function doc"),
+    (trino, trim_varchar_codepoints, arg1 arg2, "function doc"),
 
-    (presto, trim_array_array_3_bigint, arg1 arg2, "function doc"),
+    (trino, trim_array_array_3_bigint, arg1 arg2, "function doc"),
 
-    (presto, truncate_decimal_p_s_bigint, arg1 arg2, "function doc"),
-    (presto, truncate_decimal_p_s, arg1, "function doc"),
-    (presto, truncate_double, arg1, "function doc"),
-    (presto, truncate_real, arg1, "function doc"),
+    (trino, truncate_decimal_p_s_bigint, arg1 arg2, "function doc"),
+    (trino, truncate_decimal_p_s, arg1, "function doc"),
+    (trino, truncate_double, arg1, "function doc"),
+    (trino, truncate_real, arg1, "function doc"),
 
-    (presto, try_1, arg1, "function doc"),
+    (trino, try_1, arg1, "function doc"),
 
-    (presto, typeof_1, arg1, "function doc"),
+    (trino, typeof_1, arg1, "function doc"),
 
-    (presto, upper_varchar, arg1, "function doc"),
+    (trino, upper_varchar, arg1, "function doc"),
 
-    (presto, url_decode_varchar, arg1, "function doc"),
+    (trino, url_decode_varchar, arg1, "function doc"),
 
-    (presto, url_encode_varchar, arg1, "function doc"),
+    (trino, url_encode_varchar, arg1, "function doc"),
 
-    (presto, url_extract_fragment_varchar, arg1, "function doc"),
+    (trino, url_extract_fragment_varchar, arg1, "function doc"),
 
-    (presto, url_extract_host_varchar, arg1, "function doc"),
+    (trino, url_extract_host_varchar, arg1, "function doc"),
 
-    (presto, url_extract_parameter_varchar_varchar, arg1 arg2, "function doc"),
+    (trino, url_extract_parameter_varchar_varchar, arg1 arg2, "function doc"),
 
-    (presto, url_extract_path_varchar, arg1, "function doc"),
+    (trino, url_extract_path_varchar, arg1, "function doc"),
 
-    (presto, url_extract_port_varchar, arg1, "function doc"),
+    (trino, url_extract_port_varchar, arg1, "function doc"),
 
-    (presto, url_extract_protocol_varchar, arg1, "function doc"),
+    (trino, url_extract_protocol_varchar, arg1, "function doc"),
 
-    (presto, url_extract_query_varchar, arg1, "function doc"),
+    (trino, url_extract_query_varchar, arg1, "function doc"),
 
-    (presto, uuid, , "function doc"),
+    (trino, uuid, , "function doc"),
 
-    (presto, value_at_quantile_qdigest_double, arg1 arg2, "function doc"),
-    (presto, value_at_quantile_tdigest_double, arg1 arg2, "function doc"),
+    (trino, value_at_quantile_qdigest_double, arg1 arg2, "function doc"),
+    (trino, value_at_quantile_tdigest_double, arg1 arg2, "function doc"),
 
-    (presto, values_at_quantiles_qdigest_array_double, arg1 arg2, "function doc"),
-    (presto, values_at_quantiles_tdigest_array_double, arg1 arg2, "function doc"),
+    (trino, values_at_quantiles_qdigest_array_double, arg1 arg2, "function doc"),
+    (trino, values_at_quantiles_tdigest_array_double, arg1 arg2, "function doc"),
 
-    (presto, week_date, arg1, "function doc"),
-    (presto, week_timestamp_p, arg1, "function doc"),
+    (trino, week_date, arg1, "function doc"),
+    (trino, week_timestamp_p, arg1, "function doc"),
 
-    (presto, week_of_year_date, arg1, "function doc"),
-    (presto, week_of_year_timestamp_p, arg1, "function doc"),
+    (trino, week_of_year_date, arg1, "function doc"),
+    (trino, week_of_year_timestamp_p, arg1, "function doc"),
 
-    (presto, width_bucket_double_array_double, arg1 arg2, "function doc"),
-    (presto, width_bucket_double_double_double_bigint, arg1 arg2 arg3 arg4, "function doc"),
+    (trino, width_bucket_double_array_double, arg1 arg2, "function doc"),
+    (trino, width_bucket_double_double_double_bigint, arg1 arg2 arg3 arg4, "function doc"),
 
-    (presto, wilson_interval_lower_bigint_bigint_double, arg1 arg2 arg3, "function doc"),
+    (trino, wilson_interval_lower_bigint_bigint_double, arg1 arg2 arg3, "function doc"),
 
-    (presto, wilson_interval_upper_bigint_bigint_double, arg1 arg2 arg3, "function doc"),
+    (trino, wilson_interval_upper_bigint_bigint_double, arg1 arg2 arg3, "function doc"),
 
-    (presto, with_timezone_timestamp_p_varchar, arg1 arg2, "function doc"),
+    (trino, with_timezone_timestamp_p_varchar, arg1 arg2, "function doc"),
 
-    (presto, word_stem_varchar, arg1, "function doc"),
-    (presto, word_stem_varchar_varchar, arg1 arg2, "function doc"),
+    (trino, word_stem_varchar, arg1, "function doc"),
+    (trino, word_stem_varchar_varchar, arg1 arg2, "function doc"),
 
-    (presto, xxhash64_varbinary, arg1, "function doc"),
+    (trino, xxhash64_varbinary, arg1, "function doc"),
 
-    (presto, year_date, arg1, "function doc"),
-    (presto, year_intervalyeartomonth, arg1, "function doc"),
-    (presto, year_timestamp_p, arg1, "function doc"),
+    (trino, year_date, arg1, "function doc"),
+    (trino, year_intervalyeartomonth, arg1, "function doc"),
+    (trino, year_timestamp_p, arg1, "function doc"),
 
-    (presto, year_of_week_date, arg1, "function doc"),
-    (presto, year_of_week_timestamp_p, arg1, "function doc"),
+    (trino, year_of_week_date, arg1, "function doc"),
+    (trino, year_of_week_timestamp_p, arg1, "function doc"),
 
-    (presto, yow_date, arg1, "function doc"),
-    (presto, yow_timestamp_p, arg1, "function doc"),
+    (trino, yow_date, arg1, "function doc"),
+    (trino, yow_timestamp_p, arg1, "function doc"),
 
-    (presto, zip_array_14_array_15, arg1 arg2, "function doc"),
-    (presto, zip_array_14_array_15_array_16, arg1 arg2 arg3, "function doc"),
-    (presto, zip_array_14_array_15_array_16_array_17, arg1 arg2 arg3 arg4, "function doc"),
-    (presto, zip_array_14_array_15_array_16_array_17_array_18, arg1 arg2 arg3 arg4 arg5, "function doc"),
+    (trino, zip_array_14_array_15, arg1 arg2, "function doc"),
+    (trino, zip_array_14_array_15_array_16, arg1 arg2 arg3, "function doc"),
+    (trino, zip_array_14_array_15_array_16_array_17, arg1 arg2 arg3 arg4, "function doc"),
+    (trino, zip_array_14_array_15_array_16_array_17_array_18, arg1 arg2 arg3 arg4 arg5, "function doc"),
 
-    (presto, zip_with_array_1_array_11_function_1_11_9, arg1 arg2 arg3, "function doc"),
+    (trino, zip_with_array_1_array_11_function_1_11_9, arg1 arg2 arg3, "function doc"),
 
 );
