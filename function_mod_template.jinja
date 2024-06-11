@@ -27,6 +27,6 @@
 
 // Export the functions out of this package, both as expr_fn as well as a list of functions
 export_functions!(
-{% for name, fs in function_infos | items %}{% for function_info in fs %}    (presto, {{function_info.name}}, {{function_info.arg_names}}, "function doc"),
+{% for name, fs in function_infos | items %}{% for function_info in fs %}    (trino, {{function_info.name}}, {{function_info.arg_names}}, "function doc"),
 {% endfor %}
 {% endfor %});
