@@ -52,7 +52,6 @@ mod bitwise_or_impl;
 mod bitwise_right_shift_impl;
 mod bitwise_right_shift_arithmetic_impl;
 mod bitwise_xor_impl;
-mod btrim_impl;
 mod cardinality_impl;
 mod cbrt_impl;
 mod ceil_impl;
@@ -67,7 +66,6 @@ mod combinations_impl;
 mod concat_impl;
 mod concat_ws_impl;
 mod contains_impl;
-mod contains_array_varchar_impl;
 mod contains_sequence_impl;
 mod cos_impl;
 mod cosh_impl;
@@ -86,7 +84,6 @@ mod date_add_impl;
 mod date_diff_impl;
 mod date_format_impl;
 mod date_parse_impl;
-mod date_part_impl;
 mod date_trunc_impl;
 mod day_impl;
 mod day_of_month_impl;
@@ -160,7 +157,6 @@ mod json_size_impl;
 mod last_day_of_month_impl;
 mod least_impl;
 mod length_impl;
-mod length_array_impl;
 mod levenshtein_distance_impl;
 mod line_interpolate_point_impl;
 mod line_interpolate_points_impl;
@@ -175,7 +171,6 @@ mod lower_impl;
 mod lpad_impl;
 mod ltrim_impl;
 mod luhn_check_impl;
-mod make_array_impl;
 mod map_impl;
 mod map_concat_impl;
 mod map_entries_impl;
@@ -212,7 +207,6 @@ mod quarter_impl;
 mod radians_impl;
 mod rand_impl;
 mod random_impl;
-mod reclassify_impl;
 mod reduce_impl;
 mod regexp_count_impl;
 mod regexp_extract_impl;
@@ -334,7 +328,6 @@ mod to_iso8601_impl;
 mod to_milliseconds_impl;
 mod to_spherical_geography_impl;
 mod to_timestamp_impl;
-mod to_timestamp_seconds_impl;
 mod to_unixtime_impl;
 mod to_utf8_impl;
 mod transform_impl;
@@ -466,9 +459,6 @@ make_udf_function!(bitwise_right_shift_arithmetic_impl::bitwise_right_shift_arit
 
 make_udf_function!(bitwise_xor_impl::bitwise_xor_bigint_bigintFunc, BITWISE_XOR_BIGINT_BIGINT, bitwise_xor_bigint_bigint);
 
-make_udf_function!(btrim_impl::btrim_varcharFunc, BTRIM_VARCHAR, btrim_varchar);
-make_udf_function!(btrim_impl::btrim_varchar_varcharFunc, BTRIM_VARCHAR_VARCHAR, btrim_varchar_varchar);
-
 make_udf_function!(cardinality_impl::cardinality_array_3Func, CARDINALITY_ARRAY_3, cardinality_array_3);
 make_udf_function!(cardinality_impl::cardinality_hyperloglogFunc, CARDINALITY_HYPERLOGLOG, cardinality_hyperloglog);
 make_udf_function!(cardinality_impl::cardinality_map_4_5Func, CARDINALITY_MAP_4_5, cardinality_map_4_5);
@@ -521,8 +511,6 @@ make_udf_function!(concat_ws_impl::concat_ws_varcharFunc, CONCAT_WS_VARCHAR, con
 make_udf_function!(contains_impl::contains_array_1_1Func, CONTAINS_ARRAY_1_1, contains_array_1_1);
 make_udf_function!(contains_impl::contains_varchar_ipaddressFunc, CONTAINS_VARCHAR_IPADDRESS, contains_varchar_ipaddress);
 
-make_udf_function!(contains_array_varchar_impl::contains_array_varchar_array_varchar_varcharFunc, CONTAINS_ARRAY_VARCHAR_ARRAY_VARCHAR_VARCHAR, contains_array_varchar_array_varchar_varchar);
-
 make_udf_function!(contains_sequence_impl::contains_sequence_array_1_array_1Func, CONTAINS_SEQUENCE_ARRAY_1_ARRAY_1, contains_sequence_array_1_array_1);
 
 make_udf_function!(cos_impl::cos_doubleFunc, COS_DOUBLE, cos_double);
@@ -567,10 +555,6 @@ make_udf_function!(date_diff_impl::date_diff_varchar_timestamp_p_timestamp_pFunc
 make_udf_function!(date_format_impl::date_format_timestamp_p_varcharFunc, DATE_FORMAT_TIMESTAMP_P_VARCHAR, date_format_timestamp_p_varchar);
 
 make_udf_function!(date_parse_impl::date_parse_varchar_varcharFunc, DATE_PARSE_VARCHAR_VARCHAR, date_parse_varchar_varchar);
-
-make_udf_function!(date_part_impl::date_part_varchar_time_pFunc, DATE_PART_VARCHAR_TIME_P, date_part_varchar_time_p);
-make_udf_function!(date_part_impl::date_part_varchar_timestamp_pFunc, DATE_PART_VARCHAR_TIMESTAMP_P, date_part_varchar_timestamp_p);
-make_udf_function!(date_part_impl::date_part_varchar_dateFunc, DATE_PART_VARCHAR_DATE, date_part_varchar_date);
 
 make_udf_function!(date_trunc_impl::date_trunc_varchar_time_pFunc, DATE_TRUNC_VARCHAR_TIME_P, date_trunc_varchar_time_p);
 make_udf_function!(date_trunc_impl::date_trunc_varchar_timestamp_pFunc, DATE_TRUNC_VARCHAR_TIMESTAMP_P, date_trunc_varchar_timestamp_p);
@@ -777,8 +761,6 @@ make_udf_function!(length_impl::length_varcharFunc, LENGTH_VARCHAR, length_varch
 make_udf_function!(length_impl::length_varbinaryFunc, LENGTH_VARBINARY, length_varbinary);
 make_udf_function!(length_impl::length_array_1Func, LENGTH_ARRAY_1, length_array_1);
 
-make_udf_function!(length_array_impl::length_array_array_1Func, LENGTH_ARRAY_ARRAY_1, length_array_array_1);
-
 make_udf_function!(levenshtein_distance_impl::levenshtein_distance_varchar_varcharFunc, LEVENSHTEIN_DISTANCE_VARCHAR_VARCHAR, levenshtein_distance_varchar_varchar);
 
 make_udf_function!(line_interpolate_point_impl::line_interpolate_point_geometry_doubleFunc, LINE_INTERPOLATE_POINT_GEOMETRY_DOUBLE, line_interpolate_point_geometry_double);
@@ -812,8 +794,6 @@ make_udf_function!(ltrim_impl::ltrim_varcharFunc, LTRIM_VARCHAR, ltrim_varchar);
 make_udf_function!(ltrim_impl::ltrim_varchar_codepointsFunc, LTRIM_VARCHAR_CODEPOINTS, ltrim_varchar_codepoints);
 
 make_udf_function!(luhn_check_impl::luhn_check_varcharFunc, LUHN_CHECK_VARCHAR, luhn_check_varchar);
-
-make_udf_function!(make_array_impl::make_array_1Func, MAKE_ARRAY_1, make_array_1);
 
 make_udf_function!(map_impl::map_array_4_array_5Func, MAP_ARRAY_4_ARRAY_5, map_array_4_array_5);
 make_udf_function!(map_impl::mapFunc, MAP, map);
@@ -919,9 +899,6 @@ make_udf_function!(random_impl::random_smallintFunc, RANDOM_SMALLINT, random_sma
 make_udf_function!(random_impl::random_smallint_smallintFunc, RANDOM_SMALLINT_SMALLINT, random_smallint_smallint);
 make_udf_function!(random_impl::random_tinyintFunc, RANDOM_TINYINT, random_tinyint);
 make_udf_function!(random_impl::random_tinyint_tinyintFunc, RANDOM_TINYINT_TINYINT, random_tinyint_tinyint);
-
-make_udf_function!(reclassify_impl::reclassify_T_varchar_varcharFunc, RECLASSIFY_T_VARCHAR_VARCHAR, reclassify_T_varchar_varchar);
-make_udf_function!(reclassify_impl::reclassify_T_varcharFunc, RECLASSIFY_T_VARCHAR, reclassify_T_varchar);
 
 make_udf_function!(reduce_impl::reduce_array_1_10_function_10_1_10_function_10_9Func, REDUCE_ARRAY_1_10_FUNCTION_10_1_10_FUNCTION_10_9, reduce_array_1_10_function_10_1_10_function_10_9);
 
@@ -1218,8 +1195,6 @@ make_udf_function!(to_spherical_geography_impl::to_spherical_geography_geometryF
 
 make_udf_function!(to_timestamp_impl::to_timestamp_varchar_varcharFunc, TO_TIMESTAMP_VARCHAR_VARCHAR, to_timestamp_varchar_varchar);
 
-make_udf_function!(to_timestamp_seconds_impl::to_timestamp_seconds_1Func, TO_TIMESTAMP_SECONDS_1, to_timestamp_seconds_1);
-
 make_udf_function!(to_unixtime_impl::to_unixtime_timestamp_pFunc, TO_UNIXTIME_TIMESTAMP_P, to_unixtime_timestamp_p);
 
 make_udf_function!(to_utf8_impl::to_utf8_varcharFunc, TO_UTF8_VARCHAR, to_utf8_varchar);
@@ -1407,9 +1382,6 @@ export_functions!(
 
     (presto, bitwise_xor_bigint_bigint, arg1 arg2, "function doc"),
 
-    (presto, btrim_varchar, arg1, "function doc"),
-    (presto, btrim_varchar_varchar, arg1 arg2, "function doc"),
-
     (presto, cardinality_array_3, arg1, "function doc"),
     (presto, cardinality_hyperloglog, arg1, "function doc"),
     (presto, cardinality_map_4_5, arg1, "function doc"),
@@ -1462,8 +1434,6 @@ export_functions!(
     (presto, contains_array_1_1, arg1 arg2, "function doc"),
     (presto, contains_varchar_ipaddress, arg1 arg2, "function doc"),
 
-    (presto, contains_array_varchar_array_varchar_varchar, arg1 arg2, "function doc"),
-
     (presto, contains_sequence_array_1_array_1, arg1 arg2, "function doc"),
 
     (presto, cos_double, arg1, "function doc"),
@@ -1508,10 +1478,6 @@ export_functions!(
     (presto, date_format_timestamp_p_varchar, arg1 arg2, "function doc"),
 
     (presto, date_parse_varchar_varchar, arg1 arg2, "function doc"),
-
-    (presto, date_part_varchar_time_p, arg1 arg2, "function doc"),
-    (presto, date_part_varchar_timestamp_p, arg1 arg2, "function doc"),
-    (presto, date_part_varchar_date, arg1 arg2, "function doc"),
 
     (presto, date_trunc_varchar_time_p, arg1 arg2, "function doc"),
     (presto, date_trunc_varchar_timestamp_p, arg1 arg2, "function doc"),
@@ -1718,8 +1684,6 @@ export_functions!(
     (presto, length_varbinary, arg1, "function doc"),
     (presto, length_array_1, arg1, "function doc"),
 
-    (presto, length_array_array_1, arg1, "function doc"),
-
     (presto, levenshtein_distance_varchar_varchar, arg1 arg2, "function doc"),
 
     (presto, line_interpolate_point_geometry_double, arg1 arg2, "function doc"),
@@ -1753,8 +1717,6 @@ export_functions!(
     (presto, ltrim_varchar_codepoints, arg1 arg2, "function doc"),
 
     (presto, luhn_check_varchar, arg1, "function doc"),
-
-    (presto, make_array_1, arg1, "function doc"),
 
     (presto, map_array_4_array_5, arg1 arg2, "function doc"),
     (presto, map, , "function doc"),
@@ -1860,9 +1822,6 @@ export_functions!(
     (presto, random_smallint_smallint, arg1 arg2, "function doc"),
     (presto, random_tinyint, arg1, "function doc"),
     (presto, random_tinyint_tinyint, arg1 arg2, "function doc"),
-
-    (presto, reclassify_T_varchar_varchar, arg1 arg2 arg3, "function doc"),
-    (presto, reclassify_T_varchar, arg1 arg2, "function doc"),
 
     (presto, reduce_array_1_10_function_10_1_10_function_10_9, arg1 arg2 arg3 arg4, "function doc"),
 
@@ -2158,8 +2117,6 @@ export_functions!(
     (presto, to_spherical_geography_geometry, arg1, "function doc"),
 
     (presto, to_timestamp_varchar_varchar, arg1 arg2, "function doc"),
-
-    (presto, to_timestamp_seconds_1, arg1, "function doc"),
 
     (presto, to_unixtime_timestamp_p, arg1, "function doc"),
 
