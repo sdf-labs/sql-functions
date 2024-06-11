@@ -6377,3 +6377,237 @@ function:
   optional-parameters: []
   returns:
     datatype: array<$9>
+---
+function:
+  name: if
+  kind: scalar
+  parameters:
+    - datatype: boolean
+    - datatype: $1
+    - datatype: $1
+  returns: 
+    datatype: $1
+  implemented-by: !rust
+---
+function:
+  name: try
+  kind: scalar
+  parameters:
+    - datatype: $1
+  returns:
+    datatype: $1
+---
+function:
+  name: current_time
+  kind: scalar
+  parameters: []
+  returns:
+    datatype: time
+  special: true
+  volatility: stable
+  implemented-by: !datafusion
+---
+function:
+  name: current_timestamp
+  kind: scalar
+  parameters: []
+  returns:
+    datatype: timestamp
+  special: true
+  volatility: stable
+  implemented-by: !datafusion
+    udf: now
+# DF now() carries a time zone (as current_timestamp does in Trino), but it is hard-wired as UTC currently
+---
+function:
+  name: current_timestamp
+  kind: scalar
+  parameters:
+    - datatype: bigint
+      constant: "0"
+  returns:
+    datatype: timestamp(0)
+  volatility: stable
+  implemented-by: !rust
+    name: current_timestamp_bigint_0
+---
+function:
+  name: current_timestamp
+  kind: scalar
+  parameters:
+    - datatype: bigint
+      constant: "3"
+  returns:
+    datatype: timestamp(3)
+  volatility: stable
+  implemented-by: !rust
+    name: current_timestamp_bigint_3
+---
+function:
+  name: current_timestamp
+  kind: scalar
+  parameters:
+    - datatype: bigint
+      constant: "6"
+  returns:
+    datatype: timestamp(6)
+  volatility: stable
+  implemented-by: !rust
+    name: current_timestamp_bigint_6
+---
+function:
+  name: current_timestamp
+  kind: scalar
+  parameters:
+    - datatype: bigint
+      constant: "9"
+  returns:
+    datatype: timestamp(9)
+  volatility: stable
+  implemented-by: !rust
+    name: current_timestamp_bigint_9
+---
+function:
+  name: localtime
+  kind: scalar
+  parameters: []
+  returns:
+    datatype: time
+  special: true
+  volatility: stable
+---
+function:
+  name: localtimestamp
+  kind: scalar
+  parameters: []
+  returns:
+    datatype: timestamp
+  special: true
+  volatility: stable
+---
+function:
+  name: localtimestamp
+  kind: scalar
+  parameters:
+    - datatype: bigint
+      constant: "0"
+  returns:
+    datatype: timestamp(0)
+  volatility: stable
+  implemented-by: !rust
+    name: localtimestamp_bigint_0
+---
+function:
+  name: localtimestamp
+  kind: scalar
+  parameters:
+    - datatype: bigint
+      constant: "3"
+  returns:
+    datatype: timestamp(3)
+  volatility: stable
+  implemented-by: !rust
+    name: localtimestamp_bigint_3
+---
+function:
+  name: localtimestamp
+  kind: scalar
+  parameters:
+    - datatype: bigint
+      constant: "6"
+  returns:
+    datatype: timestamp(6)
+  volatility: stable
+  implemented-by: !rust
+    name: localtimestamp_bigint_6
+---
+function:
+  name: localtimestamp
+  kind: scalar
+  parameters:
+    - datatype: bigint
+      constant: "9"
+  returns:
+    datatype: timestamp(9)
+  volatility: stable
+  implemented-by: !rust
+    name: localtimestamp_bigint_9
+---
+function:
+  name: current_user
+  kind: scalar
+  parameters: []
+  returns:
+    datatype: varchar
+  special: true
+---
+function:
+  name: current_catalog
+  kind: scalar
+  parameters: []
+  returns:
+    datatype: varchar
+  special: true
+---
+function:
+  name: current_schema
+  kind: scalar
+  parameters: []
+  returns:
+    datatype: varchar
+  special: true
+---
+function:
+  name: format
+  kind: scalar
+  parameters:
+    - datatype: varchar
+    - datatype: $1
+  returns:
+    datatype: varchar
+---
+function:
+  name: format
+  kind: scalar
+  parameters:
+    - datatype: varchar
+    - datatype: $1
+    - datatype: $2
+  returns:
+    datatype: varchar
+---
+function:
+  name: format
+  kind: scalar
+  parameters:
+    - datatype: varchar
+    - datatype: $1
+    - datatype: $2
+    - datatype: $3
+  returns:
+    datatype: varchar
+---
+function:
+  name: format
+  kind: scalar
+  parameters:
+    - datatype: varchar
+    - datatype: $1
+    - datatype: $2
+    - datatype: $3
+    - datatype: $4
+  returns:
+    datatype: varchar
+---
+function:
+  name: format
+  kind: scalar
+  parameters:
+    - datatype: varchar
+    - datatype: $1
+    - datatype: $2
+    - datatype: $3
+    - datatype: $4
+    - datatype: $5
+  returns:
+    datatype: varchar
