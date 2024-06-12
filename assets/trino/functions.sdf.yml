@@ -4641,6 +4641,8 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !datafusion
+    udf: signum
 ---
 function:
   name: sign
@@ -4649,6 +4651,7 @@ function:
   optional-parameters: []
   returns:
     datatype: decimal(1, 0)
+  implemented-by: !rust
 ---
 function:
   name: sign
@@ -4667,6 +4670,8 @@ function:
   optional-parameters: []
   returns:
     datatype: integer
+  implemented-by: !datafusion
+    udf: signum
 ---
 function:
   name: sign
@@ -4675,6 +4680,8 @@ function:
   optional-parameters: []
   returns:
     datatype: real
+  implemented-by: !datafusion
+    udf: signum
 ---
 function:
   name: sign
@@ -4683,6 +4690,8 @@ function:
   optional-parameters: []
   returns:
     datatype: smallint
+  implemented-by: !datafusion
+    udf: signum
 ---
 function:
   name: sign
@@ -4691,6 +4700,8 @@ function:
   optional-parameters: []
   returns:
     datatype: tinyint
+  implemented-by: !datafusion
+    udf: signum
 ---
 function:
   name: simplify_geometry
