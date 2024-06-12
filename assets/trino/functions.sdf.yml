@@ -1377,6 +1377,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !rust
 ---
 function:
   name: covar_samp

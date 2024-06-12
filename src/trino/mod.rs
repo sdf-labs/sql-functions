@@ -16,6 +16,11 @@
 // under the License.
 
 #![allow(non_snake_case)]
+
+use std::sync::Arc;
+
+use covar_samp::CovarianceSample;
+use datafusion::logical_expr::AggregateUDF;
 mod abs_impl;
 mod acos_impl;
 mod all_match_impl;
@@ -365,6 +370,8 @@ mod year_of_week_impl;
 mod yow_impl;
 mod zip_impl;
 mod zip_with_impl;
+
+mod covar_samp;
 
 
 // create  UDFs
@@ -1286,6 +1293,15 @@ make_udf_function!(zip_impl::zip_array_14_array_15_array_16_array_17_array_18Fun
 
 make_udf_function!(zip_with_impl::zip_with_array_1_array_11_function_1_11_9Func, ZIP_WITH_ARRAY_1_ARRAY_11_FUNCTION_1_11_9, zip_with_array_1_array_11_function_1_11_9);
 
+
+
+make_udaf_expr_and_func!(
+    CovarianceSample,
+    covar_samp,
+    y x,
+    "Computes the sample covariance.",
+    covar_samp_udaf
+);
 
 
 
@@ -2210,3 +2226,9 @@ export_functions!(
     (trino, zip_with_array_1_array_11_function_1_11_9, arg1 arg2 arg3, "function doc"),
 
 );
+
+pub fn udaf_functions() -> Vec<(String, Arc<AggregateUDF>)> {
+    vec![(
+        "trino::covar_samp_double_double".to_string(), covar_samp_udaf()
+    )]
+}

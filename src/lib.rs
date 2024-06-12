@@ -1,6 +1,6 @@
 use std::sync::Arc;
 
-use datafusion::logical_expr::ScalarUDF;
+use datafusion::logical_expr::{AggregateUDF, ScalarUDF};
 use rust_embed::{EmbeddedFile, RustEmbed};
 
 #[macro_use]
@@ -16,6 +16,10 @@ pub mod expr_fn {
 /// Registers all enabled packages with a [`FunctionRegistry`]
 pub fn get_all_functions() -> Vec<(String, Arc<ScalarUDF>)> {
     trino::functions()
+}
+
+pub fn get_all_udafs() -> Vec<(String, Arc<AggregateUDF>)> {
+    trino::udaf_functions()
 }
 
 #[derive(RustEmbed)]
