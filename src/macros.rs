@@ -27,7 +27,7 @@ macro_rules! export_functions {
 /// function named `$NAME` which returns that function named $NAME.
 ///
 /// This is used to ensure creating the list of `ScalarUDF` only happens once.
-macro_rules! make_udf_function {
+macro_rules! create_udf {
     ($UDF:ty, $GNAME:ident, $NAME:ident) => {
         /// Singleton instance of the function
         static $GNAME: std::sync::OnceLock<std::sync::Arc<datafusion::logical_expr::ScalarUDF>> =
@@ -86,69 +86,24 @@ macro_rules! make_package {
     };
 }
 
-macro_rules! make_udaf_expr_and_func {
-    ($UDAF:ty, $EXPR_FN:ident, $($arg:ident)*, $DOC:expr, $AGGREGATE_UDF_FN:ident) => {
-        // "fluent expr_fn" style function
-        #[doc = $DOC]
-        pub fn $EXPR_FN(
-            $($arg: datafusion::logical_expr::Expr,)*
-            distinct: bool,
-            filter: Option<Box<datafusion::logical_expr::Expr>>,
-            order_by: Option<Vec<datafusion::logical_expr::Expr>>
-        ) -> datafusion::logical_expr::Expr {
-            datafusion::logical_expr::Expr::AggregateFunction(datafusion::logical_expr::expr::AggregateFunction::new_udf(
-                $AGGREGATE_UDF_FN(),
-                vec![$($arg),*],
-                distinct,
-                filter,
-                order_by,
-                None,
-            ))
-        }
-        create_func!($UDAF, $AGGREGATE_UDF_FN);
-    };
-    ($UDAF:ty, $EXPR_FN:ident, $DOC:expr, $AGGREGATE_UDF_FN:ident) => {
-        // "fluent expr_fn" style function
-        #[doc = $DOC]
-        pub fn $EXPR_FN(
-            args: Vec<datafusion::logical_expr::Expr>,
-            distinct: bool,
-            filter: Option<Box<datafusion::logical_expr::Expr>>,
-            order_by: Option<Vec<datafusion::logical_expr::Expr>>,
-            null_treatment: Option<sqlparser::ast::NullTreatment>
-        ) -> datafusion::logical_expr::Expr {
-            datafusion::logical_expr::Expr::AggregateFunction(datafusion::logical_expr::expr::AggregateFunction::new_udf(
-                $AGGREGATE_UDF_FN(),
-                args,
-                distinct,
-                filter,
-                order_by,
-                null_treatment,
-            ))
-        }
-        create_func!($UDAF, $AGGREGATE_UDF_FN);
-    };
-}
 
-macro_rules! create_func {
-    ($UDAF:ty, $AGGREGATE_UDF_FN:ident) => {
-        paste::paste! {
-            /// Singleton instance of [$UDAF], ensures the UDAF is only created once
-            /// named STATIC_$(UDAF). For example `STATIC_FirstValue`
-            #[allow(non_upper_case_globals)]
-            static [< STATIC_ $UDAF >]: std::sync::OnceLock<std::sync::Arc<datafusion::logical_expr::AggregateUDF>> =
+macro_rules! create_udaf {
+    ($UDF:ty, $GNAME:ident, $NAME:ident) => {
+        /// Singleton instance of the function
+        static $GNAME: std::sync::OnceLock<std::sync::Arc<datafusion::logical_expr::AggregateUDF>> =
             std::sync::OnceLock::new();
 
-            /// AggregateFunction that returns a [AggregateUDF] for [$UDAF]
-            ///
-            /// [AggregateUDF]: datafusion::logical_expr::AggregateUDF
-            pub fn $AGGREGATE_UDF_FN() -> std::sync::Arc<datafusion::logical_expr::AggregateUDF> {
-                [< STATIC_ $UDAF >]
-                    .get_or_init(|| {
-                        std::sync::Arc::new(datafusion::logical_expr::AggregateUDF::from(<$UDAF>::default()))
-                    })
-                    .clone()
-            }
+        /// Return a [`ScalarUDF`] for [`$UDF`]
+        ///
+        /// [`ScalarUDF`]: datafusion::logical_expr::ScalarUDF
+        fn $NAME() -> std::sync::Arc<datafusion::logical_expr::AggregateUDF> {
+            $GNAME
+                .get_or_init(|| {
+                    std::sync::Arc::new(datafusion::logical_expr::AggregateUDF::new_from_impl(
+                        <$UDF>::new(),
+                    ))
+                })
+                .clone()
         }
-    }
+    };
 }
