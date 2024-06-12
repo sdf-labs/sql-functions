@@ -4641,8 +4641,6 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  implemented-by: !datafusion
-    udf: signum
 ---
 function:
   name: sign
