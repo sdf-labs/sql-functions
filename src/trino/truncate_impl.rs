@@ -16,67 +16,122 @@
 // under the License.
 
 #![allow(non_camel_case_types)]
+use arrow::array::Decimal128Array;
 use arrow::datatypes::DataType;
-use datafusion::common::Result;
+use datafusion::common::cast::as_decimal128_array;
+use datafusion::common::{exec_err, Result};
 use datafusion::error::DataFusionError;
 use datafusion::logical_expr::simplify::{ExprSimplifyResult, SimplifyInfo};
 use datafusion::logical_expr::{ColumnarValue, Expr, ScalarUDFImpl, Signature, Volatility};
+use datafusion::scalar::ScalarValue;
 use std::any::Any;
+use std::sync::Arc;
 
+fn truncate_decimal_p_s_bigint_invoke(args: &[ColumnarValue]) -> Result<ColumnarValue> {
+    let precision = if let ColumnarValue::Scalar(ScalarValue::Int64(Some(v))) = args[1].to_owned() {
+        v
+    } else {
+        return exec_err!("Second argument of `truncate` must be non-null scalar bigint");
+    };
 
-fn truncate_decimal_p_s_bigint_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    let num = truncate(args, precision)?;
+
+    Ok(ColumnarValue::Array(Arc::new(num)))
 }
 
-fn truncate_decimal_p_s_bigint_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+fn truncate(args: &[ColumnarValue], precision: i64) -> Result<Decimal128Array> {
+    let args = ColumnarValue::values_to_arrays(args)?;
+    let num = as_decimal128_array(&args[0])?;
+    let p = num.precision();
+    let s = num.scale();
+    let num = num
+        .into_iter()
+        .map(|num| {
+            num.map(|num| {
+                let factor = 10i128.pow((s - precision as i8).max(0) as u32);
+                let num = num / factor * factor;
+                num
+            })
+        })
+        .collect::<Decimal128Array>()
+        .with_precision_and_scale(p, s)?;
+    Ok(num)
 }
 
-fn truncate_decimal_p_s_bigint_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+fn truncate_decimal_p_s_bigint_return_type(arg_types: &[DataType]) -> Result<DataType> {
+    Ok(arg_types[0].clone())
+}
+
+fn truncate_decimal_p_s_bigint_simplify(
+    args: Vec<Expr>,
+    _info: &dyn SimplifyInfo,
+) -> Result<ExprSimplifyResult> {
     Ok(ExprSimplifyResult::Original(args))
 }
 
-fn truncate_decimal_p_s_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+fn truncate_decimal_p_s_invoke(args: &[ColumnarValue]) -> Result<ColumnarValue> {
+    let num = truncate(args, 0)?;
+
+    Ok(ColumnarValue::Array(Arc::new(num)))
 }
 
-fn truncate_decimal_p_s_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+fn truncate_decimal_p_s_return_type(arg_types: &[DataType]) -> Result<DataType> {
+    Ok(arg_types[0].clone())
 }
 
-fn truncate_decimal_p_s_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+fn truncate_decimal_p_s_simplify(
+    args: Vec<Expr>,
+    _info: &dyn SimplifyInfo,
+) -> Result<ExprSimplifyResult> {
     Ok(ExprSimplifyResult::Original(args))
 }
 
 fn truncate_double_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
 fn truncate_double_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
-fn truncate_double_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+fn truncate_double_simplify(
+    args: Vec<Expr>,
+    _info: &dyn SimplifyInfo,
+) -> Result<ExprSimplifyResult> {
     Ok(ExprSimplifyResult::Original(args))
 }
 
 fn truncate_real_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
 fn truncate_real_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
 fn truncate_real_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
     Ok(ExprSimplifyResult::Original(args))
 }
 
-
 // ========== Generated template below this line ==========
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
-
 
 #[derive(Debug)]
 pub(super) struct truncate_decimal_p_s_bigintFunc {
@@ -84,7 +139,7 @@ pub(super) struct truncate_decimal_p_s_bigintFunc {
 }
 
 impl truncate_decimal_p_s_bigintFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -103,7 +158,6 @@ impl ScalarUDFImpl for truncate_decimal_p_s_bigintFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         truncate_decimal_p_s_bigint_return_type(arg_types)
     }
@@ -112,14 +166,9 @@ impl ScalarUDFImpl for truncate_decimal_p_s_bigintFunc {
         truncate_decimal_p_s_bigint_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         truncate_decimal_p_s_bigint_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -128,7 +177,7 @@ pub(super) struct truncate_decimal_p_sFunc {
 }
 
 impl truncate_decimal_p_sFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -147,7 +196,6 @@ impl ScalarUDFImpl for truncate_decimal_p_sFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         truncate_decimal_p_s_return_type(arg_types)
     }
@@ -156,14 +204,9 @@ impl ScalarUDFImpl for truncate_decimal_p_sFunc {
         truncate_decimal_p_s_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         truncate_decimal_p_s_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -172,7 +215,7 @@ pub(super) struct truncate_doubleFunc {
 }
 
 impl truncate_doubleFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -191,7 +234,6 @@ impl ScalarUDFImpl for truncate_doubleFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         truncate_double_return_type(arg_types)
     }
@@ -200,14 +242,9 @@ impl ScalarUDFImpl for truncate_doubleFunc {
         truncate_double_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         truncate_double_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -216,7 +253,7 @@ pub(super) struct truncate_realFunc {
 }
 
 impl truncate_realFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -235,7 +272,6 @@ impl ScalarUDFImpl for truncate_realFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         truncate_real_return_type(arg_types)
     }
@@ -244,12 +280,7 @@ impl ScalarUDFImpl for truncate_realFunc {
         truncate_real_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         truncate_real_simplify(args, info)
     }
-
 }

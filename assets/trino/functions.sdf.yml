@@ -5907,6 +5907,7 @@ function:
   optional-parameters: []
   returns:
     datatype: decimal(p, s)
+  implemented-by: !rust
 ---
 function:
   name: truncate
@@ -5915,6 +5916,7 @@ function:
   optional-parameters: []
   returns:
     datatype: decimal(rp, 0)
+  implemented-by: !rust
 ---
 function:
   name: truncate
