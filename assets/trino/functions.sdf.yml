@@ -1,14 +1,14 @@
-# NOTE: This file was generated from presto.csv, with the following manual modifications:
+# NOTE: This file was generated from trino.csv, with the following manual modifications:
 #
 # - Ordering: the ordering of overloads is *significant*! Overload resolution
 #   tries candidates in the order they are specified in this file, so more
 #   specific signatures must come before more general ones.
 # - Incorrect signatures: some functions signatures with variadic arguments are
-#   incorrect in presto.csv, and have been corrected here.
+#   incorrect in trino.csv, and have been corrected here.
 # - Duplicate signatures: some functions signatures appear multiple times in
-#   presto.csv, and have been deduplicated here.
+#   trino.csv, and have been deduplicated here.
 # - Missing signatures: some functions signatures (e.g. `coalesce`) are
-#   straightup missing from presto.csv, and have been added here.
+#   straightup missing from trino.csv, and have been added here.
 
 ---
 function:

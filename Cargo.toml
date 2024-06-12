@@ -32,9 +32,9 @@ path = "src/lib.rs"
 
 [features]
 # Enable encoding by default so the doctests work. In general don't automatically enable all packages.
-default = ["presto_expressions"]
+default = ["trino_expressions"]
 # enable math functions
-presto_expressions = []
+trino_expressions = []
 
 [dependencies]
 datafusion = { version = "38.0.0" }
