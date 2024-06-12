@@ -1,14 +1,5 @@
 macro_rules! export_functions {
     ($(($DIALECT:ident, $FUNC:ident,  $($arg:ident)*, $DOC:expr)),* $(,)?) => {
-        pub mod expr_fn {
-            $(
-                #[doc = $DOC]
-                /// Return $name(arg)
-                pub fn $FUNC($($arg: datafusion::logical_expr::Expr),*) -> datafusion::logical_expr::Expr {
-                    super::$FUNC().call(vec![$($arg),*],)
-                }
-            )*
-        }
 
         /// Return a list of all functions in this package
         pub fn functions() -> Vec<(String, std::sync::Arc<datafusion::logical_expr::ScalarUDF>)> {
