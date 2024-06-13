@@ -1,0 +1,125 @@
+// Licensed to the Apache Software Foundation (ASF) under one
+// or more contributor license agreements.  See the NOTICE file
+// distributed with this work for additional information
+// regarding copyright ownership.  The ASF licenses this file
+// to you under the Apache License, Version 2.0 (the
+// "License"); you may not use this file except in compliance
+// with the License.  You may obtain a copy of the License at
+//
+//   http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing,
+// software distributed under the License is distributed on an
+// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+// KIND, either express or implied.  See the License for the
+// specific language governing permissions and limitations
+// under the License.
+
+#![allow(non_camel_case_types)]
+use arrow::datatypes::DataType;
+use datafusion::common::Result;
+use datafusion::error::DataFusionError;
+use datafusion::logical_expr::simplify::{ExprSimplifyResult, SimplifyInfo};
+use datafusion::logical_expr::{ColumnarValue, Expr, ScalarUDFImpl, Signature, Volatility};
+use std::any::Any;
+
+{% for function_info in function_infos %}
+
+fn {{function_info.name}}_return_type(_arg_types: &[DataType]) -> Result<DataType> {
+    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+}
+
+fn {{function_info.name}}_state_fields(_name: &str, _value_type: DataType, _ordering_fields: Vec<Field>) -> Result<Vec<Field>> {
+    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+}
+
+fn {{function_info.name}}_accumulator(_acc_args: AccumulatorArgs) -> Result<Box<dyn Accumulator>> {
+    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+}
+
+pub struct {{function_info.name}}_Accumulator {}
+
+impl {{function_info.name}}_Accumulator {
+    pub fn try_new(s_type: StatsType) -> Result<Self> {
+        Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    }
+}
+
+impl Accumulator for {{function_info.name}}_Accumulator {
+    fn state(&mut self) -> Result<Vec<ScalarValue>> {
+        Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    }
+
+    fn update_batch(&mut self, values: &[ArrayRef]) -> Result<()> {
+        Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    }
+
+    fn retract_batch(&mut self, values: &[ArrayRef]) -> Result<()> {
+        Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    }
+
+    fn merge_batch(&mut self, states: &[ArrayRef]) -> Result<()> {
+        Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    }
+
+    fn evaluate(&mut self) -> Result<ScalarValue> {
+        Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    }
+
+    fn size(&self) -> usize {
+        // TODO
+        0
+    }
+}
+
+{% endfor %}
+
+// ========== Generated template below this line ==========
+// Do *NOT* edit below this line: all changes will be overwritten
+// when template is regenerated!
+
+{% for function_info in function_infos %}
+#[derive(Debug)]
+pub(super) struct {{function_info.name}}Func {
+    signature: Signature,
+}
+
+impl {{function_info.name}}Func {
+    pub fn new() -> Self {        
+        Self {
+            signature: {{function_info.signature}},
+        }
+    }
+}
+
+impl AggregateUDFImpl for {{function_info.name}}Func {
+    fn as_any(&self) -> &dyn Any {
+        self
+    }
+    fn name(&self) -> &str {
+        "{{ name }}"
+    }
+
+    fn signature(&self) -> &Signature {
+        &self.signature
+    }
+
+
+    fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
+        {{function_info.name}}_return_type(arg_types)
+    }
+
+    fn state_fields(
+        &self,
+        name: &str,
+        value_type: DataType,
+        ordering_fields: Vec<Field>,
+    ) -> Result<Vec<Field>> {
+        {{function_info.name}}_state_fields(name, value_type, ordering_fields)
+    }
+
+    fn accumulator(&self, acc_args: AccumulatorArgs) -> Result<Box<dyn Accumulator>> {
+        {{function_info.name}}_accumulator(acc_args)
+    }
+}
+{% endfor %}

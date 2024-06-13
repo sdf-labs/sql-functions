@@ -20,13 +20,20 @@
 {% endfor %}
 
 // create  UDFs
-{% for name, fs in function_infos | items %}{% for function_info in fs %}make_udf_function!({{name}}_impl::{{function_info.name}}Func, {{function_info.gname}}, {{function_info.name}});
+{% for name, fs in function_infos | items %}{% for function_info in fs %}create_udf!({{name}}_impl::{{function_info.name}}Func, {{function_info.gname}}, {{function_info.name}});
 {% endfor %}
 {% endfor %}
 
+pub fn udfs() -> Vec<(String, std::sync::Arc<datafusion::logical_expr::ScalarUDF>)> {
+    vec![
+        {% for name, fs in function_infos | items %}{% for function_info in fs %}{% if function_info.kind == "scalar" %}   ("trino::{{function_info.name}}".to_string(), {{function_info.name}}()),{% endif %}{% endfor %}
+        {% endfor %}
+    ]
+}
 
-// Export the functions out of this package, both as expr_fn as well as a list of functions
-export_functions!(
-{% for name, fs in function_infos | items %}{% for function_info in fs %}    (trino, {{function_info.name}}, {{function_info.arg_names}}, "function doc"),
-{% endfor %}
-{% endfor %});
+pub fn udafs() -> Vec<(String, std::sync::Arc<datafusion::logical_expr::AggregateUDF>)> {
+    vec![
+        {% for name, fs in function_infos | items %}{% for function_info in fs %}{% if function_info.kind == "aggregate" %}   ("trino::{{function_info.name}}".to_string(), {{function_info.name}}()),{% endif %}{% endfor %}
+        {% endfor %}
+    ]
+}

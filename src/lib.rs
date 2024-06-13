@@ -11,11 +11,11 @@ make_package!(trino, "trino_expressions", "trino functions.");
 
 /// Registers all enabled packages with a [`FunctionRegistry`]
 pub fn get_all_functions() -> Vec<(String, Arc<ScalarUDF>)> {
-    trino::functions()
+    trino::udfs()
 }
 
 pub fn get_all_udafs() -> Vec<(String, Arc<AggregateUDF>)> {
-    trino::udaf_functions()
+    trino::udafs()
 }
 
 #[derive(RustEmbed)]
