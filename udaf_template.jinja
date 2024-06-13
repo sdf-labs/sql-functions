@@ -16,12 +16,16 @@
 // under the License.
 
 #![allow(non_camel_case_types)]
-use arrow::datatypes::DataType;
+use arrow::array::ArrayRef;
+use arrow::datatypes::{DataType, Field};
 use datafusion::common::Result;
 use datafusion::error::DataFusionError;
-use datafusion::logical_expr::simplify::{ExprSimplifyResult, SimplifyInfo};
-use datafusion::logical_expr::{ColumnarValue, Expr, ScalarUDFImpl, Signature, Volatility};
+use datafusion::logical_expr::function::AccumulatorArgs;
+use datafusion::logical_expr::{Accumulator, AggregateUDFImpl, Signature, Volatility};
+use datafusion::physical_plan::expressions::StatsType;
+use datafusion::scalar::ScalarValue;
 use std::any::Any;
+
 
 {% for function_info in function_infos %}
 
@@ -37,10 +41,11 @@ fn {{function_info.name}}_accumulator(_acc_args: AccumulatorArgs) -> Result<Box<
     Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
 }
 
+#[derive(Debug)]
 pub struct {{function_info.name}}_Accumulator {}
 
 impl {{function_info.name}}_Accumulator {
-    pub fn try_new(s_type: StatsType) -> Result<Self> {
+    pub fn _try_new(_s_type: StatsType) -> Result<Self> {
         Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
     }
 }
@@ -50,15 +55,15 @@ impl Accumulator for {{function_info.name}}_Accumulator {
         Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
     }
 
-    fn update_batch(&mut self, values: &[ArrayRef]) -> Result<()> {
+    fn update_batch(&mut self, _values: &[ArrayRef]) -> Result<()> {
         Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
     }
 
-    fn retract_batch(&mut self, values: &[ArrayRef]) -> Result<()> {
+    fn retract_batch(&mut self, _values: &[ArrayRef]) -> Result<()> {
         Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
     }
 
-    fn merge_batch(&mut self, states: &[ArrayRef]) -> Result<()> {
+    fn merge_batch(&mut self, _states: &[ArrayRef]) -> Result<()> {
         Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
     }
 

@@ -8,7 +8,6 @@ pub mod macros;
 
 make_package!(trino, "trino_expressions", "trino functions.");
 
-
 /// Registers all enabled packages with a [`FunctionRegistry`]
 pub fn get_all_functions() -> Vec<(String, Arc<ScalarUDF>)> {
     trino::udfs()

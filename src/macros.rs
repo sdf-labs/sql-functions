@@ -1,19 +1,3 @@
-macro_rules! export_functions {
-    ($(($DIALECT:ident, $FUNC:ident,  $($arg:ident)*, $DOC:expr)),* $(,)?) => {
-
-        /// Return a list of all functions in this package
-        pub fn functions() -> Vec<(String, std::sync::Arc<datafusion::logical_expr::ScalarUDF>)> {
-
-            vec![
-                $(
-                    (format!("{}::{}", stringify!($DIALECT), stringify!($FUNC)), $FUNC()),
-                )*
-            ]
-
-        }
-    };
-}
-
 /// Creates a singleton `ScalarUDF` of the `$UDF` function named `$GNAME` and a
 /// function named `$NAME` which returns that function named $NAME.
 ///
@@ -76,7 +60,6 @@ macro_rules! make_package {
         }
     };
 }
-
 
 macro_rules! create_udaf {
     ($UDF:ty, $GNAME:ident, $NAME:ident) => {

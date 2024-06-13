@@ -16,15 +16,16 @@
 // under the License.
 
 #![allow(non_snake_case)]
-
-use std::sync::Arc;
-
-use covar_samp::CovarianceSample;
-use datafusion::logical_expr::AggregateUDF;
 mod abs_impl;
 mod acos_impl;
 mod all_match_impl;
 mod any_match_impl;
+mod approx_distinct_impl;
+mod approx_most_frequent_impl;
+mod approx_percentile_impl;
+mod approx_set_impl;
+mod arbitrary_impl;
+mod array_agg_impl;
 mod array_distinct_impl;
 mod array_except_impl;
 mod array_intersect_impl;
@@ -40,6 +41,7 @@ mod asin_impl;
 mod at_timezone_impl;
 mod atan_impl;
 mod atan2_impl;
+mod avg_impl;
 mod bar_impl;
 mod beta_cdf_impl;
 mod bing_tile_impl;
@@ -51,17 +53,22 @@ mod bing_tile_zoom_level_impl;
 mod bing_tiles_around_impl;
 mod bit_count_impl;
 mod bitwise_and_impl;
+mod bitwise_and_agg_impl;
 mod bitwise_left_shift_impl;
 mod bitwise_not_impl;
 mod bitwise_or_impl;
+mod bitwise_or_agg_impl;
 mod bitwise_right_shift_impl;
 mod bitwise_right_shift_arithmetic_impl;
 mod bitwise_xor_impl;
+mod bool_and_impl;
+mod bool_or_impl;
 mod cardinality_impl;
 mod cbrt_impl;
 mod ceil_impl;
 mod ceiling_impl;
 mod char2hexint_impl;
+mod checksum_impl;
 mod chr_impl;
 mod classify_impl;
 mod coalesce_impl;
@@ -72,9 +79,15 @@ mod concat_impl;
 mod concat_ws_impl;
 mod contains_impl;
 mod contains_sequence_impl;
+mod convex_hull_agg_impl;
+mod corr_impl;
 mod cos_impl;
 mod cosh_impl;
 mod cosine_similarity_impl;
+mod count_impl;
+mod count_if_impl;
+mod covar_pop_impl;
+mod covar_samp_impl;
 mod crc32_impl;
 mod current_catalog_impl;
 mod current_date_impl;
@@ -100,6 +113,8 @@ mod doy_impl;
 mod e_impl;
 mod element_at_impl;
 mod empty_approx_set_impl;
+mod evaluate_classifier_predictions_impl;
+mod every_impl;
 mod exp_impl;
 mod features_impl;
 mod filter_impl;
@@ -125,15 +140,19 @@ mod from_iso8601_timestamp_nanos_impl;
 mod from_unixtime_impl;
 mod from_unixtime_nanos_impl;
 mod from_utf8_impl;
+mod geometric_mean_impl;
 mod geometry_from_hadoop_shape_impl;
 mod geometry_invalid_reason_impl;
 mod geometry_nearest_points_impl;
 mod geometry_to_bing_tiles_impl;
 mod geometry_union_impl;
+mod geometry_union_agg_impl;
 mod great_circle_distance_impl;
 mod greatest_impl;
+mod grouping_impl;
 mod hamming_distance_impl;
 mod hash_counts_impl;
+mod histogram_impl;
 mod hmac_md5_impl;
 mod hmac_sha1_impl;
 mod hmac_sha256_impl;
@@ -159,13 +178,19 @@ mod json_extract_scalar_impl;
 mod json_format_impl;
 mod json_parse_impl;
 mod json_size_impl;
+mod kurtosis_impl;
 mod last_day_of_month_impl;
+mod learn_classifier_impl;
+mod learn_libsvm_classifier_impl;
+mod learn_libsvm_regressor_impl;
+mod learn_regressor_impl;
 mod least_impl;
 mod length_impl;
 mod levenshtein_distance_impl;
 mod line_interpolate_point_impl;
 mod line_interpolate_points_impl;
 mod line_locate_point_impl;
+mod listagg_impl;
 mod ln_impl;
 mod localtime_impl;
 mod localtimestamp_impl;
@@ -176,19 +201,29 @@ mod lower_impl;
 mod lpad_impl;
 mod ltrim_impl;
 mod luhn_check_impl;
+mod make_set_digest_impl;
 mod map_impl;
+mod map_agg_impl;
 mod map_concat_impl;
 mod map_entries_impl;
 mod map_filter_impl;
 mod map_from_entries_impl;
 mod map_keys_impl;
+mod map_union_impl;
 mod map_values_impl;
 mod map_zip_with_impl;
+mod max_impl;
+mod max_by_impl;
 mod md5_impl;
+mod merge_impl;
+mod merge_set_digest_impl;
 mod millisecond_impl;
+mod min_impl;
+mod min_by_impl;
 mod minute_impl;
 mod mod_impl;
 mod month_impl;
+mod multimap_agg_impl;
 mod multimap_from_entries_impl;
 mod murmur3_impl;
 mod nan_impl;
@@ -198,6 +233,7 @@ mod normal_cdf_impl;
 mod normalize_impl;
 mod now_impl;
 mod nullif_impl;
+mod numeric_histogram_impl;
 mod objectid_impl;
 mod objectid_timestamp_impl;
 mod parse_data_size_impl;
@@ -207,12 +243,14 @@ mod parse_presto_data_size_impl;
 mod pi_impl;
 mod pow_impl;
 mod power_impl;
+mod qdigest_agg_impl;
 mod quantile_at_value_impl;
 mod quarter_impl;
 mod radians_impl;
 mod rand_impl;
 mod random_impl;
 mod reduce_impl;
+mod reduce_agg_impl;
 mod regexp_count_impl;
 mod regexp_extract_impl;
 mod regexp_extract_all_impl;
@@ -220,6 +258,8 @@ mod regexp_like_impl;
 mod regexp_position_impl;
 mod regexp_replace_impl;
 mod regexp_split_impl;
+mod regr_intercept_impl;
+mod regr_slope_impl;
 mod regress_impl;
 mod render_impl;
 mod repeat_impl;
@@ -239,8 +279,10 @@ mod sign_impl;
 mod simplify_geometry_impl;
 mod sin_impl;
 mod sinh_impl;
+mod skewness_impl;
 mod slice_impl;
 mod soundex_impl;
+mod spatial_partitioning_impl;
 mod spatial_partitions_impl;
 mod split_impl;
 mod split_part_impl;
@@ -307,11 +349,16 @@ mod st_y_impl;
 mod st_ymax_impl;
 mod st_ymin_impl;
 mod starts_with_impl;
+mod stddev_impl;
+mod stddev_pop_impl;
+mod stddev_samp_impl;
 mod strpos_impl;
 mod substr_impl;
 mod substring_impl;
+mod sum_impl;
 mod tan_impl;
 mod tanh_impl;
+mod tdigest_agg_impl;
 mod timestamp_objectid_impl;
 mod timezone_hour_impl;
 mod timezone_minute_impl;
@@ -357,6 +404,9 @@ mod url_extract_query_impl;
 mod uuid_impl;
 mod value_at_quantile_impl;
 mod values_at_quantiles_impl;
+mod var_pop_impl;
+mod var_samp_impl;
+mod variance_impl;
 mod week_impl;
 mod week_of_year_impl;
 mod width_bucket_impl;
@@ -371,1862 +421,4710 @@ mod yow_impl;
 mod zip_impl;
 mod zip_with_impl;
 
-mod covar_samp;
-
 
 // create  UDFs
-create_udf!(abs_impl::abs_tinyintFunc, ABS_TINYINT, abs_tinyint);
-create_udf!(abs_impl::abs_smallintFunc, ABS_SMALLINT, abs_smallint);
-create_udf!(abs_impl::abs_bigintFunc, ABS_BIGINT, abs_bigint);
-create_udf!(abs_impl::abs_doubleFunc, ABS_DOUBLE, abs_double);
-create_udf!(abs_impl::abs_decimal_p_sFunc, ABS_DECIMAL_P_S, abs_decimal_p_s);
-create_udf!(abs_impl::abs_realFunc, ABS_REAL, abs_real);
 
-create_udf!(acos_impl::acos_doubleFunc, ACOS_DOUBLE, acos_double);
 
-create_udf!(all_match_impl::all_match_array_1_function_1_booleanFunc, ALL_MATCH_ARRAY_1_FUNCTION_1_BOOLEAN, all_match_array_1_function_1_boolean);
+create_udf!
 
-create_udf!(any_match_impl::any_match_array_1_function_1_booleanFunc, ANY_MATCH_ARRAY_1_FUNCTION_1_BOOLEAN, any_match_array_1_function_1_boolean);
+(abs_impl::abs_tinyintFunc, ABS_TINYINT, abs_tinyint);
 
-create_udf!(array_distinct_impl::array_distinct_array_3Func, ARRAY_DISTINCT_ARRAY_3, array_distinct_array_3);
 
-create_udf!(array_except_impl::array_except_array_3_array_3Func, ARRAY_EXCEPT_ARRAY_3_ARRAY_3, array_except_array_3_array_3);
+create_udf!
 
-create_udf!(array_intersect_impl::array_intersect_array_3_array_3Func, ARRAY_INTERSECT_ARRAY_3_ARRAY_3, array_intersect_array_3_array_3);
+(abs_impl::abs_smallintFunc, ABS_SMALLINT, abs_smallint);
 
-create_udf!(array_join_impl::array_join_array_1_varcharFunc, ARRAY_JOIN_ARRAY_1_VARCHAR, array_join_array_1_varchar);
-create_udf!(array_join_impl::array_join_array_1_varchar_varcharFunc, ARRAY_JOIN_ARRAY_1_VARCHAR_VARCHAR, array_join_array_1_varchar_varchar);
 
-create_udf!(array_max_impl::array_max_array_1Func, ARRAY_MAX_ARRAY_1, array_max_array_1);
+create_udf!
 
-create_udf!(array_min_impl::array_min_array_1Func, ARRAY_MIN_ARRAY_1, array_min_array_1);
+(abs_impl::abs_bigintFunc, ABS_BIGINT, abs_bigint);
 
-create_udf!(array_position_impl::array_position_array_1_1Func, ARRAY_POSITION_ARRAY_1_1, array_position_array_1_1);
 
-create_udf!(array_remove_impl::array_remove_array_3_3Func, ARRAY_REMOVE_ARRAY_3_3, array_remove_array_3_3);
+create_udf!
 
-create_udf!(array_sort_impl::array_sort_array_3Func, ARRAY_SORT_ARRAY_3, array_sort_array_3);
-create_udf!(array_sort_impl::array_sort_array_1_function_1_1_bigintFunc, ARRAY_SORT_ARRAY_1_FUNCTION_1_1_BIGINT, array_sort_array_1_function_1_1_bigint);
+(abs_impl::abs_doubleFunc, ABS_DOUBLE, abs_double);
 
-create_udf!(array_union_impl::array_union_array_3_array_3Func, ARRAY_UNION_ARRAY_3_ARRAY_3, array_union_array_3_array_3);
 
-create_udf!(arrays_overlap_impl::arrays_overlap_array_3_array_3Func, ARRAYS_OVERLAP_ARRAY_3_ARRAY_3, arrays_overlap_array_3_array_3);
+create_udf!
 
-create_udf!(asin_impl::asin_doubleFunc, ASIN_DOUBLE, asin_double);
+(abs_impl::abs_decimal_p_sFunc, ABS_DECIMAL_P_S, abs_decimal_p_s);
 
-create_udf!(at_timezone_impl::at_timezone_timestamp_p_varcharFunc, AT_TIMEZONE_TIMESTAMP_P_VARCHAR, at_timezone_timestamp_p_varchar);
 
-create_udf!(atan_impl::atan_doubleFunc, ATAN_DOUBLE, atan_double);
+create_udf!
 
-create_udf!(atan2_impl::atan2_double_doubleFunc, ATAN2_DOUBLE_DOUBLE, atan2_double_double);
+(abs_impl::abs_realFunc, ABS_REAL, abs_real);
 
-create_udf!(bar_impl::bar_double_bigintFunc, BAR_DOUBLE_BIGINT, bar_double_bigint);
-create_udf!(bar_impl::bar_double_bigint_color_colorFunc, BAR_DOUBLE_BIGINT_COLOR_COLOR, bar_double_bigint_color_color);
 
-create_udf!(beta_cdf_impl::beta_cdf_double_double_doubleFunc, BETA_CDF_DOUBLE_DOUBLE_DOUBLE, beta_cdf_double_double_double);
 
-create_udf!(bing_tile_impl::bing_tile_bigint_bigint_bigintFunc, BING_TILE_BIGINT_BIGINT_BIGINT, bing_tile_bigint_bigint_bigint);
-create_udf!(bing_tile_impl::bing_tile_varcharFunc, BING_TILE_VARCHAR, bing_tile_varchar);
+create_udf!
 
-create_udf!(bing_tile_at_impl::bing_tile_at_double_double_bigintFunc, BING_TILE_AT_DOUBLE_DOUBLE_BIGINT, bing_tile_at_double_double_bigint);
+(acos_impl::acos_doubleFunc, ACOS_DOUBLE, acos_double);
 
-create_udf!(bing_tile_coordinates_impl::bing_tile_coordinates_bingtileFunc, BING_TILE_COORDINATES_BINGTILE, bing_tile_coordinates_bingtile);
 
-create_udf!(bing_tile_polygon_impl::bing_tile_polygon_bingtileFunc, BING_TILE_POLYGON_BINGTILE, bing_tile_polygon_bingtile);
 
-create_udf!(bing_tile_quadkey_impl::bing_tile_quadkey_bingtileFunc, BING_TILE_QUADKEY_BINGTILE, bing_tile_quadkey_bingtile);
+create_udf!
 
-create_udf!(bing_tile_zoom_level_impl::bing_tile_zoom_level_bingtileFunc, BING_TILE_ZOOM_LEVEL_BINGTILE, bing_tile_zoom_level_bingtile);
+(all_match_impl::all_match_array_1_function_1_booleanFunc, ALL_MATCH_ARRAY_1_FUNCTION_1_BOOLEAN, all_match_array_1_function_1_boolean);
 
-create_udf!(bing_tiles_around_impl::bing_tiles_around_double_double_bigintFunc, BING_TILES_AROUND_DOUBLE_DOUBLE_BIGINT, bing_tiles_around_double_double_bigint);
-create_udf!(bing_tiles_around_impl::bing_tiles_around_double_double_bigint_doubleFunc, BING_TILES_AROUND_DOUBLE_DOUBLE_BIGINT_DOUBLE, bing_tiles_around_double_double_bigint_double);
 
-create_udf!(bit_count_impl::bit_count_bigint_bigintFunc, BIT_COUNT_BIGINT_BIGINT, bit_count_bigint_bigint);
 
-create_udf!(bitwise_and_impl::bitwise_and_bigint_bigintFunc, BITWISE_AND_BIGINT_BIGINT, bitwise_and_bigint_bigint);
+create_udf!
 
-create_udf!(bitwise_left_shift_impl::bitwise_left_shift_bigint_bigintFunc, BITWISE_LEFT_SHIFT_BIGINT_BIGINT, bitwise_left_shift_bigint_bigint);
-create_udf!(bitwise_left_shift_impl::bitwise_left_shift_integer_bigintFunc, BITWISE_LEFT_SHIFT_INTEGER_BIGINT, bitwise_left_shift_integer_bigint);
-create_udf!(bitwise_left_shift_impl::bitwise_left_shift_smallint_bigintFunc, BITWISE_LEFT_SHIFT_SMALLINT_BIGINT, bitwise_left_shift_smallint_bigint);
-create_udf!(bitwise_left_shift_impl::bitwise_left_shift_tinyint_bigintFunc, BITWISE_LEFT_SHIFT_TINYINT_BIGINT, bitwise_left_shift_tinyint_bigint);
+(any_match_impl::any_match_array_1_function_1_booleanFunc, ANY_MATCH_ARRAY_1_FUNCTION_1_BOOLEAN, any_match_array_1_function_1_boolean);
 
-create_udf!(bitwise_not_impl::bitwise_not_bigintFunc, BITWISE_NOT_BIGINT, bitwise_not_bigint);
 
-create_udf!(bitwise_or_impl::bitwise_or_bigint_bigintFunc, BITWISE_OR_BIGINT_BIGINT, bitwise_or_bigint_bigint);
 
-create_udf!(bitwise_right_shift_impl::bitwise_right_shift_bigint_bigintFunc, BITWISE_RIGHT_SHIFT_BIGINT_BIGINT, bitwise_right_shift_bigint_bigint);
-create_udf!(bitwise_right_shift_impl::bitwise_right_shift_integer_bigintFunc, BITWISE_RIGHT_SHIFT_INTEGER_BIGINT, bitwise_right_shift_integer_bigint);
-create_udf!(bitwise_right_shift_impl::bitwise_right_shift_smallint_bigintFunc, BITWISE_RIGHT_SHIFT_SMALLINT_BIGINT, bitwise_right_shift_smallint_bigint);
-create_udf!(bitwise_right_shift_impl::bitwise_right_shift_tinyint_bigintFunc, BITWISE_RIGHT_SHIFT_TINYINT_BIGINT, bitwise_right_shift_tinyint_bigint);
+create_udaf!
 
-create_udf!(bitwise_right_shift_arithmetic_impl::bitwise_right_shift_arithmetic_bigint_bigintFunc, BITWISE_RIGHT_SHIFT_ARITHMETIC_BIGINT_BIGINT, bitwise_right_shift_arithmetic_bigint_bigint);
-create_udf!(bitwise_right_shift_arithmetic_impl::bitwise_right_shift_arithmetic_integer_bigintFunc, BITWISE_RIGHT_SHIFT_ARITHMETIC_INTEGER_BIGINT, bitwise_right_shift_arithmetic_integer_bigint);
-create_udf!(bitwise_right_shift_arithmetic_impl::bitwise_right_shift_arithmetic_smallint_bigintFunc, BITWISE_RIGHT_SHIFT_ARITHMETIC_SMALLINT_BIGINT, bitwise_right_shift_arithmetic_smallint_bigint);
-create_udf!(bitwise_right_shift_arithmetic_impl::bitwise_right_shift_arithmetic_tinyint_bigintFunc, BITWISE_RIGHT_SHIFT_ARITHMETIC_TINYINT_BIGINT, bitwise_right_shift_arithmetic_tinyint_bigint);
+(approx_distinct_impl::approx_distinct_booleanFunc, APPROX_DISTINCT_BOOLEAN, approx_distinct_boolean);
 
-create_udf!(bitwise_xor_impl::bitwise_xor_bigint_bigintFunc, BITWISE_XOR_BIGINT_BIGINT, bitwise_xor_bigint_bigint);
 
-create_udf!(cardinality_impl::cardinality_array_3Func, CARDINALITY_ARRAY_3, cardinality_array_3);
-create_udf!(cardinality_impl::cardinality_hyperloglogFunc, CARDINALITY_HYPERLOGLOG, cardinality_hyperloglog);
-create_udf!(cardinality_impl::cardinality_map_4_5Func, CARDINALITY_MAP_4_5, cardinality_map_4_5);
-create_udf!(cardinality_impl::cardinality_setdigestFunc, CARDINALITY_SETDIGEST, cardinality_setdigest);
+create_udaf!
 
-create_udf!(cbrt_impl::cbrt_doubleFunc, CBRT_DOUBLE, cbrt_double);
+(approx_distinct_impl::approx_distinct_boolean_doubleFunc, APPROX_DISTINCT_BOOLEAN_DOUBLE, approx_distinct_boolean_double);
 
-create_udf!(ceil_impl::ceil_bigintFunc, CEIL_BIGINT, ceil_bigint);
-create_udf!(ceil_impl::ceil_decimal_p_sFunc, CEIL_DECIMAL_P_S, ceil_decimal_p_s);
-create_udf!(ceil_impl::ceil_doubleFunc, CEIL_DOUBLE, ceil_double);
-create_udf!(ceil_impl::ceil_integerFunc, CEIL_INTEGER, ceil_integer);
-create_udf!(ceil_impl::ceil_realFunc, CEIL_REAL, ceil_real);
-create_udf!(ceil_impl::ceil_smallintFunc, CEIL_SMALLINT, ceil_smallint);
-create_udf!(ceil_impl::ceil_tinyintFunc, CEIL_TINYINT, ceil_tinyint);
 
-create_udf!(ceiling_impl::ceiling_bigintFunc, CEILING_BIGINT, ceiling_bigint);
-create_udf!(ceiling_impl::ceiling_decimal_p_sFunc, CEILING_DECIMAL_P_S, ceiling_decimal_p_s);
-create_udf!(ceiling_impl::ceiling_doubleFunc, CEILING_DOUBLE, ceiling_double);
-create_udf!(ceiling_impl::ceiling_integerFunc, CEILING_INTEGER, ceiling_integer);
-create_udf!(ceiling_impl::ceiling_realFunc, CEILING_REAL, ceiling_real);
-create_udf!(ceiling_impl::ceiling_smallintFunc, CEILING_SMALLINT, ceiling_smallint);
-create_udf!(ceiling_impl::ceiling_tinyintFunc, CEILING_TINYINT, ceiling_tinyint);
+create_udaf!
 
-create_udf!(char2hexint_impl::char2hexint_varcharFunc, CHAR2HEXINT_VARCHAR, char2hexint_varchar);
+(approx_distinct_impl::approx_distinct_1Func, APPROX_DISTINCT_1, approx_distinct_1);
 
-create_udf!(chr_impl::chr_bigintFunc, CHR_BIGINT, chr_bigint);
 
-create_udf!(classify_impl::classify_map_bigint_double_classifierFunc, CLASSIFY_MAP_BIGINT_DOUBLE_CLASSIFIER, classify_map_bigint_double_classifier);
+create_udaf!
 
-create_udf!(coalesce_impl::coalesce_1Func, COALESCE_1, coalesce_1);
+(approx_distinct_impl::approx_distinct_1_doubleFunc, APPROX_DISTINCT_1_DOUBLE, approx_distinct_1_double);
 
-create_udf!(codepoint_impl::codepoint_varcharFunc, CODEPOINT_VARCHAR, codepoint_varchar);
 
-create_udf!(color_impl::color_double_color_colorFunc, COLOR_DOUBLE_COLOR_COLOR, color_double_color_color);
-create_udf!(color_impl::color_double_double_double_color_colorFunc, COLOR_DOUBLE_DOUBLE_DOUBLE_COLOR_COLOR, color_double_double_double_color_color);
-create_udf!(color_impl::color_varcharFunc, COLOR_VARCHAR, color_varchar);
+create_udaf!
 
-create_udf!(combinations_impl::combinations_array_1_bigintFunc, COMBINATIONS_ARRAY_1_BIGINT, combinations_array_1_bigint);
+(approx_distinct_impl::approx_distinct_unknownFunc, APPROX_DISTINCT_UNKNOWN, approx_distinct_unknown);
 
-create_udf!(concat_impl::concat_3_array_3Func, CONCAT_3_ARRAY_3, concat_3_array_3);
-create_udf!(concat_impl::concat_array_3Func, CONCAT_ARRAY_3, concat_array_3);
-create_udf!(concat_impl::concat_array_3_3Func, CONCAT_ARRAY_3_3, concat_array_3_3);
-create_udf!(concat_impl::concat_varchar_varcharFunc, CONCAT_VARCHAR_VARCHAR, concat_varchar_varchar);
-create_udf!(concat_impl::concat_varcharFunc, CONCAT_VARCHAR, concat_varchar);
-create_udf!(concat_impl::concat_varbinaryFunc, CONCAT_VARBINARY, concat_varbinary);
 
-create_udf!(concat_ws_impl::concat_ws_varchar_array_varcharFunc, CONCAT_WS_VARCHAR_ARRAY_VARCHAR, concat_ws_varchar_array_varchar);
-create_udf!(concat_ws_impl::concat_ws_varcharFunc, CONCAT_WS_VARCHAR, concat_ws_varchar);
+create_udaf!
 
-create_udf!(contains_impl::contains_array_1_1Func, CONTAINS_ARRAY_1_1, contains_array_1_1);
-create_udf!(contains_impl::contains_varchar_ipaddressFunc, CONTAINS_VARCHAR_IPADDRESS, contains_varchar_ipaddress);
+(approx_distinct_impl::approx_distinct_unknown_doubleFunc, APPROX_DISTINCT_UNKNOWN_DOUBLE, approx_distinct_unknown_double);
 
-create_udf!(contains_sequence_impl::contains_sequence_array_1_array_1Func, CONTAINS_SEQUENCE_ARRAY_1_ARRAY_1, contains_sequence_array_1_array_1);
 
-create_udf!(cos_impl::cos_doubleFunc, COS_DOUBLE, cos_double);
 
-create_udf!(cosh_impl::cosh_doubleFunc, COSH_DOUBLE, cosh_double);
+create_udaf!
 
-create_udf!(cosine_similarity_impl::cosine_similarity_map_varchar_double_map_varchar_doubleFunc, COSINE_SIMILARITY_MAP_VARCHAR_DOUBLE_MAP_VARCHAR_DOUBLE, cosine_similarity_map_varchar_double_map_varchar_double);
+(approx_most_frequent_impl::approx_most_frequent_bigint_bigint_bigintFunc, APPROX_MOST_FREQUENT_BIGINT_BIGINT_BIGINT, approx_most_frequent_bigint_bigint_bigint);
 
-create_udf!(crc32_impl::crc32_varbinaryFunc, CRC32_VARBINARY, crc32_varbinary);
 
-create_udf!(current_catalog_impl::current_catalogFunc, CURRENT_CATALOG, current_catalog);
+create_udaf!
 
-create_udf!(current_date_impl::current_dateFunc, CURRENT_DATE, current_date);
+(approx_most_frequent_impl::approx_most_frequent_bigint_varchar_bigintFunc, APPROX_MOST_FREQUENT_BIGINT_VARCHAR_BIGINT, approx_most_frequent_bigint_varchar_bigint);
 
-create_udf!(current_groups_impl::current_groupsFunc, CURRENT_GROUPS, current_groups);
 
-create_udf!(current_schema_impl::current_schemaFunc, CURRENT_SCHEMA, current_schema);
 
-create_udf!(current_time_impl::current_timeFunc, CURRENT_TIME, current_time);
+create_udaf!
 
-create_udf!(current_timestamp_impl::current_timestampFunc, CURRENT_TIMESTAMP, current_timestamp);
-create_udf!(current_timestamp_impl::current_timestamp_bigint_0Func, CURRENT_TIMESTAMP_BIGINT_0, current_timestamp_bigint_0);
-create_udf!(current_timestamp_impl::current_timestamp_bigint_3Func, CURRENT_TIMESTAMP_BIGINT_3, current_timestamp_bigint_3);
-create_udf!(current_timestamp_impl::current_timestamp_bigint_6Func, CURRENT_TIMESTAMP_BIGINT_6, current_timestamp_bigint_6);
-create_udf!(current_timestamp_impl::current_timestamp_bigint_9Func, CURRENT_TIMESTAMP_BIGINT_9, current_timestamp_bigint_9);
+(approx_percentile_impl::approx_percentile_bigint_array_doubleFunc, APPROX_PERCENTILE_BIGINT_ARRAY_DOUBLE, approx_percentile_bigint_array_double);
 
-create_udf!(current_timezone_impl::current_timezoneFunc, CURRENT_TIMEZONE, current_timezone);
 
-create_udf!(current_user_impl::current_userFunc, CURRENT_USER, current_user);
+create_udaf!
 
-create_udf!(date_impl::date_timestamp_pFunc, DATE_TIMESTAMP_P, date_timestamp_p);
-create_udf!(date_impl::date_varcharFunc, DATE_VARCHAR, date_varchar);
+(approx_percentile_impl::approx_percentile_bigint_double_array_doubleFunc, APPROX_PERCENTILE_BIGINT_DOUBLE_ARRAY_DOUBLE, approx_percentile_bigint_double_array_double);
 
-create_udf!(date_add_impl::date_add_varchar_bigint_dateFunc, DATE_ADD_VARCHAR_BIGINT_DATE, date_add_varchar_bigint_date);
-create_udf!(date_add_impl::date_add_varchar_bigint_time_pFunc, DATE_ADD_VARCHAR_BIGINT_TIME_P, date_add_varchar_bigint_time_p);
-create_udf!(date_add_impl::date_add_varchar_bigint_timestamp_pFunc, DATE_ADD_VARCHAR_BIGINT_TIMESTAMP_P, date_add_varchar_bigint_timestamp_p);
 
-create_udf!(date_diff_impl::date_diff_varchar_date_dateFunc, DATE_DIFF_VARCHAR_DATE_DATE, date_diff_varchar_date_date);
-create_udf!(date_diff_impl::date_diff_varchar_time_p_time_pFunc, DATE_DIFF_VARCHAR_TIME_P_TIME_P, date_diff_varchar_time_p_time_p);
-create_udf!(date_diff_impl::date_diff_varchar_timestamp_p_timestamp_pFunc, DATE_DIFF_VARCHAR_TIMESTAMP_P_TIMESTAMP_P, date_diff_varchar_timestamp_p_timestamp_p);
+create_udaf!
 
-create_udf!(date_format_impl::date_format_timestamp_p_varcharFunc, DATE_FORMAT_TIMESTAMP_P_VARCHAR, date_format_timestamp_p_varchar);
+(approx_percentile_impl::approx_percentile_double_array_doubleFunc, APPROX_PERCENTILE_DOUBLE_ARRAY_DOUBLE, approx_percentile_double_array_double);
 
-create_udf!(date_parse_impl::date_parse_varchar_varcharFunc, DATE_PARSE_VARCHAR_VARCHAR, date_parse_varchar_varchar);
 
-create_udf!(date_trunc_impl::date_trunc_varchar_time_pFunc, DATE_TRUNC_VARCHAR_TIME_P, date_trunc_varchar_time_p);
-create_udf!(date_trunc_impl::date_trunc_varchar_timestamp_pFunc, DATE_TRUNC_VARCHAR_TIMESTAMP_P, date_trunc_varchar_timestamp_p);
-create_udf!(date_trunc_impl::date_trunc_varchar_dateFunc, DATE_TRUNC_VARCHAR_DATE, date_trunc_varchar_date);
+create_udaf!
 
-create_udf!(day_impl::day_dateFunc, DAY_DATE, day_date);
-create_udf!(day_impl::day_intervaldaytosecondFunc, DAY_INTERVALDAYTOSECOND, day_intervaldaytosecond);
-create_udf!(day_impl::day_timestamp_pFunc, DAY_TIMESTAMP_P, day_timestamp_p);
+(approx_percentile_impl::approx_percentile_double_double_array_doubleFunc, APPROX_PERCENTILE_DOUBLE_DOUBLE_ARRAY_DOUBLE, approx_percentile_double_double_array_double);
 
-create_udf!(day_of_month_impl::day_of_month_dateFunc, DAY_OF_MONTH_DATE, day_of_month_date);
-create_udf!(day_of_month_impl::day_of_month_intervaldaytosecondFunc, DAY_OF_MONTH_INTERVALDAYTOSECOND, day_of_month_intervaldaytosecond);
-create_udf!(day_of_month_impl::day_of_month_timestamp_pFunc, DAY_OF_MONTH_TIMESTAMP_P, day_of_month_timestamp_p);
 
-create_udf!(day_of_week_impl::day_of_week_dateFunc, DAY_OF_WEEK_DATE, day_of_week_date);
-create_udf!(day_of_week_impl::day_of_week_timestamp_pFunc, DAY_OF_WEEK_TIMESTAMP_P, day_of_week_timestamp_p);
+create_udaf!
 
-create_udf!(day_of_year_impl::day_of_year_dateFunc, DAY_OF_YEAR_DATE, day_of_year_date);
-create_udf!(day_of_year_impl::day_of_year_timestamp_pFunc, DAY_OF_YEAR_TIMESTAMP_P, day_of_year_timestamp_p);
+(approx_percentile_impl::approx_percentile_real_array_doubleFunc, APPROX_PERCENTILE_REAL_ARRAY_DOUBLE, approx_percentile_real_array_double);
 
-create_udf!(degrees_impl::degrees_doubleFunc, DEGREES_DOUBLE, degrees_double);
 
-create_udf!(dow_impl::dow_dateFunc, DOW_DATE, dow_date);
-create_udf!(dow_impl::dow_timestamp_pFunc, DOW_TIMESTAMP_P, dow_timestamp_p);
+create_udaf!
 
-create_udf!(doy_impl::doy_dateFunc, DOY_DATE, doy_date);
-create_udf!(doy_impl::doy_timestamp_pFunc, DOY_TIMESTAMP_P, doy_timestamp_p);
+(approx_percentile_impl::approx_percentile_real_double_array_doubleFunc, APPROX_PERCENTILE_REAL_DOUBLE_ARRAY_DOUBLE, approx_percentile_real_double_array_double);
 
-create_udf!(e_impl::eFunc, E, e);
 
-create_udf!(element_at_impl::element_at_map_4_5_4Func, ELEMENT_AT_MAP_4_5_4, element_at_map_4_5_4);
-create_udf!(element_at_impl::element_at_array_3_bigintFunc, ELEMENT_AT_ARRAY_3_BIGINT, element_at_array_3_bigint);
+create_udaf!
 
-create_udf!(empty_approx_set_impl::empty_approx_setFunc, EMPTY_APPROX_SET, empty_approx_set);
+(approx_percentile_impl::approx_percentile_bigint_doubleFunc, APPROX_PERCENTILE_BIGINT_DOUBLE, approx_percentile_bigint_double);
 
-create_udf!(exp_impl::exp_doubleFunc, EXP_DOUBLE, exp_double);
 
-create_udf!(features_impl::features_doubleFunc, FEATURES_DOUBLE, features_double);
-create_udf!(features_impl::features_double_doubleFunc, FEATURES_DOUBLE_DOUBLE, features_double_double);
-create_udf!(features_impl::features_double_double_doubleFunc, FEATURES_DOUBLE_DOUBLE_DOUBLE, features_double_double_double);
-create_udf!(features_impl::features_double_double_double_doubleFunc, FEATURES_DOUBLE_DOUBLE_DOUBLE_DOUBLE, features_double_double_double_double);
-create_udf!(features_impl::features_double_double_double_double_doubleFunc, FEATURES_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE, features_double_double_double_double_double);
-create_udf!(features_impl::features_double_double_double_double_double_doubleFunc, FEATURES_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE, features_double_double_double_double_double_double);
-create_udf!(features_impl::features_double_double_double_double_double_double_doubleFunc, FEATURES_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE, features_double_double_double_double_double_double_double);
-create_udf!(features_impl::features_double_double_double_double_double_double_double_doubleFunc, FEATURES_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE, features_double_double_double_double_double_double_double_double);
-create_udf!(features_impl::features_double_double_double_double_double_double_double_double_doubleFunc, FEATURES_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE, features_double_double_double_double_double_double_double_double_double);
-create_udf!(features_impl::features_double_double_double_double_double_double_double_double_double_doubleFunc, FEATURES_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE, features_double_double_double_double_double_double_double_double_double_double);
+create_udaf!
 
-create_udf!(filter_impl::filter_array_1_function_1_booleanFunc, FILTER_ARRAY_1_FUNCTION_1_BOOLEAN, filter_array_1_function_1_boolean);
+(approx_percentile_impl::approx_percentile_bigint_double_doubleFunc, APPROX_PERCENTILE_BIGINT_DOUBLE_DOUBLE, approx_percentile_bigint_double_double);
 
-create_udf!(flatten_impl::flatten_array_array_3Func, FLATTEN_ARRAY_ARRAY_3, flatten_array_array_3);
 
-create_udf!(floor_impl::floor_bigintFunc, FLOOR_BIGINT, floor_bigint);
-create_udf!(floor_impl::floor_decimal_p_sFunc, FLOOR_DECIMAL_P_S, floor_decimal_p_s);
-create_udf!(floor_impl::floor_doubleFunc, FLOOR_DOUBLE, floor_double);
-create_udf!(floor_impl::floor_integerFunc, FLOOR_INTEGER, floor_integer);
-create_udf!(floor_impl::floor_realFunc, FLOOR_REAL, floor_real);
-create_udf!(floor_impl::floor_smallintFunc, FLOOR_SMALLINT, floor_smallint);
-create_udf!(floor_impl::floor_tinyintFunc, FLOOR_TINYINT, floor_tinyint);
+create_udaf!
 
-create_udf!(format_impl::format_varchar_1Func, FORMAT_VARCHAR_1, format_varchar_1);
-create_udf!(format_impl::format_varchar_1_2Func, FORMAT_VARCHAR_1_2, format_varchar_1_2);
-create_udf!(format_impl::format_varchar_1_2_3Func, FORMAT_VARCHAR_1_2_3, format_varchar_1_2_3);
-create_udf!(format_impl::format_varchar_1_2_3_4Func, FORMAT_VARCHAR_1_2_3_4, format_varchar_1_2_3_4);
-create_udf!(format_impl::format_varchar_1_2_3_4_5Func, FORMAT_VARCHAR_1_2_3_4_5, format_varchar_1_2_3_4_5);
+(approx_percentile_impl::approx_percentile_bigint_double_double_doubleFunc, APPROX_PERCENTILE_BIGINT_DOUBLE_DOUBLE_DOUBLE, approx_percentile_bigint_double_double_double);
 
-create_udf!(format_datetime_impl::format_datetime_timestamp_p_varcharFunc, FORMAT_DATETIME_TIMESTAMP_P_VARCHAR, format_datetime_timestamp_p_varchar);
 
-create_udf!(format_number_impl::format_number_bigintFunc, FORMAT_NUMBER_BIGINT, format_number_bigint);
-create_udf!(format_number_impl::format_number_doubleFunc, FORMAT_NUMBER_DOUBLE, format_number_double);
+create_udaf!
 
-create_udf!(from_base_impl::from_base_varchar_bigintFunc, FROM_BASE_VARCHAR_BIGINT, from_base_varchar_bigint);
+(approx_percentile_impl::approx_percentile_double_doubleFunc, APPROX_PERCENTILE_DOUBLE_DOUBLE, approx_percentile_double_double);
 
-create_udf!(from_base32_impl::from_base32_varbinaryFunc, FROM_BASE32_VARBINARY, from_base32_varbinary);
-create_udf!(from_base32_impl::from_base32_varcharFunc, FROM_BASE32_VARCHAR, from_base32_varchar);
 
-create_udf!(from_base64_impl::from_base64_varbinaryFunc, FROM_BASE64_VARBINARY, from_base64_varbinary);
-create_udf!(from_base64_impl::from_base64_varcharFunc, FROM_BASE64_VARCHAR, from_base64_varchar);
+create_udaf!
 
-create_udf!(from_base64url_impl::from_base64url_varbinaryFunc, FROM_BASE64URL_VARBINARY, from_base64url_varbinary);
-create_udf!(from_base64url_impl::from_base64url_varcharFunc, FROM_BASE64URL_VARCHAR, from_base64url_varchar);
+(approx_percentile_impl::approx_percentile_double_double_doubleFunc, APPROX_PERCENTILE_DOUBLE_DOUBLE_DOUBLE, approx_percentile_double_double_double);
 
-create_udf!(from_big_endian_32_impl::from_big_endian_32_varbinaryFunc, FROM_BIG_ENDIAN_32_VARBINARY, from_big_endian_32_varbinary);
 
-create_udf!(from_big_endian_64_impl::from_big_endian_64_varbinaryFunc, FROM_BIG_ENDIAN_64_VARBINARY, from_big_endian_64_varbinary);
+create_udaf!
 
-create_udf!(from_encoded_polyline_impl::from_encoded_polyline_varcharFunc, FROM_ENCODED_POLYLINE_VARCHAR, from_encoded_polyline_varchar);
+(approx_percentile_impl::approx_percentile_double_double_double_doubleFunc, APPROX_PERCENTILE_DOUBLE_DOUBLE_DOUBLE_DOUBLE, approx_percentile_double_double_double_double);
 
-create_udf!(from_geojson_geometry_impl::from_geojson_geometry_varcharFunc, FROM_GEOJSON_GEOMETRY_VARCHAR, from_geojson_geometry_varchar);
 
-create_udf!(from_hex_impl::from_hex_varbinaryFunc, FROM_HEX_VARBINARY, from_hex_varbinary);
-create_udf!(from_hex_impl::from_hex_varcharFunc, FROM_HEX_VARCHAR, from_hex_varchar);
+create_udaf!
 
-create_udf!(from_ieee754_32_impl::from_ieee754_32_varbinaryFunc, FROM_IEEE754_32_VARBINARY, from_ieee754_32_varbinary);
+(approx_percentile_impl::approx_percentile_real_doubleFunc, APPROX_PERCENTILE_REAL_DOUBLE, approx_percentile_real_double);
 
-create_udf!(from_ieee754_64_impl::from_ieee754_64_varbinaryFunc, FROM_IEEE754_64_VARBINARY, from_ieee754_64_varbinary);
 
-create_udf!(from_iso8601_date_impl::from_iso8601_date_varcharFunc, FROM_ISO8601_DATE_VARCHAR, from_iso8601_date_varchar);
+create_udaf!
 
-create_udf!(from_iso8601_timestamp_impl::from_iso8601_timestamp_varcharFunc, FROM_ISO8601_TIMESTAMP_VARCHAR, from_iso8601_timestamp_varchar);
+(approx_percentile_impl::approx_percentile_real_double_doubleFunc, APPROX_PERCENTILE_REAL_DOUBLE_DOUBLE, approx_percentile_real_double_double);
 
-create_udf!(from_iso8601_timestamp_nanos_impl::from_iso8601_timestamp_nanos_varcharFunc, FROM_ISO8601_TIMESTAMP_NANOS_VARCHAR, from_iso8601_timestamp_nanos_varchar);
 
-create_udf!(from_unixtime_impl::from_unixtime_bigintFunc, FROM_UNIXTIME_BIGINT, from_unixtime_bigint);
-create_udf!(from_unixtime_impl::from_unixtime_bigint_bigint_bigintFunc, FROM_UNIXTIME_BIGINT_BIGINT_BIGINT, from_unixtime_bigint_bigint_bigint);
-create_udf!(from_unixtime_impl::from_unixtime_bigint_varcharFunc, FROM_UNIXTIME_BIGINT_VARCHAR, from_unixtime_bigint_varchar);
+create_udaf!
 
-create_udf!(from_unixtime_nanos_impl::from_unixtime_nanos_bigintFunc, FROM_UNIXTIME_NANOS_BIGINT, from_unixtime_nanos_bigint);
-create_udf!(from_unixtime_nanos_impl::from_unixtime_nanos_decimal_p_sFunc, FROM_UNIXTIME_NANOS_DECIMAL_P_S, from_unixtime_nanos_decimal_p_s);
+(approx_percentile_impl::approx_percentile_real_double_double_doubleFunc, APPROX_PERCENTILE_REAL_DOUBLE_DOUBLE_DOUBLE, approx_percentile_real_double_double_double);
 
-create_udf!(from_utf8_impl::from_utf8_varbinaryFunc, FROM_UTF8_VARBINARY, from_utf8_varbinary);
-create_udf!(from_utf8_impl::from_utf8_varbinary_bigintFunc, FROM_UTF8_VARBINARY_BIGINT, from_utf8_varbinary_bigint);
-create_udf!(from_utf8_impl::from_utf8_varbinary_varcharFunc, FROM_UTF8_VARBINARY_VARCHAR, from_utf8_varbinary_varchar);
 
-create_udf!(geometry_from_hadoop_shape_impl::geometry_from_hadoop_shape_varbinaryFunc, GEOMETRY_FROM_HADOOP_SHAPE_VARBINARY, geometry_from_hadoop_shape_varbinary);
 
-create_udf!(geometry_invalid_reason_impl::geometry_invalid_reason_geometryFunc, GEOMETRY_INVALID_REASON_GEOMETRY, geometry_invalid_reason_geometry);
+create_udaf!
 
-create_udf!(geometry_nearest_points_impl::geometry_nearest_points_geometry_geometryFunc, GEOMETRY_NEAREST_POINTS_GEOMETRY_GEOMETRY, geometry_nearest_points_geometry_geometry);
+(approx_set_impl::approx_set_bigintFunc, APPROX_SET_BIGINT, approx_set_bigint);
 
-create_udf!(geometry_to_bing_tiles_impl::geometry_to_bing_tiles_geometry_bigintFunc, GEOMETRY_TO_BING_TILES_GEOMETRY_BIGINT, geometry_to_bing_tiles_geometry_bigint);
 
-create_udf!(geometry_union_impl::geometry_union_array_geometryFunc, GEOMETRY_UNION_ARRAY_GEOMETRY, geometry_union_array_geometry);
+create_udaf!
 
-create_udf!(great_circle_distance_impl::great_circle_distance_double_double_double_doubleFunc, GREAT_CIRCLE_DISTANCE_DOUBLE_DOUBLE_DOUBLE_DOUBLE, great_circle_distance_double_double_double_double);
+(approx_set_impl::approx_set_doubleFunc, APPROX_SET_DOUBLE, approx_set_double);
 
-create_udf!(greatest_impl::greatest_3Func, GREATEST_3, greatest_3);
 
-create_udf!(hamming_distance_impl::hamming_distance_varchar_varcharFunc, HAMMING_DISTANCE_VARCHAR_VARCHAR, hamming_distance_varchar_varchar);
+create_udaf!
 
-create_udf!(hash_counts_impl::hash_counts_setdigestFunc, HASH_COUNTS_SETDIGEST, hash_counts_setdigest);
+(approx_set_impl::approx_set_varcharFunc, APPROX_SET_VARCHAR, approx_set_varchar);
 
-create_udf!(hmac_md5_impl::hmac_md5_varbinary_varbinaryFunc, HMAC_MD5_VARBINARY_VARBINARY, hmac_md5_varbinary_varbinary);
 
-create_udf!(hmac_sha1_impl::hmac_sha1_varbinary_varbinaryFunc, HMAC_SHA1_VARBINARY_VARBINARY, hmac_sha1_varbinary_varbinary);
 
-create_udf!(hmac_sha256_impl::hmac_sha256_varbinary_varbinaryFunc, HMAC_SHA256_VARBINARY_VARBINARY, hmac_sha256_varbinary_varbinary);
+create_udaf!
 
-create_udf!(hmac_sha512_impl::hmac_sha512_varbinary_varbinaryFunc, HMAC_SHA512_VARBINARY_VARBINARY, hmac_sha512_varbinary_varbinary);
+(arbitrary_impl::arbitrary_1Func, ARBITRARY_1, arbitrary_1);
 
-create_udf!(hour_impl::hour_intervaldaytosecondFunc, HOUR_INTERVALDAYTOSECOND, hour_intervaldaytosecond);
-create_udf!(hour_impl::hour_time_pFunc, HOUR_TIME_P, hour_time_p);
-create_udf!(hour_impl::hour_timestamp_pFunc, HOUR_TIMESTAMP_P, hour_timestamp_p);
 
-create_udf!(human_readable_seconds_impl::human_readable_seconds_doubleFunc, HUMAN_READABLE_SECONDS_DOUBLE, human_readable_seconds_double);
 
-create_udf!(if_impl::if_boolean_1_1Func, IF_BOOLEAN_1_1, if_boolean_1_1);
+create_udaf!
 
-create_udf!(index_impl::index_varchar_varcharFunc, INDEX_VARCHAR_VARCHAR, index_varchar_varchar);
+(array_agg_impl::array_agg_1Func, ARRAY_AGG_1, array_agg_1);
 
-create_udf!(infinity_impl::infinityFunc, INFINITY, infinity);
 
-create_udf!(intersection_cardinality_impl::intersection_cardinality_setdigest_setdigestFunc, INTERSECTION_CARDINALITY_SETDIGEST_SETDIGEST, intersection_cardinality_setdigest_setdigest);
 
-create_udf!(inverse_beta_cdf_impl::inverse_beta_cdf_double_double_doubleFunc, INVERSE_BETA_CDF_DOUBLE_DOUBLE_DOUBLE, inverse_beta_cdf_double_double_double);
+create_udf!
 
-create_udf!(inverse_normal_cdf_impl::inverse_normal_cdf_double_double_doubleFunc, INVERSE_NORMAL_CDF_DOUBLE_DOUBLE_DOUBLE, inverse_normal_cdf_double_double_double);
+(array_distinct_impl::array_distinct_array_3Func, ARRAY_DISTINCT_ARRAY_3, array_distinct_array_3);
 
-create_udf!(is_finite_impl::is_finite_doubleFunc, IS_FINITE_DOUBLE, is_finite_double);
 
-create_udf!(is_infinite_impl::is_infinite_doubleFunc, IS_INFINITE_DOUBLE, is_infinite_double);
 
-create_udf!(is_json_scalar_impl::is_json_scalar_jsonFunc, IS_JSON_SCALAR_JSON, is_json_scalar_json);
-create_udf!(is_json_scalar_impl::is_json_scalar_varcharFunc, IS_JSON_SCALAR_VARCHAR, is_json_scalar_varchar);
+create_udf!
 
-create_udf!(is_nan_impl::is_nan_doubleFunc, IS_NAN_DOUBLE, is_nan_double);
-create_udf!(is_nan_impl::is_nan_realFunc, IS_NAN_REAL, is_nan_real);
+(array_except_impl::array_except_array_3_array_3Func, ARRAY_EXCEPT_ARRAY_3_ARRAY_3, array_except_array_3_array_3);
 
-create_udf!(jaccard_index_impl::jaccard_index_setdigest_setdigestFunc, JACCARD_INDEX_SETDIGEST_SETDIGEST, jaccard_index_setdigest_setdigest);
 
-create_udf!(json_array_contains_impl::json_array_contains_json_bigintFunc, JSON_ARRAY_CONTAINS_JSON_BIGINT, json_array_contains_json_bigint);
-create_udf!(json_array_contains_impl::json_array_contains_json_booleanFunc, JSON_ARRAY_CONTAINS_JSON_BOOLEAN, json_array_contains_json_boolean);
-create_udf!(json_array_contains_impl::json_array_contains_json_doubleFunc, JSON_ARRAY_CONTAINS_JSON_DOUBLE, json_array_contains_json_double);
-create_udf!(json_array_contains_impl::json_array_contains_json_varcharFunc, JSON_ARRAY_CONTAINS_JSON_VARCHAR, json_array_contains_json_varchar);
-create_udf!(json_array_contains_impl::json_array_contains_varchar_bigintFunc, JSON_ARRAY_CONTAINS_VARCHAR_BIGINT, json_array_contains_varchar_bigint);
-create_udf!(json_array_contains_impl::json_array_contains_varchar_booleanFunc, JSON_ARRAY_CONTAINS_VARCHAR_BOOLEAN, json_array_contains_varchar_boolean);
-create_udf!(json_array_contains_impl::json_array_contains_varchar_doubleFunc, JSON_ARRAY_CONTAINS_VARCHAR_DOUBLE, json_array_contains_varchar_double);
-create_udf!(json_array_contains_impl::json_array_contains_varchar_varcharFunc, JSON_ARRAY_CONTAINS_VARCHAR_VARCHAR, json_array_contains_varchar_varchar);
 
-create_udf!(json_array_get_impl::json_array_get_json_bigintFunc, JSON_ARRAY_GET_JSON_BIGINT, json_array_get_json_bigint);
-create_udf!(json_array_get_impl::json_array_get_varchar_bigintFunc, JSON_ARRAY_GET_VARCHAR_BIGINT, json_array_get_varchar_bigint);
+create_udf!
 
-create_udf!(json_array_length_impl::json_array_length_jsonFunc, JSON_ARRAY_LENGTH_JSON, json_array_length_json);
-create_udf!(json_array_length_impl::json_array_length_varcharFunc, JSON_ARRAY_LENGTH_VARCHAR, json_array_length_varchar);
+(array_intersect_impl::array_intersect_array_3_array_3Func, ARRAY_INTERSECT_ARRAY_3_ARRAY_3, array_intersect_array_3_array_3);
 
-create_udf!(json_extract_impl::json_extract_json_jsonpathFunc, JSON_EXTRACT_JSON_JSONPATH, json_extract_json_jsonpath);
-create_udf!(json_extract_impl::json_extract_varchar_jsonpathFunc, JSON_EXTRACT_VARCHAR_JSONPATH, json_extract_varchar_jsonpath);
 
-create_udf!(json_extract_scalar_impl::json_extract_scalar_json_jsonpathFunc, JSON_EXTRACT_SCALAR_JSON_JSONPATH, json_extract_scalar_json_jsonpath);
-create_udf!(json_extract_scalar_impl::json_extract_scalar_varchar_jsonpathFunc, JSON_EXTRACT_SCALAR_VARCHAR_JSONPATH, json_extract_scalar_varchar_jsonpath);
 
-create_udf!(json_format_impl::json_format_jsonFunc, JSON_FORMAT_JSON, json_format_json);
+create_udf!
 
-create_udf!(json_parse_impl::json_parse_varcharFunc, JSON_PARSE_VARCHAR, json_parse_varchar);
+(array_join_impl::array_join_array_1_varcharFunc, ARRAY_JOIN_ARRAY_1_VARCHAR, array_join_array_1_varchar);
 
-create_udf!(json_size_impl::json_size_json_jsonpathFunc, JSON_SIZE_JSON_JSONPATH, json_size_json_jsonpath);
-create_udf!(json_size_impl::json_size_varchar_jsonpathFunc, JSON_SIZE_VARCHAR_JSONPATH, json_size_varchar_jsonpath);
 
-create_udf!(last_day_of_month_impl::last_day_of_month_dateFunc, LAST_DAY_OF_MONTH_DATE, last_day_of_month_date);
-create_udf!(last_day_of_month_impl::last_day_of_month_timestamp_pFunc, LAST_DAY_OF_MONTH_TIMESTAMP_P, last_day_of_month_timestamp_p);
+create_udf!
 
-create_udf!(least_impl::least_3Func, LEAST_3, least_3);
+(array_join_impl::array_join_array_1_varchar_varcharFunc, ARRAY_JOIN_ARRAY_1_VARCHAR_VARCHAR, array_join_array_1_varchar_varchar);
 
-create_udf!(length_impl::length_varcharFunc, LENGTH_VARCHAR, length_varchar);
-create_udf!(length_impl::length_varbinaryFunc, LENGTH_VARBINARY, length_varbinary);
-create_udf!(length_impl::length_array_1Func, LENGTH_ARRAY_1, length_array_1);
 
-create_udf!(levenshtein_distance_impl::levenshtein_distance_varchar_varcharFunc, LEVENSHTEIN_DISTANCE_VARCHAR_VARCHAR, levenshtein_distance_varchar_varchar);
 
-create_udf!(line_interpolate_point_impl::line_interpolate_point_geometry_doubleFunc, LINE_INTERPOLATE_POINT_GEOMETRY_DOUBLE, line_interpolate_point_geometry_double);
+create_udf!
 
-create_udf!(line_interpolate_points_impl::line_interpolate_points_geometry_doubleFunc, LINE_INTERPOLATE_POINTS_GEOMETRY_DOUBLE, line_interpolate_points_geometry_double);
+(array_max_impl::array_max_array_1Func, ARRAY_MAX_ARRAY_1, array_max_array_1);
 
-create_udf!(line_locate_point_impl::line_locate_point_geometry_geometryFunc, LINE_LOCATE_POINT_GEOMETRY_GEOMETRY, line_locate_point_geometry_geometry);
 
-create_udf!(ln_impl::ln_doubleFunc, LN_DOUBLE, ln_double);
 
-create_udf!(localtime_impl::localtimeFunc, LOCALTIME, localtime);
+create_udf!
 
-create_udf!(localtimestamp_impl::localtimestampFunc, LOCALTIMESTAMP, localtimestamp);
-create_udf!(localtimestamp_impl::localtimestamp_bigint_0Func, LOCALTIMESTAMP_BIGINT_0, localtimestamp_bigint_0);
-create_udf!(localtimestamp_impl::localtimestamp_bigint_3Func, LOCALTIMESTAMP_BIGINT_3, localtimestamp_bigint_3);
-create_udf!(localtimestamp_impl::localtimestamp_bigint_6Func, LOCALTIMESTAMP_BIGINT_6, localtimestamp_bigint_6);
-create_udf!(localtimestamp_impl::localtimestamp_bigint_9Func, LOCALTIMESTAMP_BIGINT_9, localtimestamp_bigint_9);
+(array_min_impl::array_min_array_1Func, ARRAY_MIN_ARRAY_1, array_min_array_1);
 
-create_udf!(log_impl::log_double_doubleFunc, LOG_DOUBLE_DOUBLE, log_double_double);
 
-create_udf!(log10_impl::log10_doubleFunc, LOG10_DOUBLE, log10_double);
 
-create_udf!(log2_impl::log2_doubleFunc, LOG2_DOUBLE, log2_double);
+create_udf!
 
-create_udf!(lower_impl::lower_varcharFunc, LOWER_VARCHAR, lower_varchar);
+(array_position_impl::array_position_array_1_1Func, ARRAY_POSITION_ARRAY_1_1, array_position_array_1_1);
 
-create_udf!(lpad_impl::lpad_varbinary_bigint_varbinaryFunc, LPAD_VARBINARY_BIGINT_VARBINARY, lpad_varbinary_bigint_varbinary);
-create_udf!(lpad_impl::lpad_varchar_bigint_varcharFunc, LPAD_VARCHAR_BIGINT_VARCHAR, lpad_varchar_bigint_varchar);
 
-create_udf!(ltrim_impl::ltrim_varcharFunc, LTRIM_VARCHAR, ltrim_varchar);
-create_udf!(ltrim_impl::ltrim_varchar_codepointsFunc, LTRIM_VARCHAR_CODEPOINTS, ltrim_varchar_codepoints);
 
-create_udf!(luhn_check_impl::luhn_check_varcharFunc, LUHN_CHECK_VARCHAR, luhn_check_varchar);
+create_udf!
 
-create_udf!(map_impl::map_array_4_array_5Func, MAP_ARRAY_4_ARRAY_5, map_array_4_array_5);
-create_udf!(map_impl::mapFunc, MAP, map);
+(array_remove_impl::array_remove_array_3_3Func, ARRAY_REMOVE_ARRAY_3_3, array_remove_array_3_3);
 
-create_udf!(map_concat_impl::map_concat_map_4_5Func, MAP_CONCAT_MAP_4_5, map_concat_map_4_5);
 
-create_udf!(map_entries_impl::map_entries_map_4_5Func, MAP_ENTRIES_MAP_4_5, map_entries_map_4_5);
 
-create_udf!(map_filter_impl::map_filter_map_4_5_function_4_5_booleanFunc, MAP_FILTER_MAP_4_5_FUNCTION_4_5_BOOLEAN, map_filter_map_4_5_function_4_5_boolean);
+create_udf!
 
-create_udf!(map_from_entries_impl::map_from_entries_array_row_c04_c15Func, MAP_FROM_ENTRIES_ARRAY_ROW_C04_C15, map_from_entries_array_row_c04_c15);
+(array_sort_impl::array_sort_array_3Func, ARRAY_SORT_ARRAY_3, array_sort_array_3);
 
-create_udf!(map_keys_impl::map_keys_map_4_5Func, MAP_KEYS_MAP_4_5, map_keys_map_4_5);
 
-create_udf!(map_values_impl::map_values_map_4_5Func, MAP_VALUES_MAP_4_5, map_values_map_4_5);
+create_udf!
 
-create_udf!(map_zip_with_impl::map_zip_with_map_4_8_map_4_7_function_4_8_7_6Func, MAP_ZIP_WITH_MAP_4_8_MAP_4_7_FUNCTION_4_8_7_6, map_zip_with_map_4_8_map_4_7_function_4_8_7_6);
+(array_sort_impl::array_sort_array_1_function_1_1_bigintFunc, ARRAY_SORT_ARRAY_1_FUNCTION_1_1_BIGINT, array_sort_array_1_function_1_1_bigint);
 
-create_udf!(md5_impl::md5_varbinaryFunc, MD5_VARBINARY, md5_varbinary);
 
-create_udf!(millisecond_impl::millisecond_intervaldaytosecondFunc, MILLISECOND_INTERVALDAYTOSECOND, millisecond_intervaldaytosecond);
-create_udf!(millisecond_impl::millisecond_time_pFunc, MILLISECOND_TIME_P, millisecond_time_p);
-create_udf!(millisecond_impl::millisecond_timestamp_pFunc, MILLISECOND_TIMESTAMP_P, millisecond_timestamp_p);
 
-create_udf!(minute_impl::minute_intervaldaytosecondFunc, MINUTE_INTERVALDAYTOSECOND, minute_intervaldaytosecond);
-create_udf!(minute_impl::minute_time_pFunc, MINUTE_TIME_P, minute_time_p);
-create_udf!(minute_impl::minute_timestamp_pFunc, MINUTE_TIMESTAMP_P, minute_timestamp_p);
+create_udf!
 
-create_udf!(mod_impl::mod_bigint_bigintFunc, MOD_BIGINT_BIGINT, mod_bigint_bigint);
-create_udf!(mod_impl::mod_decimal_a_precision_a_scale_decimal_b_precision_b_scaleFunc, MOD_DECIMAL_A_PRECISION_A_SCALE_DECIMAL_B_PRECISION_B_SCALE, mod_decimal_a_precision_a_scale_decimal_b_precision_b_scale);
-create_udf!(mod_impl::mod_double_doubleFunc, MOD_DOUBLE_DOUBLE, mod_double_double);
-create_udf!(mod_impl::mod_integer_integerFunc, MOD_INTEGER_INTEGER, mod_integer_integer);
-create_udf!(mod_impl::mod_real_realFunc, MOD_REAL_REAL, mod_real_real);
-create_udf!(mod_impl::mod_smallint_smallintFunc, MOD_SMALLINT_SMALLINT, mod_smallint_smallint);
-create_udf!(mod_impl::mod_tinyint_tinyintFunc, MOD_TINYINT_TINYINT, mod_tinyint_tinyint);
+(array_union_impl::array_union_array_3_array_3Func, ARRAY_UNION_ARRAY_3_ARRAY_3, array_union_array_3_array_3);
 
-create_udf!(month_impl::month_dateFunc, MONTH_DATE, month_date);
-create_udf!(month_impl::month_intervalyeartomonthFunc, MONTH_INTERVALYEARTOMONTH, month_intervalyeartomonth);
-create_udf!(month_impl::month_timestamp_pFunc, MONTH_TIMESTAMP_P, month_timestamp_p);
 
-create_udf!(multimap_from_entries_impl::multimap_from_entries_array_row_c04_c15Func, MULTIMAP_FROM_ENTRIES_ARRAY_ROW_C04_C15, multimap_from_entries_array_row_c04_c15);
 
-create_udf!(murmur3_impl::murmur3_varbinaryFunc, MURMUR3_VARBINARY, murmur3_varbinary);
+create_udf!
 
-create_udf!(nan_impl::nanFunc, NAN, nan);
+(arrays_overlap_impl::arrays_overlap_array_3_array_3Func, ARRAYS_OVERLAP_ARRAY_3_ARRAY_3, arrays_overlap_array_3_array_3);
 
-create_udf!(ngrams_impl::ngrams_array_1_bigintFunc, NGRAMS_ARRAY_1_BIGINT, ngrams_array_1_bigint);
 
-create_udf!(none_match_impl::none_match_array_1_function_1_booleanFunc, NONE_MATCH_ARRAY_1_FUNCTION_1_BOOLEAN, none_match_array_1_function_1_boolean);
 
-create_udf!(normal_cdf_impl::normal_cdf_double_double_doubleFunc, NORMAL_CDF_DOUBLE_DOUBLE_DOUBLE, normal_cdf_double_double_double);
+create_udf!
 
-create_udf!(normalize_impl::normalize_varchar_varcharFunc, NORMALIZE_VARCHAR_VARCHAR, normalize_varchar_varchar);
+(asin_impl::asin_doubleFunc, ASIN_DOUBLE, asin_double);
 
-create_udf!(now_impl::nowFunc, NOW, now);
 
-create_udf!(nullif_impl::nullif_1_1Func, NULLIF_1_1, nullif_1_1);
 
-create_udf!(objectid_impl::objectidFunc, OBJECTID, objectid);
-create_udf!(objectid_impl::objectid_varcharFunc, OBJECTID_VARCHAR, objectid_varchar);
+create_udf!
 
-create_udf!(objectid_timestamp_impl::objectid_timestamp_objectidFunc, OBJECTID_TIMESTAMP_OBJECTID, objectid_timestamp_objectid);
+(at_timezone_impl::at_timezone_timestamp_p_varcharFunc, AT_TIMEZONE_TIMESTAMP_P_VARCHAR, at_timezone_timestamp_p_varchar);
 
-create_udf!(parse_data_size_impl::parse_data_size_varcharFunc, PARSE_DATA_SIZE_VARCHAR, parse_data_size_varchar);
 
-create_udf!(parse_datetime_impl::parse_datetime_varchar_varcharFunc, PARSE_DATETIME_VARCHAR_VARCHAR, parse_datetime_varchar_varchar);
 
-create_udf!(parse_duration_impl::parse_duration_varcharFunc, PARSE_DURATION_VARCHAR, parse_duration_varchar);
+create_udf!
 
-create_udf!(parse_presto_data_size_impl::parse_presto_data_size_varcharFunc, PARSE_PRETO_DATA_SIZE_VARCHAR, parse_presto_data_size_varchar);
+(atan_impl::atan_doubleFunc, ATAN_DOUBLE, atan_double);
 
-create_udf!(pi_impl::piFunc, PI, pi);
 
-create_udf!(pow_impl::pow_double_doubleFunc, POW_DOUBLE_DOUBLE, pow_double_double);
 
-create_udf!(power_impl::power_double_doubleFunc, POWER_DOUBLE_DOUBLE, power_double_double);
+create_udf!
 
-create_udf!(quantile_at_value_impl::quantile_at_value_qdigest_bigintFunc, QUANTILE_AT_VALUE_QDIGEST_BIGINT, quantile_at_value_qdigest_bigint);
-create_udf!(quantile_at_value_impl::quantile_at_value_qdigest_doubleFunc, QUANTILE_AT_VALUE_QDIGEST_DOUBLE, quantile_at_value_qdigest_double);
-create_udf!(quantile_at_value_impl::quantile_at_value_qdigest_realFunc, QUANTILE_AT_VALUE_QDIGEST_REAL, quantile_at_value_qdigest_real);
+(atan2_impl::atan2_double_doubleFunc, ATAN2_DOUBLE_DOUBLE, atan2_double_double);
 
-create_udf!(quarter_impl::quarter_dateFunc, QUARTER_DATE, quarter_date);
-create_udf!(quarter_impl::quarter_timestamp_pFunc, QUARTER_TIMESTAMP_P, quarter_timestamp_p);
 
-create_udf!(radians_impl::radians_doubleFunc, RADIANS_DOUBLE, radians_double);
 
-create_udf!(rand_impl::rand_bigintFunc, RAND_BIGINT, rand_bigint);
-create_udf!(rand_impl::rand_bigint_bigintFunc, RAND_BIGINT_BIGINT, rand_bigint_bigint);
-create_udf!(rand_impl::randFunc, RAND, rand);
-create_udf!(rand_impl::rand_integerFunc, RAND_INTEGER, rand_integer);
-create_udf!(rand_impl::rand_integer_integerFunc, RAND_INTEGER_INTEGER, rand_integer_integer);
-create_udf!(rand_impl::rand_smallintFunc, RAND_SMALLINT, rand_smallint);
-create_udf!(rand_impl::rand_smallint_smallintFunc, RAND_SMALLINT_SMALLINT, rand_smallint_smallint);
-create_udf!(rand_impl::rand_tinyintFunc, RAND_TINYINT, rand_tinyint);
-create_udf!(rand_impl::rand_tinyint_tinyintFunc, RAND_TINYINT_TINYINT, rand_tinyint_tinyint);
+create_udaf!
 
-create_udf!(random_impl::random_bigintFunc, RANDOM_BIGINT, random_bigint);
-create_udf!(random_impl::random_bigint_bigintFunc, RANDOM_BIGINT_BIGINT, random_bigint_bigint);
-create_udf!(random_impl::randomFunc, RANDOM, random);
-create_udf!(random_impl::random_integerFunc, RANDOM_INTEGER, random_integer);
-create_udf!(random_impl::random_integer_integerFunc, RANDOM_INTEGER_INTEGER, random_integer_integer);
-create_udf!(random_impl::random_smallintFunc, RANDOM_SMALLINT, random_smallint);
-create_udf!(random_impl::random_smallint_smallintFunc, RANDOM_SMALLINT_SMALLINT, random_smallint_smallint);
-create_udf!(random_impl::random_tinyintFunc, RANDOM_TINYINT, random_tinyint);
-create_udf!(random_impl::random_tinyint_tinyintFunc, RANDOM_TINYINT_TINYINT, random_tinyint_tinyint);
+(avg_impl::avg_doubleFunc, AVG_DOUBLE, avg_double);
 
-create_udf!(reduce_impl::reduce_array_1_10_function_10_1_10_function_10_9Func, REDUCE_ARRAY_1_10_FUNCTION_10_1_10_FUNCTION_10_9, reduce_array_1_10_function_10_1_10_function_10_9);
 
-create_udf!(regexp_count_impl::regexp_count_varchar_joniregexpFunc, REGEXP_COUNT_VARCHAR_JONIREGEXP, regexp_count_varchar_joniregexp);
+create_udaf!
 
-create_udf!(regexp_extract_impl::regexp_extract_varchar_joniregexpFunc, REGEXP_EXTRACT_VARCHAR_JONIREGEXP, regexp_extract_varchar_joniregexp);
-create_udf!(regexp_extract_impl::regexp_extract_varchar_joniregexp_bigintFunc, REGEXP_EXTRACT_VARCHAR_JONIREGEXP_BIGINT, regexp_extract_varchar_joniregexp_bigint);
+(avg_impl::avg_decimal_p_sFunc, AVG_DECIMAL_P_S, avg_decimal_p_s);
 
-create_udf!(regexp_extract_all_impl::regexp_extract_all_varchar_joniregexpFunc, REGEXP_EXTRACT_ALL_VARCHAR_JONIREGEXP, regexp_extract_all_varchar_joniregexp);
-create_udf!(regexp_extract_all_impl::regexp_extract_all_varchar_joniregexp_bigintFunc, REGEXP_EXTRACT_ALL_VARCHAR_JONIREGEXP_BIGINT, regexp_extract_all_varchar_joniregexp_bigint);
 
-create_udf!(regexp_like_impl::regexp_like_varchar_joniregexpFunc, REGEXP_LIKE_VARCHAR_JONIREGEXP, regexp_like_varchar_joniregexp);
+create_udaf!
 
-create_udf!(regexp_position_impl::regexp_position_varchar_joniregexpFunc, REGEXP_POSITION_VARCHAR_JONIREGEXP, regexp_position_varchar_joniregexp);
-create_udf!(regexp_position_impl::regexp_position_varchar_joniregexp_bigintFunc, REGEXP_POSITION_VARCHAR_JONIREGEXP_BIGINT, regexp_position_varchar_joniregexp_bigint);
-create_udf!(regexp_position_impl::regexp_position_varchar_joniregexp_bigint_bigintFunc, REGEXP_POSITION_VARCHAR_JONIREGEXP_BIGINT_BIGINT, regexp_position_varchar_joniregexp_bigint_bigint);
+(avg_impl::avg_intervaldaytosecondFunc, AVG_INTERVALDAYTOSECOND, avg_intervaldaytosecond);
 
-create_udf!(regexp_replace_impl::regexp_replace_varchar_joniregexp_function_array_varchar_varcharFunc, REGEXP_REPLACE_VARCHAR_JONIREGEXP_FUNCTION_ARRAY_VARCHAR_VARCHAR, regexp_replace_varchar_joniregexp_function_array_varchar_varchar);
-create_udf!(regexp_replace_impl::regexp_replace_varchar_joniregexpFunc, REGEXP_REPLACE_VARCHAR_JONIREGEXP, regexp_replace_varchar_joniregexp);
-create_udf!(regexp_replace_impl::regexp_replace_varchar_joniregexp_varcharFunc, REGEXP_REPLACE_VARCHAR_JONIREGEXP_VARCHAR, regexp_replace_varchar_joniregexp_varchar);
 
-create_udf!(regexp_split_impl::regexp_split_varchar_joniregexpFunc, REGEXP_SPLIT_VARCHAR_JONIREGEXP, regexp_split_varchar_joniregexp);
+create_udaf!
 
-create_udf!(regress_impl::regress_map_bigint_double_regressorFunc, REGRESS_MAP_BIGINT_DOUBLE_REGRESSOR, regress_map_bigint_double_regressor);
+(avg_impl::avg_intervalyeartomonthFunc, AVG_INTERVALYEARTOMONTH, avg_intervalyeartomonth);
 
-create_udf!(render_impl::render_booleanFunc, RENDER_BOOLEAN, render_boolean);
-create_udf!(render_impl::render_bigint_colorFunc, RENDER_BIGINT_COLOR, render_bigint_color);
-create_udf!(render_impl::render_double_colorFunc, RENDER_DOUBLE_COLOR, render_double_color);
-create_udf!(render_impl::render_varchar_colorFunc, RENDER_VARCHAR_COLOR, render_varchar_color);
 
-create_udf!(repeat_impl::repeat_1_bigintFunc, REPEAT_1_BIGINT, repeat_1_bigint);
+create_udaf!
 
-create_udf!(replace_impl::replace_varchar_varchar_varcharFunc, REPLACE_VARCHAR_VARCHAR_VARCHAR, replace_varchar_varchar_varchar);
-create_udf!(replace_impl::replace_varchar_varcharFunc, REPLACE_VARCHAR_VARCHAR, replace_varchar_varchar);
+(avg_impl::avg_realFunc, AVG_REAL, avg_real);
 
-create_udf!(reverse_impl::reverse_array_3Func, REVERSE_ARRAY_3, reverse_array_3);
-create_udf!(reverse_impl::reverse_varbinaryFunc, REVERSE_VARBINARY, reverse_varbinary);
-create_udf!(reverse_impl::reverse_varcharFunc, REVERSE_VARCHAR, reverse_varchar);
 
-create_udf!(rgb_impl::rgb_bigint_bigint_bigintFunc, RGB_BIGINT_BIGINT_BIGINT, rgb_bigint_bigint_bigint);
 
-create_udf!(round_impl::round_doubleFunc, ROUND_DOUBLE, round_double);
-create_udf!(round_impl::round_double_bigintFunc, ROUND_DOUBLE_BIGINT, round_double_bigint);
-create_udf!(round_impl::round_realFunc, ROUND_REAL, round_real);
-create_udf!(round_impl::round_real_bigintFunc, ROUND_REAL_BIGINT, round_real_bigint);
-create_udf!(round_impl::round_integerFunc, ROUND_INTEGER, round_integer);
-create_udf!(round_impl::round_integer_integerFunc, ROUND_INTEGER_INTEGER, round_integer_integer);
-create_udf!(round_impl::round_decimal_p_sFunc, ROUND_DECIMAL_P_S, round_decimal_p_s);
-create_udf!(round_impl::round_decimal_p_s_bigintFunc, ROUND_DECIMAL_P_S_BIGINT, round_decimal_p_s_bigint);
-create_udf!(round_impl::round_bigintFunc, ROUND_BIGINT, round_bigint);
-create_udf!(round_impl::round_bigint_bigintFunc, ROUND_BIGINT_BIGINT, round_bigint_bigint);
-create_udf!(round_impl::round_smallintFunc, ROUND_SMALLINT, round_smallint);
-create_udf!(round_impl::round_smallint_bigintFunc, ROUND_SMALLINT_BIGINT, round_smallint_bigint);
-create_udf!(round_impl::round_tinyintFunc, ROUND_TINYINT, round_tinyint);
-create_udf!(round_impl::round_tinyint_bigintFunc, ROUND_TINYINT_BIGINT, round_tinyint_bigint);
+create_udf!
 
-create_udf!(rpad_impl::rpad_varbinary_bigint_varbinaryFunc, RPAD_VARBINARY_BIGINT_VARBINARY, rpad_varbinary_bigint_varbinary);
-create_udf!(rpad_impl::rpad_varchar_bigint_varcharFunc, RPAD_VARCHAR_BIGINT_VARCHAR, rpad_varchar_bigint_varchar);
+(bar_impl::bar_double_bigintFunc, BAR_DOUBLE_BIGINT, bar_double_bigint);
 
-create_udf!(rtrim_impl::rtrim_varcharFunc, RTRIM_VARCHAR, rtrim_varchar);
-create_udf!(rtrim_impl::rtrim_varchar_codepointsFunc, RTRIM_VARCHAR_CODEPOINTS, rtrim_varchar_codepoints);
 
-create_udf!(second_impl::second_intervaldaytosecondFunc, SECOND_INTERVALDAYTOSECOND, second_intervaldaytosecond);
-create_udf!(second_impl::second_time_pFunc, SECOND_TIME_P, second_time_p);
-create_udf!(second_impl::second_timestamp_pFunc, SECOND_TIMESTAMP_P, second_timestamp_p);
+create_udf!
 
-create_udf!(sequence_impl::sequence_bigint_bigintFunc, SEQUENCE_BIGINT_BIGINT, sequence_bigint_bigint);
-create_udf!(sequence_impl::sequence_bigint_bigint_bigintFunc, SEQUENCE_BIGINT_BIGINT_BIGINT, sequence_bigint_bigint_bigint);
-create_udf!(sequence_impl::sequence_date_dateFunc, SEQUENCE_DATE_DATE, sequence_date_date);
-create_udf!(sequence_impl::sequence_date_date_intervaldaytosecondFunc, SEQUENCE_DATE_DATE_INTERVALDAYTOSECOND, sequence_date_date_intervaldaytosecond);
-create_udf!(sequence_impl::sequence_date_date_intervalyeartomonthFunc, SEQUENCE_DATE_DATE_INTERVALYEARTOMONTH, sequence_date_date_intervalyeartomonth);
-create_udf!(sequence_impl::sequence_timestamp_p_timestamp_p_intervaldaytosecondFunc, SEQUENCE_TIMESTAMP_P_TIMESTAMP_P_INTERVALDAYTOSECOND, sequence_timestamp_p_timestamp_p_intervaldaytosecond);
+(bar_impl::bar_double_bigint_color_colorFunc, BAR_DOUBLE_BIGINT_COLOR_COLOR, bar_double_bigint_color_color);
 
-create_udf!(sha1_impl::sha1_varbinaryFunc, SHA1_VARBINARY, sha1_varbinary);
 
-create_udf!(sha256_impl::sha256_varbinaryFunc, SHA256_VARBINARY, sha256_varbinary);
 
-create_udf!(sha512_impl::sha512_varbinaryFunc, SHA512_VARBINARY, sha512_varbinary);
+create_udf!
 
-create_udf!(shuffle_impl::shuffle_array_3Func, SHUFFLE_ARRAY_3, shuffle_array_3);
+(beta_cdf_impl::beta_cdf_double_double_doubleFunc, BETA_CDF_DOUBLE_DOUBLE_DOUBLE, beta_cdf_double_double_double);
 
-create_udf!(sign_impl::sign_bigintFunc, SIGN_BIGINT, sign_bigint);
-create_udf!(sign_impl::sign_decimal_p_sFunc, SIGN_DECIMAL_P_S, sign_decimal_p_s);
-create_udf!(sign_impl::sign_doubleFunc, SIGN_DOUBLE, sign_double);
-create_udf!(sign_impl::sign_integerFunc, SIGN_INTEGER, sign_integer);
-create_udf!(sign_impl::sign_realFunc, SIGN_REAL, sign_real);
-create_udf!(sign_impl::sign_smallintFunc, SIGN_SMALLINT, sign_smallint);
-create_udf!(sign_impl::sign_tinyintFunc, SIGN_TINYINT, sign_tinyint);
 
-create_udf!(simplify_geometry_impl::simplify_geometry_geometry_doubleFunc, SIMPLIFY_GEOMETRY_GEOMETRY_DOUBLE, simplify_geometry_geometry_double);
 
-create_udf!(sin_impl::sin_doubleFunc, SIN_DOUBLE, sin_double);
+create_udf!
 
-create_udf!(sinh_impl::sinh_doubleFunc, SINH_DOUBLE, sinh_double);
+(bing_tile_impl::bing_tile_bigint_bigint_bigintFunc, BING_TILE_BIGINT_BIGINT_BIGINT, bing_tile_bigint_bigint_bigint);
 
-create_udf!(slice_impl::slice_array_3_bigint_bigintFunc, SLICE_ARRAY_3_BIGINT_BIGINT, slice_array_3_bigint_bigint);
 
-create_udf!(soundex_impl::soundex_varcharFunc, SOUNDEX_VARCHAR, soundex_varchar);
+create_udf!
 
-create_udf!(spatial_partitions_impl::spatial_partitions_kdbtree_geometryFunc, SPATIAL_PARTITIONS_KDBTREE_GEOMETRY, spatial_partitions_kdbtree_geometry);
-create_udf!(spatial_partitions_impl::spatial_partitions_kdbtree_geometry_doubleFunc, SPATIAL_PARTITIONS_KDBTREE_GEOMETRY_DOUBLE, spatial_partitions_kdbtree_geometry_double);
+(bing_tile_impl::bing_tile_varcharFunc, BING_TILE_VARCHAR, bing_tile_varchar);
 
-create_udf!(split_impl::split_varchar_varcharFunc, SPLIT_VARCHAR_VARCHAR, split_varchar_varchar);
-create_udf!(split_impl::split_varchar_varchar_bigintFunc, SPLIT_VARCHAR_VARCHAR_BIGINT, split_varchar_varchar_bigint);
 
-create_udf!(split_part_impl::split_part_varchar_varchar_bigintFunc, SPLIT_PART_VARCHAR_VARCHAR_BIGINT, split_part_varchar_varchar_bigint);
 
-create_udf!(split_to_map_impl::split_to_map_varchar_varchar_varcharFunc, SPLIT_TO_MAP_VARCHAR_VARCHAR_VARCHAR, split_to_map_varchar_varchar_varchar);
+create_udf!
 
-create_udf!(split_to_multimap_impl::split_to_multimap_varchar_varchar_varcharFunc, SPLIT_TO_MULTIMAP_VARCHAR_VARCHAR_VARCHAR, split_to_multimap_varchar_varchar_varchar);
+(bing_tile_at_impl::bing_tile_at_double_double_bigintFunc, BING_TILE_AT_DOUBLE_DOUBLE_BIGINT, bing_tile_at_double_double_bigint);
 
-create_udf!(spooky_hash_v2_32_impl::spooky_hash_v2_32_varbinaryFunc, SPOOKY_HASH_V2_32_VARBINARY, spooky_hash_v2_32_varbinary);
 
-create_udf!(spooky_hash_v2_64_impl::spooky_hash_v2_64_varbinaryFunc, SPOOKY_HASH_V2_64_VARBINARY, spooky_hash_v2_64_varbinary);
 
-create_udf!(sqrt_impl::sqrt_doubleFunc, SQRT_DOUBLE, sqrt_double);
+create_udf!
 
-create_udf!(st_area_impl::st_area_geometryFunc, ST_AREA_GEOMETRY, st_area_geometry);
-create_udf!(st_area_impl::st_area_sphericalgeographyFunc, ST_AREA_SPHERICALGEOGRAPHY, st_area_sphericalgeography);
+(bing_tile_coordinates_impl::bing_tile_coordinates_bingtileFunc, BING_TILE_COORDINATES_BINGTILE, bing_tile_coordinates_bingtile);
 
-create_udf!(st_asbinary_impl::st_asbinary_geometryFunc, ST_ASBINARY_GEOMETRY, st_asbinary_geometry);
 
-create_udf!(st_astext_impl::st_astext_geometryFunc, ST_ASTEXT_GEOMETRY, st_astext_geometry);
 
-create_udf!(st_boundary_impl::st_boundary_geometryFunc, ST_BOUNDARY_GEOMETRY, st_boundary_geometry);
+create_udf!
 
-create_udf!(st_buffer_impl::st_buffer_geometry_doubleFunc, ST_BUFFER_GEOMETRY_DOUBLE, st_buffer_geometry_double);
+(bing_tile_polygon_impl::bing_tile_polygon_bingtileFunc, BING_TILE_POLYGON_BINGTILE, bing_tile_polygon_bingtile);
 
-create_udf!(st_centroid_impl::st_centroid_geometryFunc, ST_CENTROID_GEOMETRY, st_centroid_geometry);
 
-create_udf!(st_contains_impl::st_contains_geometry_geometryFunc, ST_CONTAINS_GEOMETRY_GEOMETRY, st_contains_geometry_geometry);
 
-create_udf!(st_convexhull_impl::st_convexhull_geometryFunc, ST_CONVEXHULL_GEOMETRY, st_convexhull_geometry);
+create_udf!
 
-create_udf!(st_coorddim_impl::st_coorddim_geometryFunc, ST_COORDDIM_GEOMETRY, st_coorddim_geometry);
+(bing_tile_quadkey_impl::bing_tile_quadkey_bingtileFunc, BING_TILE_QUADKEY_BINGTILE, bing_tile_quadkey_bingtile);
 
-create_udf!(st_crosses_impl::st_crosses_geometry_geometryFunc, ST_CROSSES_GEOMETRY_GEOMETRY, st_crosses_geometry_geometry);
 
-create_udf!(st_difference_impl::st_difference_geometry_geometryFunc, ST_DIFFERENCE_GEOMETRY_GEOMETRY, st_difference_geometry_geometry);
 
-create_udf!(st_dimension_impl::st_dimension_geometryFunc, ST_DIMENSION_GEOMETRY, st_dimension_geometry);
+create_udf!
 
-create_udf!(st_disjoint_impl::st_disjoint_geometry_geometryFunc, ST_DISJOINT_GEOMETRY_GEOMETRY, st_disjoint_geometry_geometry);
+(bing_tile_zoom_level_impl::bing_tile_zoom_level_bingtileFunc, BING_TILE_ZOOM_LEVEL_BINGTILE, bing_tile_zoom_level_bingtile);
 
-create_udf!(st_distance_impl::st_distance_geometry_geometryFunc, ST_DISTANCE_GEOMETRY_GEOMETRY, st_distance_geometry_geometry);
-create_udf!(st_distance_impl::st_distance_sphericalgeography_sphericalgeographyFunc, ST_DISTANCE_SPHERICALGEOGRAPHY_SPHERICALGEOGRAPHY, st_distance_sphericalgeography_sphericalgeography);
 
-create_udf!(st_endpoint_impl::st_endpoint_geometryFunc, ST_ENDPOINT_GEOMETRY, st_endpoint_geometry);
 
-create_udf!(st_envelope_impl::st_envelope_geometryFunc, ST_ENVELOPE_GEOMETRY, st_envelope_geometry);
+create_udf!
 
-create_udf!(st_envelopeaspts_impl::st_envelopeaspts_geometryFunc, ST_ENVELOPEASPTS_GEOMETRY, st_envelopeaspts_geometry);
+(bing_tiles_around_impl::bing_tiles_around_double_double_bigintFunc, BING_TILES_AROUND_DOUBLE_DOUBLE_BIGINT, bing_tiles_around_double_double_bigint);
 
-create_udf!(st_equals_impl::st_equals_geometry_geometryFunc, ST_EQUALS_GEOMETRY_GEOMETRY, st_equals_geometry_geometry);
 
-create_udf!(st_exteriorring_impl::st_exteriorring_geometryFunc, ST_EXTERIORRING_GEOMETRY, st_exteriorring_geometry);
+create_udf!
 
-create_udf!(st_geometries_impl::st_geometries_geometryFunc, ST_GEOMETRIES_GEOMETRY, st_geometries_geometry);
+(bing_tiles_around_impl::bing_tiles_around_double_double_bigint_doubleFunc, BING_TILES_AROUND_DOUBLE_DOUBLE_BIGINT_DOUBLE, bing_tiles_around_double_double_bigint_double);
 
-create_udf!(st_geometryfromtext_impl::st_geometryfromtext_varcharFunc, ST_GEOMETRYFROMTEXT_VARCHAR, st_geometryfromtext_varchar);
 
-create_udf!(st_geometryn_impl::st_geometryn_geometry_bigintFunc, ST_GEOMETRYN_GEOMETRY_BIGINT, st_geometryn_geometry_bigint);
 
-create_udf!(st_geometrytype_impl::st_geometrytype_geometryFunc, ST_GEOMETRYTYPE_GEOMETRY, st_geometrytype_geometry);
+create_udf!
 
-create_udf!(st_geomfrombinary_impl::st_geomfrombinary_varbinaryFunc, ST_GEOMFROMBINARY_VARBINARY, st_geomfrombinary_varbinary);
+(bit_count_impl::bit_count_bigint_bigintFunc, BIT_COUNT_BIGINT_BIGINT, bit_count_bigint_bigint);
 
-create_udf!(st_interiorringn_impl::st_interiorringn_geometry_bigintFunc, ST_INTERIORRINGN_GEOMETRY_BIGINT, st_interiorringn_geometry_bigint);
 
-create_udf!(st_interiorrings_impl::st_interiorrings_geometryFunc, ST_INTERIORRINGS_GEOMETRY, st_interiorrings_geometry);
 
-create_udf!(st_intersection_impl::st_intersection_geometry_geometryFunc, ST_INTERSECTION_GEOMETRY_GEOMETRY, st_intersection_geometry_geometry);
+create_udf!
 
-create_udf!(st_intersects_impl::st_intersects_geometry_geometryFunc, ST_INTERSECTS_GEOMETRY_GEOMETRY, st_intersects_geometry_geometry);
+(bitwise_and_impl::bitwise_and_bigint_bigintFunc, BITWISE_AND_BIGINT_BIGINT, bitwise_and_bigint_bigint);
 
-create_udf!(st_isclosed_impl::st_isclosed_geometryFunc, ST_ISCLOSED_GEOMETRY, st_isclosed_geometry);
 
-create_udf!(st_isempty_impl::st_isempty_geometryFunc, ST_ISEMPTY_GEOMETRY, st_isempty_geometry);
 
-create_udf!(st_isring_impl::st_isring_geometryFunc, ST_ISRING_GEOMETRY, st_isring_geometry);
+create_udaf!
 
-create_udf!(st_issimple_impl::st_issimple_geometryFunc, ST_ISSIMPLE_GEOMETRY, st_issimple_geometry);
+(bitwise_and_agg_impl::bitwise_and_agg_bigintFunc, BITWISE_AND_AGG_BIGINT, bitwise_and_agg_bigint);
 
-create_udf!(st_isvalid_impl::st_isvalid_geometryFunc, ST_ISVALID_GEOMETRY, st_isvalid_geometry);
 
-create_udf!(st_length_impl::st_length_geometryFunc, ST_LENGTH_GEOMETRY, st_length_geometry);
-create_udf!(st_length_impl::st_length_sphericalgeographyFunc, ST_LENGTH_SPHERICALGEOGRAPHY, st_length_sphericalgeography);
 
-create_udf!(st_linefromtext_impl::st_linefromtext_varcharFunc, ST_LINEFROMTEXT_VARCHAR, st_linefromtext_varchar);
+create_udf!
 
-create_udf!(st_linestring_impl::st_linestring_array_geometryFunc, ST_LINESTRING_ARRAY_GEOMETRY, st_linestring_array_geometry);
+(bitwise_left_shift_impl::bitwise_left_shift_bigint_bigintFunc, BITWISE_LEFT_SHIFT_BIGINT_BIGINT, bitwise_left_shift_bigint_bigint);
 
-create_udf!(st_multipoint_impl::st_multipoint_array_geometryFunc, ST_MULTIPOINT_ARRAY_GEOMETRY, st_multipoint_array_geometry);
 
-create_udf!(st_numgeometries_impl::st_numgeometries_geometryFunc, ST_NUMGEOMETRIES_GEOMETRY, st_numgeometries_geometry);
+create_udf!
 
-create_udf!(st_numinteriorring_impl::st_numinteriorring_geometryFunc, ST_NUMINTERIORRING_GEOMETRY, st_numinteriorring_geometry);
+(bitwise_left_shift_impl::bitwise_left_shift_integer_bigintFunc, BITWISE_LEFT_SHIFT_INTEGER_BIGINT, bitwise_left_shift_integer_bigint);
 
-create_udf!(st_numpoints_impl::st_numpoints_geometryFunc, ST_NUMPOINTS_GEOMETRY, st_numpoints_geometry);
 
-create_udf!(st_overlaps_impl::st_overlaps_geometry_geometryFunc, ST_OVERLAPS_GEOMETRY_GEOMETRY, st_overlaps_geometry_geometry);
+create_udf!
 
-create_udf!(st_point_impl::st_point_double_doubleFunc, ST_POINT_DOUBLE_DOUBLE, st_point_double_double);
+(bitwise_left_shift_impl::bitwise_left_shift_smallint_bigintFunc, BITWISE_LEFT_SHIFT_SMALLINT_BIGINT, bitwise_left_shift_smallint_bigint);
 
-create_udf!(st_pointn_impl::st_pointn_geometry_bigintFunc, ST_POINTN_GEOMETRY_BIGINT, st_pointn_geometry_bigint);
 
-create_udf!(st_points_impl::st_points_geometryFunc, ST_POINTS_GEOMETRY, st_points_geometry);
+create_udf!
 
-create_udf!(st_polygon_impl::st_polygon_varcharFunc, ST_POLYGON_VARCHAR, st_polygon_varchar);
+(bitwise_left_shift_impl::bitwise_left_shift_tinyint_bigintFunc, BITWISE_LEFT_SHIFT_TINYINT_BIGINT, bitwise_left_shift_tinyint_bigint);
 
-create_udf!(st_relate_impl::st_relate_geometry_geometry_varcharFunc, ST_RELATE_GEOMETRY_GEOMETRY_VARCHAR, st_relate_geometry_geometry_varchar);
 
-create_udf!(st_startpoint_impl::st_startpoint_geometryFunc, ST_STARTPOINT_GEOMETRY, st_startpoint_geometry);
 
-create_udf!(st_symdifference_impl::st_symdifference_geometry_geometryFunc, ST_SYMDIFFERENCE_GEOMETRY_GEOMETRY, st_symdifference_geometry_geometry);
+create_udf!
 
-create_udf!(st_touches_impl::st_touches_geometry_geometryFunc, ST_TOUCHES_GEOMETRY_GEOMETRY, st_touches_geometry_geometry);
+(bitwise_not_impl::bitwise_not_bigintFunc, BITWISE_NOT_BIGINT, bitwise_not_bigint);
 
-create_udf!(st_union_impl::st_union_geometry_geometryFunc, ST_UNION_GEOMETRY_GEOMETRY, st_union_geometry_geometry);
 
-create_udf!(st_within_impl::st_within_geometry_geometryFunc, ST_WITHIN_GEOMETRY_GEOMETRY, st_within_geometry_geometry);
 
-create_udf!(st_x_impl::st_x_geometryFunc, ST_X_GEOMETRY, st_x_geometry);
+create_udf!
 
-create_udf!(st_xmax_impl::st_xmax_geometryFunc, ST_XMAX_GEOMETRY, st_xmax_geometry);
+(bitwise_or_impl::bitwise_or_bigint_bigintFunc, BITWISE_OR_BIGINT_BIGINT, bitwise_or_bigint_bigint);
 
-create_udf!(st_xmin_impl::st_xmin_geometryFunc, ST_XMIN_GEOMETRY, st_xmin_geometry);
 
-create_udf!(st_y_impl::st_y_geometryFunc, ST_Y_GEOMETRY, st_y_geometry);
 
-create_udf!(st_ymax_impl::st_ymax_geometryFunc, ST_YMAX_GEOMETRY, st_ymax_geometry);
+create_udaf!
 
-create_udf!(st_ymin_impl::st_ymin_geometryFunc, ST_YMIN_GEOMETRY, st_ymin_geometry);
+(bitwise_or_agg_impl::bitwise_or_agg_bigintFunc, BITWISE_OR_AGG_BIGINT, bitwise_or_agg_bigint);
 
-create_udf!(starts_with_impl::starts_with_varchar_varcharFunc, STARTS_WITH_VARCHAR_VARCHAR, starts_with_varchar_varchar);
 
-create_udf!(strpos_impl::strpos_varchar_varcharFunc, STRPOS_VARCHAR_VARCHAR, strpos_varchar_varchar);
-create_udf!(strpos_impl::strpos_varchar_varchar_bigintFunc, STRPOS_VARCHAR_VARCHAR_BIGINT, strpos_varchar_varchar_bigint);
 
-create_udf!(substr_impl::substr_varchar_bigintFunc, SUBSTR_VARCHAR_BIGINT, substr_varchar_bigint);
-create_udf!(substr_impl::substr_varchar_bigint_bigintFunc, SUBSTR_VARCHAR_BIGINT_BIGINT, substr_varchar_bigint_bigint);
-create_udf!(substr_impl::substr_varbinary_bigintFunc, SUBSTR_VARBINARY_BIGINT, substr_varbinary_bigint);
-create_udf!(substr_impl::substr_varbinary_bigint_bigintFunc, SUBSTR_VARBINARY_BIGINT_BIGINT, substr_varbinary_bigint_bigint);
+create_udf!
 
-create_udf!(substring_impl::substring_varchar_bigintFunc, SUBSTRING_VARCHAR_BIGINT, substring_varchar_bigint);
-create_udf!(substring_impl::substring_varchar_bigint_bigintFunc, SUBSTRING_VARCHAR_BIGINT_BIGINT, substring_varchar_bigint_bigint);
+(bitwise_right_shift_impl::bitwise_right_shift_bigint_bigintFunc, BITWISE_RIGHT_SHIFT_BIGINT_BIGINT, bitwise_right_shift_bigint_bigint);
 
-create_udf!(tan_impl::tan_doubleFunc, TAN_DOUBLE, tan_double);
 
-create_udf!(tanh_impl::tanh_doubleFunc, TANH_DOUBLE, tanh_double);
+create_udf!
 
-create_udf!(timestamp_objectid_impl::timestamp_objectid_timestamp_0Func, TIMESTAMP_OBJECTID_TIMESTAMP_0, timestamp_objectid_timestamp_0);
+(bitwise_right_shift_impl::bitwise_right_shift_integer_bigintFunc, BITWISE_RIGHT_SHIFT_INTEGER_BIGINT, bitwise_right_shift_integer_bigint);
 
-create_udf!(timezone_hour_impl::timezone_hour_time_pFunc, TIMEZONE_HOUR_TIME_P, timezone_hour_time_p);
-create_udf!(timezone_hour_impl::timezone_hour_timestamp_pFunc, TIMEZONE_HOUR_TIMESTAMP_P, timezone_hour_timestamp_p);
 
-create_udf!(timezone_minute_impl::timezone_minute_time_pFunc, TIMEZONE_MINUTE_TIME_P, timezone_minute_time_p);
-create_udf!(timezone_minute_impl::timezone_minute_timestamp_pFunc, TIMEZONE_MINUTE_TIMESTAMP_P, timezone_minute_timestamp_p);
+create_udf!
 
-create_udf!(to_base_impl::to_base_bigint_bigintFunc, TO_BASE_BIGINT_BIGINT, to_base_bigint_bigint);
+(bitwise_right_shift_impl::bitwise_right_shift_smallint_bigintFunc, BITWISE_RIGHT_SHIFT_SMALLINT_BIGINT, bitwise_right_shift_smallint_bigint);
 
-create_udf!(to_base32_impl::to_base32_varbinaryFunc, TO_BASE32_VARBINARY, to_base32_varbinary);
 
-create_udf!(to_base64_impl::to_base64_varbinaryFunc, TO_BASE64_VARBINARY, to_base64_varbinary);
+create_udf!
 
-create_udf!(to_base64url_impl::to_base64url_varbinaryFunc, TO_BASE64URL_VARBINARY, to_base64url_varbinary);
+(bitwise_right_shift_impl::bitwise_right_shift_tinyint_bigintFunc, BITWISE_RIGHT_SHIFT_TINYINT_BIGINT, bitwise_right_shift_tinyint_bigint);
 
-create_udf!(to_big_endian_32_impl::to_big_endian_32_bigintFunc, TO_BIG_ENDIAN_32_BIGINT, to_big_endian_32_bigint);
 
-create_udf!(to_big_endian_64_impl::to_big_endian_64_bigintFunc, TO_BIG_ENDIAN_64_BIGINT, to_big_endian_64_bigint);
 
-create_udf!(to_char_impl::to_char_timestamp_p_varcharFunc, TO_CHAR_TIMESTAMP_P_VARCHAR, to_char_timestamp_p_varchar);
+create_udf!
 
-create_udf!(to_date_impl::to_date_varchar_varcharFunc, TO_DATE_VARCHAR_VARCHAR, to_date_varchar_varchar);
+(bitwise_right_shift_arithmetic_impl::bitwise_right_shift_arithmetic_bigint_bigintFunc, BITWISE_RIGHT_SHIFT_ARITHMETIC_BIGINT_BIGINT, bitwise_right_shift_arithmetic_bigint_bigint);
 
-create_udf!(to_encoded_polyline_impl::to_encoded_polyline_geometryFunc, TO_ENCODED_POLYLINE_GEOMETRY, to_encoded_polyline_geometry);
 
-create_udf!(to_geojson_geometry_impl::to_geojson_geometry_sphericalgeographyFunc, TO_GEOJSON_GEOMETRY_SPHERICALGEOGRAPHY, to_geojson_geometry_sphericalgeography);
+create_udf!
 
-create_udf!(to_geometry_impl::to_geometry_sphericalgeographyFunc, TO_GEOMETRY_SPHERICALGEOGRAPHY, to_geometry_sphericalgeography);
+(bitwise_right_shift_arithmetic_impl::bitwise_right_shift_arithmetic_integer_bigintFunc, BITWISE_RIGHT_SHIFT_ARITHMETIC_INTEGER_BIGINT, bitwise_right_shift_arithmetic_integer_bigint);
 
-create_udf!(to_hex_impl::to_hex_varbinaryFunc, TO_HEX_VARBINARY, to_hex_varbinary);
 
-create_udf!(to_ieee754_32_impl::to_ieee754_32_realFunc, TO_IEEE754_32_REAL, to_ieee754_32_real);
+create_udf!
 
-create_udf!(to_ieee754_64_impl::to_ieee754_64_doubleFunc, TO_IEEE754_64_DOUBLE, to_ieee754_64_double);
+(bitwise_right_shift_arithmetic_impl::bitwise_right_shift_arithmetic_smallint_bigintFunc, BITWISE_RIGHT_SHIFT_ARITHMETIC_SMALLINT_BIGINT, bitwise_right_shift_arithmetic_smallint_bigint);
 
-create_udf!(to_iso8601_impl::to_iso8601_dateFunc, TO_ISO8601_DATE, to_iso8601_date);
-create_udf!(to_iso8601_impl::to_iso8601_timestamp_pFunc, TO_ISO8601_TIMESTAMP_P, to_iso8601_timestamp_p);
 
-create_udf!(to_milliseconds_impl::to_milliseconds_intervaldaytosecondFunc, TO_MILLISECONDS_INTERVALDAYTOSECOND, to_milliseconds_intervaldaytosecond);
+create_udf!
 
-create_udf!(to_spherical_geography_impl::to_spherical_geography_geometryFunc, TO_SPHERICAL_GEOGRAPHY_GEOMETRY, to_spherical_geography_geometry);
+(bitwise_right_shift_arithmetic_impl::bitwise_right_shift_arithmetic_tinyint_bigintFunc, BITWISE_RIGHT_SHIFT_ARITHMETIC_TINYINT_BIGINT, bitwise_right_shift_arithmetic_tinyint_bigint);
 
-create_udf!(to_timestamp_impl::to_timestamp_varchar_varcharFunc, TO_TIMESTAMP_VARCHAR_VARCHAR, to_timestamp_varchar_varchar);
 
-create_udf!(to_unixtime_impl::to_unixtime_timestamp_pFunc, TO_UNIXTIME_TIMESTAMP_P, to_unixtime_timestamp_p);
 
-create_udf!(to_utf8_impl::to_utf8_varcharFunc, TO_UTF8_VARCHAR, to_utf8_varchar);
+create_udf!
 
-create_udf!(transform_impl::transform_array_1_function_1_11Func, TRANSFORM_ARRAY_1_FUNCTION_1_11, transform_array_1_function_1_11);
+(bitwise_xor_impl::bitwise_xor_bigint_bigintFunc, BITWISE_XOR_BIGINT_BIGINT, bitwise_xor_bigint_bigint);
 
-create_udf!(transform_keys_impl::transform_keys_map_13_5_function_13_5_12Func, TRANSFORM_KEYS_MAP_13_5_FUNCTION_13_5_12, transform_keys_map_13_5_function_13_5_12);
 
-create_udf!(transform_values_impl::transform_values_map_4_8_function_4_8_7Func, TRANSFORM_VALUES_MAP_4_8_FUNCTION_4_8_7, transform_values_map_4_8_function_4_8_7);
 
-create_udf!(translate_impl::translate_varchar_varchar_varcharFunc, TRANSLATE_VARCHAR_VARCHAR_VARCHAR, translate_varchar_varchar_varchar);
+create_udaf!
 
-create_udf!(trim_impl::trim_varcharFunc, TRIM_VARCHAR, trim_varchar);
-create_udf!(trim_impl::trim_varchar_codepointsFunc, TRIM_VARCHAR_CODEPOINTS, trim_varchar_codepoints);
+(bool_and_impl::bool_and_booleanFunc, BOOL_AND_BOOLEAN, bool_and_boolean);
 
-create_udf!(trim_array_impl::trim_array_array_3_bigintFunc, TRIM_ARRAY_ARRAY_3_BIGINT, trim_array_array_3_bigint);
 
-create_udf!(truncate_impl::truncate_decimal_p_s_bigintFunc, TRUNCATE_DECIMAL_P_S_BIGINT, truncate_decimal_p_s_bigint);
-create_udf!(truncate_impl::truncate_decimal_p_sFunc, TRUNCATE_DECIMAL_P_S, truncate_decimal_p_s);
-create_udf!(truncate_impl::truncate_doubleFunc, TRUNCATE_DOUBLE, truncate_double);
-create_udf!(truncate_impl::truncate_realFunc, TRUNCATE_REAL, truncate_real);
 
-create_udf!(try_impl::try_1Func, TRY_1, try_1);
+create_udaf!
 
-create_udf!(typeof_impl::typeof_1Func, TYPEOF_1, typeof_1);
+(bool_or_impl::bool_or_booleanFunc, BOOL_OR_BOOLEAN, bool_or_boolean);
 
-create_udf!(upper_impl::upper_varcharFunc, UPPER_VARCHAR, upper_varchar);
 
-create_udf!(url_decode_impl::url_decode_varcharFunc, URL_DECODE_VARCHAR, url_decode_varchar);
 
-create_udf!(url_encode_impl::url_encode_varcharFunc, URL_ENCODE_VARCHAR, url_encode_varchar);
+create_udf!
 
-create_udf!(url_extract_fragment_impl::url_extract_fragment_varcharFunc, URL_EXTRACT_FRAGMENT_VARCHAR, url_extract_fragment_varchar);
+(cardinality_impl::cardinality_array_3Func, CARDINALITY_ARRAY_3, cardinality_array_3);
 
-create_udf!(url_extract_host_impl::url_extract_host_varcharFunc, URL_EXTRACT_HOST_VARCHAR, url_extract_host_varchar);
 
-create_udf!(url_extract_parameter_impl::url_extract_parameter_varchar_varcharFunc, URL_EXTRACT_PARAMETER_VARCHAR_VARCHAR, url_extract_parameter_varchar_varchar);
+create_udf!
 
-create_udf!(url_extract_path_impl::url_extract_path_varcharFunc, URL_EXTRACT_PATH_VARCHAR, url_extract_path_varchar);
+(cardinality_impl::cardinality_hyperloglogFunc, CARDINALITY_HYPERLOGLOG, cardinality_hyperloglog);
 
-create_udf!(url_extract_port_impl::url_extract_port_varcharFunc, URL_EXTRACT_PORT_VARCHAR, url_extract_port_varchar);
 
-create_udf!(url_extract_protocol_impl::url_extract_protocol_varcharFunc, URL_EXTRACT_PROTOCOL_VARCHAR, url_extract_protocol_varchar);
+create_udf!
 
-create_udf!(url_extract_query_impl::url_extract_query_varcharFunc, URL_EXTRACT_QUERY_VARCHAR, url_extract_query_varchar);
+(cardinality_impl::cardinality_map_4_5Func, CARDINALITY_MAP_4_5, cardinality_map_4_5);
 
-create_udf!(uuid_impl::uuidFunc, UUID, uuid);
 
-create_udf!(value_at_quantile_impl::value_at_quantile_qdigest_doubleFunc, VALUE_AT_QUANTILE_QDIGEST_DOUBLE, value_at_quantile_qdigest_double);
-create_udf!(value_at_quantile_impl::value_at_quantile_tdigest_doubleFunc, VALUE_AT_QUANTILE_TDIGEST_DOUBLE, value_at_quantile_tdigest_double);
+create_udf!
 
-create_udf!(values_at_quantiles_impl::values_at_quantiles_qdigest_array_doubleFunc, VALUES_AT_QUANTILES_QDIGEST_ARRAY_DOUBLE, values_at_quantiles_qdigest_array_double);
-create_udf!(values_at_quantiles_impl::values_at_quantiles_tdigest_array_doubleFunc, VALUES_AT_QUANTILES_TDIGEST_ARRAY_DOUBLE, values_at_quantiles_tdigest_array_double);
+(cardinality_impl::cardinality_setdigestFunc, CARDINALITY_SETDIGEST, cardinality_setdigest);
 
-create_udf!(week_impl::week_dateFunc, WEEK_DATE, week_date);
-create_udf!(week_impl::week_timestamp_pFunc, WEEK_TIMESTAMP_P, week_timestamp_p);
 
-create_udf!(week_of_year_impl::week_of_year_dateFunc, WEEK_OF_YEAR_DATE, week_of_year_date);
-create_udf!(week_of_year_impl::week_of_year_timestamp_pFunc, WEEK_OF_YEAR_TIMESTAMP_P, week_of_year_timestamp_p);
 
-create_udf!(width_bucket_impl::width_bucket_double_array_doubleFunc, WIDTH_BUCKET_DOUBLE_ARRAY_DOUBLE, width_bucket_double_array_double);
-create_udf!(width_bucket_impl::width_bucket_double_double_double_bigintFunc, WIDTH_BUCKET_DOUBLE_DOUBLE_DOUBLE_BIGINT, width_bucket_double_double_double_bigint);
+create_udf!
 
-create_udf!(wilson_interval_lower_impl::wilson_interval_lower_bigint_bigint_doubleFunc, WILSON_INTERVAL_LOWER_BIGINT_BIGINT_DOUBLE, wilson_interval_lower_bigint_bigint_double);
+(cbrt_impl::cbrt_doubleFunc, CBRT_DOUBLE, cbrt_double);
 
-create_udf!(wilson_interval_upper_impl::wilson_interval_upper_bigint_bigint_doubleFunc, WILSON_INTERVAL_UPPER_BIGINT_BIGINT_DOUBLE, wilson_interval_upper_bigint_bigint_double);
 
-create_udf!(with_timezone_impl::with_timezone_timestamp_p_varcharFunc, WITH_TIMEZONE_TIMESTAMP_P_VARCHAR, with_timezone_timestamp_p_varchar);
 
-create_udf!(word_stem_impl::word_stem_varcharFunc, WORD_STEM_VARCHAR, word_stem_varchar);
-create_udf!(word_stem_impl::word_stem_varchar_varcharFunc, WORD_STEM_VARCHAR_VARCHAR, word_stem_varchar_varchar);
+create_udf!
 
-create_udf!(xxhash64_impl::xxhash64_varbinaryFunc, XXHASH64_VARBINARY, xxhash64_varbinary);
+(ceil_impl::ceil_bigintFunc, CEIL_BIGINT, ceil_bigint);
 
-create_udf!(year_impl::year_dateFunc, YEAR_DATE, year_date);
-create_udf!(year_impl::year_intervalyeartomonthFunc, YEAR_INTERVALYEARTOMONTH, year_intervalyeartomonth);
-create_udf!(year_impl::year_timestamp_pFunc, YEAR_TIMESTAMP_P, year_timestamp_p);
 
-create_udf!(year_of_week_impl::year_of_week_dateFunc, YEAR_OF_WEEK_DATE, year_of_week_date);
-create_udf!(year_of_week_impl::year_of_week_timestamp_pFunc, YEAR_OF_WEEK_TIMESTAMP_P, year_of_week_timestamp_p);
+create_udf!
 
-create_udf!(yow_impl::yow_dateFunc, YOW_DATE, yow_date);
-create_udf!(yow_impl::yow_timestamp_pFunc, YOW_TIMESTAMP_P, yow_timestamp_p);
+(ceil_impl::ceil_decimal_p_sFunc, CEIL_DECIMAL_P_S, ceil_decimal_p_s);
 
-create_udf!(zip_impl::zip_array_14_array_15Func, ZIP_ARRAY_14_ARRAY_15, zip_array_14_array_15);
-create_udf!(zip_impl::zip_array_14_array_15_array_16Func, ZIP_ARRAY_14_ARRAY_15_ARRAY_16, zip_array_14_array_15_array_16);
-create_udf!(zip_impl::zip_array_14_array_15_array_16_array_17Func, ZIP_ARRAY_14_ARRAY_15_ARRAY_16_ARRAY_17, zip_array_14_array_15_array_16_array_17);
-create_udf!(zip_impl::zip_array_14_array_15_array_16_array_17_array_18Func, ZIP_ARRAY_14_ARRAY_15_ARRAY_16_ARRAY_17_ARRAY_18, zip_array_14_array_15_array_16_array_17_array_18);
 
-create_udf!(zip_with_impl::zip_with_array_1_array_11_function_1_11_9Func, ZIP_WITH_ARRAY_1_ARRAY_11_FUNCTION_1_11_9, zip_with_array_1_array_11_function_1_11_9);
+create_udf!
 
+(ceil_impl::ceil_doubleFunc, CEIL_DOUBLE, ceil_double);
 
 
-create_udaf!(
-    covar_samp::CovarianceSample,
-    COVARIANCESAMPLE,
-    covar_samp_udaf
-);
+create_udf!
 
+(ceil_impl::ceil_integerFunc, CEIL_INTEGER, ceil_integer);
 
 
-// Export the functions out of this package, both as expr_fn as well as a list of functions
-export_functions!(
-    (trino, abs_tinyint, arg1, "function doc"),
-    (trino, abs_smallint, arg1, "function doc"),
-    (trino, abs_bigint, arg1, "function doc"),
-    (trino, abs_double, arg1, "function doc"),
-    (trino, abs_decimal_p_s, arg1, "function doc"),
-    (trino, abs_real, arg1, "function doc"),
+create_udf!
 
-    (trino, acos_double, arg1, "function doc"),
+(ceil_impl::ceil_realFunc, CEIL_REAL, ceil_real);
 
-    (trino, all_match_array_1_function_1_boolean, arg1 arg2, "function doc"),
 
-    (trino, any_match_array_1_function_1_boolean, arg1 arg2, "function doc"),
+create_udf!
 
-    (trino, array_distinct_array_3, arg1, "function doc"),
+(ceil_impl::ceil_smallintFunc, CEIL_SMALLINT, ceil_smallint);
 
-    (trino, array_except_array_3_array_3, arg1 arg2, "function doc"),
 
-    (trino, array_intersect_array_3_array_3, arg1 arg2, "function doc"),
+create_udf!
 
-    (trino, array_join_array_1_varchar, arg1 arg2, "function doc"),
-    (trino, array_join_array_1_varchar_varchar, arg1 arg2 arg3, "function doc"),
+(ceil_impl::ceil_tinyintFunc, CEIL_TINYINT, ceil_tinyint);
 
-    (trino, array_max_array_1, arg1, "function doc"),
 
-    (trino, array_min_array_1, arg1, "function doc"),
 
-    (trino, array_position_array_1_1, arg1 arg2, "function doc"),
+create_udf!
 
-    (trino, array_remove_array_3_3, arg1 arg2, "function doc"),
+(ceiling_impl::ceiling_bigintFunc, CEILING_BIGINT, ceiling_bigint);
 
-    (trino, array_sort_array_3, arg1, "function doc"),
-    (trino, array_sort_array_1_function_1_1_bigint, arg1 arg2, "function doc"),
 
-    (trino, array_union_array_3_array_3, arg1 arg2, "function doc"),
+create_udf!
 
-    (trino, arrays_overlap_array_3_array_3, arg1 arg2, "function doc"),
+(ceiling_impl::ceiling_decimal_p_sFunc, CEILING_DECIMAL_P_S, ceiling_decimal_p_s);
 
-    (trino, asin_double, arg1, "function doc"),
 
-    (trino, at_timezone_timestamp_p_varchar, arg1 arg2, "function doc"),
+create_udf!
 
-    (trino, atan_double, arg1, "function doc"),
+(ceiling_impl::ceiling_doubleFunc, CEILING_DOUBLE, ceiling_double);
 
-    (trino, atan2_double_double, arg1 arg2, "function doc"),
 
-    (trino, bar_double_bigint, arg1 arg2, "function doc"),
-    (trino, bar_double_bigint_color_color, arg1 arg2 arg3 arg4, "function doc"),
+create_udf!
 
-    (trino, beta_cdf_double_double_double, arg1 arg2 arg3, "function doc"),
+(ceiling_impl::ceiling_integerFunc, CEILING_INTEGER, ceiling_integer);
 
-    (trino, bing_tile_bigint_bigint_bigint, arg1 arg2 arg3, "function doc"),
-    (trino, bing_tile_varchar, arg1, "function doc"),
 
-    (trino, bing_tile_at_double_double_bigint, arg1 arg2 arg3, "function doc"),
+create_udf!
 
-    (trino, bing_tile_coordinates_bingtile, arg1, "function doc"),
+(ceiling_impl::ceiling_realFunc, CEILING_REAL, ceiling_real);
 
-    (trino, bing_tile_polygon_bingtile, arg1, "function doc"),
 
-    (trino, bing_tile_quadkey_bingtile, arg1, "function doc"),
+create_udf!
 
-    (trino, bing_tile_zoom_level_bingtile, arg1, "function doc"),
+(ceiling_impl::ceiling_smallintFunc, CEILING_SMALLINT, ceiling_smallint);
 
-    (trino, bing_tiles_around_double_double_bigint, arg1 arg2 arg3, "function doc"),
-    (trino, bing_tiles_around_double_double_bigint_double, arg1 arg2 arg3 arg4, "function doc"),
 
-    (trino, bit_count_bigint_bigint, arg1 arg2, "function doc"),
+create_udf!
 
-    (trino, bitwise_and_bigint_bigint, arg1 arg2, "function doc"),
+(ceiling_impl::ceiling_tinyintFunc, CEILING_TINYINT, ceiling_tinyint);
 
-    (trino, bitwise_left_shift_bigint_bigint, arg1 arg2, "function doc"),
-    (trino, bitwise_left_shift_integer_bigint, arg1 arg2, "function doc"),
-    (trino, bitwise_left_shift_smallint_bigint, arg1 arg2, "function doc"),
-    (trino, bitwise_left_shift_tinyint_bigint, arg1 arg2, "function doc"),
 
-    (trino, bitwise_not_bigint, arg1, "function doc"),
 
-    (trino, bitwise_or_bigint_bigint, arg1 arg2, "function doc"),
+create_udf!
 
-    (trino, bitwise_right_shift_bigint_bigint, arg1 arg2, "function doc"),
-    (trino, bitwise_right_shift_integer_bigint, arg1 arg2, "function doc"),
-    (trino, bitwise_right_shift_smallint_bigint, arg1 arg2, "function doc"),
-    (trino, bitwise_right_shift_tinyint_bigint, arg1 arg2, "function doc"),
+(char2hexint_impl::char2hexint_varcharFunc, CHAR2HEXINT_VARCHAR, char2hexint_varchar);
 
-    (trino, bitwise_right_shift_arithmetic_bigint_bigint, arg1 arg2, "function doc"),
-    (trino, bitwise_right_shift_arithmetic_integer_bigint, arg1 arg2, "function doc"),
-    (trino, bitwise_right_shift_arithmetic_smallint_bigint, arg1 arg2, "function doc"),
-    (trino, bitwise_right_shift_arithmetic_tinyint_bigint, arg1 arg2, "function doc"),
 
-    (trino, bitwise_xor_bigint_bigint, arg1 arg2, "function doc"),
 
-    (trino, cardinality_array_3, arg1, "function doc"),
-    (trino, cardinality_hyperloglog, arg1, "function doc"),
-    (trino, cardinality_map_4_5, arg1, "function doc"),
-    (trino, cardinality_setdigest, arg1, "function doc"),
+create_udaf!
 
-    (trino, cbrt_double, arg1, "function doc"),
+(checksum_impl::checksum_1Func, CHECKSUM_1, checksum_1);
 
-    (trino, ceil_bigint, arg1, "function doc"),
-    (trino, ceil_decimal_p_s, arg1, "function doc"),
-    (trino, ceil_double, arg1, "function doc"),
-    (trino, ceil_integer, arg1, "function doc"),
-    (trino, ceil_real, arg1, "function doc"),
-    (trino, ceil_smallint, arg1, "function doc"),
-    (trino, ceil_tinyint, arg1, "function doc"),
 
-    (trino, ceiling_bigint, arg1, "function doc"),
-    (trino, ceiling_decimal_p_s, arg1, "function doc"),
-    (trino, ceiling_double, arg1, "function doc"),
-    (trino, ceiling_integer, arg1, "function doc"),
-    (trino, ceiling_real, arg1, "function doc"),
-    (trino, ceiling_smallint, arg1, "function doc"),
-    (trino, ceiling_tinyint, arg1, "function doc"),
 
-    (trino, char2hexint_varchar, arg1, "function doc"),
+create_udf!
 
-    (trino, chr_bigint, arg1, "function doc"),
+(chr_impl::chr_bigintFunc, CHR_BIGINT, chr_bigint);
 
-    (trino, classify_map_bigint_double_classifier, arg1 arg2, "function doc"),
 
-    (trino, coalesce_1, arg1, "function doc"),
 
-    (trino, codepoint_varchar, arg1, "function doc"),
+create_udf!
 
-    (trino, color_double_color_color, arg1 arg2 arg3, "function doc"),
-    (trino, color_double_double_double_color_color, arg1 arg2 arg3 arg4 arg5, "function doc"),
-    (trino, color_varchar, arg1, "function doc"),
+(classify_impl::classify_map_bigint_double_classifierFunc, CLASSIFY_MAP_BIGINT_DOUBLE_CLASSIFIER, classify_map_bigint_double_classifier);
 
-    (trino, combinations_array_1_bigint, arg1 arg2, "function doc"),
 
-    (trino, concat_3_array_3, arg1 arg2, "function doc"),
-    (trino, concat_array_3, arg1, "function doc"),
-    (trino, concat_array_3_3, arg1 arg2, "function doc"),
-    (trino, concat_varchar_varchar, arg1 arg2, "function doc"),
-    (trino, concat_varchar, arg1, "function doc"),
-    (trino, concat_varbinary, arg1, "function doc"),
 
-    (trino, concat_ws_varchar_array_varchar, arg1 arg2, "function doc"),
-    (trino, concat_ws_varchar, arg1, "function doc"),
+create_udf!
 
-    (trino, contains_array_1_1, arg1 arg2, "function doc"),
-    (trino, contains_varchar_ipaddress, arg1 arg2, "function doc"),
+(coalesce_impl::coalesce_1Func, COALESCE_1, coalesce_1);
 
-    (trino, contains_sequence_array_1_array_1, arg1 arg2, "function doc"),
 
-    (trino, cos_double, arg1, "function doc"),
 
-    (trino, cosh_double, arg1, "function doc"),
+create_udf!
 
-    (trino, cosine_similarity_map_varchar_double_map_varchar_double, arg1 arg2, "function doc"),
+(codepoint_impl::codepoint_varcharFunc, CODEPOINT_VARCHAR, codepoint_varchar);
 
-    (trino, crc32_varbinary, arg1, "function doc"),
 
-    (trino, current_catalog, , "function doc"),
 
-    (trino, current_date, , "function doc"),
+create_udf!
 
-    (trino, current_groups, , "function doc"),
+(color_impl::color_double_color_colorFunc, COLOR_DOUBLE_COLOR_COLOR, color_double_color_color);
 
-    (trino, current_schema, , "function doc"),
 
-    (trino, current_time, , "function doc"),
+create_udf!
 
-    (trino, current_timestamp, , "function doc"),
-    (trino, current_timestamp_bigint_0, arg1, "function doc"),
-    (trino, current_timestamp_bigint_3, arg1, "function doc"),
-    (trino, current_timestamp_bigint_6, arg1, "function doc"),
-    (trino, current_timestamp_bigint_9, arg1, "function doc"),
+(color_impl::color_double_double_double_color_colorFunc, COLOR_DOUBLE_DOUBLE_DOUBLE_COLOR_COLOR, color_double_double_double_color_color);
 
-    (trino, current_timezone, , "function doc"),
 
-    (trino, current_user, , "function doc"),
+create_udf!
 
-    (trino, date_timestamp_p, arg1, "function doc"),
-    (trino, date_varchar, arg1, "function doc"),
+(color_impl::color_varcharFunc, COLOR_VARCHAR, color_varchar);
 
-    (trino, date_add_varchar_bigint_date, arg1 arg2 arg3, "function doc"),
-    (trino, date_add_varchar_bigint_time_p, arg1 arg2 arg3, "function doc"),
-    (trino, date_add_varchar_bigint_timestamp_p, arg1 arg2 arg3, "function doc"),
 
-    (trino, date_diff_varchar_date_date, arg1 arg2 arg3, "function doc"),
-    (trino, date_diff_varchar_time_p_time_p, arg1 arg2 arg3, "function doc"),
-    (trino, date_diff_varchar_timestamp_p_timestamp_p, arg1 arg2 arg3, "function doc"),
 
-    (trino, date_format_timestamp_p_varchar, arg1 arg2, "function doc"),
+create_udf!
 
-    (trino, date_parse_varchar_varchar, arg1 arg2, "function doc"),
+(combinations_impl::combinations_array_1_bigintFunc, COMBINATIONS_ARRAY_1_BIGINT, combinations_array_1_bigint);
 
-    (trino, date_trunc_varchar_time_p, arg1 arg2, "function doc"),
-    (trino, date_trunc_varchar_timestamp_p, arg1 arg2, "function doc"),
-    (trino, date_trunc_varchar_date, arg1 arg2, "function doc"),
 
-    (trino, day_date, arg1, "function doc"),
-    (trino, day_intervaldaytosecond, arg1, "function doc"),
-    (trino, day_timestamp_p, arg1, "function doc"),
 
-    (trino, day_of_month_date, arg1, "function doc"),
-    (trino, day_of_month_intervaldaytosecond, arg1, "function doc"),
-    (trino, day_of_month_timestamp_p, arg1, "function doc"),
+create_udf!
 
-    (trino, day_of_week_date, arg1, "function doc"),
-    (trino, day_of_week_timestamp_p, arg1, "function doc"),
+(concat_impl::concat_3_array_3Func, CONCAT_3_ARRAY_3, concat_3_array_3);
 
-    (trino, day_of_year_date, arg1, "function doc"),
-    (trino, day_of_year_timestamp_p, arg1, "function doc"),
 
-    (trino, degrees_double, arg1, "function doc"),
+create_udf!
 
-    (trino, dow_date, arg1, "function doc"),
-    (trino, dow_timestamp_p, arg1, "function doc"),
+(concat_impl::concat_array_3Func, CONCAT_ARRAY_3, concat_array_3);
 
-    (trino, doy_date, arg1, "function doc"),
-    (trino, doy_timestamp_p, arg1, "function doc"),
 
-    (trino, e, , "function doc"),
+create_udf!
 
-    (trino, element_at_map_4_5_4, arg1 arg2, "function doc"),
-    (trino, element_at_array_3_bigint, arg1 arg2, "function doc"),
+(concat_impl::concat_array_3_3Func, CONCAT_ARRAY_3_3, concat_array_3_3);
 
-    (trino, empty_approx_set, , "function doc"),
 
-    (trino, exp_double, arg1, "function doc"),
+create_udf!
 
-    (trino, features_double, arg1, "function doc"),
-    (trino, features_double_double, arg1 arg2, "function doc"),
-    (trino, features_double_double_double, arg1 arg2 arg3, "function doc"),
-    (trino, features_double_double_double_double, arg1 arg2 arg3 arg4, "function doc"),
-    (trino, features_double_double_double_double_double, arg1 arg2 arg3 arg4 arg5, "function doc"),
-    (trino, features_double_double_double_double_double_double, arg1 arg2 arg3 arg4 arg5 arg6, "function doc"),
-    (trino, features_double_double_double_double_double_double_double, arg1 arg2 arg3 arg4 arg5 arg6 arg7, "function doc"),
-    (trino, features_double_double_double_double_double_double_double_double, arg1 arg2 arg3 arg4 arg5 arg6 arg7 arg8, "function doc"),
-    (trino, features_double_double_double_double_double_double_double_double_double, arg1 arg2 arg3 arg4 arg5 arg6 arg7 arg8 arg9, "function doc"),
-    (trino, features_double_double_double_double_double_double_double_double_double_double, arg1 arg2 arg3 arg4 arg5 arg6 arg7 arg8 arg9 arg10, "function doc"),
+(concat_impl::concat_varchar_varcharFunc, CONCAT_VARCHAR_VARCHAR, concat_varchar_varchar);
 
-    (trino, filter_array_1_function_1_boolean, arg1 arg2, "function doc"),
 
-    (trino, flatten_array_array_3, arg1, "function doc"),
+create_udf!
 
-    (trino, floor_bigint, arg1, "function doc"),
-    (trino, floor_decimal_p_s, arg1, "function doc"),
-    (trino, floor_double, arg1, "function doc"),
-    (trino, floor_integer, arg1, "function doc"),
-    (trino, floor_real, arg1, "function doc"),
-    (trino, floor_smallint, arg1, "function doc"),
-    (trino, floor_tinyint, arg1, "function doc"),
+(concat_impl::concat_varcharFunc, CONCAT_VARCHAR, concat_varchar);
 
-    (trino, format_varchar_1, arg1 arg2, "function doc"),
-    (trino, format_varchar_1_2, arg1 arg2 arg3, "function doc"),
-    (trino, format_varchar_1_2_3, arg1 arg2 arg3 arg4, "function doc"),
-    (trino, format_varchar_1_2_3_4, arg1 arg2 arg3 arg4 arg5, "function doc"),
-    (trino, format_varchar_1_2_3_4_5, arg1 arg2 arg3 arg4 arg5 arg6, "function doc"),
 
-    (trino, format_datetime_timestamp_p_varchar, arg1 arg2, "function doc"),
+create_udf!
 
-    (trino, format_number_bigint, arg1, "function doc"),
-    (trino, format_number_double, arg1, "function doc"),
+(concat_impl::concat_varbinaryFunc, CONCAT_VARBINARY, concat_varbinary);
 
-    (trino, from_base_varchar_bigint, arg1 arg2, "function doc"),
 
-    (trino, from_base32_varbinary, arg1, "function doc"),
-    (trino, from_base32_varchar, arg1, "function doc"),
 
-    (trino, from_base64_varbinary, arg1, "function doc"),
-    (trino, from_base64_varchar, arg1, "function doc"),
+create_udf!
 
-    (trino, from_base64url_varbinary, arg1, "function doc"),
-    (trino, from_base64url_varchar, arg1, "function doc"),
+(concat_ws_impl::concat_ws_varchar_array_varcharFunc, CONCAT_WS_VARCHAR_ARRAY_VARCHAR, concat_ws_varchar_array_varchar);
 
-    (trino, from_big_endian_32_varbinary, arg1, "function doc"),
 
-    (trino, from_big_endian_64_varbinary, arg1, "function doc"),
+create_udf!
 
-    (trino, from_encoded_polyline_varchar, arg1, "function doc"),
+(concat_ws_impl::concat_ws_varcharFunc, CONCAT_WS_VARCHAR, concat_ws_varchar);
 
-    (trino, from_geojson_geometry_varchar, arg1, "function doc"),
 
-    (trino, from_hex_varbinary, arg1, "function doc"),
-    (trino, from_hex_varchar, arg1, "function doc"),
 
-    (trino, from_ieee754_32_varbinary, arg1, "function doc"),
+create_udf!
 
-    (trino, from_ieee754_64_varbinary, arg1, "function doc"),
+(contains_impl::contains_array_1_1Func, CONTAINS_ARRAY_1_1, contains_array_1_1);
 
-    (trino, from_iso8601_date_varchar, arg1, "function doc"),
 
-    (trino, from_iso8601_timestamp_varchar, arg1, "function doc"),
+create_udf!
 
-    (trino, from_iso8601_timestamp_nanos_varchar, arg1, "function doc"),
+(contains_impl::contains_varchar_ipaddressFunc, CONTAINS_VARCHAR_IPADDRESS, contains_varchar_ipaddress);
 
-    (trino, from_unixtime_bigint, arg1, "function doc"),
-    (trino, from_unixtime_bigint_bigint_bigint, arg1 arg2 arg3, "function doc"),
-    (trino, from_unixtime_bigint_varchar, arg1 arg2, "function doc"),
 
-    (trino, from_unixtime_nanos_bigint, arg1, "function doc"),
-    (trino, from_unixtime_nanos_decimal_p_s, arg1, "function doc"),
 
-    (trino, from_utf8_varbinary, arg1, "function doc"),
-    (trino, from_utf8_varbinary_bigint, arg1 arg2, "function doc"),
-    (trino, from_utf8_varbinary_varchar, arg1 arg2, "function doc"),
+create_udf!
 
-    (trino, geometry_from_hadoop_shape_varbinary, arg1, "function doc"),
+(contains_sequence_impl::contains_sequence_array_1_array_1Func, CONTAINS_SEQUENCE_ARRAY_1_ARRAY_1, contains_sequence_array_1_array_1);
 
-    (trino, geometry_invalid_reason_geometry, arg1, "function doc"),
 
-    (trino, geometry_nearest_points_geometry_geometry, arg1 arg2, "function doc"),
 
-    (trino, geometry_to_bing_tiles_geometry_bigint, arg1 arg2, "function doc"),
+create_udaf!
 
-    (trino, geometry_union_array_geometry, arg1, "function doc"),
+(convex_hull_agg_impl::convex_hull_agg_geometryFunc, CONVEX_HULL_AGG_GEOMETRY, convex_hull_agg_geometry);
 
-    (trino, great_circle_distance_double_double_double_double, arg1 arg2 arg3 arg4, "function doc"),
 
-    (trino, greatest_3, arg1, "function doc"),
 
-    (trino, hamming_distance_varchar_varchar, arg1 arg2, "function doc"),
+create_udaf!
 
-    (trino, hash_counts_setdigest, arg1, "function doc"),
+(corr_impl::corr_double_doubleFunc, CORR_DOUBLE_DOUBLE, corr_double_double);
 
-    (trino, hmac_md5_varbinary_varbinary, arg1 arg2, "function doc"),
 
-    (trino, hmac_sha1_varbinary_varbinary, arg1 arg2, "function doc"),
+create_udaf!
 
-    (trino, hmac_sha256_varbinary_varbinary, arg1 arg2, "function doc"),
+(corr_impl::corr_real_realFunc, CORR_REAL_REAL, corr_real_real);
 
-    (trino, hmac_sha512_varbinary_varbinary, arg1 arg2, "function doc"),
 
-    (trino, hour_intervaldaytosecond, arg1, "function doc"),
-    (trino, hour_time_p, arg1, "function doc"),
-    (trino, hour_timestamp_p, arg1, "function doc"),
 
-    (trino, human_readable_seconds_double, arg1, "function doc"),
+create_udf!
 
-    (trino, if_boolean_1_1, arg1 arg2 arg3, "function doc"),
+(cos_impl::cos_doubleFunc, COS_DOUBLE, cos_double);
 
-    (trino, index_varchar_varchar, arg1 arg2, "function doc"),
 
-    (trino, infinity, , "function doc"),
 
-    (trino, intersection_cardinality_setdigest_setdigest, arg1 arg2, "function doc"),
+create_udf!
 
-    (trino, inverse_beta_cdf_double_double_double, arg1 arg2 arg3, "function doc"),
+(cosh_impl::cosh_doubleFunc, COSH_DOUBLE, cosh_double);
 
-    (trino, inverse_normal_cdf_double_double_double, arg1 arg2 arg3, "function doc"),
 
-    (trino, is_finite_double, arg1, "function doc"),
 
-    (trino, is_infinite_double, arg1, "function doc"),
+create_udf!
 
-    (trino, is_json_scalar_json, arg1, "function doc"),
-    (trino, is_json_scalar_varchar, arg1, "function doc"),
+(cosine_similarity_impl::cosine_similarity_map_varchar_double_map_varchar_doubleFunc, COSINE_SIMILARITY_MAP_VARCHAR_DOUBLE_MAP_VARCHAR_DOUBLE, cosine_similarity_map_varchar_double_map_varchar_double);
 
-    (trino, is_nan_double, arg1, "function doc"),
-    (trino, is_nan_real, arg1, "function doc"),
 
-    (trino, jaccard_index_setdigest_setdigest, arg1 arg2, "function doc"),
 
-    (trino, json_array_contains_json_bigint, arg1 arg2, "function doc"),
-    (trino, json_array_contains_json_boolean, arg1 arg2, "function doc"),
-    (trino, json_array_contains_json_double, arg1 arg2, "function doc"),
-    (trino, json_array_contains_json_varchar, arg1 arg2, "function doc"),
-    (trino, json_array_contains_varchar_bigint, arg1 arg2, "function doc"),
-    (trino, json_array_contains_varchar_boolean, arg1 arg2, "function doc"),
-    (trino, json_array_contains_varchar_double, arg1 arg2, "function doc"),
-    (trino, json_array_contains_varchar_varchar, arg1 arg2, "function doc"),
+create_udaf!
 
-    (trino, json_array_get_json_bigint, arg1 arg2, "function doc"),
-    (trino, json_array_get_varchar_bigint, arg1 arg2, "function doc"),
+(count_impl::countFunc, COUNT, count);
 
-    (trino, json_array_length_json, arg1, "function doc"),
-    (trino, json_array_length_varchar, arg1, "function doc"),
 
-    (trino, json_extract_json_jsonpath, arg1 arg2, "function doc"),
-    (trino, json_extract_varchar_jsonpath, arg1 arg2, "function doc"),
+create_udaf!
 
-    (trino, json_extract_scalar_json_jsonpath, arg1 arg2, "function doc"),
-    (trino, json_extract_scalar_varchar_jsonpath, arg1 arg2, "function doc"),
+(count_impl::count_1Func, COUNT_1, count_1);
 
-    (trino, json_format_json, arg1, "function doc"),
 
-    (trino, json_parse_varchar, arg1, "function doc"),
 
-    (trino, json_size_json_jsonpath, arg1 arg2, "function doc"),
-    (trino, json_size_varchar_jsonpath, arg1 arg2, "function doc"),
+create_udaf!
 
-    (trino, last_day_of_month_date, arg1, "function doc"),
-    (trino, last_day_of_month_timestamp_p, arg1, "function doc"),
+(count_if_impl::count_if_booleanFunc, COUNT_IF_BOOLEAN, count_if_boolean);
 
-    (trino, least_3, arg1, "function doc"),
 
-    (trino, length_varchar, arg1, "function doc"),
-    (trino, length_varbinary, arg1, "function doc"),
-    (trino, length_array_1, arg1, "function doc"),
 
-    (trino, levenshtein_distance_varchar_varchar, arg1 arg2, "function doc"),
+create_udaf!
 
-    (trino, line_interpolate_point_geometry_double, arg1 arg2, "function doc"),
+(covar_pop_impl::covar_pop_double_doubleFunc, COVAR_POP_DOUBLE_DOUBLE, covar_pop_double_double);
 
-    (trino, line_interpolate_points_geometry_double, arg1 arg2, "function doc"),
 
-    (trino, line_locate_point_geometry_geometry, arg1 arg2, "function doc"),
+create_udaf!
 
-    (trino, ln_double, arg1, "function doc"),
+(covar_pop_impl::covar_pop_real_realFunc, COVAR_POP_REAL_REAL, covar_pop_real_real);
 
-    (trino, localtime, , "function doc"),
 
-    (trino, localtimestamp, , "function doc"),
-    (trino, localtimestamp_bigint_0, arg1, "function doc"),
-    (trino, localtimestamp_bigint_3, arg1, "function doc"),
-    (trino, localtimestamp_bigint_6, arg1, "function doc"),
-    (trino, localtimestamp_bigint_9, arg1, "function doc"),
 
-    (trino, log_double_double, arg1 arg2, "function doc"),
+create_udaf!
 
-    (trino, log10_double, arg1, "function doc"),
+(covar_samp_impl::covar_samp_double_doubleFunc, COVAR_SAMP_DOUBLE_DOUBLE, covar_samp_double_double);
 
-    (trino, log2_double, arg1, "function doc"),
 
-    (trino, lower_varchar, arg1, "function doc"),
+create_udaf!
 
-    (trino, lpad_varbinary_bigint_varbinary, arg1 arg2 arg3, "function doc"),
-    (trino, lpad_varchar_bigint_varchar, arg1 arg2 arg3, "function doc"),
+(covar_samp_impl::covar_samp_real_realFunc, COVAR_SAMP_REAL_REAL, covar_samp_real_real);
 
-    (trino, ltrim_varchar, arg1, "function doc"),
-    (trino, ltrim_varchar_codepoints, arg1 arg2, "function doc"),
 
-    (trino, luhn_check_varchar, arg1, "function doc"),
 
-    (trino, map_array_4_array_5, arg1 arg2, "function doc"),
-    (trino, map, , "function doc"),
+create_udf!
 
-    (trino, map_concat_map_4_5, arg1, "function doc"),
+(crc32_impl::crc32_varbinaryFunc, CRC32_VARBINARY, crc32_varbinary);
 
-    (trino, map_entries_map_4_5, arg1, "function doc"),
 
-    (trino, map_filter_map_4_5_function_4_5_boolean, arg1 arg2, "function doc"),
 
-    (trino, map_from_entries_array_row_c04_c15, arg1, "function doc"),
+create_udf!
 
-    (trino, map_keys_map_4_5, arg1, "function doc"),
+(current_catalog_impl::current_catalogFunc, CURRENT_CATALOG, current_catalog);
 
-    (trino, map_values_map_4_5, arg1, "function doc"),
 
-    (trino, map_zip_with_map_4_8_map_4_7_function_4_8_7_6, arg1 arg2 arg3, "function doc"),
 
-    (trino, md5_varbinary, arg1, "function doc"),
+create_udf!
 
-    (trino, millisecond_intervaldaytosecond, arg1, "function doc"),
-    (trino, millisecond_time_p, arg1, "function doc"),
-    (trino, millisecond_timestamp_p, arg1, "function doc"),
+(current_date_impl::current_dateFunc, CURRENT_DATE, current_date);
 
-    (trino, minute_intervaldaytosecond, arg1, "function doc"),
-    (trino, minute_time_p, arg1, "function doc"),
-    (trino, minute_timestamp_p, arg1, "function doc"),
 
-    (trino, mod_bigint_bigint, arg1 arg2, "function doc"),
-    (trino, mod_decimal_a_precision_a_scale_decimal_b_precision_b_scale, arg1 arg2, "function doc"),
-    (trino, mod_double_double, arg1 arg2, "function doc"),
-    (trino, mod_integer_integer, arg1 arg2, "function doc"),
-    (trino, mod_real_real, arg1 arg2, "function doc"),
-    (trino, mod_smallint_smallint, arg1 arg2, "function doc"),
-    (trino, mod_tinyint_tinyint, arg1 arg2, "function doc"),
 
-    (trino, month_date, arg1, "function doc"),
-    (trino, month_intervalyeartomonth, arg1, "function doc"),
-    (trino, month_timestamp_p, arg1, "function doc"),
+create_udf!
 
-    (trino, multimap_from_entries_array_row_c04_c15, arg1, "function doc"),
+(current_groups_impl::current_groupsFunc, CURRENT_GROUPS, current_groups);
 
-    (trino, murmur3_varbinary, arg1, "function doc"),
 
-    (trino, nan, , "function doc"),
 
-    (trino, ngrams_array_1_bigint, arg1 arg2, "function doc"),
+create_udf!
 
-    (trino, none_match_array_1_function_1_boolean, arg1 arg2, "function doc"),
+(current_schema_impl::current_schemaFunc, CURRENT_SCHEMA, current_schema);
 
-    (trino, normal_cdf_double_double_double, arg1 arg2 arg3, "function doc"),
 
-    (trino, normalize_varchar_varchar, arg1 arg2, "function doc"),
 
-    (trino, now, , "function doc"),
+create_udf!
 
-    (trino, nullif_1_1, arg1 arg2, "function doc"),
+(current_time_impl::current_timeFunc, CURRENT_TIME, current_time);
 
-    (trino, objectid, , "function doc"),
-    (trino, objectid_varchar, arg1, "function doc"),
 
-    (trino, objectid_timestamp_objectid, arg1, "function doc"),
 
-    (trino, parse_data_size_varchar, arg1, "function doc"),
+create_udf!
 
-    (trino, parse_datetime_varchar_varchar, arg1 arg2, "function doc"),
+(current_timestamp_impl::current_timestampFunc, CURRENT_TIMESTAMP, current_timestamp);
 
-    (trino, parse_duration_varchar, arg1, "function doc"),
 
-    (trino, parse_presto_data_size_varchar, arg1, "function doc"),
+create_udf!
 
-    (trino, pi, , "function doc"),
+(current_timestamp_impl::current_timestamp_bigint_0Func, CURRENT_TIMESTAMP_BIGINT_0, current_timestamp_bigint_0);
 
-    (trino, pow_double_double, arg1 arg2, "function doc"),
 
-    (trino, power_double_double, arg1 arg2, "function doc"),
+create_udf!
 
-    (trino, quantile_at_value_qdigest_bigint, arg1 arg2, "function doc"),
-    (trino, quantile_at_value_qdigest_double, arg1 arg2, "function doc"),
-    (trino, quantile_at_value_qdigest_real, arg1 arg2, "function doc"),
+(current_timestamp_impl::current_timestamp_bigint_3Func, CURRENT_TIMESTAMP_BIGINT_3, current_timestamp_bigint_3);
 
-    (trino, quarter_date, arg1, "function doc"),
-    (trino, quarter_timestamp_p, arg1, "function doc"),
 
-    (trino, radians_double, arg1, "function doc"),
+create_udf!
 
-    (trino, rand_bigint, arg1, "function doc"),
-    (trino, rand_bigint_bigint, arg1 arg2, "function doc"),
-    (trino, rand, , "function doc"),
-    (trino, rand_integer, arg1, "function doc"),
-    (trino, rand_integer_integer, arg1 arg2, "function doc"),
-    (trino, rand_smallint, arg1, "function doc"),
-    (trino, rand_smallint_smallint, arg1 arg2, "function doc"),
-    (trino, rand_tinyint, arg1, "function doc"),
-    (trino, rand_tinyint_tinyint, arg1 arg2, "function doc"),
+(current_timestamp_impl::current_timestamp_bigint_6Func, CURRENT_TIMESTAMP_BIGINT_6, current_timestamp_bigint_6);
 
-    (trino, random_bigint, arg1, "function doc"),
-    (trino, random_bigint_bigint, arg1 arg2, "function doc"),
-    (trino, random, , "function doc"),
-    (trino, random_integer, arg1, "function doc"),
-    (trino, random_integer_integer, arg1 arg2, "function doc"),
-    (trino, random_smallint, arg1, "function doc"),
-    (trino, random_smallint_smallint, arg1 arg2, "function doc"),
-    (trino, random_tinyint, arg1, "function doc"),
-    (trino, random_tinyint_tinyint, arg1 arg2, "function doc"),
 
-    (trino, reduce_array_1_10_function_10_1_10_function_10_9, arg1 arg2 arg3 arg4, "function doc"),
+create_udf!
 
-    (trino, regexp_count_varchar_joniregexp, arg1 arg2, "function doc"),
+(current_timestamp_impl::current_timestamp_bigint_9Func, CURRENT_TIMESTAMP_BIGINT_9, current_timestamp_bigint_9);
 
-    (trino, regexp_extract_varchar_joniregexp, arg1 arg2, "function doc"),
-    (trino, regexp_extract_varchar_joniregexp_bigint, arg1 arg2 arg3, "function doc"),
 
-    (trino, regexp_extract_all_varchar_joniregexp, arg1 arg2, "function doc"),
-    (trino, regexp_extract_all_varchar_joniregexp_bigint, arg1 arg2 arg3, "function doc"),
 
-    (trino, regexp_like_varchar_joniregexp, arg1 arg2, "function doc"),
+create_udf!
 
-    (trino, regexp_position_varchar_joniregexp, arg1 arg2, "function doc"),
-    (trino, regexp_position_varchar_joniregexp_bigint, arg1 arg2 arg3, "function doc"),
-    (trino, regexp_position_varchar_joniregexp_bigint_bigint, arg1 arg2 arg3 arg4, "function doc"),
+(current_timezone_impl::current_timezoneFunc, CURRENT_TIMEZONE, current_timezone);
 
-    (trino, regexp_replace_varchar_joniregexp_function_array_varchar_varchar, arg1 arg2 arg3, "function doc"),
-    (trino, regexp_replace_varchar_joniregexp, arg1 arg2, "function doc"),
-    (trino, regexp_replace_varchar_joniregexp_varchar, arg1 arg2 arg3, "function doc"),
 
-    (trino, regexp_split_varchar_joniregexp, arg1 arg2, "function doc"),
 
-    (trino, regress_map_bigint_double_regressor, arg1 arg2, "function doc"),
+create_udf!
 
-    (trino, render_boolean, arg1, "function doc"),
-    (trino, render_bigint_color, arg1 arg2, "function doc"),
-    (trino, render_double_color, arg1 arg2, "function doc"),
-    (trino, render_varchar_color, arg1 arg2, "function doc"),
+(current_user_impl::current_userFunc, CURRENT_USER, current_user);
 
-    (trino, repeat_1_bigint, arg1 arg2, "function doc"),
 
-    (trino, replace_varchar_varchar_varchar, arg1 arg2 arg3, "function doc"),
-    (trino, replace_varchar_varchar, arg1 arg2, "function doc"),
 
-    (trino, reverse_array_3, arg1, "function doc"),
-    (trino, reverse_varbinary, arg1, "function doc"),
-    (trino, reverse_varchar, arg1, "function doc"),
+create_udf!
 
-    (trino, rgb_bigint_bigint_bigint, arg1 arg2 arg3, "function doc"),
+(date_impl::date_timestamp_pFunc, DATE_TIMESTAMP_P, date_timestamp_p);
 
-    (trino, round_double, arg1, "function doc"),
-    (trino, round_double_bigint, arg1 arg2, "function doc"),
-    (trino, round_real, arg1, "function doc"),
-    (trino, round_real_bigint, arg1 arg2, "function doc"),
-    (trino, round_integer, arg1, "function doc"),
-    (trino, round_integer_integer, arg1 arg2, "function doc"),
-    (trino, round_decimal_p_s, arg1, "function doc"),
-    (trino, round_decimal_p_s_bigint, arg1 arg2, "function doc"),
-    (trino, round_bigint, arg1, "function doc"),
-    (trino, round_bigint_bigint, arg1 arg2, "function doc"),
-    (trino, round_smallint, arg1, "function doc"),
-    (trino, round_smallint_bigint, arg1 arg2, "function doc"),
-    (trino, round_tinyint, arg1, "function doc"),
-    (trino, round_tinyint_bigint, arg1 arg2, "function doc"),
 
-    (trino, rpad_varbinary_bigint_varbinary, arg1 arg2 arg3, "function doc"),
-    (trino, rpad_varchar_bigint_varchar, arg1 arg2 arg3, "function doc"),
+create_udf!
 
-    (trino, rtrim_varchar, arg1, "function doc"),
-    (trino, rtrim_varchar_codepoints, arg1 arg2, "function doc"),
+(date_impl::date_varcharFunc, DATE_VARCHAR, date_varchar);
 
-    (trino, second_intervaldaytosecond, arg1, "function doc"),
-    (trino, second_time_p, arg1, "function doc"),
-    (trino, second_timestamp_p, arg1, "function doc"),
 
-    (trino, sequence_bigint_bigint, arg1 arg2, "function doc"),
-    (trino, sequence_bigint_bigint_bigint, arg1 arg2 arg3, "function doc"),
-    (trino, sequence_date_date, arg1 arg2, "function doc"),
-    (trino, sequence_date_date_intervaldaytosecond, arg1 arg2 arg3, "function doc"),
-    (trino, sequence_date_date_intervalyeartomonth, arg1 arg2 arg3, "function doc"),
-    (trino, sequence_timestamp_p_timestamp_p_intervaldaytosecond, arg1 arg2 arg3, "function doc"),
 
-    (trino, sha1_varbinary, arg1, "function doc"),
+create_udf!
 
-    (trino, sha256_varbinary, arg1, "function doc"),
+(date_add_impl::date_add_varchar_bigint_dateFunc, DATE_ADD_VARCHAR_BIGINT_DATE, date_add_varchar_bigint_date);
 
-    (trino, sha512_varbinary, arg1, "function doc"),
 
-    (trino, shuffle_array_3, arg1, "function doc"),
+create_udf!
 
-    (trino, sign_bigint, arg1, "function doc"),
-    (trino, sign_decimal_p_s, arg1, "function doc"),
-    (trino, sign_double, arg1, "function doc"),
-    (trino, sign_integer, arg1, "function doc"),
-    (trino, sign_real, arg1, "function doc"),
-    (trino, sign_smallint, arg1, "function doc"),
-    (trino, sign_tinyint, arg1, "function doc"),
+(date_add_impl::date_add_varchar_bigint_time_pFunc, DATE_ADD_VARCHAR_BIGINT_TIME_P, date_add_varchar_bigint_time_p);
 
-    (trino, simplify_geometry_geometry_double, arg1 arg2, "function doc"),
 
-    (trino, sin_double, arg1, "function doc"),
+create_udf!
 
-    (trino, sinh_double, arg1, "function doc"),
+(date_add_impl::date_add_varchar_bigint_timestamp_pFunc, DATE_ADD_VARCHAR_BIGINT_TIMESTAMP_P, date_add_varchar_bigint_timestamp_p);
 
-    (trino, slice_array_3_bigint_bigint, arg1 arg2 arg3, "function doc"),
 
-    (trino, soundex_varchar, arg1, "function doc"),
 
-    (trino, spatial_partitions_kdbtree_geometry, arg1 arg2, "function doc"),
-    (trino, spatial_partitions_kdbtree_geometry_double, arg1 arg2 arg3, "function doc"),
+create_udf!
 
-    (trino, split_varchar_varchar, arg1 arg2, "function doc"),
-    (trino, split_varchar_varchar_bigint, arg1 arg2 arg3, "function doc"),
+(date_diff_impl::date_diff_varchar_date_dateFunc, DATE_DIFF_VARCHAR_DATE_DATE, date_diff_varchar_date_date);
 
-    (trino, split_part_varchar_varchar_bigint, arg1 arg2 arg3, "function doc"),
 
-    (trino, split_to_map_varchar_varchar_varchar, arg1 arg2 arg3, "function doc"),
+create_udf!
 
-    (trino, split_to_multimap_varchar_varchar_varchar, arg1 arg2 arg3, "function doc"),
+(date_diff_impl::date_diff_varchar_time_p_time_pFunc, DATE_DIFF_VARCHAR_TIME_P_TIME_P, date_diff_varchar_time_p_time_p);
 
-    (trino, spooky_hash_v2_32_varbinary, arg1, "function doc"),
 
-    (trino, spooky_hash_v2_64_varbinary, arg1, "function doc"),
+create_udf!
 
-    (trino, sqrt_double, arg1, "function doc"),
+(date_diff_impl::date_diff_varchar_timestamp_p_timestamp_pFunc, DATE_DIFF_VARCHAR_TIMESTAMP_P_TIMESTAMP_P, date_diff_varchar_timestamp_p_timestamp_p);
 
-    (trino, st_area_geometry, arg1, "function doc"),
-    (trino, st_area_sphericalgeography, arg1, "function doc"),
 
-    (trino, st_asbinary_geometry, arg1, "function doc"),
 
-    (trino, st_astext_geometry, arg1, "function doc"),
+create_udf!
 
-    (trino, st_boundary_geometry, arg1, "function doc"),
+(date_format_impl::date_format_timestamp_p_varcharFunc, DATE_FORMAT_TIMESTAMP_P_VARCHAR, date_format_timestamp_p_varchar);
 
-    (trino, st_buffer_geometry_double, arg1 arg2, "function doc"),
 
-    (trino, st_centroid_geometry, arg1, "function doc"),
 
-    (trino, st_contains_geometry_geometry, arg1 arg2, "function doc"),
+create_udf!
 
-    (trino, st_convexhull_geometry, arg1, "function doc"),
+(date_parse_impl::date_parse_varchar_varcharFunc, DATE_PARSE_VARCHAR_VARCHAR, date_parse_varchar_varchar);
 
-    (trino, st_coorddim_geometry, arg1, "function doc"),
 
-    (trino, st_crosses_geometry_geometry, arg1 arg2, "function doc"),
 
-    (trino, st_difference_geometry_geometry, arg1 arg2, "function doc"),
+create_udf!
 
-    (trino, st_dimension_geometry, arg1, "function doc"),
+(date_trunc_impl::date_trunc_varchar_time_pFunc, DATE_TRUNC_VARCHAR_TIME_P, date_trunc_varchar_time_p);
 
-    (trino, st_disjoint_geometry_geometry, arg1 arg2, "function doc"),
 
-    (trino, st_distance_geometry_geometry, arg1 arg2, "function doc"),
-    (trino, st_distance_sphericalgeography_sphericalgeography, arg1 arg2, "function doc"),
+create_udf!
 
-    (trino, st_endpoint_geometry, arg1, "function doc"),
+(date_trunc_impl::date_trunc_varchar_timestamp_pFunc, DATE_TRUNC_VARCHAR_TIMESTAMP_P, date_trunc_varchar_timestamp_p);
 
-    (trino, st_envelope_geometry, arg1, "function doc"),
 
-    (trino, st_envelopeaspts_geometry, arg1, "function doc"),
+create_udf!
 
-    (trino, st_equals_geometry_geometry, arg1 arg2, "function doc"),
+(date_trunc_impl::date_trunc_varchar_dateFunc, DATE_TRUNC_VARCHAR_DATE, date_trunc_varchar_date);
 
-    (trino, st_exteriorring_geometry, arg1, "function doc"),
 
-    (trino, st_geometries_geometry, arg1, "function doc"),
 
-    (trino, st_geometryfromtext_varchar, arg1, "function doc"),
+create_udf!
 
-    (trino, st_geometryn_geometry_bigint, arg1 arg2, "function doc"),
+(day_impl::day_dateFunc, DAY_DATE, day_date);
 
-    (trino, st_geometrytype_geometry, arg1, "function doc"),
 
-    (trino, st_geomfrombinary_varbinary, arg1, "function doc"),
+create_udf!
 
-    (trino, st_interiorringn_geometry_bigint, arg1 arg2, "function doc"),
+(day_impl::day_intervaldaytosecondFunc, DAY_INTERVALDAYTOSECOND, day_intervaldaytosecond);
 
-    (trino, st_interiorrings_geometry, arg1, "function doc"),
 
-    (trino, st_intersection_geometry_geometry, arg1 arg2, "function doc"),
+create_udf!
 
-    (trino, st_intersects_geometry_geometry, arg1 arg2, "function doc"),
+(day_impl::day_timestamp_pFunc, DAY_TIMESTAMP_P, day_timestamp_p);
 
-    (trino, st_isclosed_geometry, arg1, "function doc"),
 
-    (trino, st_isempty_geometry, arg1, "function doc"),
 
-    (trino, st_isring_geometry, arg1, "function doc"),
+create_udf!
 
-    (trino, st_issimple_geometry, arg1, "function doc"),
+(day_of_month_impl::day_of_month_dateFunc, DAY_OF_MONTH_DATE, day_of_month_date);
 
-    (trino, st_isvalid_geometry, arg1, "function doc"),
 
-    (trino, st_length_geometry, arg1, "function doc"),
-    (trino, st_length_sphericalgeography, arg1, "function doc"),
+create_udf!
 
-    (trino, st_linefromtext_varchar, arg1, "function doc"),
+(day_of_month_impl::day_of_month_intervaldaytosecondFunc, DAY_OF_MONTH_INTERVALDAYTOSECOND, day_of_month_intervaldaytosecond);
 
-    (trino, st_linestring_array_geometry, arg1, "function doc"),
 
-    (trino, st_multipoint_array_geometry, arg1, "function doc"),
+create_udf!
 
-    (trino, st_numgeometries_geometry, arg1, "function doc"),
+(day_of_month_impl::day_of_month_timestamp_pFunc, DAY_OF_MONTH_TIMESTAMP_P, day_of_month_timestamp_p);
 
-    (trino, st_numinteriorring_geometry, arg1, "function doc"),
 
-    (trino, st_numpoints_geometry, arg1, "function doc"),
 
-    (trino, st_overlaps_geometry_geometry, arg1 arg2, "function doc"),
+create_udf!
 
-    (trino, st_point_double_double, arg1 arg2, "function doc"),
+(day_of_week_impl::day_of_week_dateFunc, DAY_OF_WEEK_DATE, day_of_week_date);
 
-    (trino, st_pointn_geometry_bigint, arg1 arg2, "function doc"),
 
-    (trino, st_points_geometry, arg1, "function doc"),
+create_udf!
 
-    (trino, st_polygon_varchar, arg1, "function doc"),
+(day_of_week_impl::day_of_week_timestamp_pFunc, DAY_OF_WEEK_TIMESTAMP_P, day_of_week_timestamp_p);
 
-    (trino, st_relate_geometry_geometry_varchar, arg1 arg2 arg3, "function doc"),
 
-    (trino, st_startpoint_geometry, arg1, "function doc"),
 
-    (trino, st_symdifference_geometry_geometry, arg1 arg2, "function doc"),
+create_udf!
 
-    (trino, st_touches_geometry_geometry, arg1 arg2, "function doc"),
+(day_of_year_impl::day_of_year_dateFunc, DAY_OF_YEAR_DATE, day_of_year_date);
 
-    (trino, st_union_geometry_geometry, arg1 arg2, "function doc"),
 
-    (trino, st_within_geometry_geometry, arg1 arg2, "function doc"),
+create_udf!
 
-    (trino, st_x_geometry, arg1, "function doc"),
+(day_of_year_impl::day_of_year_timestamp_pFunc, DAY_OF_YEAR_TIMESTAMP_P, day_of_year_timestamp_p);
 
-    (trino, st_xmax_geometry, arg1, "function doc"),
 
-    (trino, st_xmin_geometry, arg1, "function doc"),
 
-    (trino, st_y_geometry, arg1, "function doc"),
+create_udf!
 
-    (trino, st_ymax_geometry, arg1, "function doc"),
+(degrees_impl::degrees_doubleFunc, DEGREES_DOUBLE, degrees_double);
 
-    (trino, st_ymin_geometry, arg1, "function doc"),
 
-    (trino, starts_with_varchar_varchar, arg1 arg2, "function doc"),
 
-    (trino, strpos_varchar_varchar, arg1 arg2, "function doc"),
-    (trino, strpos_varchar_varchar_bigint, arg1 arg2 arg3, "function doc"),
+create_udf!
 
-    (trino, substr_varchar_bigint, arg1 arg2, "function doc"),
-    (trino, substr_varchar_bigint_bigint, arg1 arg2 arg3, "function doc"),
-    (trino, substr_varbinary_bigint, arg1 arg2, "function doc"),
-    (trino, substr_varbinary_bigint_bigint, arg1 arg2 arg3, "function doc"),
+(dow_impl::dow_dateFunc, DOW_DATE, dow_date);
 
-    (trino, substring_varchar_bigint, arg1 arg2, "function doc"),
-    (trino, substring_varchar_bigint_bigint, arg1 arg2 arg3, "function doc"),
 
-    (trino, tan_double, arg1, "function doc"),
+create_udf!
 
-    (trino, tanh_double, arg1, "function doc"),
+(dow_impl::dow_timestamp_pFunc, DOW_TIMESTAMP_P, dow_timestamp_p);
 
-    (trino, timestamp_objectid_timestamp_0, arg1, "function doc"),
 
-    (trino, timezone_hour_time_p, arg1, "function doc"),
-    (trino, timezone_hour_timestamp_p, arg1, "function doc"),
 
-    (trino, timezone_minute_time_p, arg1, "function doc"),
-    (trino, timezone_minute_timestamp_p, arg1, "function doc"),
+create_udf!
 
-    (trino, to_base_bigint_bigint, arg1 arg2, "function doc"),
+(doy_impl::doy_dateFunc, DOY_DATE, doy_date);
 
-    (trino, to_base32_varbinary, arg1, "function doc"),
 
-    (trino, to_base64_varbinary, arg1, "function doc"),
+create_udf!
 
-    (trino, to_base64url_varbinary, arg1, "function doc"),
+(doy_impl::doy_timestamp_pFunc, DOY_TIMESTAMP_P, doy_timestamp_p);
 
-    (trino, to_big_endian_32_bigint, arg1, "function doc"),
 
-    (trino, to_big_endian_64_bigint, arg1, "function doc"),
 
-    (trino, to_char_timestamp_p_varchar, arg1 arg2, "function doc"),
+create_udf!
 
-    (trino, to_date_varchar_varchar, arg1 arg2, "function doc"),
+(e_impl::eFunc, E, e);
 
-    (trino, to_encoded_polyline_geometry, arg1, "function doc"),
 
-    (trino, to_geojson_geometry_sphericalgeography, arg1, "function doc"),
 
-    (trino, to_geometry_sphericalgeography, arg1, "function doc"),
+create_udf!
 
-    (trino, to_hex_varbinary, arg1, "function doc"),
+(element_at_impl::element_at_map_4_5_4Func, ELEMENT_AT_MAP_4_5_4, element_at_map_4_5_4);
 
-    (trino, to_ieee754_32_real, arg1, "function doc"),
 
-    (trino, to_ieee754_64_double, arg1, "function doc"),
+create_udf!
 
-    (trino, to_iso8601_date, arg1, "function doc"),
-    (trino, to_iso8601_timestamp_p, arg1, "function doc"),
+(element_at_impl::element_at_array_3_bigintFunc, ELEMENT_AT_ARRAY_3_BIGINT, element_at_array_3_bigint);
 
-    (trino, to_milliseconds_intervaldaytosecond, arg1, "function doc"),
 
-    (trino, to_spherical_geography_geometry, arg1, "function doc"),
 
-    (trino, to_timestamp_varchar_varchar, arg1 arg2, "function doc"),
+create_udf!
 
-    (trino, to_unixtime_timestamp_p, arg1, "function doc"),
+(empty_approx_set_impl::empty_approx_setFunc, EMPTY_APPROX_SET, empty_approx_set);
 
-    (trino, to_utf8_varchar, arg1, "function doc"),
 
-    (trino, transform_array_1_function_1_11, arg1 arg2, "function doc"),
 
-    (trino, transform_keys_map_13_5_function_13_5_12, arg1 arg2, "function doc"),
+create_udaf!
 
-    (trino, transform_values_map_4_8_function_4_8_7, arg1 arg2, "function doc"),
+(evaluate_classifier_predictions_impl::evaluate_classifier_predictions_bigint_bigintFunc, EVALUATE_CLASSIFIER_PREDICTIONS_BIGINT_BIGINT, evaluate_classifier_predictions_bigint_bigint);
 
-    (trino, translate_varchar_varchar_varchar, arg1 arg2 arg3, "function doc"),
 
-    (trino, trim_varchar, arg1, "function doc"),
-    (trino, trim_varchar_codepoints, arg1 arg2, "function doc"),
+create_udaf!
 
-    (trino, trim_array_array_3_bigint, arg1 arg2, "function doc"),
+(evaluate_classifier_predictions_impl::evaluate_classifier_predictions_varchar_varcharFunc, EVALUATE_CLASSIFIER_PREDICTIONS_VARCHAR_VARCHAR, evaluate_classifier_predictions_varchar_varchar);
 
-    (trino, truncate_decimal_p_s_bigint, arg1 arg2, "function doc"),
-    (trino, truncate_decimal_p_s, arg1, "function doc"),
-    (trino, truncate_double, arg1, "function doc"),
-    (trino, truncate_real, arg1, "function doc"),
 
-    (trino, try_1, arg1, "function doc"),
 
-    (trino, typeof_1, arg1, "function doc"),
+create_udaf!
 
-    (trino, upper_varchar, arg1, "function doc"),
+(every_impl::every_booleanFunc, EVERY_BOOLEAN, every_boolean);
 
-    (trino, url_decode_varchar, arg1, "function doc"),
 
-    (trino, url_encode_varchar, arg1, "function doc"),
 
-    (trino, url_extract_fragment_varchar, arg1, "function doc"),
+create_udf!
 
-    (trino, url_extract_host_varchar, arg1, "function doc"),
+(exp_impl::exp_doubleFunc, EXP_DOUBLE, exp_double);
 
-    (trino, url_extract_parameter_varchar_varchar, arg1 arg2, "function doc"),
 
-    (trino, url_extract_path_varchar, arg1, "function doc"),
 
-    (trino, url_extract_port_varchar, arg1, "function doc"),
+create_udf!
 
-    (trino, url_extract_protocol_varchar, arg1, "function doc"),
+(features_impl::features_doubleFunc, FEATURES_DOUBLE, features_double);
 
-    (trino, url_extract_query_varchar, arg1, "function doc"),
 
-    (trino, uuid, , "function doc"),
+create_udf!
 
-    (trino, value_at_quantile_qdigest_double, arg1 arg2, "function doc"),
-    (trino, value_at_quantile_tdigest_double, arg1 arg2, "function doc"),
+(features_impl::features_double_doubleFunc, FEATURES_DOUBLE_DOUBLE, features_double_double);
 
-    (trino, values_at_quantiles_qdigest_array_double, arg1 arg2, "function doc"),
-    (trino, values_at_quantiles_tdigest_array_double, arg1 arg2, "function doc"),
 
-    (trino, week_date, arg1, "function doc"),
-    (trino, week_timestamp_p, arg1, "function doc"),
+create_udf!
 
-    (trino, week_of_year_date, arg1, "function doc"),
-    (trino, week_of_year_timestamp_p, arg1, "function doc"),
+(features_impl::features_double_double_doubleFunc, FEATURES_DOUBLE_DOUBLE_DOUBLE, features_double_double_double);
 
-    (trino, width_bucket_double_array_double, arg1 arg2, "function doc"),
-    (trino, width_bucket_double_double_double_bigint, arg1 arg2 arg3 arg4, "function doc"),
 
-    (trino, wilson_interval_lower_bigint_bigint_double, arg1 arg2 arg3, "function doc"),
+create_udf!
 
-    (trino, wilson_interval_upper_bigint_bigint_double, arg1 arg2 arg3, "function doc"),
+(features_impl::features_double_double_double_doubleFunc, FEATURES_DOUBLE_DOUBLE_DOUBLE_DOUBLE, features_double_double_double_double);
 
-    (trino, with_timezone_timestamp_p_varchar, arg1 arg2, "function doc"),
 
-    (trino, word_stem_varchar, arg1, "function doc"),
-    (trino, word_stem_varchar_varchar, arg1 arg2, "function doc"),
+create_udf!
 
-    (trino, xxhash64_varbinary, arg1, "function doc"),
+(features_impl::features_double_double_double_double_doubleFunc, FEATURES_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE, features_double_double_double_double_double);
 
-    (trino, year_date, arg1, "function doc"),
-    (trino, year_intervalyeartomonth, arg1, "function doc"),
-    (trino, year_timestamp_p, arg1, "function doc"),
 
-    (trino, year_of_week_date, arg1, "function doc"),
-    (trino, year_of_week_timestamp_p, arg1, "function doc"),
+create_udf!
 
-    (trino, yow_date, arg1, "function doc"),
-    (trino, yow_timestamp_p, arg1, "function doc"),
+(features_impl::features_double_double_double_double_double_doubleFunc, FEATURES_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE, features_double_double_double_double_double_double);
 
-    (trino, zip_array_14_array_15, arg1 arg2, "function doc"),
-    (trino, zip_array_14_array_15_array_16, arg1 arg2 arg3, "function doc"),
-    (trino, zip_array_14_array_15_array_16_array_17, arg1 arg2 arg3 arg4, "function doc"),
-    (trino, zip_array_14_array_15_array_16_array_17_array_18, arg1 arg2 arg3 arg4 arg5, "function doc"),
 
-    (trino, zip_with_array_1_array_11_function_1_11_9, arg1 arg2 arg3, "function doc"),
+create_udf!
 
-);
+(features_impl::features_double_double_double_double_double_double_doubleFunc, FEATURES_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE, features_double_double_double_double_double_double_double);
 
-pub fn udaf_functions() -> Vec<(String, Arc<AggregateUDF>)> {
-    vec![(
-        "trino::covar_samp_double_double".to_string(), covar_samp_udaf()
-    )]
+
+create_udf!
+
+(features_impl::features_double_double_double_double_double_double_double_doubleFunc, FEATURES_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE, features_double_double_double_double_double_double_double_double);
+
+
+create_udf!
+
+(features_impl::features_double_double_double_double_double_double_double_double_doubleFunc, FEATURES_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE, features_double_double_double_double_double_double_double_double_double);
+
+
+create_udf!
+
+(features_impl::features_double_double_double_double_double_double_double_double_double_doubleFunc, FEATURES_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE_DOUBLE, features_double_double_double_double_double_double_double_double_double_double);
+
+
+
+create_udf!
+
+(filter_impl::filter_array_1_function_1_booleanFunc, FILTER_ARRAY_1_FUNCTION_1_BOOLEAN, filter_array_1_function_1_boolean);
+
+
+
+create_udf!
+
+(flatten_impl::flatten_array_array_3Func, FLATTEN_ARRAY_ARRAY_3, flatten_array_array_3);
+
+
+
+create_udf!
+
+(floor_impl::floor_bigintFunc, FLOOR_BIGINT, floor_bigint);
+
+
+create_udf!
+
+(floor_impl::floor_decimal_p_sFunc, FLOOR_DECIMAL_P_S, floor_decimal_p_s);
+
+
+create_udf!
+
+(floor_impl::floor_doubleFunc, FLOOR_DOUBLE, floor_double);
+
+
+create_udf!
+
+(floor_impl::floor_integerFunc, FLOOR_INTEGER, floor_integer);
+
+
+create_udf!
+
+(floor_impl::floor_realFunc, FLOOR_REAL, floor_real);
+
+
+create_udf!
+
+(floor_impl::floor_smallintFunc, FLOOR_SMALLINT, floor_smallint);
+
+
+create_udf!
+
+(floor_impl::floor_tinyintFunc, FLOOR_TINYINT, floor_tinyint);
+
+
+
+create_udf!
+
+(format_impl::format_varchar_1Func, FORMAT_VARCHAR_1, format_varchar_1);
+
+
+create_udf!
+
+(format_impl::format_varchar_1_2Func, FORMAT_VARCHAR_1_2, format_varchar_1_2);
+
+
+create_udf!
+
+(format_impl::format_varchar_1_2_3Func, FORMAT_VARCHAR_1_2_3, format_varchar_1_2_3);
+
+
+create_udf!
+
+(format_impl::format_varchar_1_2_3_4Func, FORMAT_VARCHAR_1_2_3_4, format_varchar_1_2_3_4);
+
+
+create_udf!
+
+(format_impl::format_varchar_1_2_3_4_5Func, FORMAT_VARCHAR_1_2_3_4_5, format_varchar_1_2_3_4_5);
+
+
+
+create_udf!
+
+(format_datetime_impl::format_datetime_timestamp_p_varcharFunc, FORMAT_DATETIME_TIMESTAMP_P_VARCHAR, format_datetime_timestamp_p_varchar);
+
+
+
+create_udf!
+
+(format_number_impl::format_number_bigintFunc, FORMAT_NUMBER_BIGINT, format_number_bigint);
+
+
+create_udf!
+
+(format_number_impl::format_number_doubleFunc, FORMAT_NUMBER_DOUBLE, format_number_double);
+
+
+
+create_udf!
+
+(from_base_impl::from_base_varchar_bigintFunc, FROM_BASE_VARCHAR_BIGINT, from_base_varchar_bigint);
+
+
+
+create_udf!
+
+(from_base32_impl::from_base32_varbinaryFunc, FROM_BASE32_VARBINARY, from_base32_varbinary);
+
+
+create_udf!
+
+(from_base32_impl::from_base32_varcharFunc, FROM_BASE32_VARCHAR, from_base32_varchar);
+
+
+
+create_udf!
+
+(from_base64_impl::from_base64_varbinaryFunc, FROM_BASE64_VARBINARY, from_base64_varbinary);
+
+
+create_udf!
+
+(from_base64_impl::from_base64_varcharFunc, FROM_BASE64_VARCHAR, from_base64_varchar);
+
+
+
+create_udf!
+
+(from_base64url_impl::from_base64url_varbinaryFunc, FROM_BASE64URL_VARBINARY, from_base64url_varbinary);
+
+
+create_udf!
+
+(from_base64url_impl::from_base64url_varcharFunc, FROM_BASE64URL_VARCHAR, from_base64url_varchar);
+
+
+
+create_udf!
+
+(from_big_endian_32_impl::from_big_endian_32_varbinaryFunc, FROM_BIG_ENDIAN_32_VARBINARY, from_big_endian_32_varbinary);
+
+
+
+create_udf!
+
+(from_big_endian_64_impl::from_big_endian_64_varbinaryFunc, FROM_BIG_ENDIAN_64_VARBINARY, from_big_endian_64_varbinary);
+
+
+
+create_udf!
+
+(from_encoded_polyline_impl::from_encoded_polyline_varcharFunc, FROM_ENCODED_POLYLINE_VARCHAR, from_encoded_polyline_varchar);
+
+
+
+create_udf!
+
+(from_geojson_geometry_impl::from_geojson_geometry_varcharFunc, FROM_GEOJSON_GEOMETRY_VARCHAR, from_geojson_geometry_varchar);
+
+
+
+create_udf!
+
+(from_hex_impl::from_hex_varbinaryFunc, FROM_HEX_VARBINARY, from_hex_varbinary);
+
+
+create_udf!
+
+(from_hex_impl::from_hex_varcharFunc, FROM_HEX_VARCHAR, from_hex_varchar);
+
+
+
+create_udf!
+
+(from_ieee754_32_impl::from_ieee754_32_varbinaryFunc, FROM_IEEE754_32_VARBINARY, from_ieee754_32_varbinary);
+
+
+
+create_udf!
+
+(from_ieee754_64_impl::from_ieee754_64_varbinaryFunc, FROM_IEEE754_64_VARBINARY, from_ieee754_64_varbinary);
+
+
+
+create_udf!
+
+(from_iso8601_date_impl::from_iso8601_date_varcharFunc, FROM_ISO8601_DATE_VARCHAR, from_iso8601_date_varchar);
+
+
+
+create_udf!
+
+(from_iso8601_timestamp_impl::from_iso8601_timestamp_varcharFunc, FROM_ISO8601_TIMESTAMP_VARCHAR, from_iso8601_timestamp_varchar);
+
+
+
+create_udf!
+
+(from_iso8601_timestamp_nanos_impl::from_iso8601_timestamp_nanos_varcharFunc, FROM_ISO8601_TIMESTAMP_NANOS_VARCHAR, from_iso8601_timestamp_nanos_varchar);
+
+
+
+create_udf!
+
+(from_unixtime_impl::from_unixtime_bigintFunc, FROM_UNIXTIME_BIGINT, from_unixtime_bigint);
+
+
+create_udf!
+
+(from_unixtime_impl::from_unixtime_bigint_bigint_bigintFunc, FROM_UNIXTIME_BIGINT_BIGINT_BIGINT, from_unixtime_bigint_bigint_bigint);
+
+
+create_udf!
+
+(from_unixtime_impl::from_unixtime_bigint_varcharFunc, FROM_UNIXTIME_BIGINT_VARCHAR, from_unixtime_bigint_varchar);
+
+
+
+create_udf!
+
+(from_unixtime_nanos_impl::from_unixtime_nanos_bigintFunc, FROM_UNIXTIME_NANOS_BIGINT, from_unixtime_nanos_bigint);
+
+
+create_udf!
+
+(from_unixtime_nanos_impl::from_unixtime_nanos_decimal_p_sFunc, FROM_UNIXTIME_NANOS_DECIMAL_P_S, from_unixtime_nanos_decimal_p_s);
+
+
+
+create_udf!
+
+(from_utf8_impl::from_utf8_varbinaryFunc, FROM_UTF8_VARBINARY, from_utf8_varbinary);
+
+
+create_udf!
+
+(from_utf8_impl::from_utf8_varbinary_bigintFunc, FROM_UTF8_VARBINARY_BIGINT, from_utf8_varbinary_bigint);
+
+
+create_udf!
+
+(from_utf8_impl::from_utf8_varbinary_varcharFunc, FROM_UTF8_VARBINARY_VARCHAR, from_utf8_varbinary_varchar);
+
+
+
+create_udaf!
+
+(geometric_mean_impl::geometric_mean_bigintFunc, GEOMETRIC_MEAN_BIGINT, geometric_mean_bigint);
+
+
+create_udaf!
+
+(geometric_mean_impl::geometric_mean_doubleFunc, GEOMETRIC_MEAN_DOUBLE, geometric_mean_double);
+
+
+create_udaf!
+
+(geometric_mean_impl::geometric_mean_realFunc, GEOMETRIC_MEAN_REAL, geometric_mean_real);
+
+
+
+create_udf!
+
+(geometry_from_hadoop_shape_impl::geometry_from_hadoop_shape_varbinaryFunc, GEOMETRY_FROM_HADOOP_SHAPE_VARBINARY, geometry_from_hadoop_shape_varbinary);
+
+
+
+create_udf!
+
+(geometry_invalid_reason_impl::geometry_invalid_reason_geometryFunc, GEOMETRY_INVALID_REASON_GEOMETRY, geometry_invalid_reason_geometry);
+
+
+
+create_udf!
+
+(geometry_nearest_points_impl::geometry_nearest_points_geometry_geometryFunc, GEOMETRY_NEAREST_POINTS_GEOMETRY_GEOMETRY, geometry_nearest_points_geometry_geometry);
+
+
+
+create_udf!
+
+(geometry_to_bing_tiles_impl::geometry_to_bing_tiles_geometry_bigintFunc, GEOMETRY_TO_BING_TILES_GEOMETRY_BIGINT, geometry_to_bing_tiles_geometry_bigint);
+
+
+
+create_udf!
+
+(geometry_union_impl::geometry_union_array_geometryFunc, GEOMETRY_UNION_ARRAY_GEOMETRY, geometry_union_array_geometry);
+
+
+
+create_udaf!
+
+(geometry_union_agg_impl::geometry_union_agg_geometryFunc, GEOMETRY_UNION_AGG_GEOMETRY, geometry_union_agg_geometry);
+
+
+
+create_udf!
+
+(great_circle_distance_impl::great_circle_distance_double_double_double_doubleFunc, GREAT_CIRCLE_DISTANCE_DOUBLE_DOUBLE_DOUBLE_DOUBLE, great_circle_distance_double_double_double_double);
+
+
+
+create_udf!
+
+(greatest_impl::greatest_3Func, GREATEST_3, greatest_3);
+
+
+
+create_udaf!
+
+(grouping_impl::groupingFunc, GROUPING, grouping);
+
+
+
+create_udf!
+
+(hamming_distance_impl::hamming_distance_varchar_varcharFunc, HAMMING_DISTANCE_VARCHAR_VARCHAR, hamming_distance_varchar_varchar);
+
+
+
+create_udf!
+
+(hash_counts_impl::hash_counts_setdigestFunc, HASH_COUNTS_SETDIGEST, hash_counts_setdigest);
+
+
+
+create_udaf!
+
+(histogram_impl::histogram_1Func, HISTOGRAM_1, histogram_1);
+
+
+
+create_udf!
+
+(hmac_md5_impl::hmac_md5_varbinary_varbinaryFunc, HMAC_MD5_VARBINARY_VARBINARY, hmac_md5_varbinary_varbinary);
+
+
+
+create_udf!
+
+(hmac_sha1_impl::hmac_sha1_varbinary_varbinaryFunc, HMAC_SHA1_VARBINARY_VARBINARY, hmac_sha1_varbinary_varbinary);
+
+
+
+create_udf!
+
+(hmac_sha256_impl::hmac_sha256_varbinary_varbinaryFunc, HMAC_SHA256_VARBINARY_VARBINARY, hmac_sha256_varbinary_varbinary);
+
+
+
+create_udf!
+
+(hmac_sha512_impl::hmac_sha512_varbinary_varbinaryFunc, HMAC_SHA512_VARBINARY_VARBINARY, hmac_sha512_varbinary_varbinary);
+
+
+
+create_udf!
+
+(hour_impl::hour_intervaldaytosecondFunc, HOUR_INTERVALDAYTOSECOND, hour_intervaldaytosecond);
+
+
+create_udf!
+
+(hour_impl::hour_time_pFunc, HOUR_TIME_P, hour_time_p);
+
+
+create_udf!
+
+(hour_impl::hour_timestamp_pFunc, HOUR_TIMESTAMP_P, hour_timestamp_p);
+
+
+
+create_udf!
+
+(human_readable_seconds_impl::human_readable_seconds_doubleFunc, HUMAN_READABLE_SECONDS_DOUBLE, human_readable_seconds_double);
+
+
+
+create_udf!
+
+(if_impl::if_boolean_1_1Func, IF_BOOLEAN_1_1, if_boolean_1_1);
+
+
+
+create_udf!
+
+(index_impl::index_varchar_varcharFunc, INDEX_VARCHAR_VARCHAR, index_varchar_varchar);
+
+
+
+create_udf!
+
+(infinity_impl::infinityFunc, INFINITY, infinity);
+
+
+
+create_udf!
+
+(intersection_cardinality_impl::intersection_cardinality_setdigest_setdigestFunc, INTERSECTION_CARDINALITY_SETDIGEST_SETDIGEST, intersection_cardinality_setdigest_setdigest);
+
+
+
+create_udf!
+
+(inverse_beta_cdf_impl::inverse_beta_cdf_double_double_doubleFunc, INVERSE_BETA_CDF_DOUBLE_DOUBLE_DOUBLE, inverse_beta_cdf_double_double_double);
+
+
+
+create_udf!
+
+(inverse_normal_cdf_impl::inverse_normal_cdf_double_double_doubleFunc, INVERSE_NORMAL_CDF_DOUBLE_DOUBLE_DOUBLE, inverse_normal_cdf_double_double_double);
+
+
+
+create_udf!
+
+(is_finite_impl::is_finite_doubleFunc, IS_FINITE_DOUBLE, is_finite_double);
+
+
+
+create_udf!
+
+(is_infinite_impl::is_infinite_doubleFunc, IS_INFINITE_DOUBLE, is_infinite_double);
+
+
+
+create_udf!
+
+(is_json_scalar_impl::is_json_scalar_jsonFunc, IS_JSON_SCALAR_JSON, is_json_scalar_json);
+
+
+create_udf!
+
+(is_json_scalar_impl::is_json_scalar_varcharFunc, IS_JSON_SCALAR_VARCHAR, is_json_scalar_varchar);
+
+
+
+create_udf!
+
+(is_nan_impl::is_nan_doubleFunc, IS_NAN_DOUBLE, is_nan_double);
+
+
+create_udf!
+
+(is_nan_impl::is_nan_realFunc, IS_NAN_REAL, is_nan_real);
+
+
+
+create_udf!
+
+(jaccard_index_impl::jaccard_index_setdigest_setdigestFunc, JACCARD_INDEX_SETDIGEST_SETDIGEST, jaccard_index_setdigest_setdigest);
+
+
+
+create_udf!
+
+(json_array_contains_impl::json_array_contains_json_bigintFunc, JSON_ARRAY_CONTAINS_JSON_BIGINT, json_array_contains_json_bigint);
+
+
+create_udf!
+
+(json_array_contains_impl::json_array_contains_json_booleanFunc, JSON_ARRAY_CONTAINS_JSON_BOOLEAN, json_array_contains_json_boolean);
+
+
+create_udf!
+
+(json_array_contains_impl::json_array_contains_json_doubleFunc, JSON_ARRAY_CONTAINS_JSON_DOUBLE, json_array_contains_json_double);
+
+
+create_udf!
+
+(json_array_contains_impl::json_array_contains_json_varcharFunc, JSON_ARRAY_CONTAINS_JSON_VARCHAR, json_array_contains_json_varchar);
+
+
+create_udf!
+
+(json_array_contains_impl::json_array_contains_varchar_bigintFunc, JSON_ARRAY_CONTAINS_VARCHAR_BIGINT, json_array_contains_varchar_bigint);
+
+
+create_udf!
+
+(json_array_contains_impl::json_array_contains_varchar_booleanFunc, JSON_ARRAY_CONTAINS_VARCHAR_BOOLEAN, json_array_contains_varchar_boolean);
+
+
+create_udf!
+
+(json_array_contains_impl::json_array_contains_varchar_doubleFunc, JSON_ARRAY_CONTAINS_VARCHAR_DOUBLE, json_array_contains_varchar_double);
+
+
+create_udf!
+
+(json_array_contains_impl::json_array_contains_varchar_varcharFunc, JSON_ARRAY_CONTAINS_VARCHAR_VARCHAR, json_array_contains_varchar_varchar);
+
+
+
+create_udf!
+
+(json_array_get_impl::json_array_get_json_bigintFunc, JSON_ARRAY_GET_JSON_BIGINT, json_array_get_json_bigint);
+
+
+create_udf!
+
+(json_array_get_impl::json_array_get_varchar_bigintFunc, JSON_ARRAY_GET_VARCHAR_BIGINT, json_array_get_varchar_bigint);
+
+
+
+create_udf!
+
+(json_array_length_impl::json_array_length_jsonFunc, JSON_ARRAY_LENGTH_JSON, json_array_length_json);
+
+
+create_udf!
+
+(json_array_length_impl::json_array_length_varcharFunc, JSON_ARRAY_LENGTH_VARCHAR, json_array_length_varchar);
+
+
+
+create_udf!
+
+(json_extract_impl::json_extract_json_jsonpathFunc, JSON_EXTRACT_JSON_JSONPATH, json_extract_json_jsonpath);
+
+
+create_udf!
+
+(json_extract_impl::json_extract_varchar_jsonpathFunc, JSON_EXTRACT_VARCHAR_JSONPATH, json_extract_varchar_jsonpath);
+
+
+
+create_udf!
+
+(json_extract_scalar_impl::json_extract_scalar_json_jsonpathFunc, JSON_EXTRACT_SCALAR_JSON_JSONPATH, json_extract_scalar_json_jsonpath);
+
+
+create_udf!
+
+(json_extract_scalar_impl::json_extract_scalar_varchar_jsonpathFunc, JSON_EXTRACT_SCALAR_VARCHAR_JSONPATH, json_extract_scalar_varchar_jsonpath);
+
+
+
+create_udf!
+
+(json_format_impl::json_format_jsonFunc, JSON_FORMAT_JSON, json_format_json);
+
+
+
+create_udf!
+
+(json_parse_impl::json_parse_varcharFunc, JSON_PARSE_VARCHAR, json_parse_varchar);
+
+
+
+create_udf!
+
+(json_size_impl::json_size_json_jsonpathFunc, JSON_SIZE_JSON_JSONPATH, json_size_json_jsonpath);
+
+
+create_udf!
+
+(json_size_impl::json_size_varchar_jsonpathFunc, JSON_SIZE_VARCHAR_JSONPATH, json_size_varchar_jsonpath);
+
+
+
+create_udaf!
+
+(kurtosis_impl::kurtosis_bigintFunc, KURTOSIS_BIGINT, kurtosis_bigint);
+
+
+create_udaf!
+
+(kurtosis_impl::kurtosis_doubleFunc, KURTOSIS_DOUBLE, kurtosis_double);
+
+
+
+create_udf!
+
+(last_day_of_month_impl::last_day_of_month_dateFunc, LAST_DAY_OF_MONTH_DATE, last_day_of_month_date);
+
+
+create_udf!
+
+(last_day_of_month_impl::last_day_of_month_timestamp_pFunc, LAST_DAY_OF_MONTH_TIMESTAMP_P, last_day_of_month_timestamp_p);
+
+
+
+create_udaf!
+
+(learn_classifier_impl::learn_classifier_bigint_map_bigint_doubleFunc, LEARN_CLASSIFIER_BIGINT_MAP_BIGINT_DOUBLE, learn_classifier_bigint_map_bigint_double);
+
+
+create_udaf!
+
+(learn_classifier_impl::learn_classifier_double_map_bigint_doubleFunc, LEARN_CLASSIFIER_DOUBLE_MAP_BIGINT_DOUBLE, learn_classifier_double_map_bigint_double);
+
+
+create_udaf!
+
+(learn_classifier_impl::learn_classifier_varchar_map_bigint_doubleFunc, LEARN_CLASSIFIER_VARCHAR_MAP_BIGINT_DOUBLE, learn_classifier_varchar_map_bigint_double);
+
+
+
+create_udaf!
+
+(learn_libsvm_classifier_impl::learn_libsvm_classifier_bigint_map_bigint_double_varcharFunc, LEARN_LIBSVM_CLASSIFIER_BIGINT_MAP_BIGINT_DOUBLE_VARCHAR, learn_libsvm_classifier_bigint_map_bigint_double_varchar);
+
+
+create_udaf!
+
+(learn_libsvm_classifier_impl::learn_libsvm_classifier_double_map_bigint_double_varcharFunc, LEARN_LIBSVM_CLASSIFIER_DOUBLE_MAP_BIGINT_DOUBLE_VARCHAR, learn_libsvm_classifier_double_map_bigint_double_varchar);
+
+
+create_udaf!
+
+(learn_libsvm_classifier_impl::learn_libsvm_classifier_varchar_map_bigint_double_varcharFunc, LEARN_LIBSVM_CLASSIFIER_VARCHAR_MAP_BIGINT_DOUBLE_VARCHAR, learn_libsvm_classifier_varchar_map_bigint_double_varchar);
+
+
+
+create_udaf!
+
+(learn_libsvm_regressor_impl::learn_libsvm_regressor_bigint_map_bigint_double_varcharFunc, LEARN_LIBSVM_REGRESSOR_BIGINT_MAP_BIGINT_DOUBLE_VARCHAR, learn_libsvm_regressor_bigint_map_bigint_double_varchar);
+
+
+create_udaf!
+
+(learn_libsvm_regressor_impl::learn_libsvm_regressor_double_map_bigint_double_varcharFunc, LEARN_LIBSVM_REGRESSOR_DOUBLE_MAP_BIGINT_DOUBLE_VARCHAR, learn_libsvm_regressor_double_map_bigint_double_varchar);
+
+
+
+create_udaf!
+
+(learn_regressor_impl::learn_regressor_bigint_map_bigint_doubleFunc, LEARN_REGRESSOR_BIGINT_MAP_BIGINT_DOUBLE, learn_regressor_bigint_map_bigint_double);
+
+
+create_udaf!
+
+(learn_regressor_impl::learn_regressor_double_map_bigint_doubleFunc, LEARN_REGRESSOR_DOUBLE_MAP_BIGINT_DOUBLE, learn_regressor_double_map_bigint_double);
+
+
+
+create_udf!
+
+(least_impl::least_3Func, LEAST_3, least_3);
+
+
+
+create_udf!
+
+(length_impl::length_varcharFunc, LENGTH_VARCHAR, length_varchar);
+
+
+create_udf!
+
+(length_impl::length_varbinaryFunc, LENGTH_VARBINARY, length_varbinary);
+
+
+create_udf!
+
+(length_impl::length_array_1Func, LENGTH_ARRAY_1, length_array_1);
+
+
+
+create_udf!
+
+(levenshtein_distance_impl::levenshtein_distance_varchar_varcharFunc, LEVENSHTEIN_DISTANCE_VARCHAR_VARCHAR, levenshtein_distance_varchar_varchar);
+
+
+
+create_udf!
+
+(line_interpolate_point_impl::line_interpolate_point_geometry_doubleFunc, LINE_INTERPOLATE_POINT_GEOMETRY_DOUBLE, line_interpolate_point_geometry_double);
+
+
+
+create_udf!
+
+(line_interpolate_points_impl::line_interpolate_points_geometry_doubleFunc, LINE_INTERPOLATE_POINTS_GEOMETRY_DOUBLE, line_interpolate_points_geometry_double);
+
+
+
+create_udf!
+
+(line_locate_point_impl::line_locate_point_geometry_geometryFunc, LINE_LOCATE_POINT_GEOMETRY_GEOMETRY, line_locate_point_geometry_geometry);
+
+
+
+create_udaf!
+
+(listagg_impl::listagg_varchar_varchar_boolean_varchar_booleanFunc, LISTAGG_VARCHAR_VARCHAR_BOOLEAN_VARCHAR_BOOLEAN, listagg_varchar_varchar_boolean_varchar_boolean);
+
+
+
+create_udf!
+
+(ln_impl::ln_doubleFunc, LN_DOUBLE, ln_double);
+
+
+
+create_udf!
+
+(localtime_impl::localtimeFunc, LOCALTIME, localtime);
+
+
+
+create_udf!
+
+(localtimestamp_impl::localtimestampFunc, LOCALTIMESTAMP, localtimestamp);
+
+
+create_udf!
+
+(localtimestamp_impl::localtimestamp_bigint_0Func, LOCALTIMESTAMP_BIGINT_0, localtimestamp_bigint_0);
+
+
+create_udf!
+
+(localtimestamp_impl::localtimestamp_bigint_3Func, LOCALTIMESTAMP_BIGINT_3, localtimestamp_bigint_3);
+
+
+create_udf!
+
+(localtimestamp_impl::localtimestamp_bigint_6Func, LOCALTIMESTAMP_BIGINT_6, localtimestamp_bigint_6);
+
+
+create_udf!
+
+(localtimestamp_impl::localtimestamp_bigint_9Func, LOCALTIMESTAMP_BIGINT_9, localtimestamp_bigint_9);
+
+
+
+create_udf!
+
+(log_impl::log_double_doubleFunc, LOG_DOUBLE_DOUBLE, log_double_double);
+
+
+
+create_udf!
+
+(log10_impl::log10_doubleFunc, LOG10_DOUBLE, log10_double);
+
+
+
+create_udf!
+
+(log2_impl::log2_doubleFunc, LOG2_DOUBLE, log2_double);
+
+
+
+create_udf!
+
+(lower_impl::lower_varcharFunc, LOWER_VARCHAR, lower_varchar);
+
+
+
+create_udf!
+
+(lpad_impl::lpad_varbinary_bigint_varbinaryFunc, LPAD_VARBINARY_BIGINT_VARBINARY, lpad_varbinary_bigint_varbinary);
+
+
+create_udf!
+
+(lpad_impl::lpad_varchar_bigint_varcharFunc, LPAD_VARCHAR_BIGINT_VARCHAR, lpad_varchar_bigint_varchar);
+
+
+
+create_udf!
+
+(ltrim_impl::ltrim_varcharFunc, LTRIM_VARCHAR, ltrim_varchar);
+
+
+create_udf!
+
+(ltrim_impl::ltrim_varchar_codepointsFunc, LTRIM_VARCHAR_CODEPOINTS, ltrim_varchar_codepoints);
+
+
+
+create_udf!
+
+(luhn_check_impl::luhn_check_varcharFunc, LUHN_CHECK_VARCHAR, luhn_check_varchar);
+
+
+
+create_udaf!
+
+(make_set_digest_impl::make_set_digest_1Func, MAKE_SET_DIGEST_1, make_set_digest_1);
+
+
+
+create_udf!
+
+(map_impl::map_array_4_array_5Func, MAP_ARRAY_4_ARRAY_5, map_array_4_array_5);
+
+
+create_udf!
+
+(map_impl::mapFunc, MAP, map);
+
+
+
+create_udaf!
+
+(map_agg_impl::map_agg_4_5Func, MAP_AGG_4_5, map_agg_4_5);
+
+
+
+create_udf!
+
+(map_concat_impl::map_concat_map_4_5Func, MAP_CONCAT_MAP_4_5, map_concat_map_4_5);
+
+
+
+create_udf!
+
+(map_entries_impl::map_entries_map_4_5Func, MAP_ENTRIES_MAP_4_5, map_entries_map_4_5);
+
+
+
+create_udf!
+
+(map_filter_impl::map_filter_map_4_5_function_4_5_booleanFunc, MAP_FILTER_MAP_4_5_FUNCTION_4_5_BOOLEAN, map_filter_map_4_5_function_4_5_boolean);
+
+
+
+create_udf!
+
+(map_from_entries_impl::map_from_entries_array_row_c04_c15Func, MAP_FROM_ENTRIES_ARRAY_ROW_C04_C15, map_from_entries_array_row_c04_c15);
+
+
+
+create_udf!
+
+(map_keys_impl::map_keys_map_4_5Func, MAP_KEYS_MAP_4_5, map_keys_map_4_5);
+
+
+
+create_udaf!
+
+(map_union_impl::map_union_map_4_5Func, MAP_UNION_MAP_4_5, map_union_map_4_5);
+
+
+
+create_udf!
+
+(map_values_impl::map_values_map_4_5Func, MAP_VALUES_MAP_4_5, map_values_map_4_5);
+
+
+
+create_udf!
+
+(map_zip_with_impl::map_zip_with_map_4_8_map_4_7_function_4_8_7_6Func, MAP_ZIP_WITH_MAP_4_8_MAP_4_7_FUNCTION_4_8_7_6, map_zip_with_map_4_8_map_4_7_function_4_8_7_6);
+
+
+
+create_udaf!
+
+(max_impl::max_3_bigintFunc, MAX_3_BIGINT, max_3_bigint);
+
+
+create_udaf!
+
+(max_impl::max_1Func, MAX_1, max_1);
+
+
+
+create_udaf!
+
+(max_by_impl::max_by_5_4_bigintFunc, MAX_BY_5_4_BIGINT, max_by_5_4_bigint);
+
+
+create_udaf!
+
+(max_by_impl::max_by_5_4Func, MAX_BY_5_4, max_by_5_4);
+
+
+
+create_udf!
+
+(md5_impl::md5_varbinaryFunc, MD5_VARBINARY, md5_varbinary);
+
+
+
+create_udaf!
+
+(merge_impl::merge_hyperloglogFunc, MERGE_HYPERLOGLOG, merge_hyperloglog);
+
+
+create_udaf!
+
+(merge_impl::merge_qdigestFunc, MERGE_QDIGEST, merge_qdigest);
+
+
+create_udaf!
+
+(merge_impl::merge_tdigestFunc, MERGE_TDIGEST, merge_tdigest);
+
+
+
+create_udaf!
+
+(merge_set_digest_impl::merge_set_digest_setdigestFunc, MERGE_SET_DIGEST_SETDIGEST, merge_set_digest_setdigest);
+
+
+
+create_udf!
+
+(millisecond_impl::millisecond_intervaldaytosecondFunc, MILLISECOND_INTERVALDAYTOSECOND, millisecond_intervaldaytosecond);
+
+
+create_udf!
+
+(millisecond_impl::millisecond_time_pFunc, MILLISECOND_TIME_P, millisecond_time_p);
+
+
+create_udf!
+
+(millisecond_impl::millisecond_timestamp_pFunc, MILLISECOND_TIMESTAMP_P, millisecond_timestamp_p);
+
+
+
+create_udaf!
+
+(min_impl::min_3_bigintFunc, MIN_3_BIGINT, min_3_bigint);
+
+
+create_udaf!
+
+(min_impl::min_1Func, MIN_1, min_1);
+
+
+
+create_udaf!
+
+(min_by_impl::min_by_5_4_bigintFunc, MIN_BY_5_4_BIGINT, min_by_5_4_bigint);
+
+
+create_udaf!
+
+(min_by_impl::min_by_5_4Func, MIN_BY_5_4, min_by_5_4);
+
+
+
+create_udf!
+
+(minute_impl::minute_intervaldaytosecondFunc, MINUTE_INTERVALDAYTOSECOND, minute_intervaldaytosecond);
+
+
+create_udf!
+
+(minute_impl::minute_time_pFunc, MINUTE_TIME_P, minute_time_p);
+
+
+create_udf!
+
+(minute_impl::minute_timestamp_pFunc, MINUTE_TIMESTAMP_P, minute_timestamp_p);
+
+
+
+create_udf!
+
+(mod_impl::mod_bigint_bigintFunc, MOD_BIGINT_BIGINT, mod_bigint_bigint);
+
+
+create_udf!
+
+(mod_impl::mod_decimal_a_precision_a_scale_decimal_b_precision_b_scaleFunc, MOD_DECIMAL_A_PRECISION_A_SCALE_DECIMAL_B_PRECISION_B_SCALE, mod_decimal_a_precision_a_scale_decimal_b_precision_b_scale);
+
+
+create_udf!
+
+(mod_impl::mod_double_doubleFunc, MOD_DOUBLE_DOUBLE, mod_double_double);
+
+
+create_udf!
+
+(mod_impl::mod_integer_integerFunc, MOD_INTEGER_INTEGER, mod_integer_integer);
+
+
+create_udf!
+
+(mod_impl::mod_real_realFunc, MOD_REAL_REAL, mod_real_real);
+
+
+create_udf!
+
+(mod_impl::mod_smallint_smallintFunc, MOD_SMALLINT_SMALLINT, mod_smallint_smallint);
+
+
+create_udf!
+
+(mod_impl::mod_tinyint_tinyintFunc, MOD_TINYINT_TINYINT, mod_tinyint_tinyint);
+
+
+
+create_udf!
+
+(month_impl::month_dateFunc, MONTH_DATE, month_date);
+
+
+create_udf!
+
+(month_impl::month_intervalyeartomonthFunc, MONTH_INTERVALYEARTOMONTH, month_intervalyeartomonth);
+
+
+create_udf!
+
+(month_impl::month_timestamp_pFunc, MONTH_TIMESTAMP_P, month_timestamp_p);
+
+
+
+create_udaf!
+
+(multimap_agg_impl::multimap_agg_4_5Func, MULTIMAP_AGG_4_5, multimap_agg_4_5);
+
+
+
+create_udf!
+
+(multimap_from_entries_impl::multimap_from_entries_array_row_c04_c15Func, MULTIMAP_FROM_ENTRIES_ARRAY_ROW_C04_C15, multimap_from_entries_array_row_c04_c15);
+
+
+
+create_udf!
+
+(murmur3_impl::murmur3_varbinaryFunc, MURMUR3_VARBINARY, murmur3_varbinary);
+
+
+
+create_udf!
+
+(nan_impl::nanFunc, NAN, nan);
+
+
+
+create_udf!
+
+(ngrams_impl::ngrams_array_1_bigintFunc, NGRAMS_ARRAY_1_BIGINT, ngrams_array_1_bigint);
+
+
+
+create_udf!
+
+(none_match_impl::none_match_array_1_function_1_booleanFunc, NONE_MATCH_ARRAY_1_FUNCTION_1_BOOLEAN, none_match_array_1_function_1_boolean);
+
+
+
+create_udf!
+
+(normal_cdf_impl::normal_cdf_double_double_doubleFunc, NORMAL_CDF_DOUBLE_DOUBLE_DOUBLE, normal_cdf_double_double_double);
+
+
+
+create_udf!
+
+(normalize_impl::normalize_varchar_varcharFunc, NORMALIZE_VARCHAR_VARCHAR, normalize_varchar_varchar);
+
+
+
+create_udf!
+
+(now_impl::nowFunc, NOW, now);
+
+
+
+create_udf!
+
+(nullif_impl::nullif_1_1Func, NULLIF_1_1, nullif_1_1);
+
+
+
+create_udaf!
+
+(numeric_histogram_impl::numeric_histogram_bigint_doubleFunc, NUMERIC_HISTOGRAM_BIGINT_DOUBLE, numeric_histogram_bigint_double);
+
+
+create_udaf!
+
+(numeric_histogram_impl::numeric_histogram_bigint_double_doubleFunc, NUMERIC_HISTOGRAM_BIGINT_DOUBLE_DOUBLE, numeric_histogram_bigint_double_double);
+
+
+create_udaf!
+
+(numeric_histogram_impl::numeric_histogram_bigint_realFunc, NUMERIC_HISTOGRAM_BIGINT_REAL, numeric_histogram_bigint_real);
+
+
+create_udaf!
+
+(numeric_histogram_impl::numeric_histogram_bigint_real_doubleFunc, NUMERIC_HISTOGRAM_BIGINT_REAL_DOUBLE, numeric_histogram_bigint_real_double);
+
+
+
+create_udf!
+
+(objectid_impl::objectidFunc, OBJECTID, objectid);
+
+
+create_udf!
+
+(objectid_impl::objectid_varcharFunc, OBJECTID_VARCHAR, objectid_varchar);
+
+
+
+create_udf!
+
+(objectid_timestamp_impl::objectid_timestamp_objectidFunc, OBJECTID_TIMESTAMP_OBJECTID, objectid_timestamp_objectid);
+
+
+
+create_udf!
+
+(parse_data_size_impl::parse_data_size_varcharFunc, PARSE_DATA_SIZE_VARCHAR, parse_data_size_varchar);
+
+
+
+create_udf!
+
+(parse_datetime_impl::parse_datetime_varchar_varcharFunc, PARSE_DATETIME_VARCHAR_VARCHAR, parse_datetime_varchar_varchar);
+
+
+
+create_udf!
+
+(parse_duration_impl::parse_duration_varcharFunc, PARSE_DURATION_VARCHAR, parse_duration_varchar);
+
+
+
+create_udf!
+
+(parse_presto_data_size_impl::parse_presto_data_size_varcharFunc, PARSE_PRESTO_DATA_SIZE_VARCHAR, parse_presto_data_size_varchar);
+
+
+
+create_udf!
+
+(pi_impl::piFunc, PI, pi);
+
+
+
+create_udf!
+
+(pow_impl::pow_double_doubleFunc, POW_DOUBLE_DOUBLE, pow_double_double);
+
+
+
+create_udf!
+
+(power_impl::power_double_doubleFunc, POWER_DOUBLE_DOUBLE, power_double_double);
+
+
+
+create_udaf!
+
+(qdigest_agg_impl::qdigest_agg_bigintFunc, QDIGEST_AGG_BIGINT, qdigest_agg_bigint);
+
+
+create_udaf!
+
+(qdigest_agg_impl::qdigest_agg_bigint_bigintFunc, QDIGEST_AGG_BIGINT_BIGINT, qdigest_agg_bigint_bigint);
+
+
+create_udaf!
+
+(qdigest_agg_impl::qdigest_agg_bigint_bigint_doubleFunc, QDIGEST_AGG_BIGINT_BIGINT_DOUBLE, qdigest_agg_bigint_bigint_double);
+
+
+create_udaf!
+
+(qdigest_agg_impl::qdigest_agg_doubleFunc, QDIGEST_AGG_DOUBLE, qdigest_agg_double);
+
+
+create_udaf!
+
+(qdigest_agg_impl::qdigest_agg_double_bigintFunc, QDIGEST_AGG_DOUBLE_BIGINT, qdigest_agg_double_bigint);
+
+
+create_udaf!
+
+(qdigest_agg_impl::qdigest_agg_double_bigint_doubleFunc, QDIGEST_AGG_DOUBLE_BIGINT_DOUBLE, qdigest_agg_double_bigint_double);
+
+
+create_udaf!
+
+(qdigest_agg_impl::qdigest_agg_realFunc, QDIGEST_AGG_REAL, qdigest_agg_real);
+
+
+create_udaf!
+
+(qdigest_agg_impl::qdigest_agg_real_bigintFunc, QDIGEST_AGG_REAL_BIGINT, qdigest_agg_real_bigint);
+
+
+create_udaf!
+
+(qdigest_agg_impl::qdigest_agg_real_bigint_doubleFunc, QDIGEST_AGG_REAL_BIGINT_DOUBLE, qdigest_agg_real_bigint_double);
+
+
+
+create_udf!
+
+(quantile_at_value_impl::quantile_at_value_qdigest_bigintFunc, QUANTILE_AT_VALUE_QDIGEST_BIGINT, quantile_at_value_qdigest_bigint);
+
+
+create_udf!
+
+(quantile_at_value_impl::quantile_at_value_qdigest_doubleFunc, QUANTILE_AT_VALUE_QDIGEST_DOUBLE, quantile_at_value_qdigest_double);
+
+
+create_udf!
+
+(quantile_at_value_impl::quantile_at_value_qdigest_realFunc, QUANTILE_AT_VALUE_QDIGEST_REAL, quantile_at_value_qdigest_real);
+
+
+
+create_udf!
+
+(quarter_impl::quarter_dateFunc, QUARTER_DATE, quarter_date);
+
+
+create_udf!
+
+(quarter_impl::quarter_timestamp_pFunc, QUARTER_TIMESTAMP_P, quarter_timestamp_p);
+
+
+
+create_udf!
+
+(radians_impl::radians_doubleFunc, RADIANS_DOUBLE, radians_double);
+
+
+
+create_udf!
+
+(rand_impl::rand_bigintFunc, RAND_BIGINT, rand_bigint);
+
+
+create_udf!
+
+(rand_impl::rand_bigint_bigintFunc, RAND_BIGINT_BIGINT, rand_bigint_bigint);
+
+
+create_udf!
+
+(rand_impl::randFunc, RAND, rand);
+
+
+create_udf!
+
+(rand_impl::rand_integerFunc, RAND_INTEGER, rand_integer);
+
+
+create_udf!
+
+(rand_impl::rand_integer_integerFunc, RAND_INTEGER_INTEGER, rand_integer_integer);
+
+
+create_udf!
+
+(rand_impl::rand_smallintFunc, RAND_SMALLINT, rand_smallint);
+
+
+create_udf!
+
+(rand_impl::rand_smallint_smallintFunc, RAND_SMALLINT_SMALLINT, rand_smallint_smallint);
+
+
+create_udf!
+
+(rand_impl::rand_tinyintFunc, RAND_TINYINT, rand_tinyint);
+
+
+create_udf!
+
+(rand_impl::rand_tinyint_tinyintFunc, RAND_TINYINT_TINYINT, rand_tinyint_tinyint);
+
+
+
+create_udf!
+
+(random_impl::random_bigintFunc, RANDOM_BIGINT, random_bigint);
+
+
+create_udf!
+
+(random_impl::random_bigint_bigintFunc, RANDOM_BIGINT_BIGINT, random_bigint_bigint);
+
+
+create_udf!
+
+(random_impl::randomFunc, RANDOM, random);
+
+
+create_udf!
+
+(random_impl::random_integerFunc, RANDOM_INTEGER, random_integer);
+
+
+create_udf!
+
+(random_impl::random_integer_integerFunc, RANDOM_INTEGER_INTEGER, random_integer_integer);
+
+
+create_udf!
+
+(random_impl::random_smallintFunc, RANDOM_SMALLINT, random_smallint);
+
+
+create_udf!
+
+(random_impl::random_smallint_smallintFunc, RANDOM_SMALLINT_SMALLINT, random_smallint_smallint);
+
+
+create_udf!
+
+(random_impl::random_tinyintFunc, RANDOM_TINYINT, random_tinyint);
+
+
+create_udf!
+
+(random_impl::random_tinyint_tinyintFunc, RANDOM_TINYINT_TINYINT, random_tinyint_tinyint);
+
+
+
+create_udf!
+
+(reduce_impl::reduce_array_1_10_function_10_1_10_function_10_9Func, REDUCE_ARRAY_1_10_FUNCTION_10_1_10_FUNCTION_10_9, reduce_array_1_10_function_10_1_10_function_10_9);
+
+
+
+create_udaf!
+
+(reduce_agg_impl::reduce_agg_1_10_function_10_1_10_function_10_10_10Func, REDUCE_AGG_1_10_FUNCTION_10_1_10_FUNCTION_10_10_10, reduce_agg_1_10_function_10_1_10_function_10_10_10);
+
+
+
+create_udf!
+
+(regexp_count_impl::regexp_count_varchar_joniregexpFunc, REGEXP_COUNT_VARCHAR_JONIREGEXP, regexp_count_varchar_joniregexp);
+
+
+
+create_udf!
+
+(regexp_extract_impl::regexp_extract_varchar_joniregexpFunc, REGEXP_EXTRACT_VARCHAR_JONIREGEXP, regexp_extract_varchar_joniregexp);
+
+
+create_udf!
+
+(regexp_extract_impl::regexp_extract_varchar_joniregexp_bigintFunc, REGEXP_EXTRACT_VARCHAR_JONIREGEXP_BIGINT, regexp_extract_varchar_joniregexp_bigint);
+
+
+
+create_udf!
+
+(regexp_extract_all_impl::regexp_extract_all_varchar_joniregexpFunc, REGEXP_EXTRACT_ALL_VARCHAR_JONIREGEXP, regexp_extract_all_varchar_joniregexp);
+
+
+create_udf!
+
+(regexp_extract_all_impl::regexp_extract_all_varchar_joniregexp_bigintFunc, REGEXP_EXTRACT_ALL_VARCHAR_JONIREGEXP_BIGINT, regexp_extract_all_varchar_joniregexp_bigint);
+
+
+
+create_udf!
+
+(regexp_like_impl::regexp_like_varchar_joniregexpFunc, REGEXP_LIKE_VARCHAR_JONIREGEXP, regexp_like_varchar_joniregexp);
+
+
+
+create_udf!
+
+(regexp_position_impl::regexp_position_varchar_joniregexpFunc, REGEXP_POSITION_VARCHAR_JONIREGEXP, regexp_position_varchar_joniregexp);
+
+
+create_udf!
+
+(regexp_position_impl::regexp_position_varchar_joniregexp_bigintFunc, REGEXP_POSITION_VARCHAR_JONIREGEXP_BIGINT, regexp_position_varchar_joniregexp_bigint);
+
+
+create_udf!
+
+(regexp_position_impl::regexp_position_varchar_joniregexp_bigint_bigintFunc, REGEXP_POSITION_VARCHAR_JONIREGEXP_BIGINT_BIGINT, regexp_position_varchar_joniregexp_bigint_bigint);
+
+
+
+create_udf!
+
+(regexp_replace_impl::regexp_replace_varchar_joniregexp_function_array_varchar_varcharFunc, REGEXP_REPLACE_VARCHAR_JONIREGEXP_FUNCTION_ARRAY_VARCHAR_VARCHAR, regexp_replace_varchar_joniregexp_function_array_varchar_varchar);
+
+
+create_udf!
+
+(regexp_replace_impl::regexp_replace_varchar_joniregexpFunc, REGEXP_REPLACE_VARCHAR_JONIREGEXP, regexp_replace_varchar_joniregexp);
+
+
+create_udf!
+
+(regexp_replace_impl::regexp_replace_varchar_joniregexp_varcharFunc, REGEXP_REPLACE_VARCHAR_JONIREGEXP_VARCHAR, regexp_replace_varchar_joniregexp_varchar);
+
+
+
+create_udf!
+
+(regexp_split_impl::regexp_split_varchar_joniregexpFunc, REGEXP_SPLIT_VARCHAR_JONIREGEXP, regexp_split_varchar_joniregexp);
+
+
+
+create_udaf!
+
+(regr_intercept_impl::regr_intercept_double_doubleFunc, REGR_INTERCEPT_DOUBLE_DOUBLE, regr_intercept_double_double);
+
+
+create_udaf!
+
+(regr_intercept_impl::regr_intercept_real_realFunc, REGR_INTERCEPT_REAL_REAL, regr_intercept_real_real);
+
+
+
+create_udaf!
+
+(regr_slope_impl::regr_slope_double_doubleFunc, REGR_SLOPE_DOUBLE_DOUBLE, regr_slope_double_double);
+
+
+create_udaf!
+
+(regr_slope_impl::regr_slope_real_realFunc, REGR_SLOPE_REAL_REAL, regr_slope_real_real);
+
+
+
+create_udf!
+
+(regress_impl::regress_map_bigint_double_regressorFunc, REGRESS_MAP_BIGINT_DOUBLE_REGRESSOR, regress_map_bigint_double_regressor);
+
+
+
+create_udf!
+
+(render_impl::render_booleanFunc, RENDER_BOOLEAN, render_boolean);
+
+
+create_udf!
+
+(render_impl::render_bigint_colorFunc, RENDER_BIGINT_COLOR, render_bigint_color);
+
+
+create_udf!
+
+(render_impl::render_double_colorFunc, RENDER_DOUBLE_COLOR, render_double_color);
+
+
+create_udf!
+
+(render_impl::render_varchar_colorFunc, RENDER_VARCHAR_COLOR, render_varchar_color);
+
+
+
+create_udf!
+
+(repeat_impl::repeat_1_bigintFunc, REPEAT_1_BIGINT, repeat_1_bigint);
+
+
+
+create_udf!
+
+(replace_impl::replace_varchar_varchar_varcharFunc, REPLACE_VARCHAR_VARCHAR_VARCHAR, replace_varchar_varchar_varchar);
+
+
+create_udf!
+
+(replace_impl::replace_varchar_varcharFunc, REPLACE_VARCHAR_VARCHAR, replace_varchar_varchar);
+
+
+
+create_udf!
+
+(reverse_impl::reverse_array_3Func, REVERSE_ARRAY_3, reverse_array_3);
+
+
+create_udf!
+
+(reverse_impl::reverse_varbinaryFunc, REVERSE_VARBINARY, reverse_varbinary);
+
+
+create_udf!
+
+(reverse_impl::reverse_varcharFunc, REVERSE_VARCHAR, reverse_varchar);
+
+
+
+create_udf!
+
+(rgb_impl::rgb_bigint_bigint_bigintFunc, RGB_BIGINT_BIGINT_BIGINT, rgb_bigint_bigint_bigint);
+
+
+
+create_udf!
+
+(round_impl::round_doubleFunc, ROUND_DOUBLE, round_double);
+
+
+create_udf!
+
+(round_impl::round_double_bigintFunc, ROUND_DOUBLE_BIGINT, round_double_bigint);
+
+
+create_udf!
+
+(round_impl::round_realFunc, ROUND_REAL, round_real);
+
+
+create_udf!
+
+(round_impl::round_real_bigintFunc, ROUND_REAL_BIGINT, round_real_bigint);
+
+
+create_udf!
+
+(round_impl::round_integerFunc, ROUND_INTEGER, round_integer);
+
+
+create_udf!
+
+(round_impl::round_integer_integerFunc, ROUND_INTEGER_INTEGER, round_integer_integer);
+
+
+create_udf!
+
+(round_impl::round_decimal_p_sFunc, ROUND_DECIMAL_P_S, round_decimal_p_s);
+
+
+create_udf!
+
+(round_impl::round_decimal_p_s_bigintFunc, ROUND_DECIMAL_P_S_BIGINT, round_decimal_p_s_bigint);
+
+
+create_udf!
+
+(round_impl::round_bigintFunc, ROUND_BIGINT, round_bigint);
+
+
+create_udf!
+
+(round_impl::round_bigint_bigintFunc, ROUND_BIGINT_BIGINT, round_bigint_bigint);
+
+
+create_udf!
+
+(round_impl::round_smallintFunc, ROUND_SMALLINT, round_smallint);
+
+
+create_udf!
+
+(round_impl::round_smallint_bigintFunc, ROUND_SMALLINT_BIGINT, round_smallint_bigint);
+
+
+create_udf!
+
+(round_impl::round_tinyintFunc, ROUND_TINYINT, round_tinyint);
+
+
+create_udf!
+
+(round_impl::round_tinyint_bigintFunc, ROUND_TINYINT_BIGINT, round_tinyint_bigint);
+
+
+
+create_udf!
+
+(rpad_impl::rpad_varbinary_bigint_varbinaryFunc, RPAD_VARBINARY_BIGINT_VARBINARY, rpad_varbinary_bigint_varbinary);
+
+
+create_udf!
+
+(rpad_impl::rpad_varchar_bigint_varcharFunc, RPAD_VARCHAR_BIGINT_VARCHAR, rpad_varchar_bigint_varchar);
+
+
+
+create_udf!
+
+(rtrim_impl::rtrim_varcharFunc, RTRIM_VARCHAR, rtrim_varchar);
+
+
+create_udf!
+
+(rtrim_impl::rtrim_varchar_codepointsFunc, RTRIM_VARCHAR_CODEPOINTS, rtrim_varchar_codepoints);
+
+
+
+create_udf!
+
+(second_impl::second_intervaldaytosecondFunc, SECOND_INTERVALDAYTOSECOND, second_intervaldaytosecond);
+
+
+create_udf!
+
+(second_impl::second_time_pFunc, SECOND_TIME_P, second_time_p);
+
+
+create_udf!
+
+(second_impl::second_timestamp_pFunc, SECOND_TIMESTAMP_P, second_timestamp_p);
+
+
+
+create_udf!
+
+(sequence_impl::sequence_bigint_bigintFunc, SEQUENCE_BIGINT_BIGINT, sequence_bigint_bigint);
+
+
+create_udf!
+
+(sequence_impl::sequence_bigint_bigint_bigintFunc, SEQUENCE_BIGINT_BIGINT_BIGINT, sequence_bigint_bigint_bigint);
+
+
+create_udf!
+
+(sequence_impl::sequence_date_dateFunc, SEQUENCE_DATE_DATE, sequence_date_date);
+
+
+create_udf!
+
+(sequence_impl::sequence_date_date_intervaldaytosecondFunc, SEQUENCE_DATE_DATE_INTERVALDAYTOSECOND, sequence_date_date_intervaldaytosecond);
+
+
+create_udf!
+
+(sequence_impl::sequence_date_date_intervalyeartomonthFunc, SEQUENCE_DATE_DATE_INTERVALYEARTOMONTH, sequence_date_date_intervalyeartomonth);
+
+
+create_udf!
+
+(sequence_impl::sequence_timestamp_p_timestamp_p_intervaldaytosecondFunc, SEQUENCE_TIMESTAMP_P_TIMESTAMP_P_INTERVALDAYTOSECOND, sequence_timestamp_p_timestamp_p_intervaldaytosecond);
+
+
+
+create_udf!
+
+(sha1_impl::sha1_varbinaryFunc, SHA1_VARBINARY, sha1_varbinary);
+
+
+
+create_udf!
+
+(sha256_impl::sha256_varbinaryFunc, SHA256_VARBINARY, sha256_varbinary);
+
+
+
+create_udf!
+
+(sha512_impl::sha512_varbinaryFunc, SHA512_VARBINARY, sha512_varbinary);
+
+
+
+create_udf!
+
+(shuffle_impl::shuffle_array_3Func, SHUFFLE_ARRAY_3, shuffle_array_3);
+
+
+
+create_udf!
+
+(sign_impl::sign_bigintFunc, SIGN_BIGINT, sign_bigint);
+
+
+create_udf!
+
+(sign_impl::sign_decimal_p_sFunc, SIGN_DECIMAL_P_S, sign_decimal_p_s);
+
+
+create_udf!
+
+(sign_impl::sign_doubleFunc, SIGN_DOUBLE, sign_double);
+
+
+create_udf!
+
+(sign_impl::sign_integerFunc, SIGN_INTEGER, sign_integer);
+
+
+create_udf!
+
+(sign_impl::sign_realFunc, SIGN_REAL, sign_real);
+
+
+create_udf!
+
+(sign_impl::sign_smallintFunc, SIGN_SMALLINT, sign_smallint);
+
+
+create_udf!
+
+(sign_impl::sign_tinyintFunc, SIGN_TINYINT, sign_tinyint);
+
+
+
+create_udf!
+
+(simplify_geometry_impl::simplify_geometry_geometry_doubleFunc, SIMPLIFY_GEOMETRY_GEOMETRY_DOUBLE, simplify_geometry_geometry_double);
+
+
+
+create_udf!
+
+(sin_impl::sin_doubleFunc, SIN_DOUBLE, sin_double);
+
+
+
+create_udf!
+
+(sinh_impl::sinh_doubleFunc, SINH_DOUBLE, sinh_double);
+
+
+
+create_udaf!
+
+(skewness_impl::skewness_bigintFunc, SKEWNESS_BIGINT, skewness_bigint);
+
+
+create_udaf!
+
+(skewness_impl::skewness_doubleFunc, SKEWNESS_DOUBLE, skewness_double);
+
+
+
+create_udf!
+
+(slice_impl::slice_array_3_bigint_bigintFunc, SLICE_ARRAY_3_BIGINT_BIGINT, slice_array_3_bigint_bigint);
+
+
+
+create_udf!
+
+(soundex_impl::soundex_varcharFunc, SOUNDEX_VARCHAR, soundex_varchar);
+
+
+
+create_udaf!
+
+(spatial_partitioning_impl::spatial_partitioning_geometryFunc, SPATIAL_PARTITIONING_GEOMETRY, spatial_partitioning_geometry);
+
+
+
+create_udf!
+
+(spatial_partitions_impl::spatial_partitions_kdbtree_geometryFunc, SPATIAL_PARTITIONS_KDBTREE_GEOMETRY, spatial_partitions_kdbtree_geometry);
+
+
+create_udf!
+
+(spatial_partitions_impl::spatial_partitions_kdbtree_geometry_doubleFunc, SPATIAL_PARTITIONS_KDBTREE_GEOMETRY_DOUBLE, spatial_partitions_kdbtree_geometry_double);
+
+
+
+create_udf!
+
+(split_impl::split_varchar_varcharFunc, SPLIT_VARCHAR_VARCHAR, split_varchar_varchar);
+
+
+create_udf!
+
+(split_impl::split_varchar_varchar_bigintFunc, SPLIT_VARCHAR_VARCHAR_BIGINT, split_varchar_varchar_bigint);
+
+
+
+create_udf!
+
+(split_part_impl::split_part_varchar_varchar_bigintFunc, SPLIT_PART_VARCHAR_VARCHAR_BIGINT, split_part_varchar_varchar_bigint);
+
+
+
+create_udf!
+
+(split_to_map_impl::split_to_map_varchar_varchar_varcharFunc, SPLIT_TO_MAP_VARCHAR_VARCHAR_VARCHAR, split_to_map_varchar_varchar_varchar);
+
+
+
+create_udf!
+
+(split_to_multimap_impl::split_to_multimap_varchar_varchar_varcharFunc, SPLIT_TO_MULTIMAP_VARCHAR_VARCHAR_VARCHAR, split_to_multimap_varchar_varchar_varchar);
+
+
+
+create_udf!
+
+(spooky_hash_v2_32_impl::spooky_hash_v2_32_varbinaryFunc, SPOOKY_HASH_V2_32_VARBINARY, spooky_hash_v2_32_varbinary);
+
+
+
+create_udf!
+
+(spooky_hash_v2_64_impl::spooky_hash_v2_64_varbinaryFunc, SPOOKY_HASH_V2_64_VARBINARY, spooky_hash_v2_64_varbinary);
+
+
+
+create_udf!
+
+(sqrt_impl::sqrt_doubleFunc, SQRT_DOUBLE, sqrt_double);
+
+
+
+create_udf!
+
+(st_area_impl::st_area_geometryFunc, ST_AREA_GEOMETRY, st_area_geometry);
+
+
+create_udf!
+
+(st_area_impl::st_area_sphericalgeographyFunc, ST_AREA_SPHERICALGEOGRAPHY, st_area_sphericalgeography);
+
+
+
+create_udf!
+
+(st_asbinary_impl::st_asbinary_geometryFunc, ST_ASBINARY_GEOMETRY, st_asbinary_geometry);
+
+
+
+create_udf!
+
+(st_astext_impl::st_astext_geometryFunc, ST_ASTEXT_GEOMETRY, st_astext_geometry);
+
+
+
+create_udf!
+
+(st_boundary_impl::st_boundary_geometryFunc, ST_BOUNDARY_GEOMETRY, st_boundary_geometry);
+
+
+
+create_udf!
+
+(st_buffer_impl::st_buffer_geometry_doubleFunc, ST_BUFFER_GEOMETRY_DOUBLE, st_buffer_geometry_double);
+
+
+
+create_udf!
+
+(st_centroid_impl::st_centroid_geometryFunc, ST_CENTROID_GEOMETRY, st_centroid_geometry);
+
+
+
+create_udf!
+
+(st_contains_impl::st_contains_geometry_geometryFunc, ST_CONTAINS_GEOMETRY_GEOMETRY, st_contains_geometry_geometry);
+
+
+
+create_udf!
+
+(st_convexhull_impl::st_convexhull_geometryFunc, ST_CONVEXHULL_GEOMETRY, st_convexhull_geometry);
+
+
+
+create_udf!
+
+(st_coorddim_impl::st_coorddim_geometryFunc, ST_COORDDIM_GEOMETRY, st_coorddim_geometry);
+
+
+
+create_udf!
+
+(st_crosses_impl::st_crosses_geometry_geometryFunc, ST_CROSSES_GEOMETRY_GEOMETRY, st_crosses_geometry_geometry);
+
+
+
+create_udf!
+
+(st_difference_impl::st_difference_geometry_geometryFunc, ST_DIFFERENCE_GEOMETRY_GEOMETRY, st_difference_geometry_geometry);
+
+
+
+create_udf!
+
+(st_dimension_impl::st_dimension_geometryFunc, ST_DIMENSION_GEOMETRY, st_dimension_geometry);
+
+
+
+create_udf!
+
+(st_disjoint_impl::st_disjoint_geometry_geometryFunc, ST_DISJOINT_GEOMETRY_GEOMETRY, st_disjoint_geometry_geometry);
+
+
+
+create_udf!
+
+(st_distance_impl::st_distance_geometry_geometryFunc, ST_DISTANCE_GEOMETRY_GEOMETRY, st_distance_geometry_geometry);
+
+
+create_udf!
+
+(st_distance_impl::st_distance_sphericalgeography_sphericalgeographyFunc, ST_DISTANCE_SPHERICALGEOGRAPHY_SPHERICALGEOGRAPHY, st_distance_sphericalgeography_sphericalgeography);
+
+
+
+create_udf!
+
+(st_endpoint_impl::st_endpoint_geometryFunc, ST_ENDPOINT_GEOMETRY, st_endpoint_geometry);
+
+
+
+create_udf!
+
+(st_envelope_impl::st_envelope_geometryFunc, ST_ENVELOPE_GEOMETRY, st_envelope_geometry);
+
+
+
+create_udf!
+
+(st_envelopeaspts_impl::st_envelopeaspts_geometryFunc, ST_ENVELOPEASPTS_GEOMETRY, st_envelopeaspts_geometry);
+
+
+
+create_udf!
+
+(st_equals_impl::st_equals_geometry_geometryFunc, ST_EQUALS_GEOMETRY_GEOMETRY, st_equals_geometry_geometry);
+
+
+
+create_udf!
+
+(st_exteriorring_impl::st_exteriorring_geometryFunc, ST_EXTERIORRING_GEOMETRY, st_exteriorring_geometry);
+
+
+
+create_udf!
+
+(st_geometries_impl::st_geometries_geometryFunc, ST_GEOMETRIES_GEOMETRY, st_geometries_geometry);
+
+
+
+create_udf!
+
+(st_geometryfromtext_impl::st_geometryfromtext_varcharFunc, ST_GEOMETRYFROMTEXT_VARCHAR, st_geometryfromtext_varchar);
+
+
+
+create_udf!
+
+(st_geometryn_impl::st_geometryn_geometry_bigintFunc, ST_GEOMETRYN_GEOMETRY_BIGINT, st_geometryn_geometry_bigint);
+
+
+
+create_udf!
+
+(st_geometrytype_impl::st_geometrytype_geometryFunc, ST_GEOMETRYTYPE_GEOMETRY, st_geometrytype_geometry);
+
+
+
+create_udf!
+
+(st_geomfrombinary_impl::st_geomfrombinary_varbinaryFunc, ST_GEOMFROMBINARY_VARBINARY, st_geomfrombinary_varbinary);
+
+
+
+create_udf!
+
+(st_interiorringn_impl::st_interiorringn_geometry_bigintFunc, ST_INTERIORRINGN_GEOMETRY_BIGINT, st_interiorringn_geometry_bigint);
+
+
+
+create_udf!
+
+(st_interiorrings_impl::st_interiorrings_geometryFunc, ST_INTERIORRINGS_GEOMETRY, st_interiorrings_geometry);
+
+
+
+create_udf!
+
+(st_intersection_impl::st_intersection_geometry_geometryFunc, ST_INTERSECTION_GEOMETRY_GEOMETRY, st_intersection_geometry_geometry);
+
+
+
+create_udf!
+
+(st_intersects_impl::st_intersects_geometry_geometryFunc, ST_INTERSECTS_GEOMETRY_GEOMETRY, st_intersects_geometry_geometry);
+
+
+
+create_udf!
+
+(st_isclosed_impl::st_isclosed_geometryFunc, ST_ISCLOSED_GEOMETRY, st_isclosed_geometry);
+
+
+
+create_udf!
+
+(st_isempty_impl::st_isempty_geometryFunc, ST_ISEMPTY_GEOMETRY, st_isempty_geometry);
+
+
+
+create_udf!
+
+(st_isring_impl::st_isring_geometryFunc, ST_ISRING_GEOMETRY, st_isring_geometry);
+
+
+
+create_udf!
+
+(st_issimple_impl::st_issimple_geometryFunc, ST_ISSIMPLE_GEOMETRY, st_issimple_geometry);
+
+
+
+create_udf!
+
+(st_isvalid_impl::st_isvalid_geometryFunc, ST_ISVALID_GEOMETRY, st_isvalid_geometry);
+
+
+
+create_udf!
+
+(st_length_impl::st_length_geometryFunc, ST_LENGTH_GEOMETRY, st_length_geometry);
+
+
+create_udf!
+
+(st_length_impl::st_length_sphericalgeographyFunc, ST_LENGTH_SPHERICALGEOGRAPHY, st_length_sphericalgeography);
+
+
+
+create_udf!
+
+(st_linefromtext_impl::st_linefromtext_varcharFunc, ST_LINEFROMTEXT_VARCHAR, st_linefromtext_varchar);
+
+
+
+create_udf!
+
+(st_linestring_impl::st_linestring_array_geometryFunc, ST_LINESTRING_ARRAY_GEOMETRY, st_linestring_array_geometry);
+
+
+
+create_udf!
+
+(st_multipoint_impl::st_multipoint_array_geometryFunc, ST_MULTIPOINT_ARRAY_GEOMETRY, st_multipoint_array_geometry);
+
+
+
+create_udf!
+
+(st_numgeometries_impl::st_numgeometries_geometryFunc, ST_NUMGEOMETRIES_GEOMETRY, st_numgeometries_geometry);
+
+
+
+create_udf!
+
+(st_numinteriorring_impl::st_numinteriorring_geometryFunc, ST_NUMINTERIORRING_GEOMETRY, st_numinteriorring_geometry);
+
+
+
+create_udf!
+
+(st_numpoints_impl::st_numpoints_geometryFunc, ST_NUMPOINTS_GEOMETRY, st_numpoints_geometry);
+
+
+
+create_udf!
+
+(st_overlaps_impl::st_overlaps_geometry_geometryFunc, ST_OVERLAPS_GEOMETRY_GEOMETRY, st_overlaps_geometry_geometry);
+
+
+
+create_udf!
+
+(st_point_impl::st_point_double_doubleFunc, ST_POINT_DOUBLE_DOUBLE, st_point_double_double);
+
+
+
+create_udf!
+
+(st_pointn_impl::st_pointn_geometry_bigintFunc, ST_POINTN_GEOMETRY_BIGINT, st_pointn_geometry_bigint);
+
+
+
+create_udf!
+
+(st_points_impl::st_points_geometryFunc, ST_POINTS_GEOMETRY, st_points_geometry);
+
+
+
+create_udf!
+
+(st_polygon_impl::st_polygon_varcharFunc, ST_POLYGON_VARCHAR, st_polygon_varchar);
+
+
+
+create_udf!
+
+(st_relate_impl::st_relate_geometry_geometry_varcharFunc, ST_RELATE_GEOMETRY_GEOMETRY_VARCHAR, st_relate_geometry_geometry_varchar);
+
+
+
+create_udf!
+
+(st_startpoint_impl::st_startpoint_geometryFunc, ST_STARTPOINT_GEOMETRY, st_startpoint_geometry);
+
+
+
+create_udf!
+
+(st_symdifference_impl::st_symdifference_geometry_geometryFunc, ST_SYMDIFFERENCE_GEOMETRY_GEOMETRY, st_symdifference_geometry_geometry);
+
+
+
+create_udf!
+
+(st_touches_impl::st_touches_geometry_geometryFunc, ST_TOUCHES_GEOMETRY_GEOMETRY, st_touches_geometry_geometry);
+
+
+
+create_udf!
+
+(st_union_impl::st_union_geometry_geometryFunc, ST_UNION_GEOMETRY_GEOMETRY, st_union_geometry_geometry);
+
+
+
+create_udf!
+
+(st_within_impl::st_within_geometry_geometryFunc, ST_WITHIN_GEOMETRY_GEOMETRY, st_within_geometry_geometry);
+
+
+
+create_udf!
+
+(st_x_impl::st_x_geometryFunc, ST_X_GEOMETRY, st_x_geometry);
+
+
+
+create_udf!
+
+(st_xmax_impl::st_xmax_geometryFunc, ST_XMAX_GEOMETRY, st_xmax_geometry);
+
+
+
+create_udf!
+
+(st_xmin_impl::st_xmin_geometryFunc, ST_XMIN_GEOMETRY, st_xmin_geometry);
+
+
+
+create_udf!
+
+(st_y_impl::st_y_geometryFunc, ST_Y_GEOMETRY, st_y_geometry);
+
+
+
+create_udf!
+
+(st_ymax_impl::st_ymax_geometryFunc, ST_YMAX_GEOMETRY, st_ymax_geometry);
+
+
+
+create_udf!
+
+(st_ymin_impl::st_ymin_geometryFunc, ST_YMIN_GEOMETRY, st_ymin_geometry);
+
+
+
+create_udf!
+
+(starts_with_impl::starts_with_varchar_varcharFunc, STARTS_WITH_VARCHAR_VARCHAR, starts_with_varchar_varchar);
+
+
+
+create_udaf!
+
+(stddev_impl::stddev_bigintFunc, STDDEV_BIGINT, stddev_bigint);
+
+
+create_udaf!
+
+(stddev_impl::stddev_doubleFunc, STDDEV_DOUBLE, stddev_double);
+
+
+
+create_udaf!
+
+(stddev_pop_impl::stddev_pop_bigintFunc, STDDEV_POP_BIGINT, stddev_pop_bigint);
+
+
+create_udaf!
+
+(stddev_pop_impl::stddev_pop_doubleFunc, STDDEV_POP_DOUBLE, stddev_pop_double);
+
+
+
+create_udaf!
+
+(stddev_samp_impl::stddev_samp_bigintFunc, STDDEV_SAMP_BIGINT, stddev_samp_bigint);
+
+
+create_udaf!
+
+(stddev_samp_impl::stddev_samp_doubleFunc, STDDEV_SAMP_DOUBLE, stddev_samp_double);
+
+
+
+create_udf!
+
+(strpos_impl::strpos_varchar_varcharFunc, STRPOS_VARCHAR_VARCHAR, strpos_varchar_varchar);
+
+
+create_udf!
+
+(strpos_impl::strpos_varchar_varchar_bigintFunc, STRPOS_VARCHAR_VARCHAR_BIGINT, strpos_varchar_varchar_bigint);
+
+
+
+create_udf!
+
+(substr_impl::substr_varchar_bigintFunc, SUBSTR_VARCHAR_BIGINT, substr_varchar_bigint);
+
+
+create_udf!
+
+(substr_impl::substr_varchar_bigint_bigintFunc, SUBSTR_VARCHAR_BIGINT_BIGINT, substr_varchar_bigint_bigint);
+
+
+create_udf!
+
+(substr_impl::substr_varbinary_bigintFunc, SUBSTR_VARBINARY_BIGINT, substr_varbinary_bigint);
+
+
+create_udf!
+
+(substr_impl::substr_varbinary_bigint_bigintFunc, SUBSTR_VARBINARY_BIGINT_BIGINT, substr_varbinary_bigint_bigint);
+
+
+
+create_udf!
+
+(substring_impl::substring_varchar_bigintFunc, SUBSTRING_VARCHAR_BIGINT, substring_varchar_bigint);
+
+
+create_udf!
+
+(substring_impl::substring_varchar_bigint_bigintFunc, SUBSTRING_VARCHAR_BIGINT_BIGINT, substring_varchar_bigint_bigint);
+
+
+
+create_udaf!
+
+(sum_impl::sum_bigintFunc, SUM_BIGINT, sum_bigint);
+
+
+create_udaf!
+
+(sum_impl::sum_doubleFunc, SUM_DOUBLE, sum_double);
+
+
+create_udaf!
+
+(sum_impl::sum_decimal_p_sFunc, SUM_DECIMAL_P_S, sum_decimal_p_s);
+
+
+create_udaf!
+
+(sum_impl::sum_realFunc, SUM_REAL, sum_real);
+
+
+create_udaf!
+
+(sum_impl::sum_intervaldaytosecondFunc, SUM_INTERVALDAYTOSECOND, sum_intervaldaytosecond);
+
+
+create_udaf!
+
+(sum_impl::sum_intervalyeartomonthFunc, SUM_INTERVALYEARTOMONTH, sum_intervalyeartomonth);
+
+
+
+create_udf!
+
+(tan_impl::tan_doubleFunc, TAN_DOUBLE, tan_double);
+
+
+
+create_udf!
+
+(tanh_impl::tanh_doubleFunc, TANH_DOUBLE, tanh_double);
+
+
+
+create_udaf!
+
+(tdigest_agg_impl::tdigest_agg_doubleFunc, TDIGEST_AGG_DOUBLE, tdigest_agg_double);
+
+
+create_udaf!
+
+(tdigest_agg_impl::tdigest_agg_double_doubleFunc, TDIGEST_AGG_DOUBLE_DOUBLE, tdigest_agg_double_double);
+
+
+
+create_udf!
+
+(timestamp_objectid_impl::timestamp_objectid_timestamp_0Func, TIMESTAMP_OBJECTID_TIMESTAMP_0, timestamp_objectid_timestamp_0);
+
+
+
+create_udf!
+
+(timezone_hour_impl::timezone_hour_time_pFunc, TIMEZONE_HOUR_TIME_P, timezone_hour_time_p);
+
+
+create_udf!
+
+(timezone_hour_impl::timezone_hour_timestamp_pFunc, TIMEZONE_HOUR_TIMESTAMP_P, timezone_hour_timestamp_p);
+
+
+
+create_udf!
+
+(timezone_minute_impl::timezone_minute_time_pFunc, TIMEZONE_MINUTE_TIME_P, timezone_minute_time_p);
+
+
+create_udf!
+
+(timezone_minute_impl::timezone_minute_timestamp_pFunc, TIMEZONE_MINUTE_TIMESTAMP_P, timezone_minute_timestamp_p);
+
+
+
+create_udf!
+
+(to_base_impl::to_base_bigint_bigintFunc, TO_BASE_BIGINT_BIGINT, to_base_bigint_bigint);
+
+
+
+create_udf!
+
+(to_base32_impl::to_base32_varbinaryFunc, TO_BASE32_VARBINARY, to_base32_varbinary);
+
+
+
+create_udf!
+
+(to_base64_impl::to_base64_varbinaryFunc, TO_BASE64_VARBINARY, to_base64_varbinary);
+
+
+
+create_udf!
+
+(to_base64url_impl::to_base64url_varbinaryFunc, TO_BASE64URL_VARBINARY, to_base64url_varbinary);
+
+
+
+create_udf!
+
+(to_big_endian_32_impl::to_big_endian_32_bigintFunc, TO_BIG_ENDIAN_32_BIGINT, to_big_endian_32_bigint);
+
+
+
+create_udf!
+
+(to_big_endian_64_impl::to_big_endian_64_bigintFunc, TO_BIG_ENDIAN_64_BIGINT, to_big_endian_64_bigint);
+
+
+
+create_udf!
+
+(to_char_impl::to_char_timestamp_p_varcharFunc, TO_CHAR_TIMESTAMP_P_VARCHAR, to_char_timestamp_p_varchar);
+
+
+
+create_udf!
+
+(to_date_impl::to_date_varchar_varcharFunc, TO_DATE_VARCHAR_VARCHAR, to_date_varchar_varchar);
+
+
+
+create_udf!
+
+(to_encoded_polyline_impl::to_encoded_polyline_geometryFunc, TO_ENCODED_POLYLINE_GEOMETRY, to_encoded_polyline_geometry);
+
+
+
+create_udf!
+
+(to_geojson_geometry_impl::to_geojson_geometry_sphericalgeographyFunc, TO_GEOJSON_GEOMETRY_SPHERICALGEOGRAPHY, to_geojson_geometry_sphericalgeography);
+
+
+
+create_udf!
+
+(to_geometry_impl::to_geometry_sphericalgeographyFunc, TO_GEOMETRY_SPHERICALGEOGRAPHY, to_geometry_sphericalgeography);
+
+
+
+create_udf!
+
+(to_hex_impl::to_hex_varbinaryFunc, TO_HEX_VARBINARY, to_hex_varbinary);
+
+
+
+create_udf!
+
+(to_ieee754_32_impl::to_ieee754_32_realFunc, TO_IEEE754_32_REAL, to_ieee754_32_real);
+
+
+
+create_udf!
+
+(to_ieee754_64_impl::to_ieee754_64_doubleFunc, TO_IEEE754_64_DOUBLE, to_ieee754_64_double);
+
+
+
+create_udf!
+
+(to_iso8601_impl::to_iso8601_dateFunc, TO_ISO8601_DATE, to_iso8601_date);
+
+
+create_udf!
+
+(to_iso8601_impl::to_iso8601_timestamp_pFunc, TO_ISO8601_TIMESTAMP_P, to_iso8601_timestamp_p);
+
+
+
+create_udf!
+
+(to_milliseconds_impl::to_milliseconds_intervaldaytosecondFunc, TO_MILLISECONDS_INTERVALDAYTOSECOND, to_milliseconds_intervaldaytosecond);
+
+
+
+create_udf!
+
+(to_spherical_geography_impl::to_spherical_geography_geometryFunc, TO_SPHERICAL_GEOGRAPHY_GEOMETRY, to_spherical_geography_geometry);
+
+
+
+create_udf!
+
+(to_timestamp_impl::to_timestamp_varchar_varcharFunc, TO_TIMESTAMP_VARCHAR_VARCHAR, to_timestamp_varchar_varchar);
+
+
+
+create_udf!
+
+(to_unixtime_impl::to_unixtime_timestamp_pFunc, TO_UNIXTIME_TIMESTAMP_P, to_unixtime_timestamp_p);
+
+
+
+create_udf!
+
+(to_utf8_impl::to_utf8_varcharFunc, TO_UTF8_VARCHAR, to_utf8_varchar);
+
+
+
+create_udf!
+
+(transform_impl::transform_array_1_function_1_11Func, TRANSFORM_ARRAY_1_FUNCTION_1_11, transform_array_1_function_1_11);
+
+
+
+create_udf!
+
+(transform_keys_impl::transform_keys_map_13_5_function_13_5_12Func, TRANSFORM_KEYS_MAP_13_5_FUNCTION_13_5_12, transform_keys_map_13_5_function_13_5_12);
+
+
+
+create_udf!
+
+(transform_values_impl::transform_values_map_4_8_function_4_8_7Func, TRANSFORM_VALUES_MAP_4_8_FUNCTION_4_8_7, transform_values_map_4_8_function_4_8_7);
+
+
+
+create_udf!
+
+(translate_impl::translate_varchar_varchar_varcharFunc, TRANSLATE_VARCHAR_VARCHAR_VARCHAR, translate_varchar_varchar_varchar);
+
+
+
+create_udf!
+
+(trim_impl::trim_varcharFunc, TRIM_VARCHAR, trim_varchar);
+
+
+create_udf!
+
+(trim_impl::trim_varchar_codepointsFunc, TRIM_VARCHAR_CODEPOINTS, trim_varchar_codepoints);
+
+
+
+create_udf!
+
+(trim_array_impl::trim_array_array_3_bigintFunc, TRIM_ARRAY_ARRAY_3_BIGINT, trim_array_array_3_bigint);
+
+
+
+create_udf!
+
+(truncate_impl::truncate_decimal_p_s_bigintFunc, TRUNCATE_DECIMAL_P_S_BIGINT, truncate_decimal_p_s_bigint);
+
+
+create_udf!
+
+(truncate_impl::truncate_decimal_p_sFunc, TRUNCATE_DECIMAL_P_S, truncate_decimal_p_s);
+
+
+create_udf!
+
+(truncate_impl::truncate_doubleFunc, TRUNCATE_DOUBLE, truncate_double);
+
+
+create_udf!
+
+(truncate_impl::truncate_realFunc, TRUNCATE_REAL, truncate_real);
+
+
+
+create_udf!
+
+(try_impl::try_1Func, TRY_1, try_1);
+
+
+
+create_udf!
+
+(typeof_impl::typeof_1Func, TYPEOF_1, typeof_1);
+
+
+
+create_udf!
+
+(upper_impl::upper_varcharFunc, UPPER_VARCHAR, upper_varchar);
+
+
+
+create_udf!
+
+(url_decode_impl::url_decode_varcharFunc, URL_DECODE_VARCHAR, url_decode_varchar);
+
+
+
+create_udf!
+
+(url_encode_impl::url_encode_varcharFunc, URL_ENCODE_VARCHAR, url_encode_varchar);
+
+
+
+create_udf!
+
+(url_extract_fragment_impl::url_extract_fragment_varcharFunc, URL_EXTRACT_FRAGMENT_VARCHAR, url_extract_fragment_varchar);
+
+
+
+create_udf!
+
+(url_extract_host_impl::url_extract_host_varcharFunc, URL_EXTRACT_HOST_VARCHAR, url_extract_host_varchar);
+
+
+
+create_udf!
+
+(url_extract_parameter_impl::url_extract_parameter_varchar_varcharFunc, URL_EXTRACT_PARAMETER_VARCHAR_VARCHAR, url_extract_parameter_varchar_varchar);
+
+
+
+create_udf!
+
+(url_extract_path_impl::url_extract_path_varcharFunc, URL_EXTRACT_PATH_VARCHAR, url_extract_path_varchar);
+
+
+
+create_udf!
+
+(url_extract_port_impl::url_extract_port_varcharFunc, URL_EXTRACT_PORT_VARCHAR, url_extract_port_varchar);
+
+
+
+create_udf!
+
+(url_extract_protocol_impl::url_extract_protocol_varcharFunc, URL_EXTRACT_PROTOCOL_VARCHAR, url_extract_protocol_varchar);
+
+
+
+create_udf!
+
+(url_extract_query_impl::url_extract_query_varcharFunc, URL_EXTRACT_QUERY_VARCHAR, url_extract_query_varchar);
+
+
+
+create_udf!
+
+(uuid_impl::uuidFunc, UUID, uuid);
+
+
+
+create_udf!
+
+(value_at_quantile_impl::value_at_quantile_qdigest_doubleFunc, VALUE_AT_QUANTILE_QDIGEST_DOUBLE, value_at_quantile_qdigest_double);
+
+
+create_udf!
+
+(value_at_quantile_impl::value_at_quantile_tdigest_doubleFunc, VALUE_AT_QUANTILE_TDIGEST_DOUBLE, value_at_quantile_tdigest_double);
+
+
+
+create_udf!
+
+(values_at_quantiles_impl::values_at_quantiles_qdigest_array_doubleFunc, VALUES_AT_QUANTILES_QDIGEST_ARRAY_DOUBLE, values_at_quantiles_qdigest_array_double);
+
+
+create_udf!
+
+(values_at_quantiles_impl::values_at_quantiles_tdigest_array_doubleFunc, VALUES_AT_QUANTILES_TDIGEST_ARRAY_DOUBLE, values_at_quantiles_tdigest_array_double);
+
+
+
+create_udaf!
+
+(var_pop_impl::var_pop_bigintFunc, VAR_POP_BIGINT, var_pop_bigint);
+
+
+create_udaf!
+
+(var_pop_impl::var_pop_doubleFunc, VAR_POP_DOUBLE, var_pop_double);
+
+
+
+create_udaf!
+
+(var_samp_impl::var_samp_bigintFunc, VAR_SAMP_BIGINT, var_samp_bigint);
+
+
+create_udaf!
+
+(var_samp_impl::var_samp_doubleFunc, VAR_SAMP_DOUBLE, var_samp_double);
+
+
+
+create_udaf!
+
+(variance_impl::variance_bigintFunc, VARIANCE_BIGINT, variance_bigint);
+
+
+create_udaf!
+
+(variance_impl::variance_doubleFunc, VARIANCE_DOUBLE, variance_double);
+
+
+
+create_udf!
+
+(week_impl::week_dateFunc, WEEK_DATE, week_date);
+
+
+create_udf!
+
+(week_impl::week_timestamp_pFunc, WEEK_TIMESTAMP_P, week_timestamp_p);
+
+
+
+create_udf!
+
+(week_of_year_impl::week_of_year_dateFunc, WEEK_OF_YEAR_DATE, week_of_year_date);
+
+
+create_udf!
+
+(week_of_year_impl::week_of_year_timestamp_pFunc, WEEK_OF_YEAR_TIMESTAMP_P, week_of_year_timestamp_p);
+
+
+
+create_udf!
+
+(width_bucket_impl::width_bucket_double_array_doubleFunc, WIDTH_BUCKET_DOUBLE_ARRAY_DOUBLE, width_bucket_double_array_double);
+
+
+create_udf!
+
+(width_bucket_impl::width_bucket_double_double_double_bigintFunc, WIDTH_BUCKET_DOUBLE_DOUBLE_DOUBLE_BIGINT, width_bucket_double_double_double_bigint);
+
+
+
+create_udf!
+
+(wilson_interval_lower_impl::wilson_interval_lower_bigint_bigint_doubleFunc, WILSON_INTERVAL_LOWER_BIGINT_BIGINT_DOUBLE, wilson_interval_lower_bigint_bigint_double);
+
+
+
+create_udf!
+
+(wilson_interval_upper_impl::wilson_interval_upper_bigint_bigint_doubleFunc, WILSON_INTERVAL_UPPER_BIGINT_BIGINT_DOUBLE, wilson_interval_upper_bigint_bigint_double);
+
+
+
+create_udf!
+
+(with_timezone_impl::with_timezone_timestamp_p_varcharFunc, WITH_TIMEZONE_TIMESTAMP_P_VARCHAR, with_timezone_timestamp_p_varchar);
+
+
+
+create_udf!
+
+(word_stem_impl::word_stem_varcharFunc, WORD_STEM_VARCHAR, word_stem_varchar);
+
+
+create_udf!
+
+(word_stem_impl::word_stem_varchar_varcharFunc, WORD_STEM_VARCHAR_VARCHAR, word_stem_varchar_varchar);
+
+
+
+create_udf!
+
+(xxhash64_impl::xxhash64_varbinaryFunc, XXHASH64_VARBINARY, xxhash64_varbinary);
+
+
+
+create_udf!
+
+(year_impl::year_dateFunc, YEAR_DATE, year_date);
+
+
+create_udf!
+
+(year_impl::year_intervalyeartomonthFunc, YEAR_INTERVALYEARTOMONTH, year_intervalyeartomonth);
+
+
+create_udf!
+
+(year_impl::year_timestamp_pFunc, YEAR_TIMESTAMP_P, year_timestamp_p);
+
+
+
+create_udf!
+
+(year_of_week_impl::year_of_week_dateFunc, YEAR_OF_WEEK_DATE, year_of_week_date);
+
+
+create_udf!
+
+(year_of_week_impl::year_of_week_timestamp_pFunc, YEAR_OF_WEEK_TIMESTAMP_P, year_of_week_timestamp_p);
+
+
+
+create_udf!
+
+(yow_impl::yow_dateFunc, YOW_DATE, yow_date);
+
+
+create_udf!
+
+(yow_impl::yow_timestamp_pFunc, YOW_TIMESTAMP_P, yow_timestamp_p);
+
+
+
+create_udf!
+
+(zip_impl::zip_array_14_array_15Func, ZIP_ARRAY_14_ARRAY_15, zip_array_14_array_15);
+
+
+create_udf!
+
+(zip_impl::zip_array_14_array_15_array_16Func, ZIP_ARRAY_14_ARRAY_15_ARRAY_16, zip_array_14_array_15_array_16);
+
+
+create_udf!
+
+(zip_impl::zip_array_14_array_15_array_16_array_17Func, ZIP_ARRAY_14_ARRAY_15_ARRAY_16_ARRAY_17, zip_array_14_array_15_array_16_array_17);
+
+
+create_udf!
+
+(zip_impl::zip_array_14_array_15_array_16_array_17_array_18Func, ZIP_ARRAY_14_ARRAY_15_ARRAY_16_ARRAY_17_ARRAY_18, zip_array_14_array_15_array_16_array_17_array_18);
+
+
+
+create_udf!
+
+(zip_with_impl::zip_with_array_1_array_11_function_1_11_9Func, ZIP_WITH_ARRAY_1_ARRAY_11_FUNCTION_1_11_9, zip_with_array_1_array_11_function_1_11_9);
+
+
+
+pub fn udfs() -> Vec<(String, std::sync::Arc<datafusion::logical_expr::ScalarUDF>)> {
+    vec![
+           ("trino::abs_tinyint".to_string(), abs_tinyint()),   ("trino::abs_smallint".to_string(), abs_smallint()),   ("trino::abs_bigint".to_string(), abs_bigint()),   ("trino::abs_double".to_string(), abs_double()),   ("trino::abs_decimal_p_s".to_string(), abs_decimal_p_s()),   ("trino::abs_real".to_string(), abs_real()),
+           ("trino::acos_double".to_string(), acos_double()),
+           ("trino::all_match_array_1_function_1_boolean".to_string(), all_match_array_1_function_1_boolean()),
+           ("trino::any_match_array_1_function_1_boolean".to_string(), any_match_array_1_function_1_boolean()),
+        
+        
+        
+        
+        
+        
+           ("trino::array_distinct_array_3".to_string(), array_distinct_array_3()),
+           ("trino::array_except_array_3_array_3".to_string(), array_except_array_3_array_3()),
+           ("trino::array_intersect_array_3_array_3".to_string(), array_intersect_array_3_array_3()),
+           ("trino::array_join_array_1_varchar".to_string(), array_join_array_1_varchar()),   ("trino::array_join_array_1_varchar_varchar".to_string(), array_join_array_1_varchar_varchar()),
+           ("trino::array_max_array_1".to_string(), array_max_array_1()),
+           ("trino::array_min_array_1".to_string(), array_min_array_1()),
+           ("trino::array_position_array_1_1".to_string(), array_position_array_1_1()),
+           ("trino::array_remove_array_3_3".to_string(), array_remove_array_3_3()),
+           ("trino::array_sort_array_3".to_string(), array_sort_array_3()),   ("trino::array_sort_array_1_function_1_1_bigint".to_string(), array_sort_array_1_function_1_1_bigint()),
+           ("trino::array_union_array_3_array_3".to_string(), array_union_array_3_array_3()),
+           ("trino::arrays_overlap_array_3_array_3".to_string(), arrays_overlap_array_3_array_3()),
+           ("trino::asin_double".to_string(), asin_double()),
+           ("trino::at_timezone_timestamp_p_varchar".to_string(), at_timezone_timestamp_p_varchar()),
+           ("trino::atan_double".to_string(), atan_double()),
+           ("trino::atan2_double_double".to_string(), atan2_double_double()),
+        
+           ("trino::bar_double_bigint".to_string(), bar_double_bigint()),   ("trino::bar_double_bigint_color_color".to_string(), bar_double_bigint_color_color()),
+           ("trino::beta_cdf_double_double_double".to_string(), beta_cdf_double_double_double()),
+           ("trino::bing_tile_bigint_bigint_bigint".to_string(), bing_tile_bigint_bigint_bigint()),   ("trino::bing_tile_varchar".to_string(), bing_tile_varchar()),
+           ("trino::bing_tile_at_double_double_bigint".to_string(), bing_tile_at_double_double_bigint()),
+           ("trino::bing_tile_coordinates_bingtile".to_string(), bing_tile_coordinates_bingtile()),
+           ("trino::bing_tile_polygon_bingtile".to_string(), bing_tile_polygon_bingtile()),
+           ("trino::bing_tile_quadkey_bingtile".to_string(), bing_tile_quadkey_bingtile()),
+           ("trino::bing_tile_zoom_level_bingtile".to_string(), bing_tile_zoom_level_bingtile()),
+           ("trino::bing_tiles_around_double_double_bigint".to_string(), bing_tiles_around_double_double_bigint()),   ("trino::bing_tiles_around_double_double_bigint_double".to_string(), bing_tiles_around_double_double_bigint_double()),
+           ("trino::bit_count_bigint_bigint".to_string(), bit_count_bigint_bigint()),
+           ("trino::bitwise_and_bigint_bigint".to_string(), bitwise_and_bigint_bigint()),
+        
+           ("trino::bitwise_left_shift_bigint_bigint".to_string(), bitwise_left_shift_bigint_bigint()),   ("trino::bitwise_left_shift_integer_bigint".to_string(), bitwise_left_shift_integer_bigint()),   ("trino::bitwise_left_shift_smallint_bigint".to_string(), bitwise_left_shift_smallint_bigint()),   ("trino::bitwise_left_shift_tinyint_bigint".to_string(), bitwise_left_shift_tinyint_bigint()),
+           ("trino::bitwise_not_bigint".to_string(), bitwise_not_bigint()),
+           ("trino::bitwise_or_bigint_bigint".to_string(), bitwise_or_bigint_bigint()),
+        
+           ("trino::bitwise_right_shift_bigint_bigint".to_string(), bitwise_right_shift_bigint_bigint()),   ("trino::bitwise_right_shift_integer_bigint".to_string(), bitwise_right_shift_integer_bigint()),   ("trino::bitwise_right_shift_smallint_bigint".to_string(), bitwise_right_shift_smallint_bigint()),   ("trino::bitwise_right_shift_tinyint_bigint".to_string(), bitwise_right_shift_tinyint_bigint()),
+           ("trino::bitwise_right_shift_arithmetic_bigint_bigint".to_string(), bitwise_right_shift_arithmetic_bigint_bigint()),   ("trino::bitwise_right_shift_arithmetic_integer_bigint".to_string(), bitwise_right_shift_arithmetic_integer_bigint()),   ("trino::bitwise_right_shift_arithmetic_smallint_bigint".to_string(), bitwise_right_shift_arithmetic_smallint_bigint()),   ("trino::bitwise_right_shift_arithmetic_tinyint_bigint".to_string(), bitwise_right_shift_arithmetic_tinyint_bigint()),
+           ("trino::bitwise_xor_bigint_bigint".to_string(), bitwise_xor_bigint_bigint()),
+        
+        
+           ("trino::cardinality_array_3".to_string(), cardinality_array_3()),   ("trino::cardinality_hyperloglog".to_string(), cardinality_hyperloglog()),   ("trino::cardinality_map_4_5".to_string(), cardinality_map_4_5()),   ("trino::cardinality_setdigest".to_string(), cardinality_setdigest()),
+           ("trino::cbrt_double".to_string(), cbrt_double()),
+           ("trino::ceil_bigint".to_string(), ceil_bigint()),   ("trino::ceil_decimal_p_s".to_string(), ceil_decimal_p_s()),   ("trino::ceil_double".to_string(), ceil_double()),   ("trino::ceil_integer".to_string(), ceil_integer()),   ("trino::ceil_real".to_string(), ceil_real()),   ("trino::ceil_smallint".to_string(), ceil_smallint()),   ("trino::ceil_tinyint".to_string(), ceil_tinyint()),
+           ("trino::ceiling_bigint".to_string(), ceiling_bigint()),   ("trino::ceiling_decimal_p_s".to_string(), ceiling_decimal_p_s()),   ("trino::ceiling_double".to_string(), ceiling_double()),   ("trino::ceiling_integer".to_string(), ceiling_integer()),   ("trino::ceiling_real".to_string(), ceiling_real()),   ("trino::ceiling_smallint".to_string(), ceiling_smallint()),   ("trino::ceiling_tinyint".to_string(), ceiling_tinyint()),
+           ("trino::char2hexint_varchar".to_string(), char2hexint_varchar()),
+        
+           ("trino::chr_bigint".to_string(), chr_bigint()),
+           ("trino::classify_map_bigint_double_classifier".to_string(), classify_map_bigint_double_classifier()),
+           ("trino::coalesce_1".to_string(), coalesce_1()),
+           ("trino::codepoint_varchar".to_string(), codepoint_varchar()),
+           ("trino::color_double_color_color".to_string(), color_double_color_color()),   ("trino::color_double_double_double_color_color".to_string(), color_double_double_double_color_color()),   ("trino::color_varchar".to_string(), color_varchar()),
+           ("trino::combinations_array_1_bigint".to_string(), combinations_array_1_bigint()),
+           ("trino::concat_3_array_3".to_string(), concat_3_array_3()),   ("trino::concat_array_3".to_string(), concat_array_3()),   ("trino::concat_array_3_3".to_string(), concat_array_3_3()),   ("trino::concat_varchar_varchar".to_string(), concat_varchar_varchar()),   ("trino::concat_varchar".to_string(), concat_varchar()),   ("trino::concat_varbinary".to_string(), concat_varbinary()),
+           ("trino::concat_ws_varchar_array_varchar".to_string(), concat_ws_varchar_array_varchar()),   ("trino::concat_ws_varchar".to_string(), concat_ws_varchar()),
+           ("trino::contains_array_1_1".to_string(), contains_array_1_1()),   ("trino::contains_varchar_ipaddress".to_string(), contains_varchar_ipaddress()),
+           ("trino::contains_sequence_array_1_array_1".to_string(), contains_sequence_array_1_array_1()),
+        
+        
+           ("trino::cos_double".to_string(), cos_double()),
+           ("trino::cosh_double".to_string(), cosh_double()),
+           ("trino::cosine_similarity_map_varchar_double_map_varchar_double".to_string(), cosine_similarity_map_varchar_double_map_varchar_double()),
+        
+        
+        
+        
+           ("trino::crc32_varbinary".to_string(), crc32_varbinary()),
+           ("trino::current_catalog".to_string(), current_catalog()),
+           ("trino::current_date".to_string(), current_date()),
+           ("trino::current_groups".to_string(), current_groups()),
+           ("trino::current_schema".to_string(), current_schema()),
+           ("trino::current_time".to_string(), current_time()),
+           ("trino::current_timestamp".to_string(), current_timestamp()),   ("trino::current_timestamp_bigint_0".to_string(), current_timestamp_bigint_0()),   ("trino::current_timestamp_bigint_3".to_string(), current_timestamp_bigint_3()),   ("trino::current_timestamp_bigint_6".to_string(), current_timestamp_bigint_6()),   ("trino::current_timestamp_bigint_9".to_string(), current_timestamp_bigint_9()),
+           ("trino::current_timezone".to_string(), current_timezone()),
+           ("trino::current_user".to_string(), current_user()),
+           ("trino::date_timestamp_p".to_string(), date_timestamp_p()),   ("trino::date_varchar".to_string(), date_varchar()),
+           ("trino::date_add_varchar_bigint_date".to_string(), date_add_varchar_bigint_date()),   ("trino::date_add_varchar_bigint_time_p".to_string(), date_add_varchar_bigint_time_p()),   ("trino::date_add_varchar_bigint_timestamp_p".to_string(), date_add_varchar_bigint_timestamp_p()),
+           ("trino::date_diff_varchar_date_date".to_string(), date_diff_varchar_date_date()),   ("trino::date_diff_varchar_time_p_time_p".to_string(), date_diff_varchar_time_p_time_p()),   ("trino::date_diff_varchar_timestamp_p_timestamp_p".to_string(), date_diff_varchar_timestamp_p_timestamp_p()),
+           ("trino::date_format_timestamp_p_varchar".to_string(), date_format_timestamp_p_varchar()),
+           ("trino::date_parse_varchar_varchar".to_string(), date_parse_varchar_varchar()),
+           ("trino::date_trunc_varchar_time_p".to_string(), date_trunc_varchar_time_p()),   ("trino::date_trunc_varchar_timestamp_p".to_string(), date_trunc_varchar_timestamp_p()),   ("trino::date_trunc_varchar_date".to_string(), date_trunc_varchar_date()),
+           ("trino::day_date".to_string(), day_date()),   ("trino::day_intervaldaytosecond".to_string(), day_intervaldaytosecond()),   ("trino::day_timestamp_p".to_string(), day_timestamp_p()),
+           ("trino::day_of_month_date".to_string(), day_of_month_date()),   ("trino::day_of_month_intervaldaytosecond".to_string(), day_of_month_intervaldaytosecond()),   ("trino::day_of_month_timestamp_p".to_string(), day_of_month_timestamp_p()),
+           ("trino::day_of_week_date".to_string(), day_of_week_date()),   ("trino::day_of_week_timestamp_p".to_string(), day_of_week_timestamp_p()),
+           ("trino::day_of_year_date".to_string(), day_of_year_date()),   ("trino::day_of_year_timestamp_p".to_string(), day_of_year_timestamp_p()),
+           ("trino::degrees_double".to_string(), degrees_double()),
+           ("trino::dow_date".to_string(), dow_date()),   ("trino::dow_timestamp_p".to_string(), dow_timestamp_p()),
+           ("trino::doy_date".to_string(), doy_date()),   ("trino::doy_timestamp_p".to_string(), doy_timestamp_p()),
+           ("trino::e".to_string(), e()),
+           ("trino::element_at_map_4_5_4".to_string(), element_at_map_4_5_4()),   ("trino::element_at_array_3_bigint".to_string(), element_at_array_3_bigint()),
+           ("trino::empty_approx_set".to_string(), empty_approx_set()),
+        
+        
+           ("trino::exp_double".to_string(), exp_double()),
+           ("trino::features_double".to_string(), features_double()),   ("trino::features_double_double".to_string(), features_double_double()),   ("trino::features_double_double_double".to_string(), features_double_double_double()),   ("trino::features_double_double_double_double".to_string(), features_double_double_double_double()),   ("trino::features_double_double_double_double_double".to_string(), features_double_double_double_double_double()),   ("trino::features_double_double_double_double_double_double".to_string(), features_double_double_double_double_double_double()),   ("trino::features_double_double_double_double_double_double_double".to_string(), features_double_double_double_double_double_double_double()),   ("trino::features_double_double_double_double_double_double_double_double".to_string(), features_double_double_double_double_double_double_double_double()),   ("trino::features_double_double_double_double_double_double_double_double_double".to_string(), features_double_double_double_double_double_double_double_double_double()),   ("trino::features_double_double_double_double_double_double_double_double_double_double".to_string(), features_double_double_double_double_double_double_double_double_double_double()),
+           ("trino::filter_array_1_function_1_boolean".to_string(), filter_array_1_function_1_boolean()),
+           ("trino::flatten_array_array_3".to_string(), flatten_array_array_3()),
+           ("trino::floor_bigint".to_string(), floor_bigint()),   ("trino::floor_decimal_p_s".to_string(), floor_decimal_p_s()),   ("trino::floor_double".to_string(), floor_double()),   ("trino::floor_integer".to_string(), floor_integer()),   ("trino::floor_real".to_string(), floor_real()),   ("trino::floor_smallint".to_string(), floor_smallint()),   ("trino::floor_tinyint".to_string(), floor_tinyint()),
+           ("trino::format_varchar_1".to_string(), format_varchar_1()),   ("trino::format_varchar_1_2".to_string(), format_varchar_1_2()),   ("trino::format_varchar_1_2_3".to_string(), format_varchar_1_2_3()),   ("trino::format_varchar_1_2_3_4".to_string(), format_varchar_1_2_3_4()),   ("trino::format_varchar_1_2_3_4_5".to_string(), format_varchar_1_2_3_4_5()),
+           ("trino::format_datetime_timestamp_p_varchar".to_string(), format_datetime_timestamp_p_varchar()),
+           ("trino::format_number_bigint".to_string(), format_number_bigint()),   ("trino::format_number_double".to_string(), format_number_double()),
+           ("trino::from_base_varchar_bigint".to_string(), from_base_varchar_bigint()),
+           ("trino::from_base32_varbinary".to_string(), from_base32_varbinary()),   ("trino::from_base32_varchar".to_string(), from_base32_varchar()),
+           ("trino::from_base64_varbinary".to_string(), from_base64_varbinary()),   ("trino::from_base64_varchar".to_string(), from_base64_varchar()),
+           ("trino::from_base64url_varbinary".to_string(), from_base64url_varbinary()),   ("trino::from_base64url_varchar".to_string(), from_base64url_varchar()),
+           ("trino::from_big_endian_32_varbinary".to_string(), from_big_endian_32_varbinary()),
+           ("trino::from_big_endian_64_varbinary".to_string(), from_big_endian_64_varbinary()),
+           ("trino::from_encoded_polyline_varchar".to_string(), from_encoded_polyline_varchar()),
+           ("trino::from_geojson_geometry_varchar".to_string(), from_geojson_geometry_varchar()),
+           ("trino::from_hex_varbinary".to_string(), from_hex_varbinary()),   ("trino::from_hex_varchar".to_string(), from_hex_varchar()),
+           ("trino::from_ieee754_32_varbinary".to_string(), from_ieee754_32_varbinary()),
+           ("trino::from_ieee754_64_varbinary".to_string(), from_ieee754_64_varbinary()),
+           ("trino::from_iso8601_date_varchar".to_string(), from_iso8601_date_varchar()),
+           ("trino::from_iso8601_timestamp_varchar".to_string(), from_iso8601_timestamp_varchar()),
+           ("trino::from_iso8601_timestamp_nanos_varchar".to_string(), from_iso8601_timestamp_nanos_varchar()),
+           ("trino::from_unixtime_bigint".to_string(), from_unixtime_bigint()),   ("trino::from_unixtime_bigint_bigint_bigint".to_string(), from_unixtime_bigint_bigint_bigint()),   ("trino::from_unixtime_bigint_varchar".to_string(), from_unixtime_bigint_varchar()),
+           ("trino::from_unixtime_nanos_bigint".to_string(), from_unixtime_nanos_bigint()),   ("trino::from_unixtime_nanos_decimal_p_s".to_string(), from_unixtime_nanos_decimal_p_s()),
+           ("trino::from_utf8_varbinary".to_string(), from_utf8_varbinary()),   ("trino::from_utf8_varbinary_bigint".to_string(), from_utf8_varbinary_bigint()),   ("trino::from_utf8_varbinary_varchar".to_string(), from_utf8_varbinary_varchar()),
+        
+           ("trino::geometry_from_hadoop_shape_varbinary".to_string(), geometry_from_hadoop_shape_varbinary()),
+           ("trino::geometry_invalid_reason_geometry".to_string(), geometry_invalid_reason_geometry()),
+           ("trino::geometry_nearest_points_geometry_geometry".to_string(), geometry_nearest_points_geometry_geometry()),
+           ("trino::geometry_to_bing_tiles_geometry_bigint".to_string(), geometry_to_bing_tiles_geometry_bigint()),
+           ("trino::geometry_union_array_geometry".to_string(), geometry_union_array_geometry()),
+        
+           ("trino::great_circle_distance_double_double_double_double".to_string(), great_circle_distance_double_double_double_double()),
+           ("trino::greatest_3".to_string(), greatest_3()),
+        
+           ("trino::hamming_distance_varchar_varchar".to_string(), hamming_distance_varchar_varchar()),
+           ("trino::hash_counts_setdigest".to_string(), hash_counts_setdigest()),
+        
+           ("trino::hmac_md5_varbinary_varbinary".to_string(), hmac_md5_varbinary_varbinary()),
+           ("trino::hmac_sha1_varbinary_varbinary".to_string(), hmac_sha1_varbinary_varbinary()),
+           ("trino::hmac_sha256_varbinary_varbinary".to_string(), hmac_sha256_varbinary_varbinary()),
+           ("trino::hmac_sha512_varbinary_varbinary".to_string(), hmac_sha512_varbinary_varbinary()),
+           ("trino::hour_intervaldaytosecond".to_string(), hour_intervaldaytosecond()),   ("trino::hour_time_p".to_string(), hour_time_p()),   ("trino::hour_timestamp_p".to_string(), hour_timestamp_p()),
+           ("trino::human_readable_seconds_double".to_string(), human_readable_seconds_double()),
+           ("trino::if_boolean_1_1".to_string(), if_boolean_1_1()),
+           ("trino::index_varchar_varchar".to_string(), index_varchar_varchar()),
+           ("trino::infinity".to_string(), infinity()),
+           ("trino::intersection_cardinality_setdigest_setdigest".to_string(), intersection_cardinality_setdigest_setdigest()),
+           ("trino::inverse_beta_cdf_double_double_double".to_string(), inverse_beta_cdf_double_double_double()),
+           ("trino::inverse_normal_cdf_double_double_double".to_string(), inverse_normal_cdf_double_double_double()),
+           ("trino::is_finite_double".to_string(), is_finite_double()),
+           ("trino::is_infinite_double".to_string(), is_infinite_double()),
+           ("trino::is_json_scalar_json".to_string(), is_json_scalar_json()),   ("trino::is_json_scalar_varchar".to_string(), is_json_scalar_varchar()),
+           ("trino::is_nan_double".to_string(), is_nan_double()),   ("trino::is_nan_real".to_string(), is_nan_real()),
+           ("trino::jaccard_index_setdigest_setdigest".to_string(), jaccard_index_setdigest_setdigest()),
+           ("trino::json_array_contains_json_bigint".to_string(), json_array_contains_json_bigint()),   ("trino::json_array_contains_json_boolean".to_string(), json_array_contains_json_boolean()),   ("trino::json_array_contains_json_double".to_string(), json_array_contains_json_double()),   ("trino::json_array_contains_json_varchar".to_string(), json_array_contains_json_varchar()),   ("trino::json_array_contains_varchar_bigint".to_string(), json_array_contains_varchar_bigint()),   ("trino::json_array_contains_varchar_boolean".to_string(), json_array_contains_varchar_boolean()),   ("trino::json_array_contains_varchar_double".to_string(), json_array_contains_varchar_double()),   ("trino::json_array_contains_varchar_varchar".to_string(), json_array_contains_varchar_varchar()),
+           ("trino::json_array_get_json_bigint".to_string(), json_array_get_json_bigint()),   ("trino::json_array_get_varchar_bigint".to_string(), json_array_get_varchar_bigint()),
+           ("trino::json_array_length_json".to_string(), json_array_length_json()),   ("trino::json_array_length_varchar".to_string(), json_array_length_varchar()),
+           ("trino::json_extract_json_jsonpath".to_string(), json_extract_json_jsonpath()),   ("trino::json_extract_varchar_jsonpath".to_string(), json_extract_varchar_jsonpath()),
+           ("trino::json_extract_scalar_json_jsonpath".to_string(), json_extract_scalar_json_jsonpath()),   ("trino::json_extract_scalar_varchar_jsonpath".to_string(), json_extract_scalar_varchar_jsonpath()),
+           ("trino::json_format_json".to_string(), json_format_json()),
+           ("trino::json_parse_varchar".to_string(), json_parse_varchar()),
+           ("trino::json_size_json_jsonpath".to_string(), json_size_json_jsonpath()),   ("trino::json_size_varchar_jsonpath".to_string(), json_size_varchar_jsonpath()),
+        
+           ("trino::last_day_of_month_date".to_string(), last_day_of_month_date()),   ("trino::last_day_of_month_timestamp_p".to_string(), last_day_of_month_timestamp_p()),
+        
+        
+        
+        
+           ("trino::least_3".to_string(), least_3()),
+           ("trino::length_varchar".to_string(), length_varchar()),   ("trino::length_varbinary".to_string(), length_varbinary()),   ("trino::length_array_1".to_string(), length_array_1()),
+           ("trino::levenshtein_distance_varchar_varchar".to_string(), levenshtein_distance_varchar_varchar()),
+           ("trino::line_interpolate_point_geometry_double".to_string(), line_interpolate_point_geometry_double()),
+           ("trino::line_interpolate_points_geometry_double".to_string(), line_interpolate_points_geometry_double()),
+           ("trino::line_locate_point_geometry_geometry".to_string(), line_locate_point_geometry_geometry()),
+        
+           ("trino::ln_double".to_string(), ln_double()),
+           ("trino::localtime".to_string(), localtime()),
+           ("trino::localtimestamp".to_string(), localtimestamp()),   ("trino::localtimestamp_bigint_0".to_string(), localtimestamp_bigint_0()),   ("trino::localtimestamp_bigint_3".to_string(), localtimestamp_bigint_3()),   ("trino::localtimestamp_bigint_6".to_string(), localtimestamp_bigint_6()),   ("trino::localtimestamp_bigint_9".to_string(), localtimestamp_bigint_9()),
+           ("trino::log_double_double".to_string(), log_double_double()),
+           ("trino::log10_double".to_string(), log10_double()),
+           ("trino::log2_double".to_string(), log2_double()),
+           ("trino::lower_varchar".to_string(), lower_varchar()),
+           ("trino::lpad_varbinary_bigint_varbinary".to_string(), lpad_varbinary_bigint_varbinary()),   ("trino::lpad_varchar_bigint_varchar".to_string(), lpad_varchar_bigint_varchar()),
+           ("trino::ltrim_varchar".to_string(), ltrim_varchar()),   ("trino::ltrim_varchar_codepoints".to_string(), ltrim_varchar_codepoints()),
+           ("trino::luhn_check_varchar".to_string(), luhn_check_varchar()),
+        
+           ("trino::map_array_4_array_5".to_string(), map_array_4_array_5()),   ("trino::map".to_string(), map()),
+        
+           ("trino::map_concat_map_4_5".to_string(), map_concat_map_4_5()),
+           ("trino::map_entries_map_4_5".to_string(), map_entries_map_4_5()),
+           ("trino::map_filter_map_4_5_function_4_5_boolean".to_string(), map_filter_map_4_5_function_4_5_boolean()),
+           ("trino::map_from_entries_array_row_c04_c15".to_string(), map_from_entries_array_row_c04_c15()),
+           ("trino::map_keys_map_4_5".to_string(), map_keys_map_4_5()),
+        
+           ("trino::map_values_map_4_5".to_string(), map_values_map_4_5()),
+           ("trino::map_zip_with_map_4_8_map_4_7_function_4_8_7_6".to_string(), map_zip_with_map_4_8_map_4_7_function_4_8_7_6()),
+        
+        
+           ("trino::md5_varbinary".to_string(), md5_varbinary()),
+        
+        
+           ("trino::millisecond_intervaldaytosecond".to_string(), millisecond_intervaldaytosecond()),   ("trino::millisecond_time_p".to_string(), millisecond_time_p()),   ("trino::millisecond_timestamp_p".to_string(), millisecond_timestamp_p()),
+        
+        
+           ("trino::minute_intervaldaytosecond".to_string(), minute_intervaldaytosecond()),   ("trino::minute_time_p".to_string(), minute_time_p()),   ("trino::minute_timestamp_p".to_string(), minute_timestamp_p()),
+           ("trino::mod_bigint_bigint".to_string(), mod_bigint_bigint()),   ("trino::mod_decimal_a_precision_a_scale_decimal_b_precision_b_scale".to_string(), mod_decimal_a_precision_a_scale_decimal_b_precision_b_scale()),   ("trino::mod_double_double".to_string(), mod_double_double()),   ("trino::mod_integer_integer".to_string(), mod_integer_integer()),   ("trino::mod_real_real".to_string(), mod_real_real()),   ("trino::mod_smallint_smallint".to_string(), mod_smallint_smallint()),   ("trino::mod_tinyint_tinyint".to_string(), mod_tinyint_tinyint()),
+           ("trino::month_date".to_string(), month_date()),   ("trino::month_intervalyeartomonth".to_string(), month_intervalyeartomonth()),   ("trino::month_timestamp_p".to_string(), month_timestamp_p()),
+        
+           ("trino::multimap_from_entries_array_row_c04_c15".to_string(), multimap_from_entries_array_row_c04_c15()),
+           ("trino::murmur3_varbinary".to_string(), murmur3_varbinary()),
+           ("trino::nan".to_string(), nan()),
+           ("trino::ngrams_array_1_bigint".to_string(), ngrams_array_1_bigint()),
+           ("trino::none_match_array_1_function_1_boolean".to_string(), none_match_array_1_function_1_boolean()),
+           ("trino::normal_cdf_double_double_double".to_string(), normal_cdf_double_double_double()),
+           ("trino::normalize_varchar_varchar".to_string(), normalize_varchar_varchar()),
+           ("trino::now".to_string(), now()),
+           ("trino::nullif_1_1".to_string(), nullif_1_1()),
+        
+           ("trino::objectid".to_string(), objectid()),   ("trino::objectid_varchar".to_string(), objectid_varchar()),
+           ("trino::objectid_timestamp_objectid".to_string(), objectid_timestamp_objectid()),
+           ("trino::parse_data_size_varchar".to_string(), parse_data_size_varchar()),
+           ("trino::parse_datetime_varchar_varchar".to_string(), parse_datetime_varchar_varchar()),
+           ("trino::parse_duration_varchar".to_string(), parse_duration_varchar()),
+           ("trino::parse_presto_data_size_varchar".to_string(), parse_presto_data_size_varchar()),
+           ("trino::pi".to_string(), pi()),
+           ("trino::pow_double_double".to_string(), pow_double_double()),
+           ("trino::power_double_double".to_string(), power_double_double()),
+        
+           ("trino::quantile_at_value_qdigest_bigint".to_string(), quantile_at_value_qdigest_bigint()),   ("trino::quantile_at_value_qdigest_double".to_string(), quantile_at_value_qdigest_double()),   ("trino::quantile_at_value_qdigest_real".to_string(), quantile_at_value_qdigest_real()),
+           ("trino::quarter_date".to_string(), quarter_date()),   ("trino::quarter_timestamp_p".to_string(), quarter_timestamp_p()),
+           ("trino::radians_double".to_string(), radians_double()),
+           ("trino::rand_bigint".to_string(), rand_bigint()),   ("trino::rand_bigint_bigint".to_string(), rand_bigint_bigint()),   ("trino::rand".to_string(), rand()),   ("trino::rand_integer".to_string(), rand_integer()),   ("trino::rand_integer_integer".to_string(), rand_integer_integer()),   ("trino::rand_smallint".to_string(), rand_smallint()),   ("trino::rand_smallint_smallint".to_string(), rand_smallint_smallint()),   ("trino::rand_tinyint".to_string(), rand_tinyint()),   ("trino::rand_tinyint_tinyint".to_string(), rand_tinyint_tinyint()),
+           ("trino::random_bigint".to_string(), random_bigint()),   ("trino::random_bigint_bigint".to_string(), random_bigint_bigint()),   ("trino::random".to_string(), random()),   ("trino::random_integer".to_string(), random_integer()),   ("trino::random_integer_integer".to_string(), random_integer_integer()),   ("trino::random_smallint".to_string(), random_smallint()),   ("trino::random_smallint_smallint".to_string(), random_smallint_smallint()),   ("trino::random_tinyint".to_string(), random_tinyint()),   ("trino::random_tinyint_tinyint".to_string(), random_tinyint_tinyint()),
+           ("trino::reduce_array_1_10_function_10_1_10_function_10_9".to_string(), reduce_array_1_10_function_10_1_10_function_10_9()),
+        
+           ("trino::regexp_count_varchar_joniregexp".to_string(), regexp_count_varchar_joniregexp()),
+           ("trino::regexp_extract_varchar_joniregexp".to_string(), regexp_extract_varchar_joniregexp()),   ("trino::regexp_extract_varchar_joniregexp_bigint".to_string(), regexp_extract_varchar_joniregexp_bigint()),
+           ("trino::regexp_extract_all_varchar_joniregexp".to_string(), regexp_extract_all_varchar_joniregexp()),   ("trino::regexp_extract_all_varchar_joniregexp_bigint".to_string(), regexp_extract_all_varchar_joniregexp_bigint()),
+           ("trino::regexp_like_varchar_joniregexp".to_string(), regexp_like_varchar_joniregexp()),
+           ("trino::regexp_position_varchar_joniregexp".to_string(), regexp_position_varchar_joniregexp()),   ("trino::regexp_position_varchar_joniregexp_bigint".to_string(), regexp_position_varchar_joniregexp_bigint()),   ("trino::regexp_position_varchar_joniregexp_bigint_bigint".to_string(), regexp_position_varchar_joniregexp_bigint_bigint()),
+           ("trino::regexp_replace_varchar_joniregexp_function_array_varchar_varchar".to_string(), regexp_replace_varchar_joniregexp_function_array_varchar_varchar()),   ("trino::regexp_replace_varchar_joniregexp".to_string(), regexp_replace_varchar_joniregexp()),   ("trino::regexp_replace_varchar_joniregexp_varchar".to_string(), regexp_replace_varchar_joniregexp_varchar()),
+           ("trino::regexp_split_varchar_joniregexp".to_string(), regexp_split_varchar_joniregexp()),
+        
+        
+           ("trino::regress_map_bigint_double_regressor".to_string(), regress_map_bigint_double_regressor()),
+           ("trino::render_boolean".to_string(), render_boolean()),   ("trino::render_bigint_color".to_string(), render_bigint_color()),   ("trino::render_double_color".to_string(), render_double_color()),   ("trino::render_varchar_color".to_string(), render_varchar_color()),
+           ("trino::repeat_1_bigint".to_string(), repeat_1_bigint()),
+           ("trino::replace_varchar_varchar_varchar".to_string(), replace_varchar_varchar_varchar()),   ("trino::replace_varchar_varchar".to_string(), replace_varchar_varchar()),
+           ("trino::reverse_array_3".to_string(), reverse_array_3()),   ("trino::reverse_varbinary".to_string(), reverse_varbinary()),   ("trino::reverse_varchar".to_string(), reverse_varchar()),
+           ("trino::rgb_bigint_bigint_bigint".to_string(), rgb_bigint_bigint_bigint()),
+           ("trino::round_double".to_string(), round_double()),   ("trino::round_double_bigint".to_string(), round_double_bigint()),   ("trino::round_real".to_string(), round_real()),   ("trino::round_real_bigint".to_string(), round_real_bigint()),   ("trino::round_integer".to_string(), round_integer()),   ("trino::round_integer_integer".to_string(), round_integer_integer()),   ("trino::round_decimal_p_s".to_string(), round_decimal_p_s()),   ("trino::round_decimal_p_s_bigint".to_string(), round_decimal_p_s_bigint()),   ("trino::round_bigint".to_string(), round_bigint()),   ("trino::round_bigint_bigint".to_string(), round_bigint_bigint()),   ("trino::round_smallint".to_string(), round_smallint()),   ("trino::round_smallint_bigint".to_string(), round_smallint_bigint()),   ("trino::round_tinyint".to_string(), round_tinyint()),   ("trino::round_tinyint_bigint".to_string(), round_tinyint_bigint()),
+           ("trino::rpad_varbinary_bigint_varbinary".to_string(), rpad_varbinary_bigint_varbinary()),   ("trino::rpad_varchar_bigint_varchar".to_string(), rpad_varchar_bigint_varchar()),
+           ("trino::rtrim_varchar".to_string(), rtrim_varchar()),   ("trino::rtrim_varchar_codepoints".to_string(), rtrim_varchar_codepoints()),
+           ("trino::second_intervaldaytosecond".to_string(), second_intervaldaytosecond()),   ("trino::second_time_p".to_string(), second_time_p()),   ("trino::second_timestamp_p".to_string(), second_timestamp_p()),
+           ("trino::sequence_bigint_bigint".to_string(), sequence_bigint_bigint()),   ("trino::sequence_bigint_bigint_bigint".to_string(), sequence_bigint_bigint_bigint()),   ("trino::sequence_date_date".to_string(), sequence_date_date()),   ("trino::sequence_date_date_intervaldaytosecond".to_string(), sequence_date_date_intervaldaytosecond()),   ("trino::sequence_date_date_intervalyeartomonth".to_string(), sequence_date_date_intervalyeartomonth()),   ("trino::sequence_timestamp_p_timestamp_p_intervaldaytosecond".to_string(), sequence_timestamp_p_timestamp_p_intervaldaytosecond()),
+           ("trino::sha1_varbinary".to_string(), sha1_varbinary()),
+           ("trino::sha256_varbinary".to_string(), sha256_varbinary()),
+           ("trino::sha512_varbinary".to_string(), sha512_varbinary()),
+           ("trino::shuffle_array_3".to_string(), shuffle_array_3()),
+           ("trino::sign_bigint".to_string(), sign_bigint()),   ("trino::sign_decimal_p_s".to_string(), sign_decimal_p_s()),   ("trino::sign_double".to_string(), sign_double()),   ("trino::sign_integer".to_string(), sign_integer()),   ("trino::sign_real".to_string(), sign_real()),   ("trino::sign_smallint".to_string(), sign_smallint()),   ("trino::sign_tinyint".to_string(), sign_tinyint()),
+           ("trino::simplify_geometry_geometry_double".to_string(), simplify_geometry_geometry_double()),
+           ("trino::sin_double".to_string(), sin_double()),
+           ("trino::sinh_double".to_string(), sinh_double()),
+        
+           ("trino::slice_array_3_bigint_bigint".to_string(), slice_array_3_bigint_bigint()),
+           ("trino::soundex_varchar".to_string(), soundex_varchar()),
+        
+           ("trino::spatial_partitions_kdbtree_geometry".to_string(), spatial_partitions_kdbtree_geometry()),   ("trino::spatial_partitions_kdbtree_geometry_double".to_string(), spatial_partitions_kdbtree_geometry_double()),
+           ("trino::split_varchar_varchar".to_string(), split_varchar_varchar()),   ("trino::split_varchar_varchar_bigint".to_string(), split_varchar_varchar_bigint()),
+           ("trino::split_part_varchar_varchar_bigint".to_string(), split_part_varchar_varchar_bigint()),
+           ("trino::split_to_map_varchar_varchar_varchar".to_string(), split_to_map_varchar_varchar_varchar()),
+           ("trino::split_to_multimap_varchar_varchar_varchar".to_string(), split_to_multimap_varchar_varchar_varchar()),
+           ("trino::spooky_hash_v2_32_varbinary".to_string(), spooky_hash_v2_32_varbinary()),
+           ("trino::spooky_hash_v2_64_varbinary".to_string(), spooky_hash_v2_64_varbinary()),
+           ("trino::sqrt_double".to_string(), sqrt_double()),
+           ("trino::st_area_geometry".to_string(), st_area_geometry()),   ("trino::st_area_sphericalgeography".to_string(), st_area_sphericalgeography()),
+           ("trino::st_asbinary_geometry".to_string(), st_asbinary_geometry()),
+           ("trino::st_astext_geometry".to_string(), st_astext_geometry()),
+           ("trino::st_boundary_geometry".to_string(), st_boundary_geometry()),
+           ("trino::st_buffer_geometry_double".to_string(), st_buffer_geometry_double()),
+           ("trino::st_centroid_geometry".to_string(), st_centroid_geometry()),
+           ("trino::st_contains_geometry_geometry".to_string(), st_contains_geometry_geometry()),
+           ("trino::st_convexhull_geometry".to_string(), st_convexhull_geometry()),
+           ("trino::st_coorddim_geometry".to_string(), st_coorddim_geometry()),
+           ("trino::st_crosses_geometry_geometry".to_string(), st_crosses_geometry_geometry()),
+           ("trino::st_difference_geometry_geometry".to_string(), st_difference_geometry_geometry()),
+           ("trino::st_dimension_geometry".to_string(), st_dimension_geometry()),
+           ("trino::st_disjoint_geometry_geometry".to_string(), st_disjoint_geometry_geometry()),
+           ("trino::st_distance_geometry_geometry".to_string(), st_distance_geometry_geometry()),   ("trino::st_distance_sphericalgeography_sphericalgeography".to_string(), st_distance_sphericalgeography_sphericalgeography()),
+           ("trino::st_endpoint_geometry".to_string(), st_endpoint_geometry()),
+           ("trino::st_envelope_geometry".to_string(), st_envelope_geometry()),
+           ("trino::st_envelopeaspts_geometry".to_string(), st_envelopeaspts_geometry()),
+           ("trino::st_equals_geometry_geometry".to_string(), st_equals_geometry_geometry()),
+           ("trino::st_exteriorring_geometry".to_string(), st_exteriorring_geometry()),
+           ("trino::st_geometries_geometry".to_string(), st_geometries_geometry()),
+           ("trino::st_geometryfromtext_varchar".to_string(), st_geometryfromtext_varchar()),
+           ("trino::st_geometryn_geometry_bigint".to_string(), st_geometryn_geometry_bigint()),
+           ("trino::st_geometrytype_geometry".to_string(), st_geometrytype_geometry()),
+           ("trino::st_geomfrombinary_varbinary".to_string(), st_geomfrombinary_varbinary()),
+           ("trino::st_interiorringn_geometry_bigint".to_string(), st_interiorringn_geometry_bigint()),
+           ("trino::st_interiorrings_geometry".to_string(), st_interiorrings_geometry()),
+           ("trino::st_intersection_geometry_geometry".to_string(), st_intersection_geometry_geometry()),
+           ("trino::st_intersects_geometry_geometry".to_string(), st_intersects_geometry_geometry()),
+           ("trino::st_isclosed_geometry".to_string(), st_isclosed_geometry()),
+           ("trino::st_isempty_geometry".to_string(), st_isempty_geometry()),
+           ("trino::st_isring_geometry".to_string(), st_isring_geometry()),
+           ("trino::st_issimple_geometry".to_string(), st_issimple_geometry()),
+           ("trino::st_isvalid_geometry".to_string(), st_isvalid_geometry()),
+           ("trino::st_length_geometry".to_string(), st_length_geometry()),   ("trino::st_length_sphericalgeography".to_string(), st_length_sphericalgeography()),
+           ("trino::st_linefromtext_varchar".to_string(), st_linefromtext_varchar()),
+           ("trino::st_linestring_array_geometry".to_string(), st_linestring_array_geometry()),
+           ("trino::st_multipoint_array_geometry".to_string(), st_multipoint_array_geometry()),
+           ("trino::st_numgeometries_geometry".to_string(), st_numgeometries_geometry()),
+           ("trino::st_numinteriorring_geometry".to_string(), st_numinteriorring_geometry()),
+           ("trino::st_numpoints_geometry".to_string(), st_numpoints_geometry()),
+           ("trino::st_overlaps_geometry_geometry".to_string(), st_overlaps_geometry_geometry()),
+           ("trino::st_point_double_double".to_string(), st_point_double_double()),
+           ("trino::st_pointn_geometry_bigint".to_string(), st_pointn_geometry_bigint()),
+           ("trino::st_points_geometry".to_string(), st_points_geometry()),
+           ("trino::st_polygon_varchar".to_string(), st_polygon_varchar()),
+           ("trino::st_relate_geometry_geometry_varchar".to_string(), st_relate_geometry_geometry_varchar()),
+           ("trino::st_startpoint_geometry".to_string(), st_startpoint_geometry()),
+           ("trino::st_symdifference_geometry_geometry".to_string(), st_symdifference_geometry_geometry()),
+           ("trino::st_touches_geometry_geometry".to_string(), st_touches_geometry_geometry()),
+           ("trino::st_union_geometry_geometry".to_string(), st_union_geometry_geometry()),
+           ("trino::st_within_geometry_geometry".to_string(), st_within_geometry_geometry()),
+           ("trino::st_x_geometry".to_string(), st_x_geometry()),
+           ("trino::st_xmax_geometry".to_string(), st_xmax_geometry()),
+           ("trino::st_xmin_geometry".to_string(), st_xmin_geometry()),
+           ("trino::st_y_geometry".to_string(), st_y_geometry()),
+           ("trino::st_ymax_geometry".to_string(), st_ymax_geometry()),
+           ("trino::st_ymin_geometry".to_string(), st_ymin_geometry()),
+           ("trino::starts_with_varchar_varchar".to_string(), starts_with_varchar_varchar()),
+        
+        
+        
+           ("trino::strpos_varchar_varchar".to_string(), strpos_varchar_varchar()),   ("trino::strpos_varchar_varchar_bigint".to_string(), strpos_varchar_varchar_bigint()),
+           ("trino::substr_varchar_bigint".to_string(), substr_varchar_bigint()),   ("trino::substr_varchar_bigint_bigint".to_string(), substr_varchar_bigint_bigint()),   ("trino::substr_varbinary_bigint".to_string(), substr_varbinary_bigint()),   ("trino::substr_varbinary_bigint_bigint".to_string(), substr_varbinary_bigint_bigint()),
+           ("trino::substring_varchar_bigint".to_string(), substring_varchar_bigint()),   ("trino::substring_varchar_bigint_bigint".to_string(), substring_varchar_bigint_bigint()),
+        
+           ("trino::tan_double".to_string(), tan_double()),
+           ("trino::tanh_double".to_string(), tanh_double()),
+        
+           ("trino::timestamp_objectid_timestamp_0".to_string(), timestamp_objectid_timestamp_0()),
+           ("trino::timezone_hour_time_p".to_string(), timezone_hour_time_p()),   ("trino::timezone_hour_timestamp_p".to_string(), timezone_hour_timestamp_p()),
+           ("trino::timezone_minute_time_p".to_string(), timezone_minute_time_p()),   ("trino::timezone_minute_timestamp_p".to_string(), timezone_minute_timestamp_p()),
+           ("trino::to_base_bigint_bigint".to_string(), to_base_bigint_bigint()),
+           ("trino::to_base32_varbinary".to_string(), to_base32_varbinary()),
+           ("trino::to_base64_varbinary".to_string(), to_base64_varbinary()),
+           ("trino::to_base64url_varbinary".to_string(), to_base64url_varbinary()),
+           ("trino::to_big_endian_32_bigint".to_string(), to_big_endian_32_bigint()),
+           ("trino::to_big_endian_64_bigint".to_string(), to_big_endian_64_bigint()),
+           ("trino::to_char_timestamp_p_varchar".to_string(), to_char_timestamp_p_varchar()),
+           ("trino::to_date_varchar_varchar".to_string(), to_date_varchar_varchar()),
+           ("trino::to_encoded_polyline_geometry".to_string(), to_encoded_polyline_geometry()),
+           ("trino::to_geojson_geometry_sphericalgeography".to_string(), to_geojson_geometry_sphericalgeography()),
+           ("trino::to_geometry_sphericalgeography".to_string(), to_geometry_sphericalgeography()),
+           ("trino::to_hex_varbinary".to_string(), to_hex_varbinary()),
+           ("trino::to_ieee754_32_real".to_string(), to_ieee754_32_real()),
+           ("trino::to_ieee754_64_double".to_string(), to_ieee754_64_double()),
+           ("trino::to_iso8601_date".to_string(), to_iso8601_date()),   ("trino::to_iso8601_timestamp_p".to_string(), to_iso8601_timestamp_p()),
+           ("trino::to_milliseconds_intervaldaytosecond".to_string(), to_milliseconds_intervaldaytosecond()),
+           ("trino::to_spherical_geography_geometry".to_string(), to_spherical_geography_geometry()),
+           ("trino::to_timestamp_varchar_varchar".to_string(), to_timestamp_varchar_varchar()),
+           ("trino::to_unixtime_timestamp_p".to_string(), to_unixtime_timestamp_p()),
+           ("trino::to_utf8_varchar".to_string(), to_utf8_varchar()),
+           ("trino::transform_array_1_function_1_11".to_string(), transform_array_1_function_1_11()),
+           ("trino::transform_keys_map_13_5_function_13_5_12".to_string(), transform_keys_map_13_5_function_13_5_12()),
+           ("trino::transform_values_map_4_8_function_4_8_7".to_string(), transform_values_map_4_8_function_4_8_7()),
+           ("trino::translate_varchar_varchar_varchar".to_string(), translate_varchar_varchar_varchar()),
+           ("trino::trim_varchar".to_string(), trim_varchar()),   ("trino::trim_varchar_codepoints".to_string(), trim_varchar_codepoints()),
+           ("trino::trim_array_array_3_bigint".to_string(), trim_array_array_3_bigint()),
+           ("trino::truncate_decimal_p_s_bigint".to_string(), truncate_decimal_p_s_bigint()),   ("trino::truncate_decimal_p_s".to_string(), truncate_decimal_p_s()),   ("trino::truncate_double".to_string(), truncate_double()),   ("trino::truncate_real".to_string(), truncate_real()),
+           ("trino::try_1".to_string(), try_1()),
+           ("trino::typeof_1".to_string(), typeof_1()),
+           ("trino::upper_varchar".to_string(), upper_varchar()),
+           ("trino::url_decode_varchar".to_string(), url_decode_varchar()),
+           ("trino::url_encode_varchar".to_string(), url_encode_varchar()),
+           ("trino::url_extract_fragment_varchar".to_string(), url_extract_fragment_varchar()),
+           ("trino::url_extract_host_varchar".to_string(), url_extract_host_varchar()),
+           ("trino::url_extract_parameter_varchar_varchar".to_string(), url_extract_parameter_varchar_varchar()),
+           ("trino::url_extract_path_varchar".to_string(), url_extract_path_varchar()),
+           ("trino::url_extract_port_varchar".to_string(), url_extract_port_varchar()),
+           ("trino::url_extract_protocol_varchar".to_string(), url_extract_protocol_varchar()),
+           ("trino::url_extract_query_varchar".to_string(), url_extract_query_varchar()),
+           ("trino::uuid".to_string(), uuid()),
+           ("trino::value_at_quantile_qdigest_double".to_string(), value_at_quantile_qdigest_double()),   ("trino::value_at_quantile_tdigest_double".to_string(), value_at_quantile_tdigest_double()),
+           ("trino::values_at_quantiles_qdigest_array_double".to_string(), values_at_quantiles_qdigest_array_double()),   ("trino::values_at_quantiles_tdigest_array_double".to_string(), values_at_quantiles_tdigest_array_double()),
+        
+        
+        
+           ("trino::week_date".to_string(), week_date()),   ("trino::week_timestamp_p".to_string(), week_timestamp_p()),
+           ("trino::week_of_year_date".to_string(), week_of_year_date()),   ("trino::week_of_year_timestamp_p".to_string(), week_of_year_timestamp_p()),
+           ("trino::width_bucket_double_array_double".to_string(), width_bucket_double_array_double()),   ("trino::width_bucket_double_double_double_bigint".to_string(), width_bucket_double_double_double_bigint()),
+           ("trino::wilson_interval_lower_bigint_bigint_double".to_string(), wilson_interval_lower_bigint_bigint_double()),
+           ("trino::wilson_interval_upper_bigint_bigint_double".to_string(), wilson_interval_upper_bigint_bigint_double()),
+           ("trino::with_timezone_timestamp_p_varchar".to_string(), with_timezone_timestamp_p_varchar()),
+           ("trino::word_stem_varchar".to_string(), word_stem_varchar()),   ("trino::word_stem_varchar_varchar".to_string(), word_stem_varchar_varchar()),
+           ("trino::xxhash64_varbinary".to_string(), xxhash64_varbinary()),
+           ("trino::year_date".to_string(), year_date()),   ("trino::year_intervalyeartomonth".to_string(), year_intervalyeartomonth()),   ("trino::year_timestamp_p".to_string(), year_timestamp_p()),
+           ("trino::year_of_week_date".to_string(), year_of_week_date()),   ("trino::year_of_week_timestamp_p".to_string(), year_of_week_timestamp_p()),
+           ("trino::yow_date".to_string(), yow_date()),   ("trino::yow_timestamp_p".to_string(), yow_timestamp_p()),
+           ("trino::zip_array_14_array_15".to_string(), zip_array_14_array_15()),   ("trino::zip_array_14_array_15_array_16".to_string(), zip_array_14_array_15_array_16()),   ("trino::zip_array_14_array_15_array_16_array_17".to_string(), zip_array_14_array_15_array_16_array_17()),   ("trino::zip_array_14_array_15_array_16_array_17_array_18".to_string(), zip_array_14_array_15_array_16_array_17_array_18()),
+           ("trino::zip_with_array_1_array_11_function_1_11_9".to_string(), zip_with_array_1_array_11_function_1_11_9()),
+        
+    ]
+}
+
+pub fn udafs() -> Vec<(String, std::sync::Arc<datafusion::logical_expr::AggregateUDF>)> {
+    vec![
+        
+        
+        
+        
+           ("trino::approx_distinct_boolean".to_string(), approx_distinct_boolean()),   ("trino::approx_distinct_boolean_double".to_string(), approx_distinct_boolean_double()),   ("trino::approx_distinct_1".to_string(), approx_distinct_1()),   ("trino::approx_distinct_1_double".to_string(), approx_distinct_1_double()),   ("trino::approx_distinct_unknown".to_string(), approx_distinct_unknown()),   ("trino::approx_distinct_unknown_double".to_string(), approx_distinct_unknown_double()),
+           ("trino::approx_most_frequent_bigint_bigint_bigint".to_string(), approx_most_frequent_bigint_bigint_bigint()),   ("trino::approx_most_frequent_bigint_varchar_bigint".to_string(), approx_most_frequent_bigint_varchar_bigint()),
+           ("trino::approx_percentile_bigint_array_double".to_string(), approx_percentile_bigint_array_double()),   ("trino::approx_percentile_bigint_double_array_double".to_string(), approx_percentile_bigint_double_array_double()),   ("trino::approx_percentile_double_array_double".to_string(), approx_percentile_double_array_double()),   ("trino::approx_percentile_double_double_array_double".to_string(), approx_percentile_double_double_array_double()),   ("trino::approx_percentile_real_array_double".to_string(), approx_percentile_real_array_double()),   ("trino::approx_percentile_real_double_array_double".to_string(), approx_percentile_real_double_array_double()),   ("trino::approx_percentile_bigint_double".to_string(), approx_percentile_bigint_double()),   ("trino::approx_percentile_bigint_double_double".to_string(), approx_percentile_bigint_double_double()),   ("trino::approx_percentile_bigint_double_double_double".to_string(), approx_percentile_bigint_double_double_double()),   ("trino::approx_percentile_double_double".to_string(), approx_percentile_double_double()),   ("trino::approx_percentile_double_double_double".to_string(), approx_percentile_double_double_double()),   ("trino::approx_percentile_double_double_double_double".to_string(), approx_percentile_double_double_double_double()),   ("trino::approx_percentile_real_double".to_string(), approx_percentile_real_double()),   ("trino::approx_percentile_real_double_double".to_string(), approx_percentile_real_double_double()),   ("trino::approx_percentile_real_double_double_double".to_string(), approx_percentile_real_double_double_double()),
+           ("trino::approx_set_bigint".to_string(), approx_set_bigint()),   ("trino::approx_set_double".to_string(), approx_set_double()),   ("trino::approx_set_varchar".to_string(), approx_set_varchar()),
+           ("trino::arbitrary_1".to_string(), arbitrary_1()),
+           ("trino::array_agg_1".to_string(), array_agg_1()),
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+           ("trino::avg_double".to_string(), avg_double()),   ("trino::avg_decimal_p_s".to_string(), avg_decimal_p_s()),   ("trino::avg_intervaldaytosecond".to_string(), avg_intervaldaytosecond()),   ("trino::avg_intervalyeartomonth".to_string(), avg_intervalyeartomonth()),   ("trino::avg_real".to_string(), avg_real()),
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+           ("trino::bitwise_and_agg_bigint".to_string(), bitwise_and_agg_bigint()),
+        
+        
+        
+           ("trino::bitwise_or_agg_bigint".to_string(), bitwise_or_agg_bigint()),
+        
+        
+        
+           ("trino::bool_and_boolean".to_string(), bool_and_boolean()),
+           ("trino::bool_or_boolean".to_string(), bool_or_boolean()),
+        
+        
+        
+        
+        
+           ("trino::checksum_1".to_string(), checksum_1()),
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+           ("trino::convex_hull_agg_geometry".to_string(), convex_hull_agg_geometry()),
+           ("trino::corr_double_double".to_string(), corr_double_double()),   ("trino::corr_real_real".to_string(), corr_real_real()),
+        
+        
+        
+           ("trino::count".to_string(), count()),   ("trino::count_1".to_string(), count_1()),
+           ("trino::count_if_boolean".to_string(), count_if_boolean()),
+           ("trino::covar_pop_double_double".to_string(), covar_pop_double_double()),   ("trino::covar_pop_real_real".to_string(), covar_pop_real_real()),
+           ("trino::covar_samp_double_double".to_string(), covar_samp_double_double()),   ("trino::covar_samp_real_real".to_string(), covar_samp_real_real()),
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+           ("trino::evaluate_classifier_predictions_bigint_bigint".to_string(), evaluate_classifier_predictions_bigint_bigint()),   ("trino::evaluate_classifier_predictions_varchar_varchar".to_string(), evaluate_classifier_predictions_varchar_varchar()),
+           ("trino::every_boolean".to_string(), every_boolean()),
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+           ("trino::geometric_mean_bigint".to_string(), geometric_mean_bigint()),   ("trino::geometric_mean_double".to_string(), geometric_mean_double()),   ("trino::geometric_mean_real".to_string(), geometric_mean_real()),
+        
+        
+        
+        
+        
+           ("trino::geometry_union_agg_geometry".to_string(), geometry_union_agg_geometry()),
+        
+        
+           ("trino::grouping".to_string(), grouping()),
+        
+        
+           ("trino::histogram_1".to_string(), histogram_1()),
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+           ("trino::kurtosis_bigint".to_string(), kurtosis_bigint()),   ("trino::kurtosis_double".to_string(), kurtosis_double()),
+        
+           ("trino::learn_classifier_bigint_map_bigint_double".to_string(), learn_classifier_bigint_map_bigint_double()),   ("trino::learn_classifier_double_map_bigint_double".to_string(), learn_classifier_double_map_bigint_double()),   ("trino::learn_classifier_varchar_map_bigint_double".to_string(), learn_classifier_varchar_map_bigint_double()),
+           ("trino::learn_libsvm_classifier_bigint_map_bigint_double_varchar".to_string(), learn_libsvm_classifier_bigint_map_bigint_double_varchar()),   ("trino::learn_libsvm_classifier_double_map_bigint_double_varchar".to_string(), learn_libsvm_classifier_double_map_bigint_double_varchar()),   ("trino::learn_libsvm_classifier_varchar_map_bigint_double_varchar".to_string(), learn_libsvm_classifier_varchar_map_bigint_double_varchar()),
+           ("trino::learn_libsvm_regressor_bigint_map_bigint_double_varchar".to_string(), learn_libsvm_regressor_bigint_map_bigint_double_varchar()),   ("trino::learn_libsvm_regressor_double_map_bigint_double_varchar".to_string(), learn_libsvm_regressor_double_map_bigint_double_varchar()),
+           ("trino::learn_regressor_bigint_map_bigint_double".to_string(), learn_regressor_bigint_map_bigint_double()),   ("trino::learn_regressor_double_map_bigint_double".to_string(), learn_regressor_double_map_bigint_double()),
+        
+        
+        
+        
+        
+        
+           ("trino::listagg_varchar_varchar_boolean_varchar_boolean".to_string(), listagg_varchar_varchar_boolean_varchar_boolean()),
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+           ("trino::make_set_digest_1".to_string(), make_set_digest_1()),
+        
+           ("trino::map_agg_4_5".to_string(), map_agg_4_5()),
+        
+        
+        
+        
+        
+           ("trino::map_union_map_4_5".to_string(), map_union_map_4_5()),
+        
+        
+           ("trino::max_3_bigint".to_string(), max_3_bigint()),   ("trino::max_1".to_string(), max_1()),
+           ("trino::max_by_5_4_bigint".to_string(), max_by_5_4_bigint()),   ("trino::max_by_5_4".to_string(), max_by_5_4()),
+        
+           ("trino::merge_hyperloglog".to_string(), merge_hyperloglog()),   ("trino::merge_qdigest".to_string(), merge_qdigest()),   ("trino::merge_tdigest".to_string(), merge_tdigest()),
+           ("trino::merge_set_digest_setdigest".to_string(), merge_set_digest_setdigest()),
+        
+           ("trino::min_3_bigint".to_string(), min_3_bigint()),   ("trino::min_1".to_string(), min_1()),
+           ("trino::min_by_5_4_bigint".to_string(), min_by_5_4_bigint()),   ("trino::min_by_5_4".to_string(), min_by_5_4()),
+        
+        
+        
+           ("trino::multimap_agg_4_5".to_string(), multimap_agg_4_5()),
+        
+        
+        
+        
+        
+        
+        
+        
+        
+           ("trino::numeric_histogram_bigint_double".to_string(), numeric_histogram_bigint_double()),   ("trino::numeric_histogram_bigint_double_double".to_string(), numeric_histogram_bigint_double_double()),   ("trino::numeric_histogram_bigint_real".to_string(), numeric_histogram_bigint_real()),   ("trino::numeric_histogram_bigint_real_double".to_string(), numeric_histogram_bigint_real_double()),
+        
+        
+        
+        
+        
+        
+        
+        
+        
+           ("trino::qdigest_agg_bigint".to_string(), qdigest_agg_bigint()),   ("trino::qdigest_agg_bigint_bigint".to_string(), qdigest_agg_bigint_bigint()),   ("trino::qdigest_agg_bigint_bigint_double".to_string(), qdigest_agg_bigint_bigint_double()),   ("trino::qdigest_agg_double".to_string(), qdigest_agg_double()),   ("trino::qdigest_agg_double_bigint".to_string(), qdigest_agg_double_bigint()),   ("trino::qdigest_agg_double_bigint_double".to_string(), qdigest_agg_double_bigint_double()),   ("trino::qdigest_agg_real".to_string(), qdigest_agg_real()),   ("trino::qdigest_agg_real_bigint".to_string(), qdigest_agg_real_bigint()),   ("trino::qdigest_agg_real_bigint_double".to_string(), qdigest_agg_real_bigint_double()),
+        
+        
+        
+        
+        
+        
+           ("trino::reduce_agg_1_10_function_10_1_10_function_10_10_10".to_string(), reduce_agg_1_10_function_10_1_10_function_10_10_10()),
+        
+        
+        
+        
+        
+        
+        
+           ("trino::regr_intercept_double_double".to_string(), regr_intercept_double_double()),   ("trino::regr_intercept_real_real".to_string(), regr_intercept_real_real()),
+           ("trino::regr_slope_double_double".to_string(), regr_slope_double_double()),   ("trino::regr_slope_real_real".to_string(), regr_slope_real_real()),
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+           ("trino::skewness_bigint".to_string(), skewness_bigint()),   ("trino::skewness_double".to_string(), skewness_double()),
+        
+        
+           ("trino::spatial_partitioning_geometry".to_string(), spatial_partitioning_geometry()),
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+           ("trino::stddev_bigint".to_string(), stddev_bigint()),   ("trino::stddev_double".to_string(), stddev_double()),
+           ("trino::stddev_pop_bigint".to_string(), stddev_pop_bigint()),   ("trino::stddev_pop_double".to_string(), stddev_pop_double()),
+           ("trino::stddev_samp_bigint".to_string(), stddev_samp_bigint()),   ("trino::stddev_samp_double".to_string(), stddev_samp_double()),
+        
+        
+        
+           ("trino::sum_bigint".to_string(), sum_bigint()),   ("trino::sum_double".to_string(), sum_double()),   ("trino::sum_decimal_p_s".to_string(), sum_decimal_p_s()),   ("trino::sum_real".to_string(), sum_real()),   ("trino::sum_intervaldaytosecond".to_string(), sum_intervaldaytosecond()),   ("trino::sum_intervalyeartomonth".to_string(), sum_intervalyeartomonth()),
+        
+        
+           ("trino::tdigest_agg_double".to_string(), tdigest_agg_double()),   ("trino::tdigest_agg_double_double".to_string(), tdigest_agg_double_double()),
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+           ("trino::var_pop_bigint".to_string(), var_pop_bigint()),   ("trino::var_pop_double".to_string(), var_pop_double()),
+           ("trino::var_samp_bigint".to_string(), var_samp_bigint()),   ("trino::var_samp_double".to_string(), var_samp_double()),
+           ("trino::variance_bigint".to_string(), variance_bigint()),   ("trino::variance_double".to_string(), variance_double()),
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    ]
 }

@@ -20,7 +20,13 @@
 {% endfor %}
 
 // create  UDFs
-{% for name, fs in function_infos | items %}{% for function_info in fs %}create_udf!({{name}}_impl::{{function_info.name}}Func, {{function_info.gname}}, {{function_info.name}});
+{% for name, fs in function_infos | items %}{% for function_info in fs %}
+{% if function_info.kind == "scalar" %}
+create_udf!
+{% else %}
+create_udaf!
+{% endif %}
+({{name}}_impl::{{function_info.name}}Func, {{function_info.gname}}, {{function_info.name}});
 {% endfor %}
 {% endfor %}
 
