@@ -23,24 +23,36 @@ use datafusion::logical_expr::simplify::{ExprSimplifyResult, SimplifyInfo};
 use datafusion::logical_expr::{ColumnarValue, Expr, ScalarUDFImpl, Signature, Volatility};
 use std::any::Any;
 
-
-fn wilson_interval_upper_bigint_bigint_double_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+fn wilson_interval_upper_bigint_bigint_double_invoke(
+    _args: &[ColumnarValue],
+) -> Result<ColumnarValue> {
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
-fn wilson_interval_upper_bigint_bigint_double_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+fn wilson_interval_upper_bigint_bigint_double_return_type(
+    _arg_types: &[DataType],
+) -> Result<DataType> {
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
-fn wilson_interval_upper_bigint_bigint_double_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+fn wilson_interval_upper_bigint_bigint_double_simplify(
+    args: Vec<Expr>,
+    _info: &dyn SimplifyInfo,
+) -> Result<ExprSimplifyResult> {
     Ok(ExprSimplifyResult::Original(args))
 }
-
 
 // ========== Generated template below this line ==========
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
-
 
 #[derive(Debug)]
 pub(super) struct wilson_interval_upper_bigint_bigint_doubleFunc {
@@ -48,7 +60,7 @@ pub(super) struct wilson_interval_upper_bigint_bigint_doubleFunc {
 }
 
 impl wilson_interval_upper_bigint_bigint_doubleFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(3, Volatility::Immutable),
         }
@@ -67,7 +79,6 @@ impl ScalarUDFImpl for wilson_interval_upper_bigint_bigint_doubleFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         wilson_interval_upper_bigint_bigint_double_return_type(arg_types)
     }
@@ -76,12 +87,7 @@ impl ScalarUDFImpl for wilson_interval_upper_bigint_bigint_doubleFunc {
         wilson_interval_upper_bigint_bigint_double_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         wilson_interval_upper_bigint_bigint_double_simplify(args, info)
     }
-
 }

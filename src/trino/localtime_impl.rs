@@ -23,7 +23,6 @@ use datafusion::logical_expr::simplify::{ExprSimplifyResult, SimplifyInfo};
 use datafusion::logical_expr::{ColumnarValue, Expr, ScalarUDFImpl, Signature, Volatility};
 use std::any::Any;
 
-
 fn localtime_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
     Err(DataFusionError::NotImplemented("todo".to_string()))
 }
@@ -36,11 +35,9 @@ fn localtime_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprS
     Ok(ExprSimplifyResult::Original(args))
 }
 
-
 // ========== Generated template below this line ==========
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
-
 
 #[derive(Debug)]
 pub(super) struct localtimeFunc {
@@ -48,7 +45,7 @@ pub(super) struct localtimeFunc {
 }
 
 impl localtimeFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(0, Volatility::Immutable),
         }
@@ -67,7 +64,6 @@ impl ScalarUDFImpl for localtimeFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         localtime_return_type(arg_types)
     }
@@ -76,12 +72,7 @@ impl ScalarUDFImpl for localtimeFunc {
         localtime_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         localtime_simplify(args, info)
     }
-
 }

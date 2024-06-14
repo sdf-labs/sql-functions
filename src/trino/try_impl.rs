@@ -23,24 +23,29 @@ use datafusion::logical_expr::simplify::{ExprSimplifyResult, SimplifyInfo};
 use datafusion::logical_expr::{ColumnarValue, Expr, ScalarUDFImpl, Signature, Volatility};
 use std::any::Any;
 
-
 fn try_1_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
 fn try_1_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
 fn try_1_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
     Ok(ExprSimplifyResult::Original(args))
 }
 
-
 // ========== Generated template below this line ==========
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
-
 
 #[derive(Debug)]
 pub(super) struct try_1Func {
@@ -48,7 +53,7 @@ pub(super) struct try_1Func {
 }
 
 impl try_1Func {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -67,7 +72,6 @@ impl ScalarUDFImpl for try_1Func {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         try_1_return_type(arg_types)
     }
@@ -76,12 +80,7 @@ impl ScalarUDFImpl for try_1Func {
         try_1_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         try_1_simplify(args, info)
     }
-
 }

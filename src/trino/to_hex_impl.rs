@@ -27,7 +27,6 @@ use std::sync::Arc;
 
 use crate::utils::make_scalar_function;
 
-
 fn to_hex_varbinary_invoke(args: &[ColumnarValue]) -> Result<ColumnarValue> {
     make_scalar_function(to_hex, vec![])(args)
 }
@@ -54,15 +53,16 @@ fn to_hex_varbinary_return_type(_arg_types: &[DataType]) -> Result<DataType> {
     Ok(DataType::Utf8)
 }
 
-fn to_hex_varbinary_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+fn to_hex_varbinary_simplify(
+    args: Vec<Expr>,
+    _info: &dyn SimplifyInfo,
+) -> Result<ExprSimplifyResult> {
     Ok(ExprSimplifyResult::Original(args))
 }
-
 
 // ========== Generated template below this line ==========
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
-
 
 #[derive(Debug)]
 pub(super) struct to_hex_varbinaryFunc {
@@ -70,7 +70,7 @@ pub(super) struct to_hex_varbinaryFunc {
 }
 
 impl to_hex_varbinaryFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -89,7 +89,6 @@ impl ScalarUDFImpl for to_hex_varbinaryFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         to_hex_varbinary_return_type(arg_types)
     }
@@ -98,12 +97,7 @@ impl ScalarUDFImpl for to_hex_varbinaryFunc {
         to_hex_varbinary_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         to_hex_varbinary_simplify(args, info)
     }
-
 }

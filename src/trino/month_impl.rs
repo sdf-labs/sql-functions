@@ -27,14 +27,16 @@ use std::any::Any;
 
 use crate::utils::make_scalar_function;
 
-
 fn month_date_invoke(args: &[ColumnarValue]) -> Result<ColumnarValue> {
     make_scalar_function(month, vec![])(args)
 }
 
 fn month(args: &[ArrayRef]) -> Result<ArrayRef> {
     let array = &args[0];
-    Ok(cast(date_part(array, DatePart::Month)?.as_ref(), &DataType::Int64)?)
+    Ok(cast(
+        date_part(array, DatePart::Month)?.as_ref(),
+        &DataType::Int64,
+    )?)
 }
 
 fn month_date_return_type(_arg_types: &[DataType]) -> Result<DataType> {
@@ -53,7 +55,10 @@ fn month_intervalyeartomonth_return_type(_arg_types: &[DataType]) -> Result<Data
     Err(DataFusionError::NotImplemented("todo".to_string()))
 }
 
-fn month_intervalyeartomonth_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+fn month_intervalyeartomonth_simplify(
+    args: Vec<Expr>,
+    _info: &dyn SimplifyInfo,
+) -> Result<ExprSimplifyResult> {
     Ok(ExprSimplifyResult::Original(args))
 }
 
@@ -65,15 +70,16 @@ fn month_timestamp_p_return_type(_arg_types: &[DataType]) -> Result<DataType> {
     Err(DataFusionError::NotImplemented("todo".to_string()))
 }
 
-fn month_timestamp_p_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+fn month_timestamp_p_simplify(
+    args: Vec<Expr>,
+    _info: &dyn SimplifyInfo,
+) -> Result<ExprSimplifyResult> {
     Ok(ExprSimplifyResult::Original(args))
 }
-
 
 // ========== Generated template below this line ==========
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
-
 
 #[derive(Debug)]
 pub(super) struct month_dateFunc {
@@ -81,7 +87,7 @@ pub(super) struct month_dateFunc {
 }
 
 impl month_dateFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -100,7 +106,6 @@ impl ScalarUDFImpl for month_dateFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         month_date_return_type(arg_types)
     }
@@ -109,14 +114,9 @@ impl ScalarUDFImpl for month_dateFunc {
         month_date_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         month_date_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -125,7 +125,7 @@ pub(super) struct month_intervalyeartomonthFunc {
 }
 
 impl month_intervalyeartomonthFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -144,7 +144,6 @@ impl ScalarUDFImpl for month_intervalyeartomonthFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         month_intervalyeartomonth_return_type(arg_types)
     }
@@ -153,14 +152,9 @@ impl ScalarUDFImpl for month_intervalyeartomonthFunc {
         month_intervalyeartomonth_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         month_intervalyeartomonth_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -169,7 +163,7 @@ pub(super) struct month_timestamp_pFunc {
 }
 
 impl month_timestamp_pFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -188,7 +182,6 @@ impl ScalarUDFImpl for month_timestamp_pFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         month_timestamp_p_return_type(arg_types)
     }
@@ -197,12 +190,7 @@ impl ScalarUDFImpl for month_timestamp_pFunc {
         month_timestamp_p_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         month_timestamp_p_simplify(args, info)
     }
-
 }
