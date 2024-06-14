@@ -3248,6 +3248,7 @@ function:
   optional-parameters: []
   returns:
     datatype: $5
+  implemented-by: !rust
 ---
 # DF md5 returns a varchar, but Trino returns a varbinary.
 function:
