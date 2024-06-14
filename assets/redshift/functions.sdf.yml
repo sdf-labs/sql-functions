@@ -1,185 +1,202 @@
 function:
   name: any_value
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: $1
   kind: aggregate
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_ANY_VALUE.html
 ---
 function:
   name: array
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: super
   kind: scalar
   volatility: pure
   variadic: uniform
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_array.html
 ---
 function:
   name: array_concat
   parameters:
-    - datatype: super
+  - datatype: super
   returns:
     datatype: super
   kind: scalar
   volatility: pure
   variadic: uniform
   section: string
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_array_concat.html
 ---
 function:
   name: array_flatten
   parameters:
-    - datatype: super
+  - datatype: super
   returns:
     datatype: super
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/array_flatten.html
 ---
 function:
   name: get_array_length
   parameters:
-    - datatype: super
+  - datatype: super
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: string
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/get_array_length.html
 ---
 function:
   name: split_to_array
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: super
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/split_to_array.html
 ---
 function:
   name: subarray
   parameters:
-    - datatype: super
-    - datatype: bigint
-    - datatype: bigint
+  - datatype: super
+  - datatype: bigint
+  - datatype: bigint
   returns:
     datatype: super
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_subarray.html
 ---
 function:
   name: from_hex
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: varbyte
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_FROM_HEX.html
 ---
 function:
   name: from_varbyte
   parameters:
-    - datatype: varbyte
-    - datatype: varchar
+  - datatype: varbyte
+  - datatype: varchar
   returns:
     datatype: varbyte
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_FROM_VARBYTE.html
 ---
 function:
   name: getbit
   parameters:
-    - datatype: varbyte
-    - datatype: bigint
+  - datatype: varbyte
+  - datatype: bigint
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_GETBIT.html
 ---
 function:
   name: to_hex
   parameters:
-    - datatype: varbyte
+  - datatype: varbyte
   returns:
     datatype: varchar
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_TO_HEX.html
 ---
 function:
   name: to_hex
   parameters:
-    - datatype: bigint
+  - datatype: bigint
   returns:
     datatype: varchar
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_TO_HEX.html
 ---
 function:
   name: to_varbyte
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: varbyte
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_TO_VARBYTE.html
 ---
 function:
   name: greatest
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: $1
   kind: scalar
   volatility: pure
   variadic: uniform
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: least
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: $1
   kind: scalar
   volatility: pure
   variadic: uniform
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: nvl
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: $1
   kind: scalar
   volatility: pure
   variadic: uniform
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_NVL_function.html
 ---
 function:
   name: nvl2
   parameters:
-    - datatype: $1
-    - datatype: $2
-    - datatype: $2
+  - datatype: $1
+  - datatype: $2
+  - datatype: $2
   returns:
     datatype: $2
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_NVL2.html
 ---
 function:
   name: getdate
@@ -189,260 +206,284 @@ function:
   kind: scalar
   volatility: pure
   section: temporal
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_GETDATE.html
 ---
 function:
   name: to_char
   parameters:
-    - datatype: $1
-    - datatype: varchar
+  - datatype: $1
+  - datatype: varchar
   returns:
     datatype: varchar
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_TO_CHAR.html
 ---
 function:
   name: to_date
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: date
   kind: scalar
   volatility: pure
   section: temporal
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_TO_DATE_function.html
 ---
 function:
   name: to_date
   parameters:
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: boolean
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: boolean
   returns:
     datatype: date
   kind: scalar
   volatility: pure
   section: temporal
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_TO_DATE_function.html
 ---
 function:
   name: to_number
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: float
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_TO_NUMBER.html
 ---
 function:
   name: text_to_int_alt
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_TEXT_TO_INT_ALT.html
 ---
 function:
   name: text_to_int_alt
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_TEXT_TO_INT_ALT.html
 ---
 function:
   name: text_to_numeric_alt
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: float
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_TEXT_TO_NUMERIC_ALT.html
 ---
 function:
   name: text_to_numeric_alt
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: float
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_TEXT_TO_NUMERIC_ALT.html
 ---
 function:
   name: text_to_numeric_alt
   parameters:
-    - datatype: varchar
-    - datatype: bigint
-    - datatype: bigint
+  - datatype: varchar
+  - datatype: bigint
+  - datatype: bigint
   returns:
     datatype: float
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_TEXT_TO_NUMERIC_ALT.html
 ---
 function:
   name: text_to_numeric_alt
   parameters:
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: bigint
-    - datatype: bigint
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: bigint
+  - datatype: bigint
   returns:
     datatype: float
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_TEXT_TO_NUMERIC_ALT.html
 ---
 function:
   name: add_months
   parameters:
-    - datatype: date
-    - datatype: bigint
+  - datatype: date
+  - datatype: bigint
   returns:
     datatype: timestamp
   kind: scalar
   volatility: pure
   section: temporal
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_ADD_MONTHS.html
 ---
 function:
   name: add_months
   parameters:
-    - datatype: varchar
-    - datatype: bigint
+  - datatype: varchar
+  - datatype: bigint
   returns:
     datatype: timestamp
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_ADD_MONTHS.html
 ---
 function:
   name: add_months
   parameters:
-    - datatype: timestamp
-    - datatype: bigint
+  - datatype: timestamp
+  - datatype: bigint
   returns:
     datatype: timestamp
   kind: scalar
   volatility: pure
   section: temporal
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_ADD_MONTHS.html
 ---
 function:
   name: convert_timezone
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: timestamp
   kind: scalar
   volatility: pure
   section: temporal
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/CONVERT_TIMEZONE.html
 ---
 function:
   name: convert_timezone
   parameters:
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: timestamp
   kind: scalar
   volatility: pure
   section: temporal
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/CONVERT_TIMEZONE.html
 ---
 function:
   name: date_cmp
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: temporal
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_DATE_CMP.html
 ---
 function:
   name: date_cmp_timestamp
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: temporal
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_DATE_CMP_TIMESTAMP.html
 ---
 function:
   name: date_cmp_timestampz
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: temporal
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: date_part_year
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: temporal
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_DATE_PART_YEAR.html
 ---
 function:
   name: interval_cmp
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_INTERVAL_CMP.html
 ---
 function:
   name: last_day
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: date
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_LAST_DAY.html
 ---
 function:
   name: months_between
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: float
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_MONTHS_BETWEEN_function.html
 ---
 function:
   name: next_day
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: date
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_NEXT_DAY.html
 ---
 function:
   name: timeofday
@@ -452,528 +493,576 @@ function:
   kind: scalar
   volatility: pure
   section: temporal
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_TIMEOFDAY_function.html
 ---
 function:
   name: timestamp_cmp
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: temporal
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_TIMESTAMP_CMP.html
 ---
 function:
   name: timestamp_cmp_date
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: temporal
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_TIMESTAMP_CMP_DATE.html
 ---
 function:
   name: timestamp_cmp_timestampz
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: temporal
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: timestampz_cmp
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: temporal
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: timestampz_cmp_date
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: temporal
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: timestampz_cmp_timestamp
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: temporal
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: timezone
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: timestamp
   kind: scalar
   volatility: pure
   section: temporal
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_TIMEZONE.html
 ---
 function:
   name: to_timestamp
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: timestamp
   kind: scalar
   volatility: pure
   section: temporal
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_TO_TIMESTAMP.html
 ---
 function:
   name: to_timestamp
   parameters:
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: boolean
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: boolean
   returns:
     datatype: timestamp
   kind: scalar
   volatility: pure
   section: temporal
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_TO_TIMESTAMP.html
 ---
 function:
   name: trunc
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: date
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_TRUNC.html
 ---
 function:
   name: checksum
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: math
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_CHECKSUM.html
 ---
 function:
   name: farmfingerprint64
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_FARMFINGERPRINT64.html
 ---
 function:
   name: sha1
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/SHA1.html
 ---
 function:
   name: func_sha1
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/FUNC_SHA1.html
 ---
 function:
   name: sha
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/SHA.html
 ---
 function:
   name: fnv_hash
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_FNV_HASH.html
 ---
 function:
   name: md5
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_MD5.html
 ---
 function:
   name: sha2
   parameters:
-    - datatype: varchar
-    - datatype: bigint
+  - datatype: varchar
+  - datatype: bigint
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/SHA2.html
 ---
 function:
   name: murmur3_32_hash
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/MURMUR3_32_HASH.html
 ---
 function:
   name: murmur3_32_hash
   parameters:
-    - datatype: varchar
-    - datatype: bigint
+  - datatype: varchar
+  - datatype: bigint
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/MURMUR3_32_HASH.html
 ---
 function:
   name: is_valid_json
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: boolean
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/IS_VALID_JSON.html
 ---
 function:
   name: is_valid_json_array
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: boolean
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/IS_VALID_JSON_ARRAY.html
 ---
 function:
   name: json_array_length
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: string
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/JSON_ARRAY_LENGTH.html
 ---
 function:
   name: json_array_length
   parameters:
-    - datatype: varchar
-    - datatype: boolean
+  - datatype: varchar
+  - datatype: boolean
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: string
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/JSON_ARRAY_LENGTH.html
 ---
 function:
   name: json_extract_array_element_text
   parameters:
-    - datatype: varchar
-    - datatype: bigint
+  - datatype: varchar
+  - datatype: bigint
   returns:
     datatype: varchar
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/JSON_EXTRACT_ARRAY_ELEMENT_TEXT.html
 ---
 function:
   name: json_extract_array_element_text
   parameters:
-    - datatype: varchar
-    - datatype: bigint
-    - datatype: boolean
+  - datatype: varchar
+  - datatype: bigint
+  - datatype: boolean
   returns:
     datatype: varchar
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/JSON_EXTRACT_ARRAY_ELEMENT_TEXT.html
 ---
 function:
   name: json_extract_path_text
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: varchar
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/JSON_EXTRACT_PATH_TEXT.html
 ---
 function:
   name: json_extract_path_text
   parameters:
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: varchar
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/JSON_EXTRACT_PATH_TEXT.html
 ---
 function:
   name: json_extract_path_text
   parameters:
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: varchar
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/JSON_EXTRACT_PATH_TEXT.html
 ---
 function:
   name: json_extract_path_text
   parameters:
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: varchar
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/JSON_EXTRACT_PATH_TEXT.html
 ---
 function:
   name: json_extract_path_text
   parameters:
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: varchar
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/JSON_EXTRACT_PATH_TEXT.html
 ---
 function:
   name: json_extract_path_text
   parameters:
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: boolean
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: boolean
   returns:
     datatype: varchar
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/JSON_EXTRACT_PATH_TEXT.html
 ---
 function:
   name: json_extract_path_text
   parameters:
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: boolean
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: boolean
   returns:
     datatype: varchar
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/JSON_EXTRACT_PATH_TEXT.html
 ---
 function:
   name: json_extract_path_text
   parameters:
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: boolean
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: boolean
   returns:
     datatype: varchar
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/JSON_EXTRACT_PATH_TEXT.html
 ---
 function:
   name: json_extract_path_text
   parameters:
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: boolean
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: boolean
   returns:
     datatype: varchar
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/JSON_EXTRACT_PATH_TEXT.html
 ---
 function:
   name: json_extract_path_text
   parameters:
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: boolean
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: boolean
   returns:
     datatype: varchar
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/JSON_EXTRACT_PATH_TEXT.html
 ---
 function:
   name: can_json_parse
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: boolean
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/CAN_JSON_PARSE.html
 ---
 function:
   name: json_serialize
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: varchar
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/JSON_SERIALIZE.html
 ---
 function:
   name: json_serialize_to_varbyte
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: varbyte
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/JSON_SERIALIZE_TO_VARBYTE.html
 ---
 function:
   name: cbrt
   parameters:
-    - datatype: float
+  - datatype: float
   returns:
     datatype: float
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_CBRT.html
 ---
 function:
   name: ceiling
   parameters:
-    - datatype: float
+  - datatype: float
   returns:
     datatype: float
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: cot
   parameters:
-    - datatype: float
+  - datatype: float
   returns:
     datatype: float
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_COT.html
 ---
 function:
   name: degrees
   parameters:
-    - datatype: float
+  - datatype: float
   returns:
     datatype: float
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_DEGREES.html
 ---
 function:
   name: dexp
   parameters:
-    - datatype: float
+  - datatype: float
   returns:
     datatype: float
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_DEXP.html
 ---
 function:
   name: dlog1
   parameters:
-    - datatype: float
+  - datatype: float
   returns:
     datatype: float
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_DLOG1.html
 ---
 function:
   name: dlog10
   parameters:
-    - datatype: float
+  - datatype: float
   returns:
     datatype: float
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_DLOG10.html
 ---
 function:
   name: mod
   parameters:
-    - datatype: bigint
-    - datatype: bigint
+  - datatype: bigint
+  - datatype: bigint
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_MOD.html
 ---
 function:
   name: pi
@@ -983,839 +1072,895 @@ function:
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_PI.html
 ---
 function:
   name: radians
   parameters:
-    - datatype: float
+  - datatype: float
   returns:
     datatype: float
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_RADIANS.html
 ---
 function:
   name: sign
   parameters:
-    - datatype: float
+  - datatype: float
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_SIGN.html
 ---
 function:
   name: bpcharcmp
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_BPCHARCMP.html
 ---
 function:
   name: bttext_pattern_cmp
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_BTTEXT_PATTERN_CMP.html
 ---
 function:
   name: len
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_LEN.html
 ---
 function:
   name: textlen
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_TEXTLEN.html
 ---
 function:
   name: charindex
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_CHARINDEX.html
 ---
 function:
   name: collate
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: varchar
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_COLLATE.html
 ---
 function:
   name: crc32
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: varchar
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/crc32-function.html
 ---
 function:
   name: difference
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/DIFFERENCE.html
 ---
 function:
   name: octetindex
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/OCTETINDEX.html
 ---
 function:
   name: quote_ident
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: varchar
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_QUOTE_IDENT.html
 ---
 function:
   name: quote_literal
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: varchar
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_QUOTE_LITERAL.html
 ---
 function:
   name: regexp_count
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: aggregate
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/REGEXP_COUNT.html
 ---
 function:
   name: regexp_count
   parameters:
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: bigint
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: bigint
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: aggregate
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/REGEXP_COUNT.html
 ---
 function:
   name: regexp_count
   parameters:
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: bigint
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: bigint
+  - datatype: varchar
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: aggregate
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/REGEXP_COUNT.html
 ---
 function:
   name: regexp_instr
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/REGEXP_INSTR.html
 ---
 function:
   name: regexp_instr
   parameters:
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: bigint
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: bigint
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/REGEXP_INSTR.html
 ---
 function:
   name: regexp_instr
   parameters:
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: bigint
-    - datatype: bigint
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: bigint
+  - datatype: bigint
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/REGEXP_INSTR.html
 ---
 function:
   name: regexp_instr
   parameters:
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: bigint
-    - datatype: bigint
-    - datatype: bigint
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: bigint
+  - datatype: bigint
+  - datatype: bigint
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/REGEXP_INSTR.html
 ---
 function:
   name: regexp_instr
   parameters:
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: bigint
-    - datatype: bigint
-    - datatype: bigint
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: bigint
+  - datatype: bigint
+  - datatype: bigint
+  - datatype: varchar
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/REGEXP_INSTR.html
 ---
 function:
   name: regexp_replace
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: varchar
   kind: scalar
   volatility: pure
   section: string
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/REGEXP_REPLACE.html
 ---
 function:
   name: regexp_replace
   parameters:
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: varchar
   kind: scalar
   volatility: pure
   section: string
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/REGEXP_REPLACE.html
 ---
 function:
   name: regexp_replace
   parameters:
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: bigint
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: bigint
   returns:
     datatype: varchar
   kind: scalar
   volatility: pure
   section: string
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/REGEXP_REPLACE.html
 ---
 function:
   name: regexp_replace
   parameters:
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: bigint
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: bigint
+  - datatype: varchar
   returns:
     datatype: varchar
   kind: scalar
   volatility: pure
   section: string
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/REGEXP_REPLACE.html
 ---
 function:
   name: regexp_substr
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: varchar
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/REGEXP_SUBSTR.html
 ---
 function:
   name: regexp_substr
   parameters:
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: varchar
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/REGEXP_SUBSTR.html
 ---
 function:
   name: regexp_substr
   parameters:
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: bigint
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: bigint
   returns:
     datatype: varchar
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/REGEXP_SUBSTR.html
 ---
 function:
   name: regexp_substr
   parameters:
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: bigint
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: bigint
+  - datatype: varchar
   returns:
     datatype: varchar
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/REGEXP_SUBSTR.html
 ---
 function:
   name: replicate
   parameters:
-    - datatype: varchar
-    - datatype: bigint
+  - datatype: varchar
+  - datatype: bigint
   returns:
     datatype: varchar
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_REPLICATE.html
 ---
 function:
   name: soundex
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: varchar
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/SOUNDEX.html
 ---
 function:
   name: strtol
   parameters:
-    - datatype: varchar
-    - datatype: bigint
+  - datatype: varchar
+  - datatype: bigint
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_STRTOL.html
 ---
 function:
   name: substring
   parameters:
-    - datatype: varchar
-    - datatype: bigint
+  - datatype: varchar
+  - datatype: bigint
   returns:
     datatype: varchar
   kind: scalar
   volatility: pure
   section: string
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_SUBSTRING.html
 ---
 function:
   name: substring
   parameters:
-    - datatype: varchar
-    - datatype: bigint
-    - datatype: bigint
+  - datatype: varchar
+  - datatype: bigint
+  - datatype: bigint
   returns:
     datatype: varchar
   kind: scalar
   volatility: pure
   section: string
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_SUBSTRING.html
 ---
 function:
   name: decimal_precision
   parameters:
-    - datatype: super
+  - datatype: super
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_decimal_precision.html
 ---
 function:
   name: decimal_scale
   parameters:
-    - datatype: super
+  - datatype: super
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_decimal_scale.html
 ---
 function:
   name: is_array
   parameters:
-    - datatype: super
+  - datatype: super
   returns:
     datatype: boolean
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_is_array.html
 ---
 function:
   name: is_bigint
   parameters:
-    - datatype: super
+  - datatype: super
   returns:
     datatype: boolean
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_is_bigint.html
 ---
 function:
   name: is_boolean
   parameters:
-    - datatype: super
+  - datatype: super
   returns:
     datatype: boolean
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_is_boolean.html
 ---
 function:
   name: is_char
   parameters:
-    - datatype: super
+  - datatype: super
   returns:
     datatype: boolean
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_is_char.html
 ---
 function:
   name: is_decimal
   parameters:
-    - datatype: super
+  - datatype: super
   returns:
     datatype: boolean
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_is_decimal.html
 ---
 function:
   name: is_float
   parameters:
-    - datatype: super
+  - datatype: super
   returns:
     datatype: boolean
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_is_float.html
 ---
 function:
   name: is_integer
   parameters:
-    - datatype: super
+  - datatype: super
   returns:
     datatype: boolean
   kind: scalar
   volatility: pure
   section: math
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_is_integer.html
 ---
 function:
   name: is_object
   parameters:
-    - datatype: super
+  - datatype: super
   returns:
     datatype: boolean
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_is_object.html
 ---
 function:
   name: is_scalar
   parameters:
-    - datatype: super
+  - datatype: super
   returns:
     datatype: boolean
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_is_scalar.html
 ---
 function:
   name: is_smallint
   parameters:
-    - datatype: super
+  - datatype: super
   returns:
     datatype: boolean
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_is_smallint.html
 ---
 function:
   name: is_varchar
   parameters:
-    - datatype: super
+  - datatype: super
   returns:
     datatype: boolean
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_is_varchar.html
 ---
 function:
   name: json_size
   parameters:
-    - datatype: super
+  - datatype: super
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_json_size.html
 ---
 function:
   name: json_typeof
   parameters:
-    - datatype: super
+  - datatype: super
   returns:
     datatype: varchar
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_json_typeof.html
 ---
 function:
   name: size
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_SIZE.html
 ---
 function:
   name: dateadd
   parameters:
-    - datatype: varchar
-      identifiers:
-        - millennium
-        - millennia
-        - mil
-        - mils
-        - century
-        - centuries
-        - c
-        - cent
-        - cents
-        - decade
-        - decades
-        - dec
-        - decs
-        - year
-        - years
-        - y
-        - yr
-        - yrs
-        - quarter
-        - quarters
-        - qtr
-        - qtrs
-        - month
-        - months
-        - mon
-        - mons
-        - week
-        - weeks
-        - w
-        - day
-        - days
-        - d
-        - hour
-        - hours
-        - h
-        - hr
-        - hrs
-        - minute
-        - minutes
-        - m
-        - min
-        - mins
-        - second
-        - seconds
-        - s
-        - sec
-        - secs
-        - millisecond
-        - milliseconds
-        - ms
-        - msec
-        - msecs
-        - msecond
-        - mseconds
-        - millisec
-        - millisecs
-        - millisecon
-        - microsecond
-        - microseconds
-        - microsec
-        - microsecs
-        - microsecond
-        - usecond
-        - useconds
-        - us
-        - usec
-        - usecs
-    - datatype: bigint
-    - datatype: $1
+  - datatype: varchar
+    identifiers:
+    - millennium
+    - millennia
+    - mil
+    - mils
+    - century
+    - centuries
+    - c
+    - cent
+    - cents
+    - decade
+    - decades
+    - dec
+    - decs
+    - year
+    - years
+    - y
+    - yr
+    - yrs
+    - quarter
+    - quarters
+    - qtr
+    - qtrs
+    - month
+    - months
+    - mon
+    - mons
+    - week
+    - weeks
+    - w
+    - day
+    - days
+    - d
+    - hour
+    - hours
+    - h
+    - hr
+    - hrs
+    - minute
+    - minutes
+    - m
+    - min
+    - mins
+    - second
+    - seconds
+    - s
+    - sec
+    - secs
+    - millisecond
+    - milliseconds
+    - ms
+    - msec
+    - msecs
+    - msecond
+    - mseconds
+    - millisec
+    - millisecs
+    - millisecon
+    - microsecond
+    - microseconds
+    - microsec
+    - microsecs
+    - microsecond
+    - usecond
+    - useconds
+    - us
+    - usec
+    - usecs
+  - datatype: bigint
+  - datatype: $1
   returns:
     datatype: date
   kind: scalar
   volatility: pure
   binds:
-    - type-variable: $1
-      datatypes:
-        - date
-        - timestamp
-        - time
-        - varchar
+  - type-variable: $1
+    datatypes:
+    - date
+    - timestamp
+    - time
+    - varchar
   section: temporal
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_DATEADD_function.html
 ---
 function:
   name: date_add
   parameters:
-    - datatype: varchar
-      identifiers:
-        - millennium
-        - millennia
-        - mil
-        - mils
-        - century
-        - centuries
-        - c
-        - cent
-        - cents
-        - decade
-        - decades
-        - dec
-        - decs
-        - year
-        - years
-        - y
-        - yr
-        - yrs
-        - quarter
-        - quarters
-        - qtr
-        - qtrs
-        - month
-        - months
-        - mon
-        - mons
-        - week
-        - weeks
-        - w
-        - day
-        - days
-        - d
-        - hour
-        - hours
-        - h
-        - hr
-        - hrs
-        - minute
-        - minutes
-        - m
-        - min
-        - mins
-        - second
-        - seconds
-        - s
-        - sec
-        - secs
-        - millisecond
-        - milliseconds
-        - ms
-        - msec
-        - msecs
-        - msecond
-        - mseconds
-        - millisec
-        - millisecs
-        - millisecon
-        - microsecond
-        - microseconds
-        - microsec
-        - microsecs
-        - microsecond
-        - usecond
-        - useconds
-        - us
-        - usec
-        - usecs
-    - datatype: bigint
-    - datatype: $1
+  - datatype: varchar
+    identifiers:
+    - millennium
+    - millennia
+    - mil
+    - mils
+    - century
+    - centuries
+    - c
+    - cent
+    - cents
+    - decade
+    - decades
+    - dec
+    - decs
+    - year
+    - years
+    - y
+    - yr
+    - yrs
+    - quarter
+    - quarters
+    - qtr
+    - qtrs
+    - month
+    - months
+    - mon
+    - mons
+    - week
+    - weeks
+    - w
+    - day
+    - days
+    - d
+    - hour
+    - hours
+    - h
+    - hr
+    - hrs
+    - minute
+    - minutes
+    - m
+    - min
+    - mins
+    - second
+    - seconds
+    - s
+    - sec
+    - secs
+    - millisecond
+    - milliseconds
+    - ms
+    - msec
+    - msecs
+    - msecond
+    - mseconds
+    - millisec
+    - millisecs
+    - millisecon
+    - microsecond
+    - microseconds
+    - microsec
+    - microsecs
+    - microsecond
+    - usecond
+    - useconds
+    - us
+    - usec
+    - usecs
+  - datatype: bigint
+  - datatype: $1
   returns:
     datatype: date
   kind: scalar
   volatility: pure
   binds:
-    - type-variable: $1
-      datatypes:
-        - date
-        - timestamp
-        - time
-        - varchar
+  - type-variable: $1
+    datatypes:
+    - date
+    - timestamp
+    - time
+    - varchar
   section: temporal
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: date_part
   parameters:
-    - datatype: varchar
-      identifiers:
-        - millennium
-        - millennia
-        - mil
-        - mils
-        - century
-        - centuries
-        - c
-        - cent
-        - cents
-        - decade
-        - decades
-        - dec
-        - decs
-        - year
-        - years
-        - y
-        - yr
-        - yrs
-        - quarter
-        - quarters
-        - qtr
-        - qtrs
-        - month
-        - months
-        - mon
-        - mons
-        - week
-        - weeks
-        - w
-        - dayofweek
-        - dow
-        - dw
-        - weekday
-        - dayofyear
-        - doy
-        - dy
-        - yearday
-        - days
-        - days
-        - d
-        - hour
-        - hours
-        - h
-        - hr
-        - hrs
-        - minute
-        - minutes
-        - m
-        - min
-        - mins
-        - second
-        - seconds
-        - s
-        - sec
-        - secs
-        - millisecond
-        - milliseconds
-        - ms
-        - msec
-        - msecs
-        - msecond
-        - mseconds
-        - millisec
-        - millisecs
-        - millisecon
-        - microsecond
-        - microseconds
-        - microsec
-        - microsecs
-        - microsecond
-        - usecond
-        - useconds
-        - us
-        - usec
-        - usecs
-    - datatype: varchar
+  - datatype: varchar
+    identifiers:
+    - millennium
+    - millennia
+    - mil
+    - mils
+    - century
+    - centuries
+    - c
+    - cent
+    - cents
+    - decade
+    - decades
+    - dec
+    - decs
+    - year
+    - years
+    - y
+    - yr
+    - yrs
+    - quarter
+    - quarters
+    - qtr
+    - qtrs
+    - month
+    - months
+    - mon
+    - mons
+    - week
+    - weeks
+    - w
+    - dayofweek
+    - dow
+    - dw
+    - weekday
+    - dayofyear
+    - doy
+    - dy
+    - yearday
+    - days
+    - days
+    - d
+    - hour
+    - hours
+    - h
+    - hr
+    - hrs
+    - minute
+    - minutes
+    - m
+    - min
+    - mins
+    - second
+    - seconds
+    - s
+    - sec
+    - secs
+    - millisecond
+    - milliseconds
+    - ms
+    - msec
+    - msecs
+    - msecond
+    - mseconds
+    - millisec
+    - millisecs
+    - millisecon
+    - microsecond
+    - microseconds
+    - microsec
+    - microsecs
+    - microsecond
+    - usecond
+    - useconds
+    - us
+    - usec
+    - usecs
+  - datatype: varchar
   returns:
     datatype: float
   kind: scalar
   volatility: pure
   section: temporal
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_DATE_PART_function.html
 ---
 function:
   name: json_parse
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: super
   kind: scalar
   volatility: pure
   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/JSON_PARSE.html
 ---
 function:
   name: approx_count_distinct
   parameters:
-    - datatype: bigint
+  - datatype: bigint
   returns:
     datatype: bigint
   kind: aggregate
   volatility: pure
   section: aggregate
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: sysdate
@@ -1826,6 +1971,7 @@ function:
   volatility: pure
   section: temporal
   special: true
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_SYSDATE.html
 ---
 function:
   name: current_date
@@ -1836,6 +1982,7 @@ function:
   volatility: pure
   section: temporal
   special: true
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_CURRENT_DATE_function.html
 ---
 function:
   name: current_time
@@ -1846,6 +1993,7 @@ function:
   volatility: pure
   section: temporal
   special: true
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: current_datetime
@@ -1856,611 +2004,643 @@ function:
   volatility: pure
   section: temporal
   special: true
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: date
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: date
   kind: scalar
   volatility: pure
   section: temporal
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: datediff
   parameters:
-    - datatype: varchar
-      identifiers:
-        - millennium
-        - millennia
-        - mil
-        - mils
-        - century
-        - centuries
-        - c
-        - cent
-        - cents
-        - decade
-        - decades
-        - dec
-        - decs
-        - year
-        - years
-        - y
-        - yr
-        - yrs
-        - quarter
-        - quarters
-        - qtr
-        - qtrs
-        - month
-        - months
-        - mon
-        - mons
-        - week
-        - weeks
-        - w
-        - day
-        - days
-        - d
-        - hour
-        - hours
-        - h
-        - hr
-        - hrs
-        - minute
-        - minutes
-        - m
-        - min
-        - mins
-        - second
-        - seconds
-        - s
-        - sec
-        - secs
-        - millisecond
-        - milliseconds
-        - ms
-        - msec
-        - msecs
-        - msecond
-        - mseconds
-        - millisec
-        - millisecs
-        - millisecon
-        - microsecond
-        - microseconds
-        - microsec
-        - microsecs
-        - microsecond
-        - usecond
-        - useconds
-        - us
-        - usec
-        - usecs
-    - datatype: $1
-    - datatype: $2
+  - datatype: varchar
+    identifiers:
+    - millennium
+    - millennia
+    - mil
+    - mils
+    - century
+    - centuries
+    - c
+    - cent
+    - cents
+    - decade
+    - decades
+    - dec
+    - decs
+    - year
+    - years
+    - y
+    - yr
+    - yrs
+    - quarter
+    - quarters
+    - qtr
+    - qtrs
+    - month
+    - months
+    - mon
+    - mons
+    - week
+    - weeks
+    - w
+    - day
+    - days
+    - d
+    - hour
+    - hours
+    - h
+    - hr
+    - hrs
+    - minute
+    - minutes
+    - m
+    - min
+    - mins
+    - second
+    - seconds
+    - s
+    - sec
+    - secs
+    - millisecond
+    - milliseconds
+    - ms
+    - msec
+    - msecs
+    - msecond
+    - mseconds
+    - millisec
+    - millisecs
+    - millisecon
+    - microsecond
+    - microseconds
+    - microsec
+    - microsecs
+    - microsecond
+    - usecond
+    - useconds
+    - us
+    - usec
+    - usecs
+  - datatype: $1
+  - datatype: $2
   returns:
     datatype: bigint
   kind: scalar
   volatility: pure
   binds:
-    - type-variable: $1
-      datatypes:
-        - date
-        - timestamp
-        - time with time zone
-        - time
-        - varchar
-    - type-variable: $2
-      datatypes:
-        - date
-        - timestamp
-        - time with time zone
-        - time
-        - varchar
+  - type-variable: $1
+    datatypes:
+    - date
+    - timestamp
+    - time with time zone
+    - time
+    - varchar
+  - type-variable: $2
+    datatypes:
+    - date
+    - timestamp
+    - time with time zone
+    - time
+    - varchar
   section: temporal
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_DATEDIFF_function.html
 ---
 function:
   name: reclassify
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: $1
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: $1
-  description:
-    "Changes the classification label of the first argument from the expected
-    classifier specified by the second argument to the desired classifier
-    specified by the third. The expected and desired classifiers
-    must belong to the same classifier group. No other classifiers attached to
-    the first argument are impacted. The function will emit a warning if the
-    the first argument does not have the expected classifier"
+  description: Changes the classification label of the first argument from the expected
+    classifier specified by the second argument to the desired classifier specified
+    by the third. The expected and desired classifiers must belong to the same classifier
+    group. No other classifiers attached to the first argument are impacted. The function
+    will emit a warning if the the first argument does not have the expected classifier
   examples:
-    - input: select reclassify(12345, 'pii.clear_text', 'pii.masked') as value;
-      output: "12345"
+  - input: select reclassify(12345, 'pii.clear_text', 'pii.masked') as value;
+    output: '12345'
   section: other
-# ---
-# function:
-#   name: reclassify
-#   kind: scalar
-#   parameters:
-#     - datatype: T
-#     - datatype: varchar
-#   returns:
-#     datatype: T
-#   description: "Changes the classification label of the first argument
-#     to the desired classifier specified by the second argument. The first
-#     argument is expected to have one or more classifiers from the same
-#     classifier group as the desired classifier. All of these classifiers
-#     will be removed and replaced by the desired classifier. No other classifiers
-#     attached to the first argument will be impacted. The function will emit a warning
-#     if the first argument does not have a classifier from the expected classifier group"
-#   examples:
-#     - input: select reclassify(12345, 'pii.masked') as value;
-#       output: "12345"
-#   section: other
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: max
   kind: aggregate
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: $1
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_MAX.html
 ---
 function:
   name: sum
   kind: aggregate
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: $1
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_SUM.html
 ---
 function:
-  name: "-"
+  name: '-'
   parameters:
-    - datatype: date
-    - datatype: date
+  - datatype: date
+  - datatype: date
   returns:
     datatype: duration(0)
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
-  name: "-"
+  name: '-'
   parameters:
-    - datatype: date
-    - datatype: int
+  - datatype: date
+  - datatype: int
   returns:
     datatype: date
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
-  name: "+"
+  name: +
   parameters:
-    - datatype: date
-    - datatype: int
+  - datatype: date
+  - datatype: int
   returns:
     datatype: date
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
-  name: "*"
+  name: '*'
   parameters:
-    - datatype: $1
-    - datatype: $2
+  - datatype: $1
+  - datatype: $2
   returns:
     datatype: $1
   binds:
-    - type-variable: $1
-      datatypes:
-        - interval year to month
-        - interval day to second
-        - duration(0)
-        - duration(3)
-        - duration(6)
-        - duration(9)
-    - type-variable: $2
-      datatypes:
-        - bigint
-        - double
-        - float
-        - int
-        - smallint
+  - type-variable: $1
+    datatypes:
+    - interval year to month
+    - interval day to second
+    - duration(0)
+    - duration(3)
+    - duration(6)
+    - duration(9)
+  - type-variable: $2
+    datatypes:
+    - bigint
+    - double
+    - float
+    - int
+    - smallint
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
-  name: "*"
+  name: '*'
   parameters:
-    - datatype: $2
-    - datatype: $1
+  - datatype: $2
+  - datatype: $1
   returns:
     datatype: $1
   binds:
-    - type-variable: $1
-      datatypes:
-        - interval year to month
-        - interval day to second
-        - duration(0)
-        - duration(3)
-        - duration(6)
-        - duration(9)
-    - type-variable: $2
-      datatypes:
-        - bigint
-        - double
-        - float
-        - int
-        - smallint
+  - type-variable: $1
+    datatypes:
+    - interval year to month
+    - interval day to second
+    - duration(0)
+    - duration(3)
+    - duration(6)
+    - duration(9)
+  - type-variable: $2
+    datatypes:
+    - bigint
+    - double
+    - float
+    - int
+    - smallint
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
-  name: "*"
+  name: '*'
   parameters:
-    - datatype: float
-    - datatype: float
+  - datatype: float
+  - datatype: float
   returns:
     datatype: double
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
-  name: "/"
+  name: /
   parameters:
-    - datatype: $1
-    - datatype: $2
+  - datatype: $1
+  - datatype: $2
   returns:
     datatype: $1
   binds:
-    - type-variable: $1
-      datatypes:
-        - interval year to month
-        - interval day to second
-        - duration(0)
-        - duration(3)
-        - duration(6)
-        - duration(9)
-    - type-variable: $2
-      datatypes:
-        - bigint
-        - double
-        - float
-        - int
-        - smallint
+  - type-variable: $1
+    datatypes:
+    - interval year to month
+    - interval day to second
+    - duration(0)
+    - duration(3)
+    - duration(6)
+    - duration(9)
+  - type-variable: $2
+    datatypes:
+    - bigint
+    - double
+    - float
+    - int
+    - smallint
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_/-function.html
 ---
 function:
-  name: "date_diff"
+  name: date_diff
   parameters:
-    - datatype: varchar
-    - datatype: $1
-    - datatype: $2
+  - datatype: varchar
+  - datatype: $1
+  - datatype: $2
   returns:
     datatype: bigint
   binds:
-    - type-variable: $1
-      datatypes:
-        - date
-        - timestamp
-        - time
-    - type-variable: $2
-      datatypes:
-        - date
-        - timestamp
-        - time
+  - type-variable: $1
+    datatypes:
+    - date
+    - timestamp
+    - time
+  - type-variable: $2
+    datatypes:
+    - date
+    - timestamp
+    - time
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: date_trunc
   parameters:
-    - datatype: varchar
-    - datatype: timestamp
+  - datatype: varchar
+  - datatype: timestamp
   returns:
     datatype: timestamp
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_DATE_TRUNC.html
 ---
 function:
   name: abs
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: $1
   binds:
-    - type-variable: $1
-      datatypes:
-        - bigint
-        - double
+  - type-variable: $1
+    datatypes:
+    - bigint
+    - double
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_ABS.html
 ---
 function:
   name: tan
   parameters:
-    - datatype: float
+  - datatype: float
   returns:
     datatype: float
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_TAN.html
 ---
 function:
   name: ltrim
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: varchar
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_LTRIM.html
 ---
 function:
   name: ltrim
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: varchar
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_LTRIM.html
 ---
 function:
   name: trim
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: varchar
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_TRIM.html
 ---
 function:
   name: trim
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: varchar
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_TRIM.html
 ---
 function:
   name: avg
   kind: aggregate
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: $1
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_AVG.html
 ---
 function:
   name: exp
   parameters:
-    - datatype: float
+  - datatype: float
   returns:
     datatype: float
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_EXP.html
 ---
 function:
   name: var_samp
   kind: aggregate
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: $1
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: var_pop
   kind: aggregate
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: $1
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: pow
   parameters:
-    - datatype: float
-    - datatype: float
+  - datatype: float
+  - datatype: float
   returns:
     datatype: float
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: min
   kind: aggregate
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: $1
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_MIN.html
 ---
 function:
   name: max
   kind: aggregate
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: $1
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_MAX.html
 ---
 function:
   name: nullif
   parameters:
-    - datatype: $1
-    - datatype: $1
+  - datatype: $1
+  - datatype: $1
   returns:
     datatype: $1
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_NULLIF_function.html
 ---
 function:
   name: concat
   parameters:
-    - datatype: $1
-    - datatype: $1
+  - datatype: $1
+  - datatype: $1
   returns:
     datatype: $1
   binds:
-    - type-variable: $1
-      datatypes:
-        - varchar
-        - varbyte
+  - type-variable: $1
+    datatypes:
+    - varchar
+    - varbyte
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_CONCAT.html
 ---
 function:
   name: split_part
   parameters:
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: bigint
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: bigint
   returns:
     datatype: varchar
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/SPLIT_PART.html
 ---
 function:
   name: median
   kind: aggregate
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: $1
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_MEDIAN.html
 ---
 function:
   name: btrim
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: varchar
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_BTRIM.html
 ---
 function:
   name: btrim
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: varchar
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_BTRIM.html
 ---
 function:
   name: character_length
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_CHARACTER_LENGTH.html
 ---
 function:
   name: chr
   parameters:
-    - datatype: bigint
+  - datatype: bigint
   returns:
     datatype: varchar
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_CHR.html
 ---
 function:
   name: lpad
   parameters:
-    - datatype: varchar
-    - datatype: bigint
+  - datatype: varchar
+  - datatype: bigint
   returns:
     datatype: varchar
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_LPAD.html
 ---
 function:
   name: lpad
   parameters:
-    - datatype: varchar
-    - datatype: bigint
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: bigint
+  - datatype: varchar
   returns:
     datatype: varchar
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_LPAD.html
 ---
 function:
   name: rpad
   parameters:
-    - datatype: varchar
-    - datatype: bigint
+  - datatype: varchar
+  - datatype: bigint
   returns:
     datatype: varchar
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: rpad
   parameters:
-    - datatype: varchar
-    - datatype: bigint
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: bigint
+  - datatype: varchar
   returns:
     datatype: varchar
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: atan2
   parameters:
-    - datatype: float
-    - datatype: float
+  - datatype: float
+  - datatype: float
   returns:
     datatype: float
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_ATAN2.html
 ---
 function:
   name: ln
   parameters:
-    - datatype: float
+  - datatype: float
   returns:
     datatype: float
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_LN.html
 ---
 function:
   name: lower
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: varchar
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_LOWER.html
 ---
 function:
   name: replace
   parameters:
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: varchar
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_REPLACE.html
 ---
 function:
   name: left
   parameters:
-    - datatype: varchar
-    - datatype: bigint
+  - datatype: varchar
+  - datatype: bigint
   returns:
     datatype: varchar
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_LEFT.html
 ---
 function:
   name: sqrt
   parameters:
-    - datatype: float
+  - datatype: float
   returns:
     datatype: float
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_SQRT.html
 ---
 function:
   name: stddev_samp
   kind: aggregate
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: $1
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: stddev
   kind: aggregate
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: $1
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: right
   parameters:
-    - datatype: varchar
-    - datatype: bigint
+  - datatype: varchar
+  - datatype: bigint
   returns:
     datatype: varchar
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: repeat
   parameters:
-    - datatype: varchar
-    - datatype: bigint
+  - datatype: varchar
+  - datatype: bigint
   returns:
     datatype: varchar
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_REPEAT.html
 ---
 function:
   name: initcap
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: varchar
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_INITCAP.html
 ---
 function:
   name: random
   parameters: []
   returns:
     datatype: float
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_RANDOM.html
 ---
 function:
   name: atan
   parameters:
-    - datatype: float
+  - datatype: float
   returns:
     datatype: float
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_ATAN.html
 ---
 function:
   name: count
   kind: aggregate
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: bigint
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_COUNT.html
 ---
 function:
   name: count
@@ -2468,238 +2648,267 @@ function:
   parameters: []
   returns:
     datatype: bigint
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_COUNT.html
 ---
 function:
   name: coalesce
   description: returns the first non-null expression among its arguments
   variadic: uniform
   parameters:
-    - datatype: $1
-    - datatype: $1
+  - datatype: $1
+  - datatype: $1
   optional-parameters: []
   returns:
     datatype: $1
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: reverse
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: varchar
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_REVERSE.html
 ---
 function:
   name: floor
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: $1
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_FLOOR.html
 ---
 function:
   name: length
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_LENGTH.html
 ---
 function:
   name: strpos
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_STRPOS.html
 ---
 function:
   name: rtrim
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: varchar
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_RTRIM.html
 ---
 function:
   name: rtrim
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: varchar
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_RTRIM.html
 ---
 function:
   name: stddev_pop
   kind: aggregate
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: $1
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: acos
   parameters:
-    - datatype: float
+  - datatype: float
   returns:
     datatype: float
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_ACOS.html
 ---
 function:
   name: upper
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: varchar
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_UPPER.html
 ---
 function:
   name: octet_length
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_OCTET_LENGTH.html
 ---
 function:
   name: cos
   parameters:
-    - datatype: float
+  - datatype: float
   returns:
     datatype: float
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_COS.html
 ---
 function:
   name: round
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: $1
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_ROUND.html
 ---
 function:
   name: round
   parameters:
-    - datatype: $1
-    - datatype: bigint
+  - datatype: $1
+  - datatype: bigint
   returns:
     datatype: $1
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_ROUND.html
 ---
 function:
   name: translate
   parameters:
-    - datatype: varchar
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: varchar
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_TRANSLATE.html
 ---
 function:
   name: log
   parameters:
-    - datatype: float
+  - datatype: float
   returns:
     datatype: float
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_LOG.html
 ---
 function:
   name: substr
   parameters:
-    - datatype: varchar
-    - datatype: bigint
+  - datatype: varchar
+  - datatype: bigint
   returns:
     datatype: varchar
   kind: scalar
   volatility: pure
   section: string
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: substr
   parameters:
-    - datatype: varchar
-    - datatype: bigint
-    - datatype: bigint
+  - datatype: varchar
+  - datatype: bigint
+  - datatype: bigint
   returns:
     datatype: varchar
   kind: scalar
   volatility: pure
   section: string
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: asin
   parameters:
-    - datatype: float
+  - datatype: float
   returns:
     datatype: float
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_ASIN.html
 ---
 function:
   name: char_length
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_CHAR_LENGTH.html
 ---
 function:
   name: ascii
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: bigint
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_ASCII.html
 ---
 function:
   name: sin
   parameters:
-    - datatype: float
+  - datatype: float
   returns:
     datatype: float
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_SIN.html
 ---
 function:
   name: bit_and
   kind: aggregate
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: $1
   binds:
-    - type-variable: $1
-      datatypes:
-        - bigint
+  - type-variable: $1
+    datatypes:
+    - bigint
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_BIT_AND.html
 ---
 function:
   name: bit_or
   kind: aggregate
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: $1
   binds:
-    - type-variable: $1
-      datatypes:
-        - bigint
+  - type-variable: $1
+    datatypes:
+    - bigint
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_BIT_OR.html
 ---
 function:
   name: power
   parameters:
-    - datatype: float
-    - datatype: float
+  - datatype: float
+  - datatype: float
   returns:
     datatype: float
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_POWER.html
 ---
 function:
   name: ceil
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: $1
   binds:
-    - type-variable: $1
-      datatypes:
-        - float
+  - type-variable: $1
+    datatypes:
+    - float
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: bool_or
   kind: aggregate
   parameters:
-    - datatype: boolean
+  - datatype: boolean
   returns:
     datatype: boolean
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_BOOL_OR.html
 ---
 function:
   name: bool_and
   kind: aggregate
   parameters:
-    - datatype: boolean
+  - datatype: boolean
   returns:
     datatype: boolean
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_BOOL_AND.html
 ---
 function:
   name: dense_rank
@@ -2707,6 +2916,7 @@ function:
   parameters: []
   returns:
     datatype: bigint
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_WF_DENSE_RANK.html
 ---
 function:
   name: rank
@@ -2714,14 +2924,16 @@ function:
   parameters: []
   returns:
     datatype: bigint
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_WF_RANK.html
 ---
 function:
   name: ntile
   kind: window
   parameters:
-    - datatype: bigint
+  - datatype: bigint
   returns:
     datatype: bigint
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_WF_NTILE.html
 ---
 function:
   name: percent_rank
@@ -2729,6 +2941,7 @@ function:
   parameters: []
   returns:
     datatype: float
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_WF_PERCENT_RANK.html
 ---
 function:
   name: row_number
@@ -2736,6 +2949,7 @@ function:
   parameters: []
   returns:
     datatype: bigint
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_WF_ROW_NUMBER.html
 ---
 function:
   name: cume_dist
@@ -2743,81 +2957,91 @@ function:
   parameters: []
   returns:
     datatype: float
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_WF_CUME_DIST.html
 ---
 function:
   name: first_value
   kind: window
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: $1
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_WF_first_value.html
 ---
 function:
   name: lag
   kind: window
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: $1
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_WF_LAG.html
 ---
 function:
   name: lag
   kind: window
   parameters:
-    - datatype: $1
-    - datatype: bigint
+  - datatype: $1
+  - datatype: bigint
   returns:
     datatype: $1
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_WF_LAG.html
 ---
 function:
   name: last_value
   kind: window
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: $1
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_WF_last_value.html
 ---
 function:
   name: lead
   kind: window
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: $1
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_WF_LEAD.html
 ---
 function:
   name: lead
   kind: window
   parameters:
-    - datatype: $1
-    - datatype: bigint
+  - datatype: $1
+  - datatype: bigint
   returns:
     datatype: $1
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_WF_LEAD.html
 ---
 function:
   name: nth_value
   kind: window
   parameters:
-    - datatype: $1
-    - datatype: bigint
+  - datatype: $1
+  - datatype: bigint
   returns:
     datatype: $1
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_WF_NTH.html
 ---
 function:
   name: ratio_to_report
   kind: window
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: float
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_WF_RATIO_TO_REPORT.html
 ---
 function:
   name: variance
   kind: window
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: $1
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: grouping
@@ -2826,2144 +3050,2298 @@ function:
   parameters: []
   returns:
     datatype: int
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
-  name: "~"
+  name: '~'
   kind: scalar
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: int
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
-  name: "~~"
+  name: ~~
   kind: scalar
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: boolean
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
-  name: "~~*"
+  name: ~~*
   kind: scalar
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: boolean
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
-  name: "!~~"
+  name: '!~~'
   kind: scalar
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: boolean
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
-  name: "!~~*"
+  name: '!~~*'
   kind: scalar
   parameters:
-    - datatype: varchar
-    - datatype: varchar
+  - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: boolean
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
-  name: "="
+  name: '='
   parameters:
-    - datatype: $1
-    - datatype: boolean
+  - datatype: $1
+  - datatype: boolean
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - bigint
-        - int
-        - smallint
-        - varchar
+  - type-variable: $1
+    datatypes:
+    - bigint
+    - int
+    - smallint
+    - varchar
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
-  name: "="
+  name: '='
   parameters:
-    - datatype: boolean
-    - datatype: $1
+  - datatype: boolean
+  - datatype: $1
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - bigint
-        - int
-        - smallint
-        - varchar
+  - type-variable: $1
+    datatypes:
+    - bigint
+    - int
+    - smallint
+    - varchar
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
-  name: "!="
+  name: '!='
   parameters:
-    - datatype: $1
-    - datatype: boolean
+  - datatype: $1
+  - datatype: boolean
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - bigint
-        - int
-        - smallint
-        - varchar
+  - type-variable: $1
+    datatypes:
+    - bigint
+    - int
+    - smallint
+    - varchar
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
-  name: "!="
+  name: '!='
   parameters:
-    - datatype: boolean
-    - datatype: $1
+  - datatype: boolean
+  - datatype: $1
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - bigint
-        - int
-        - smallint
-        - varchar
+  - type-variable: $1
+    datatypes:
+    - bigint
+    - int
+    - smallint
+    - varchar
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
-  name: "<>"
+  name: <>
   parameters:
-    - datatype: $1
-    - datatype: boolean
+  - datatype: $1
+  - datatype: boolean
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - bigint
-        - int
-        - smallint
-        - varchar
+  - type-variable: $1
+    datatypes:
+    - bigint
+    - int
+    - smallint
+    - varchar
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
-  name: "<>"
+  name: <>
   parameters:
-    - datatype: boolean
-    - datatype: $1
+  - datatype: boolean
+  - datatype: $1
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - bigint
-        - int
-        - smallint
-        - varchar
+  - type-variable: $1
+    datatypes:
+    - bigint
+    - int
+    - smallint
+    - varchar
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
-  name: "="
+  name: '='
   parameters:
-    - datatype: $1
-    - datatype: $2
+  - datatype: $1
+  - datatype: $2
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - timestamp
-        - date
-        - time
-    - type-variable: $2
-      datatypes:
-        - varchar
-        - int
+  - type-variable: $1
+    datatypes:
+    - timestamp
+    - date
+    - time
+  - type-variable: $2
+    datatypes:
+    - varchar
+    - int
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
-  name: "="
+  name: '='
   parameters:
-    - datatype: $2
-    - datatype: $1
+  - datatype: $2
+  - datatype: $1
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - timestamp
-        - date
-        - time
-    - type-variable: $2
-      datatypes:
-        - varchar
-        - int
+  - type-variable: $1
+    datatypes:
+    - timestamp
+    - date
+    - time
+  - type-variable: $2
+    datatypes:
+    - varchar
+    - int
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
-  name: "!="
+  name: '!='
   parameters:
-    - datatype: $1
-    - datatype: $2
+  - datatype: $1
+  - datatype: $2
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - timestamp
-        - date
-        - time
-    - type-variable: $2
-      datatypes:
-        - varchar
-        - int
+  - type-variable: $1
+    datatypes:
+    - timestamp
+    - date
+    - time
+  - type-variable: $2
+    datatypes:
+    - varchar
+    - int
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
-  name: "!="
+  name: '!='
   parameters:
-    - datatype: $2
-    - datatype: $1
+  - datatype: $2
+  - datatype: $1
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - timestamp
-        - date
-        - time
-    - type-variable: $2
-      datatypes:
-        - varchar
-        - int
+  - type-variable: $1
+    datatypes:
+    - timestamp
+    - date
+    - time
+  - type-variable: $2
+    datatypes:
+    - varchar
+    - int
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
-  name: "<>"
+  name: <>
   parameters:
-    - datatype: $1
-    - datatype: $2
+  - datatype: $1
+  - datatype: $2
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - timestamp
-        - date
-        - time
-    - type-variable: $2
-      datatypes:
-        - varchar
-        - int
+  - type-variable: $1
+    datatypes:
+    - timestamp
+    - date
+    - time
+  - type-variable: $2
+    datatypes:
+    - varchar
+    - int
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
-  name: "<>"
+  name: <>
   parameters:
-    - datatype: $2
-    - datatype: $1
+  - datatype: $2
+  - datatype: $1
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - timestamp
-        - date
-        - time
-    - type-variable: $2
-      datatypes:
-        - varchar
-        - int
+  - type-variable: $1
+    datatypes:
+    - timestamp
+    - date
+    - time
+  - type-variable: $2
+    datatypes:
+    - varchar
+    - int
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
-  name: "<"
+  name: <
   parameters:
-    - datatype: $1
-    - datatype: $2
+  - datatype: $1
+  - datatype: $2
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - timestamp
-        - date
-        - time
-    - type-variable: $2
-      datatypes:
-        - varchar
-        - int
+  - type-variable: $1
+    datatypes:
+    - timestamp
+    - date
+    - time
+  - type-variable: $2
+    datatypes:
+    - varchar
+    - int
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
-  name: "<"
+  name: <
   parameters:
-    - datatype: $2
-    - datatype: $1
+  - datatype: $2
+  - datatype: $1
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - timestamp
-        - date
-        - time
-    - type-variable: $2
-      datatypes:
-        - varchar
-        - int
+  - type-variable: $1
+    datatypes:
+    - timestamp
+    - date
+    - time
+  - type-variable: $2
+    datatypes:
+    - varchar
+    - int
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
-  name: "<="
+  name: <=
   parameters:
-    - datatype: $1
-    - datatype: $2
+  - datatype: $1
+  - datatype: $2
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - timestamp
-        - date
-        - time
-    - type-variable: $2
-      datatypes:
-        - varchar
-        - int
+  - type-variable: $1
+    datatypes:
+    - timestamp
+    - date
+    - time
+  - type-variable: $2
+    datatypes:
+    - varchar
+    - int
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
-  name: "<="
+  name: <=
   parameters:
-    - datatype: $2
-    - datatype: $1
+  - datatype: $2
+  - datatype: $1
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - timestamp
-        - date
-        - time
-    - type-variable: $2
-      datatypes:
-        - varchar
-        - int
+  - type-variable: $1
+    datatypes:
+    - timestamp
+    - date
+    - time
+  - type-variable: $2
+    datatypes:
+    - varchar
+    - int
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
-  name: ">"
+  name: '>'
   parameters:
-    - datatype: $1
-    - datatype: $2
+  - datatype: $1
+  - datatype: $2
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - timestamp
-        - date
-        - time
-    - type-variable: $2
-      datatypes:
-        - varchar
-        - int
+  - type-variable: $1
+    datatypes:
+    - timestamp
+    - date
+    - time
+  - type-variable: $2
+    datatypes:
+    - varchar
+    - int
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
-  name: ">"
+  name: '>'
   parameters:
-    - datatype: $2
-    - datatype: $1
+  - datatype: $2
+  - datatype: $1
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - timestamp
-        - date
-        - time
-    - type-variable: $2
-      datatypes:
-        - varchar
-        - int
+  - type-variable: $1
+    datatypes:
+    - timestamp
+    - date
+    - time
+  - type-variable: $2
+    datatypes:
+    - varchar
+    - int
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
-  name: ">="
+  name: '>='
   parameters:
-    - datatype: $1
-    - datatype: $2
+  - datatype: $1
+  - datatype: $2
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - timestamp
-        - date
-        - time
-    - type-variable: $2
-      datatypes:
-        - varchar
-        - int
+  - type-variable: $1
+    datatypes:
+    - timestamp
+    - date
+    - time
+  - type-variable: $2
+    datatypes:
+    - varchar
+    - int
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
-  name: ">="
+  name: '>='
   parameters:
-    - datatype: $2
-    - datatype: $1
+  - datatype: $2
+  - datatype: $1
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - timestamp
-        - date
-        - time
-    - type-variable: $2
-      datatypes:
-        - varchar
-        - int
+  - type-variable: $1
+    datatypes:
+    - timestamp
+    - date
+    - time
+  - type-variable: $2
+    datatypes:
+    - varchar
+    - int
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: decode
   description: compare an expression to search values and returns the matching one
   variadic: uniform
   parameters:
-    - datatype: $1
-    - datatype: $1
-    - datatype: $1
+  - datatype: $1
+  - datatype: $1
+  - datatype: $1
   optional-parameters: []
   returns:
     datatype: $1
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: hll
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: int
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_HLL_function.html
 ---
 function:
   name: hll_create_sketch
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: hllsketch
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_HLL_CREATE_SKETCH.html
 ---
 function:
   name: hll_cardinality
   parameters:
-    - datatype: hllsketch
+  - datatype: hllsketch
   returns:
     datatype: bigint
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_HLL_CARDINALITY.html
 ---
 function:
   name: hll_combine
   kind: aggregate
   parameters:
-    - datatype: hllsketch
+  - datatype: hllsketch
   returns:
     datatype: hllsketch
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_HLL_COMBINE.html
 ---
 function:
   name: hll_combine_sketches
   parameters:
-    - datatype: hllsketch
-    - datatype: hllsketch
+  - datatype: hllsketch
+  - datatype: hllsketch
   returns:
     datatype: hllsketch
-
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/r_HLL_COMBINE_SKETCHES.html
 ---
 function:
   name: st_area
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: float8
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
-
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_asewkt
   kind: scalar
   parameters:
-    - datatype: geometry
+  - datatype: geometry
   returns:
     datatype: varchar
-
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_asewkt
   kind: scalar
   parameters:
-    - datatype: geometry
-    - datatype: integer
+  - datatype: geometry
+  - datatype: integer
   returns:
     datatype: varchar
-
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_asgeojson
   kind: scalar
   parameters:
-    - datatype: geometry
+  - datatype: geometry
   returns:
     datatype: super
-
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_asgeojson
   kind: scalar
   parameters:
-    - datatype: geometry
-    - datatype: integer
+  - datatype: geometry
+  - datatype: integer
   returns:
     datatype: super
-
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_ashexewkb
   kind: scalar
   parameters:
-    - datatype: geometry
+  - datatype: geometry
   returns:
     datatype: varchar
-
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_ashexwkb
   kind: scalar
   parameters:
-    - datatype: geometry
+  - datatype: geometry
   returns:
     datatype: varchar
-
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_astext
   kind: scalar
   parameters:
-    - datatype: geometry
+  - datatype: geometry
   returns:
     datatype: varchar
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_astext
   kind: scalar
   parameters:
-    - datatype: geometry
-    - datatype: integer
+  - datatype: geometry
+  - datatype: integer
   returns:
     datatype: varchar
-
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_distance
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: $1
+  - datatype: $1
+  - datatype: $1
   returns:
     datatype: float8
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
-
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_geogfromtext
   kind: scalar
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: geography
-
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_geogfromwkb
   kind: scalar
   parameters:
-    - datatype: varbyte
+  - datatype: varbyte
   returns:
     datatype: geography
-
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_length
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: float8
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
-
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_npoints
   kind: scalar
   parameters:
-    - datatype: geometry
+  - datatype: geometry
   returns:
     datatype: integer
-
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_perimeter
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: float8
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: addbbox
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: dropbbox
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: geometrytype
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: varchar
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: h3_fromlonglat
   kind: scalar
   parameters:
-    - datatype: float8
-    - datatype: float8
-    - datatype: integer
+  - datatype: float8
+  - datatype: float8
+  - datatype: integer
   returns:
     datatype: bigint
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: h3_frompoint
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: integer
+  - datatype: $1
+  - datatype: integer
   returns:
     datatype: bigint
   binds:
-    - type-variable: $1
-      datatypes:
-        - geography
-        - geometry
+  - type-variable: $1
+    datatypes:
+    - geography
+    - geometry
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: h3_polyfill
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: integer
+  - datatype: $1
+  - datatype: integer
   returns:
     datatype: super
   binds:
-    - type-variable: $1
-      datatypes:
-        - geography
-        - geometry
+  - type-variable: $1
+    datatypes:
+    - geography
+    - geometry
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_addpoint
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: $1
+  - datatype: $1
+  - datatype: $1
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_addpoint
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: $1
-    - datatype: integer
+  - datatype: $1
+  - datatype: $1
+  - datatype: integer
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_angle
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: $1
-    - datatype: $1
+  - datatype: $1
+  - datatype: $1
+  - datatype: $1
   returns:
     datatype: float8
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_angle
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: $1
-    - datatype: $1
-    - datatype: $1
+  - datatype: $1
+  - datatype: $1
+  - datatype: $1
+  - datatype: $1
   returns:
     datatype: float8
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_asbinary
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: varbyte
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_asewkb
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: varbyte
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_azimuth
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: $1
+  - datatype: $1
+  - datatype: $1
   returns:
     datatype: float8
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_boundary
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_buffer
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: float8
+  - datatype: $1
+  - datatype: float8
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_buffer
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: float8
-    - datatype: integer
+  - datatype: $1
+  - datatype: float8
+  - datatype: integer
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_centroid
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_collect
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: $1
+  - datatype: $1
+  - datatype: $1
   returns:
     datatype: geometry
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_collect
   kind: aggregate
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: geometry
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_contains
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: $1
+  - datatype: $1
+  - datatype: $1
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_containsproperly
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: $1
+  - datatype: $1
+  - datatype: $1
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_convexhull
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_coveredby
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: $1
+  - datatype: $1
+  - datatype: $1
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_covers
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: $1
+  - datatype: $1
+  - datatype: $1
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_crosses
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: $1
+  - datatype: $1
+  - datatype: $1
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_dimension
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: integer
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_disjoint
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: $1
+  - datatype: $1
+  - datatype: $1
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_distancesphere
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: $1
+  - datatype: $1
+  - datatype: $1
   returns:
     datatype: float8
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_distancesphere
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: $1
-    - datatype: float8
+  - datatype: $1
+  - datatype: $1
+  - datatype: float8
   returns:
     datatype: float8
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography        
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_dwithin
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: $1
-    - datatype: float8
+  - datatype: $1
+  - datatype: $1
+  - datatype: float8
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_endpoint
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_envelope
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_equals
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: $1
+  - datatype: $1
+  - datatype: $1
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_exteriorring
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_force2d
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_force3d
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_force3dm
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_force3dz
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_force4d
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_geohash
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_geohash
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: integer
+  - datatype: $1
+  - datatype: integer
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_geogfromtext
   kind: scalar
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_geogfromwkb
   kind: scalar
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_geometryn
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: integer
+  - datatype: $1
+  - datatype: integer
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_geometrytype
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: varchar
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_geomfromewkb
   kind: scalar
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: geometry
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_geomfromewkt
   kind: scalar
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: geometry
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_geomfromgeohash
   kind: scalar
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: geometry
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_geomfromgeohash
   kind: scalar
   parameters:
-    - datatype: varchar
-    - datatype: integer
+  - datatype: varchar
+  - datatype: integer
   returns:
     datatype: geometry
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_geomfromgeojson
   kind: scalar
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: geometry
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_geomfromgeosquare
   kind: scalar
   parameters:
-    - datatype: bigint
+  - datatype: bigint
   returns:
     datatype: geometry
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_geomfromgeosquare
   kind: scalar
   parameters:
-    - datatype: bigint
-    - datatype: integer
+  - datatype: bigint
+  - datatype: integer
   returns:
     datatype: geometry
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_geomfromtext
   kind: scalar
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: geometry
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_geomfromtext
   kind: scalar
   parameters:
-    - datatype: varchar
-    - datatype: integer
+  - datatype: varchar
+  - datatype: integer
   returns:
     datatype: geometry
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_geomfromwkb
   kind: scalar
   parameters:
-    - datatype: varchar
+  - datatype: varchar
   returns:
     datatype: geometry
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_geomfromwkb
   kind: scalar
   parameters:
-    - datatype: varchar
-    - datatype: integer
+  - datatype: varchar
+  - datatype: integer
   returns:
     datatype: geometry
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_geosquare
   kind: scalar
   parameters:
-    - datatype: geometry
+  - datatype: geometry
   returns:
     datatype: bigint
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_geosquare
   kind: scalar
   parameters:
-    - datatype: geometry
-    - datatype: integer
+  - datatype: geometry
+  - datatype: integer
   returns:
     datatype: bigint
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_interiorringn
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: integer
+  - datatype: $1
+  - datatype: integer
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_intersects
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: $2
+  - datatype: $1
+  - datatype: $2
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
-    - type-variable: $2
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  - type-variable: $2
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_intersection
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: $2
+  - datatype: $1
+  - datatype: $2
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
-    - type-variable: $2
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  - type-variable: $2
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_ispolygonccw
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_ispolygoncw
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_isclosed
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_iscollection
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_isempty
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_isring
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_issimple
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_isvalid
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_lengthsphere
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: float8
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_length2d
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: float8
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_linefrommultipoint
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_lineinterpolatepoint
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: float8
+  - datatype: $1
+  - datatype: float8
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_m
   kind: scalar
   parameters:
-    - datatype: geometry
+  - datatype: geometry
   returns:
     datatype: float8
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/ST_M-function.html
 ---
 function:
   name: st_makeenvelope
   kind: scalar
   parameters:
-    - datatype: float8
-    - datatype: float8
-    - datatype: float8
-    - datatype: float8
+  - datatype: float8
+  - datatype: float8
+  - datatype: float8
+  - datatype: float8
   returns:
     datatype: geometry
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_makeenvelope
   kind: scalar
   parameters:
-    - datatype: float8
-    - datatype: float8
-    - datatype: float8
-    - datatype: float8
-    - datatype: integer
+  - datatype: float8
+  - datatype: float8
+  - datatype: float8
+  - datatype: float8
+  - datatype: integer
   returns:
     datatype: geometry
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_makeline
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: $2
+  - datatype: $1
+  - datatype: $2
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
-    - type-variable: $2
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  - type-variable: $2
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_makepoint
   kind: scalar
   parameters:
-    - datatype: float8
-    - datatype: float8
+  - datatype: float8
+  - datatype: float8
   returns:
     datatype: geometry
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_makepoint
   kind: scalar
   parameters:
-    - datatype: float8
-    - datatype: float8
-    - datatype: float8
+  - datatype: float8
+  - datatype: float8
+  - datatype: float8
   returns:
     datatype: geometry
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_makepoint
   kind: scalar
   parameters:
-    - datatype: float8
-    - datatype: float8
-    - datatype: float8
-    - datatype: float8
+  - datatype: float8
+  - datatype: float8
+  - datatype: float8
+  - datatype: float8
   returns:
     datatype: geometry
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_makepolygon
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_makepolygon
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: $2
+  - datatype: $1
+  - datatype: $2
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
-    - type-variable: $2
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  - type-variable: $2
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_memsize
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: integer
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_mmax
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: float8
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_mmin
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: float8
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_multi
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_ndims
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: integer
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_nrings
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: integer
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_numgeometries
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: integer
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_numinteriorrings
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: integer
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_numpoints
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: integer
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_perimeter2d
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: float8
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_point
   kind: scalar
   parameters:
-    - datatype: float8
-    - datatype: float8
+  - datatype: float8
+  - datatype: float8
   returns:
     datatype: geometry
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_pointn
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: integer
+  - datatype: $1
+  - datatype: integer
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_points
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_polygon
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: integer
+  - datatype: $1
+  - datatype: integer
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_removepoint
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: integer
+  - datatype: $1
+  - datatype: integer
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_reverse
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_setpoint
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: integer
-    - datatype: $2
+  - datatype: $1
+  - datatype: integer
+  - datatype: $2
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
-    - type-variable: $2
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  - type-variable: $2
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_setsrid
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: integer
+  - datatype: $1
+  - datatype: integer
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_simplify
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: float8
+  - datatype: $1
+  - datatype: float8
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_srid
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: integer
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/ST_SRID-function.html
 ---
 function:
   name: st_startpoint
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_touches
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: $2
+  - datatype: $1
+  - datatype: $2
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
-    - type-variable: $2
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  - type-variable: $2
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_transform
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: integer
+  - datatype: $1
+  - datatype: integer
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_union
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: $2
+  - datatype: $1
+  - datatype: $2
   returns:
     datatype: geometry
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
-    - type-variable: $2
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  - type-variable: $2
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_within
   kind: scalar
   parameters:
-    - datatype: $1
-    - datatype: $2
+  - datatype: $1
+  - datatype: $2
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
-    - type-variable: $2
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  - type-variable: $2
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_x
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: float8
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/ST_X-function.html
 ---
 function:
   name: st_xmax
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: float8
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_xmin
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: float8
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_y
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: float8
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/ST_Y-function.html
 ---
 function:
   name: st_ymax
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: float8
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_ymin
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: float8
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_z
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: float8
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/ST_Z-function.html
 ---
 function:
   name: st_zmax
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: float8
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: st_zmin
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: float8
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
   name: supportsbbox
   kind: scalar
   parameters:
-    - datatype: $1
+  - datatype: $1
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - geometry
-        - geography
+  - type-variable: $1
+    datatypes:
+    - geometry
+    - geography
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
-  name: "sdf::and"
+  name: sdf::and
   parameters:
-    - datatype: $1
-    - datatype: boolean
+  - datatype: $1
+  - datatype: boolean
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - int
-        - double
+  - type-variable: $1
+    datatypes:
+    - int
+    - double
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
-  name: "sdf::and"
+  name: sdf::and
   parameters:
-    - datatype: boolean
-    - datatype: $1
+  - datatype: boolean
+  - datatype: $1
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - int
-        - double
+  - type-variable: $1
+    datatypes:
+    - int
+    - double
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
-  name: "sdf::or"
+  name: sdf::or
   parameters:
-    - datatype: $1
-    - datatype: boolean
+  - datatype: $1
+  - datatype: boolean
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - int
-        - double
+  - type-variable: $1
+    datatypes:
+    - int
+    - double
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
 ---
 function:
-  name: "sdf::or"
+  name: sdf::or
   parameters:
-    - datatype: boolean
-    - datatype: $1
+  - datatype: boolean
+  - datatype: $1
   returns:
     datatype: boolean
   binds:
-    - type-variable: $1
-      datatypes:
-        - int
-        - double
+  - type-variable: $1
+    datatypes:
+    - int
+    - double
+  cross-link: https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html
