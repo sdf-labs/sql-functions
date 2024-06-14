@@ -24,7 +24,6 @@ use datafusion::logical_expr::simplify::{ExprSimplifyResult, SimplifyInfo};
 use datafusion::logical_expr::{ColumnarValue, Expr, ScalarUDFImpl, Signature, Volatility};
 use std::any::Any;
 
-
 fn greatest_3_invoke(args: &[ColumnarValue]) -> Result<ColumnarValue> {
     let args = ColumnarValue::values_to_arrays(args)?;
     let result = args.into_iter().fold(Ok(None), |acc, cur| {
@@ -51,11 +50,9 @@ fn greatest_3_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<Expr
     Ok(ExprSimplifyResult::Original(args))
 }
 
-
 // ========== Generated template below this line ==========
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
-
 
 #[derive(Debug)]
 pub(super) struct greatest_3Func {
@@ -63,7 +60,7 @@ pub(super) struct greatest_3Func {
 }
 
 impl greatest_3Func {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::variadic_equal(Volatility::Immutable),
         }
@@ -82,7 +79,6 @@ impl ScalarUDFImpl for greatest_3Func {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         greatest_3_return_type(arg_types)
     }
@@ -91,12 +87,7 @@ impl ScalarUDFImpl for greatest_3Func {
         greatest_3_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         greatest_3_simplify(args, info)
     }
-
 }

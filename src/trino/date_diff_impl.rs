@@ -20,7 +20,11 @@ use arrow::array::PrimitiveArray;
 use arrow::compute::DatePart;
 use arrow::datatypes::{DataType, Int32Type, Int64Type, TimeUnit};
 use chrono::{DateTime, Datelike, Duration, NaiveDate, Timelike};
-use datafusion::common::cast::{as_date32_array, as_time32_millisecond_array, as_time32_second_array, as_time64_microsecond_array, as_time64_nanosecond_array, as_timestamp_microsecond_array, as_timestamp_millisecond_array, as_timestamp_nanosecond_array, as_timestamp_second_array};
+use datafusion::common::cast::{
+    as_date32_array, as_time32_millisecond_array, as_time32_second_array,
+    as_time64_microsecond_array, as_time64_nanosecond_array, as_timestamp_microsecond_array,
+    as_timestamp_millisecond_array, as_timestamp_nanosecond_array, as_timestamp_second_array,
+};
 use datafusion::common::{exec_err, Result};
 use datafusion::logical_expr::simplify::{ExprSimplifyResult, SimplifyInfo};
 use datafusion::logical_expr::{ColumnarValue, Expr, ScalarUDFImpl, Signature, Volatility};
@@ -337,10 +341,8 @@ fn date_diff_varchar_timestamp_p_timestamp_p_invoke(
                             start / 1_000,
                             (start % 1_000) as u32 * 1_000_000,
                         );
-                        let end = DateTime::from_timestamp(
-                            end / 1_000,
-                            (end % 1_000) as u32 * 1_000_000,
-                        );
+                        let end =
+                            DateTime::from_timestamp(end / 1_000, (end % 1_000) as u32 * 1_000_000);
                         let diff = if let (Some(start), Some(end)) = (start, end) {
                             let year = end.year() - start.year();
                             let start_without_year = (
@@ -380,10 +382,8 @@ fn date_diff_varchar_timestamp_p_timestamp_p_invoke(
                             start / 1_000,
                             (start % 1_000) as u32 * 1_000_000,
                         );
-                        let end = DateTime::from_timestamp(
-                            end / 1_000,
-                            (end % 1_000) as u32 * 1_000_000,
-                        );
+                        let end =
+                            DateTime::from_timestamp(end / 1_000, (end % 1_000) as u32 * 1_000_000);
                         let diff = if let (Some(start), Some(end)) = (start, end) {
                             let month = (end.year() - start.year()) * 12
                                 + (end.month() as i32 - start.month() as i32);
@@ -447,14 +447,13 @@ fn date_diff_varchar_timestamp_p_timestamp_p_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct date_diff_varchar_date_dateFunc {
     signature: Signature,
 }
 
 impl date_diff_varchar_date_dateFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(3, Volatility::Immutable),
         }
@@ -473,7 +472,6 @@ impl ScalarUDFImpl for date_diff_varchar_date_dateFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         date_diff_varchar_date_date_return_type(arg_types)
     }
@@ -482,14 +480,9 @@ impl ScalarUDFImpl for date_diff_varchar_date_dateFunc {
         date_diff_varchar_date_date_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         date_diff_varchar_date_date_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -498,7 +491,7 @@ pub(super) struct date_diff_varchar_time_p_time_pFunc {
 }
 
 impl date_diff_varchar_time_p_time_pFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(3, Volatility::Immutable),
         }
@@ -517,7 +510,6 @@ impl ScalarUDFImpl for date_diff_varchar_time_p_time_pFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         date_diff_varchar_time_p_time_p_return_type(arg_types)
     }
@@ -526,14 +518,9 @@ impl ScalarUDFImpl for date_diff_varchar_time_p_time_pFunc {
         date_diff_varchar_time_p_time_p_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         date_diff_varchar_time_p_time_p_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -542,7 +529,7 @@ pub(super) struct date_diff_varchar_timestamp_p_timestamp_pFunc {
 }
 
 impl date_diff_varchar_timestamp_p_timestamp_pFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(3, Volatility::Immutable),
         }
@@ -561,7 +548,6 @@ impl ScalarUDFImpl for date_diff_varchar_timestamp_p_timestamp_pFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         date_diff_varchar_timestamp_p_timestamp_p_return_type(arg_types)
     }
@@ -570,12 +556,7 @@ impl ScalarUDFImpl for date_diff_varchar_timestamp_p_timestamp_pFunc {
         date_diff_varchar_timestamp_p_timestamp_p_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         date_diff_varchar_timestamp_p_timestamp_p_simplify(args, info)
     }
-
 }
