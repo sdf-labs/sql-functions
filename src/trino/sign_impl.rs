@@ -16,12 +16,15 @@
 // under the License.
 
 #![allow(non_camel_case_types)]
+use arrow::array::Decimal128Array;
 use arrow::datatypes::DataType;
+use datafusion::common::cast::as_decimal128_array;
 use datafusion::common::Result;
 use datafusion::error::DataFusionError;
 use datafusion::logical_expr::simplify::{ExprSimplifyResult, SimplifyInfo};
 use datafusion::logical_expr::{ColumnarValue, Expr, ScalarUDFImpl, Signature, Volatility};
 use std::any::Any;
+use std::sync::Arc;
 
 fn sign_bigint_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
     Err(DataFusionError::NotImplemented(format!(
@@ -43,20 +46,29 @@ fn sign_bigint_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<Exp
     Ok(ExprSimplifyResult::Original(args))
 }
 
-fn sign_decimal_p_s_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!(
-        "Not implemented {}:{}",
-        file!(),
-        line!()
-    )))
+fn sign_decimal_p_s_invoke(args: &[ColumnarValue]) -> Result<ColumnarValue> {
+    let args = ColumnarValue::values_to_arrays(args)?;
+    let num = as_decimal128_array(&args[0])?;
+    let array = num
+        .into_iter()
+        .map(|x| {
+            x.map(|x| {
+                if x < 0 {
+                    -1
+                } else if x > 0 {
+                    1
+                } else {
+                    0
+                }
+            })
+        })
+        .collect::<Decimal128Array>()
+        .with_precision_and_scale(1, 0)?;
+    Ok(ColumnarValue::Array(Arc::new(array)))
 }
 
 fn sign_decimal_p_s_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!(
-        "Not implemented {}:{}",
-        file!(),
-        line!()
-    )))
+    Ok(DataType::Decimal128(1, 0))
 }
 
 fn sign_decimal_p_s_simplify(

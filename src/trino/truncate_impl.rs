@@ -16,27 +16,50 @@
 // under the License.
 
 #![allow(non_camel_case_types)]
+use arrow::array::Decimal128Array;
 use arrow::datatypes::DataType;
-use datafusion::common::Result;
+use datafusion::common::cast::as_decimal128_array;
+use datafusion::common::{exec_err, Result};
 use datafusion::error::DataFusionError;
 use datafusion::logical_expr::simplify::{ExprSimplifyResult, SimplifyInfo};
 use datafusion::logical_expr::{ColumnarValue, Expr, ScalarUDFImpl, Signature, Volatility};
+use datafusion::scalar::ScalarValue;
 use std::any::Any;
+use std::sync::Arc;
 
-fn truncate_decimal_p_s_bigint_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!(
-        "Not implemented {}:{}",
-        file!(),
-        line!()
-    )))
+fn truncate_decimal_p_s_bigint_invoke(args: &[ColumnarValue]) -> Result<ColumnarValue> {
+    let precision = if let ColumnarValue::Scalar(ScalarValue::Int64(Some(v))) = args[1].to_owned() {
+        v
+    } else {
+        return exec_err!("Second argument of `truncate` must be non-null scalar bigint");
+    };
+
+    let num = truncate(args, precision)?;
+
+    Ok(ColumnarValue::Array(Arc::new(num)))
 }
 
-fn truncate_decimal_p_s_bigint_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!(
-        "Not implemented {}:{}",
-        file!(),
-        line!()
-    )))
+fn truncate(args: &[ColumnarValue], precision: i64) -> Result<Decimal128Array> {
+    let args = ColumnarValue::values_to_arrays(args)?;
+    let num = as_decimal128_array(&args[0])?;
+    let p = num.precision();
+    let s = num.scale();
+    let num = num
+        .into_iter()
+        .map(|num| {
+            num.map(|num| {
+                let factor = 10i128.pow((s - precision as i8).max(0) as u32);
+                let num = num / factor * factor;
+                num
+            })
+        })
+        .collect::<Decimal128Array>()
+        .with_precision_and_scale(p, s)?;
+    Ok(num)
+}
+
+fn truncate_decimal_p_s_bigint_return_type(arg_types: &[DataType]) -> Result<DataType> {
+    Ok(arg_types[0].clone())
 }
 
 fn truncate_decimal_p_s_bigint_simplify(
@@ -46,20 +69,14 @@ fn truncate_decimal_p_s_bigint_simplify(
     Ok(ExprSimplifyResult::Original(args))
 }
 
-fn truncate_decimal_p_s_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!(
-        "Not implemented {}:{}",
-        file!(),
-        line!()
-    )))
+fn truncate_decimal_p_s_invoke(args: &[ColumnarValue]) -> Result<ColumnarValue> {
+    let num = truncate(args, 0)?;
+
+    Ok(ColumnarValue::Array(Arc::new(num)))
 }
 
-fn truncate_decimal_p_s_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!(
-        "Not implemented {}:{}",
-        file!(),
-        line!()
-    )))
+fn truncate_decimal_p_s_return_type(arg_types: &[DataType]) -> Result<DataType> {
+    Ok(arg_types[0].clone())
 }
 
 fn truncate_decimal_p_s_simplify(
