@@ -23,24 +23,36 @@ use datafusion::logical_expr::simplify::{ExprSimplifyResult, SimplifyInfo};
 use datafusion::logical_expr::{ColumnarValue, Expr, ScalarUDFImpl, Signature, Volatility};
 use std::any::Any;
 
-
-fn reduce_array_1_10_function_10_1_10_function_10_9_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+fn reduce_array_1_10_function_10_1_10_function_10_9_invoke(
+    _args: &[ColumnarValue],
+) -> Result<ColumnarValue> {
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
-fn reduce_array_1_10_function_10_1_10_function_10_9_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+fn reduce_array_1_10_function_10_1_10_function_10_9_return_type(
+    _arg_types: &[DataType],
+) -> Result<DataType> {
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
-fn reduce_array_1_10_function_10_1_10_function_10_9_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+fn reduce_array_1_10_function_10_1_10_function_10_9_simplify(
+    args: Vec<Expr>,
+    _info: &dyn SimplifyInfo,
+) -> Result<ExprSimplifyResult> {
     Ok(ExprSimplifyResult::Original(args))
 }
-
 
 // ========== Generated template below this line ==========
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
-
 
 #[derive(Debug)]
 pub(super) struct reduce_array_1_10_function_10_1_10_function_10_9Func {
@@ -48,7 +60,7 @@ pub(super) struct reduce_array_1_10_function_10_1_10_function_10_9Func {
 }
 
 impl reduce_array_1_10_function_10_1_10_function_10_9Func {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(4, Volatility::Immutable),
         }
@@ -67,7 +79,6 @@ impl ScalarUDFImpl for reduce_array_1_10_function_10_1_10_function_10_9Func {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         reduce_array_1_10_function_10_1_10_function_10_9_return_type(arg_types)
     }
@@ -76,12 +87,7 @@ impl ScalarUDFImpl for reduce_array_1_10_function_10_1_10_function_10_9Func {
         reduce_array_1_10_function_10_1_10_function_10_9_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         reduce_array_1_10_function_10_1_10_function_10_9_simplify(args, info)
     }
-
 }
