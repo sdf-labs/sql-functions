@@ -23,13 +23,20 @@ use datafusion::logical_expr::simplify::{ExprSimplifyResult, SimplifyInfo};
 use datafusion::logical_expr::{ColumnarValue, Expr, ScalarUDFImpl, Signature, Volatility};
 use std::any::Any;
 
-
 fn round_double_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
 fn round_double_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
 fn round_double_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
@@ -37,23 +44,42 @@ fn round_double_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<Ex
 }
 
 fn round_double_bigint_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
 fn round_double_bigint_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
-fn round_double_bigint_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+fn round_double_bigint_simplify(
+    args: Vec<Expr>,
+    _info: &dyn SimplifyInfo,
+) -> Result<ExprSimplifyResult> {
     Ok(ExprSimplifyResult::Original(args))
 }
 
 fn round_real_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
 fn round_real_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
 fn round_real_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
@@ -61,23 +87,42 @@ fn round_real_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<Expr
 }
 
 fn round_real_bigint_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
 fn round_real_bigint_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
-fn round_real_bigint_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+fn round_real_bigint_simplify(
+    args: Vec<Expr>,
+    _info: &dyn SimplifyInfo,
+) -> Result<ExprSimplifyResult> {
     Ok(ExprSimplifyResult::Original(args))
 }
 
 fn round_integer_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
 fn round_integer_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
 fn round_integer_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
@@ -85,47 +130,88 @@ fn round_integer_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<E
 }
 
 fn round_integer_integer_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
 fn round_integer_integer_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
-fn round_integer_integer_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+fn round_integer_integer_simplify(
+    args: Vec<Expr>,
+    _info: &dyn SimplifyInfo,
+) -> Result<ExprSimplifyResult> {
     Ok(ExprSimplifyResult::Original(args))
 }
 
 fn round_decimal_p_s_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
 fn round_decimal_p_s_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
-fn round_decimal_p_s_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+fn round_decimal_p_s_simplify(
+    args: Vec<Expr>,
+    _info: &dyn SimplifyInfo,
+) -> Result<ExprSimplifyResult> {
     Ok(ExprSimplifyResult::Original(args))
 }
 
 fn round_decimal_p_s_bigint_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
 fn round_decimal_p_s_bigint_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
-fn round_decimal_p_s_bigint_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+fn round_decimal_p_s_bigint_simplify(
+    args: Vec<Expr>,
+    _info: &dyn SimplifyInfo,
+) -> Result<ExprSimplifyResult> {
     Ok(ExprSimplifyResult::Original(args))
 }
 
 fn round_bigint_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
 fn round_bigint_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
 fn round_bigint_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
@@ -133,47 +219,88 @@ fn round_bigint_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<Ex
 }
 
 fn round_bigint_bigint_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
 fn round_bigint_bigint_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
-fn round_bigint_bigint_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+fn round_bigint_bigint_simplify(
+    args: Vec<Expr>,
+    _info: &dyn SimplifyInfo,
+) -> Result<ExprSimplifyResult> {
     Ok(ExprSimplifyResult::Original(args))
 }
 
 fn round_smallint_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
 fn round_smallint_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
-fn round_smallint_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+fn round_smallint_simplify(
+    args: Vec<Expr>,
+    _info: &dyn SimplifyInfo,
+) -> Result<ExprSimplifyResult> {
     Ok(ExprSimplifyResult::Original(args))
 }
 
 fn round_smallint_bigint_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
 fn round_smallint_bigint_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
-fn round_smallint_bigint_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+fn round_smallint_bigint_simplify(
+    args: Vec<Expr>,
+    _info: &dyn SimplifyInfo,
+) -> Result<ExprSimplifyResult> {
     Ok(ExprSimplifyResult::Original(args))
 }
 
 fn round_tinyint_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
 fn round_tinyint_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
 fn round_tinyint_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
@@ -181,22 +308,31 @@ fn round_tinyint_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<E
 }
 
 fn round_tinyint_bigint_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
 fn round_tinyint_bigint_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
-fn round_tinyint_bigint_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+fn round_tinyint_bigint_simplify(
+    args: Vec<Expr>,
+    _info: &dyn SimplifyInfo,
+) -> Result<ExprSimplifyResult> {
     Ok(ExprSimplifyResult::Original(args))
 }
-
 
 // ========== Generated template below this line ==========
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
-
 
 #[derive(Debug)]
 pub(super) struct round_doubleFunc {
@@ -204,7 +340,7 @@ pub(super) struct round_doubleFunc {
 }
 
 impl round_doubleFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -223,7 +359,6 @@ impl ScalarUDFImpl for round_doubleFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         round_double_return_type(arg_types)
     }
@@ -232,14 +367,9 @@ impl ScalarUDFImpl for round_doubleFunc {
         round_double_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         round_double_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -248,7 +378,7 @@ pub(super) struct round_double_bigintFunc {
 }
 
 impl round_double_bigintFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -267,7 +397,6 @@ impl ScalarUDFImpl for round_double_bigintFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         round_double_bigint_return_type(arg_types)
     }
@@ -276,14 +405,9 @@ impl ScalarUDFImpl for round_double_bigintFunc {
         round_double_bigint_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         round_double_bigint_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -292,7 +416,7 @@ pub(super) struct round_realFunc {
 }
 
 impl round_realFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -311,7 +435,6 @@ impl ScalarUDFImpl for round_realFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         round_real_return_type(arg_types)
     }
@@ -320,14 +443,9 @@ impl ScalarUDFImpl for round_realFunc {
         round_real_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         round_real_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -336,7 +454,7 @@ pub(super) struct round_real_bigintFunc {
 }
 
 impl round_real_bigintFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -355,7 +473,6 @@ impl ScalarUDFImpl for round_real_bigintFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         round_real_bigint_return_type(arg_types)
     }
@@ -364,14 +481,9 @@ impl ScalarUDFImpl for round_real_bigintFunc {
         round_real_bigint_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         round_real_bigint_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -380,7 +492,7 @@ pub(super) struct round_integerFunc {
 }
 
 impl round_integerFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -399,7 +511,6 @@ impl ScalarUDFImpl for round_integerFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         round_integer_return_type(arg_types)
     }
@@ -408,14 +519,9 @@ impl ScalarUDFImpl for round_integerFunc {
         round_integer_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         round_integer_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -424,7 +530,7 @@ pub(super) struct round_integer_integerFunc {
 }
 
 impl round_integer_integerFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -443,7 +549,6 @@ impl ScalarUDFImpl for round_integer_integerFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         round_integer_integer_return_type(arg_types)
     }
@@ -452,14 +557,9 @@ impl ScalarUDFImpl for round_integer_integerFunc {
         round_integer_integer_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         round_integer_integer_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -468,7 +568,7 @@ pub(super) struct round_decimal_p_sFunc {
 }
 
 impl round_decimal_p_sFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -487,7 +587,6 @@ impl ScalarUDFImpl for round_decimal_p_sFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         round_decimal_p_s_return_type(arg_types)
     }
@@ -496,14 +595,9 @@ impl ScalarUDFImpl for round_decimal_p_sFunc {
         round_decimal_p_s_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         round_decimal_p_s_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -512,7 +606,7 @@ pub(super) struct round_decimal_p_s_bigintFunc {
 }
 
 impl round_decimal_p_s_bigintFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -531,7 +625,6 @@ impl ScalarUDFImpl for round_decimal_p_s_bigintFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         round_decimal_p_s_bigint_return_type(arg_types)
     }
@@ -540,14 +633,9 @@ impl ScalarUDFImpl for round_decimal_p_s_bigintFunc {
         round_decimal_p_s_bigint_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         round_decimal_p_s_bigint_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -556,7 +644,7 @@ pub(super) struct round_bigintFunc {
 }
 
 impl round_bigintFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -575,7 +663,6 @@ impl ScalarUDFImpl for round_bigintFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         round_bigint_return_type(arg_types)
     }
@@ -584,14 +671,9 @@ impl ScalarUDFImpl for round_bigintFunc {
         round_bigint_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         round_bigint_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -600,7 +682,7 @@ pub(super) struct round_bigint_bigintFunc {
 }
 
 impl round_bigint_bigintFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -619,7 +701,6 @@ impl ScalarUDFImpl for round_bigint_bigintFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         round_bigint_bigint_return_type(arg_types)
     }
@@ -628,14 +709,9 @@ impl ScalarUDFImpl for round_bigint_bigintFunc {
         round_bigint_bigint_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         round_bigint_bigint_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -644,7 +720,7 @@ pub(super) struct round_smallintFunc {
 }
 
 impl round_smallintFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -663,7 +739,6 @@ impl ScalarUDFImpl for round_smallintFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         round_smallint_return_type(arg_types)
     }
@@ -672,14 +747,9 @@ impl ScalarUDFImpl for round_smallintFunc {
         round_smallint_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         round_smallint_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -688,7 +758,7 @@ pub(super) struct round_smallint_bigintFunc {
 }
 
 impl round_smallint_bigintFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -707,7 +777,6 @@ impl ScalarUDFImpl for round_smallint_bigintFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         round_smallint_bigint_return_type(arg_types)
     }
@@ -716,14 +785,9 @@ impl ScalarUDFImpl for round_smallint_bigintFunc {
         round_smallint_bigint_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         round_smallint_bigint_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -732,7 +796,7 @@ pub(super) struct round_tinyintFunc {
 }
 
 impl round_tinyintFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -751,7 +815,6 @@ impl ScalarUDFImpl for round_tinyintFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         round_tinyint_return_type(arg_types)
     }
@@ -760,14 +823,9 @@ impl ScalarUDFImpl for round_tinyintFunc {
         round_tinyint_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         round_tinyint_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -776,7 +834,7 @@ pub(super) struct round_tinyint_bigintFunc {
 }
 
 impl round_tinyint_bigintFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -795,7 +853,6 @@ impl ScalarUDFImpl for round_tinyint_bigintFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         round_tinyint_bigint_return_type(arg_types)
     }
@@ -804,12 +861,7 @@ impl ScalarUDFImpl for round_tinyint_bigintFunc {
         round_tinyint_bigint_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         round_tinyint_bigint_simplify(args, info)
     }
-
 }

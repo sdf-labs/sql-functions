@@ -23,24 +23,36 @@ use datafusion::logical_expr::simplify::{ExprSimplifyResult, SimplifyInfo};
 use datafusion::logical_expr::{ColumnarValue, Expr, ScalarUDFImpl, Signature, Volatility};
 use std::any::Any;
 
-
-fn multimap_from_entries_array_row_c04_c15_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+fn multimap_from_entries_array_row_c04_c15_invoke(
+    _args: &[ColumnarValue],
+) -> Result<ColumnarValue> {
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
-fn multimap_from_entries_array_row_c04_c15_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+fn multimap_from_entries_array_row_c04_c15_return_type(
+    _arg_types: &[DataType],
+) -> Result<DataType> {
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
-fn multimap_from_entries_array_row_c04_c15_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+fn multimap_from_entries_array_row_c04_c15_simplify(
+    args: Vec<Expr>,
+    _info: &dyn SimplifyInfo,
+) -> Result<ExprSimplifyResult> {
     Ok(ExprSimplifyResult::Original(args))
 }
-
 
 // ========== Generated template below this line ==========
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
-
 
 #[derive(Debug)]
 pub(super) struct multimap_from_entries_array_row_c04_c15Func {
@@ -48,7 +60,7 @@ pub(super) struct multimap_from_entries_array_row_c04_c15Func {
 }
 
 impl multimap_from_entries_array_row_c04_c15Func {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -67,7 +79,6 @@ impl ScalarUDFImpl for multimap_from_entries_array_row_c04_c15Func {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         multimap_from_entries_array_row_c04_c15_return_type(arg_types)
     }
@@ -76,12 +87,7 @@ impl ScalarUDFImpl for multimap_from_entries_array_row_c04_c15Func {
         multimap_from_entries_array_row_c04_c15_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         multimap_from_entries_array_row_c04_c15_simplify(args, info)
     }
-
 }

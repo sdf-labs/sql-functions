@@ -26,19 +26,6 @@ use datafusion::logical_expr::{ColumnarValue, Expr, ScalarUDFImpl, Signature, Vo
 use std::any::Any;
 use std::sync::Arc;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 fn regexp_like_varchar_joniregexp_invoke(args: &[ColumnarValue]) -> Result<ColumnarValue> {
     let args = ColumnarValue::values_to_arrays(args)?;
     let value = args[0].to_owned();

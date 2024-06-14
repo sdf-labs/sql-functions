@@ -23,24 +23,36 @@ use datafusion::logical_expr::simplify::{ExprSimplifyResult, SimplifyInfo};
 use datafusion::logical_expr::{ColumnarValue, Expr, ScalarUDFImpl, Signature, Volatility};
 use std::any::Any;
 
-
-fn line_interpolate_points_geometry_double_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+fn line_interpolate_points_geometry_double_invoke(
+    _args: &[ColumnarValue],
+) -> Result<ColumnarValue> {
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
-fn line_interpolate_points_geometry_double_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!("Not implemented {}:{}", file!(), line!())))
+fn line_interpolate_points_geometry_double_return_type(
+    _arg_types: &[DataType],
+) -> Result<DataType> {
+    Err(DataFusionError::NotImplemented(format!(
+        "Not implemented {}:{}",
+        file!(),
+        line!()
+    )))
 }
 
-fn line_interpolate_points_geometry_double_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+fn line_interpolate_points_geometry_double_simplify(
+    args: Vec<Expr>,
+    _info: &dyn SimplifyInfo,
+) -> Result<ExprSimplifyResult> {
     Ok(ExprSimplifyResult::Original(args))
 }
-
 
 // ========== Generated template below this line ==========
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
-
 
 #[derive(Debug)]
 pub(super) struct line_interpolate_points_geometry_doubleFunc {
@@ -48,7 +60,7 @@ pub(super) struct line_interpolate_points_geometry_doubleFunc {
 }
 
 impl line_interpolate_points_geometry_doubleFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -67,7 +79,6 @@ impl ScalarUDFImpl for line_interpolate_points_geometry_doubleFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         line_interpolate_points_geometry_double_return_type(arg_types)
     }
@@ -76,12 +87,7 @@ impl ScalarUDFImpl for line_interpolate_points_geometry_doubleFunc {
         line_interpolate_points_geometry_double_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         line_interpolate_points_geometry_double_simplify(args, info)
     }
-
 }
