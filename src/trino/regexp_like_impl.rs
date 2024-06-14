@@ -27,6 +27,18 @@ use std::any::Any;
 use std::sync::Arc;
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 fn regexp_like_varchar_joniregexp_invoke(args: &[ColumnarValue]) -> Result<ColumnarValue> {
     let args = ColumnarValue::values_to_arrays(args)?;
     let value = args[0].to_owned();
@@ -53,15 +65,16 @@ fn regexp_like_varchar_joniregexp_return_type(_arg_types: &[DataType]) -> Result
     Ok(DataType::Boolean)
 }
 
-fn regexp_like_varchar_joniregexp_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+fn regexp_like_varchar_joniregexp_simplify(
+    args: Vec<Expr>,
+    _info: &dyn SimplifyInfo,
+) -> Result<ExprSimplifyResult> {
     Ok(ExprSimplifyResult::Original(args))
 }
-
 
 // ========== Generated template below this line ==========
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
-
 
 #[derive(Debug)]
 pub(super) struct regexp_like_varchar_joniregexpFunc {
@@ -69,7 +82,7 @@ pub(super) struct regexp_like_varchar_joniregexpFunc {
 }
 
 impl regexp_like_varchar_joniregexpFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -88,7 +101,6 @@ impl ScalarUDFImpl for regexp_like_varchar_joniregexpFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         regexp_like_varchar_joniregexp_return_type(arg_types)
     }
@@ -97,12 +109,7 @@ impl ScalarUDFImpl for regexp_like_varchar_joniregexpFunc {
         regexp_like_varchar_joniregexp_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         regexp_like_varchar_joniregexp_simplify(args, info)
     }
-
 }
