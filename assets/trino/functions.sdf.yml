@@ -3577,18 +3577,6 @@ function:
   cross-link: https://trino.io/docs/current/functions/string.html#length
 ---
 function:
-  name: length
-  parameters:
-  - datatype: array<$1>
-  optional-parameters: []
-  returns:
-    datatype: bigint
-  implemented-by: !datafusion
-    udf: array_length
-  section: string
-  cross-link: https://trino.io/docs/current/functions/string.html#length
----
-function:
   name: levenshtein_distance
   parameters:
   - datatype: varchar
