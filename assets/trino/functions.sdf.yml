@@ -21,6 +21,10 @@ function:
   implemented-by: !datafusion
   section: math
   cross-link: https://trino.io/docs/current/functions/math.html#abs
+  description: Returns the absolute value of `x`.
+  examples:
+    - input: SELECT abs(-1) as value;
+      output: "1"
 ---
 function:
   name: abs
