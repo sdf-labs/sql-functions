@@ -25,6 +25,10 @@ function:
   examples:
     - input: SELECT abs(-1) as value;
       output: "1"
+    - input: SELECT abs(1) as value;
+      output: "1"
+    - input: SELECT abs(0.999) as value;
+      output: "0.999"
 ---
 function:
   name: abs
