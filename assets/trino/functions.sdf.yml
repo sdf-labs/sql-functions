@@ -4548,20 +4548,6 @@ function:
     Returns the length of string in characters.
 ---
 function:
-  name: length
-  parameters:
-  - datatype: array<$1>
-  optional-parameters: []
-  returns:
-    datatype: bigint
-  implemented-by: !datafusion
-    udf: array_length
-  section: string
-  cross-link: https://trino.io/docs/current/functions/string.html#length
-  description: >
-    Returns the length of string in characters.
----
-function:
   name: levenshtein_distance
   parameters:
   - datatype: varchar
