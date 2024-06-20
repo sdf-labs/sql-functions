@@ -452,6 +452,13 @@ function:
   implemented-by: !datafusion
   section: aggregate
   cross-link: https://trino.io/docs/current/functions/aggregate.html#array_agg
+  description: >
+    Returns an array created from the input x elements.
+  examples:
+    - input: >
+        CREATE TABLE tbl AS VALUES (1), (5), (9); 
+        SELECT array_agg(column1) AS value FROM tbl;
+      output: "[1, 5, 9]"
 ---
 function:
   name: array_distinct
@@ -463,6 +470,14 @@ function:
   implemented-by: !datafusion
   section: array
   cross-link: https://trino.io/docs/current/functions/array.html#array_distinct
+  description: >
+    Remove duplicate values from the array x.
+  examples:
+    - input: SELECT array_distinct([1, 2, 3]) as value;
+      output: "[1, 2, 3]"
+    - input: SELECT array_distinct([1, 1, 2, 3]) as value;
+      output: "[1, 2, 3]"
+
 ---
 function:
   name: array_except
@@ -475,6 +490,11 @@ function:
   implemented-by: !datafusion
   section: array
   cross-link: https://trino.io/docs/current/functions/array.html#array_except
+  description: >
+    Returns an array of elements in x but not in y, without duplicates.
+  examples:
+    - input: SELECT array_except([1, 1, 2, 3], [1]) AS value;
+      output: "[2, 3]"
 ---
 function:
   name: array_intersect
@@ -487,6 +507,13 @@ function:
   implemented-by: !datafusion
   section: array
   cross-link: https://trino.io/docs/current/functions/array.html#array_intersect
+  description: >
+    Returns an array of the elements in the intersection of x and y, without duplicates.
+  examples:
+    - input: SELECT array_intersect([1, 1, 2, 3], [1]) AS value;
+      output: "[1]"
+    - input: SELECT array_intersect(['hello', 'world'], ['hello']) AS value;
+      output: "[hello]"
 ---
 function:
   name: array_join
@@ -500,6 +527,11 @@ function:
     udf: array_to_string
   section: array
   cross-link: https://trino.io/docs/current/functions/array.html#array_join
+  description: >
+    Concatenates the elements of the given array using the delimiter. Null elements are omitted in the result.
+  examples:
+    - input: SELECT array_join(['hello', 'world'], ' beautiful ') AS value;
+      output: hello beautiful world
 ---
 function:
   name: array_join
@@ -546,6 +578,12 @@ function:
   implemented-by: !datafusion
   section: array
   cross-link: https://trino.io/docs/current/functions/array.html#array_position
+  description: >
+    Returns the position of the first occurrence of the element in array x (or 0 if not found).
+  examples:
+    - input: SELECT array_position([1, 1, 2], 1) AS value;
+      output: "1"
+
 ---
 function:
   name: array_remove
@@ -559,6 +597,13 @@ function:
     udf: array_remove_all
   section: array
   cross-link: https://trino.io/docs/current/functions/array.html#array_remove
+  description: >
+    Remove all elements that equal element from array x.
+  examples:
+    - input: SELECT array_remove([1, 1, 2], 1) AS value;
+      output: "[2]"
+    - input: SELECT array_remove(['hello', 'bad', 'world'], 'bad') AS value;
+      output: "[hello, world]"
 ---
 function:
   name: array_sort
@@ -570,6 +615,9 @@ function:
   implemented-by: !datafusion
   section: array
   cross-link: https://trino.io/docs/current/functions/array.html#array_sort
+  description: >
+    Sorts and returns the array x. The elements of x must be orderable. Null elements will be placed at the end of the returned array.
+
 ---
 function:
   name: array_sort
@@ -593,6 +641,12 @@ function:
   implemented-by: !datafusion
   section: array
   cross-link: https://trino.io/docs/current/functions/array.html#array_union
+  description: >
+    Returns an array of the elements in the union of x and y, without duplicates.
+  examples:
+    - input: SELECT array_union([1, 1], [2]) as value;
+      output: "[1, 2]"
+    
 ---
 function:
   name: arrays_overlap
@@ -1087,6 +1141,11 @@ function:
   implemented-by: !datafusion
   section: array
   cross-link: https://trino.io/docs/current/functions/array.html#cardinality
+  description: >
+    Returns the cardinality (size) of the array x.
+  examples:
+    - input: SELECT cardinality([1, 1, 2]) as value;
+      output: "3"
 ---
 function:
   name: cardinality
@@ -1128,6 +1187,11 @@ function:
   implemented-by: !datafusion
   section: math
   cross-link: https://trino.io/docs/current/functions/math.html#cbrt
+  description: >
+    Returns the cube root of x.
+  examples:
+    - input: SELECT cbrt(328509) as value;
+      output: "69.0"
 ---
 function:
   name: ceil
@@ -1138,6 +1202,11 @@ function:
     datatype: bigint
   section: math
   cross-link: https://trino.io/docs/current/functions/math.html#ceil
+  description: >
+    This is an alias for ceiling().
+  examples:
+    - input: SELECT ceil(1.3) AS value;
+      output: "2.0"
 ---
 function:
   name: ceil
@@ -1338,6 +1407,19 @@ function:
   implemented-by: !datafusion
   section: conditional
   cross-link: https://trino.io/docs/current/functions/conditional.html#coalesce-function
+  description: 
+    Returns the first non-null value in the argument list. Like a CASE expression, arguments are only evaluated if necessary.
+  examples:
+    - input: >
+        CREATE TABLE tbl as VALUES
+        ('1', null),
+        ('2', '2'),
+        (null, '3');
+
+        SELECT 
+            COALESCE(column1, column2) as value
+        FROM tbl;
+      output: ('1', '2', '3')
 ---
 function:
   name: codepoint
@@ -1350,6 +1432,11 @@ function:
     udf: ascii
   section: string
   cross-link: https://trino.io/docs/current/functions/string.html#codepoint
+  description: >
+    Returns the Unicode code point of the only character of `string`.
+  examples:
+    - input: SELECT codepoint('😊') AS value;
+      output: "128522"
 ---
 function:
   name: color
@@ -1483,6 +1570,13 @@ function:
   implemented-by: !datafusion
   section: string
   cross-link: https://trino.io/docs/current/functions/string.html#concat_ws
+  description: >
+    Using the first array `string0` element as separator, returns the concatenation of all subsequent strings string1, string2, ...
+    If `string0`` is null, then the return value is null. Any null values provided in the arguments 
+    after the separator are skipped.
+  examples:
+    - input: SELECT concat_ws('😊', 'hey', 'there', 'people') AS value;
+      output: "hey😊there😊people"
 ---
 function:
   name: concat_ws
@@ -1508,6 +1602,13 @@ function:
     udf: array_has
   section: array
   cross-link: https://trino.io/docs/current/functions/array.html#contains
+  description: >
+    Takes an array and an element. Returns true if the array contains the element, false if not.
+  examples:
+    - input: SELECT contains(['hello', 'world'], 'hello') AS value;
+      output: "true"
+    - input: SELECT contains(['hello', 'world'], '😊') AS value;
+      output: "false"
 ---
 function:
   name: contains
@@ -1588,6 +1689,11 @@ function:
   implemented-by: !datafusion
   section: math
   cross-link: https://trino.io/docs/current/functions/math.html#cosh
+  description: >
+    Returns the hyperbolic cosine of the given value.
+  examples:
+    - input: SELECT cosh(0) AS value;
+      output: "1.0"
 ---
 function:
   name: cosine_similarity
@@ -1702,6 +1808,11 @@ function:
   implemented-by: !datafusion
   section: window
   cross-link: https://trino.io/docs/current/functions/window.html#cume_dist
+  description: >
+    Returns the cumulative distribution of a value in a group of values. 
+    The result is the number of rows preceding or peer with the row in the window ordering 
+    of the window partition divided by the total number of rows in the window partition. 
+    Thus, any tie values in the ordering will evaluate to the same distribution value.
 ---
 function:
   name: current_date
@@ -1714,6 +1825,11 @@ function:
   implemented-by: !datafusion
   section: date and time
   cross-link: https://trino.io/docs/current/functions/datetime.html#current_date
+  description: >
+    Returns the current date as of the start of the query.
+  examples:
+    - input: SELECT current_date() AS value;
+      output: "2024-06-20"
 ---
 function:
   name: current_groups
@@ -1744,6 +1860,11 @@ function:
     datatype: date
   section: date and time
   cross-link: https://trino.io/docs/current/functions/datetime.html#date
+  description: >
+    This `date(x)` is an alias for `CAST(x AS date)`.
+  examples:
+    - input: SELECT date('2024-06-20') AS value;
+      output: "2024-06-20"
 ---
 function:
   name: date
@@ -1805,6 +1926,21 @@ function:
   implemented-by: !rust
   section: date and time
   cross-link: https://trino.io/docs/current/functions/datetime.html#date_diff
+  description: >
+    Takes a unit, timestamp1, and timestamp2. Returns timestamp2 - timestamp1 expressed in terms of unit.
+  examples:
+    - input: SELECT date_diff('second', TIMESTAMP '2020-03-01 00:00:00', TIMESTAMP '2020-03-02 00:00:00') AS value;
+      output: "86400"
+    - input: SELECT date_diff('hour', TIMESTAMP '2020-03-01 00:00:00 UTC', TIMESTAMP '2020-03-02 00:00:00 UTC') AS value;
+      output: "24"
+    - input: SELECT date_diff('day', DATE '2020-03-01', DATE '2020-03-02') AS value;
+      output: "1"
+    - input: SELECT date_diff('second', TIMESTAMP '2020-06-01 12:30:45.000000000', TIMESTAMP '2020-06-02 12:30:45.123456789') AS value;
+      output: "86400"
+    - input: SELECT date_diff('millisecond', TIMESTAMP '2020-06-01 12:30:45.000000000', TIMESTAMP '2020-06-02 12:30:45.123456789') AS value;
+      output: "86400123"
+
+
 ---
 function:
   name: date_diff
@@ -3049,6 +3185,11 @@ function:
     udf: isnan
   section: math
   cross-link: https://trino.io/docs/current/functions/math.html#is_nan
+  description: >
+    Determine if `x` is not-a-number.
+  examples:
+    - input: select is_nan(1.1) as value;
+      output: "false"
 ---
 function:
   name: is_nan
