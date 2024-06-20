@@ -2438,6 +2438,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/datetime.html#date_format
   description: >
     Formats timestamp as a string using format.
+  examples:
+    - input: SELECT date_format(TIMESTAMP '2022-10-20 05:10:00', '%m-%d-%Y %H') AS value;
+      output: 10-20-2022 05
 ---
 # NB: Unlike Trino date_parse, DF to_timestamp appears to insist
 #     on the input and the format string to have info up to a second.
@@ -2455,6 +2458,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/datetime.html#date_parse
   description: >
     Parses string into a timestamp using format.
+  # examples:
+  #   - input: SELECT date_parse('2022/10/20/05', '%Y/%m/%d/%H');
+  #     output: 
 ---
 function:
   name: date_trunc
@@ -2467,7 +2473,14 @@ function:
   section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#date_trunc
   description: >
-    Returns x truncated to unit.
+    Returns the date x truncated to unit.
+  examples:
+    - input: SELECT date_trunc('day' , TIMESTAMP '2022-10-20 05:10:00') AS value;
+      output: "2022-10-20T00:00:00"
+    - input: SELECT date_trunc('month' , TIMESTAMP '2022-10-20 05:10:00') AS value;
+      output: "2022-10-01T00:00:00"
+    - input: SELECT date_trunc('year', TIMESTAMP '2022-10-20 05:10:00');
+      output: "2022-01-01T00:00:00"
 ---
 function:
   name: date_trunc
@@ -2508,6 +2521,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/datetime.html#day
   description: >
     Returns the day of the month from x.
+  examples:
+    - input: SELECT day(date('2022-10-20')) AS value;
+      output: "20"
 ---
 function:
   name: day
@@ -2633,6 +2649,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/math.html#degrees
   description: >
     Converts angle x in radians to degrees.
+  examples:
+    - input: SELECT degrees(3.14159) AS value;
+      output: "179.9998547447946"
 ---
 function:
   name: dense_rank
@@ -2725,6 +2744,9 @@ function:
     length, whereas
     the subscript operator would fail in such a case.
     If index < 0, element_at accesses elements from the last to the first.
+  examples:
+    - input: SELECT element_at([3, 5, 7], 2) AS value;
+      output: "5"
 ---
 function:
   name: element_at
