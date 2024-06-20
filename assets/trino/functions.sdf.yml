@@ -1690,7 +1690,7 @@ function:
 #   optional-parameters: []
 #   returns:
 #     datatype: varchar
-  section: machine learning
+  section: ml
   cross-link: https://trino.io/docs/current/functions/ml.html#classify
   description: >
     Returns a label predicted by the given classifier SVM model.
@@ -2195,7 +2195,7 @@ function:
   special: true
   volatility: stable
   implemented-by: !datafusion
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#current_date
   description: >
     Returns the current date as of the start of the query.
@@ -2219,7 +2219,7 @@ function:
   returns:
     datatype: varchar
   volatility: stable
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#current_timezone
   description: >
     Returns the current time zone in the format defined by IANA
@@ -2232,7 +2232,7 @@ function:
   optional-parameters: []
   returns:
     datatype: date
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#date
   description: >
     This is an alias for CAST(x AS date).
@@ -2246,7 +2246,7 @@ function:
     datatype: date
   implemented-by: !datafusion
     udf: to_date
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#date
   description: >
     This is an alias for CAST(x AS date).
@@ -2260,7 +2260,7 @@ function:
   optional-parameters: []
   returns:
     datatype: date
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#date_add
   description: >
     Adds an interval value of type unit to timestamp.
@@ -2275,7 +2275,7 @@ function:
   optional-parameters: []
   returns:
     datatype: time(p)
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#date_add
   description: >
     Adds an interval value of type unit to timestamp.
@@ -2290,7 +2290,7 @@ function:
   optional-parameters: []
   returns:
     datatype: timestamp(p)
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#date_add
   description: >
     Adds an interval value of type unit to timestamp.
@@ -2306,7 +2306,7 @@ function:
   returns:
     datatype: bigint
   implemented-by: !rust
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#date_diff
   description: >
     Returns timestamp2 - timestamp1 expressed in terms of unit.
@@ -2321,7 +2321,7 @@ function:
   returns:
     datatype: bigint
   implemented-by: !rust
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#date_diff
   description: >
     Returns timestamp2 - timestamp1 expressed in terms of unit.
@@ -2336,7 +2336,7 @@ function:
   returns:
     datatype: bigint
   implemented-by: !rust
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#date_diff
   description: >
     Returns timestamp2 - timestamp1 expressed in terms of unit.
@@ -2351,7 +2351,7 @@ function:
     datatype: varchar
   implemented-by: !datafusion
     udf: to_char
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#date_format
   description: >
     Formats timestamp as a string using format.
@@ -2381,7 +2381,7 @@ function:
   optional-parameters: []
   returns:
     datatype: time(p)
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#date_trunc
   description: >
     Returns x truncated to unit.
@@ -2395,7 +2395,7 @@ function:
   returns:
     datatype: timestamp(p)
   implemented-by: !datafusion
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#date_trunc
   description: >
     Returns x truncated to unit.
@@ -2408,7 +2408,7 @@ function:
   optional-parameters: []
   returns:
     datatype: date
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#date_trunc
   description: >
     Returns x truncated to unit.
@@ -2732,7 +2732,7 @@ function:
   optional-parameters: []
   returns:
     datatype: map<bigint, double>
-  section: machine learning
+  section: ml
   cross-link: https://trino.io/docs/current/functions/ml.html#features
   description: >
     Returns the map representing the feature vector.
@@ -2745,7 +2745,7 @@ function:
   optional-parameters: []
   returns:
     datatype: map<bigint, double>
-  section: machine learning
+  section: ml
   cross-link: https://trino.io/docs/current/functions/ml.html#features
   description: >
     Returns the map representing the feature vector.
@@ -2759,7 +2759,7 @@ function:
   optional-parameters: []
   returns:
     datatype: map<bigint, double>
-  section: machine learning
+  section: ml
   cross-link: https://trino.io/docs/current/functions/ml.html#features
   description: >
     Returns the map representing the feature vector.
@@ -2774,7 +2774,7 @@ function:
   optional-parameters: []
   returns:
     datatype: map<bigint, double>
-  section: machine learning
+  section: ml
   cross-link: https://trino.io/docs/current/functions/ml.html#features
   description: >
     Returns the map representing the feature vector.
@@ -2790,24 +2790,7 @@ function:
   optional-parameters: []
   returns:
     datatype: map<bigint, double>
-  section: machine learning
-  cross-link: https://trino.io/docs/current/functions/ml.html#features
-  description: >
-    Returns the map representing the feature vector.
----
-function:
-  name: features
-  parameters:
-  - datatype: double
-  - datatype: double
-  - datatype: double
-  - datatype: double
-  - datatype: double
-  - datatype: double
-  optional-parameters: []
-  returns:
-    datatype: map<bigint, double>
-  section: machine learning
+  section: ml
   cross-link: https://trino.io/docs/current/functions/ml.html#features
   description: >
     Returns the map representing the feature vector.
@@ -2821,11 +2804,10 @@ function:
   - datatype: double
   - datatype: double
   - datatype: double
-  - datatype: double
   optional-parameters: []
   returns:
     datatype: map<bigint, double>
-  section: machine learning
+  section: ml
   cross-link: https://trino.io/docs/current/functions/ml.html#features
   description: >
     Returns the map representing the feature vector.
@@ -2840,11 +2822,10 @@ function:
   - datatype: double
   - datatype: double
   - datatype: double
-  - datatype: double
   optional-parameters: []
   returns:
     datatype: map<bigint, double>
-  section: machine learning
+  section: ml
   cross-link: https://trino.io/docs/current/functions/ml.html#features
   description: >
     Returns the map representing the feature vector.
@@ -2860,11 +2841,10 @@ function:
   - datatype: double
   - datatype: double
   - datatype: double
-  - datatype: double
   optional-parameters: []
   returns:
     datatype: map<bigint, double>
-  section: machine learning
+  section: ml
   cross-link: https://trino.io/docs/current/functions/ml.html#features
   description: >
     Returns the map representing the feature vector.
@@ -2881,11 +2861,31 @@ function:
   - datatype: double
   - datatype: double
   - datatype: double
+  optional-parameters: []
+  returns:
+    datatype: map<bigint, double>
+  section: ml
+  cross-link: https://trino.io/docs/current/functions/ml.html#features
+  description: >
+    Returns the map representing the feature vector.
+---
+function:
+  name: features
+  parameters:
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
+  - datatype: double
   - datatype: double
   optional-parameters: []
   returns:
     datatype: map<bigint, double>
-  section: machine learning
+  section: ml
   cross-link: https://trino.io/docs/current/functions/ml.html#features
   description: >
     Returns the map representing the feature vector.
@@ -3027,7 +3027,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#format_datetime
   description: >
     Formats timestamp as a string using format.
@@ -3256,7 +3256,7 @@ function:
   optional-parameters: []
   returns:
     datatype: date
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#from_iso8601_date
   description: >
     Parses the ISO 8601 formatted date string into a date. The date can
@@ -3270,7 +3270,7 @@ function:
   optional-parameters: []
   returns:
     datatype: timestamp
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#from_iso8601_timestamp
   description: >
     Parses the ISO 8601 formatted date string, optionally with time and time
@@ -3299,7 +3299,7 @@ function:
   returns:
     datatype: timestamp
   implemented-by: !datafusion
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#from_unixtime
   description: >
     Returns the UNIX timestamp unixtime as a timestamp with time zone. unixtime is
@@ -3315,7 +3315,7 @@ function:
   optional-parameters: []
   returns:
     datatype: timestamp
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#from_unixtime
   description: >
     Returns the UNIX timestamp unixtime as a timestamp with time zone. unixtime is
@@ -3330,7 +3330,7 @@ function:
   optional-parameters: []
   returns:
     datatype: timestamp
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#from_unixtime
   description: >
     Returns the UNIX timestamp unixtime as a timestamp with time zone. unixtime is
@@ -3344,7 +3344,7 @@ function:
   optional-parameters: []
   returns:
     datatype: timestamp(9)
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#from_unixtime_nanos
   description: >
     Returns the UNIX timestamp unixtime as a timestamp with time zone. unixtime is
@@ -3358,7 +3358,7 @@ function:
   optional-parameters: []
   returns:
     datatype: timestamp(9)
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#from_unixtime_nanos
   description: >
     Returns the UNIX timestamp unixtime as a timestamp with time zone. unixtime is
@@ -3592,7 +3592,7 @@ function:
   optional-parameters: []
   returns:
     datatype: map<bigint, smallint>
-  section: set digest
+  section: setdigest
   cross-link: https://trino.io/docs/current/functions/setdigest.html#hash_counts
   description: >
     Returns a map containing the Murmur3Hash128
@@ -3710,7 +3710,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#human_readable_seconds
   description: >
     Formats the double value of seconds into a human readable string containing
@@ -3750,7 +3750,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  section: set digest
+  section: setdigest
   cross-link: https://trino.io/docs/current/functions/setdigest.html#intersection_cardinality
   description: >
     Returns the estimation for the cardinality of the intersection of the two set
@@ -3875,7 +3875,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
-  section: set digest
+  section: setdigest
   cross-link: https://trino.io/docs/current/functions/setdigest.html#jaccard_index
   description: >
     Returns the estimation of Jaccard index for
@@ -4248,7 +4248,7 @@ function:
   optional-parameters: []
   returns:
     datatype: date
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#last_day_of_month
   description: >
     Returns the last day of the month.
@@ -4260,7 +4260,7 @@ function:
   optional-parameters: []
   returns:
     datatype: date
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#last_day_of_month
   description: >
     Returns the last day of the month.
@@ -4352,7 +4352,7 @@ function:
   optional-parameters: []
   returns:
     datatype: classifier
-  section: machine learning
+  section: ml
   cross-link: https://trino.io/docs/current/functions/ml.html#learn_classifier
   description: >
     Returns an SVM-based classifier model, trained with the given label and feature
@@ -4367,7 +4367,7 @@ function:
   optional-parameters: []
   returns:
     datatype: classifier
-  section: machine learning
+  section: ml
   cross-link: https://trino.io/docs/current/functions/ml.html#learn_classifier
   description: >
     Returns an SVM-based classifier model, trained with the given label and feature
@@ -4382,7 +4382,7 @@ function:
   optional-parameters: []
   returns:
     datatype: classifier
-  section: machine learning
+  section: ml
   cross-link: https://trino.io/docs/current/functions/ml.html#learn_classifier
   description: >
     Returns an SVM-based classifier model, trained with the given label and feature
@@ -4398,7 +4398,7 @@ function:
   optional-parameters: []
   returns:
     datatype: classifier
-  section: machine learning
+  section: ml
   cross-link: https://trino.io/docs/current/functions/ml.html#learn_libsvm_classifier
   description: >
     Returns an SVM-based classifier model, trained with the given label and feature
@@ -4415,7 +4415,7 @@ function:
   optional-parameters: []
   returns:
     datatype: classifier
-  section: machine learning
+  section: ml
   cross-link: https://trino.io/docs/current/functions/ml.html#learn_libsvm_classifier
   description: >
     Returns an SVM-based classifier model, trained with the given label and feature
@@ -4432,7 +4432,7 @@ function:
   optional-parameters: []
   returns:
     datatype: classifier
-  section: machine learning
+  section: ml
   cross-link: https://trino.io/docs/current/functions/ml.html#learn_libsvm_classifier
   description: >
     Returns an SVM-based classifier model, trained with the given label and feature
@@ -4449,7 +4449,7 @@ function:
   optional-parameters: []
   returns:
     datatype: regressor
-  section: machine learning
+  section: ml
   cross-link: https://trino.io/docs/current/functions/ml.html#learn_libsvm_regressor
   description: >
     Returns an SVM-based regressor model, trained with the given target and feature
@@ -4466,7 +4466,7 @@ function:
   optional-parameters: []
   returns:
     datatype: regressor
-  section: machine learning
+  section: ml
   cross-link: https://trino.io/docs/current/functions/ml.html#learn_libsvm_regressor
   description: >
     Returns an SVM-based regressor model, trained with the given target and feature
@@ -4482,7 +4482,7 @@ function:
   optional-parameters: []
   returns:
     datatype: regressor
-  section: machine learning
+  section: ml
   cross-link: https://trino.io/docs/current/functions/ml.html#learn_regressor
   description: >
     Returns an SVM-based regressor model, trained with the given target and feature
@@ -4497,7 +4497,7 @@ function:
   optional-parameters: []
   returns:
     datatype: regressor
-  section: machine learning
+  section: ml
   cross-link: https://trino.io/docs/current/functions/ml.html#learn_regressor
   description: >
     Returns an SVM-based regressor model, trained with the given target and feature
@@ -4813,7 +4813,7 @@ function:
   optional-parameters: []
   returns:
     datatype: setdigest
-  section: set digest
+  section: setdigest
   cross-link: https://trino.io/docs/current/functions/setdigest.html#make_set_digest
   description: >
     Composes all input values of x into a setdigest.
@@ -5089,7 +5089,7 @@ function:
   optional-parameters: []
   returns:
     datatype: setdigest
-  section: set digest
+  section: setdigest
   cross-link: https://trino.io/docs/current/functions/setdigest.html#merge_set_digest
   description: >
     Returns the setdigest of the aggregate union of the individual setdigest
@@ -5482,7 +5482,7 @@ function:
     datatype: timestamp
   volatility: stable
   implemented-by: !datafusion
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#now
   description: >
     This is an alias for current_timestamp.
@@ -5678,7 +5678,7 @@ function:
   optional-parameters: []
   returns:
     datatype: interval day to second
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#parse_duration
   description: >
     Parses string of format value unit into an interval, where
@@ -5766,7 +5766,7 @@ function:
   optional-parameters: []
   returns:
     datatype: qdigest
-  section: quantile digest
+  section: qdigest
   cross-link: https://trino.io/docs/current/functions/qdigest.html#qdigest_agg
   description: >
     Returns the qdigest which is composed of  all input values of x.
@@ -5780,7 +5780,7 @@ function:
   optional-parameters: []
   returns:
     datatype: qdigest
-  section: quantile digest
+  section: qdigest
   cross-link: https://trino.io/docs/current/functions/qdigest.html#qdigest_agg
   description: >
     Returns the qdigest which is composed of  all input values of x.
@@ -5795,7 +5795,7 @@ function:
   optional-parameters: []
   returns:
     datatype: qdigest
-  section: quantile digest
+  section: qdigest
   cross-link: https://trino.io/docs/current/functions/qdigest.html#qdigest_agg
   description: >
     Returns the qdigest which is composed of  all input values of x.
@@ -5808,21 +5808,7 @@ function:
   optional-parameters: []
   returns:
     datatype: qdigest
-  section: quantile digest
-  cross-link: https://trino.io/docs/current/functions/qdigest.html#qdigest_agg
-  description: >
-    Returns the qdigest which is composed of  all input values of x.
----
-function:
-  name: qdigest_agg
-  kind: aggregate
-  parameters:
-  - datatype: double
-  - datatype: bigint
-  optional-parameters: []
-  returns:
-    datatype: qdigest
-  section: quantile digest
+  section: qdigest
   cross-link: https://trino.io/docs/current/functions/qdigest.html#qdigest_agg
   description: >
     Returns the qdigest which is composed of  all input values of x.
@@ -5833,11 +5819,25 @@ function:
   parameters:
   - datatype: double
   - datatype: bigint
+  optional-parameters: []
+  returns:
+    datatype: qdigest
+  section: qdigest
+  cross-link: https://trino.io/docs/current/functions/qdigest.html#qdigest_agg
+  description: >
+    Returns the qdigest which is composed of  all input values of x.
+---
+function:
+  name: qdigest_agg
+  kind: aggregate
+  parameters:
+  - datatype: double
+  - datatype: bigint
   - datatype: double
   optional-parameters: []
   returns:
     datatype: qdigest
-  section: quantile digest
+  section: qdigest
   cross-link: https://trino.io/docs/current/functions/qdigest.html#qdigest_agg
   description: >
     Returns the qdigest which is composed of  all input values of x.
@@ -5850,7 +5850,7 @@ function:
   optional-parameters: []
   returns:
     datatype: qdigest
-  section: quantile digest
+  section: qdigest
   cross-link: https://trino.io/docs/current/functions/qdigest.html#qdigest_agg
   description: >
     Returns the qdigest which is composed of  all input values of x.
@@ -5864,7 +5864,7 @@ function:
   optional-parameters: []
   returns:
     datatype: qdigest
-  section: quantile digest
+  section: qdigest
   cross-link: https://trino.io/docs/current/functions/qdigest.html#qdigest_agg
   description: >
     Returns the qdigest which is composed of  all input values of x.
@@ -5879,7 +5879,7 @@ function:
   optional-parameters: []
   returns:
     datatype: qdigest
-  section: quantile digest
+  section: qdigest
   cross-link: https://trino.io/docs/current/functions/qdigest.html#qdigest_agg
   description: >
     Returns the qdigest which is composed of  all input values of x.
@@ -6280,7 +6280,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  section: regular expression
+  section: regexp
   cross-link: https://trino.io/docs/current/functions/regexp.html#regexp_count
   description: >
     Returns the number of occurrence of pattern in string.
@@ -6294,7 +6294,7 @@ function:
   returns:
     datatype: varchar
   implemented-by: !rust
-  section: regular expression
+  section: regexp
   cross-link: https://trino.io/docs/current/functions/regexp.html#regexp_extract
   description: >
     Returns the first substring matched by the regular expression pattern
@@ -6309,7 +6309,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  section: regular expression
+  section: regexp
   cross-link: https://trino.io/docs/current/functions/regexp.html#regexp_extract
   description: >
     Returns the first substring matched by the regular expression pattern
@@ -6323,7 +6323,7 @@ function:
   optional-parameters: []
   returns:
     datatype: array<varchar>
-  section: regular expression
+  section: regexp
   cross-link: https://trino.io/docs/current/functions/regexp.html#regexp_extract_all
   description: >
     Returns the substring(s) matched by the regular expression pattern
@@ -6338,7 +6338,7 @@ function:
   optional-parameters: []
   returns:
     datatype: array<varchar>
-  section: regular expression
+  section: regexp
   cross-link: https://trino.io/docs/current/functions/regexp.html#regexp_extract_all
   description: >
     Returns the substring(s) matched by the regular expression pattern
@@ -6353,7 +6353,7 @@ function:
   returns:
     datatype: boolean
   implemented-by: !rust
-  section: regular expression
+  section: regexp
   cross-link: https://trino.io/docs/current/functions/regexp.html#regexp_like
   description: >
     Evaluates the regular expression pattern and determines if it is
@@ -6367,7 +6367,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  section: regular expression
+  section: regexp
   cross-link: https://trino.io/docs/current/functions/regexp.html#regexp_position
   description: >
     Returns the index of the first occurrence (counting from 1) of pattern in string.
@@ -6382,7 +6382,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  section: regular expression
+  section: regexp
   cross-link: https://trino.io/docs/current/functions/regexp.html#regexp_position
   description: >
     Returns the index of the first occurrence (counting from 1) of pattern in string.
@@ -6398,7 +6398,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  section: regular expression
+  section: regexp
   cross-link: https://trino.io/docs/current/functions/regexp.html#regexp_position
   description: >
     Returns the index of the first occurrence (counting from 1) of pattern in string.
@@ -6458,7 +6458,7 @@ function:
   optional-parameters: []
   returns:
     datatype: array<varchar>
-  section: regular expression
+  section: regexp
   cross-link: https://trino.io/docs/current/functions/regexp.html#regexp_split
   description: >
     Splits string using the regular expression pattern and returns an
@@ -6532,7 +6532,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
-  section: machine learning
+  section: ml
   cross-link: https://trino.io/docs/current/functions/ml.html#regress
   description: >
     Returns a predicted target value by the given regressor SVM model.
@@ -8915,7 +8915,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#to_iso8601
   description: >
     Formats x as an ISO 8601 string. x can be date, timestamp, or
@@ -8928,7 +8928,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#to_iso8601
   description: >
     Formats x as an ISO 8601 string. x can be date, timestamp, or
@@ -8941,7 +8941,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#to_milliseconds
   description: >
     Returns the day-to-second interval as milliseconds.
@@ -8989,7 +8989,7 @@ function:
   returns:
     datatype: double
   implemented-by: !datafusion
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#to_unixtime
   description: >
     Returns timestamp as a UNIX timestamp.
@@ -9342,7 +9342,7 @@ function:
 #   optional-parameters: []
 #   returns:
 #     datatype: double
-  section: quantile digest
+  section: qdigest
   cross-link: https://trino.io/docs/current/functions/qdigest.html#value_at_quantile
   description: >
     Returns the approximate percentile value from the quantile digest given
@@ -9365,7 +9365,7 @@ function:
 #   optional-parameters: []
 #   returns:
 #     datatype: real
-  section: quantile digest
+  section: qdigest
   cross-link: https://trino.io/docs/current/functions/qdigest.html#value_at_quantile
   description: >
     Returns the approximate percentile value from the quantile digest given
@@ -9389,7 +9389,7 @@ function:
 #   optional-parameters: []
 #   returns:
 #     datatype: array<double>
-  section: quantile digest
+  section: qdigest
   cross-link: https://trino.io/docs/current/functions/qdigest.html#values_at_quantiles
   description: >
     Returns the approximate percentile values as an array given the input
@@ -9413,7 +9413,7 @@ function:
 #   optional-parameters: []
 #   returns:
 #     datatype: array<real>
-  section: quantile digest
+  section: qdigest
   cross-link: https://trino.io/docs/current/functions/qdigest.html#values_at_quantiles
   description: >
     Returns the approximate percentile values as an array given the input
@@ -9616,7 +9616,7 @@ function:
   optional-parameters: []
   returns:
     datatype: timestamp(p)
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#with_timezone
   description: >
     Returns the timestamp specified in timestamp with the time zone
@@ -9869,7 +9869,7 @@ function:
   special: true
   volatility: stable
   implemented-by: !datafusion
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#current_time
   description: >
     Returns the current time with time zone as of the start of the query.
@@ -9885,7 +9885,7 @@ function:
   implemented-by: !datafusion
     udf: now
 # DF now() carries a time zone (as current_timestamp does in Trino), but it is hard-wired as UTC currently
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#current_timestamp
   description: >
     Returns the current timestamp with time zone as of the start of the query,
@@ -9902,7 +9902,7 @@ function:
   volatility: stable
   implemented-by: !rust
     name: current_timestamp_bigint_0
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#current_timestamp
   description: >
     Returns the current timestamp with time zone as of the start of the query,
@@ -9919,7 +9919,7 @@ function:
   volatility: stable
   implemented-by: !rust
     name: current_timestamp_bigint_3
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#current_timestamp
   description: >
     Returns the current timestamp with time zone as of the start of the query,
@@ -9936,7 +9936,7 @@ function:
   volatility: stable
   implemented-by: !rust
     name: current_timestamp_bigint_6
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#current_timestamp
   description: >
     Returns the current timestamp with time zone as of the start of the query,
@@ -9953,7 +9953,7 @@ function:
   volatility: stable
   implemented-by: !rust
     name: current_timestamp_bigint_9
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#current_timestamp
   description: >
     Returns the current timestamp with time zone as of the start of the query,
@@ -9967,7 +9967,7 @@ function:
     datatype: time
   special: true
   volatility: stable
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#localtime
   description: >
     Returns the current time as of the start of the query.
@@ -9980,7 +9980,7 @@ function:
     datatype: timestamp
   special: true
   volatility: stable
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#localtimestamp
   description: >
     Returns the current timestamp as of the start of the query, with 3
@@ -9997,7 +9997,7 @@ function:
   volatility: stable
   implemented-by: !rust
     name: localtimestamp_bigint_0
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#localtimestamp
   description: >
     Returns the current timestamp as of the start of the query, with 3
@@ -10014,7 +10014,7 @@ function:
   volatility: stable
   implemented-by: !rust
     name: localtimestamp_bigint_3
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#localtimestamp
   description: >
     Returns the current timestamp as of the start of the query, with 3
@@ -10031,7 +10031,7 @@ function:
   volatility: stable
   implemented-by: !rust
     name: localtimestamp_bigint_6
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#localtimestamp
   description: >
     Returns the current timestamp as of the start of the query, with 3
@@ -10048,7 +10048,7 @@ function:
   volatility: stable
   implemented-by: !rust
     name: localtimestamp_bigint_9
-  section: date and time
+  section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#localtimestamp
   description: >
     Returns the current timestamp as of the start of the query, with 3
