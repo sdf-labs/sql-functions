@@ -4791,6 +4791,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/math.html#log
   description: >
     Returns the base b logarithm of x.
+  examples:
+    - input: SELECT log(2.19, 1) AS value;
+      output: "0.0"
 ---
 function:
   name: log10
@@ -5455,6 +5458,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/datetime.html#month
   description: >
     Returns the month of the year from x.
+  examples:
+    - input: SELECT month(cast ('2024-11-01' AS date )) AS value;
+      output: "11"
 ---
 function:
   name: month
@@ -5664,6 +5670,11 @@ function:
   cross-link: https://trino.io/docs/current/functions/conditional.html#nullif-function
   description: >
     Returns null if value1 equals value2, otherwise returns value1.
+  examples:
+    - input: SELECT nullif(1, 1) AS value;
+      output: "NULL"
+    - input: SELECT nullif(2, 1) AS value;
+      output: "2"
 ---
 function:
   name: numeric_histogram
@@ -6089,6 +6100,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/math.html#radians
   description: >
     Converts angle x in degrees to radians.
+  examples:
+    - input: SELECT radians(360) AS value;
+      output: "6.283185307179586"
 ---
 function:
   name: rand
@@ -6102,6 +6116,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/math.html#rand
   description: >
     This is an alias for random().
+  examples:
+    - input: SELECT rand() AS value;
+      output: "0.20138668902074985"
 ---
 function:
   name: rand
@@ -7403,6 +7420,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/math.html#sinh
   description: >
     Returns the hyperbolic sine of x.
+  examples:
+    - input: SELECT sinh(1) AS value;
+      output: "1.1752011936438014"
 ---
 function:
   name: skewness
