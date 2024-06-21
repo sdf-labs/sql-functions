@@ -2666,6 +2666,13 @@ function:
   description: >
     Returns the rank of a value in a group of values. This is similar to
     rank(), except that tie values do not produce gaps in the sequence.
+  examples:
+    - input: >
+        SELECT name, DENSE_RANK() OVER (ORDER BY score) AS dense_rank_col
+        FROM (
+            VALUES ('A', 10), ('B', 20), ('C', 20), ('D', 30)
+        ) AS t (name, score)
+      output: ('A', 1), ('B', 2), ('C', 2), ('D', 3)
 ---
 function:
   name: dow
@@ -3849,6 +3856,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/teradata.html#index
   description: >
     Alias for strpos() function.
+  examples:
+    - input: SELECT INDEX('abcdefg', 'c')
+      output: "3"
 ---
 function:
   name: infinity
@@ -4319,6 +4329,13 @@ function:
     null is returned.
     The lag() function requires that the window ordering be specified.
     Window frame must not be specified.
+  examples:
+    - input: >
+        SELECT name, score, LAG(score) OVER (PARTITION BY name) AS lead_score
+        FROM (
+            VALUES ('A', 10), ('A', 20), ('D', 20), ('D', 30)
+        ) AS t (name, score)
+      output: ('A', 10, ), ('A', 20, 10), ('D', 20, ), ('D', 30, 20)
 ---
 function:
   name: lag
@@ -4340,6 +4357,13 @@ function:
     null is returned.
     The lag() function requires that the window ordering be specified.
     Window frame must not be specified.
+  examples:
+    - input: >
+        SELECT name, score, LAG(score) OVER (PARTITION BY name) AS lead_score
+        FROM (
+            VALUES ('A', 10), ('A', 20), ('D', 20), ('D', 30)
+        ) AS t (name, score)
+      output: ('A', 10, ), ('A', 20, 10), ('D', 20, ), ('D', 30, 20)
 ---
 function:
   name: lag
@@ -4362,6 +4386,13 @@ function:
     null is returned.
     The lag() function requires that the window ordering be specified.
     Window frame must not be specified.
+  examples:
+    - input: >
+        SELECT name, score, LAG(score) OVER (PARTITION BY name) AS lead_score
+        FROM (
+            VALUES ('A', 10), ('A', 20), ('D', 20), ('D', 30)
+        ) AS t (name, score)
+      output: ('A', 10, ), ('A', 20, 10), ('D', 20, ), ('D', 30, 20)
 ---
 function:
   name: last_day_of_month
@@ -4421,6 +4452,13 @@ function:
     null is returned.
     The lead() function requires that the window ordering be specified.
     Window frame must not be specified.
+  examples:
+    - input: >
+        SELECT name, score, LEAD(score) OVER (PARTITION BY name) AS lead_score
+        FROM (
+            VALUES ('A', 10), ('A', 20), ('D', 20), ('D', 30)
+        ) AS t (name, score)
+      output: ('A', 10, 20), ('A', 20, ), ('D', 20, 30), ('D', 30, )
 ---
 function:
   name: lead
@@ -4442,6 +4480,13 @@ function:
     null is returned.
     The lead() function requires that the window ordering be specified.
     Window frame must not be specified.
+  examples:
+    - input: >
+        SELECT name, score, LEAD(score) OVER (PARTITION BY name) AS lead_score
+        FROM (
+            VALUES ('A', 10), ('A', 20), ('D', 20), ('D', 30)
+        ) AS t (name, score)
+      output: ('A', 10, 20), ('A', 20, ), ('D', 20, 30), ('D', 30, )
 ---
 function:
   name: lead
@@ -4464,6 +4509,13 @@ function:
     null is returned.
     The lead() function requires that the window ordering be specified.
     Window frame must not be specified.
+  examples:
+    - input: >
+        SELECT name, score, LEAD(score) OVER (PARTITION BY name) AS lead_score
+        FROM (
+            VALUES ('A', 10), ('A', 20), ('D', 20), ('D', 30)
+        ) AS t (name, score)
+      output: ('A', 10, 20), ('A', 20, ), ('D', 20, 30), ('D', 30, )
 ---
 function:
   name: learn_classifier
@@ -4638,6 +4690,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/comparison.html#least
   description: >
     Returns the smallest of the provided values.
+  examples:
+    - input: SELECT LEAST(5,6,7,1,2,3,4) -- list of columns or values
+      output: "1"
 ---
 function:
   name: length
@@ -5655,6 +5710,13 @@ function:
     If the number of rows in the partition does not divide evenly into the
     number of buckets, then the remainder values are distributed one per
     bucket, starting with the first bucket.
+  examples:
+    - input: >
+        SELECT name, NTILE(5) OVER (ORDER BY score) AS ntile_col
+        FROM (
+            VALUES ('A', 10), ('A', 20), ('A', 30), ('A', 40)
+        ) AS t (name, score)
+      output: ('A', 1), ('A', 2), ('D', 3), ('D', 4) 
 ---
 function:
   name: nullif
@@ -5844,6 +5906,13 @@ function:
     Returns the percentage ranking of a value in group of values. The result
     is (r - 1) / (n - 1) where r is the rank() of the row and
     n is the total number of rows in the window partition.
+  examples:
+    - input: >
+        SELECT name, PERCENT_RANK() OVER (ORDER BY score) AS percent_rank_col
+        FROM (
+            VALUES ('A', 10), ('B', 20), ('C', 20), ('D', 30)
+        ) AS t (name, score)
+      output: ('A', 0.0), ('B', 0.33333333), ('C', 0.33333333), ('D', 1.0)
 ---
 function:
   name: pi
@@ -5856,6 +5925,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/math.html#pi
   description: >
     Returns the constant Pi.
+  examples:
+    - input: SELECT PI()
+      output: "3.141592653589793"
 ---
 function:
   name: pow
@@ -6370,6 +6442,13 @@ function:
     the number of rows preceding the row that are not peer with the row.
     Thus, tie values in the ordering will produce gaps in the sequence.
     The ranking is performed for each window partition.
+  examples:
+    - input: >
+        SELECT name, RANK() OVER (ORDER BY score) AS rank_col
+        FROM (
+            VALUES ('A', 10), ('B', 20), ('C', 20), ('D', 30)
+        ) AS t (name, score)
+      output: ('A', 1), ('B', 2), ('C', 2), ('D', 4)
 ---
 function:
   name: reduce
@@ -6438,6 +6517,9 @@ function:
   description: >
     Returns the first substring matched by the regular expression pattern
     in string.
+  examples:
+    - input: SELECT REGEXP_EXTRACT('email_address@gmail.com', '@(.*?)\.'
+      output: gmail
 ---
 function:
   name: regexp_extract
@@ -6497,6 +6579,10 @@ function:
   description: >
     Evaluates the regular expression pattern and determines if it is
     contained within string.
+  examples:
+    - input: SELECT REGEXP_like('email_address@gmail.com', '.*@.*\..*') AS is_valid_email
+      output: "TRUE"
+
 ---
 function:
   name: regexp_position
@@ -6557,6 +6643,9 @@ function:
   description: >
     Removes every instance of the substring matched by the regular expression
     pattern from string.
+  examples:
+    - input: SELECT REGEXP_REPLACE('text foo another text', 'foo', 'bar')
+      output: text bar another text
 ---
 function:
   name: regexp_replace
@@ -6572,6 +6661,9 @@ function:
   description: >
     Removes every instance of the substring matched by the regular expression
     pattern from string.
+  examples:
+    - input: SELECT REGEXP_REPLACE('text foo another text', 'foo', 'bar')
+      output: text bar another text
 ---
 function:
   name: regexp_replace
@@ -6588,6 +6680,9 @@ function:
   description: >
     Removes every instance of the substring matched by the regular expression
     pattern from string.
+  examples:
+    - input: SELECT REGEXP_REPLACE('text foo another text', 'foo', 'bar')
+      output: text bar another text
 ---
 function:
   name: regexp_split
@@ -7037,6 +7132,13 @@ function:
   description: >
     Returns a unique, sequential number for each row, starting with one,
     according to the ordering of rows within the window partition.
+  examples:
+    - input: >
+        SELECT name, ROW_NUMBER() OVER (ORDER BY score) AS row_number_col
+        FROM (
+            VALUES ('A', 10), ('B', 20), ('C', 20), ('D', 30)
+        ) AS t (name, score)
+      output: ('A', 1), ('B', 2), ('C', 3), ('D', 4)
 ---
 function:
   name: rpad
