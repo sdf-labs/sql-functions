@@ -3034,6 +3034,14 @@ function:
   cross-link: https://trino.io/docs/current/functions/array.html#flatten
   description: >
     Flattens an array(array(T)) to an array(T) by concatenating the contained arrays.
+  examples:
+    - input: >
+        SELECT
+        flatten(
+            ARRAY [ARRAY [1, 2],
+            ARRAY [3, 4]])
+        AS value;
+      output: "[1, 2, 3, 4]"
 ---
 function:
   name: floor
@@ -3410,6 +3418,9 @@ function:
     Returns the UNIX timestamp unixtime as a timestamp with time zone. unixtime is
     the
     number of seconds since 1970-01-01 00.00.00 UTC.
+  examples:
+    - input: SELECT from_unixtime(999919900) AS value;
+      output: "2001-09-08T03:31:40"
 ---
 function:
   name: from_unixtime
@@ -3665,6 +3676,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/comparison.html#greatest
   description: >
     Returns the largest of the provided values.
+  examples:
+    - input: SELECT greatest(1, 2, 3) AS value;
+      output: "3"
 ---
 function:
   name: grouping
@@ -6521,7 +6535,7 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  section: lambda
+  section: regexp
   cross-link: https://trino.io/docs/current/functions/regexp.html#regexp_replace
   description: >
     Removes every instance of the substring matched by the regular expression
@@ -7488,6 +7502,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/string.html#split
   description: >
     Splits string on delimiter and returns an array.
+  examples:
+    - input: SELECT split('hello+world', '+') as value;
+      output: "[hello, world]"
 ---
 function:
   name: split
@@ -7520,6 +7537,9 @@ function:
     Splits string on delimiter and returns the field index.
     Field indexes start with 1. If the index is larger than
     the number of fields, then null is returned.
+  examples:
+    - input: SELECT split_part('hello world', 'world', 1) as value;
+      output: hello
 ---
 function:
   name: split_to_map
@@ -8410,6 +8430,11 @@ function:
   cross-link: https://trino.io/docs/current/functions/string.html#starts_with
   description: >
     Tests whether substring is a prefix of string.
+  examples:
+    - input: SELECT starts_with('hello world', 'world') 
+      output: "false"
+    - input: SELECT starts_with('hello world', 'hello') ;
+      output: "true"
 ---
 function:
   name: stddev
@@ -8451,6 +8476,11 @@ function:
   cross-link: https://trino.io/docs/current/functions/aggregate.html#stddev_pop
   description: >
     Returns the population standard deviation of all input values.
+  examples:
+    - input: >
+        CREATE TABLE tbl AS VALUES (1), (5), (9); 
+        SELECT stddev_pop(column1) as value from tbl;
+      output: "3.265986323710904"
 ---
 function:
   name: stddev_pop
@@ -8479,6 +8509,11 @@ function:
   cross-link: https://trino.io/docs/current/functions/aggregate.html#stddev_samp
   description: >
     Returns the sample standard deviation of all input values.
+  examples:
+    - input: >
+        CREATE TABLE tbl AS VALUES (1), (5), (9); 
+        SELECT stddev_samp(column1) as value from tbl;
+      output: "4.0"
 ---
 function:
   name: stddev_samp
@@ -8745,6 +8780,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/math.html#tanh
   description: >
     Returns the hyperbolic tangent of x.
+  examples:
+    - input: SELECT tanh(1.0) AS value;
+      output: "0.7615941559557649"
 ---
 function:
   name: tdigest_agg
@@ -8989,6 +9027,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/binary.html#to_hex
   description: >
     Encodes binary into a hex string representation.
+  examples:
+    - input: SELECT to_hex(cast(1000 as varbinary)) AS value;
+      output: e8030000
 ---
 function:
   name: to_ieee754_32
@@ -9101,6 +9142,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/datetime.html#to_unixtime
   description: >
     Returns timestamp as a UNIX timestamp.
+  examples:
+    - input: SELECT to_unixtime(now()) AS value;
+      output: "1718974807"
 ---
 function:
   name: to_utf8
@@ -9236,6 +9280,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/math.html#truncate
   description: >
     Returns x rounded to integer by dropping digits after decimal point.
+  examples:
+    - input: SELECT truncate(1.23456, 2) as value;
+      output: "1.23"
 ---
 function:
   name: truncate
@@ -9431,6 +9478,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/uuid.html#uuid
   description: >
     Returns a pseudo randomly generated UUID (type 4).
+  examples:
+    - input: SELECT uuid() as value;
+      output: "22552909-5560-4234-a383-5a968a4e2a91"
 ---
 function:
   name: value_at_quantile
@@ -9779,6 +9829,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/datetime.html#year
   description: >
     Returns the year from x.
+  examples:
+    - input: SELECT year(cast('2024-01-01' as date)) as value;
+      output: "2024"
 ---
 function:
   name: year
@@ -9952,8 +10005,11 @@ function:
   section: conditional
   cross-link: https://trino.io/docs/current/functions/conditional.html#if-expression
   description: >
-    Evaluates and returns true_value if condition is true,
+    Evaluates expression parameter and returns second if condition is true,
     otherwise null is returned and true_value is not evaluated.
+  examples:
+    - input: SELECT IF(2 > 1, 'HIGHER', 'LOWER') AS value;
+      output: "HIGHER"
 ---
 function:
   name: try
@@ -9981,6 +10037,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/datetime.html#current_time
   description: >
     Returns the current time with time zone as of the start of the query.
+  examples:
+    - input: SELECT current_time() AS value;
+      output: "13:52:34.245364"
 ---
 function:
   name: current_timestamp
@@ -9998,6 +10057,9 @@ function:
   description: >
     Returns the current timestamp with time zone as of the start of the query,
     with 3 digits of subsecond precision,
+  examples:
+    - input: SELECT current_timestamp() AS value;
+      output: "2024-06-21T13:53:41.809016Z"
 ---
 function:
   name: current_timestamp
