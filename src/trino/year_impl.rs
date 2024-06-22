@@ -16,8 +16,7 @@
 // under the License.
 
 #![allow(non_camel_case_types)]
-use arrow::array::ArrayRef;
-use arrow::compute::{cast, date_part, DatePart};
+use arrow::compute::DatePart;
 use arrow::datatypes::DataType;
 use datafusion::common::Result;
 use datafusion::error::DataFusionError;
@@ -25,18 +24,10 @@ use datafusion::logical_expr::simplify::{ExprSimplifyResult, SimplifyInfo};
 use datafusion::logical_expr::{ColumnarValue, Expr, ScalarUDFImpl, Signature, Volatility};
 use std::any::Any;
 
-use crate::utils::{apply_datepart_kernel, make_scalar_function};
+use crate::utils::apply_datepart_kernel;
 
 fn year_date_invoke(args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    make_scalar_function(year, vec![])(args)
-}
-
-fn year(args: &[ArrayRef]) -> Result<ArrayRef> {
-    let array = &args[0];
-    Ok(cast(
-        date_part(array, DatePart::Year)?.as_ref(),
-        &DataType::Int64,
-    )?)
+    apply_datepart_kernel(&args[0], DatePart::Year)
 }
 
 fn year_date_return_type(_arg_types: &[DataType]) -> Result<DataType> {
