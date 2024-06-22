@@ -25,7 +25,7 @@ use datafusion::logical_expr::simplify::{ExprSimplifyResult, SimplifyInfo};
 use datafusion::logical_expr::{ColumnarValue, Expr, ScalarUDFImpl, Signature, Volatility};
 use std::any::Any;
 
-use crate::utils::make_scalar_function;
+use crate::utils::{apply_datepart_kernel, make_scalar_function};
 
 fn month_date_invoke(args: &[ColumnarValue]) -> Result<ColumnarValue> {
     make_scalar_function(month, vec![])(args)
@@ -62,12 +62,12 @@ fn month_intervalyeartomonth_simplify(
     Ok(ExprSimplifyResult::Original(args))
 }
 
-fn month_timestamp_p_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented("todo".to_string()))
+fn month_timestamp_p_invoke(args: &[ColumnarValue]) -> Result<ColumnarValue> {
+    apply_datepart_kernel(&args[0], DatePart::Month)
 }
 
 fn month_timestamp_p_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented("todo".to_string()))
+    Ok(DataType::Int64)
 }
 
 fn month_timestamp_p_simplify(

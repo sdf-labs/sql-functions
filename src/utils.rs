@@ -16,6 +16,9 @@
 // under the License.
 
 use arrow::array::ArrayRef;
+use arrow::compute::{cast, date_part, DatePart};
+use arrow::datatypes::DataType;
+use arrow::error::Result as ArrowResult;
 use datafusion::common::{Result, ScalarValue};
 use datafusion::logical_expr::{ColumnarValue, ScalarFunctionImplementation};
 use datafusion::physical_expr::functions::Hint;
@@ -63,5 +66,48 @@ where
         } else {
             result.map(ColumnarValue::Array)
         }
+    })
+}
+
+/// Applies a unary computational kernel to a columnar value.
+/// `arg` - a Datafusion columnar value to be processed
+/// `kernel` - a unary function on Arrow arrays
+pub(super) fn apply_unary_kernel<F>(arg: &ColumnarValue, kernel: F) -> Result<ColumnarValue>
+where
+    F: Fn(&ArrayRef) -> ArrowResult<ArrayRef> + Sync + Send + 'static,
+{
+    match arg {
+        ColumnarValue::Array(array) => {
+            let res = kernel(array)?;
+            Ok(ColumnarValue::Array(res))
+        }
+        ColumnarValue::Scalar(scalar) => {
+            let array = scalar.to_array()?;
+            let res = kernel(&array)?;
+            let scalar = ScalarValue::try_from_array(&res, 0)?;
+            Ok(ColumnarValue::Scalar(scalar))
+        }
+    }
+}
+
+/// Applies Arrow `date_part` kernel to a temporal columnar value.
+/// Takes care of adjusting the output type to Trino's BIGINT.
+/// `arg` - a Datafusion columnar value to be processed; temporal datatypes for DATE, TIME, TIMESTAMP are supported
+/// `part` - the date part to extract
+pub(super) fn apply_datepart_kernel(arg: &ColumnarValue, part: DatePart) -> Result<ColumnarValue> {
+    apply_unary_kernel(arg, move |arr| {
+        let res = date_part(arr, part)?;
+        // DF date_part returns Int32, but Trino needs Int64
+        Ok(cast(&res, &DataType::Int64)?)
+    })
+}
+
+pub(super) fn apply_dow_kernel(arg: &ColumnarValue) -> Result<ColumnarValue> {
+    apply_unary_kernel(arg, move |arr| {
+        let monday0 = date_part(arr, DatePart::DayOfWeekMonday0)?;
+        let one = arrow::array::Int32Array::new_scalar(1);
+        let monday1 = arrow::compute::kernels::numeric::add(&monday0, &one)?;
+        // DF date_part returns Int32, but Trino needs Int64
+        Ok(cast(&monday1, &DataType::Int64)?)
     })
 }
