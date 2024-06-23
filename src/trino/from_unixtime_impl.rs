@@ -16,27 +16,35 @@
 // under the License.
 
 #![allow(non_camel_case_types)]
-use arrow::datatypes::DataType;
+use arrow::array::{AsArray, TimestampMillisecondArray};
+use arrow::datatypes::{DataType, Int64Type, TimeUnit};
 use datafusion::common::Result;
 use datafusion::error::DataFusionError;
 use datafusion::logical_expr::simplify::{ExprSimplifyResult, SimplifyInfo};
 use datafusion::logical_expr::{ColumnarValue, Expr, ScalarUDFImpl, Signature, Volatility};
 use std::any::Any;
+use std::sync::Arc;
 
-fn from_unixtime_bigint_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!(
-        "Not implemented {}:{}",
-        file!(),
-        line!()
-    )))
+use crate::utils::apply_unary_kernel;
+
+/// Convert `arg[0]`, which should be a BIGINT with the number of seconds since the Unix epoch, 1970-01-01,
+/// to a TIMESTAMP(3), which is the number of milliseconds.
+// TODO?: change the input from BIGINT to DOUBLE, which it is in Trino.
+// TODO?: make sure there is a timezone in the output, which it is in Trino.
+fn from_unixtime_bigint_invoke(args: &[ColumnarValue]) -> Result<ColumnarValue> {
+    let unixtime = &args[0];
+    assert!(unixtime.data_type() == DataType::Int64);
+    apply_unary_kernel(unixtime, move |arr| {
+        let milli_factor = arrow::array::Int64Array::new_scalar(1000);
+        let milliseconds = arrow::compute::kernels::numeric::mul(&arr, &milli_factor)?;
+        let timestamp: TimestampMillisecondArray =
+            milliseconds.as_primitive::<Int64Type>().reinterpret_cast();
+        Ok(Arc::new(timestamp))
+    })
 }
 
 fn from_unixtime_bigint_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!(
-        "Not implemented {}:{}",
-        file!(),
-        line!()
-    )))
+    Ok(DataType::Timestamp(TimeUnit::Millisecond, None))
 }
 
 fn from_unixtime_bigint_simplify(

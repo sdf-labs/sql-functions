@@ -3309,7 +3309,7 @@ function:
   optional-parameters: []
   returns:
     datatype: timestamp
-  implemented-by: !datafusion
+  implemented-by: !rust
   section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#from_unixtime
   description: >
