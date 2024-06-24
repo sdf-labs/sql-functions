@@ -605,6 +605,11 @@ function:
   cross-link: https://trino.io/docs/current/functions/aggregate.html#array_agg
   description: >
     Returns an array created from the input x elements.
+  examples:
+    - input: >
+        CREATE TABLE tbl AS VALUES (1), (5), (9); 
+        SELECT array_agg(column1) AS value FROM tbl;
+      output: "[1, 5, 9]"
 ---
 function:
   name: array_distinct
@@ -618,6 +623,12 @@ function:
   cross-link: https://trino.io/docs/current/functions/array.html#array_distinct
   description: >
     Remove duplicate values from the array x.
+  examples:
+    - input: SELECT array_distinct([1, 2, 3]) as value;
+      output: "[1, 2, 3]"
+    - input: SELECT array_distinct([1, 1, 2, 3]) as value;
+      output: "[1, 2, 3]"
+
 ---
 function:
   name: array_except
@@ -632,6 +643,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/array.html#array_except
   description: >
     Returns an array of elements in x but not in y, without duplicates.
+  examples:
+    - input: SELECT array_except([1, 1, 2, 3], [1]) AS value;
+      output: "[2, 3]"
 ---
 function:
   name: array_intersect
@@ -646,6 +660,11 @@ function:
   cross-link: https://trino.io/docs/current/functions/array.html#array_intersect
   description: >
     Returns an array of the elements in the intersection of x and y, without duplicates.
+  examples:
+    - input: SELECT array_intersect([1, 1, 2, 3], [1]) AS value;
+      output: "[1]"
+    - input: SELECT array_intersect(['hello', 'world'], ['hello']) AS value;
+      output: "[hello]"
 ---
 function:
   name: array_join
@@ -660,8 +679,10 @@ function:
   section: array
   cross-link: https://trino.io/docs/current/functions/array.html#array_join
   description: >
-    Concatenates the elements of the given array using the delimiter.
-    Null elements are omitted in the result.
+    Concatenates the elements of the given array using the delimiter. Null elements are omitted in the result.
+  examples:
+    - input: SELECT array_join(['hello', 'world'], ' beautiful ') AS value;
+      output: hello beautiful world
 ---
 function:
   name: array_join
@@ -716,8 +737,11 @@ function:
   section: array
   cross-link: https://trino.io/docs/current/functions/array.html#array_position
   description: >
-    Returns the position of the first occurrence of the element in array x (or 0 if
-    not found).
+    Returns the position of the first occurrence of the element in array x (or 0 if not found).
+  examples:
+    - input: SELECT array_position([1, 1, 2], 1) AS value;
+      output: "1"
+
 ---
 function:
   name: array_remove
@@ -733,6 +757,11 @@ function:
   cross-link: https://trino.io/docs/current/functions/array.html#array_remove
   description: >
     Remove all elements that equal element from array x.
+  examples:
+    - input: SELECT array_remove([1, 1, 2], 1) AS value;
+      output: "[2]"
+    - input: SELECT array_remove(['hello', 'bad', 'world'], 'bad') AS value;
+      output: "[hello, world]"
 ---
 function:
   name: array_sort
@@ -745,8 +774,8 @@ function:
   section: array
   cross-link: https://trino.io/docs/current/functions/array.html#array_sort
   description: >
-    Sorts and returns the array x. The elements of x must be orderable.
-    Null elements will be placed at the end of the returned array.
+    Sorts and returns the array x. The elements of x must be orderable. Null elements will be placed at the end of the returned array.
+
 ---
 function:
   name: array_sort
@@ -775,6 +804,10 @@ function:
   cross-link: https://trino.io/docs/current/functions/array.html#array_union
   description: >
     Returns an array of the elements in the union of x and y, without duplicates.
+  examples:
+    - input: SELECT array_union([1, 1], [2]) as value;
+      output: "[1, 2]"
+    
 ---
 function:
   name: arrays_overlap
@@ -1402,6 +1435,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/array.html#cardinality
   description: >
     Returns the cardinality (size) of the array x.
+  examples:
+    - input: SELECT cardinality([1, 1, 2]) as value;
+      output: "3"
 ---
 function:
   name: cardinality
@@ -1451,6 +1487,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/math.html#cbrt
   description: >
     Returns the cube root of x.
+  examples:
+    - input: SELECT cbrt(328509) as value;
+      output: "69.0"
 ---
 function:
   name: ceil
@@ -1463,6 +1502,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/math.html#ceil
   description: >
     This is an alias for ceiling().
+  examples:
+    - input: SELECT ceil(1.3) AS value;
+      output: "2.0"
 ---
 function:
   name: ceil
@@ -1705,9 +1747,19 @@ function:
   implemented-by: !datafusion
   section: conditional
   cross-link: https://trino.io/docs/current/functions/conditional.html#coalesce-function
-  description: >
-    Returns the first non-null value in the argument list.
-    Like a CASE expression, arguments are only evaluated if necessary.
+  description: 
+    Returns the first non-null value in the argument list. Like a CASE expression, arguments are only evaluated if necessary.
+  examples:
+    - input: >
+        CREATE TABLE tbl as VALUES
+        ('1', null),
+        ('2', '2'),
+        (null, '3');
+
+        SELECT 
+            COALESCE(column1, column2) as value
+        FROM tbl;
+      output: ('1', '2', '3')
 ---
 function:
   name: codepoint
@@ -1721,7 +1773,10 @@ function:
   section: string
   cross-link: https://trino.io/docs/current/functions/string.html#codepoint
   description: >
-    Returns the Unicode code point of the only character of string.
+    Returns the Unicode code point of the only character of `string`.
+  examples:
+    - input: SELECT codepoint('😊') AS value;
+      output: "128522"
 ---
 function:
   name: color
@@ -1905,10 +1960,12 @@ function:
   section: string
   cross-link: https://trino.io/docs/current/functions/string.html#concat_ws
   description: >
-    Returns the concatenation of string1, string2, ..., stringN
-    using string0 as a separator. If string0 is null, then the return
-    value is null. Any null values provided in the arguments after the
-    separator are skipped.
+    Using the first array `string0` element as separator, returns the concatenation of all subsequent strings string1, string2, ...
+    If `string0`` is null, then the return value is null. Any null values provided in the arguments 
+    after the separator are skipped.
+  examples:
+    - input: SELECT concat_ws('😊', 'hey', 'there', 'people') AS value;
+      output: "hey😊there😊people"
 ---
 function:
   name: concat_ws
@@ -1940,7 +1997,12 @@ function:
   section: array
   cross-link: https://trino.io/docs/current/functions/array.html#contains
   description: >
-    Returns true if the array x contains the element.
+    Takes an array and an element. Returns true if the array contains the element, false if not.
+  examples:
+    - input: SELECT contains(['hello', 'world'], 'hello') AS value;
+      output: "true"
+    - input: SELECT contains(['hello', 'world'], '😊') AS value;
+      output: "false"
 ---
 function:
   name: contains
@@ -2039,7 +2101,10 @@ function:
   section: math
   cross-link: https://trino.io/docs/current/functions/math.html#cosh
   description: >
-    Returns the hyperbolic cosine of x.
+    Returns the hyperbolic cosine of the given value.
+  examples:
+    - input: SELECT cosh(0) AS value;
+      output: "1.0"
 ---
 function:
   name: cosine_similarity
@@ -2180,11 +2245,10 @@ function:
   section: window
   cross-link: https://trino.io/docs/current/functions/window.html#cume_dist
   description: >
-    Returns the cumulative distribution of a value in a group of values.
-    The result is the number of rows preceding or peer with the row in the
-    window ordering of the window partition divided by the total number of
-    rows in the window partition. Thus, any tie values in the ordering will
-    evaluate to the same distribution value.
+    Returns the cumulative distribution of a value in a group of values. 
+    The result is the number of rows preceding or peer with the row in the window ordering 
+    of the window partition divided by the total number of rows in the window partition. 
+    Thus, any tie values in the ordering will evaluate to the same distribution value.
 ---
 function:
   name: current_date
@@ -2199,6 +2263,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/datetime.html#current_date
   description: >
     Returns the current date as of the start of the query.
+  examples:
+    - input: SELECT current_date() AS value;
+      output: "2024-06-20"
 ---
 function:
   name: current_groups
@@ -2235,7 +2302,10 @@ function:
   section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#date
   description: >
-    This is an alias for CAST(x AS date).
+    This `date(x)` is an alias for `CAST(x AS date)`.
+  examples:
+    - input: SELECT date('2024-06-20') AS value;
+      output: "2024-06-20"
 ---
 function:
   name: date
@@ -2309,7 +2379,20 @@ function:
   section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#date_diff
   description: >
-    Returns timestamp2 - timestamp1 expressed in terms of unit.
+    Takes a unit, timestamp1, and timestamp2. Returns timestamp2 - timestamp1 expressed in terms of unit.
+  examples:
+    - input: SELECT date_diff('second', TIMESTAMP '2020-03-01 00:00:00', TIMESTAMP '2020-03-02 00:00:00') AS value;
+      output: "86400"
+    - input: SELECT date_diff('hour', TIMESTAMP '2020-03-01 00:00:00 UTC', TIMESTAMP '2020-03-02 00:00:00 UTC') AS value;
+      output: "24"
+    - input: SELECT date_diff('day', DATE '2020-03-01', DATE '2020-03-02') AS value;
+      output: "1"
+    - input: SELECT date_diff('second', TIMESTAMP '2020-06-01 12:30:45.000000000', TIMESTAMP '2020-06-02 12:30:45.123456789') AS value;
+      output: "86400"
+    - input: SELECT date_diff('millisecond', TIMESTAMP '2020-06-01 12:30:45.000000000', TIMESTAMP '2020-06-02 12:30:45.123456789') AS value;
+      output: "86400123"
+
+
 ---
 function:
   name: date_diff
@@ -2355,6 +2438,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/datetime.html#date_format
   description: >
     Formats timestamp as a string using format.
+  examples:
+    - input: SELECT date_format(TIMESTAMP '2022-10-20 05:10:00', '%m-%d-%Y %H') AS value;
+      output: 10-20-2022 05
 ---
 # NB: Unlike Trino date_parse, DF to_timestamp appears to insist
 #     on the input and the format string to have info up to a second.
@@ -2372,6 +2458,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/datetime.html#date_parse
   description: >
     Parses string into a timestamp using format.
+  # examples:
+  #   - input: SELECT date_parse('2022/10/20/05', '%Y/%m/%d/%H');
+  #     output: 
 ---
 function:
   name: date_trunc
@@ -2384,7 +2473,14 @@ function:
   section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#date_trunc
   description: >
-    Returns x truncated to unit.
+    Returns the date x truncated to unit.
+  examples:
+    - input: SELECT date_trunc('day' , TIMESTAMP '2022-10-20 05:10:00') AS value;
+      output: "2022-10-20T00:00:00"
+    - input: SELECT date_trunc('month' , TIMESTAMP '2022-10-20 05:10:00') AS value;
+      output: "2022-10-01T00:00:00"
+    - input: SELECT date_trunc('year', TIMESTAMP '2022-10-20 05:10:00');
+      output: "2022-01-01T00:00:00"
 ---
 function:
   name: date_trunc
@@ -2425,6 +2521,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/datetime.html#day
   description: >
     Returns the day of the month from x.
+  examples:
+    - input: SELECT day(date('2022-10-20')) AS value;
+      output: "20"
 ---
 function:
   name: day
@@ -2557,6 +2656,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/math.html#degrees
   description: >
     Converts angle x in radians to degrees.
+  examples:
+    - input: SELECT degrees(3.14159) AS value;
+      output: "179.9998547447946"
 ---
 function:
   name: dense_rank
@@ -2571,6 +2673,13 @@ function:
   description: >
     Returns the rank of a value in a group of values. This is similar to
     rank(), except that tie values do not produce gaps in the sequence.
+  examples:
+    - input: >
+        SELECT name, DENSE_RANK() OVER (ORDER BY score) AS dense_rank_col
+        FROM (
+            VALUES ('A', 10), ('B', 20), ('C', 20), ('D', 30)
+        ) AS t (name, score)
+      output: ('A', 1), ('B', 2), ('C', 2), ('D', 3)
 ---
 function:
   name: dow
@@ -2653,6 +2762,9 @@ function:
     length, whereas
     the subscript operator would fail in such a case.
     If index < 0, element_at accesses elements from the last to the first.
+  examples:
+    - input: SELECT element_at([3, 5, 7], 2) AS value;
+      output: "5"
 ---
 function:
   name: element_at
@@ -2940,6 +3052,14 @@ function:
   cross-link: https://trino.io/docs/current/functions/array.html#flatten
   description: >
     Flattens an array(array(T)) to an array(T) by concatenating the contained arrays.
+  examples:
+    - input: >
+        SELECT
+        flatten(
+            ARRAY [ARRAY [1, 2],
+            ARRAY [3, 4]])
+        AS value;
+      output: "[1, 2, 3, 4]"
 ---
 function:
   name: floor
@@ -3316,6 +3436,9 @@ function:
     Returns the UNIX timestamp unixtime as a timestamp with time zone. unixtime is
     the
     number of seconds since 1970-01-01 00.00.00 UTC.
+  examples:
+    - input: SELECT from_unixtime(999919900) AS value;
+      output: "2001-09-08T03:31:40"
 ---
 function:
   name: from_unixtime
@@ -3571,6 +3694,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/comparison.html#greatest
   description: >
     Returns the largest of the provided values.
+  examples:
+    - input: SELECT greatest(1, 2, 3) AS value;
+      output: "3"
 ---
 function:
   name: grouping
@@ -3743,6 +3869,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/teradata.html#index
   description: >
     Alias for strpos() function.
+  examples:
+    - input: SELECT INDEX('abcdefg', 'c')
+      output: "3"
 ---
 function:
   name: infinity
@@ -3864,7 +3993,10 @@ function:
   section: math
   cross-link: https://trino.io/docs/current/functions/math.html#is_nan
   description: >
-    Determine if x is not-a-number.
+    Determine if `x` is not-a-number.
+  examples:
+    - input: select is_nan(1.1) as value;
+      output: "false"
 ---
 function:
   name: is_nan
@@ -4210,6 +4342,13 @@ function:
     null is returned.
     The lag() function requires that the window ordering be specified.
     Window frame must not be specified.
+  examples:
+    - input: >
+        SELECT name, score, LAG(score) OVER (PARTITION BY name) AS lead_score
+        FROM (
+            VALUES ('A', 10), ('A', 20), ('D', 20), ('D', 30)
+        ) AS t (name, score)
+      output: ('A', 10, ), ('A', 20, 10), ('D', 20, ), ('D', 30, 20)
 ---
 function:
   name: lag
@@ -4231,6 +4370,13 @@ function:
     null is returned.
     The lag() function requires that the window ordering be specified.
     Window frame must not be specified.
+  examples:
+    - input: >
+        SELECT name, score, LAG(score) OVER (PARTITION BY name) AS lead_score
+        FROM (
+            VALUES ('A', 10), ('A', 20), ('D', 20), ('D', 30)
+        ) AS t (name, score)
+      output: ('A', 10, ), ('A', 20, 10), ('D', 20, ), ('D', 30, 20)
 ---
 function:
   name: lag
@@ -4253,6 +4399,13 @@ function:
     null is returned.
     The lag() function requires that the window ordering be specified.
     Window frame must not be specified.
+  examples:
+    - input: >
+        SELECT name, score, LAG(score) OVER (PARTITION BY name) AS lead_score
+        FROM (
+            VALUES ('A', 10), ('A', 20), ('D', 20), ('D', 30)
+        ) AS t (name, score)
+      output: ('A', 10, ), ('A', 20, 10), ('D', 20, ), ('D', 30, 20)
 ---
 function:
   name: last_day_of_month
@@ -4312,6 +4465,13 @@ function:
     null is returned.
     The lead() function requires that the window ordering be specified.
     Window frame must not be specified.
+  examples:
+    - input: >
+        SELECT name, score, LEAD(score) OVER (PARTITION BY name) AS lead_score
+        FROM (
+            VALUES ('A', 10), ('A', 20), ('D', 20), ('D', 30)
+        ) AS t (name, score)
+      output: ('A', 10, 20), ('A', 20, ), ('D', 20, 30), ('D', 30, )
 ---
 function:
   name: lead
@@ -4333,6 +4493,13 @@ function:
     null is returned.
     The lead() function requires that the window ordering be specified.
     Window frame must not be specified.
+  examples:
+    - input: >
+        SELECT name, score, LEAD(score) OVER (PARTITION BY name) AS lead_score
+        FROM (
+            VALUES ('A', 10), ('A', 20), ('D', 20), ('D', 30)
+        ) AS t (name, score)
+      output: ('A', 10, 20), ('A', 20, ), ('D', 20, 30), ('D', 30, )
 ---
 function:
   name: lead
@@ -4355,6 +4522,13 @@ function:
     null is returned.
     The lead() function requires that the window ordering be specified.
     Window frame must not be specified.
+  examples:
+    - input: >
+        SELECT name, score, LEAD(score) OVER (PARTITION BY name) AS lead_score
+        FROM (
+            VALUES ('A', 10), ('A', 20), ('D', 20), ('D', 30)
+        ) AS t (name, score)
+      output: ('A', 10, 20), ('A', 20, ), ('D', 20, 30), ('D', 30, )
 ---
 function:
   name: learn_classifier
@@ -4529,6 +4703,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/comparison.html#least
   description: >
     Returns the smallest of the provided values.
+  examples:
+    - input: SELECT LEAST(5,6,7,1,2,3,4) -- list of columns or values
+      output: "1"
 ---
 function:
   name: length
@@ -4668,6 +4845,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/math.html#log
   description: >
     Returns the base b logarithm of x.
+  examples:
+    - input: SELECT log(2.19, 1) AS value;
+      output: "0.0"
 ---
 function:
   name: log10
@@ -5336,6 +5516,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/datetime.html#month
   description: >
     Returns the month of the year from x.
+  examples:
+    - input: SELECT month(cast ('2024-11-01' AS date )) AS value;
+      output: "11"
 ---
 function:
   name: month
@@ -5531,6 +5714,13 @@ function:
     If the number of rows in the partition does not divide evenly into the
     number of buckets, then the remainder values are distributed one per
     bucket, starting with the first bucket.
+  examples:
+    - input: >
+        SELECT name, NTILE(5) OVER (ORDER BY score) AS ntile_col
+        FROM (
+            VALUES ('A', 10), ('A', 20), ('A', 30), ('A', 40)
+        ) AS t (name, score)
+      output: ('A', 1), ('A', 2), ('D', 3), ('D', 4) 
 ---
 function:
   name: nullif
@@ -5546,6 +5736,11 @@ function:
   cross-link: https://trino.io/docs/current/functions/conditional.html#nullif-function
   description: >
     Returns null if value1 equals value2, otherwise returns value1.
+  examples:
+    - input: SELECT nullif(1, 1) AS value;
+      output: "NULL"
+    - input: SELECT nullif(2, 1) AS value;
+      output: "2"
 ---
 function:
   name: numeric_histogram
@@ -5715,6 +5910,13 @@ function:
     Returns the percentage ranking of a value in group of values. The result
     is (r - 1) / (n - 1) where r is the rank() of the row and
     n is the total number of rows in the window partition.
+  examples:
+    - input: >
+        SELECT name, PERCENT_RANK() OVER (ORDER BY score) AS percent_rank_col
+        FROM (
+            VALUES ('A', 10), ('B', 20), ('C', 20), ('D', 30)
+        ) AS t (name, score)
+      output: ('A', 0.0), ('B', 0.33333333), ('C', 0.33333333), ('D', 1.0)
 ---
 function:
   name: pi
@@ -5727,6 +5929,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/math.html#pi
   description: >
     Returns the constant Pi.
+  examples:
+    - input: SELECT PI()
+      output: "3.141592653589793"
 ---
 function:
   name: pow
@@ -5971,6 +6176,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/math.html#radians
   description: >
     Converts angle x in degrees to radians.
+  examples:
+    - input: SELECT radians(360) AS value;
+      output: "6.283185307179586"
 ---
 function:
   name: rand
@@ -5984,6 +6192,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/math.html#rand
   description: >
     This is an alias for random().
+  examples:
+    - input: SELECT rand() AS value;
+      output: "0.20138668902074985"
 ---
 function:
   name: rand
@@ -6235,6 +6446,13 @@ function:
     the number of rows preceding the row that are not peer with the row.
     Thus, tie values in the ordering will produce gaps in the sequence.
     The ranking is performed for each window partition.
+  examples:
+    - input: >
+        SELECT name, RANK() OVER (ORDER BY score) AS rank_col
+        FROM (
+            VALUES ('A', 10), ('B', 20), ('C', 20), ('D', 30)
+        ) AS t (name, score)
+      output: ('A', 1), ('B', 2), ('C', 2), ('D', 4)
 ---
 function:
   name: reduce
@@ -6303,6 +6521,9 @@ function:
   description: >
     Returns the first substring matched by the regular expression pattern
     in string.
+  examples:
+    - input: SELECT REGEXP_EXTRACT('email_address@gmail.com', '@(.*?)\.'
+      output: gmail
 ---
 function:
   name: regexp_extract
@@ -6362,6 +6583,10 @@ function:
   description: >
     Evaluates the regular expression pattern and determines if it is
     contained within string.
+  examples:
+    - input: SELECT REGEXP_like('email_address@gmail.com', '.*@.*\..*') AS is_valid_email
+      output: "TRUE"
+
 ---
 function:
   name: regexp_position
@@ -6417,11 +6642,14 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
-  section: lambda
+  section: regexp
   cross-link: https://trino.io/docs/current/functions/regexp.html#regexp_replace
   description: >
     Removes every instance of the substring matched by the regular expression
     pattern from string.
+  examples:
+    - input: SELECT REGEXP_REPLACE('text foo another text', 'foo', 'bar')
+      output: text bar another text
 ---
 function:
   name: regexp_replace
@@ -6437,6 +6665,9 @@ function:
   description: >
     Removes every instance of the substring matched by the regular expression
     pattern from string.
+  examples:
+    - input: SELECT REGEXP_REPLACE('text foo another text', 'foo', 'bar')
+      output: text bar another text
 ---
 function:
   name: regexp_replace
@@ -6453,6 +6684,9 @@ function:
   description: >
     Removes every instance of the substring matched by the regular expression
     pattern from string.
+  examples:
+    - input: SELECT REGEXP_REPLACE('text foo another text', 'foo', 'bar')
+      output: text bar another text
 ---
 function:
   name: regexp_split
@@ -6902,6 +7136,13 @@ function:
   description: >
     Returns a unique, sequential number for each row, starting with one,
     according to the ordering of rows within the window partition.
+  examples:
+    - input: >
+        SELECT name, ROW_NUMBER() OVER (ORDER BY score) AS row_number_col
+        FROM (
+            VALUES ('A', 10), ('B', 20), ('C', 20), ('D', 30)
+        ) AS t (name, score)
+      output: ('A', 1), ('B', 2), ('C', 3), ('D', 4)
 ---
 function:
   name: rpad
@@ -7176,6 +7417,7 @@ function:
   optional-parameters: []
   returns:
     datatype: decimal(1, 0)
+  implemented-by: !rust
   section: math
   cross-link: https://trino.io/docs/current/functions/math.html#sign
   description: >
@@ -7214,6 +7456,8 @@ function:
   optional-parameters: []
   returns:
     datatype: real
+  implemented-by: !datafusion
+    udf: signum
   section: math
   cross-link: https://trino.io/docs/current/functions/math.html#sign
   description: >
@@ -7287,6 +7531,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/math.html#sinh
   description: >
     Returns the hyperbolic sine of x.
+  examples:
+    - input: SELECT sinh(1) AS value;
+      output: "1.1752011936438014"
 ---
 function:
   name: skewness
@@ -7386,6 +7633,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/string.html#split
   description: >
     Splits string on delimiter and returns an array.
+  examples:
+    - input: SELECT split('hello+world', '+') as value;
+      output: "[hello, world]"
 ---
 function:
   name: split
@@ -7418,6 +7668,9 @@ function:
     Splits string on delimiter and returns the field index.
     Field indexes start with 1. If the index is larger than
     the number of fields, then null is returned.
+  examples:
+    - input: SELECT split_part('hello world', 'world', 1) as value;
+      output: hello
 ---
 function:
   name: split_to_map
@@ -8308,6 +8561,11 @@ function:
   cross-link: https://trino.io/docs/current/functions/string.html#starts_with
   description: >
     Tests whether substring is a prefix of string.
+  examples:
+    - input: SELECT starts_with('hello world', 'world') 
+      output: "false"
+    - input: SELECT starts_with('hello world', 'hello') ;
+      output: "true"
 ---
 function:
   name: stddev
@@ -8349,6 +8607,11 @@ function:
   cross-link: https://trino.io/docs/current/functions/aggregate.html#stddev_pop
   description: >
     Returns the population standard deviation of all input values.
+  examples:
+    - input: >
+        CREATE TABLE tbl AS VALUES (1), (5), (9); 
+        SELECT stddev_pop(column1) as value from tbl;
+      output: "3.265986323710904"
 ---
 function:
   name: stddev_pop
@@ -8377,6 +8640,11 @@ function:
   cross-link: https://trino.io/docs/current/functions/aggregate.html#stddev_samp
   description: >
     Returns the sample standard deviation of all input values.
+  examples:
+    - input: >
+        CREATE TABLE tbl AS VALUES (1), (5), (9); 
+        SELECT stddev_samp(column1) as value from tbl;
+      output: "4.0"
 ---
 function:
   name: stddev_samp
@@ -8643,6 +8911,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/math.html#tanh
   description: >
     Returns the hyperbolic tangent of x.
+  examples:
+    - input: SELECT tanh(1.0) AS value;
+      output: "0.7615941559557649"
 ---
 function:
   name: tdigest_agg
@@ -8887,6 +9158,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/binary.html#to_hex
   description: >
     Encodes binary into a hex string representation.
+  examples:
+    - input: SELECT to_hex(cast(1000 as varbinary)) AS value;
+      output: e8030000
 ---
 function:
   name: to_ieee754_32
@@ -8999,6 +9273,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/datetime.html#to_unixtime
   description: >
     Returns timestamp as a UNIX timestamp.
+  examples:
+    - input: SELECT to_unixtime(now()) AS value;
+      output: "1718974807"
 ---
 function:
   name: to_utf8
@@ -9130,10 +9407,14 @@ function:
   optional-parameters: []
   returns:
     datatype: decimal(p, s)
+  implemented-by: !rust
   section: math
   cross-link: https://trino.io/docs/current/functions/math.html#truncate
   description: >
     Returns x rounded to integer by dropping digits after decimal point.
+  examples:
+    - input: SELECT truncate(1.23456, 2) as value;
+      output: "1.23"
 ---
 function:
   name: truncate
@@ -9142,6 +9423,7 @@ function:
   optional-parameters: []
   returns:
     datatype: decimal(rp, 0)
+  implemented-by: !rust
   section: math
   cross-link: https://trino.io/docs/current/functions/math.html#truncate
   description: >
@@ -9329,6 +9611,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/uuid.html#uuid
   description: >
     Returns a pseudo randomly generated UUID (type 4).
+  examples:
+    - input: SELECT uuid() as value;
+      output: "22552909-5560-4234-a383-5a968a4e2a91"
 ---
 function:
   name: value_at_quantile
@@ -9677,6 +9962,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/datetime.html#year
   description: >
     Returns the year from x.
+  examples:
+    - input: SELECT year(cast('2024-01-01' as date)) as value;
+      output: "2024"
 ---
 function:
   name: year
@@ -9851,8 +10139,11 @@ function:
   section: conditional
   cross-link: https://trino.io/docs/current/functions/conditional.html#if-expression
   description: >
-    Evaluates and returns true_value if condition is true,
+    Evaluates expression parameter and returns second if condition is true,
     otherwise null is returned and true_value is not evaluated.
+  examples:
+    - input: SELECT IF(2 > 1, 'HIGHER', 'LOWER') AS value;
+      output: "HIGHER"
 ---
 function:
   name: try
@@ -9880,6 +10171,9 @@ function:
   cross-link: https://trino.io/docs/current/functions/datetime.html#current_time
   description: >
     Returns the current time with time zone as of the start of the query.
+  examples:
+    - input: SELECT current_time() AS value;
+      output: "13:52:34.245364"
 ---
 function:
   name: current_timestamp
@@ -9897,6 +10191,9 @@ function:
   description: >
     Returns the current timestamp with time zone as of the start of the query,
     with 3 digits of subsecond precision,
+  examples:
+    - input: SELECT current_timestamp() AS value;
+      output: "2024-06-21T13:53:41.809016Z"
 ---
 function:
   name: current_timestamp
