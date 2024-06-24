@@ -7397,6 +7397,7 @@ function:
   optional-parameters: []
   returns:
     datatype: decimal(1, 0)
+  implemented-by: !rust
   section: math
   cross-link: https://trino.io/docs/current/functions/math.html#sign
   description: >
@@ -7435,6 +7436,8 @@ function:
   optional-parameters: []
   returns:
     datatype: real
+  implemented-by: !datafusion
+    udf: signum
   section: math
   cross-link: https://trino.io/docs/current/functions/math.html#sign
   description: >
@@ -9384,6 +9387,7 @@ function:
   optional-parameters: []
   returns:
     datatype: decimal(p, s)
+  implemented-by: !rust
   section: math
   cross-link: https://trino.io/docs/current/functions/math.html#truncate
   description: >
@@ -9399,6 +9403,7 @@ function:
   optional-parameters: []
   returns:
     datatype: decimal(rp, 0)
+  implemented-by: !rust
   section: math
   cross-link: https://trino.io/docs/current/functions/math.html#truncate
   description: >
