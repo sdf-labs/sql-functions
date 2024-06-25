@@ -16,47 +16,33 @@
 // under the License.
 
 #![allow(non_camel_case_types)]
+use arrow::compute::DatePart;
 use arrow::datatypes::DataType;
 use datafusion::common::Result;
-use datafusion::error::DataFusionError;
 use datafusion::logical_expr::simplify::{ExprSimplifyResult, SimplifyInfo};
 use datafusion::logical_expr::{ColumnarValue, Expr, ScalarUDFImpl, Signature, Volatility};
 use std::any::Any;
 
-fn doy_date_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!(
-        "Not implemented {}:{}",
-        file!(),
-        line!()
-    )))
+use crate::utils::apply_datepart_kernel;
+
+fn doy_date_invoke(args: &[ColumnarValue]) -> Result<ColumnarValue> {
+    apply_datepart_kernel(&args[0], DatePart::DayOfYear)
 }
 
 fn doy_date_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!(
-        "Not implemented {}:{}",
-        file!(),
-        line!()
-    )))
+    Ok(DataType::Int64)
 }
 
 fn doy_date_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
     Ok(ExprSimplifyResult::Original(args))
 }
 
-fn doy_timestamp_p_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!(
-        "Not implemented {}:{}",
-        file!(),
-        line!()
-    )))
+fn doy_timestamp_p_invoke(args: &[ColumnarValue]) -> Result<ColumnarValue> {
+    apply_datepart_kernel(&args[0], DatePart::DayOfYear)
 }
 
 fn doy_timestamp_p_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!(
-        "Not implemented {}:{}",
-        file!(),
-        line!()
-    )))
+    Ok(DataType::Int64)
 }
 
 fn doy_timestamp_p_simplify(

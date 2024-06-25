@@ -2544,6 +2544,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !rust
   section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#day
   description: >
@@ -2556,6 +2557,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !rust
   section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#day_of_month
   description: >
@@ -2580,6 +2582,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !rust
   section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#day_of_month
   description: >
@@ -2592,6 +2595,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !rust
   section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#day_of_week
   description: >
@@ -2605,6 +2609,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !rust
   section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#day_of_week
   description: >
@@ -2618,6 +2623,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !rust
   section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#day_of_year
   description: >
@@ -2631,6 +2637,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !rust
   section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#day_of_year
   description: >
@@ -2681,6 +2688,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !rust
   section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#dow
   description: >
@@ -2693,6 +2701,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !rust
   section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#dow
   description: >
@@ -2705,6 +2714,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !rust
   section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#doy
   description: >
@@ -2717,6 +2727,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !rust
   section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#doy
   description: >
@@ -3418,7 +3429,7 @@ function:
   optional-parameters: []
   returns:
     datatype: timestamp
-  implemented-by: !datafusion
+  implemented-by: !rust
   section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#from_unixtime
   description: >
@@ -3810,6 +3821,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !rust
   section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#hour
   description: >
@@ -3823,6 +3835,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !rust
   section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#hour
   description: >
@@ -5280,6 +5293,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !rust
   section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#millisecond
   description: >
@@ -5292,6 +5306,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !rust
   section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#millisecond
   description: >
@@ -5379,6 +5394,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !rust
   section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#minute
   description: >
@@ -5391,6 +5407,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !rust
   section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#minute
   description: >
@@ -5522,6 +5539,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !rust
   section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#month
   description: >
@@ -7214,6 +7232,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !rust
   section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#second
   description: >
@@ -7226,6 +7245,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !rust
   section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#second
   description: >
@@ -9965,6 +9985,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !rust
   section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#year
   description: >

@@ -18,45 +18,30 @@
 #![allow(non_camel_case_types)]
 use arrow::datatypes::DataType;
 use datafusion::common::Result;
-use datafusion::error::DataFusionError;
 use datafusion::logical_expr::simplify::{ExprSimplifyResult, SimplifyInfo};
 use datafusion::logical_expr::{ColumnarValue, Expr, ScalarUDFImpl, Signature, Volatility};
 use std::any::Any;
 
-fn dow_date_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!(
-        "Not implemented {}:{}",
-        file!(),
-        line!()
-    )))
+use crate::utils::apply_dow_kernel;
+
+fn dow_date_invoke(args: &[ColumnarValue]) -> Result<ColumnarValue> {
+    apply_dow_kernel(&args[0])
 }
 
 fn dow_date_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!(
-        "Not implemented {}:{}",
-        file!(),
-        line!()
-    )))
+    Ok(DataType::Int64)
 }
 
 fn dow_date_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
     Ok(ExprSimplifyResult::Original(args))
 }
 
-fn dow_timestamp_p_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!(
-        "Not implemented {}:{}",
-        file!(),
-        line!()
-    )))
+fn dow_timestamp_p_invoke(args: &[ColumnarValue]) -> Result<ColumnarValue> {
+    apply_dow_kernel(&args[0])
 }
 
 fn dow_timestamp_p_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!(
-        "Not implemented {}:{}",
-        file!(),
-        line!()
-    )))
+    Ok(DataType::Int64)
 }
 
 fn dow_timestamp_p_simplify(
