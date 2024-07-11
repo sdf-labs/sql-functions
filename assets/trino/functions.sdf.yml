@@ -6145,6 +6145,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !rust
   section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#quarter
   description: >
@@ -6158,6 +6159,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !rust
   section: datetime
   cross-link: https://trino.io/docs/current/functions/datetime.html#quarter
   description: >
