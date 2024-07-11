@@ -15,7 +15,7 @@
 // specific language governing permissions and limitations
 // under the License.
 
-use arrow::array::ArrayRef;
+use arrow::array::{ArrayRef, Datum};
 use arrow::compute::{cast, date_part, DatePart};
 use arrow::datatypes::DataType;
 use arrow::error::Result as ArrowResult;
@@ -110,4 +110,27 @@ pub(super) fn apply_dow_kernel(arg: &ColumnarValue) -> Result<ColumnarValue> {
         // DF date_part returns Int32, but Trino needs Int64
         Ok(cast(&monday1, &DataType::Int64)?)
     })
+}
+
+/// Convert a vector from Datafusion to Arrow representation, accounting for a singleton vector case.
+pub(super) fn columnar_to_datum(col: &ColumnarValue) -> Box<dyn Datum + '_> {
+    match col {
+        ColumnarValue::Scalar(scalar) => {
+            // Result::unwrap() here can panic only due to a bug in Datafusion or Arrow
+            Box::new(scalar.to_scalar().unwrap())
+        }
+        ColumnarValue::Array(array) => Box::new(array.as_ref()),
+    }
+}
+
+/// Wrap as a DataFusion ColumnarValue, recognizing a singleton vector.
+pub(super) fn array_to_columnar(array: ArrayRef) -> ColumnarValue {
+    if array.len() == 1 {
+        match ScalarValue::try_from_array(&array, 0) {
+            Ok(scalar) => ColumnarValue::Scalar(scalar),
+            Err(_) => ColumnarValue::Array(array),
+        }
+    } else {
+        ColumnarValue::Array(array)
+    }
 }
