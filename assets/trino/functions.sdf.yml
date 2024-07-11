@@ -5421,6 +5421,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !rust
   section: math
   cross-link: https://trino.io/docs/current/functions/math.html#mod
   description: >
@@ -5447,6 +5448,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !rust
   section: math
   cross-link: https://trino.io/docs/current/functions/math.html#mod
   description: >

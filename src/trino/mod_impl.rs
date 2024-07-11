@@ -23,20 +23,27 @@ use datafusion::logical_expr::simplify::{ExprSimplifyResult, SimplifyInfo};
 use datafusion::logical_expr::{ColumnarValue, Expr, ScalarUDFImpl, Signature, Volatility};
 use std::any::Any;
 
-fn mod_bigint_bigint_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!(
-        "Not implemented {}:{}",
-        file!(),
-        line!()
-    )))
+use crate::utils::{array_to_columnar, columnar_to_datum};
+
+/// Shared implementation for all the overloads of mod,
+/// since the underlying Arrow kernel accepts "untyped" arrays.
+fn mod_invoke(args: &[ColumnarValue]) -> Result<ColumnarValue> {
+    let arg0 = columnar_to_datum(&args[0]);
+    let arg1 = columnar_to_datum(&args[1]);
+    let result = arrow::compute::kernels::numeric::rem(&*arg0, &*arg1)?;
+    Ok(array_to_columnar(result))
+}
+
+fn mod_bigint_bigint_invoke(args: &[ColumnarValue]) -> Result<ColumnarValue> {
+    let arg0 = columnar_to_datum(&args[0]);
+    let arg1 = columnar_to_datum(&args[1]);
+    let result = arrow::compute::kernels::numeric::rem(&*arg0, &*arg1)?;
+    // TODO: improve by recognizing a single-row result
+    Ok(ColumnarValue::Array(result))
 }
 
 fn mod_bigint_bigint_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!(
-        "Not implemented {}:{}",
-        file!(),
-        line!()
-    )))
+    Ok(DataType::Int64)
 }
 
 fn mod_bigint_bigint_simplify(
@@ -73,20 +80,12 @@ fn mod_decimal_a_precision_a_scale_decimal_b_precision_b_scale_simplify(
     Ok(ExprSimplifyResult::Original(args))
 }
 
-fn mod_double_double_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!(
-        "Not implemented {}:{}",
-        file!(),
-        line!()
-    )))
+fn mod_double_double_invoke(args: &[ColumnarValue]) -> Result<ColumnarValue> {
+    mod_invoke(args)
 }
 
 fn mod_double_double_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!(
-        "Not implemented {}:{}",
-        file!(),
-        line!()
-    )))
+    Ok(DataType::Float64)
 }
 
 fn mod_double_double_simplify(
