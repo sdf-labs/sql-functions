@@ -23,20 +23,12 @@ use datafusion::logical_expr::simplify::{ExprSimplifyResult, SimplifyInfo};
 use datafusion::logical_expr::{ColumnarValue, Expr, ScalarUDFImpl, Signature, Volatility};
 use std::any::Any;
 
-fn floor_bigint_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!(
-        "Not implemented {}:{}",
-        file!(),
-        line!()
-    )))
+fn floor_bigint_invoke(args: &[ColumnarValue]) -> Result<ColumnarValue> {
+    Ok(args[0].clone())
 }
 
 fn floor_bigint_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!(
-        "Not implemented {}:{}",
-        file!(),
-        line!()
-    )))
+    Ok(DataType::Int64)
 }
 
 fn floor_bigint_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {

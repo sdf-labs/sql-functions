@@ -23,20 +23,12 @@ use datafusion::logical_expr::simplify::{ExprSimplifyResult, SimplifyInfo};
 use datafusion::logical_expr::{ColumnarValue, Expr, ScalarUDFImpl, Signature, Volatility};
 use std::any::Any;
 
-fn ceiling_bigint_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!(
-        "Not implemented {}:{}",
-        file!(),
-        line!()
-    )))
+fn ceiling_bigint_invoke(args: &[ColumnarValue]) -> Result<ColumnarValue> {
+    Ok(args[0].clone())
 }
 
 fn ceiling_bigint_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!(
-        "Not implemented {}:{}",
-        file!(),
-        line!()
-    )))
+    Ok(DataType::Int64)
 }
 
 fn ceiling_bigint_simplify(

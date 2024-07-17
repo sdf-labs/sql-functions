@@ -1498,6 +1498,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !rust
   section: math
   cross-link: https://trino.io/docs/current/functions/math.html#ceil
   description: >
@@ -1591,6 +1592,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !rust
   section: math
   cross-link: https://trino.io/docs/current/functions/math.html#ceiling
   description: >
@@ -3068,6 +3070,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !rust
   section: math
   cross-link: https://trino.io/docs/current/functions/math.html#floor
   description: >
