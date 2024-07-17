@@ -16,27 +16,54 @@
 // under the License.
 
 #![allow(non_camel_case_types)]
-use arrow::datatypes::DataType;
+use arrow::array::{BooleanArray, GenericByteArray, OffsetSizeTrait, PrimitiveArray};
+use arrow::datatypes::{ArrowPrimitiveType, DataType, GenericBinaryType, GenericStringType};
 use datafusion::common::Result;
-use datafusion::error::DataFusionError;
 use datafusion::logical_expr::simplify::{ExprSimplifyResult, SimplifyInfo};
 use datafusion::logical_expr::{ColumnarValue, Expr, ScalarUDFImpl, Signature, Volatility};
 use std::any::Any;
 
-fn array_max_array_1_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!(
-        "Not implemented {}:{}",
-        file!(),
-        line!()
-    )))
+use crate::utils::KernelLifter;
+
+struct MaxLifter;
+
+impl KernelLifter for MaxLifter {
+    const FEATURE_NAME: &'static str = "array_max";
+
+    fn primitive_kernel<T>(array: &PrimitiveArray<T>) -> Option<T::Native>
+    where
+        T: ArrowPrimitiveType,
+    {
+        arrow::compute::kernels::aggregate::max(array)
+    }
+
+    fn string_kernel<O>(array: &GenericByteArray<GenericStringType<O>>) -> Option<&str>
+    where
+        O: OffsetSizeTrait,
+    {
+        arrow::compute::kernels::aggregate::max_string(array)
+    }
+
+    fn binary_kernel<O>(array: &GenericByteArray<GenericBinaryType<O>>) -> Option<&[u8]>
+    where
+        O: OffsetSizeTrait,
+    {
+        arrow::compute::kernels::aggregate::max_binary(array)
+    }
+
+    fn boolean_kernel(array: &BooleanArray) -> Option<bool> {
+        arrow::compute::kernels::aggregate::max_boolean(array)
+    }
 }
 
-fn array_max_array_1_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!(
-        "Not implemented {}:{}",
-        file!(),
-        line!()
-    )))
+fn array_max_array_1_invoke(args: &[ColumnarValue]) -> Result<ColumnarValue> {
+    let array = args[0].clone().into_array(1).unwrap();
+    MaxLifter::lift_all_kernels(array).map(ColumnarValue::Array)
+}
+
+fn array_max_array_1_return_type(arg_types: &[DataType]) -> Result<DataType> {
+    assert!(arg_types.len() == 1);
+    MaxLifter::return_type(&arg_types[0])
 }
 
 fn array_max_array_1_simplify(
