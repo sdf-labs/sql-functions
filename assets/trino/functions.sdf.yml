@@ -708,6 +708,7 @@ function:
   optional-parameters: []
   returns:
     datatype: $1
+  implemented-by: !rust
   section: array
   cross-link: https://trino.io/docs/current/functions/array.html#array_max
   description: >
@@ -720,6 +721,7 @@ function:
   optional-parameters: []
   returns:
     datatype: $1
+  implemented-by: !rust
   section: array
   cross-link: https://trino.io/docs/current/functions/array.html#array_min
   description: >
