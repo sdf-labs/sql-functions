@@ -17391,3 +17391,12 @@ function:
     - double
   section: internal
   cross-link: https://docs.snowflake.com/en/sql-reference/functions/sdf::or
+---
+function:
+  name: sys_connect_by_path
+  parameters:
+  - datatype: varchar
+  - datatype: varchar
+  returns:
+    datatype: varchar
+    
