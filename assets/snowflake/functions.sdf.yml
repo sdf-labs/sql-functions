@@ -14015,7 +14015,6 @@ function:
     - day
     - d
     - dd
-    - day
     - days
     - dayofmonth
     - week
@@ -14099,7 +14098,6 @@ function:
     - day
     - d
     - dd
-    - day
     - days
     - dayofmonth
     - week
@@ -14687,19 +14685,12 @@ function:
     - dd
     - days
     - dayofmonth
-    - dayofweek
-    - dayofyear
-    - yearday
-    - doy
-    - dy
     - week
     - w
     - wk
     - weekofyear
     - woy
     - wy
-    - weekofyeariso
-    - weekofyear_iso
     - quarter
     - q
     - qtr
@@ -14722,6 +14713,14 @@ function:
     - sec
     - seconds
     - secs
+    - millisecond
+    - ms
+    - mesc
+    - milliseconds
+    - microsecond
+    - us,
+    - usec,
+    - microseconds
     - nanosecond
     - ns
     - nsec
@@ -16760,19 +16759,12 @@ function:
     - dd
     - days
     - dayofmonth
-    - dayofweek
-    - dayofyear
-    - yearday
-    - doy
-    - dy
     - week
     - w
     - wk
     - weekofyear
     - woy
     - wy
-    - weekofyeariso
-    - weekofyear_iso
     - quarter
     - q
     - qtr
@@ -16795,6 +16787,14 @@ function:
     - sec
     - seconds
     - secs
+    - millisecond
+    - ms
+    - mesc
+    - milliseconds
+    - microsecond
+    - us,
+    - usec,
+    - microseconds
     - nanosecond
     - ns
     - nsec
