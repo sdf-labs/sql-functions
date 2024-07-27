@@ -16,8 +16,8 @@
 // under the License.
 
 use arrow::array::{
-    Array, ArrayRef, AsArray, BooleanArray, Datum, GenericByteArray, ListArray, OffsetSizeTrait,
-    PrimitiveArray,
+    Array, ArrayRef, AsArray, BooleanArray, Datum, GenericByteArray, ListArray, NullArray,
+    OffsetSizeTrait, PrimitiveArray,
 };
 use arrow::compute::{cast, date_part, DatePart};
 use arrow::datatypes::{ArrowPrimitiveType, DataType, GenericBinaryType, GenericStringType};
@@ -166,6 +166,11 @@ pub trait KernelLifter {
     // The kernel to apply to lists of booleans.
     fn boolean_kernel(array: &BooleanArray) -> Option<bool>;
 
+    // Deals with a column of lists none of which contains a real item -- every list is either empty of contains only NULLs.
+    fn lift_null(list_array: &ListArray) -> ArrayRef {
+        Arc::new(NullArray::new(list_array.len()))
+    }
+
     // TODO: Find a way to reduce remaining duplication across the four lift_xxx_kernel methods.
 
     fn lift_primitive_kernel<T>(list_array: &ListArray) -> ArrayRef
@@ -263,6 +268,7 @@ pub trait KernelLifter {
         let list_array: &ListArray = datafusion::common::cast::as_list_array(&array)?;
         let elem_dt = list_array.value_type();
         let res: ArrayRef = match elem_dt {
+            DataType::Null => Self::lift_null(list_array),
             // numeric primitive arrays
             DataType::UInt8 => Self::lift_primitive_kernel::<adt::UInt8Type>(list_array),
             DataType::UInt16 => Self::lift_primitive_kernel::<adt::UInt16Type>(list_array),
@@ -374,6 +380,7 @@ pub trait KernelLifter {
         }?;
         let dt = field.data_type();
         match dt {
+            DataType::Null => Ok(dt.clone()),
             dt if dt.is_primitive() => Ok(dt.clone()),
             DataType::Utf8 | DataType::LargeUtf8 => Ok(dt.clone()),
             DataType::Binary | DataType::LargeBinary => Ok(dt.clone()),
