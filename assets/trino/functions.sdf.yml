@@ -1432,7 +1432,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  implemented-by: !datafusion
+  implemented-by: !rust
   section: array
   cross-link: https://trino.io/docs/current/functions/array.html#cardinality
   description: >
