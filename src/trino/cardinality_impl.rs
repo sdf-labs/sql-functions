@@ -16,27 +16,39 @@
 // under the License.
 
 #![allow(non_camel_case_types)]
+use arrow::array::{ArrayRef, UInt64Array};
 use arrow::datatypes::DataType;
+use datafusion::common::cast::as_list_array;
 use datafusion::common::Result;
 use datafusion::error::DataFusionError;
 use datafusion::logical_expr::simplify::{ExprSimplifyResult, SimplifyInfo};
 use datafusion::logical_expr::{ColumnarValue, Expr, ScalarUDFImpl, Signature, Volatility};
 use std::any::Any;
+use std::sync::Arc;
 
-fn cardinality_array_3_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!(
-        "Not implemented {}:{}",
-        file!(),
-        line!()
-    )))
+use crate::utils::apply_unary_kernel;
+
+fn cardinality_array_3_invoke(args: &[ColumnarValue]) -> Result<ColumnarValue> {
+    apply_unary_kernel(&args[0], move |array: &ArrayRef| {
+        let list_array = as_list_array(array)?;
+        let result = list_array
+            .iter()
+            .map(|item| match item {
+                Some(arr) => Some(arr.len() as u64),
+                None => None, // NULL
+            })
+            .collect::<UInt64Array>();
+        Ok(Arc::new(result) as ArrayRef)
+    })
 }
 
-fn cardinality_array_3_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!(
-        "Not implemented {}:{}",
-        file!(),
-        line!()
-    )))
+fn cardinality_array_3_return_type(arg_types: &[DataType]) -> Result<DataType> {
+    match arg_types[0] {
+        DataType::List(_) => Ok(DataType::UInt64),
+        _ => Err(DataFusionError::Plan(format!(
+            "The cardinality function only accepts List."
+        ))),
+    }
 }
 
 fn cardinality_array_3_simplify(

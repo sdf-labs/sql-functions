@@ -106,6 +106,8 @@ pub(super) fn apply_datepart_kernel(arg: &ColumnarValue, part: DatePart) -> Resu
     })
 }
 
+/// Use Arrow `date_part` kernel to compute day of week,
+/// with Monday being 1 through Sunday being 7, per Trino convention..
 pub(super) fn apply_dow_kernel(arg: &ColumnarValue) -> Result<ColumnarValue> {
     apply_unary_kernel(arg, move |arr| {
         let monday0 = date_part(arr, DatePart::DayOfWeekMonday0)?;
@@ -132,7 +134,7 @@ pub(super) fn array_to_columnar(array: ArrayRef) -> ColumnarValue {
     if array.len() == 1 {
         match ScalarValue::try_from_array(&array, 0) {
             Ok(scalar) => ColumnarValue::Scalar(scalar),
-            Err(_) => ColumnarValue::Array(array),
+            Err(_) => ColumnarValue::Array(array), // Should not happen; can just panic instead
         }
     } else {
         ColumnarValue::Array(array)
