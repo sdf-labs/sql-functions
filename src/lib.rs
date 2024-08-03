@@ -24,3 +24,5 @@ impl Asset {
 }
 
 mod utils;
+
+mod utils_regexp;

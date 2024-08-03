@@ -15,6 +15,7 @@
 // specific language governing permissions and limitations
 // under the License.
 
+use arrow::array::StringArray;
 use arrow::array::{
     Array, ArrayRef, AsArray, BooleanArray, Datum, GenericByteArray, ListArray, NullArray,
     OffsetSizeTrait, PrimitiveArray,
@@ -22,6 +23,7 @@ use arrow::array::{
 use arrow::compute::{cast, date_part, DatePart};
 use arrow::datatypes::{ArrowPrimitiveType, DataType, GenericBinaryType, GenericStringType};
 use arrow::error::Result as ArrowResult;
+use datafusion::common::cast::{as_fixed_size_list_array, as_string_array};
 use datafusion::common::{Result, ScalarValue};
 use datafusion::error::DataFusionError;
 use datafusion::logical_expr::{ColumnarValue, ScalarFunctionImplementation};
@@ -139,6 +141,26 @@ pub(super) fn array_to_columnar(array: ArrayRef) -> ColumnarValue {
     } else {
         ColumnarValue::Array(array)
     }
+}
+
+/// Extract the underlying string array from an array of SDF "distinct" type.
+/// (The distinct type is FixedSizeList with size 1.)
+/// TODO: This implementation iterates and reconstructs into a new array;
+/// it could be possible to exploit the size=1 circumstance to achieve no-copy implementation.
+pub(super) fn distinct_to_string_array(distinct_arr: &Arc<dyn Array>) -> Result<StringArray> {
+    let fxsize_arr = as_fixed_size_list_array(distinct_arr)?;
+    let res = fxsize_arr
+        .iter()
+        .map(|lst_opt| {
+            lst_opt
+                .map(|lst| {
+                    let inner = as_string_array(&lst)?;
+                    Ok(inner.value(0).to_owned())
+                })
+                .transpose()
+        })
+        .collect::<Result<StringArray>>()?;
+    Ok(res)
 }
 
 /// Means to lift a suite of kernels on typed arrays to operate on a list array (an array of lists).
