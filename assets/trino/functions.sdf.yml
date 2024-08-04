@@ -6622,6 +6622,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !rust
   section: regexp
   cross-link: https://trino.io/docs/current/functions/regexp.html#regexp_position
   description: >
