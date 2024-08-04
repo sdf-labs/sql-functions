@@ -154,3 +154,72 @@ where
     };
     Ok(array_to_columnar(res_arr))
 }
+
+pub(super) fn map_rowfun__pat_hay_int_int_to_i64<F>(
+    joni_col: &ColumnarValue,
+    hay_col: &ColumnarValue,
+    int1_col: &ColumnarValue,
+    int2_col: &ColumnarValue,
+    rowfun: Arc<F>,
+) -> Result<ColumnarValue>
+where
+    F: (Fn(
+            /*pat:*/ &str,
+        ) -> Result<Arc<dyn Fn(/*hay:*/ &str, /*int1:*/ i64, /*int2:*/ i64) -> i64>>)
+        + Sync
+        + Send
+        + 'static,
+{
+    let res_arr = match joni_col {
+        ColumnarValue::Array(joni_arr) => {
+            let hay_arr = hay_col.to_owned().into_array(joni_arr.len())?;
+            let int1_arr = int1_col.to_owned().into_array(joni_arr.len())?;
+            let int2_arr = int2_col.to_owned().into_array(joni_arr.len())?;
+            let pattern = distinct_to_string_array(joni_arr)?;
+            let haystack = as_string_array(&hay_arr)?;
+            let int1 = as_int64_array(&int1_arr)?;
+            let int2 = as_int64_array(&int2_arr)?;
+            let res = pattern
+                .iter()
+                .zip(haystack.iter())
+                .zip(int1.iter())
+                .zip(int2.iter())
+                .map(|tuple| match tuple {
+                    (((Some(pat), Some(hay)), Some(int1)), Some(int2)) => {
+                        let regfun = rowfun(pat)?;
+                        Ok(Some(regfun(hay, int1, int2)))
+                    }
+                    _ => Ok(None),
+                })
+                .collect::<Result<Int64Array>>()?;
+            Arc::new(res) as ArrayRef
+        }
+        ColumnarValue::Scalar(joni_scalar) => {
+            let hay_arr = hay_col.to_owned().into_array(1)?; // NB: 1 only triggers when hay_col is Scalar
+            let int1_arr = int1_col.to_owned().into_array(1)?;
+            let int2_arr = int2_col.to_owned().into_array(1)?;
+            let joni_arr = joni_scalar.to_array()?;
+            let pat_arr = distinct_to_string_array(&joni_arr)?;
+            if pat_arr.is_null(0) {
+                arrow::array::new_null_array(hay_arr.data_type(), hay_arr.len())
+            } else {
+                let pat = pat_arr.value(0);
+                let regfun = rowfun(pat)?;
+                let haystack = as_string_array(&hay_arr)?;
+                let int1 = as_int64_array(&int1_arr)?;
+                let int2 = as_int64_array(&int2_arr)?;
+                let res = haystack
+                    .iter()
+                    .zip(int1.iter())
+                    .zip(int2.iter())
+                    .map(|tuple| match tuple {
+                        ((Some(hay), Some(int1)), Some(int2)) => Some(regfun(hay, int1, int2)),
+                        _ => None,
+                    })
+                    .collect::<Int64Array>();
+                Arc::new(res) as ArrayRef
+            }
+        }
+    };
+    Ok(array_to_columnar(res_arr))
+}

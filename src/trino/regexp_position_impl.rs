@@ -25,7 +25,9 @@ use regex::Regex;
 use std::any::Any;
 use std::sync::Arc;
 
-use crate::utils_regexp::{map_rowfun__pat_hay_int_to_i64, map_rowfun__pat_hay_to_i64};
+use crate::utils_regexp::{
+    map_rowfun__pat_hay_int_int_to_i64, map_rowfun__pat_hay_int_to_i64, map_rowfun__pat_hay_to_i64,
+};
 
 fn regexp_position_varchar_joniregexp_invoke(args: &[ColumnarValue]) -> Result<ColumnarValue> {
     map_rowfun__pat_hay_to_i64(&args[1], &args[0], Arc::new(regexp_position__rowfun))
@@ -103,23 +105,45 @@ fn regexp_position_varchar_joniregexp_bigint_simplify(
 }
 
 fn regexp_position_varchar_joniregexp_bigint_bigint_invoke(
-    _args: &[ColumnarValue],
+    args: &[ColumnarValue],
 ) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!(
-        "Not implemented {}:{}",
-        file!(),
-        line!()
-    )))
+    map_rowfun__pat_hay_int_int_to_i64(
+        &args[1],
+        &args[0],
+        &args[2],
+        &args[3],
+        Arc::new(regexp_position__rowfun3),
+    )
+}
+
+fn regexp_position__rowfun3(
+    pat: &str,
+) -> Result<Arc<dyn Fn(/*hay:*/ &str, /*start:*/ i64, /*occ:*/ i64) -> i64>> {
+    let re = Regex::new(pat).map_err(|e| {
+        DataFusionError::Execution(format!(
+            "Regular expression for regexp_position did not compile: {e:?}"
+        ))
+    })?;
+    let rowfun = move |str: &str, start: i64, occ: i64| {
+        if !str.is_char_boundary((start - 1) as usize) {
+            return -1;
+        };
+
+        let suffix = &str[(start - 1) as usize..];
+        let res = std::panic::catch_unwind(|| re.find_iter(suffix).nth((occ - 1) as usize));
+        match res {
+            Err(_) => -1,
+            Ok(None) => -1,
+            Ok(Some(m)) => (m.start() as i64 + 1) + (start - 1),
+        }
+    };
+    Ok(Arc::new(rowfun))
 }
 
 fn regexp_position_varchar_joniregexp_bigint_bigint_return_type(
     _arg_types: &[DataType],
 ) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!(
-        "Not implemented {}:{}",
-        file!(),
-        line!()
-    )))
+    Ok(DataType::Int64)
 }
 
 fn regexp_position_varchar_joniregexp_bigint_bigint_simplify(
