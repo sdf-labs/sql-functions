@@ -44,6 +44,6 @@ arrow = { version = "51.0.0", features = ["prettyprint"] }
 tokio = "1.33.0"
 chrono = "0.4"
 chrono-tz = "0.5"
-regex = "1.5"
+regex = "1.10.2"
 log = "0.4.20"
 rust-embed = "6.4.2"
