@@ -38,7 +38,7 @@ use datafusion::logical_expr::ColumnarValue;
 use std::sync::Arc;
 
 use crate::utils::{array_to_columnar, distinct_to_string_array};
-use crate::utils_arrow::ListArrayExt;
+use crate::utils_arrow::{ListArrayExt, StringArrayExt};
 
 /// Map a curried row function that accepts a pattern and a string and returns an i64
 /// over two columns, of jonigexp and haystack/string.  
@@ -217,6 +217,72 @@ where
                     })
                     .collect::<Int64Array>();
                 Arc::new(res) as ArrayRef
+            }
+        }
+    };
+    Ok(array_to_columnar(res_arr))
+}
+
+// map_rowfun__pat_hay_int_to_nstr
+/// Given a pattern-curried row function that returns a nullable string,
+/// map it over columns, returning a column of strings.  
+pub(super) fn map_rowfun__pat_hay_int_to_nstr<F>(
+    joni_col: &ColumnarValue,
+    hay_col: &ColumnarValue,
+    int1_col: &ColumnarValue,
+    rowfun: Arc<F>,
+) -> Result<ColumnarValue>
+where
+    F: (Fn(
+            /*pat:*/ &str,
+        )
+            -> Result<Arc<dyn for<'a> Fn(/*hay:*/ &'a str, /*int1:*/ i64) -> Option<&'a str>>>)
+        + Sync
+        + Send
+        + 'static,
+{
+    let res_arr = match joni_col {
+        ColumnarValue::Array(joni_arr) => {
+            let hay_arr = hay_col.to_owned().into_array(joni_arr.len())?;
+            let int1_arr = int1_col.to_owned().into_array(joni_arr.len())?;
+            let pattern = distinct_to_string_array(joni_arr)?;
+            let haystack = as_string_array(&hay_arr)?;
+            let int1 = as_int64_array(&int1_arr)?;
+            let res = pattern
+                .iter()
+                .zip(haystack.iter())
+                .zip(int1.iter())
+                .map(|tuple| match tuple {
+                    ((Some(pat), Some(hay)), Some(int1)) => {
+                        let regfun = rowfun(pat)?;
+                        Ok(regfun(hay, int1))
+                    }
+                    _ => Ok(None),
+                })
+                .collect::<Result<StringArrayExt>>()?;
+            Arc::new(res.into_string_array()) as ArrayRef
+        }
+        ColumnarValue::Scalar(joni_scalar) => {
+            let hay_arr = hay_col.to_owned().into_array(1)?; // NB: 1 only triggers when hay_col is Scalar
+            let int1_arr = int1_col.to_owned().into_array(1)?;
+            let joni_arr = joni_scalar.to_array()?;
+            let pat_arr = distinct_to_string_array(&joni_arr)?;
+            if pat_arr.is_null(0) {
+                arrow::array::new_null_array(hay_arr.data_type(), hay_arr.len())
+            } else {
+                let pat = pat_arr.value(0);
+                let regfun = rowfun(pat)?;
+                let haystack = as_string_array(&hay_arr)?;
+                let int1 = as_int64_array(&int1_arr)?;
+                let res = haystack
+                    .iter()
+                    .zip(int1.iter())
+                    .map(|tuple| match tuple {
+                        (Some(hay), Some(int1)) => regfun(hay, int1),
+                        _ => None,
+                    })
+                    .collect::<StringArrayExt>();
+                Arc::new(res.into_string_array()) as ArrayRef
             }
         }
     };
