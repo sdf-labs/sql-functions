@@ -21,22 +21,31 @@ use datafusion::common::Result;
 use datafusion::error::DataFusionError;
 use datafusion::logical_expr::simplify::{ExprSimplifyResult, SimplifyInfo};
 use datafusion::logical_expr::{ColumnarValue, Expr, ScalarUDFImpl, Signature, Volatility};
+use regex::Regex;
 use std::any::Any;
+use std::sync::Arc;
 
-fn regexp_extract_all_varchar_joniregexp_invoke(_args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!(
-        "Not implemented {}:{}",
-        file!(),
-        line!()
-    )))
+use crate::utils_regexp::{map_rowfun__pat_hay_int_to_nstrlst, map_rowfun__pat_hay_to_strlst};
+
+fn regexp_extract_all_varchar_joniregexp_invoke(args: &[ColumnarValue]) -> Result<ColumnarValue> {
+    map_rowfun__pat_hay_to_strlst(&args[1], &args[0], Arc::new(regexp_extract_all__rowfun))
+}
+
+fn regexp_extract_all__rowfun(
+    pat: &str,
+) -> Result<Arc<dyn for<'a> Fn(/*hay:*/ &'a str) -> Vec<&'a str>>> {
+    let re = Regex::new(pat).map_err(|e| {
+        DataFusionError::Execution(format!(
+            "Regular expression for regexp_count did not compile: {e:?}"
+        ))
+    })?;
+    let rowfun: Arc<dyn for<'a> Fn(/*hay:*/ &'a str) -> Vec<&'a str>> =
+        Arc::new(move |hay: &str| re.find_iter(hay).map(|m| m.as_str()).collect());
+    Ok(rowfun)
 }
 
 fn regexp_extract_all_varchar_joniregexp_return_type(_arg_types: &[DataType]) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!(
-        "Not implemented {}:{}",
-        file!(),
-        line!()
-    )))
+    Ok(DataType::new_list(DataType::Utf8, false))
 }
 
 fn regexp_extract_all_varchar_joniregexp_simplify(
@@ -47,23 +56,37 @@ fn regexp_extract_all_varchar_joniregexp_simplify(
 }
 
 fn regexp_extract_all_varchar_joniregexp_bigint_invoke(
-    _args: &[ColumnarValue],
+    args: &[ColumnarValue],
 ) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented(format!(
-        "Not implemented {}:{}",
-        file!(),
-        line!()
-    )))
+    map_rowfun__pat_hay_int_to_nstrlst(
+        &args[1],
+        &args[0],
+        &args[2],
+        Arc::new(regexp_extract_all__rowfun2),
+    )
+}
+
+fn regexp_extract_all__rowfun2(
+    pat: &str,
+) -> Result<Arc<dyn for<'a> Fn(/*hay:*/ &'a str, /*grp:*/ i64) -> Vec<Option<&'a str>>>> {
+    let re = Regex::new(pat).map_err(|e| {
+        DataFusionError::Execution(format!(
+            "Regular expression for regexp_count did not compile: {e:?}"
+        ))
+    })?;
+    let rowfun: Arc<dyn for<'a> Fn(/*hay:*/ &'a str, /*grp:*/ i64) -> Vec<Option<&'a str>>> =
+        Arc::new(move |hay: &str, grp: i64| {
+            re.captures_iter(hay)
+                .map(|cs| cs.get(grp as usize).map(|m| m.as_str()))
+                .collect()
+        });
+    Ok(rowfun)
 }
 
 fn regexp_extract_all_varchar_joniregexp_bigint_return_type(
     _arg_types: &[DataType],
 ) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented(format!(
-        "Not implemented {}:{}",
-        file!(),
-        line!()
-    )))
+    Ok(DataType::new_list(DataType::Utf8, false))
 }
 
 fn regexp_extract_all_varchar_joniregexp_bigint_simplify(

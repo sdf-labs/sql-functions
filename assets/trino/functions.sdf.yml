@@ -6558,11 +6558,11 @@ function:
   optional-parameters: []
   returns:
     datatype: array<varchar>
+  implemented-by: !rust
   section: regexp
   cross-link: https://trino.io/docs/current/functions/regexp.html#regexp_extract_all
   description: >
-    Returns the substring(s) matched by the regular expression pattern
-    in string.
+    Returns the substrings of a string matched by the regular expression pattern.
 ---
 function:
   name: regexp_extract_all
@@ -6573,11 +6573,11 @@ function:
   optional-parameters: []
   returns:
     datatype: array<varchar>
+  implemented-by: !rust
   section: regexp
   cross-link: https://trino.io/docs/current/functions/regexp.html#regexp_extract_all
   description: >
-    Returns the substring(s) matched by the regular expression pattern
-    in string.
+    Returns the substrings of a string matched by the regular expression pattern's capturing group.
 ---
 function:
   name: regexp_like
