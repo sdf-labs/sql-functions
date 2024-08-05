@@ -40,11 +40,10 @@ fn regexp_position__rowfun(pat: &str) -> Result<Arc<dyn Fn(/*hay:*/ &str) -> i64
         ))
     })?;
     let rowfun = move |str: &str| {
-        let res = std::panic::catch_unwind(|| re.find(str));
+        let res = re.find(str);
         match res {
-            Err(_) => -1,
-            Ok(None) => -1,
-            Ok(Some(m)) => m.start() as i64 + 1,
+            None => -1,
+            Some(m) => m.start() as i64 + 1,
         }
     };
     Ok(Arc::new(rowfun))
@@ -81,11 +80,19 @@ fn regexp_position__rowfun2(
         ))
     })?;
     let rowfun = move |str: &str, start: i64| {
-        let res = std::panic::catch_unwind(|| re.find_at(str, (start - 1) as usize));
+        let start = start as usize;
+        if start < 1 {
+            return -1; // TODO Trino gives out an error here; need to understand if Result from rowfun is worth it
+        } else if start > str.len() {
+            return -1;
+            // Working around what might be a bug in regex crate: it panics here,
+            // but only when start is "well past" the end of str
+            // (e.g., for str="", must be start >= 3, for "abc" and pattern "b", start >= 6).
+        }
+        let res = re.find_at(str, (start - 1) as usize);
         match res {
-            Err(_) => -1,
-            Ok(None) => -1,
-            Ok(Some(m)) => m.start() as i64 + 1,
+            None => -1,
+            Some(m) => m.start() as i64 + 1,
         }
     };
     Ok(Arc::new(rowfun))
@@ -125,16 +132,27 @@ fn regexp_position__rowfun3(
         ))
     })?;
     let rowfun = move |str: &str, start: i64, occ: i64| {
+        let start = start as usize;
+        if start < 1 {
+            return -1; // TODO Trino gives out an error here; need to understand if Result from rowfun is worth it
+        } else if start > str.len() {
+            return -1;
+            // Working around what might be a bug in regex crate: it panics here,
+            // but only when start is "well past" the end of str
+            // (e.g., for str="", must be start >= 3, for "abc" and pattern "b", start >= 6).
+        }
         if !str.is_char_boundary((start - 1) as usize) {
             return -1;
         };
+        if occ < 1 {
+            return -1; // TODO Trino gives out an error here as well
+        }
 
-        let suffix = &str[(start - 1) as usize..];
-        let res = std::panic::catch_unwind(|| re.find_iter(suffix).nth((occ - 1) as usize));
+        let suffix = &str[(start - 1)..];
+        let res = re.find_iter(suffix).nth((occ - 1) as usize);
         match res {
-            Err(_) => -1,
-            Ok(None) => -1,
-            Ok(Some(m)) => (m.start() as i64 + 1) + (start - 1),
+            None => -1,
+            Some(m) => (m.start() + 1) as i64 + (start - 1) as i64,
         }
     };
     Ok(Arc::new(rowfun))
