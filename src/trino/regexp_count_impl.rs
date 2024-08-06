@@ -37,10 +37,7 @@ fn regexp_count__rowfun(pat: &str) -> Result<Arc<dyn Fn(/*hay:*/ &str) -> i64>> 
             "Regular expression for regexp_count did not compile: {e:?}"
         ))
     })?;
-    let rowfun = move |str: &str| {
-        let count = re.find_iter(str).count() as i64;
-        count
-    };
+    let rowfun = move |str: &str| re.find_iter(str).count() as i64;
     Ok(Arc::new(rowfun))
 }
 

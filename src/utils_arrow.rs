@@ -11,12 +11,34 @@ impl StringArrayExt {
     }
 }
 
-/// Enables collect::<ListArrayExt> from an Iterator of Option<Vec<&'a str>>,
+/// Enables collect::<ListArrayExt> from an Iterator of Option<&'a str>,
 /// where None represents a null list.
 impl<'a> FromIterator<Option<&'a str>> for StringArrayExt {
     fn from_iter<I>(iter: I) -> Self
     where
         I: IntoIterator<Item = Option<&'a str>>,
+    {
+        let mut builder = StringBuilder::new();
+        for item in iter {
+            match item {
+                Some(s) => {
+                    builder.append_value(s);
+                }
+                None => {
+                    builder.append_null();
+                }
+            }
+        }
+        StringArrayExt(builder.finish())
+    }
+}
+
+/// Enables collect::<ListArrayExt> from an Iterator of Option<String>,
+/// where None represents a null list.
+impl<'a> FromIterator<Option<String>> for StringArrayExt {
+    fn from_iter<I>(iter: I) -> Self
+    where
+        I: IntoIterator<Item = Option<String>>,
     {
         let mut builder = StringBuilder::new();
         for item in iter {
