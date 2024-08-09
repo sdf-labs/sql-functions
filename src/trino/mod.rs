@@ -1602,11 +1602,6 @@ make_udf_function!(
     LENGTH_VARBINARY,
     length_varbinary
 );
-make_udf_function!(
-    length_impl::length_array_1Func,
-    LENGTH_ARRAY_1,
-    length_array_1
-);
 
 make_udf_function!(
     levenshtein_distance_impl::levenshtein_distance_varchar_varcharFunc,
@@ -1896,7 +1891,7 @@ make_udf_function!(
 
 make_udf_function!(
     parse_presto_data_size_impl::parse_presto_data_size_varcharFunc,
-    PARSE_PRETO_DATA_SIZE_VARCHAR,
+    PARSE_PRESTO_DATA_SIZE_VARCHAR,
     parse_presto_data_size_varchar
 );
 
@@ -3586,7 +3581,6 @@ export_functions!(
 
     (trino, length_varchar, arg1, "function doc"),
     (trino, length_varbinary, arg1, "function doc"),
-    (trino, length_array_1, arg1, "function doc"),
 
     (trino, levenshtein_distance_varchar_varchar, arg1 arg2, "function doc"),
 
