@@ -73,13 +73,14 @@ fn bing_tile_varchar_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct bing_tile_bigint_bigint_bigintFunc {
     signature: Signature,
 }
 
 impl bing_tile_bigint_bigint_bigintFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(3, Volatility::Immutable),
         }
@@ -98,6 +99,7 @@ impl ScalarUDFImpl for bing_tile_bigint_bigint_bigintFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         bing_tile_bigint_bigint_bigint_return_type(arg_types)
     }
@@ -106,9 +108,14 @@ impl ScalarUDFImpl for bing_tile_bigint_bigint_bigintFunc {
         bing_tile_bigint_bigint_bigint_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         bing_tile_bigint_bigint_bigint_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -117,7 +124,7 @@ pub(super) struct bing_tile_varcharFunc {
 }
 
 impl bing_tile_varcharFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -136,6 +143,7 @@ impl ScalarUDFImpl for bing_tile_varcharFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         bing_tile_varchar_return_type(arg_types)
     }
@@ -144,7 +152,12 @@ impl ScalarUDFImpl for bing_tile_varcharFunc {
         bing_tile_varchar_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         bing_tile_varchar_simplify(args, info)
     }
+
 }

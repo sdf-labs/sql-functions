@@ -50,13 +50,14 @@ fn none_match_array_1_function_1_boolean_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct none_match_array_1_function_1_booleanFunc {
     signature: Signature,
 }
 
 impl none_match_array_1_function_1_booleanFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -75,6 +76,7 @@ impl ScalarUDFImpl for none_match_array_1_function_1_booleanFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         none_match_array_1_function_1_boolean_return_type(arg_types)
     }
@@ -83,7 +85,12 @@ impl ScalarUDFImpl for none_match_array_1_function_1_booleanFunc {
         none_match_array_1_function_1_boolean_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         none_match_array_1_function_1_boolean_simplify(args, info)
     }
+
 }

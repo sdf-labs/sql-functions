@@ -50,13 +50,14 @@ fn array_intersect_array_3_array_3_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct array_intersect_array_3_array_3Func {
     signature: Signature,
 }
 
 impl array_intersect_array_3_array_3Func {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -75,6 +76,7 @@ impl ScalarUDFImpl for array_intersect_array_3_array_3Func {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         array_intersect_array_3_array_3_return_type(arg_types)
     }
@@ -83,7 +85,12 @@ impl ScalarUDFImpl for array_intersect_array_3_array_3Func {
         array_intersect_array_3_array_3_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         array_intersect_array_3_array_3_simplify(args, info)
     }
+
 }

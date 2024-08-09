@@ -47,13 +47,14 @@ fn acos_double_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<Exp
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct acos_doubleFunc {
     signature: Signature,
 }
 
 impl acos_doubleFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -72,6 +73,7 @@ impl ScalarUDFImpl for acos_doubleFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         acos_double_return_type(arg_types)
     }
@@ -80,7 +82,12 @@ impl ScalarUDFImpl for acos_doubleFunc {
         acos_double_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         acos_double_simplify(args, info)
     }
+
 }

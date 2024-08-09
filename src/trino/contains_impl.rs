@@ -73,13 +73,14 @@ fn contains_varchar_ipaddress_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct contains_array_1_1Func {
     signature: Signature,
 }
 
 impl contains_array_1_1Func {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -98,6 +99,7 @@ impl ScalarUDFImpl for contains_array_1_1Func {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         contains_array_1_1_return_type(arg_types)
     }
@@ -106,9 +108,14 @@ impl ScalarUDFImpl for contains_array_1_1Func {
         contains_array_1_1_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         contains_array_1_1_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -117,7 +124,7 @@ pub(super) struct contains_varchar_ipaddressFunc {
 }
 
 impl contains_varchar_ipaddressFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -136,6 +143,7 @@ impl ScalarUDFImpl for contains_varchar_ipaddressFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         contains_varchar_ipaddress_return_type(arg_types)
     }
@@ -144,7 +152,12 @@ impl ScalarUDFImpl for contains_varchar_ipaddressFunc {
         contains_varchar_ipaddress_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         contains_varchar_ipaddress_simplify(args, info)
     }
+
 }

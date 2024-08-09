@@ -50,13 +50,14 @@ fn rgb_bigint_bigint_bigint_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct rgb_bigint_bigint_bigintFunc {
     signature: Signature,
 }
 
 impl rgb_bigint_bigint_bigintFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(3, Volatility::Immutable),
         }
@@ -75,6 +76,7 @@ impl ScalarUDFImpl for rgb_bigint_bigint_bigintFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         rgb_bigint_bigint_bigint_return_type(arg_types)
     }
@@ -83,7 +85,12 @@ impl ScalarUDFImpl for rgb_bigint_bigint_bigintFunc {
         rgb_bigint_bigint_bigint_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         rgb_bigint_bigint_bigint_simplify(args, info)
     }
+
 }

@@ -73,13 +73,14 @@ fn from_base64_varchar_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct from_base64_varbinaryFunc {
     signature: Signature,
 }
 
 impl from_base64_varbinaryFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -98,6 +99,7 @@ impl ScalarUDFImpl for from_base64_varbinaryFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         from_base64_varbinary_return_type(arg_types)
     }
@@ -106,9 +108,14 @@ impl ScalarUDFImpl for from_base64_varbinaryFunc {
         from_base64_varbinary_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         from_base64_varbinary_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -117,7 +124,7 @@ pub(super) struct from_base64_varcharFunc {
 }
 
 impl from_base64_varcharFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -136,6 +143,7 @@ impl ScalarUDFImpl for from_base64_varcharFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         from_base64_varchar_return_type(arg_types)
     }
@@ -144,7 +152,12 @@ impl ScalarUDFImpl for from_base64_varcharFunc {
         from_base64_varchar_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         from_base64_varchar_simplify(args, info)
     }
+
 }

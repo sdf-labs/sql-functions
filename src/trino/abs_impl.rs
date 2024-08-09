@@ -150,13 +150,14 @@ fn abs_real_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSi
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct abs_tinyintFunc {
     signature: Signature,
 }
 
 impl abs_tinyintFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -175,6 +176,7 @@ impl ScalarUDFImpl for abs_tinyintFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         abs_tinyint_return_type(arg_types)
     }
@@ -183,9 +185,14 @@ impl ScalarUDFImpl for abs_tinyintFunc {
         abs_tinyint_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         abs_tinyint_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -194,7 +201,7 @@ pub(super) struct abs_smallintFunc {
 }
 
 impl abs_smallintFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -213,6 +220,7 @@ impl ScalarUDFImpl for abs_smallintFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         abs_smallint_return_type(arg_types)
     }
@@ -221,9 +229,14 @@ impl ScalarUDFImpl for abs_smallintFunc {
         abs_smallint_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         abs_smallint_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -232,7 +245,7 @@ pub(super) struct abs_bigintFunc {
 }
 
 impl abs_bigintFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -251,6 +264,7 @@ impl ScalarUDFImpl for abs_bigintFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         abs_bigint_return_type(arg_types)
     }
@@ -259,9 +273,14 @@ impl ScalarUDFImpl for abs_bigintFunc {
         abs_bigint_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         abs_bigint_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -270,7 +289,7 @@ pub(super) struct abs_doubleFunc {
 }
 
 impl abs_doubleFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -289,6 +308,7 @@ impl ScalarUDFImpl for abs_doubleFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         abs_double_return_type(arg_types)
     }
@@ -297,9 +317,14 @@ impl ScalarUDFImpl for abs_doubleFunc {
         abs_double_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         abs_double_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -308,7 +333,7 @@ pub(super) struct abs_decimal_p_sFunc {
 }
 
 impl abs_decimal_p_sFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -327,6 +352,7 @@ impl ScalarUDFImpl for abs_decimal_p_sFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         abs_decimal_p_s_return_type(arg_types)
     }
@@ -335,9 +361,14 @@ impl ScalarUDFImpl for abs_decimal_p_sFunc {
         abs_decimal_p_s_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         abs_decimal_p_s_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -346,7 +377,7 @@ pub(super) struct abs_realFunc {
 }
 
 impl abs_realFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -365,6 +396,7 @@ impl ScalarUDFImpl for abs_realFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         abs_real_return_type(arg_types)
     }
@@ -373,7 +405,12 @@ impl ScalarUDFImpl for abs_realFunc {
         abs_real_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         abs_real_simplify(args, info)
     }
+
 }

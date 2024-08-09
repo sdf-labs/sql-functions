@@ -133,13 +133,14 @@ fn truncate_real_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<E
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct truncate_decimal_p_s_bigintFunc {
     signature: Signature,
 }
 
 impl truncate_decimal_p_s_bigintFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -158,6 +159,7 @@ impl ScalarUDFImpl for truncate_decimal_p_s_bigintFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         truncate_decimal_p_s_bigint_return_type(arg_types)
     }
@@ -166,9 +168,14 @@ impl ScalarUDFImpl for truncate_decimal_p_s_bigintFunc {
         truncate_decimal_p_s_bigint_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         truncate_decimal_p_s_bigint_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -177,7 +184,7 @@ pub(super) struct truncate_decimal_p_sFunc {
 }
 
 impl truncate_decimal_p_sFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -196,6 +203,7 @@ impl ScalarUDFImpl for truncate_decimal_p_sFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         truncate_decimal_p_s_return_type(arg_types)
     }
@@ -204,9 +212,14 @@ impl ScalarUDFImpl for truncate_decimal_p_sFunc {
         truncate_decimal_p_s_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         truncate_decimal_p_s_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -215,7 +228,7 @@ pub(super) struct truncate_doubleFunc {
 }
 
 impl truncate_doubleFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -234,6 +247,7 @@ impl ScalarUDFImpl for truncate_doubleFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         truncate_double_return_type(arg_types)
     }
@@ -242,9 +256,14 @@ impl ScalarUDFImpl for truncate_doubleFunc {
         truncate_double_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         truncate_double_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -253,7 +272,7 @@ pub(super) struct truncate_realFunc {
 }
 
 impl truncate_realFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -272,6 +291,7 @@ impl ScalarUDFImpl for truncate_realFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         truncate_real_return_type(arg_types)
     }
@@ -280,7 +300,12 @@ impl ScalarUDFImpl for truncate_realFunc {
         truncate_real_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         truncate_real_simplify(args, info)
     }
+
 }

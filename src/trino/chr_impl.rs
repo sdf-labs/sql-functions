@@ -47,13 +47,14 @@ fn chr_bigint_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<Expr
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct chr_bigintFunc {
     signature: Signature,
 }
 
 impl chr_bigintFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -72,6 +73,7 @@ impl ScalarUDFImpl for chr_bigintFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         chr_bigint_return_type(arg_types)
     }
@@ -80,7 +82,12 @@ impl ScalarUDFImpl for chr_bigintFunc {
         chr_bigint_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         chr_bigint_simplify(args, info)
     }
+
 }

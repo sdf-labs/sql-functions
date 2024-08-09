@@ -119,13 +119,14 @@ fn bitwise_right_shift_tinyint_bigint_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct bitwise_right_shift_bigint_bigintFunc {
     signature: Signature,
 }
 
 impl bitwise_right_shift_bigint_bigintFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -144,6 +145,7 @@ impl ScalarUDFImpl for bitwise_right_shift_bigint_bigintFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         bitwise_right_shift_bigint_bigint_return_type(arg_types)
     }
@@ -152,9 +154,14 @@ impl ScalarUDFImpl for bitwise_right_shift_bigint_bigintFunc {
         bitwise_right_shift_bigint_bigint_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         bitwise_right_shift_bigint_bigint_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -163,7 +170,7 @@ pub(super) struct bitwise_right_shift_integer_bigintFunc {
 }
 
 impl bitwise_right_shift_integer_bigintFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -182,6 +189,7 @@ impl ScalarUDFImpl for bitwise_right_shift_integer_bigintFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         bitwise_right_shift_integer_bigint_return_type(arg_types)
     }
@@ -190,9 +198,14 @@ impl ScalarUDFImpl for bitwise_right_shift_integer_bigintFunc {
         bitwise_right_shift_integer_bigint_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         bitwise_right_shift_integer_bigint_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -201,7 +214,7 @@ pub(super) struct bitwise_right_shift_smallint_bigintFunc {
 }
 
 impl bitwise_right_shift_smallint_bigintFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -220,6 +233,7 @@ impl ScalarUDFImpl for bitwise_right_shift_smallint_bigintFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         bitwise_right_shift_smallint_bigint_return_type(arg_types)
     }
@@ -228,9 +242,14 @@ impl ScalarUDFImpl for bitwise_right_shift_smallint_bigintFunc {
         bitwise_right_shift_smallint_bigint_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         bitwise_right_shift_smallint_bigint_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -239,7 +258,7 @@ pub(super) struct bitwise_right_shift_tinyint_bigintFunc {
 }
 
 impl bitwise_right_shift_tinyint_bigintFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -258,6 +277,7 @@ impl ScalarUDFImpl for bitwise_right_shift_tinyint_bigintFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         bitwise_right_shift_tinyint_bigint_return_type(arg_types)
     }
@@ -266,7 +286,12 @@ impl ScalarUDFImpl for bitwise_right_shift_tinyint_bigintFunc {
         bitwise_right_shift_tinyint_bigint_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         bitwise_right_shift_tinyint_bigint_simplify(args, info)
     }
+
 }

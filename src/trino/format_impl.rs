@@ -142,13 +142,14 @@ fn format_varchar_1_2_3_4_5_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct format_varchar_1Func {
     signature: Signature,
 }
 
 impl format_varchar_1Func {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -167,6 +168,7 @@ impl ScalarUDFImpl for format_varchar_1Func {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         format_varchar_1_return_type(arg_types)
     }
@@ -175,9 +177,14 @@ impl ScalarUDFImpl for format_varchar_1Func {
         format_varchar_1_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         format_varchar_1_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -186,7 +193,7 @@ pub(super) struct format_varchar_1_2Func {
 }
 
 impl format_varchar_1_2Func {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(3, Volatility::Immutable),
         }
@@ -205,6 +212,7 @@ impl ScalarUDFImpl for format_varchar_1_2Func {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         format_varchar_1_2_return_type(arg_types)
     }
@@ -213,9 +221,14 @@ impl ScalarUDFImpl for format_varchar_1_2Func {
         format_varchar_1_2_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         format_varchar_1_2_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -224,7 +237,7 @@ pub(super) struct format_varchar_1_2_3Func {
 }
 
 impl format_varchar_1_2_3Func {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(4, Volatility::Immutable),
         }
@@ -243,6 +256,7 @@ impl ScalarUDFImpl for format_varchar_1_2_3Func {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         format_varchar_1_2_3_return_type(arg_types)
     }
@@ -251,9 +265,14 @@ impl ScalarUDFImpl for format_varchar_1_2_3Func {
         format_varchar_1_2_3_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         format_varchar_1_2_3_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -262,7 +281,7 @@ pub(super) struct format_varchar_1_2_3_4Func {
 }
 
 impl format_varchar_1_2_3_4Func {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(5, Volatility::Immutable),
         }
@@ -281,6 +300,7 @@ impl ScalarUDFImpl for format_varchar_1_2_3_4Func {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         format_varchar_1_2_3_4_return_type(arg_types)
     }
@@ -289,9 +309,14 @@ impl ScalarUDFImpl for format_varchar_1_2_3_4Func {
         format_varchar_1_2_3_4_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         format_varchar_1_2_3_4_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -300,7 +325,7 @@ pub(super) struct format_varchar_1_2_3_4_5Func {
 }
 
 impl format_varchar_1_2_3_4_5Func {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(6, Volatility::Immutable),
         }
@@ -319,6 +344,7 @@ impl ScalarUDFImpl for format_varchar_1_2_3_4_5Func {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         format_varchar_1_2_3_4_5_return_type(arg_types)
     }
@@ -327,7 +353,12 @@ impl ScalarUDFImpl for format_varchar_1_2_3_4_5Func {
         format_varchar_1_2_3_4_5_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         format_varchar_1_2_3_4_5_simplify(args, info)
     }
+
 }

@@ -54,13 +54,14 @@ fn greatest_3_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<Expr
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct greatest_3Func {
     signature: Signature,
 }
 
 impl greatest_3Func {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::variadic_equal(Volatility::Immutable),
         }
@@ -79,6 +80,7 @@ impl ScalarUDFImpl for greatest_3Func {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         greatest_3_return_type(arg_types)
     }
@@ -87,7 +89,12 @@ impl ScalarUDFImpl for greatest_3Func {
         greatest_3_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         greatest_3_simplify(args, info)
     }
+
 }

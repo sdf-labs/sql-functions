@@ -47,13 +47,14 @@ fn current_date_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<Ex
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct current_dateFunc {
     signature: Signature,
 }
 
 impl current_dateFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(0, Volatility::Immutable),
         }
@@ -72,6 +73,7 @@ impl ScalarUDFImpl for current_dateFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         current_date_return_type(arg_types)
     }
@@ -80,7 +82,12 @@ impl ScalarUDFImpl for current_dateFunc {
         current_date_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         current_date_simplify(args, info)
     }
+
 }

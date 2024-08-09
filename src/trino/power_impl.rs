@@ -50,13 +50,14 @@ fn power_double_double_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct power_double_doubleFunc {
     signature: Signature,
 }
 
 impl power_double_doubleFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -75,6 +76,7 @@ impl ScalarUDFImpl for power_double_doubleFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         power_double_double_return_type(arg_types)
     }
@@ -83,7 +85,12 @@ impl ScalarUDFImpl for power_double_doubleFunc {
         power_double_double_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         power_double_double_simplify(args, info)
     }
+
 }

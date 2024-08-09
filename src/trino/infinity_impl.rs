@@ -47,13 +47,14 @@ fn infinity_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSi
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct infinityFunc {
     signature: Signature,
 }
 
 impl infinityFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(0, Volatility::Immutable),
         }
@@ -72,6 +73,7 @@ impl ScalarUDFImpl for infinityFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         infinity_return_type(arg_types)
     }
@@ -80,7 +82,12 @@ impl ScalarUDFImpl for infinityFunc {
         infinity_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         infinity_simplify(args, info)
     }
+
 }

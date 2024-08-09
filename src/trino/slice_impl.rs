@@ -50,13 +50,14 @@ fn slice_array_3_bigint_bigint_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct slice_array_3_bigint_bigintFunc {
     signature: Signature,
 }
 
 impl slice_array_3_bigint_bigintFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(3, Volatility::Immutable),
         }
@@ -75,6 +76,7 @@ impl ScalarUDFImpl for slice_array_3_bigint_bigintFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         slice_array_3_bigint_bigint_return_type(arg_types)
     }
@@ -83,7 +85,12 @@ impl ScalarUDFImpl for slice_array_3_bigint_bigintFunc {
         slice_array_3_bigint_bigint_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         slice_array_3_bigint_bigint_simplify(args, info)
     }
+
 }

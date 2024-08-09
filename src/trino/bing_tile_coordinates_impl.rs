@@ -50,13 +50,14 @@ fn bing_tile_coordinates_bingtile_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct bing_tile_coordinates_bingtileFunc {
     signature: Signature,
 }
 
 impl bing_tile_coordinates_bingtileFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -75,6 +76,7 @@ impl ScalarUDFImpl for bing_tile_coordinates_bingtileFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         bing_tile_coordinates_bingtile_return_type(arg_types)
     }
@@ -83,7 +85,12 @@ impl ScalarUDFImpl for bing_tile_coordinates_bingtileFunc {
         bing_tile_coordinates_bingtile_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         bing_tile_coordinates_bingtile_simplify(args, info)
     }
+
 }

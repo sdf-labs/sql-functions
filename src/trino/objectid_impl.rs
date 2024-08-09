@@ -70,13 +70,14 @@ fn objectid_varchar_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct objectidFunc {
     signature: Signature,
 }
 
 impl objectidFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(0, Volatility::Immutable),
         }
@@ -95,6 +96,7 @@ impl ScalarUDFImpl for objectidFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         objectid_return_type(arg_types)
     }
@@ -103,9 +105,14 @@ impl ScalarUDFImpl for objectidFunc {
         objectid_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         objectid_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -114,7 +121,7 @@ pub(super) struct objectid_varcharFunc {
 }
 
 impl objectid_varcharFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -133,6 +140,7 @@ impl ScalarUDFImpl for objectid_varcharFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         objectid_varchar_return_type(arg_types)
     }
@@ -141,7 +149,12 @@ impl ScalarUDFImpl for objectid_varcharFunc {
         objectid_varchar_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         objectid_varchar_simplify(args, info)
     }
+
 }

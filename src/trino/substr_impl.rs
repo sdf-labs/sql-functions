@@ -119,13 +119,14 @@ fn substr_varbinary_bigint_bigint_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct substr_varchar_bigintFunc {
     signature: Signature,
 }
 
 impl substr_varchar_bigintFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -144,6 +145,7 @@ impl ScalarUDFImpl for substr_varchar_bigintFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         substr_varchar_bigint_return_type(arg_types)
     }
@@ -152,9 +154,14 @@ impl ScalarUDFImpl for substr_varchar_bigintFunc {
         substr_varchar_bigint_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         substr_varchar_bigint_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -163,7 +170,7 @@ pub(super) struct substr_varchar_bigint_bigintFunc {
 }
 
 impl substr_varchar_bigint_bigintFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(3, Volatility::Immutable),
         }
@@ -182,6 +189,7 @@ impl ScalarUDFImpl for substr_varchar_bigint_bigintFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         substr_varchar_bigint_bigint_return_type(arg_types)
     }
@@ -190,9 +198,14 @@ impl ScalarUDFImpl for substr_varchar_bigint_bigintFunc {
         substr_varchar_bigint_bigint_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         substr_varchar_bigint_bigint_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -201,7 +214,7 @@ pub(super) struct substr_varbinary_bigintFunc {
 }
 
 impl substr_varbinary_bigintFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -220,6 +233,7 @@ impl ScalarUDFImpl for substr_varbinary_bigintFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         substr_varbinary_bigint_return_type(arg_types)
     }
@@ -228,9 +242,14 @@ impl ScalarUDFImpl for substr_varbinary_bigintFunc {
         substr_varbinary_bigint_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         substr_varbinary_bigint_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -239,7 +258,7 @@ pub(super) struct substr_varbinary_bigint_bigintFunc {
 }
 
 impl substr_varbinary_bigint_bigintFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(3, Volatility::Immutable),
         }
@@ -258,6 +277,7 @@ impl ScalarUDFImpl for substr_varbinary_bigint_bigintFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         substr_varbinary_bigint_bigint_return_type(arg_types)
     }
@@ -266,7 +286,12 @@ impl ScalarUDFImpl for substr_varbinary_bigint_bigintFunc {
         substr_varbinary_bigint_bigint_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         substr_varbinary_bigint_bigint_simplify(args, info)
     }
+
 }

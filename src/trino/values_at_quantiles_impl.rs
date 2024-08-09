@@ -81,13 +81,14 @@ fn values_at_quantiles_tdigest_array_double_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct values_at_quantiles_qdigest_array_doubleFunc {
     signature: Signature,
 }
 
 impl values_at_quantiles_qdigest_array_doubleFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -106,6 +107,7 @@ impl ScalarUDFImpl for values_at_quantiles_qdigest_array_doubleFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         values_at_quantiles_qdigest_array_double_return_type(arg_types)
     }
@@ -114,9 +116,14 @@ impl ScalarUDFImpl for values_at_quantiles_qdigest_array_doubleFunc {
         values_at_quantiles_qdigest_array_double_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         values_at_quantiles_qdigest_array_double_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -125,7 +132,7 @@ pub(super) struct values_at_quantiles_tdigest_array_doubleFunc {
 }
 
 impl values_at_quantiles_tdigest_array_doubleFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -144,6 +151,7 @@ impl ScalarUDFImpl for values_at_quantiles_tdigest_array_doubleFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         values_at_quantiles_tdigest_array_double_return_type(arg_types)
     }
@@ -152,7 +160,12 @@ impl ScalarUDFImpl for values_at_quantiles_tdigest_array_doubleFunc {
         values_at_quantiles_tdigest_array_double_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         values_at_quantiles_tdigest_array_double_simplify(args, info)
     }
+
 }

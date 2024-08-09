@@ -47,13 +47,14 @@ fn log10_double_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<Ex
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct log10_doubleFunc {
     signature: Signature,
 }
 
 impl log10_doubleFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -72,6 +73,7 @@ impl ScalarUDFImpl for log10_doubleFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         log10_double_return_type(arg_types)
     }
@@ -80,7 +82,12 @@ impl ScalarUDFImpl for log10_doubleFunc {
         log10_double_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         log10_double_simplify(args, info)
     }
+
 }

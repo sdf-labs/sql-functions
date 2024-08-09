@@ -111,13 +111,14 @@ fn regexp_replace_varchar_joniregexp_varchar_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct regexp_replace_varchar_joniregexp_function_array_varchar_varcharFunc {
     signature: Signature,
 }
 
 impl regexp_replace_varchar_joniregexp_function_array_varchar_varcharFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(3, Volatility::Immutable),
         }
@@ -136,6 +137,7 @@ impl ScalarUDFImpl for regexp_replace_varchar_joniregexp_function_array_varchar_
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         regexp_replace_varchar_joniregexp_function_array_varchar_varchar_return_type(arg_types)
     }
@@ -144,9 +146,14 @@ impl ScalarUDFImpl for regexp_replace_varchar_joniregexp_function_array_varchar_
         regexp_replace_varchar_joniregexp_function_array_varchar_varchar_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         regexp_replace_varchar_joniregexp_function_array_varchar_varchar_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -155,7 +162,7 @@ pub(super) struct regexp_replace_varchar_joniregexpFunc {
 }
 
 impl regexp_replace_varchar_joniregexpFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -174,6 +181,7 @@ impl ScalarUDFImpl for regexp_replace_varchar_joniregexpFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         regexp_replace_varchar_joniregexp_return_type(arg_types)
     }
@@ -182,9 +190,14 @@ impl ScalarUDFImpl for regexp_replace_varchar_joniregexpFunc {
         regexp_replace_varchar_joniregexp_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         regexp_replace_varchar_joniregexp_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -193,7 +206,7 @@ pub(super) struct regexp_replace_varchar_joniregexp_varcharFunc {
 }
 
 impl regexp_replace_varchar_joniregexp_varcharFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(3, Volatility::Immutable),
         }
@@ -212,6 +225,7 @@ impl ScalarUDFImpl for regexp_replace_varchar_joniregexp_varcharFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         regexp_replace_varchar_joniregexp_varchar_return_type(arg_types)
     }
@@ -220,7 +234,12 @@ impl ScalarUDFImpl for regexp_replace_varchar_joniregexp_varcharFunc {
         regexp_replace_varchar_joniregexp_varchar_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         regexp_replace_varchar_joniregexp_varchar_simplify(args, info)
     }
+
 }

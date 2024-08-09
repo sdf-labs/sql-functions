@@ -73,13 +73,14 @@ fn json_array_get_varchar_bigint_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct json_array_get_json_bigintFunc {
     signature: Signature,
 }
 
 impl json_array_get_json_bigintFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -98,6 +99,7 @@ impl ScalarUDFImpl for json_array_get_json_bigintFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         json_array_get_json_bigint_return_type(arg_types)
     }
@@ -106,9 +108,14 @@ impl ScalarUDFImpl for json_array_get_json_bigintFunc {
         json_array_get_json_bigint_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         json_array_get_json_bigint_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -117,7 +124,7 @@ pub(super) struct json_array_get_varchar_bigintFunc {
 }
 
 impl json_array_get_varchar_bigintFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -136,6 +143,7 @@ impl ScalarUDFImpl for json_array_get_varchar_bigintFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         json_array_get_varchar_bigint_return_type(arg_types)
     }
@@ -144,7 +152,12 @@ impl ScalarUDFImpl for json_array_get_varchar_bigintFunc {
         json_array_get_varchar_bigint_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         json_array_get_varchar_bigint_simplify(args, info)
     }
+
 }

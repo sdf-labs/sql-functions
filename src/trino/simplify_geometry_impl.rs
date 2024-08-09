@@ -50,13 +50,14 @@ fn simplify_geometry_geometry_double_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct simplify_geometry_geometry_doubleFunc {
     signature: Signature,
 }
 
 impl simplify_geometry_geometry_doubleFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -75,6 +76,7 @@ impl ScalarUDFImpl for simplify_geometry_geometry_doubleFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         simplify_geometry_geometry_double_return_type(arg_types)
     }
@@ -83,7 +85,12 @@ impl ScalarUDFImpl for simplify_geometry_geometry_doubleFunc {
         simplify_geometry_geometry_double_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         simplify_geometry_geometry_double_simplify(args, info)
     }
+
 }

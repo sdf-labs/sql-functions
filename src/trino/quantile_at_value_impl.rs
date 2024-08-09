@@ -96,13 +96,14 @@ fn quantile_at_value_qdigest_real_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct quantile_at_value_qdigest_bigintFunc {
     signature: Signature,
 }
 
 impl quantile_at_value_qdigest_bigintFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -121,6 +122,7 @@ impl ScalarUDFImpl for quantile_at_value_qdigest_bigintFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         quantile_at_value_qdigest_bigint_return_type(arg_types)
     }
@@ -129,9 +131,14 @@ impl ScalarUDFImpl for quantile_at_value_qdigest_bigintFunc {
         quantile_at_value_qdigest_bigint_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         quantile_at_value_qdigest_bigint_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -140,7 +147,7 @@ pub(super) struct quantile_at_value_qdigest_doubleFunc {
 }
 
 impl quantile_at_value_qdigest_doubleFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -159,6 +166,7 @@ impl ScalarUDFImpl for quantile_at_value_qdigest_doubleFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         quantile_at_value_qdigest_double_return_type(arg_types)
     }
@@ -167,9 +175,14 @@ impl ScalarUDFImpl for quantile_at_value_qdigest_doubleFunc {
         quantile_at_value_qdigest_double_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         quantile_at_value_qdigest_double_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -178,7 +191,7 @@ pub(super) struct quantile_at_value_qdigest_realFunc {
 }
 
 impl quantile_at_value_qdigest_realFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -197,6 +210,7 @@ impl ScalarUDFImpl for quantile_at_value_qdigest_realFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         quantile_at_value_qdigest_real_return_type(arg_types)
     }
@@ -205,7 +219,12 @@ impl ScalarUDFImpl for quantile_at_value_qdigest_realFunc {
         quantile_at_value_qdigest_real_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         quantile_at_value_qdigest_real_simplify(args, info)
     }
+
 }

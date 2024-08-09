@@ -96,13 +96,14 @@ fn reverse_varchar_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct reverse_array_3Func {
     signature: Signature,
 }
 
 impl reverse_array_3Func {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -121,6 +122,7 @@ impl ScalarUDFImpl for reverse_array_3Func {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         reverse_array_3_return_type(arg_types)
     }
@@ -129,9 +131,14 @@ impl ScalarUDFImpl for reverse_array_3Func {
         reverse_array_3_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         reverse_array_3_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -140,7 +147,7 @@ pub(super) struct reverse_varbinaryFunc {
 }
 
 impl reverse_varbinaryFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -159,6 +166,7 @@ impl ScalarUDFImpl for reverse_varbinaryFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         reverse_varbinary_return_type(arg_types)
     }
@@ -167,9 +175,14 @@ impl ScalarUDFImpl for reverse_varbinaryFunc {
         reverse_varbinary_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         reverse_varbinary_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -178,7 +191,7 @@ pub(super) struct reverse_varcharFunc {
 }
 
 impl reverse_varcharFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -197,6 +210,7 @@ impl ScalarUDFImpl for reverse_varcharFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         reverse_varchar_return_type(arg_types)
     }
@@ -205,7 +219,12 @@ impl ScalarUDFImpl for reverse_varcharFunc {
         reverse_varchar_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         reverse_varchar_simplify(args, info)
     }
+
 }

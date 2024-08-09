@@ -77,13 +77,14 @@ fn st_distance_sphericalgeography_sphericalgeography_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct st_distance_geometry_geometryFunc {
     signature: Signature,
 }
 
 impl st_distance_geometry_geometryFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -102,6 +103,7 @@ impl ScalarUDFImpl for st_distance_geometry_geometryFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         st_distance_geometry_geometry_return_type(arg_types)
     }
@@ -110,9 +112,14 @@ impl ScalarUDFImpl for st_distance_geometry_geometryFunc {
         st_distance_geometry_geometry_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         st_distance_geometry_geometry_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -121,7 +128,7 @@ pub(super) struct st_distance_sphericalgeography_sphericalgeographyFunc {
 }
 
 impl st_distance_sphericalgeography_sphericalgeographyFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -140,6 +147,7 @@ impl ScalarUDFImpl for st_distance_sphericalgeography_sphericalgeographyFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         st_distance_sphericalgeography_sphericalgeography_return_type(arg_types)
     }
@@ -148,7 +156,12 @@ impl ScalarUDFImpl for st_distance_sphericalgeography_sphericalgeographyFunc {
         st_distance_sphericalgeography_sphericalgeography_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         st_distance_sphericalgeography_sphericalgeography_simplify(args, info)
     }
+
 }

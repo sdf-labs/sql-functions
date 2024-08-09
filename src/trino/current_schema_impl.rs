@@ -50,13 +50,14 @@ fn current_schema_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct current_schemaFunc {
     signature: Signature,
 }
 
 impl current_schemaFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(0, Volatility::Immutable),
         }
@@ -75,6 +76,7 @@ impl ScalarUDFImpl for current_schemaFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         current_schema_return_type(arg_types)
     }
@@ -83,7 +85,12 @@ impl ScalarUDFImpl for current_schemaFunc {
         current_schema_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         current_schema_simplify(args, info)
     }
+
 }

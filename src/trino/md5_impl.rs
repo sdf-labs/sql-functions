@@ -47,13 +47,14 @@ fn md5_varbinary_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<E
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct md5_varbinaryFunc {
     signature: Signature,
 }
 
 impl md5_varbinaryFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -72,6 +73,7 @@ impl ScalarUDFImpl for md5_varbinaryFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         md5_varbinary_return_type(arg_types)
     }
@@ -80,7 +82,12 @@ impl ScalarUDFImpl for md5_varbinaryFunc {
         md5_varbinary_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         md5_varbinary_simplify(args, info)
     }
+
 }

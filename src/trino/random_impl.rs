@@ -228,13 +228,14 @@ fn random_tinyint_tinyint_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct random_bigintFunc {
     signature: Signature,
 }
 
 impl random_bigintFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -253,6 +254,7 @@ impl ScalarUDFImpl for random_bigintFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         random_bigint_return_type(arg_types)
     }
@@ -261,9 +263,14 @@ impl ScalarUDFImpl for random_bigintFunc {
         random_bigint_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         random_bigint_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -272,7 +279,7 @@ pub(super) struct random_bigint_bigintFunc {
 }
 
 impl random_bigint_bigintFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -291,6 +298,7 @@ impl ScalarUDFImpl for random_bigint_bigintFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         random_bigint_bigint_return_type(arg_types)
     }
@@ -299,9 +307,14 @@ impl ScalarUDFImpl for random_bigint_bigintFunc {
         random_bigint_bigint_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         random_bigint_bigint_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -310,7 +323,7 @@ pub(super) struct randomFunc {
 }
 
 impl randomFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(0, Volatility::Immutable),
         }
@@ -329,6 +342,7 @@ impl ScalarUDFImpl for randomFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         random_return_type(arg_types)
     }
@@ -337,9 +351,14 @@ impl ScalarUDFImpl for randomFunc {
         random_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         random_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -348,7 +367,7 @@ pub(super) struct random_integerFunc {
 }
 
 impl random_integerFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -367,6 +386,7 @@ impl ScalarUDFImpl for random_integerFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         random_integer_return_type(arg_types)
     }
@@ -375,9 +395,14 @@ impl ScalarUDFImpl for random_integerFunc {
         random_integer_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         random_integer_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -386,7 +411,7 @@ pub(super) struct random_integer_integerFunc {
 }
 
 impl random_integer_integerFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -405,6 +430,7 @@ impl ScalarUDFImpl for random_integer_integerFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         random_integer_integer_return_type(arg_types)
     }
@@ -413,9 +439,14 @@ impl ScalarUDFImpl for random_integer_integerFunc {
         random_integer_integer_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         random_integer_integer_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -424,7 +455,7 @@ pub(super) struct random_smallintFunc {
 }
 
 impl random_smallintFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -443,6 +474,7 @@ impl ScalarUDFImpl for random_smallintFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         random_smallint_return_type(arg_types)
     }
@@ -451,9 +483,14 @@ impl ScalarUDFImpl for random_smallintFunc {
         random_smallint_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         random_smallint_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -462,7 +499,7 @@ pub(super) struct random_smallint_smallintFunc {
 }
 
 impl random_smallint_smallintFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -481,6 +518,7 @@ impl ScalarUDFImpl for random_smallint_smallintFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         random_smallint_smallint_return_type(arg_types)
     }
@@ -489,9 +527,14 @@ impl ScalarUDFImpl for random_smallint_smallintFunc {
         random_smallint_smallint_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         random_smallint_smallint_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -500,7 +543,7 @@ pub(super) struct random_tinyintFunc {
 }
 
 impl random_tinyintFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -519,6 +562,7 @@ impl ScalarUDFImpl for random_tinyintFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         random_tinyint_return_type(arg_types)
     }
@@ -527,9 +571,14 @@ impl ScalarUDFImpl for random_tinyintFunc {
         random_tinyint_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         random_tinyint_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -538,7 +587,7 @@ pub(super) struct random_tinyint_tinyintFunc {
 }
 
 impl random_tinyint_tinyintFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -557,6 +606,7 @@ impl ScalarUDFImpl for random_tinyint_tinyintFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         random_tinyint_tinyint_return_type(arg_types)
     }
@@ -565,7 +615,12 @@ impl ScalarUDFImpl for random_tinyint_tinyintFunc {
         random_tinyint_tinyint_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         random_tinyint_tinyint_simplify(args, info)
     }
+
 }

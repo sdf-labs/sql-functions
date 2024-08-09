@@ -50,13 +50,14 @@ fn with_timezone_timestamp_p_varchar_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct with_timezone_timestamp_p_varcharFunc {
     signature: Signature,
 }
 
 impl with_timezone_timestamp_p_varcharFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -75,6 +76,7 @@ impl ScalarUDFImpl for with_timezone_timestamp_p_varcharFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         with_timezone_timestamp_p_varchar_return_type(arg_types)
     }
@@ -83,7 +85,12 @@ impl ScalarUDFImpl for with_timezone_timestamp_p_varcharFunc {
         with_timezone_timestamp_p_varchar_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         with_timezone_timestamp_p_varchar_simplify(args, info)
     }
+
 }

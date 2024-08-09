@@ -188,13 +188,14 @@ fn mod_tinyint_tinyint_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct mod_bigint_bigintFunc {
     signature: Signature,
 }
 
 impl mod_bigint_bigintFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -213,6 +214,7 @@ impl ScalarUDFImpl for mod_bigint_bigintFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         mod_bigint_bigint_return_type(arg_types)
     }
@@ -221,9 +223,14 @@ impl ScalarUDFImpl for mod_bigint_bigintFunc {
         mod_bigint_bigint_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         mod_bigint_bigint_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -232,7 +239,7 @@ pub(super) struct mod_decimal_a_precision_a_scale_decimal_b_precision_b_scaleFun
 }
 
 impl mod_decimal_a_precision_a_scale_decimal_b_precision_b_scaleFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -251,6 +258,7 @@ impl ScalarUDFImpl for mod_decimal_a_precision_a_scale_decimal_b_precision_b_sca
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         mod_decimal_a_precision_a_scale_decimal_b_precision_b_scale_return_type(arg_types)
     }
@@ -259,9 +267,14 @@ impl ScalarUDFImpl for mod_decimal_a_precision_a_scale_decimal_b_precision_b_sca
         mod_decimal_a_precision_a_scale_decimal_b_precision_b_scale_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         mod_decimal_a_precision_a_scale_decimal_b_precision_b_scale_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -270,7 +283,7 @@ pub(super) struct mod_double_doubleFunc {
 }
 
 impl mod_double_doubleFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -289,6 +302,7 @@ impl ScalarUDFImpl for mod_double_doubleFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         mod_double_double_return_type(arg_types)
     }
@@ -297,9 +311,14 @@ impl ScalarUDFImpl for mod_double_doubleFunc {
         mod_double_double_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         mod_double_double_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -308,7 +327,7 @@ pub(super) struct mod_integer_integerFunc {
 }
 
 impl mod_integer_integerFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -327,6 +346,7 @@ impl ScalarUDFImpl for mod_integer_integerFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         mod_integer_integer_return_type(arg_types)
     }
@@ -335,9 +355,14 @@ impl ScalarUDFImpl for mod_integer_integerFunc {
         mod_integer_integer_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         mod_integer_integer_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -346,7 +371,7 @@ pub(super) struct mod_real_realFunc {
 }
 
 impl mod_real_realFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -365,6 +390,7 @@ impl ScalarUDFImpl for mod_real_realFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         mod_real_real_return_type(arg_types)
     }
@@ -373,9 +399,14 @@ impl ScalarUDFImpl for mod_real_realFunc {
         mod_real_real_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         mod_real_real_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -384,7 +415,7 @@ pub(super) struct mod_smallint_smallintFunc {
 }
 
 impl mod_smallint_smallintFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -403,6 +434,7 @@ impl ScalarUDFImpl for mod_smallint_smallintFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         mod_smallint_smallint_return_type(arg_types)
     }
@@ -411,9 +443,14 @@ impl ScalarUDFImpl for mod_smallint_smallintFunc {
         mod_smallint_smallint_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         mod_smallint_smallint_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -422,7 +459,7 @@ pub(super) struct mod_tinyint_tinyintFunc {
 }
 
 impl mod_tinyint_tinyintFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -441,6 +478,7 @@ impl ScalarUDFImpl for mod_tinyint_tinyintFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         mod_tinyint_tinyint_return_type(arg_types)
     }
@@ -449,7 +487,12 @@ impl ScalarUDFImpl for mod_tinyint_tinyintFunc {
         mod_tinyint_tinyint_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         mod_tinyint_tinyint_simplify(args, info)
     }
+
 }

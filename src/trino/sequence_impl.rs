@@ -169,13 +169,14 @@ fn sequence_timestamp_p_timestamp_p_intervaldaytosecond_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct sequence_bigint_bigintFunc {
     signature: Signature,
 }
 
 impl sequence_bigint_bigintFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -194,6 +195,7 @@ impl ScalarUDFImpl for sequence_bigint_bigintFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         sequence_bigint_bigint_return_type(arg_types)
     }
@@ -202,9 +204,14 @@ impl ScalarUDFImpl for sequence_bigint_bigintFunc {
         sequence_bigint_bigint_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         sequence_bigint_bigint_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -213,7 +220,7 @@ pub(super) struct sequence_bigint_bigint_bigintFunc {
 }
 
 impl sequence_bigint_bigint_bigintFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(3, Volatility::Immutable),
         }
@@ -232,6 +239,7 @@ impl ScalarUDFImpl for sequence_bigint_bigint_bigintFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         sequence_bigint_bigint_bigint_return_type(arg_types)
     }
@@ -240,9 +248,14 @@ impl ScalarUDFImpl for sequence_bigint_bigint_bigintFunc {
         sequence_bigint_bigint_bigint_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         sequence_bigint_bigint_bigint_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -251,7 +264,7 @@ pub(super) struct sequence_date_dateFunc {
 }
 
 impl sequence_date_dateFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -270,6 +283,7 @@ impl ScalarUDFImpl for sequence_date_dateFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         sequence_date_date_return_type(arg_types)
     }
@@ -278,9 +292,14 @@ impl ScalarUDFImpl for sequence_date_dateFunc {
         sequence_date_date_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         sequence_date_date_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -289,7 +308,7 @@ pub(super) struct sequence_date_date_intervaldaytosecondFunc {
 }
 
 impl sequence_date_date_intervaldaytosecondFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(3, Volatility::Immutable),
         }
@@ -308,6 +327,7 @@ impl ScalarUDFImpl for sequence_date_date_intervaldaytosecondFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         sequence_date_date_intervaldaytosecond_return_type(arg_types)
     }
@@ -316,9 +336,14 @@ impl ScalarUDFImpl for sequence_date_date_intervaldaytosecondFunc {
         sequence_date_date_intervaldaytosecond_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         sequence_date_date_intervaldaytosecond_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -327,7 +352,7 @@ pub(super) struct sequence_date_date_intervalyeartomonthFunc {
 }
 
 impl sequence_date_date_intervalyeartomonthFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(3, Volatility::Immutable),
         }
@@ -346,6 +371,7 @@ impl ScalarUDFImpl for sequence_date_date_intervalyeartomonthFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         sequence_date_date_intervalyeartomonth_return_type(arg_types)
     }
@@ -354,9 +380,14 @@ impl ScalarUDFImpl for sequence_date_date_intervalyeartomonthFunc {
         sequence_date_date_intervalyeartomonth_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         sequence_date_date_intervalyeartomonth_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -365,7 +396,7 @@ pub(super) struct sequence_timestamp_p_timestamp_p_intervaldaytosecondFunc {
 }
 
 impl sequence_timestamp_p_timestamp_p_intervaldaytosecondFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(3, Volatility::Immutable),
         }
@@ -384,6 +415,7 @@ impl ScalarUDFImpl for sequence_timestamp_p_timestamp_p_intervaldaytosecondFunc 
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         sequence_timestamp_p_timestamp_p_intervaldaytosecond_return_type(arg_types)
     }
@@ -392,7 +424,12 @@ impl ScalarUDFImpl for sequence_timestamp_p_timestamp_p_intervaldaytosecondFunc 
         sequence_timestamp_p_timestamp_p_intervaldaytosecond_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         sequence_timestamp_p_timestamp_p_intervaldaytosecond_simplify(args, info)
     }
+
 }

@@ -50,13 +50,14 @@ fn codepoint_varchar_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct codepoint_varcharFunc {
     signature: Signature,
 }
 
 impl codepoint_varcharFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -75,6 +76,7 @@ impl ScalarUDFImpl for codepoint_varcharFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         codepoint_varchar_return_type(arg_types)
     }
@@ -83,7 +85,12 @@ impl ScalarUDFImpl for codepoint_varcharFunc {
         codepoint_varchar_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         codepoint_varchar_simplify(args, info)
     }
+
 }

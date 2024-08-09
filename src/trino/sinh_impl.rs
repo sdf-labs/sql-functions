@@ -47,13 +47,14 @@ fn sinh_double_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<Exp
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct sinh_doubleFunc {
     signature: Signature,
 }
 
 impl sinh_doubleFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -72,6 +73,7 @@ impl ScalarUDFImpl for sinh_doubleFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         sinh_double_return_type(arg_types)
     }
@@ -80,7 +82,12 @@ impl ScalarUDFImpl for sinh_doubleFunc {
         sinh_double_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         sinh_double_simplify(args, info)
     }
+
 }

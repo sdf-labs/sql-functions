@@ -73,13 +73,14 @@ fn json_extract_varchar_jsonpath_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct json_extract_json_jsonpathFunc {
     signature: Signature,
 }
 
 impl json_extract_json_jsonpathFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -98,6 +99,7 @@ impl ScalarUDFImpl for json_extract_json_jsonpathFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         json_extract_json_jsonpath_return_type(arg_types)
     }
@@ -106,9 +108,14 @@ impl ScalarUDFImpl for json_extract_json_jsonpathFunc {
         json_extract_json_jsonpath_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         json_extract_json_jsonpath_simplify(args, info)
     }
+
 }
 
 #[derive(Debug)]
@@ -117,7 +124,7 @@ pub(super) struct json_extract_varchar_jsonpathFunc {
 }
 
 impl json_extract_varchar_jsonpathFunc {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -136,6 +143,7 @@ impl ScalarUDFImpl for json_extract_varchar_jsonpathFunc {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         json_extract_varchar_jsonpath_return_type(arg_types)
     }
@@ -144,7 +152,12 @@ impl ScalarUDFImpl for json_extract_varchar_jsonpathFunc {
         json_extract_varchar_jsonpath_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         json_extract_varchar_jsonpath_simplify(args, info)
     }
+
 }

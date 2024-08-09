@@ -50,13 +50,14 @@ fn contains_sequence_array_1_array_1_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
+
 #[derive(Debug)]
 pub(super) struct contains_sequence_array_1_array_1Func {
     signature: Signature,
 }
 
 impl contains_sequence_array_1_array_1Func {
-    pub fn new() -> Self {
+    pub fn new() -> Self {        
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -75,6 +76,7 @@ impl ScalarUDFImpl for contains_sequence_array_1_array_1Func {
         &self.signature
     }
 
+
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         contains_sequence_array_1_array_1_return_type(arg_types)
     }
@@ -83,7 +85,12 @@ impl ScalarUDFImpl for contains_sequence_array_1_array_1Func {
         contains_sequence_array_1_array_1_invoke(args)
     }
 
-    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+    fn simplify(
+        &self,
+        args: Vec<Expr>,
+        info: &dyn SimplifyInfo,
+    ) -> Result<ExprSimplifyResult> {
         contains_sequence_array_1_array_1_simplify(args, info)
     }
+
 }
