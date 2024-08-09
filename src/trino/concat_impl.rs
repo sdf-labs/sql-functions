@@ -211,7 +211,7 @@ pub(super) struct concat_array_3Func {
 impl concat_array_3Func {
     pub fn new() -> Self {
         Self {
-            signature: Signature::variadic_equal(Volatility::Immutable),
+            signature: Signature::variadic_any(Volatility::Immutable),
         }
     }
 }
@@ -325,7 +325,7 @@ pub(super) struct concat_varcharFunc {
 impl concat_varcharFunc {
     pub fn new() -> Self {
         Self {
-            signature: Signature::variadic_equal(Volatility::Immutable),
+            signature: Signature::variadic_any(Volatility::Immutable),
         }
     }
 }
@@ -363,7 +363,7 @@ pub(super) struct concat_varbinaryFunc {
 impl concat_varbinaryFunc {
     pub fn new() -> Self {
         Self {
-            signature: Signature::variadic_equal(Volatility::Immutable),
+            signature: Signature::variadic_any(Volatility::Immutable),
         }
     }
 }
