@@ -63,7 +63,7 @@ pub(super) struct greatest_3Func {
 impl greatest_3Func {
     pub fn new() -> Self {        
         Self {
-            signature: Signature::variadic_equal(Volatility::Immutable),
+            signature: Signature::variadic_any(Volatility::Immutable),
         }
     }
 }

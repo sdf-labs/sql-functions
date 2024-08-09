@@ -59,7 +59,7 @@ pub(super) struct map_concat_map_4_5Func {
 impl map_concat_map_4_5Func {
     pub fn new() -> Self {        
         Self {
-            signature: Signature::variadic_equal(Volatility::Immutable),
+            signature: Signature::variadic_any(Volatility::Immutable),
         }
     }
 }
