@@ -70,14 +70,13 @@ fn week_timestamp_p_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct week_dateFunc {
     signature: Signature,
 }
 
 impl week_dateFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -96,7 +95,6 @@ impl ScalarUDFImpl for week_dateFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         week_date_return_type(arg_types)
     }
@@ -105,14 +103,9 @@ impl ScalarUDFImpl for week_dateFunc {
         week_date_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         week_date_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -121,7 +114,7 @@ pub(super) struct week_timestamp_pFunc {
 }
 
 impl week_timestamp_pFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -140,7 +133,6 @@ impl ScalarUDFImpl for week_timestamp_pFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         week_timestamp_p_return_type(arg_types)
     }
@@ -149,12 +141,7 @@ impl ScalarUDFImpl for week_timestamp_pFunc {
         week_timestamp_p_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         week_timestamp_p_simplify(args, info)
     }
-
 }

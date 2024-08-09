@@ -47,14 +47,13 @@ fn current_time_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<Ex
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct current_timeFunc {
     signature: Signature,
 }
 
 impl current_timeFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(0, Volatility::Immutable),
         }
@@ -73,7 +72,6 @@ impl ScalarUDFImpl for current_timeFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         current_time_return_type(arg_types)
     }
@@ -82,12 +80,7 @@ impl ScalarUDFImpl for current_timeFunc {
         current_time_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         current_time_simplify(args, info)
     }
-
 }

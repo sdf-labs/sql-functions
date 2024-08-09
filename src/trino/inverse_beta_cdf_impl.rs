@@ -50,14 +50,13 @@ fn inverse_beta_cdf_double_double_double_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct inverse_beta_cdf_double_double_doubleFunc {
     signature: Signature,
 }
 
 impl inverse_beta_cdf_double_double_doubleFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(3, Volatility::Immutable),
         }
@@ -76,7 +75,6 @@ impl ScalarUDFImpl for inverse_beta_cdf_double_double_doubleFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         inverse_beta_cdf_double_double_double_return_type(arg_types)
     }
@@ -85,12 +83,7 @@ impl ScalarUDFImpl for inverse_beta_cdf_double_double_doubleFunc {
         inverse_beta_cdf_double_double_double_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         inverse_beta_cdf_double_double_double_simplify(args, info)
     }
-
 }

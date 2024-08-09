@@ -211,14 +211,13 @@ fn json_array_contains_varchar_varchar_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct json_array_contains_json_bigintFunc {
     signature: Signature,
 }
 
 impl json_array_contains_json_bigintFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -237,7 +236,6 @@ impl ScalarUDFImpl for json_array_contains_json_bigintFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         json_array_contains_json_bigint_return_type(arg_types)
     }
@@ -246,14 +244,9 @@ impl ScalarUDFImpl for json_array_contains_json_bigintFunc {
         json_array_contains_json_bigint_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         json_array_contains_json_bigint_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -262,7 +255,7 @@ pub(super) struct json_array_contains_json_booleanFunc {
 }
 
 impl json_array_contains_json_booleanFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -281,7 +274,6 @@ impl ScalarUDFImpl for json_array_contains_json_booleanFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         json_array_contains_json_boolean_return_type(arg_types)
     }
@@ -290,14 +282,9 @@ impl ScalarUDFImpl for json_array_contains_json_booleanFunc {
         json_array_contains_json_boolean_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         json_array_contains_json_boolean_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -306,7 +293,7 @@ pub(super) struct json_array_contains_json_doubleFunc {
 }
 
 impl json_array_contains_json_doubleFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -325,7 +312,6 @@ impl ScalarUDFImpl for json_array_contains_json_doubleFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         json_array_contains_json_double_return_type(arg_types)
     }
@@ -334,14 +320,9 @@ impl ScalarUDFImpl for json_array_contains_json_doubleFunc {
         json_array_contains_json_double_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         json_array_contains_json_double_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -350,7 +331,7 @@ pub(super) struct json_array_contains_json_varcharFunc {
 }
 
 impl json_array_contains_json_varcharFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -369,7 +350,6 @@ impl ScalarUDFImpl for json_array_contains_json_varcharFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         json_array_contains_json_varchar_return_type(arg_types)
     }
@@ -378,14 +358,9 @@ impl ScalarUDFImpl for json_array_contains_json_varcharFunc {
         json_array_contains_json_varchar_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         json_array_contains_json_varchar_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -394,7 +369,7 @@ pub(super) struct json_array_contains_varchar_bigintFunc {
 }
 
 impl json_array_contains_varchar_bigintFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -413,7 +388,6 @@ impl ScalarUDFImpl for json_array_contains_varchar_bigintFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         json_array_contains_varchar_bigint_return_type(arg_types)
     }
@@ -422,14 +396,9 @@ impl ScalarUDFImpl for json_array_contains_varchar_bigintFunc {
         json_array_contains_varchar_bigint_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         json_array_contains_varchar_bigint_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -438,7 +407,7 @@ pub(super) struct json_array_contains_varchar_booleanFunc {
 }
 
 impl json_array_contains_varchar_booleanFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -457,7 +426,6 @@ impl ScalarUDFImpl for json_array_contains_varchar_booleanFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         json_array_contains_varchar_boolean_return_type(arg_types)
     }
@@ -466,14 +434,9 @@ impl ScalarUDFImpl for json_array_contains_varchar_booleanFunc {
         json_array_contains_varchar_boolean_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         json_array_contains_varchar_boolean_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -482,7 +445,7 @@ pub(super) struct json_array_contains_varchar_doubleFunc {
 }
 
 impl json_array_contains_varchar_doubleFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -501,7 +464,6 @@ impl ScalarUDFImpl for json_array_contains_varchar_doubleFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         json_array_contains_varchar_double_return_type(arg_types)
     }
@@ -510,14 +472,9 @@ impl ScalarUDFImpl for json_array_contains_varchar_doubleFunc {
         json_array_contains_varchar_double_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         json_array_contains_varchar_double_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -526,7 +483,7 @@ pub(super) struct json_array_contains_varchar_varcharFunc {
 }
 
 impl json_array_contains_varchar_varcharFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -545,7 +502,6 @@ impl ScalarUDFImpl for json_array_contains_varchar_varcharFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         json_array_contains_varchar_varchar_return_type(arg_types)
     }
@@ -554,12 +510,7 @@ impl ScalarUDFImpl for json_array_contains_varchar_varcharFunc {
         json_array_contains_varchar_varchar_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         json_array_contains_varchar_varchar_simplify(args, info)
     }
-
 }

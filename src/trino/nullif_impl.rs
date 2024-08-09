@@ -47,14 +47,13 @@ fn nullif_1_1_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<Expr
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct nullif_1_1Func {
     signature: Signature,
 }
 
 impl nullif_1_1Func {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -73,7 +72,6 @@ impl ScalarUDFImpl for nullif_1_1Func {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         nullif_1_1_return_type(arg_types)
     }
@@ -82,12 +80,7 @@ impl ScalarUDFImpl for nullif_1_1Func {
         nullif_1_1_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         nullif_1_1_simplify(args, info)
     }
-
 }

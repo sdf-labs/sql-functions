@@ -177,14 +177,13 @@ fn ceiling_tinyint_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct ceiling_bigintFunc {
     signature: Signature,
 }
 
 impl ceiling_bigintFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -203,7 +202,6 @@ impl ScalarUDFImpl for ceiling_bigintFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         ceiling_bigint_return_type(arg_types)
     }
@@ -212,14 +210,9 @@ impl ScalarUDFImpl for ceiling_bigintFunc {
         ceiling_bigint_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         ceiling_bigint_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -228,7 +221,7 @@ pub(super) struct ceiling_decimal_p_sFunc {
 }
 
 impl ceiling_decimal_p_sFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -247,7 +240,6 @@ impl ScalarUDFImpl for ceiling_decimal_p_sFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         ceiling_decimal_p_s_return_type(arg_types)
     }
@@ -256,14 +248,9 @@ impl ScalarUDFImpl for ceiling_decimal_p_sFunc {
         ceiling_decimal_p_s_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         ceiling_decimal_p_s_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -272,7 +259,7 @@ pub(super) struct ceiling_doubleFunc {
 }
 
 impl ceiling_doubleFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -291,7 +278,6 @@ impl ScalarUDFImpl for ceiling_doubleFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         ceiling_double_return_type(arg_types)
     }
@@ -300,14 +286,9 @@ impl ScalarUDFImpl for ceiling_doubleFunc {
         ceiling_double_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         ceiling_double_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -316,7 +297,7 @@ pub(super) struct ceiling_integerFunc {
 }
 
 impl ceiling_integerFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -335,7 +316,6 @@ impl ScalarUDFImpl for ceiling_integerFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         ceiling_integer_return_type(arg_types)
     }
@@ -344,14 +324,9 @@ impl ScalarUDFImpl for ceiling_integerFunc {
         ceiling_integer_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         ceiling_integer_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -360,7 +335,7 @@ pub(super) struct ceiling_realFunc {
 }
 
 impl ceiling_realFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -379,7 +354,6 @@ impl ScalarUDFImpl for ceiling_realFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         ceiling_real_return_type(arg_types)
     }
@@ -388,14 +362,9 @@ impl ScalarUDFImpl for ceiling_realFunc {
         ceiling_real_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         ceiling_real_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -404,7 +373,7 @@ pub(super) struct ceiling_smallintFunc {
 }
 
 impl ceiling_smallintFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -423,7 +392,6 @@ impl ScalarUDFImpl for ceiling_smallintFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         ceiling_smallint_return_type(arg_types)
     }
@@ -432,14 +400,9 @@ impl ScalarUDFImpl for ceiling_smallintFunc {
         ceiling_smallint_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         ceiling_smallint_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -448,7 +411,7 @@ pub(super) struct ceiling_tinyintFunc {
 }
 
 impl ceiling_tinyintFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -467,7 +430,6 @@ impl ScalarUDFImpl for ceiling_tinyintFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         ceiling_tinyint_return_type(arg_types)
     }
@@ -476,12 +438,7 @@ impl ScalarUDFImpl for ceiling_tinyintFunc {
         ceiling_tinyint_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         ceiling_tinyint_simplify(args, info)
     }
-
 }

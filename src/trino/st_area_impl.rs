@@ -73,14 +73,13 @@ fn st_area_sphericalgeography_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct st_area_geometryFunc {
     signature: Signature,
 }
 
 impl st_area_geometryFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -99,7 +98,6 @@ impl ScalarUDFImpl for st_area_geometryFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         st_area_geometry_return_type(arg_types)
     }
@@ -108,14 +106,9 @@ impl ScalarUDFImpl for st_area_geometryFunc {
         st_area_geometry_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         st_area_geometry_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -124,7 +117,7 @@ pub(super) struct st_area_sphericalgeographyFunc {
 }
 
 impl st_area_sphericalgeographyFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -143,7 +136,6 @@ impl ScalarUDFImpl for st_area_sphericalgeographyFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         st_area_sphericalgeography_return_type(arg_types)
     }
@@ -152,12 +144,7 @@ impl ScalarUDFImpl for st_area_sphericalgeographyFunc {
         st_area_sphericalgeography_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         st_area_sphericalgeography_simplify(args, info)
     }
-
 }

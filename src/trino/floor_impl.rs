@@ -165,14 +165,13 @@ fn floor_tinyint_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<E
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct floor_bigintFunc {
     signature: Signature,
 }
 
 impl floor_bigintFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -191,7 +190,6 @@ impl ScalarUDFImpl for floor_bigintFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         floor_bigint_return_type(arg_types)
     }
@@ -200,14 +198,9 @@ impl ScalarUDFImpl for floor_bigintFunc {
         floor_bigint_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         floor_bigint_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -216,7 +209,7 @@ pub(super) struct floor_decimal_p_sFunc {
 }
 
 impl floor_decimal_p_sFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -235,7 +228,6 @@ impl ScalarUDFImpl for floor_decimal_p_sFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         floor_decimal_p_s_return_type(arg_types)
     }
@@ -244,14 +236,9 @@ impl ScalarUDFImpl for floor_decimal_p_sFunc {
         floor_decimal_p_s_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         floor_decimal_p_s_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -260,7 +247,7 @@ pub(super) struct floor_doubleFunc {
 }
 
 impl floor_doubleFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -279,7 +266,6 @@ impl ScalarUDFImpl for floor_doubleFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         floor_double_return_type(arg_types)
     }
@@ -288,14 +274,9 @@ impl ScalarUDFImpl for floor_doubleFunc {
         floor_double_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         floor_double_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -304,7 +285,7 @@ pub(super) struct floor_integerFunc {
 }
 
 impl floor_integerFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -323,7 +304,6 @@ impl ScalarUDFImpl for floor_integerFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         floor_integer_return_type(arg_types)
     }
@@ -332,14 +312,9 @@ impl ScalarUDFImpl for floor_integerFunc {
         floor_integer_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         floor_integer_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -348,7 +323,7 @@ pub(super) struct floor_realFunc {
 }
 
 impl floor_realFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -367,7 +342,6 @@ impl ScalarUDFImpl for floor_realFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         floor_real_return_type(arg_types)
     }
@@ -376,14 +350,9 @@ impl ScalarUDFImpl for floor_realFunc {
         floor_real_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         floor_real_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -392,7 +361,7 @@ pub(super) struct floor_smallintFunc {
 }
 
 impl floor_smallintFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -411,7 +380,6 @@ impl ScalarUDFImpl for floor_smallintFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         floor_smallint_return_type(arg_types)
     }
@@ -420,14 +388,9 @@ impl ScalarUDFImpl for floor_smallintFunc {
         floor_smallint_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         floor_smallint_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -436,7 +399,7 @@ pub(super) struct floor_tinyintFunc {
 }
 
 impl floor_tinyintFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -455,7 +418,6 @@ impl ScalarUDFImpl for floor_tinyintFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         floor_tinyint_return_type(arg_types)
     }
@@ -464,12 +426,7 @@ impl ScalarUDFImpl for floor_tinyintFunc {
         floor_tinyint_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         floor_tinyint_simplify(args, info)
     }
-
 }

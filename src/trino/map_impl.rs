@@ -70,14 +70,13 @@ fn map_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplif
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct map_array_4_array_5Func {
     signature: Signature,
 }
 
 impl map_array_4_array_5Func {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -96,7 +95,6 @@ impl ScalarUDFImpl for map_array_4_array_5Func {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         map_array_4_array_5_return_type(arg_types)
     }
@@ -105,14 +103,9 @@ impl ScalarUDFImpl for map_array_4_array_5Func {
         map_array_4_array_5_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         map_array_4_array_5_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -121,7 +114,7 @@ pub(super) struct mapFunc {
 }
 
 impl mapFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(0, Volatility::Immutable),
         }
@@ -140,7 +133,6 @@ impl ScalarUDFImpl for mapFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         map_return_type(arg_types)
     }
@@ -149,12 +141,7 @@ impl ScalarUDFImpl for mapFunc {
         map_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         map_simplify(args, info)
     }
-
 }

@@ -47,14 +47,13 @@ fn typeof_1_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSi
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct typeof_1Func {
     signature: Signature,
 }
 
 impl typeof_1Func {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -73,7 +72,6 @@ impl ScalarUDFImpl for typeof_1Func {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         typeof_1_return_type(arg_types)
     }
@@ -82,12 +80,7 @@ impl ScalarUDFImpl for typeof_1Func {
         typeof_1_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         typeof_1_simplify(args, info)
     }
-
 }

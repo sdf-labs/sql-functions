@@ -50,14 +50,13 @@ fn to_ieee754_32_real_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct to_ieee754_32_realFunc {
     signature: Signature,
 }
 
 impl to_ieee754_32_realFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -76,7 +75,6 @@ impl ScalarUDFImpl for to_ieee754_32_realFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         to_ieee754_32_real_return_type(arg_types)
     }
@@ -85,12 +83,7 @@ impl ScalarUDFImpl for to_ieee754_32_realFunc {
         to_ieee754_32_real_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         to_ieee754_32_real_simplify(args, info)
     }
-
 }

@@ -127,14 +127,13 @@ fn zip_array_14_array_15_array_16_array_17_array_18_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct zip_array_14_array_15Func {
     signature: Signature,
 }
 
 impl zip_array_14_array_15Func {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -153,7 +152,6 @@ impl ScalarUDFImpl for zip_array_14_array_15Func {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         zip_array_14_array_15_return_type(arg_types)
     }
@@ -162,14 +160,9 @@ impl ScalarUDFImpl for zip_array_14_array_15Func {
         zip_array_14_array_15_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         zip_array_14_array_15_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -178,7 +171,7 @@ pub(super) struct zip_array_14_array_15_array_16Func {
 }
 
 impl zip_array_14_array_15_array_16Func {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(3, Volatility::Immutable),
         }
@@ -197,7 +190,6 @@ impl ScalarUDFImpl for zip_array_14_array_15_array_16Func {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         zip_array_14_array_15_array_16_return_type(arg_types)
     }
@@ -206,14 +198,9 @@ impl ScalarUDFImpl for zip_array_14_array_15_array_16Func {
         zip_array_14_array_15_array_16_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         zip_array_14_array_15_array_16_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -222,7 +209,7 @@ pub(super) struct zip_array_14_array_15_array_16_array_17Func {
 }
 
 impl zip_array_14_array_15_array_16_array_17Func {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(4, Volatility::Immutable),
         }
@@ -241,7 +228,6 @@ impl ScalarUDFImpl for zip_array_14_array_15_array_16_array_17Func {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         zip_array_14_array_15_array_16_array_17_return_type(arg_types)
     }
@@ -250,14 +236,9 @@ impl ScalarUDFImpl for zip_array_14_array_15_array_16_array_17Func {
         zip_array_14_array_15_array_16_array_17_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         zip_array_14_array_15_array_16_array_17_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -266,7 +247,7 @@ pub(super) struct zip_array_14_array_15_array_16_array_17_array_18Func {
 }
 
 impl zip_array_14_array_15_array_16_array_17_array_18Func {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(5, Volatility::Immutable),
         }
@@ -285,7 +266,6 @@ impl ScalarUDFImpl for zip_array_14_array_15_array_16_array_17_array_18Func {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         zip_array_14_array_15_array_16_array_17_array_18_return_type(arg_types)
     }
@@ -294,12 +274,7 @@ impl ScalarUDFImpl for zip_array_14_array_15_array_16_array_17_array_18Func {
         zip_array_14_array_15_array_16_array_17_array_18_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         zip_array_14_array_15_array_16_array_17_array_18_simplify(args, info)
     }
-
 }

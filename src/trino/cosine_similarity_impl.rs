@@ -54,14 +54,13 @@ fn cosine_similarity_map_varchar_double_map_varchar_double_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct cosine_similarity_map_varchar_double_map_varchar_doubleFunc {
     signature: Signature,
 }
 
 impl cosine_similarity_map_varchar_double_map_varchar_doubleFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -80,7 +79,6 @@ impl ScalarUDFImpl for cosine_similarity_map_varchar_double_map_varchar_doubleFu
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         cosine_similarity_map_varchar_double_map_varchar_double_return_type(arg_types)
     }
@@ -89,12 +87,7 @@ impl ScalarUDFImpl for cosine_similarity_map_varchar_double_map_varchar_doubleFu
         cosine_similarity_map_varchar_double_map_varchar_double_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         cosine_similarity_map_varchar_double_map_varchar_double_simplify(args, info)
     }
-
 }

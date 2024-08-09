@@ -131,14 +131,13 @@ fn cardinality_setdigest_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct cardinality_array_3Func {
     signature: Signature,
 }
 
 impl cardinality_array_3Func {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -157,7 +156,6 @@ impl ScalarUDFImpl for cardinality_array_3Func {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         cardinality_array_3_return_type(arg_types)
     }
@@ -166,14 +164,9 @@ impl ScalarUDFImpl for cardinality_array_3Func {
         cardinality_array_3_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         cardinality_array_3_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -182,7 +175,7 @@ pub(super) struct cardinality_hyperloglogFunc {
 }
 
 impl cardinality_hyperloglogFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -201,7 +194,6 @@ impl ScalarUDFImpl for cardinality_hyperloglogFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         cardinality_hyperloglog_return_type(arg_types)
     }
@@ -210,14 +202,9 @@ impl ScalarUDFImpl for cardinality_hyperloglogFunc {
         cardinality_hyperloglog_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         cardinality_hyperloglog_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -226,7 +213,7 @@ pub(super) struct cardinality_map_4_5Func {
 }
 
 impl cardinality_map_4_5Func {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -245,7 +232,6 @@ impl ScalarUDFImpl for cardinality_map_4_5Func {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         cardinality_map_4_5_return_type(arg_types)
     }
@@ -254,14 +240,9 @@ impl ScalarUDFImpl for cardinality_map_4_5Func {
         cardinality_map_4_5_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         cardinality_map_4_5_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -270,7 +251,7 @@ pub(super) struct cardinality_setdigestFunc {
 }
 
 impl cardinality_setdigestFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -289,7 +270,6 @@ impl ScalarUDFImpl for cardinality_setdigestFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         cardinality_setdigest_return_type(arg_types)
     }
@@ -298,12 +278,7 @@ impl ScalarUDFImpl for cardinality_setdigestFunc {
         cardinality_setdigest_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         cardinality_setdigest_simplify(args, info)
     }
-
 }

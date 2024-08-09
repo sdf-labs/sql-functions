@@ -54,14 +54,13 @@ fn least_3_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSim
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct least_3Func {
     signature: Signature,
 }
 
 impl least_3Func {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::variadic_equal(Volatility::Immutable),
         }
@@ -80,7 +79,6 @@ impl ScalarUDFImpl for least_3Func {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         least_3_return_type(arg_types)
     }
@@ -89,12 +87,7 @@ impl ScalarUDFImpl for least_3Func {
         least_3_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         least_3_simplify(args, info)
     }
-
 }

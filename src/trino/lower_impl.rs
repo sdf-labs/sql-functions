@@ -47,14 +47,13 @@ fn lower_varchar_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<E
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct lower_varcharFunc {
     signature: Signature,
 }
 
 impl lower_varcharFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -73,7 +72,6 @@ impl ScalarUDFImpl for lower_varcharFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         lower_varchar_return_type(arg_types)
     }
@@ -82,12 +80,7 @@ impl ScalarUDFImpl for lower_varcharFunc {
         lower_varchar_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         lower_varchar_simplify(args, info)
     }
-
 }

@@ -59,14 +59,13 @@ fn regexp_split_varchar_joniregexp_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct regexp_split_varchar_joniregexpFunc {
     signature: Signature,
 }
 
 impl regexp_split_varchar_joniregexpFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -85,7 +84,6 @@ impl ScalarUDFImpl for regexp_split_varchar_joniregexpFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         regexp_split_varchar_joniregexp_return_type(arg_types)
     }
@@ -94,12 +92,7 @@ impl ScalarUDFImpl for regexp_split_varchar_joniregexpFunc {
         regexp_split_varchar_joniregexp_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         regexp_split_varchar_joniregexp_simplify(args, info)
     }
-
 }

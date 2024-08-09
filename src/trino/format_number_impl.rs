@@ -73,14 +73,13 @@ fn format_number_double_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct format_number_bigintFunc {
     signature: Signature,
 }
 
 impl format_number_bigintFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -99,7 +98,6 @@ impl ScalarUDFImpl for format_number_bigintFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         format_number_bigint_return_type(arg_types)
     }
@@ -108,14 +106,9 @@ impl ScalarUDFImpl for format_number_bigintFunc {
         format_number_bigint_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         format_number_bigint_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -124,7 +117,7 @@ pub(super) struct format_number_doubleFunc {
 }
 
 impl format_number_doubleFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -143,7 +136,6 @@ impl ScalarUDFImpl for format_number_doubleFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         format_number_double_return_type(arg_types)
     }
@@ -152,12 +144,7 @@ impl ScalarUDFImpl for format_number_doubleFunc {
         format_number_double_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         format_number_double_simplify(args, info)
     }
-
 }

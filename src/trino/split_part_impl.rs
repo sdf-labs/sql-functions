@@ -50,14 +50,13 @@ fn split_part_varchar_varchar_bigint_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct split_part_varchar_varchar_bigintFunc {
     signature: Signature,
 }
 
 impl split_part_varchar_varchar_bigintFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(3, Volatility::Immutable),
         }
@@ -76,7 +75,6 @@ impl ScalarUDFImpl for split_part_varchar_varchar_bigintFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         split_part_varchar_varchar_bigint_return_type(arg_types)
     }
@@ -85,12 +83,7 @@ impl ScalarUDFImpl for split_part_varchar_varchar_bigintFunc {
         split_part_varchar_varchar_bigint_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         split_part_varchar_varchar_bigint_simplify(args, info)
     }
-
 }

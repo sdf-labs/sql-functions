@@ -54,14 +54,13 @@ fn multimap_from_entries_array_row_c04_c15_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct multimap_from_entries_array_row_c04_c15Func {
     signature: Signature,
 }
 
 impl multimap_from_entries_array_row_c04_c15Func {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -80,7 +79,6 @@ impl ScalarUDFImpl for multimap_from_entries_array_row_c04_c15Func {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         multimap_from_entries_array_row_c04_c15_return_type(arg_types)
     }
@@ -89,12 +87,7 @@ impl ScalarUDFImpl for multimap_from_entries_array_row_c04_c15Func {
         multimap_from_entries_array_row_c04_c15_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         multimap_from_entries_array_row_c04_c15_simplify(args, info)
     }
-
 }

@@ -73,14 +73,13 @@ fn json_array_length_varchar_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct json_array_length_jsonFunc {
     signature: Signature,
 }
 
 impl json_array_length_jsonFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -99,7 +98,6 @@ impl ScalarUDFImpl for json_array_length_jsonFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         json_array_length_json_return_type(arg_types)
     }
@@ -108,14 +106,9 @@ impl ScalarUDFImpl for json_array_length_jsonFunc {
         json_array_length_json_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         json_array_length_json_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -124,7 +117,7 @@ pub(super) struct json_array_length_varcharFunc {
 }
 
 impl json_array_length_varcharFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -143,7 +136,6 @@ impl ScalarUDFImpl for json_array_length_varcharFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         json_array_length_varchar_return_type(arg_types)
     }
@@ -152,12 +144,7 @@ impl ScalarUDFImpl for json_array_length_varcharFunc {
         json_array_length_varchar_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         json_array_length_varchar_simplify(args, info)
     }
-
 }

@@ -50,14 +50,13 @@ fn timestamp_objectid_timestamp_0_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct timestamp_objectid_timestamp_0Func {
     signature: Signature,
 }
 
 impl timestamp_objectid_timestamp_0Func {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -76,7 +75,6 @@ impl ScalarUDFImpl for timestamp_objectid_timestamp_0Func {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         timestamp_objectid_timestamp_0_return_type(arg_types)
     }
@@ -85,12 +83,7 @@ impl ScalarUDFImpl for timestamp_objectid_timestamp_0Func {
         timestamp_objectid_timestamp_0_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         timestamp_objectid_timestamp_0_simplify(args, info)
     }
-
 }

@@ -50,14 +50,13 @@ fn regress_map_bigint_double_regressor_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct regress_map_bigint_double_regressorFunc {
     signature: Signature,
 }
 
 impl regress_map_bigint_double_regressorFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -76,7 +75,6 @@ impl ScalarUDFImpl for regress_map_bigint_double_regressorFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         regress_map_bigint_double_regressor_return_type(arg_types)
     }
@@ -85,12 +83,7 @@ impl ScalarUDFImpl for regress_map_bigint_double_regressorFunc {
         regress_map_bigint_double_regressor_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         regress_map_bigint_double_regressor_simplify(args, info)
     }
-
 }

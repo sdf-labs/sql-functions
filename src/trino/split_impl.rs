@@ -103,14 +103,13 @@ fn split_varchar_varchar_bigint_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct split_varchar_varcharFunc {
     signature: Signature,
 }
 
 impl split_varchar_varcharFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -129,7 +128,6 @@ impl ScalarUDFImpl for split_varchar_varcharFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         split_varchar_varchar_return_type(arg_types)
     }
@@ -138,14 +136,9 @@ impl ScalarUDFImpl for split_varchar_varcharFunc {
         split_varchar_varchar_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         split_varchar_varchar_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -154,7 +147,7 @@ pub(super) struct split_varchar_varchar_bigintFunc {
 }
 
 impl split_varchar_varchar_bigintFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(3, Volatility::Immutable),
         }
@@ -173,7 +166,6 @@ impl ScalarUDFImpl for split_varchar_varchar_bigintFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         split_varchar_varchar_bigint_return_type(arg_types)
     }
@@ -182,12 +174,7 @@ impl ScalarUDFImpl for split_varchar_varchar_bigintFunc {
         split_varchar_varchar_bigint_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         split_varchar_varchar_bigint_simplify(args, info)
     }
-
 }

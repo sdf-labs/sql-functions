@@ -50,14 +50,13 @@ fn date_format_timestamp_p_varchar_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct date_format_timestamp_p_varcharFunc {
     signature: Signature,
 }
 
 impl date_format_timestamp_p_varcharFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -76,7 +75,6 @@ impl ScalarUDFImpl for date_format_timestamp_p_varcharFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         date_format_timestamp_p_varchar_return_type(arg_types)
     }
@@ -85,12 +83,7 @@ impl ScalarUDFImpl for date_format_timestamp_p_varcharFunc {
         date_format_timestamp_p_varchar_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         date_format_timestamp_p_varchar_simplify(args, info)
     }
-
 }

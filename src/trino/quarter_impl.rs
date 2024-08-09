@@ -56,14 +56,13 @@ fn quarter_timestamp_p_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct quarter_dateFunc {
     signature: Signature,
 }
 
 impl quarter_dateFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -82,7 +81,6 @@ impl ScalarUDFImpl for quarter_dateFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         quarter_date_return_type(arg_types)
     }
@@ -91,14 +89,9 @@ impl ScalarUDFImpl for quarter_dateFunc {
         quarter_date_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         quarter_date_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -107,7 +100,7 @@ pub(super) struct quarter_timestamp_pFunc {
 }
 
 impl quarter_timestamp_pFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -126,7 +119,6 @@ impl ScalarUDFImpl for quarter_timestamp_pFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         quarter_timestamp_p_return_type(arg_types)
     }
@@ -135,12 +127,7 @@ impl ScalarUDFImpl for quarter_timestamp_pFunc {
         quarter_timestamp_p_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         quarter_timestamp_p_simplify(args, info)
     }
-
 }

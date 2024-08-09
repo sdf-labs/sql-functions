@@ -281,14 +281,13 @@ fn features_double_double_double_double_double_double_double_double_double_doubl
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct features_doubleFunc {
     signature: Signature,
 }
 
 impl features_doubleFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -307,7 +306,6 @@ impl ScalarUDFImpl for features_doubleFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         features_double_return_type(arg_types)
     }
@@ -316,14 +314,9 @@ impl ScalarUDFImpl for features_doubleFunc {
         features_double_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         features_double_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -332,7 +325,7 @@ pub(super) struct features_double_doubleFunc {
 }
 
 impl features_double_doubleFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -351,7 +344,6 @@ impl ScalarUDFImpl for features_double_doubleFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         features_double_double_return_type(arg_types)
     }
@@ -360,14 +352,9 @@ impl ScalarUDFImpl for features_double_doubleFunc {
         features_double_double_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         features_double_double_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -376,7 +363,7 @@ pub(super) struct features_double_double_doubleFunc {
 }
 
 impl features_double_double_doubleFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(3, Volatility::Immutable),
         }
@@ -395,7 +382,6 @@ impl ScalarUDFImpl for features_double_double_doubleFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         features_double_double_double_return_type(arg_types)
     }
@@ -404,14 +390,9 @@ impl ScalarUDFImpl for features_double_double_doubleFunc {
         features_double_double_double_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         features_double_double_double_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -420,7 +401,7 @@ pub(super) struct features_double_double_double_doubleFunc {
 }
 
 impl features_double_double_double_doubleFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(4, Volatility::Immutable),
         }
@@ -439,7 +420,6 @@ impl ScalarUDFImpl for features_double_double_double_doubleFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         features_double_double_double_double_return_type(arg_types)
     }
@@ -448,14 +428,9 @@ impl ScalarUDFImpl for features_double_double_double_doubleFunc {
         features_double_double_double_double_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         features_double_double_double_double_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -464,7 +439,7 @@ pub(super) struct features_double_double_double_double_doubleFunc {
 }
 
 impl features_double_double_double_double_doubleFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(5, Volatility::Immutable),
         }
@@ -483,7 +458,6 @@ impl ScalarUDFImpl for features_double_double_double_double_doubleFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         features_double_double_double_double_double_return_type(arg_types)
     }
@@ -492,14 +466,9 @@ impl ScalarUDFImpl for features_double_double_double_double_doubleFunc {
         features_double_double_double_double_double_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         features_double_double_double_double_double_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -508,7 +477,7 @@ pub(super) struct features_double_double_double_double_double_doubleFunc {
 }
 
 impl features_double_double_double_double_double_doubleFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(6, Volatility::Immutable),
         }
@@ -527,7 +496,6 @@ impl ScalarUDFImpl for features_double_double_double_double_double_doubleFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         features_double_double_double_double_double_double_return_type(arg_types)
     }
@@ -536,14 +504,9 @@ impl ScalarUDFImpl for features_double_double_double_double_double_doubleFunc {
         features_double_double_double_double_double_double_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         features_double_double_double_double_double_double_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -552,7 +515,7 @@ pub(super) struct features_double_double_double_double_double_double_doubleFunc 
 }
 
 impl features_double_double_double_double_double_double_doubleFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(7, Volatility::Immutable),
         }
@@ -571,7 +534,6 @@ impl ScalarUDFImpl for features_double_double_double_double_double_double_double
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         features_double_double_double_double_double_double_double_return_type(arg_types)
     }
@@ -580,14 +542,9 @@ impl ScalarUDFImpl for features_double_double_double_double_double_double_double
         features_double_double_double_double_double_double_double_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         features_double_double_double_double_double_double_double_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -596,7 +553,7 @@ pub(super) struct features_double_double_double_double_double_double_double_doub
 }
 
 impl features_double_double_double_double_double_double_double_doubleFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(8, Volatility::Immutable),
         }
@@ -615,7 +572,6 @@ impl ScalarUDFImpl for features_double_double_double_double_double_double_double
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         features_double_double_double_double_double_double_double_double_return_type(arg_types)
     }
@@ -624,14 +580,9 @@ impl ScalarUDFImpl for features_double_double_double_double_double_double_double
         features_double_double_double_double_double_double_double_double_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         features_double_double_double_double_double_double_double_double_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -640,7 +591,7 @@ pub(super) struct features_double_double_double_double_double_double_double_doub
 }
 
 impl features_double_double_double_double_double_double_double_double_doubleFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(9, Volatility::Immutable),
         }
@@ -659,39 +610,38 @@ impl ScalarUDFImpl for features_double_double_double_double_double_double_double
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
-        features_double_double_double_double_double_double_double_double_double_return_type(arg_types)
+        features_double_double_double_double_double_double_double_double_double_return_type(
+            arg_types,
+        )
     }
 
     fn invoke(&self, args: &[ColumnarValue]) -> Result<ColumnarValue> {
         features_double_double_double_double_double_double_double_double_double_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         features_double_double_double_double_double_double_double_double_double_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
-pub(super) struct features_double_double_double_double_double_double_double_double_double_doubleFunc {
+pub(super) struct features_double_double_double_double_double_double_double_double_double_doubleFunc
+{
     signature: Signature,
 }
 
 impl features_double_double_double_double_double_double_double_double_double_doubleFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(10, Volatility::Immutable),
         }
     }
 }
 
-impl ScalarUDFImpl for features_double_double_double_double_double_double_double_double_double_doubleFunc {
+impl ScalarUDFImpl
+    for features_double_double_double_double_double_double_double_double_double_doubleFunc
+{
     fn as_any(&self) -> &dyn Any {
         self
     }
@@ -703,21 +653,19 @@ impl ScalarUDFImpl for features_double_double_double_double_double_double_double
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
-        features_double_double_double_double_double_double_double_double_double_double_return_type(arg_types)
+        features_double_double_double_double_double_double_double_double_double_double_return_type(
+            arg_types,
+        )
     }
 
     fn invoke(&self, args: &[ColumnarValue]) -> Result<ColumnarValue> {
         features_double_double_double_double_double_double_double_double_double_double_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
-        features_double_double_double_double_double_double_double_double_double_double_simplify(args, info)
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
+        features_double_double_double_double_double_double_double_double_double_double_simplify(
+            args, info,
+        )
     }
-
 }

@@ -73,14 +73,13 @@ fn concat_ws_varchar_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct concat_ws_varchar_array_varcharFunc {
     signature: Signature,
 }
 
 impl concat_ws_varchar_array_varcharFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -99,7 +98,6 @@ impl ScalarUDFImpl for concat_ws_varchar_array_varcharFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         concat_ws_varchar_array_varchar_return_type(arg_types)
     }
@@ -108,14 +106,9 @@ impl ScalarUDFImpl for concat_ws_varchar_array_varcharFunc {
         concat_ws_varchar_array_varchar_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         concat_ws_varchar_array_varchar_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -124,7 +117,7 @@ pub(super) struct concat_ws_varcharFunc {
 }
 
 impl concat_ws_varcharFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::variadic_equal(Volatility::Immutable),
         }
@@ -143,7 +136,6 @@ impl ScalarUDFImpl for concat_ws_varcharFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         concat_ws_varchar_return_type(arg_types)
     }
@@ -152,12 +144,7 @@ impl ScalarUDFImpl for concat_ws_varcharFunc {
         concat_ws_varchar_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         concat_ws_varchar_simplify(args, info)
     }
-
 }

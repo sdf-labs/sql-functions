@@ -54,14 +54,13 @@ fn intersection_cardinality_setdigest_setdigest_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct intersection_cardinality_setdigest_setdigestFunc {
     signature: Signature,
 }
 
 impl intersection_cardinality_setdigest_setdigestFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -80,7 +79,6 @@ impl ScalarUDFImpl for intersection_cardinality_setdigest_setdigestFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         intersection_cardinality_setdigest_setdigest_return_type(arg_types)
     }
@@ -89,12 +87,7 @@ impl ScalarUDFImpl for intersection_cardinality_setdigest_setdigestFunc {
         intersection_cardinality_setdigest_setdigest_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         intersection_cardinality_setdigest_setdigest_simplify(args, info)
     }
-
 }

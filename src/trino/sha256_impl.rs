@@ -50,14 +50,13 @@ fn sha256_varbinary_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct sha256_varbinaryFunc {
     signature: Signature,
 }
 
 impl sha256_varbinaryFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -76,7 +75,6 @@ impl ScalarUDFImpl for sha256_varbinaryFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         sha256_varbinary_return_type(arg_types)
     }
@@ -85,12 +83,7 @@ impl ScalarUDFImpl for sha256_varbinaryFunc {
         sha256_varbinary_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         sha256_varbinary_simplify(args, info)
     }
-
 }

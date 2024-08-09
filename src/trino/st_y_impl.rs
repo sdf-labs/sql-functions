@@ -47,14 +47,13 @@ fn st_y_geometry_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<E
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct st_y_geometryFunc {
     signature: Signature,
 }
 
 impl st_y_geometryFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -73,7 +72,6 @@ impl ScalarUDFImpl for st_y_geometryFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         st_y_geometry_return_type(arg_types)
     }
@@ -82,12 +80,7 @@ impl ScalarUDFImpl for st_y_geometryFunc {
         st_y_geometry_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         st_y_geometry_simplify(args, info)
     }
-
 }

@@ -73,14 +73,13 @@ fn array_join_array_1_varchar_varchar_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct array_join_array_1_varcharFunc {
     signature: Signature,
 }
 
 impl array_join_array_1_varcharFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -99,7 +98,6 @@ impl ScalarUDFImpl for array_join_array_1_varcharFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         array_join_array_1_varchar_return_type(arg_types)
     }
@@ -108,14 +106,9 @@ impl ScalarUDFImpl for array_join_array_1_varcharFunc {
         array_join_array_1_varchar_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         array_join_array_1_varchar_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -124,7 +117,7 @@ pub(super) struct array_join_array_1_varchar_varcharFunc {
 }
 
 impl array_join_array_1_varchar_varcharFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(3, Volatility::Immutable),
         }
@@ -143,7 +136,6 @@ impl ScalarUDFImpl for array_join_array_1_varchar_varcharFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         array_join_array_1_varchar_varchar_return_type(arg_types)
     }
@@ -152,12 +144,7 @@ impl ScalarUDFImpl for array_join_array_1_varchar_varcharFunc {
         array_join_array_1_varchar_varchar_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         array_join_array_1_varchar_varchar_simplify(args, info)
     }
-
 }

@@ -54,14 +54,13 @@ fn zip_with_array_1_array_11_function_1_11_9_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct zip_with_array_1_array_11_function_1_11_9Func {
     signature: Signature,
 }
 
 impl zip_with_array_1_array_11_function_1_11_9Func {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(3, Volatility::Immutable),
         }
@@ -80,7 +79,6 @@ impl ScalarUDFImpl for zip_with_array_1_array_11_function_1_11_9Func {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         zip_with_array_1_array_11_function_1_11_9_return_type(arg_types)
     }
@@ -89,12 +87,7 @@ impl ScalarUDFImpl for zip_with_array_1_array_11_function_1_11_9Func {
         zip_with_array_1_array_11_function_1_11_9_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         zip_with_array_1_array_11_function_1_11_9_simplify(args, info)
     }
-
 }

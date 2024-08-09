@@ -50,14 +50,13 @@ fn classify_map_bigint_double_classifier_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct classify_map_bigint_double_classifierFunc {
     signature: Signature,
 }
 
 impl classify_map_bigint_double_classifierFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -76,7 +75,6 @@ impl ScalarUDFImpl for classify_map_bigint_double_classifierFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         classify_map_bigint_double_classifier_return_type(arg_types)
     }
@@ -85,12 +83,7 @@ impl ScalarUDFImpl for classify_map_bigint_double_classifierFunc {
         classify_map_bigint_double_classifier_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         classify_map_bigint_double_classifier_simplify(args, info)
     }
-
 }

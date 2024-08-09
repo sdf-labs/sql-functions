@@ -72,14 +72,13 @@ fn year_timestamp_p_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct year_dateFunc {
     signature: Signature,
 }
 
 impl year_dateFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -98,7 +97,6 @@ impl ScalarUDFImpl for year_dateFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         year_date_return_type(arg_types)
     }
@@ -107,14 +105,9 @@ impl ScalarUDFImpl for year_dateFunc {
         year_date_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         year_date_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -123,7 +116,7 @@ pub(super) struct year_intervalyeartomonthFunc {
 }
 
 impl year_intervalyeartomonthFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -142,7 +135,6 @@ impl ScalarUDFImpl for year_intervalyeartomonthFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         year_intervalyeartomonth_return_type(arg_types)
     }
@@ -151,14 +143,9 @@ impl ScalarUDFImpl for year_intervalyeartomonthFunc {
         year_intervalyeartomonth_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         year_intervalyeartomonth_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -167,7 +154,7 @@ pub(super) struct year_timestamp_pFunc {
 }
 
 impl year_timestamp_pFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -186,7 +173,6 @@ impl ScalarUDFImpl for year_timestamp_pFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         year_timestamp_p_return_type(arg_types)
     }
@@ -195,12 +181,7 @@ impl ScalarUDFImpl for year_timestamp_pFunc {
         year_timestamp_p_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         year_timestamp_p_simplify(args, info)
     }
-
 }

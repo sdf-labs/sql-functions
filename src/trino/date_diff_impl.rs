@@ -447,14 +447,13 @@ fn date_diff_varchar_timestamp_p_timestamp_p_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct date_diff_varchar_date_dateFunc {
     signature: Signature,
 }
 
 impl date_diff_varchar_date_dateFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(3, Volatility::Immutable),
         }
@@ -473,7 +472,6 @@ impl ScalarUDFImpl for date_diff_varchar_date_dateFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         date_diff_varchar_date_date_return_type(arg_types)
     }
@@ -482,14 +480,9 @@ impl ScalarUDFImpl for date_diff_varchar_date_dateFunc {
         date_diff_varchar_date_date_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         date_diff_varchar_date_date_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -498,7 +491,7 @@ pub(super) struct date_diff_varchar_time_p_time_pFunc {
 }
 
 impl date_diff_varchar_time_p_time_pFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(3, Volatility::Immutable),
         }
@@ -517,7 +510,6 @@ impl ScalarUDFImpl for date_diff_varchar_time_p_time_pFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         date_diff_varchar_time_p_time_p_return_type(arg_types)
     }
@@ -526,14 +518,9 @@ impl ScalarUDFImpl for date_diff_varchar_time_p_time_pFunc {
         date_diff_varchar_time_p_time_p_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         date_diff_varchar_time_p_time_p_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -542,7 +529,7 @@ pub(super) struct date_diff_varchar_timestamp_p_timestamp_pFunc {
 }
 
 impl date_diff_varchar_timestamp_p_timestamp_pFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(3, Volatility::Immutable),
         }
@@ -561,7 +548,6 @@ impl ScalarUDFImpl for date_diff_varchar_timestamp_p_timestamp_pFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         date_diff_varchar_timestamp_p_timestamp_p_return_type(arg_types)
     }
@@ -570,12 +556,7 @@ impl ScalarUDFImpl for date_diff_varchar_timestamp_p_timestamp_pFunc {
         date_diff_varchar_timestamp_p_timestamp_p_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         date_diff_varchar_timestamp_p_timestamp_p_simplify(args, info)
     }
-
 }

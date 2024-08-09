@@ -47,14 +47,13 @@ fn ln_double_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprS
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct ln_doubleFunc {
     signature: Signature,
 }
 
 impl ln_doubleFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -73,7 +72,6 @@ impl ScalarUDFImpl for ln_doubleFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         ln_double_return_type(arg_types)
     }
@@ -82,12 +80,7 @@ impl ScalarUDFImpl for ln_doubleFunc {
         ln_double_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         ln_double_simplify(args, info)
     }
-
 }

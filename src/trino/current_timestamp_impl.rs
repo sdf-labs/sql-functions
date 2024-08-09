@@ -108,14 +108,13 @@ fn current_timestamp_bigint_9_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct current_timestampFunc {
     signature: Signature,
 }
 
 impl current_timestampFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(0, Volatility::Immutable),
         }
@@ -134,7 +133,6 @@ impl ScalarUDFImpl for current_timestampFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         current_timestamp_return_type(arg_types)
     }
@@ -143,14 +141,9 @@ impl ScalarUDFImpl for current_timestampFunc {
         current_timestamp_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         current_timestamp_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -159,7 +152,7 @@ pub(super) struct current_timestamp_bigint_0Func {
 }
 
 impl current_timestamp_bigint_0Func {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -178,7 +171,6 @@ impl ScalarUDFImpl for current_timestamp_bigint_0Func {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         current_timestamp_bigint_0_return_type(arg_types)
     }
@@ -187,14 +179,9 @@ impl ScalarUDFImpl for current_timestamp_bigint_0Func {
         current_timestamp_bigint_0_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         current_timestamp_bigint_0_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -203,7 +190,7 @@ pub(super) struct current_timestamp_bigint_3Func {
 }
 
 impl current_timestamp_bigint_3Func {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -222,7 +209,6 @@ impl ScalarUDFImpl for current_timestamp_bigint_3Func {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         current_timestamp_bigint_3_return_type(arg_types)
     }
@@ -231,14 +217,9 @@ impl ScalarUDFImpl for current_timestamp_bigint_3Func {
         current_timestamp_bigint_3_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         current_timestamp_bigint_3_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -247,7 +228,7 @@ pub(super) struct current_timestamp_bigint_6Func {
 }
 
 impl current_timestamp_bigint_6Func {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -266,7 +247,6 @@ impl ScalarUDFImpl for current_timestamp_bigint_6Func {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         current_timestamp_bigint_6_return_type(arg_types)
     }
@@ -275,14 +255,9 @@ impl ScalarUDFImpl for current_timestamp_bigint_6Func {
         current_timestamp_bigint_6_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         current_timestamp_bigint_6_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -291,7 +266,7 @@ pub(super) struct current_timestamp_bigint_9Func {
 }
 
 impl current_timestamp_bigint_9Func {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -310,7 +285,6 @@ impl ScalarUDFImpl for current_timestamp_bigint_9Func {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         current_timestamp_bigint_9_return_type(arg_types)
     }
@@ -319,12 +293,7 @@ impl ScalarUDFImpl for current_timestamp_bigint_9Func {
         current_timestamp_bigint_9_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         current_timestamp_bigint_9_simplify(args, info)
     }
-
 }

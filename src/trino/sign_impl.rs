@@ -182,14 +182,13 @@ fn sign_tinyint_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<Ex
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct sign_bigintFunc {
     signature: Signature,
 }
 
 impl sign_bigintFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -208,7 +207,6 @@ impl ScalarUDFImpl for sign_bigintFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         sign_bigint_return_type(arg_types)
     }
@@ -217,14 +215,9 @@ impl ScalarUDFImpl for sign_bigintFunc {
         sign_bigint_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         sign_bigint_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -233,7 +226,7 @@ pub(super) struct sign_decimal_p_sFunc {
 }
 
 impl sign_decimal_p_sFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -252,7 +245,6 @@ impl ScalarUDFImpl for sign_decimal_p_sFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         sign_decimal_p_s_return_type(arg_types)
     }
@@ -261,14 +253,9 @@ impl ScalarUDFImpl for sign_decimal_p_sFunc {
         sign_decimal_p_s_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         sign_decimal_p_s_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -277,7 +264,7 @@ pub(super) struct sign_doubleFunc {
 }
 
 impl sign_doubleFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -296,7 +283,6 @@ impl ScalarUDFImpl for sign_doubleFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         sign_double_return_type(arg_types)
     }
@@ -305,14 +291,9 @@ impl ScalarUDFImpl for sign_doubleFunc {
         sign_double_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         sign_double_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -321,7 +302,7 @@ pub(super) struct sign_integerFunc {
 }
 
 impl sign_integerFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -340,7 +321,6 @@ impl ScalarUDFImpl for sign_integerFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         sign_integer_return_type(arg_types)
     }
@@ -349,14 +329,9 @@ impl ScalarUDFImpl for sign_integerFunc {
         sign_integer_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         sign_integer_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -365,7 +340,7 @@ pub(super) struct sign_realFunc {
 }
 
 impl sign_realFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -384,7 +359,6 @@ impl ScalarUDFImpl for sign_realFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         sign_real_return_type(arg_types)
     }
@@ -393,14 +367,9 @@ impl ScalarUDFImpl for sign_realFunc {
         sign_real_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         sign_real_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -409,7 +378,7 @@ pub(super) struct sign_smallintFunc {
 }
 
 impl sign_smallintFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -428,7 +397,6 @@ impl ScalarUDFImpl for sign_smallintFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         sign_smallint_return_type(arg_types)
     }
@@ -437,14 +405,9 @@ impl ScalarUDFImpl for sign_smallintFunc {
         sign_smallint_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         sign_smallint_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -453,7 +416,7 @@ pub(super) struct sign_tinyintFunc {
 }
 
 impl sign_tinyintFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -472,7 +435,6 @@ impl ScalarUDFImpl for sign_tinyintFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         sign_tinyint_return_type(arg_types)
     }
@@ -481,12 +443,7 @@ impl ScalarUDFImpl for sign_tinyintFunc {
         sign_tinyint_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         sign_tinyint_simplify(args, info)
     }
-
 }

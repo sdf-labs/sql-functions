@@ -50,14 +50,13 @@ fn array_position_array_1_1_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct array_position_array_1_1Func {
     signature: Signature,
 }
 
 impl array_position_array_1_1Func {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -76,7 +75,6 @@ impl ScalarUDFImpl for array_position_array_1_1Func {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         array_position_array_1_1_return_type(arg_types)
     }
@@ -85,12 +83,7 @@ impl ScalarUDFImpl for array_position_array_1_1Func {
         array_position_array_1_1_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         array_position_array_1_1_simplify(args, info)
     }
-
 }

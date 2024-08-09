@@ -47,14 +47,13 @@ fn nan_simplify(args: Vec<Expr>, _info: &dyn SimplifyInfo) -> Result<ExprSimplif
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct nanFunc {
     signature: Signature,
 }
 
 impl nanFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(0, Volatility::Immutable),
         }
@@ -73,7 +72,6 @@ impl ScalarUDFImpl for nanFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         nan_return_type(arg_types)
     }
@@ -82,12 +80,7 @@ impl ScalarUDFImpl for nanFunc {
         nan_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         nan_simplify(args, info)
     }
-
 }

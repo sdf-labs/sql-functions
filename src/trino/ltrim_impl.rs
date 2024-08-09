@@ -70,14 +70,13 @@ fn ltrim_varchar_codepoints_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct ltrim_varcharFunc {
     signature: Signature,
 }
 
 impl ltrim_varcharFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -96,7 +95,6 @@ impl ScalarUDFImpl for ltrim_varcharFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         ltrim_varchar_return_type(arg_types)
     }
@@ -105,14 +103,9 @@ impl ScalarUDFImpl for ltrim_varcharFunc {
         ltrim_varchar_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         ltrim_varchar_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -121,7 +114,7 @@ pub(super) struct ltrim_varchar_codepointsFunc {
 }
 
 impl ltrim_varchar_codepointsFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -140,7 +133,6 @@ impl ScalarUDFImpl for ltrim_varchar_codepointsFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         ltrim_varchar_codepoints_return_type(arg_types)
     }
@@ -149,12 +141,7 @@ impl ScalarUDFImpl for ltrim_varchar_codepointsFunc {
         ltrim_varchar_codepoints_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         ltrim_varchar_codepoints_simplify(args, info)
     }
-
 }

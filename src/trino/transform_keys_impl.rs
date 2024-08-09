@@ -54,14 +54,13 @@ fn transform_keys_map_13_5_function_13_5_12_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct transform_keys_map_13_5_function_13_5_12Func {
     signature: Signature,
 }
 
 impl transform_keys_map_13_5_function_13_5_12Func {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(2, Volatility::Immutable),
         }
@@ -80,7 +79,6 @@ impl ScalarUDFImpl for transform_keys_map_13_5_function_13_5_12Func {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         transform_keys_map_13_5_function_13_5_12_return_type(arg_types)
     }
@@ -89,12 +87,7 @@ impl ScalarUDFImpl for transform_keys_map_13_5_function_13_5_12Func {
         transform_keys_map_13_5_function_13_5_12_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         transform_keys_map_13_5_function_13_5_12_simplify(args, info)
     }
-
 }

@@ -58,14 +58,13 @@ fn day_of_week_timestamp_p_simplify(
 // Do *NOT* edit below this line: all changes will be overwritten
 // when template is regenerated!
 
-
 #[derive(Debug)]
 pub(super) struct day_of_week_dateFunc {
     signature: Signature,
 }
 
 impl day_of_week_dateFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -84,7 +83,6 @@ impl ScalarUDFImpl for day_of_week_dateFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         day_of_week_date_return_type(arg_types)
     }
@@ -93,14 +91,9 @@ impl ScalarUDFImpl for day_of_week_dateFunc {
         day_of_week_date_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         day_of_week_date_simplify(args, info)
     }
-
 }
 
 #[derive(Debug)]
@@ -109,7 +102,7 @@ pub(super) struct day_of_week_timestamp_pFunc {
 }
 
 impl day_of_week_timestamp_pFunc {
-    pub fn new() -> Self {        
+    pub fn new() -> Self {
         Self {
             signature: Signature::any(1, Volatility::Immutable),
         }
@@ -128,7 +121,6 @@ impl ScalarUDFImpl for day_of_week_timestamp_pFunc {
         &self.signature
     }
 
-
     fn return_type(&self, arg_types: &[DataType]) -> Result<DataType> {
         day_of_week_timestamp_p_return_type(arg_types)
     }
@@ -137,12 +129,7 @@ impl ScalarUDFImpl for day_of_week_timestamp_pFunc {
         day_of_week_timestamp_p_invoke(args)
     }
 
-    fn simplify(
-        &self,
-        args: Vec<Expr>,
-        info: &dyn SimplifyInfo,
-    ) -> Result<ExprSimplifyResult> {
+    fn simplify(&self, args: Vec<Expr>, info: &dyn SimplifyInfo) -> Result<ExprSimplifyResult> {
         day_of_week_timestamp_p_simplify(args, info)
     }
-
 }
