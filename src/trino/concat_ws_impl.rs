@@ -119,7 +119,7 @@ pub(super) struct concat_ws_varcharFunc {
 impl concat_ws_varcharFunc {
     pub fn new() -> Self {
         Self {
-            signature: Signature::variadic_equal(Volatility::Immutable),
+            signature: Signature::variadic_any(Volatility::Immutable),
         }
     }
 }

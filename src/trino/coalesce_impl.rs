@@ -55,7 +55,7 @@ pub(super) struct coalesce_1Func {
 impl coalesce_1Func {
     pub fn new() -> Self {
         Self {
-            signature: Signature::variadic_equal(Volatility::Immutable),
+            signature: Signature::variadic_any(Volatility::Immutable),
         }
     }
 }
