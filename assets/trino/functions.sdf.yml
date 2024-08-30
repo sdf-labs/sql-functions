@@ -8818,7 +8818,6 @@ function:
   returns:
     datatype: bigint
   implemented-by: !datafusion
-    udf: SUM
   section: aggregate
   cross-link: https://trino.io/docs/current/functions/aggregate.html#sum
   description: >
@@ -8838,7 +8837,6 @@ function:
   returns:
     datatype: double
   implemented-by: !datafusion
-    udf: SUM
   section: aggregate
   cross-link: https://trino.io/docs/current/functions/aggregate.html#sum
   description: >
@@ -8853,7 +8851,6 @@ function:
   returns:
     datatype: decimal(38, s)
   implemented-by: !datafusion
-    udf: SUM
   section: aggregate
   cross-link: https://trino.io/docs/current/functions/aggregate.html#sum
   description: >
@@ -8868,7 +8865,6 @@ function:
   returns:
     datatype: real
   implemented-by: !datafusion
-    udf: SUM
   section: aggregate
   cross-link: https://trino.io/docs/current/functions/aggregate.html#sum
   description: >
