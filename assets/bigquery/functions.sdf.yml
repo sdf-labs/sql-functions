@@ -4400,6 +4400,23 @@ function:
   - datatype: $1
   - datatype: int64
   - datatype: int64
+  returns:
+    datatype: int64
+  binds:
+  - type-variable: $1
+    datatypes:
+    - string
+    - bytes
+---
+function:
+  name: regexp_instr
+  section: string_functions
+  cross-link: https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators#regexp_instr
+  parameters:
+  - datatype: $1
+  - datatype: $1
+  - datatype: int64
+  - datatype: int64
   - datatype: int64
   returns:
     datatype: int64
@@ -5542,14 +5559,19 @@ function:
   cross-link: https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators#concat
   variadic: uniform
   parameters:
+  - datatype: bytes
+  returns:
+    datatype: bytes
+---
+function:
+  name: concat
+  section: string_functions
+  cross-link: https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators#concat
+  variadic: uniform
+  parameters:
   - datatype: $1
   returns:
-    datatype: $1
-  binds:
-  - type-variable: $1
-    datatypes:
-    - string
-    - bytes
+    datatype: string
 ---
 function:
   name: corr
