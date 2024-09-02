@@ -16,7 +16,7 @@
 // under the License.
 
 #![allow(non_camel_case_types)]
-use arrow::array::{as_fixed_size_list_array, StringArray};
+use arrow::array::StringArray;
 use arrow::datatypes::DataType;
 use datafusion::common::cast::{as_list_array, as_string_array};
 use datafusion::common::Result;
@@ -24,24 +24,17 @@ use datafusion::error::DataFusionError;
 use datafusion::functions::regex::regexpmatch::regexp_match;
 use datafusion::logical_expr::simplify::{ExprSimplifyResult, SimplifyInfo};
 use datafusion::logical_expr::{ColumnarValue, Expr, ScalarUDFImpl, Signature, Volatility};
+use regex::Regex;
 use std::any::Any;
 use std::sync::Arc;
+
+use crate::utils::distinct_to_string_array;
+use crate::utils_regexp::map_rowfun__pat_hay_int_to_nstr;
 
 fn regexp_extract_varchar_joniregexp_invoke(args: &[ColumnarValue]) -> Result<ColumnarValue> {
     let args = ColumnarValue::values_to_arrays(args)?;
     let value = args[0].to_owned();
-    let pattern = args[1].to_owned();
-    let pattern = as_fixed_size_list_array(&pattern);
-    let pattern = pattern
-        .iter()
-        .map(|x| {
-            x.map(|x| {
-                let inner = as_string_array(&x)?;
-                Ok(inner.value(0).to_owned())
-            })
-            .transpose()
-        })
-        .collect::<Result<StringArray>>()?;
+    let pattern = distinct_to_string_array(&args[1])?;
 
     let arrays = vec![value, Arc::new(pattern)];
     let result = regexp_match::<i32>(&arrays)?;
@@ -72,15 +65,36 @@ fn regexp_extract_varchar_joniregexp_simplify(
 }
 
 fn regexp_extract_varchar_joniregexp_bigint_invoke(
-    _args: &[ColumnarValue],
+    args: &[ColumnarValue],
 ) -> Result<ColumnarValue> {
-    Err(DataFusionError::NotImplemented("todo".to_string()))
+    map_rowfun__pat_hay_int_to_nstr(
+        &args[1],
+        &args[0],
+        &args[2],
+        Arc::new(regexp_extract__rowfun2),
+    )
+}
+
+fn regexp_extract__rowfun2(
+    pat: &str,
+) -> Result<Arc<dyn for<'a> Fn(/*hay:*/ &'a str, /*grp:*/ i64) -> Option<&'a str>>> {
+    let re = Regex::new(pat).map_err(|e| {
+        DataFusionError::Execution(format!(
+            "Regular expression for regexp_count did not compile: {e:?}"
+        ))
+    })?;
+    let rowfun: Arc<dyn for<'a> Fn(/*hay:*/ &'a str, /*grp:*/ i64) -> Option<&'a str>> =
+        Arc::new(move |hay: &str, grp: i64| match re.captures(hay) {
+            None => None,
+            Some(cs) => cs.get(grp as usize).map(|m| m.as_str()),
+        });
+    Ok(rowfun)
 }
 
 fn regexp_extract_varchar_joniregexp_bigint_return_type(
     _arg_types: &[DataType],
 ) -> Result<DataType> {
-    Err(DataFusionError::NotImplemented("todo".to_string()))
+    Ok(DataType::Utf8)
 }
 
 fn regexp_extract_varchar_joniregexp_bigint_simplify(

@@ -62,7 +62,7 @@ pub(super) struct least_3Func {
 impl least_3Func {
     pub fn new() -> Self {
         Self {
-            signature: Signature::variadic_equal(Volatility::Immutable),
+            signature: Signature::variadic_any(Volatility::Immutable),
         }
     }
 }

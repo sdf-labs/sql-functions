@@ -15,13 +15,15 @@
 // specific language governing permissions and limitations
 // under the License.
 
+use arrow::array::StringArray;
 use arrow::array::{
-    Array, ArrayRef, AsArray, BooleanArray, Datum, GenericByteArray, ListArray, OffsetSizeTrait,
-    PrimitiveArray,
+    Array, ArrayRef, AsArray, BooleanArray, Datum, GenericByteArray, ListArray, NullArray,
+    OffsetSizeTrait, PrimitiveArray,
 };
 use arrow::compute::{cast, date_part, DatePart};
 use arrow::datatypes::{ArrowPrimitiveType, DataType, GenericBinaryType, GenericStringType};
 use arrow::error::Result as ArrowResult;
+use datafusion::common::cast::{as_fixed_size_list_array, as_string_array};
 use datafusion::common::{Result, ScalarValue};
 use datafusion::error::DataFusionError;
 use datafusion::logical_expr::{ColumnarValue, ScalarFunctionImplementation};
@@ -106,6 +108,8 @@ pub(super) fn apply_datepart_kernel(arg: &ColumnarValue, part: DatePart) -> Resu
     })
 }
 
+/// Use Arrow `date_part` kernel to compute day of week,
+/// with Monday being 1 through Sunday being 7, per Trino convention..
 pub(super) fn apply_dow_kernel(arg: &ColumnarValue) -> Result<ColumnarValue> {
     apply_unary_kernel(arg, move |arr| {
         let monday0 = date_part(arr, DatePart::DayOfWeekMonday0)?;
@@ -132,11 +136,31 @@ pub(super) fn array_to_columnar(array: ArrayRef) -> ColumnarValue {
     if array.len() == 1 {
         match ScalarValue::try_from_array(&array, 0) {
             Ok(scalar) => ColumnarValue::Scalar(scalar),
-            Err(_) => ColumnarValue::Array(array),
+            Err(_) => ColumnarValue::Array(array), // Should not happen; can just panic instead
         }
     } else {
         ColumnarValue::Array(array)
     }
+}
+
+/// Extract the underlying string array from an array of SDF "distinct" type.
+/// (The distinct type is FixedSizeList with size 1.)
+/// TODO: This implementation iterates and reconstructs into a new array;
+/// it could be possible to exploit the size=1 circumstance to achieve no-copy implementation.
+pub(super) fn distinct_to_string_array(distinct_arr: &Arc<dyn Array>) -> Result<StringArray> {
+    let fxsize_arr = as_fixed_size_list_array(distinct_arr)?;
+    let res = fxsize_arr
+        .iter()
+        .map(|lst_opt| {
+            lst_opt
+                .map(|lst| {
+                    let inner = as_string_array(&lst)?;
+                    Ok(inner.value(0).to_owned())
+                })
+                .transpose()
+        })
+        .collect::<Result<StringArray>>()?;
+    Ok(res)
 }
 
 /// Means to lift a suite of kernels on typed arrays to operate on a list array (an array of lists).
@@ -165,6 +189,11 @@ pub trait KernelLifter {
 
     // The kernel to apply to lists of booleans.
     fn boolean_kernel(array: &BooleanArray) -> Option<bool>;
+
+    // Deals with a column of lists none of which contains a real item -- every list is either empty of contains only NULLs.
+    fn lift_null(list_array: &ListArray) -> ArrayRef {
+        Arc::new(NullArray::new(list_array.len()))
+    }
 
     // TODO: Find a way to reduce remaining duplication across the four lift_xxx_kernel methods.
 
@@ -263,6 +292,7 @@ pub trait KernelLifter {
         let list_array: &ListArray = datafusion::common::cast::as_list_array(&array)?;
         let elem_dt = list_array.value_type();
         let res: ArrayRef = match elem_dt {
+            DataType::Null => Self::lift_null(list_array),
             // numeric primitive arrays
             DataType::UInt8 => Self::lift_primitive_kernel::<adt::UInt8Type>(list_array),
             DataType::UInt16 => Self::lift_primitive_kernel::<adt::UInt16Type>(list_array),
@@ -374,6 +404,7 @@ pub trait KernelLifter {
         }?;
         let dt = field.data_type();
         match dt {
+            DataType::Null => Ok(dt.clone()),
             dt if dt.is_primitive() => Ok(dt.clone()),
             DataType::Utf8 | DataType::LargeUtf8 => Ok(dt.clone()),
             DataType::Binary | DataType::LargeBinary => Ok(dt.clone()),

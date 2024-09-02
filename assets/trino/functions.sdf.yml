@@ -1432,7 +1432,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
-  implemented-by: !datafusion
+  implemented-by: !rust
   section: array
   cross-link: https://trino.io/docs/current/functions/array.html#cardinality
   description: >
@@ -6511,6 +6511,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !rust
   section: regexp
   cross-link: https://trino.io/docs/current/functions/regexp.html#regexp_count
   description: >
@@ -6528,8 +6529,7 @@ function:
   section: regexp
   cross-link: https://trino.io/docs/current/functions/regexp.html#regexp_extract
   description: >
-    Returns the first substring matched by the regular expression pattern
-    in string.
+    Returns the first substring matched in a string by the regular expression pattern.
   examples:
     - input: SELECT REGEXP_EXTRACT('email_address@gmail.com', '@(.*?)\.'
       output: gmail
@@ -6543,11 +6543,11 @@ function:
   optional-parameters: []
   returns:
     datatype: varchar
+  implemented-by: !rust
   section: regexp
   cross-link: https://trino.io/docs/current/functions/regexp.html#regexp_extract
   description: >
-    Returns the first substring matched by the regular expression pattern
-    in string.
+    Returns the first substring matched in a string by the regular expression pattern's capture group.
 ---
 function:
   name: regexp_extract_all
@@ -6557,11 +6557,11 @@ function:
   optional-parameters: []
   returns:
     datatype: array<varchar>
+  implemented-by: !rust
   section: regexp
   cross-link: https://trino.io/docs/current/functions/regexp.html#regexp_extract_all
   description: >
-    Returns the substring(s) matched by the regular expression pattern
-    in string.
+    Returns the substrings of a string matched by the regular expression pattern.
 ---
 function:
   name: regexp_extract_all
@@ -6572,11 +6572,11 @@ function:
   optional-parameters: []
   returns:
     datatype: array<varchar>
+  implemented-by: !rust
   section: regexp
   cross-link: https://trino.io/docs/current/functions/regexp.html#regexp_extract_all
   description: >
-    Returns the substring(s) matched by the regular expression pattern
-    in string.
+    Returns the substrings of a string matched by the regular expression pattern's capturing group.
 ---
 function:
   name: regexp_like
@@ -6605,6 +6605,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !rust
   section: regexp
   cross-link: https://trino.io/docs/current/functions/regexp.html#regexp_position
   description: >
@@ -6620,6 +6621,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !rust
   section: regexp
   cross-link: https://trino.io/docs/current/functions/regexp.html#regexp_position
   description: >
@@ -6636,6 +6638,7 @@ function:
   optional-parameters: []
   returns:
     datatype: bigint
+  implemented-by: !rust
   section: regexp
   cross-link: https://trino.io/docs/current/functions/regexp.html#regexp_position
   description: >
@@ -6705,6 +6708,7 @@ function:
   optional-parameters: []
   returns:
     datatype: array<varchar>
+  implemented-by: !rust
   section: regexp
   cross-link: https://trino.io/docs/current/functions/regexp.html#regexp_split
   description: >
@@ -8811,6 +8815,7 @@ function:
   returns:
     datatype: bigint
   implemented-by: !datafusion
+    udf: SUM
   section: aggregate
   cross-link: https://trino.io/docs/current/functions/aggregate.html#sum
   description: >
@@ -8830,6 +8835,7 @@ function:
   returns:
     datatype: double
   implemented-by: !datafusion
+    udf: SUM
   section: aggregate
   cross-link: https://trino.io/docs/current/functions/aggregate.html#sum
   description: >
@@ -8844,6 +8850,7 @@ function:
   returns:
     datatype: decimal(38, s)
   implemented-by: !datafusion
+    udf: SUM
   section: aggregate
   cross-link: https://trino.io/docs/current/functions/aggregate.html#sum
   description: >
@@ -8858,6 +8865,7 @@ function:
   returns:
     datatype: real
   implemented-by: !datafusion
+    udf: SUM
   section: aggregate
   cross-link: https://trino.io/docs/current/functions/aggregate.html#sum
   description: >
@@ -8871,7 +8879,6 @@ function:
   optional-parameters: []
   returns:
     datatype: interval day to second
-  implemented-by: !datafusion
   section: aggregate
   cross-link: https://trino.io/docs/current/functions/aggregate.html#sum
   description: >
@@ -8885,7 +8892,6 @@ function:
   optional-parameters: []
   returns:
     datatype: interval year to month
-  implemented-by: !datafusion
   section: aggregate
   cross-link: https://trino.io/docs/current/functions/aggregate.html#sum
   description: >

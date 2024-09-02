@@ -37,13 +37,13 @@ default = ["trino_expressions"]
 trino_expressions = []
 
 [dependencies]
-datafusion = { version = "38.0.0" }
-arrow = { version = "51.0.0", features = ["prettyprint"] }
+datafusion = { version = "39.0.0" }
+arrow = { version = "52.0.0", features = ["prettyprint"] }
 #arrow-flight = { workspace = true }
 #arrow-schema = { workspace = true }
 tokio = "1.33.0"
 chrono = "0.4"
 chrono-tz = "0.5"
-regex = "1.5"
+regex = "1.10.2"
 log = "0.4.20"
 rust-embed = "6.4.2"

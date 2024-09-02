@@ -16,16 +16,16 @@
 // under the License.
 
 #![allow(non_camel_case_types)]
-use arrow::array::{as_fixed_size_list_array, ArrayRef, StringArray};
 use arrow::datatypes::DataType;
-use datafusion::common::cast::as_string_array;
 use datafusion::common::Result;
 use datafusion::error::DataFusionError;
-use datafusion::functions::regex::regexpreplace::specialize_regexp_replace;
 use datafusion::logical_expr::simplify::{ExprSimplifyResult, SimplifyInfo};
 use datafusion::logical_expr::{ColumnarValue, Expr, ScalarUDFImpl, Signature, Volatility};
+use regex::Regex;
 use std::any::Any;
 use std::sync::Arc;
+
+use crate::utils_regexp::{map_rowfun__pat_hay_str_to_string, map_rowfun__pat_hay_to_string};
 
 fn regexp_replace_varchar_joniregexp_function_array_varchar_varchar_invoke(
     _args: &[ColumnarValue],
@@ -47,33 +47,17 @@ fn regexp_replace_varchar_joniregexp_function_array_varchar_varchar_simplify(
 }
 
 fn regexp_replace_varchar_joniregexp_invoke(args: &[ColumnarValue]) -> Result<ColumnarValue> {
-    let args = ColumnarValue::values_to_arrays(args)?;
-    let value = args[0].to_owned();
-    let pattern = args[1].to_owned();
-    // let pattern = cast(&pattern, &DataType::Utf8)?;
-    let pattern = as_fixed_size_list_array(&pattern);
-    let pattern = pattern
-        .iter()
-        .map(|x| {
-            x.map(|x| {
-                let inner = as_string_array(&x)?;
-                Ok(inner.value(0).to_owned())
-            })
-            .transpose()
-        })
-        .collect::<Result<StringArray>>()?;
-    let replacement = {
-        let array = StringArray::from(vec![""; value.len()]);
-        Arc::new(array) as ArrayRef
-    };
+    map_rowfun__pat_hay_to_string(&args[1], &args[0], Arc::new(regexp_replace__rowfun))
+}
 
-    let columnar_values = vec![
-        ColumnarValue::Array(value),
-        ColumnarValue::Array(Arc::new(pattern)),
-        ColumnarValue::Array(replacement),
-    ];
-    let array = specialize_regexp_replace::<i32>(&columnar_values)?;
-    Ok(ColumnarValue::Array(array))
+fn regexp_replace__rowfun(pat: &str) -> Result<Arc<dyn Fn(/*hay:*/ &str) -> String>> {
+    let re = Regex::new(pat).map_err(|e| {
+        DataFusionError::Execution(format!(
+            "Regular expression for regexp_count did not compile: {e:?}"
+        ))
+    })?;
+    let rowfun = move |str: &str| re.replace_all(str, "").into_owned();
+    Ok(Arc::new(rowfun))
 }
 
 fn regexp_replace_varchar_joniregexp_return_type(_arg_types: &[DataType]) -> Result<DataType> {
@@ -90,30 +74,24 @@ fn regexp_replace_varchar_joniregexp_simplify(
 fn regexp_replace_varchar_joniregexp_varchar_invoke(
     args: &[ColumnarValue],
 ) -> Result<ColumnarValue> {
-    let args = ColumnarValue::values_to_arrays(args)?;
-    let value = args[0].to_owned();
-    let pattern = args[1].to_owned();
-    // let pattern = cast(&pattern, &DataType::Utf8)?;
-    let pattern = as_fixed_size_list_array(&pattern);
-    let pattern = pattern
-        .iter()
-        .map(|x| {
-            x.map(|x| {
-                let inner = as_string_array(&x)?;
-                Ok(inner.value(0).to_owned())
-            })
-            .transpose()
-        })
-        .collect::<Result<StringArray>>()?;
-    let replacement = args[2].to_owned();
+    map_rowfun__pat_hay_str_to_string(
+        &args[1],
+        &args[0],
+        &args[2],
+        Arc::new(regexp_replace__rowfun2),
+    )
+}
 
-    let columnar_values = vec![
-        ColumnarValue::Array(value),
-        ColumnarValue::Array(Arc::new(pattern)),
-        ColumnarValue::Array(replacement),
-    ];
-    let array = specialize_regexp_replace::<i32>(&columnar_values)?;
-    Ok(ColumnarValue::Array(array))
+fn regexp_replace__rowfun2(
+    pat: &str,
+) -> Result<Arc<dyn Fn(/*hay:*/ &str, /*str1:*/ &str) -> String>> {
+    let re = Regex::new(pat).map_err(|e| {
+        DataFusionError::Execution(format!(
+            "Regular expression for regexp_count did not compile: {e:?}"
+        ))
+    })?;
+    let rowfun = move |str: &str, str1: &str| re.replace_all(str, str1).into_owned();
+    Ok(Arc::new(rowfun))
 }
 
 fn regexp_replace_varchar_joniregexp_varchar_return_type(
