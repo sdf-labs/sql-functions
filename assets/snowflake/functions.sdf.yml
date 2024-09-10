@@ -3835,9 +3835,8 @@ function:
 function:
   name: hash
   description: hash value
-  variadic: uniform
-  parameters:
-  - datatype: $1
+  variadic: any
+  parameters: []
   optional-parameters: []
   returns:
     datatype: decimal(38, 0)
