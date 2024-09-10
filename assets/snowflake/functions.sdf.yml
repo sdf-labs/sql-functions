@@ -3846,10 +3846,9 @@ function:
 function:
   name: hash_agg
   description: aggregate hash value
-  variadic: uniform
+  variadic: any
   kind: aggregate
-  parameters:
-  - datatype: $1
+  parameters: []
   optional-parameters: []
   returns:
     datatype: decimal(38, 0)
