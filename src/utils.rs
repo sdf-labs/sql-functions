@@ -26,18 +26,18 @@ use arrow::error::Result as ArrowResult;
 use datafusion::common::cast::{as_fixed_size_list_array, as_string_array};
 use datafusion::common::{Result, ScalarValue};
 use datafusion::error::DataFusionError;
-use datafusion::logical_expr::{ColumnarValue, ScalarFunctionImplementation};
+use datafusion::logical_expr::{ColumnarValue};
 use datafusion::physical_expr::functions::Hint;
 use std::sync::Arc;
 
 /// Creates a scalar function implementation for the given function.
 /// * `inner` - the function to be executed
 /// * `hints` - hints to be used when expanding scalars to arrays
-pub(super) fn make_scalar_function<F>(inner: F, hints: Vec<Hint>) -> ScalarFunctionImplementation
+pub(super) fn make_scalar_function<F>(inner: F, hints: Vec<Hint>) -> impl Fn(&[ColumnarValue]) -> Result<ColumnarValue>
 where
-    F: Fn(&[ArrayRef]) -> Result<ArrayRef> + Sync + Send + 'static,
+    F: Fn(&[ArrayRef]) -> Result<ArrayRef>,
 {
-    Arc::new(move |args: &[ColumnarValue]| {
+    move |args: &[ColumnarValue]| {
         // first, identify if any of the arguments is an Array. If yes, store its `len`,
         // as any scalar will need to be converted to an array of len `len`.
         let len = args
@@ -72,7 +72,7 @@ where
         } else {
             result.map(ColumnarValue::Array)
         }
-    })
+    }
 }
 
 /// Applies a unary computational kernel to a columnar value.
