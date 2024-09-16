@@ -8588,6 +8588,7 @@ function:
   optional-parameters: []
   returns:
     datatype: double
+  implemented-by: !datafusion
   section: aggregate
   cross-link: https://trino.io/docs/current/functions/aggregate.html#stddev
   description: >
@@ -8649,6 +8650,7 @@ function:
   returns:
     datatype: double
   implemented-by: !datafusion
+    udf: stddev
   section: aggregate
   cross-link: https://trino.io/docs/current/functions/aggregate.html#stddev_samp
   description: >
@@ -8668,6 +8670,7 @@ function:
   returns:
     datatype: double
   implemented-by: !datafusion
+    udf: stddev
   section: aggregate
   cross-link: https://trino.io/docs/current/functions/aggregate.html#stddev_samp
   description: >
@@ -8815,7 +8818,6 @@ function:
   returns:
     datatype: bigint
   implemented-by: !datafusion
-    udf: SUM
   section: aggregate
   cross-link: https://trino.io/docs/current/functions/aggregate.html#sum
   description: >
@@ -8835,7 +8837,6 @@ function:
   returns:
     datatype: double
   implemented-by: !datafusion
-    udf: SUM
   section: aggregate
   cross-link: https://trino.io/docs/current/functions/aggregate.html#sum
   description: >
@@ -8850,7 +8851,6 @@ function:
   returns:
     datatype: decimal(38, s)
   implemented-by: !datafusion
-    udf: SUM
   section: aggregate
   cross-link: https://trino.io/docs/current/functions/aggregate.html#sum
   description: >
@@ -8865,7 +8865,6 @@ function:
   returns:
     datatype: real
   implemented-by: !datafusion
-    udf: SUM
   section: aggregate
   cross-link: https://trino.io/docs/current/functions/aggregate.html#sum
   description: >
